@@ -1,6 +1,6 @@
 import { ArrowRight, CheckCircle, Zap, Brain, Target, TrendingUp, Clock, Sparkles, Users, Star } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
+import Navigation from '../../../components/shared/Navigation'
 
 export default function AIProductManagementToolPage() {
   return (

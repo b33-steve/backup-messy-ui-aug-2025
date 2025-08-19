@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
-import { Button } from './ui/Button';
-import { Badge } from './ui/Badge';
+import { Card, Title, Text, Button, Badge, Stack, Group } from '@mantine/core';
 import { AlertCircle, TrendingUp, Users, Calendar } from 'lucide-react';
 
 interface Project {
@@ -182,13 +180,13 @@ export const ProjectDashboard: React.FC = () => {
           {/* Project List */}
           <div className="lg:col-span-1">
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
+              <Card.Section>
+                <Title className="flex items-center justify-between">
                   Projects
                   <Badge className="bg-blue-100 text-blue-800">{projects.length}</Badge>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+                </Title>
+              </Card.Section>
+              <Card.Section>
                 {/* Create Project Form */}
                 <div className="mb-4 p-3 border rounded-lg bg-gray-50">
                   <h4 className="font-medium mb-2">Create New Project</h4>
@@ -241,7 +239,7 @@ export const ProjectDashboard: React.FC = () => {
                     </div>
                   ))}
                 </div>
-              </CardContent>
+              </Card.Section>
             </Card>
           </div>
 
@@ -251,8 +249,8 @@ export const ProjectDashboard: React.FC = () => {
               <div className="space-y-6">
                 {/* Project Overview */}
                 <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
+                  <Card.Section>
+                    <Title className="flex items-center justify-between">
                       {selectedProject.name}
                       <div className="flex gap-2">
                         <Badge className={getStatusColor(selectedProject.status)}>
@@ -268,9 +266,9 @@ export const ProjectDashboard: React.FC = () => {
                           AI Analysis
                         </Button>
                       </div>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                    </Title>
+                  </Card.Section>
+                  <Card.Section>
                     <p className="text-gray-600 mb-4">{selectedProject.description}</p>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
                       <div className="flex items-center">
@@ -282,38 +280,38 @@ export const ProjectDashboard: React.FC = () => {
                         Created {new Date(selectedProject.created_at).toLocaleDateString()}
                       </div>
                     </div>
-                  </CardContent>
+                  </Card.Section>
                 </Card>
 
                 {/* AI Analysis Results */}
                 {aiAnalysis && (
                   <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center">
+                    <Card.Section>
+                      <Title className="flex items-center">
                         <TrendingUp className="w-5 h-5 mr-2" />
                         AI Analysis Results
                         <Badge className="ml-2 bg-green-100 text-green-800">
                           {Math.round(aiAnalysis.confidence_score * 100)}% confidence
                         </Badge>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
+                      </Title>
+                    </Card.Section>
+                    <Card.Section>
                       <div className="whitespace-pre-wrap text-sm">{aiAnalysis.analysis}</div>
                       <div className="text-xs text-gray-500 mt-2">
                         Generated at {new Date(aiAnalysis.generated_at).toLocaleString()}
                       </div>
-                    </CardContent>
+                    </Card.Section>
                   </Card>
                 )}
 
                 {/* Tasks */}
                 <Card>
-                  <CardHeader>
-                    <CardTitle>
+                  <Card.Section>
+                    <Title>
                       Tasks ({selectedProject.tasks.length})
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                    </Title>
+                  </Card.Section>
+                  <Card.Section>
                     {/* Create Task Form */}
                     <div className="mb-4 p-3 border rounded-lg bg-gray-50">
                       <h4 className="font-medium mb-2">Add New Task</h4>
@@ -372,16 +370,16 @@ export const ProjectDashboard: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                  </CardContent>
+                  </Card.Section>
                 </Card>
               </div>
             ) : (
               <Card>
-                <CardContent className="text-center py-12">
+                <Card.Section className="text-center py-12">
                   <AlertCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-gray-900 mb-2">No Project Selected</h3>
                   <p className="text-gray-600">Select a project from the list to view details</p>
-                </CardContent>
+                </Card.Section>
               </Card>
             )}
           </div>

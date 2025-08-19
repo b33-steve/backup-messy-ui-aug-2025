@@ -1,6 +1,6 @@
 import { ArrowRight, CheckCircle, Users, Target, Lightbulb, Heart, Sparkles, Building2, Award, Clock } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
+import Navigation from '../../../components/shared/Navigation'
 
 export default function AboutPage() {
   return (

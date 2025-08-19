@@ -20,7 +20,7 @@ import {
   IconSend,
   IconAnalyze,
   IconReport,
-  IconStrategy,
+  IconChartLine,
   IconBulb
 } from '@tabler/icons-react';
 import AppNavigation from '../../../components/app/AppNavigation';
@@ -170,7 +170,7 @@ export default function IntelligencePage() {
               <Tabs.Tab value="results" leftSection={<IconReport size={16} />}>
                 Analysis Results
               </Tabs.Tab>
-              <Tabs.Tab value="history" leftSection={<IconStrategy size={16} />}>
+              <Tabs.Tab value="history" leftSection={<IconChartLine size={16} />}>
                 Recent Analyses
               </Tabs.Tab>
             </Tabs.List>

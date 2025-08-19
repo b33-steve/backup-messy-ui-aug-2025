@@ -165,7 +165,7 @@ export default function AppNavigation() {
             </Menu>
 
             {/* Mobile Menu */}
-            <Menu opened={opened} onChange={setOpened} width={280} position="bottom-end" withinPortal hiddenFrom="md">
+            <Menu opened={opened} onChange={setOpened} width={280} position="bottom-end" withinPortal>
               <Menu.Target>
                 <Burger opened={opened} onClick={() => setOpened((o) => !o)} hiddenFrom="md" size="sm" />
               </Menu.Target>

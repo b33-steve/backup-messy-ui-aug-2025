@@ -1,71 +1,117 @@
 {
+  "current_month": 1,
   "current_week": 1,
+  "intelligence_operations_timeline": {
+    "month_1": {
+      "dates": "Aug-Sep 2025",
+      "status": "in_progress",
+      "target": "$3.9K MRR - Beta launch with $29 Starter tier (100 customers)",
+      "customer_target": "100 customers (80 Starter + 15 Team + 5 Scale)",
+      "mrr_target": "$3,865",
+      "key_focus": "Intelligence Operations billing infrastructure + beta customer acquisition"
+    },
+    "month_2": {
+      "dates": "Sep-Oct 2025",
+      "target": "$13.8K MRR - Product Hunt launch & viral growth (300 customers)",
+      "customer_target": "300 customers (210 Starter + 60 Team + 25 Scale + 5 Enterprise)",
+      "mrr_target": "$13,765",
+      "key_focus": "Viral coefficient 0.3+ through community growth"
+    },
+    "month_3": {
+      "dates": "Oct-Nov 2025",
+      "target": "$52K MRR - Market penetration (1,000 customers)",
+      "customer_target": "1,000 customers (600 Starter + 250 Team + 100 Scale + 50 Enterprise)",
+      "mrr_target": "$52,150",
+      "key_focus": "Operations usage pattern validation & competitive positioning"
+    },
+    "month_5": {
+      "dates": "Dec 2025-Jan 2026",
+      "target": "$187K MRR - Category leadership (2,850 customers)",
+      "customer_target": "2,850 customers (2,000 Starter + 600 Team + 200 Scale + 50 Enterprise)",
+      "mrr_target": "$187,650",
+      "key_focus": "AutoPilot launch + Enterprise expansion"
+    }
+  },
   "week_1": {
     "dates": "Aug 18-24",
     "status": "in_progress",
-    "target": "Complete unified workspace and automation foundation",
+    "target": "Intelligence Operations MVP - Billing infrastructure & $29 pricing implementation",
     "tasks": [
       {
         "id": "w1t1",
-        "task": "Create unified workspace structure",
-        "status": "completed",
-        "priority": "high"
+        "task": "Setup Intelligence Operations billing infrastructure (Stripe + usage tracking)",
+        "status": "pending",
+        "priority": "critical"
       },
       {
         "id": "w1t2",
-        "task": "Setup master Claude Code configuration",
-        "status": "completed",
-        "priority": "high"
+        "task": "Implement $29/$79/$199/$599 pricing tiers with operations tracking",
+        "status": "pending",
+        "priority": "critical"
       },
       {
         "id": "w1t3",
-        "task": "Migrate MCP server from pm33-ai-native",
-        "status": "completed",
-        "priority": "high",
-        "completed_date": "2025-08-15T13:08:56.393642",
-        "completion_notes": "Successfully completed Day 1 infrastructure setup - Alembic initialized, strategic workflow engine tested and working"
+        "task": "Create operations-based API with $0.08 cost per operation",
+        "status": "pending",
+        "priority": "critical"
       },
       {
         "id": "w1t4",
-        "task": "Migrate strategy files from PM33",
+        "task": "Setup viral referral program for $29 tier market capture",
         "status": "pending",
-        "priority": "medium"
+        "priority": "high"
       },
       {
         "id": "w1t5",
-        "task": "Migrate website assets from pm33-website",
+        "task": "Create beta outreach targeting Individual PMs (price sensitivity -2.5)",
         "status": "pending",
-        "priority": "medium"
+        "priority": "high"
       },
       {
         "id": "w1t6",
-        "task": "Configure automation hooks",
+        "task": "Deploy usage analytics for operations tracking",
         "status": "pending",
         "priority": "high"
       },
       {
         "id": "w1t7",
-        "task": "Deploy initial monitoring",
+        "task": "Setup CAC tracking and viral coefficient measurement",
         "status": "pending",
         "priority": "medium"
       }
     ],
     "kpis": {
-      "claude_code_automation": {
-        "target": "90%",
-        "current": "30%"
+      "intelligence_operations_api": {
+        "target": "Working with usage tracking",
+        "current": "Not started"
       },
-      "development_velocity": {
-        "target": "2x faster",
-        "current": "baseline"
-      },
-      "marketing_automation": {
-        "target": "50+ leads/week",
+      "beta_signups_starter_tier": {
+        "target": "80 Starter @ $29",
         "current": "0"
       },
-      "sales_automation": {
-        "target": "20+ demos/week",
+      "operations_generated": {
+        "target": "100+ intelligence operations",
         "current": "0"
+      },
+      "billing_infrastructure": {
+        "target": "Stripe + operations tracking",
+        "current": "Not started"
+      },
+      "cac_target": {
+        "target": "<$30 (1-month payback)",
+        "current": "N/A"
+      },
+      "unit_economics": {
+        "target": "$0.08 cost per operation",
+        "current": "N/A"
+      },
+      "viral_coefficient": {
+        "target": "0.3+ for sustainable growth",
+        "current": "0"
+      },
+      "gross_margin": {
+        "target": "60-89% depending on tier",
+        "current": "N/A"
       }
     }
   }

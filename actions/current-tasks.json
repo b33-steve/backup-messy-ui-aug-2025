@@ -1,13 +1,19 @@
 {
-  "date_generated": "2025-08-19T13:08:27.073686",
+  "date_generated": "2025-08-19T20:11:17.546595",
   "week_number": 1,
   "week_dates": "Aug 18-24",
   "tasks": [
     {
       "type": "development",
-      "task": "Continue Strategic AI implementation",
+      "task": "Continue Intelligence Operations API development",
       "priority": "high",
-      "estimated_time": "3 hours"
+      "estimated_time": "2 hours"
+    },
+    {
+      "type": "billing",
+      "task": "Test and refine operations-based billing flow",
+      "priority": "high",
+      "estimated_time": "1 hour"
     },
     {
       "type": "maintenance",

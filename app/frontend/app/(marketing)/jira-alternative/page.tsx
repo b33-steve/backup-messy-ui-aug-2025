@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle, Zap, Brain, Target, TrendingUp, Clock, Sparkles, Users, Star, MessageCircle, ThumbsUp, Award } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
+import Navigation from '../../../components/shared/Navigation'
+import Footer from '../../../components/shared/Footer'
 
 export default function JiraAlternativePage() {
   return (

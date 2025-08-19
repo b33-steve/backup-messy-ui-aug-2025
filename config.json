@@ -1,0 +1,36 @@
+{
+  "project_name": "PM33",
+  "enforcement_mode": "strict",
+  "required_documents": [
+    "PM33_COMPLETE_UI_SYSTEM.md",
+    "PM33_ Complete _UX_System.md"
+  ],
+  "pre_code_checks": {
+    "must_read_design_docs": true,
+    "require_confirmation": true,
+    "auto_reject_violations": true
+  },
+  "validation_rules": {
+    "ui_compliance": {
+      "no_basic_borders": true,
+      "require_glass_morphism": true,
+      "require_animations": true,
+      "require_gradients": true,
+      "ban_basic_spinners": true
+    },
+    "ux_compliance": {
+      "max_clicks_to_value": 5,
+      "require_ai_prefill": true,
+      "require_progress_indicators": true,
+      "require_celebrations": true
+    }
+  },
+  "auto_tests": {
+    "run_before_commit": true,
+    "block_on_failure": true,
+    "test_files": [
+      "tests/ui-compliance.spec.ts",
+      "tests/ux-quality.spec.ts"
+    ]
+  }
+}

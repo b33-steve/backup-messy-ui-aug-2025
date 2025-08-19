@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle, Shield, Lock, Eye, Server, Globe, Award, AlertTriangle, Users, FileText, Zap } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
+import Navigation from '../../../components/shared/Navigation'
+import Footer from '../../../components/shared/Footer'
 
 export default function SecurityPage() {
   return (

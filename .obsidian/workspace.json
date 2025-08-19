@@ -1,0 +1,249 @@
+{
+  "main": {
+    "id": "07110b71c47034b2",
+    "type": "split",
+    "children": [
+      {
+        "id": "104ca1b67e66387b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aaa0e743db334e83",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PM33_CLICKABLE_DEMO_DESIGN.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PM33_CLICKABLE_DEMO_DESIGN"
+            }
+          },
+          {
+            "id": "19f2ae1f995292ae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PM33_COMPLETE_UI_SYSTEM.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PM33_COMPLETE_UI_SYSTEM"
+            }
+          },
+          {
+            "id": "f019e27aca030912",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PM33_COMPLETE_UI_SYSTEM.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PM33_COMPLETE_UI_SYSTEM"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "26798e9fc3e65cc3",
+    "type": "split",
+    "children": [
+      {
+        "id": "67d7d4dbcc184ffd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "10eafbed01d8d0c0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "9231c9c68b9b19cd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9afbf9f172da3996",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 403.5
+  },
+  "right": {
+    "id": "3e735845c766662b",
+    "type": "split",
+    "children": [
+      {
+        "id": "9943505f73ad390c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e458539a326fcd5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "PM33_COMPLETE_UI_SYSTEM.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for PM33_COMPLETE_UI_SYSTEM"
+            }
+          },
+          {
+            "id": "397735c72d3bc57e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "PM33_COMPLETE_UI_SYSTEM.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from PM33_COMPLETE_UI_SYSTEM"
+            }
+          },
+          {
+            "id": "ab9c3f3b4c55c497",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "ed89ed89f76cbe3f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "PM33_COMPLETE_UI_SYSTEM.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of PM33_COMPLETE_UI_SYSTEM"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "f019e27aca030912",
+  "lastOpenFiles": [
+    "app/frontend/test-results/test-results.json",
+    "app/frontend/playwright-report/data/b5cc8b1ec459d327b2e5617fb7d0bdcb38802bc6.webm",
+    "app/frontend/playwright-report/data/4e02ac9992549a01ae57f5a7fffe05107291438d.png",
+    "app/frontend/playwright-report/data/2c56c282ab258403af1c3a4d4a8163313bc1c512.md",
+    "app/frontend/playwright-report/data/14f888968bf27a0b093a4d705441e8415642a56a.webm",
+    "app/frontend/playwright-report/data/f1a22bbb7c0029f87d1eb22159c93b5817aa04cf.png",
+    "app/frontend/playwright-report/data/2092349afa0ac9d7ac51658f301a86db2feeab9c.webm",
+    "app/frontend/playwright-report/data/c40f23194fbc97c1e77a35993e603e47d201d61c.png",
+    "app/frontend/playwright-report/data/47ce2f4d5bf57819efdbcb2c6280902ab40afb23.md",
+    "app/frontend/playwright-report/data/b03b661a98df852ec721a626d130ccd44496b689.webm",
+    "app/frontend/playwright-report/data/c839e37be408823654c99a74a031999a064366e1.png",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-chromium/video.webm",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-chromium/test-failed-1.png",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-chromium",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--chromium/video.webm",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--chromium/test-failed-1.png",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--chromium",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-chromium/video.webm",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-chromium/test-failed-1.png",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-chromium",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-804a5-pliant-glass-morphism-cards-chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-804a5-pliant-glass-morphism-cards-chromium/test-failed-1.png",
+    "PM33_ Complete _UX_System.md",
+    "app/frontend/playwright-report/data/5dc6f53072721086a1579cee1a663879eea05849.md",
+    "app/frontend/playwright-report/data/c994a89cfb000fc495e4f66806411930967bd363.png",
+    "app/frontend/playwright-report/data/0cdd9aa59fdcf2a6d1982506c45fed152f5e3c0a.md",
+    "app/frontend/playwright-report/data/4214e9d65271db053dabe2acc318f1ef751f972d.png",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-c5a9a-e-friendly-PM33-compliance--chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-6a55c-h-PM33-interaction-patterns-chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-8b85d-dle-authentication-properly-chromium/error-context.md",
+    "app/frontend/playwright-report/data/14958ce3dcdeb76e3281dfa54d4006f1a13d1593.md",
+    "app/frontend/playwright-report/data/d9d0ffd808b95caab65411e02feb74a972754a0c.md",
+    "app/frontend/playwright-report/data/3fb8667a9924cd01f7eb89f5619828be9faf1630.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-46c52-telligence-Operations-model-chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-6aa25-M33-branding-and-navigation-chromium/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-c5a9a-e-friendly-PM33-compliance--firefox/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--firefox/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-46c52-telligence-Operations-model-firefox/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-firefox/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-6a55c-h-PM33-interaction-patterns-firefox/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-804a5-pliant-glass-morphism-cards-firefox/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-firefox/error-context.md",
+    "app/frontend/test-results/strategic-ai-chat-Strategi-6aa25-M33-branding-and-navigation-firefox/error-context.md"
+  ]
+}

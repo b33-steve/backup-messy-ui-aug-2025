@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:ui-compliance": "playwright test tests/ui-compliance.spec.ts",
+    "test:ux-quality": "playwright test tests/ux-quality.spec.ts",
+    "test:visual": "playwright test tests/visual-regression.spec.ts",
+    "test:all": "npm run test:ui-compliance && npm run test:ux-quality && npm run test:visual",
+    "claude:verify": "node ../../scripts/verify-design-compliance.js",
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
@@ -41,6 +47,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
+    "husky": "^9.1.7",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

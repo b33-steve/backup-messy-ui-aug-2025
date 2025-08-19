@@ -1,0 +1,53 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 PM33 UI/UX Compliance Check Starting..."
+
+# Check if design system files exist
+if [ ! -f "PM33_COMPLETE_UI_SYSTEM.md" ] || [ ! -f "PM33_ Complete _UX_System.md" ]; then
+  echo "❌ ERROR: Design system files not found!"
+  echo "Required files:"
+  echo "  - PM33_COMPLETE_UI_SYSTEM.md"
+  echo "  - PM33_ Complete _UX_System.md"
+  exit 1
+fi
+
+# Run UI compliance tests
+echo "Testing UI compliance..."
+npm run test:ui-compliance
+if [ $? -ne 0 ]; then
+  echo "❌ UI Compliance tests failed!"
+  echo "Fix all UI issues before committing."
+  echo "Refer to PM33_COMPLETE_UI_SYSTEM.md"
+  exit 1
+fi
+
+# Run UX quality tests
+echo "Testing UX quality..."
+npm run test:ux-quality
+if [ $? -ne 0 ]; then
+  echo "❌ UX Quality tests failed!"
+  echo "Fix all UX issues before committing."
+  echo "Refer to PM33_ Complete _UX_System.md"
+  exit 1
+fi
+
+# Check for forbidden patterns
+echo "Checking for forbidden patterns..."
+FORBIDDEN_PATTERNS=(
+  "border.*:.*['\"]1px solid black"
+  "border-black"
+  "<Spinner"
+  "className=\"border\""
+  "style={{.*border.*:.*black"
+)
+
+for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
+  if grep -r "$pattern" --include="*.tsx" --include="*.jsx" --include="*.ts" --include="*.js" ./src ./app ./components 2>/dev/null; then
+    echo "❌ Forbidden pattern found: $pattern"
+    echo "This violates PM33 design standards!"
+    exit 1
+  fi
+done
+
+echo "✅ All PM33 standards checks passed!"

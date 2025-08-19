@@ -1,6 +1,6 @@
 import { ArrowRight, Mail, MessageSquare, Calendar, MapPin, Clock, Phone, Sparkles, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
+import Navigation from '../../../components/shared/Navigation'
 
 export default function ContactPage() {
   return (

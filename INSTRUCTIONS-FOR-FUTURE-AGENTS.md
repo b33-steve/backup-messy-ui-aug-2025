@@ -1,3 +1,8 @@
+# INSTRUCTIONS-FOR-FUTURE-AGENTS.md
+# Critical development instructions and context for all future Claude agents working on PM33
+# WHY: Ensures continuity and consistency across all development sessions without re-explaining context
+# RELEVANT FILES: CLAUDE.md, PM33_DESIGN_SYSTEM_GUIDE.md, PM33_PRODUCT_REQUIREMENTS_DOCUMENT.md, design-system-implementation.md
+
 # Critical Instructions for Future Claude Agents
 
 **🚨 READ THIS FIRST - Contains all essential context to avoid re-explaining project details**
@@ -69,6 +74,51 @@ User clarified that the Replit solution had mixed results:
 
 #### **🎯 Architecture Implication:**
 Build agentic AI teams on **proven data intelligence patterns** while avoiding OAuth complexity and incomplete UX workflows.
+
+---
+
+## 🎨 **PM33 CODING STANDARDS & UI DESIGN PRINCIPLES**
+
+### **📝 MANDATORY Code Quality Standards**
+
+#### **IMPORTANT:**
+- **Always prioritize writing clean, simple, and modular code**
+- **Use simple & easy-to-understand language. Write in short sentences**  
+- **Don't be lazy! Always read files in full**
+
+#### **💬 COMMENTS (Critical for Code Quality)**
+- **Write lots of comments in your code.** Explain exactly what you are doing in your comments
+- **Be strategic:** Do not explain obvious syntax - instead explain your thought process at the time of writing the code!
+- **NEVER delete explanatory comments** from the code you're editing (unless they are wrong/obsolete)
+- **Focus on explaining the non-obvious stuff** in the comments, the nuances/details
+- **DO NOT delete comments currently in our code.** If the comment is obsolete or wrong, then update it - but NEVER mindlessly remove comments without reason
+
+#### **📄 HEADER COMMENTS (MANDATORY)**
+**EVERY file HAS TO start with 4 lines of comments:**
+1. **Exact file location in codebase**
+2. **Clear description of what this file does**
+3. **Clear description of WHY this file exists**
+4. **RELEVANT FILES:** comma-separated list of 2-4 most relevant files
+
+**NEVER delete these "header comments" from the files you're editing.**
+
+### **🎯 UI DESIGN PRINCIPLES**
+
+#### **🎨 Design System Rules**
+- **Minimalist UI** with clean, simple layouts and ample spacing
+- **Consistent text hierarchy** with proper contrast ratios
+- **Card-based layout** with subtle borders and clean separation
+- **Responsive design** that adapts from mobile to desktop
+- **Interactive elements** have clear hover states and transitions
+
+#### **🎨 Color Usage Rules (MANDATORY)**
+- **❌ DO NOT use colors like** `'text-gray-XXX'` or `'bg-gray-XXX'`
+- **✅ INSTEAD, use** `'neutral-XXX'` for consistency!
+- **✅ Always use design system tokens** from APP_DESIGN_SYSTEM.md and MARKETING_DESIGN_SYSTEM.md
+
+#### **📱 Responsive Design Standards**
+- **Desktop-first responsive design.** Always think of how the UI will look on mobile
+- **Tablet/iPad compatibility** - Ensure UI works seamlessly on tablet/iPad sizes
 
 ---
 

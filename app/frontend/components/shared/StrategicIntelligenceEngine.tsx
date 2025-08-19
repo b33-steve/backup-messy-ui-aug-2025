@@ -1,3 +1,8 @@
+// app/frontend/components/shared/StrategicIntelligenceEngine.tsx
+// Strategic Intelligence Sync Layer demo showcasing PM tool integration and automated strategic sync
+// WHY: Demonstrates PM33 as strategic intelligence layer that enhances existing PM tools rather than replacing them
+// RELEVANT FILES: PM33_CORE_PAIN_POINTS.md, PM33_DEEP_WORKFLOW_ANALYSIS.md, APP_DESIGN_SYSTEM.md
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -14,7 +19,9 @@ import {
   Button, 
   Alert, 
   ActionIcon, 
-  Box
+  Box,
+  Select,
+  Tabs
 } from '@mantine/core';
 import { 
   IconBrain, 
@@ -25,122 +32,155 @@ import {
   IconClock, 
   IconTrendingUp, 
   IconArrowLeft, 
-  IconHome 
+  IconHome,
+  IconRefresh,
+  IconExternalLink,
+  IconCheck,
+  IconGitBranch,
+  IconDatabase
 } from '@tabler/icons-react';
 import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 
-// Strategic Intelligence Workflow Step
-interface WorkflowStep {
+// PM Tool Integration Status
+interface PMToolConnection {
+  tool: 'jira' | 'linear' | 'monday' | 'asana';
+  status: 'connected' | 'syncing' | 'updated';
+  projects: number;
+  lastSync: string;
+  strategicTasks: number;
+}
+
+// Strategic Intelligence Sync Step
+interface StrategicSyncStep {
   id: string;
   name: string;
+  description: string;
   status: 'pending' | 'processing' | 'completed' | 'error';
   progress: number;
   timeEstimate: string;
+  toolIntegration?: string;
   output?: any;
 }
 
-// Strategic Analysis Result
-interface StrategicAnalysis {
+// Strategic Sync Result
+interface StrategicSyncResult {
   situationAssessment: string;
-  recommendation: string;
+  strategicRecommendation: string;
+  automatedActions: {
+    newEpics: number;
+    reorderedTasks: number;
+    updatedPriorities: number;
+    stakeholderUpdates: number;
+  };
+  toolUpdates: {
+    tool: string;
+    action: string;
+    impact: string;
+    confidence: number;
+  }[];
   successMetrics: string[];
-  keyRisks: string[];
-  resourceRequirements: string;
-  timeline: string;
   confidenceScore: number;
-  frameworksApplied: string[];
+  nextActions: string[];
 }
 
 const StrategicIntelligenceEngine: React.FC = () => {
   const [activeWorkflow, setActiveWorkflow] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
-  const [analysisResult, setAnalysisResult] = useState<StrategicAnalysis | null>(null);
+  const [syncResult, setSyncResult] = useState<StrategicSyncResult | null>(null);
   const [strategicQuery, setStrategicQuery] = useState('');
+  const [selectedTool, setSelectedTool] = useState<'jira' | 'linear' | 'monday' | 'asana'>('jira');
+  const [connectedTools, setConnectedTools] = useState<PMToolConnection[]>([
+    { tool: 'jira', status: 'connected', projects: 3, lastSync: '2 min ago', strategicTasks: 47 },
+    { tool: 'linear', status: 'connected', projects: 2, lastSync: '5 min ago', strategicTasks: 23 },
+    { tool: 'monday', status: 'connected', projects: 1, lastSync: '1 min ago', strategicTasks: 15 }
+  ]);
 
-  const [workflowSteps, setWorkflowSteps] = useState<WorkflowStep[]>([
+  const [syncSteps, setSyncSteps] = useState<StrategicSyncStep[]>([
     {
-      id: 'context-integration',
-      name: 'AI Context Integration',
+      id: 'tool-context',
+      name: 'PM Tool Context Integration',
+      description: 'Reading current sprint capacity, roadmap, and priorities from your connected tools',
       status: 'pending',
       progress: 0,
       timeEstimate: '30 seconds',
+      toolIntegration: 'Jira + Linear + Monday',
       output: null
     },
     {
-      id: 'multi-framework',
-      name: 'Multi-Framework Analysis',
-      status: 'pending', 
+      id: 'strategic-analysis',
+      name: 'Strategic Intelligence Processing',
+      description: '4 AI teams analyzing with multi-framework approach (ICE/RICE/Blue Ocean)',
+      status: 'pending',
       progress: 0,
-      timeEstimate: '2 minutes',
+      timeEstimate: '45 seconds',
+      toolIntegration: 'AI Strategic Intelligence',
       output: null
     },
     {
-      id: 'confidence-scoring',
-      name: 'Confidence-Scored Recommendations',
+      id: 'sync-generation',
+      name: 'Automated Tool Sync Generation',
+      description: 'Creating strategic task breakdowns and priority adjustments for your tools',
       status: 'pending',
       progress: 0,
       timeEstimate: '1 minute',
+      toolIntegration: 'Epic/Story Generation',
       output: null
     },
     {
-      id: 'predictive-modeling',
-      name: 'Predictive Outcome Modeling',
+      id: 'tool-sync',
+      name: 'Strategic Context Sync to Tools',
+      description: 'Syncing strategic recommendations back to Jira/Linear with full context',
       status: 'pending',
       progress: 0,
-      timeEstimate: '2 minutes',
+      timeEstimate: '45 seconds',
+      toolIntegration: 'Bidirectional API Sync',
       output: null
     },
     {
-      id: 'action-plan',
-      name: 'Executable Action Plan Generation',
-      status: 'pending',
-      progress: 0,
-      timeEstimate: '1.5 minutes',
-      output: null
-    },
-    {
-      id: 'integration',
-      name: 'Roadmap Integration',
-      status: 'pending',
-      progress: 0,
-      timeEstimate: '1 minute',
-      output: null
-    },
-    {
-      id: 'audit-trail',
-      name: 'Strategic Decision Audit Trail',
+      id: 'execution-monitoring',
+      name: 'Execution Intelligence Setup',
+      description: 'Setting up strategic alignment monitoring and automated progress tracking',
       status: 'pending',
       progress: 0,
       timeEstimate: '30 seconds',
+      toolIntegration: 'Strategic Monitoring',
       output: null
     }
   ]);
 
-  const startStrategicAnalysis = async (query: string) => {
-    setActiveWorkflow('strategic-intelligence');
+  const startStrategicSync = async (query: string, tool: string) => {
+    setActiveWorkflow('strategic-sync');
     setStrategicQuery(query);
     setCurrentStep(0);
     
-    // Reset workflow steps
-    setWorkflowSteps(steps => steps.map(step => ({
+    // Reset sync steps
+    setSyncSteps(steps => steps.map(step => ({
       ...step,
       status: 'pending',
       progress: 0,
       output: null
     })));
 
-    // Simulate the strategic intelligence workflow
-    for (let i = 0; i < workflowSteps.length; i++) {
-      await processWorkflowStep(i);
+    // Update tool connection status
+    setConnectedTools(tools => tools.map(t => 
+      t.tool === selectedTool 
+        ? { ...t, status: 'syncing' }
+        : t
+    ));
+
+    // Simulate the strategic sync workflow
+    for (let i = 0; i < syncSteps.length; i++) {
+      await processSyncStep(i);
     }
   };
 
-  const processWorkflowStep = async (stepIndex: number) => {
+  const processSyncStep = async (stepIndex: number) => {
     return new Promise<void>((resolve) => {
       setCurrentStep(stepIndex);
       
       // Set step to processing
-      setWorkflowSteps(steps => steps.map((step, index) => 
+      setSyncSteps(steps => steps.map((step, index) => 
         index === stepIndex 
           ? { ...step, status: 'processing', progress: 0 }
           : step
@@ -149,219 +189,347 @@ const StrategicIntelligenceEngine: React.FC = () => {
       // Simulate progress
       let progress = 0;
       const progressInterval = setInterval(() => {
-        progress += Math.random() * 15 + 5;
+        progress += Math.random() * 12 + 8;
         if (progress >= 100) {
           progress = 100;
           clearInterval(progressInterval);
           
           // Complete the step with mock output
-          setWorkflowSteps(steps => steps.map((step, index) => 
+          setSyncSteps(steps => steps.map((step, index) => 
             index === stepIndex 
               ? { 
                   ...step, 
                   status: 'completed', 
                   progress: 100,
-                  output: getMockStepOutput(step.id)
+                  output: getMockSyncOutput(step.id)
                 }
               : step
           ));
           
-          // If final step, generate complete analysis
-          if (stepIndex === workflowSteps.length - 1) {
-            generateStrategicAnalysis();
+          // If final step, generate complete sync result
+          if (stepIndex === syncSteps.length - 1) {
+            generateStrategicSyncResult();
+            // Update tool status to completed
+            setConnectedTools(tools => tools.map(t => 
+              t.tool === selectedTool 
+                ? { ...t, status: 'updated', lastSync: 'just now', strategicTasks: t.strategicTasks + 8 }
+                : t
+            ));
           }
           
           resolve();
         } else {
-          setWorkflowSteps(steps => steps.map((step, index) => 
+          setSyncSteps(steps => steps.map((step, index) => 
             index === stepIndex 
               ? { ...step, progress }
               : step
           ));
         }
-      }, 200);
+      }, 180);
     });
   };
 
-  const getMockStepOutput = (stepId: string) => {
+  const getMockSyncOutput = (stepId: string) => {
     const outputs = {
-      'context-integration': {
-        company_context: 'PM33 - Strategic AI Co-Pilot',
-        market_conditions: 'Growing PM tools market, AI adoption accelerating',
-        competitive_landscape: '15+ competitors, fragmented market',
-        historical_decisions: '3 strategic decisions analyzed'
+      'tool-context': {
+        jira_projects: 3,
+        active_sprints: 2,
+        current_capacity: '85% utilized',
+        existing_priorities: 'Product launch (P0), Feature enhancement (P1), Tech debt (P2)',
+        strategic_alignment_score: 67
       },
-      'multi-framework': {
-        ice_score: 8.2,
-        rice_score: 156,
-        frameworks_applied: ['ICE', 'RICE', 'Blue Ocean Strategy', 'Competitive Response Matrix'],
-        strategic_fit_score: 89
+      'strategic-analysis': {
+        ice_score: 8.4,
+        rice_score: 168,
+        frameworks_applied: ['ICE', 'RICE', 'Competitive Response', 'Blue Ocean'],
+        ai_teams_consensus: 'Strong strategic opportunity with medium execution complexity',
+        confidence_score: 89
       },
-      'confidence-scoring': {
-        recommendation_confidence: 87,
-        reasoning_chain: 'Based on market analysis, competitive positioning, and resource constraints',
-        risk_factors: ['Technical complexity', 'Market timing', 'Resource availability']
+      'sync-generation': {
+        new_epics_created: 2,
+        stories_generated: 8,
+        priority_adjustments: 12,
+        strategic_context_preserved: '100%',
+        resource_optimization: 'Engineering focus shifted 30% to competitive response'
       },
-      'predictive-modeling': {
-        success_probability: 78,
-        timeline_estimate: '12-16 weeks',
-        resource_estimate: '$120K-180K',
-        risk_score: 'Medium-High'
+      'tool-sync': {
+        jira_updates: '2 new epics, 8 stories, 12 priority changes',
+        strategic_rationale: 'All tasks include strategic reasoning and success criteria',
+        stakeholder_visibility: 'Executive dashboard updated with competitive response timeline',
+        sync_success_rate: '100%'
       },
-      'action-plan': {
-        tasks_generated: 12,
-        strategic_alignment: 94,
-        resource_allocation: 'Optimized across 3 teams',
-        dependencies_mapped: 8
-      },
-      'integration': {
-        roadmap_integration: 'Q2 2025 strategic initiative',
-        task_sync_status: 'Ready for Jira integration',
-        stakeholder_notifications: 'Prepared for 4 stakeholders'
-      },
-      'audit-trail': {
-        decision_id: `strategic_${Date.now()}`,
-        frameworks_used: 4,
-        confidence_level: 'High',
-        reviewable: true
+      'execution-monitoring': {
+        strategic_kpis_setup: 'Competitive feature gap closure, Market response speed',
+        automated_tracking: 'Progress monitoring every 4 hours',
+        alignment_scoring: 'Real-time strategic alignment measurement active',
+        next_review: 'Strategic checkpoint scheduled for 72 hours'
       }
     };
     
     return outputs[stepId as keyof typeof outputs] || {};
   };
 
-  const generateStrategicAnalysis = () => {
-    const mockAnalysis: StrategicAnalysis = {
-      situationAssessment: "Current competitive positioning shows PM33 has strong differentiation in AI-powered strategic analysis, but faces pressure from new feature launches by competitors. Market opportunity exists for proactive competitive response.",
-      recommendation: "Implement accelerated differentiation strategy focusing on unique AI strategic intelligence capabilities that competitors cannot easily replicate. Position PM33 as the 'Strategic Intelligence Platform' rather than traditional PM tool.",
+  const generateStrategicSyncResult = () => {
+    const mockSyncResult: StrategicSyncResult = {
+      situationAssessment: "Competitor feature launch detected. Current roadmap has 67% strategic alignment. Opportunity for 48-hour competitive response with strategic priority reallocation. Your existing tools now have full strategic context for execution.",
+      strategicRecommendation: "Accelerate competitive differentiation through strategic intelligence capabilities. PM33 automation bridges ensure strategic decisions flow directly into prioritized execution with preserved context in your existing PM tools.",
+      automatedActions: {
+        newEpics: 2,
+        reorderedTasks: 12,
+        updatedPriorities: 8,
+        stakeholderUpdates: 4
+      },
+      toolUpdates: [
+        {
+          tool: 'Jira',
+          action: 'Created 2 strategic epics with competitive response framework',
+          impact: '8 new stories with strategic rationale in task descriptions',
+          confidence: 94
+        },
+        {
+          tool: 'Linear',
+          action: 'Reordered 12 existing issues based on strategic priority analysis',
+          impact: 'Sprint capacity reallocated for competitive response (30% shift)',
+          confidence: 91
+        },
+        {
+          tool: 'Stakeholder Dashboard',
+          action: 'Generated executive briefing with strategic timeline',
+          impact: 'Automated progress tracking setup for strategic KPIs',
+          confidence: 97
+        }
+      ],
       successMetrics: [
-        "Strategic decision speed: <10 minutes (vs 8-hour industry average)",
-        "Strategic confidence score: >85% for key decisions", 
-        "Competitive response time: <48 hours",
-        "Strategic outcome accuracy: >78% prediction rate",
-        "PM strategic capability improvement: 10x productivity gain"
+        "Competitive response execution: <48 hours (automated workflow)",
+        "Strategic context preservation: 100% in tool sync", 
+        "Team alignment: Strategic rationale visible in all tasks",
+        "Execution intelligence: Real-time strategic alignment monitoring",
+        "PMO-level capability: Automated strategic oversight across tools"
       ],
-      keyRisks: [
-        "Technical complexity of advanced AI models",
-        "Market education required for strategic intelligence positioning",
-        "Resource allocation across multiple strategic initiatives",
-        "Competitive counter-positioning risk"
-      ],
-      resourceRequirements: "3 engineers (AI/ML focus), 1 product strategist, 1 competitive intelligence analyst. Estimated budget: $120K-180K over 12-16 weeks.",
-      timeline: "Phase 1 (4 weeks): Strategic positioning & messaging. Phase 2 (8 weeks): Advanced AI capabilities. Phase 3 (4 weeks): Market launch & competitive response.",
-      confidenceScore: 87,
-      frameworksApplied: ["ICE Framework (Score: 8.2)", "RICE Framework (Score: 156)", "Blue Ocean Strategy", "Competitive Response Matrix", "Strategic Positioning Canvas"]
+      confidenceScore: 91,
+      nextActions: [
+        "Monitor strategic execution progress in your connected tools",
+        "Receive automated strategic alignment alerts",
+        "Access strategic decision audit trail for learning",
+        "Continue using Jira/Linear - now with strategic intelligence"
+      ]
     };
 
-    setAnalysisResult(mockAnalysis);
+    setSyncResult(mockSyncResult);
   };
 
   const predefinedQueries = [
-    "Our competitor launched a similar feature. How should we reprioritize our roadmap and update team sprint goals?",
-    "We have budget for 3 engineers OR $150K marketing spend. Which drives faster revenue growth?",
-    "Our user retention dropped to 65%. What strategic initiatives should automatically move to top of our backlog?",
-    "Engineering velocity is 20% below target. How should we reallocate resources and adjust roadmap timelines?",
-    "Sales wants 5 new features but we can only deliver 2 this quarter. How do we prioritize with automated scoring?"
+    "Our competitor just launched AI features. How should this reprioritize our Jira backlog and sprint planning?",
+    "We have budget for 3 engineers OR $150K marketing spend. Sync the optimal choice into our roadmap.",
+    "User retention dropped to 65%. What strategic initiatives should auto-promote to P0 in our PM tools?",
+    "Engineering velocity is 20% below target. Rebalance our Linear/Jira priorities with strategic context.",
+    "Sales wants 5 features but we can deliver 2. Auto-score and sync strategic priorities to our tools."
   ];
 
   return (
-    <Container size={1200} px={24} py={48}>
-      {/* Header with PM33 Logo */}
-      <Box mb={48}>
-        <Group justify="space-between" align="center">
-          <Group>
-            <ActionIcon
-              component={Link}
-              href="/"
-              size="lg"
-              variant="light"
-              color="blue"
-              aria-label="Back to homepage"
-            >
-              <IconHome size={18} />
-            </ActionIcon>
-            <img src="/pm33-logo.png" alt="PM33 Strategic Intelligence Platform" style={{ height: '36px' }} />
-            <Stack gap={4}>
-              <Title order={1} size="h1" c="dark">
-                Strategic Intelligence Engine
-              </Title>
-              <Text size="lg" c="dimmed">
-                Automated bridges from strategy to execution - eliminate manual prioritization overhead
-              </Text>
-            </Stack>
-          </Group>
-          <Group gap={16}>
-            <Badge size="lg" variant="gradient" gradient={{ from: 'blue', to: 'cyan' }}>
-              Workflow 1 of 5
-            </Badge>
-            <Button
-              component={Link}
-              href="/command-center"
-              variant="outline"
-              leftSection={<IconTarget size={16} />}
-            >
-              Try Command Center
-            </Button>
-          </Group>
-        </Group>
-      </Box>
-
-      {!activeWorkflow ? (
-        /* Strategic Query Input */
-        <Card shadow="lg" padding={32} radius={16}>
-          <Stack gap={32}>
-            <Stack gap={16}>
-              <Title order={2} size="h2">🎯 Strategic Question Input</Title>
-              <Text c="dimmed" size="lg">
-                Transform strategic decisions into executable workflows with automated priority alignment and resource optimization
-              </Text>
-            </Stack>
-
-            <textarea
-              value={strategicQuery}
-              onChange={(e) => setStrategicQuery(e.target.value)}
-              placeholder="Enter your strategic question..."
-              rows={4}
-              aria-label="Strategic question input"
-              style={{
-                width: '100%',
-                padding: '12px',
-                borderRadius: '8px',
-                border: '1px solid #dee2e6',
-                fontSize: '14px',
-                fontFamily: 'inherit',
-                resize: 'vertical'
-              }}
-            />
-
-            <Group justify="space-between" align="center">
-              <Button
+    <div style={{ 
+      backgroundColor: 'var(--app-bg-secondary)', 
+      minHeight: '100vh',
+      color: 'var(--app-text-secondary)'
+    }}>
+      <Container size={1200} px={24} py={48}>
+        {/* Header with PM33 Logo and Theme Toggle */}
+        <Box mb={48}>
+          <Group justify="space-between" align="center">
+            <Group>
+              <ActionIcon
+                component={Link}
+                href="/"
                 size="lg"
-                leftSection={<IconBrain size={20} />}
-                onClick={() => startStrategicAnalysis(strategicQuery)}
-                disabled={!strategicQuery.trim()}
-                variant="gradient"
-                gradient={{ from: 'blue', to: 'cyan' }}
+                variant="subtle"
+                style={{
+                  backgroundColor: 'var(--app-bg-tertiary)',
+                  color: 'var(--app-text-secondary)',
+                  border: '1px solid var(--app-border-muted)'
+                }}
+                aria-label="Back to homepage"
               >
-                Generate Strategic Intelligence
-              </Button>
-              <Text size="sm" c="dimmed">
-                ⚡ Automated analysis with instant priority scoring
-              </Text>
+                <IconHome size={18} />
+              </ActionIcon>
+              <img 
+                src="/pm33-logo.png" 
+                alt="PM33 Strategic Intelligence Platform" 
+                style={{ height: '36px', filter: 'brightness(0) invert(1)' }} 
+              />
+              <Stack gap={4}>
+                <Title 
+                  order={1} 
+                  size="h1" 
+                  style={{ 
+                    color: 'var(--app-text-primary)',
+                    fontSize: '2rem',
+                    fontWeight: 700,
+                    letterSpacing: '-0.025em'
+                  }}
+                >
+                  Strategic Intelligence Platform
+                </Title>
+                <Text 
+                  size="lg" 
+                  style={{ 
+                    color: 'var(--app-text-tertiary)',
+                    fontSize: '1.125rem'
+                  }}
+                >
+                  Tactical data + Strategic data → AI optimization → Detailed execution instructions
+                </Text>
+              </Stack>
             </Group>
+            <Group gap={16}>
+              <ThemeToggle size="md" showTooltip={true} />
+              <Badge 
+                size="lg" 
+                variant="outline"
+                style={{
+                  backgroundColor: 'var(--app-bg-tertiary)',
+                  color: 'var(--app-primary)',
+                  borderColor: 'var(--app-primary)'
+                }}
+              >
+                Live Demo
+              </Badge>
+              <Button
+                component={Link}
+                href="/command-center"
+                variant="filled"
+                leftSection={<IconTarget size={16} />}
+                style={{
+                  backgroundColor: 'var(--app-primary)',
+                  color: 'white',
+                  border: 'none'
+                }}
+              >
+                Command Center
+              </Button>
+            </Group>
+          </Group>
+        </Box>
+
+        {!activeWorkflow ? (
+          /* Strategic Query Input */
+          <Card 
+            shadow="lg" 
+            padding={32} 
+            radius={16}
+            style={{
+              backgroundColor: 'var(--app-bg-primary)',
+              border: '1px solid var(--app-border-muted)',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+            }}
+          >
+            <Stack gap={32}>
+              <Stack gap={16}>
+                <Title 
+                  order={2} 
+                  size="h2"
+                  style={{
+                    color: 'var(--app-text-primary)',
+                    fontSize: '1.5rem',
+                    fontWeight: 600,
+                    letterSpacing: '-0.02em'
+                  }}
+                >
+                  🎯 Strategic Intelligence Input
+                </Title>
+                <Text 
+                  size="lg"
+                  style={{
+                    color: 'var(--app-text-tertiary)',
+                    fontSize: '1.125rem',
+                    lineHeight: 1.6
+                  }}
+                >
+                  Transform tactical and strategic data into AI-optimized execution plans with detailed implementation instructions
+                </Text>
+              </Stack>
+
+              <textarea
+                value={strategicQuery}
+                onChange={(e) => setStrategicQuery(e.target.value)}
+                placeholder="Enter your strategic challenge or decision..."
+                rows={4}
+                aria-label="Strategic question input"
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  borderRadius: '8px',
+                  border: '1px solid var(--app-border-default)',
+                  backgroundColor: 'var(--app-bg-tertiary)',
+                  color: 'var(--app-text-secondary)',
+                  fontSize: '16px',
+                  fontFamily: 'inherit',
+                  resize: 'vertical',
+                  lineHeight: 1.6,
+                  transition: 'border-color 0.2s ease',
+                  outline: 'none'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = 'var(--app-border-focus)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'var(--app-border-default)';
+                }}
+              />
+
+              <Group justify="space-between" align="center">
+                <Button
+                  size="lg"
+                  leftSection={<IconBrain size={20} />}
+                  onClick={() => startStrategicSync(strategicQuery, selectedTool)}
+                  disabled={!strategicQuery.trim()}
+                  style={{
+                    backgroundColor: 'var(--app-primary)',
+                    color: 'white',
+                    border: 'none',
+                    padding: '12px 24px',
+                    borderRadius: '8px',
+                    fontSize: '16px',
+                    fontWeight: 600,
+                    cursor: strategicQuery.trim() ? 'pointer' : 'not-allowed',
+                    opacity: strategicQuery.trim() ? 1 : 0.5,
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (strategicQuery.trim()) {
+                      e.currentTarget.style.backgroundColor = 'var(--app-primary-hover)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (strategicQuery.trim()) {
+                      e.currentTarget.style.backgroundColor = 'var(--app-primary)';
+                    }
+                  }}
+                >
+                  Generate Strategic Intelligence
+                </Button>
+                <Text 
+                  style={{ 
+                    color: 'var(--app-text-muted)',
+                    fontSize: '0.875rem',
+                    fontWeight: 500
+                  }}
+                >
+                  ⚡ AI-optimized tactical → strategic → execution workflow
+                </Text>
+              </Group>
 
             <Stack gap={16}>
-              <Text size="sm" fw={600}>💡 Strategic automation scenarios:</Text>
+              <Text  fw={600}>💡 Strategic automation scenarios:</Text>
               <Stack gap={8}>
                 {predefinedQueries.map((query, index) => (
                   <Button
                     key={index}
                     variant="light"
-                    size="sm"
+                    
                     onClick={() => setStrategicQuery(query)}
                     style={{ height: 'auto', padding: '12px 16px', textAlign: 'left' }}
                   >
-                    <Text size="sm" style={{ whiteSpace: 'normal' }}>
+                    <Text  style={{ whiteSpace: 'normal' }}>
                       {query}
                     </Text>
                   </Button>
@@ -394,14 +562,14 @@ const StrategicIntelligenceEngine: React.FC = () => {
                           {step.status === 'completed' ? '✓' : step.status === 'processing' ? '⏳' : '⏸'}
                         </Badge>
                         <Stack gap={0}>
-                          <Text size="sm" fw={600}>{step.name}</Text>
+                          <Text  fw={600}>{step.name}</Text>
                           <Text size="xs" c="dimmed">Est: {step.timeEstimate}</Text>
                         </Stack>
                       </Group>
                     </Group>
                     {step.status === 'processing' && (
                       <Stack gap={8} mt={8}>
-                        <Progress value={step.progress} size="sm" />
+                        <Progress value={step.progress}  />
                         <Text size="xs" c="dimmed">
                           {Math.round(step.progress)}% complete
                         </Text>
@@ -414,7 +582,7 @@ const StrategicIntelligenceEngine: React.FC = () => {
               {analysisResult && (
                 <Alert color="green" title="Analysis Complete" mt={24}>
                   <Stack gap={16}>
-                    <Text size="sm">
+                    <Text >
                       Strategic analysis completed with {analysisResult.confidenceScore}% confidence score
                     </Text>
                     <Group>
@@ -424,14 +592,14 @@ const StrategicIntelligenceEngine: React.FC = () => {
                         variant="light"
                         color="green"
                         leftSection={<IconTarget size={16} />}
-                        size="sm"
+                        
                       >
                         Execute in Command Center
                       </Button>
                       <Button
                         variant="light"
                         color="blue"
-                        size="sm"
+                        
                         onClick={() => {
                           setActiveWorkflow(null);
                           setAnalysisResult(null);
@@ -458,8 +626,8 @@ const StrategicIntelligenceEngine: React.FC = () => {
                     <Title order={4} size="h4" mb={16}>📊 Strategic Overview</Title>
                     <Stack gap={24}>
                       <Stack gap={8}>
-                        <Text fw={600} size="sm">📊 Situation Assessment</Text>
-                        <Text size="sm" c="dimmed">{analysisResult.situationAssessment}</Text>
+                        <Text fw={600} >📊 Situation Assessment</Text>
+                        <Text  c="dimmed">{analysisResult.situationAssessment}</Text>
                       </Stack>
                       
                       <Group>
@@ -472,10 +640,10 @@ const StrategicIntelligenceEngine: React.FC = () => {
                       </Group>
 
                       <Stack gap={8}>
-                        <Text fw={600} size="sm">🛠️ Frameworks Applied</Text>
+                        <Text fw={600} >🛠️ Frameworks Applied</Text>
                         <Group gap={8}>
                           {analysisResult.frameworksApplied.map((framework, index) => (
-                            <Badge key={index} variant="outline" size="sm">
+                            <Badge key={index} variant="outline" >
                               {framework}
                             </Badge>
                           ))}
@@ -488,15 +656,15 @@ const StrategicIntelligenceEngine: React.FC = () => {
                     <Title order={4} size="h4" mb={16}>💡 Recommendations</Title>
                     <Stack gap={24}>
                       <Stack gap={8}>
-                        <Text fw={600} size="sm">💡 Strategic Recommendation</Text>
-                        <Text size="sm">{analysisResult.recommendation}</Text>
+                        <Text fw={600} >💡 Strategic Recommendation</Text>
+                        <Text >{analysisResult.recommendation}</Text>
                       </Stack>
                       
                       <Stack gap={8}>
-                        <Text fw={600} size="sm">⚠️ Key Risks & Mitigations</Text>
+                        <Text fw={600} >⚠️ Key Risks & Mitigations</Text>
                         <Stack gap={8}>
                           {analysisResult.keyRisks.map((risk, index) => (
-                            <Alert key={index} color="yellow" variant="light" size="sm">
+                            <Alert key={index} color="yellow" variant="light" >
                               {risk}
                             </Alert>
                           ))}
@@ -504,8 +672,8 @@ const StrategicIntelligenceEngine: React.FC = () => {
                       </Stack>
 
                       <Stack gap={8}>
-                        <Text fw={600} size="sm">📅 Timeline</Text>
-                        <Text size="sm" c="dimmed">{analysisResult.timeline}</Text>
+                        <Text fw={600} >📅 Timeline</Text>
+                        <Text  c="dimmed">{analysisResult.timeline}</Text>
                       </Stack>
                     </Stack>
                   </Card>
@@ -513,11 +681,11 @@ const StrategicIntelligenceEngine: React.FC = () => {
                   <Card padding={24} withBorder>
                     <Title order={4} size="h4" mb={16}>🎯 Success Metrics</Title>
                     <Stack gap={16}>
-                      <Text fw={600} size="sm">🎯 Success Metrics</Text>
+                      <Text fw={600} >🎯 Success Metrics</Text>
                       <Stack gap={12}>
                         {analysisResult.successMetrics.map((metric, index) => (
                           <Card key={index} padding={16} withBorder>
-                            <Text size="sm">{metric}</Text>
+                            <Text >{metric}</Text>
                           </Card>
                         ))}
                       </Stack>
@@ -530,7 +698,7 @@ const StrategicIntelligenceEngine: React.FC = () => {
                   {workflowSteps.map((step, index) => (
                     step.status === 'completed' && step.output ? (
                       <Card key={step.id} padding={16} withBorder>
-                        <Text fw={600} size="sm" mb={8}>✓ {step.name}</Text>
+                        <Text fw={600}  mb={8}>✓ {step.name}</Text>
                         <Text size="xs" c="dimmed">
                           {JSON.stringify(step.output, null, 2)}
                         </Text>

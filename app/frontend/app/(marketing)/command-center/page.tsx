@@ -1,5 +1,5 @@
-import StrategicCommandCenterV2 from '../../components/CommandCenterWorking';
-import Navigation from '../../components/Navigation';
+import StrategicCommandCenterV2 from '../../../components/shared/CommandCenterWorking';
+import Navigation from '../../../components/shared/Navigation';
 import { Box, Container, Text } from '@mantine/core';
 
 export default function CommandCenterPage() {

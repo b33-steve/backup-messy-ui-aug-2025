@@ -63,13 +63,45 @@ class PM33DailyAgent:
             with open(self.weekly_tracker_file, 'r') as f:
                 return json.load(f)
         
-        # Week 1 objectives from execution plan - Updated with Strategic AI Co-Pilot focus
+        # Intelligence Operations Model - Month-based milestones for aggressive market capture
         return {
-            "current_week": 1,
+            "current_month": 1,
+            "current_week": 1,  # Keep for backward compatibility
+            "intelligence_operations_timeline": {
+                "month_1": {
+                    "dates": "Aug-Sep 2025",
+                    "status": "in_progress",
+                    "target": "$3.9K MRR - Beta launch with $29 Starter tier (100 customers)",
+                    "customer_target": "100 customers (80 Starter + 15 Team + 5 Scale)",
+                    "mrr_target": "$3,865",
+                    "key_focus": "Intelligence Operations billing infrastructure + beta customer acquisition"
+                },
+                "month_2": {
+                    "dates": "Sep-Oct 2025", 
+                    "target": "$13.8K MRR - Product Hunt launch & viral growth (300 customers)",
+                    "customer_target": "300 customers (210 Starter + 60 Team + 25 Scale + 5 Enterprise)",
+                    "mrr_target": "$13,765",
+                    "key_focus": "Viral coefficient 0.3+ through community growth"
+                },
+                "month_3": {
+                    "dates": "Oct-Nov 2025",
+                    "target": "$52K MRR - Market penetration (1,000 customers)",  
+                    "customer_target": "1,000 customers (600 Starter + 250 Team + 100 Scale + 50 Enterprise)",
+                    "mrr_target": "$52,150",
+                    "key_focus": "Operations usage pattern validation & competitive positioning"
+                },
+                "month_5": {
+                    "dates": "Dec 2025-Jan 2026",
+                    "target": "$187K MRR - Category leadership (2,850 customers)",
+                    "customer_target": "2,850 customers (2,000 Starter + 600 Team + 200 Scale + 50 Enterprise)", 
+                    "mrr_target": "$187,650",
+                    "key_focus": "AutoPilot launch + Enterprise expansion"
+                }
+            },
             "week_1": {
                 "dates": "Aug 18-24",
                 "status": "in_progress", 
-                "target": "Strategic AI Co-Pilot MVP with executable workflows",
+                "target": "Intelligence Operations MVP - Billing infrastructure & $29 pricing implementation",
                 "execution_commands_file": "/actions/week-1-execution-commands.md",
                 "tasks": [
                     {
@@ -79,9 +111,10 @@ class PM33DailyAgent:
                         "priority": "critical",
                         "commands": [
                             "brew install postgresql && createdb pm33_dev",
-                            "pip install asyncpg sqlalchemy alembic fastapi uvicorn",
-                            "Sign up: Railway, Resend, PostHog, Pinecone",
-                            "Setup .env with all API keys"
+                            "pip install asyncpg sqlalchemy alembic fastapi uvicorn stripe",
+                            "Sign up: Railway, Resend, PostHog, Pinecone, Stripe (billing)",
+                            "Setup Intelligence Operations billing infrastructure",
+                            "Setup .env with all API keys including Stripe"
                         ]
                     },
                     {
@@ -90,10 +123,11 @@ class PM33DailyAgent:
                         "status": "pending",
                         "priority": "critical",
                         "commands": [
-                            "Create strategic chat API endpoint",
-                            "Build React StrategicChat component",
-                            "Test end-to-end workflow generation",
-                            "curl test API with competitor response query"
+                            "Create Intelligence Operations API endpoint with usage tracking",
+                            "Build StrategicChat component with operations billing integration",
+                            "Implement $29 Starter tier billing flow",
+                            "Test operations-based pricing and usage tracking",
+                            "curl test API with competitor response query (1 operation = $0.73)"
                         ]
                     },
                     {
@@ -103,9 +137,10 @@ class PM33DailyAgent:
                         "priority": "high",
                         "commands": [
                             "Sign up: Apollo.io, Hunter.io, ConvertKit",
-                            "Procure 1,000 PM contacts at scale-up companies",
-                            "Setup content generation automation",
-                            "Create beta outreach email templates"
+                            "Target Individual PMs (price sensitivity -2.5 to -3.0) with $29 messaging",
+                            "Create viral referral program for $29 tier",
+                            "Setup community-driven growth content automation",
+                            "Create beta outreach emphasizing $29 vs ChatGPT $20 value prop"
                         ]
                     },
                     {
@@ -136,11 +171,13 @@ class PM33DailyAgent:
                     }
                 ],
                 "kpis": {
-                    "strategic_ai_chat": {"target": "Working end-to-end", "current": "Not started"},
-                    "beta_signups": {"target": "50 users", "current": "0"},
-                    "workflows_generated": {"target": "100+ workflows", "current": "0"},
-                    "vendor_integrations": {"target": "5 tools connected", "current": "0"},
-                    "monthly_investment": {"target": "<$150/month", "current": "$0"}
+                    "intelligence_operations_api": {"target": "Working with usage tracking", "current": "Not started"},
+                    "beta_signups_starter_tier": {"target": "80 Starter @ $29", "current": "0"},
+                    "operations_generated": {"target": "100+ intelligence operations", "current": "0"}, 
+                    "billing_infrastructure": {"target": "Stripe + operations tracking", "current": "0"},
+                    "cac_target": {"target": "<$30 (1-month payback)", "current": "N/A"},
+                    "unit_economics": {"target": "$0.08 cost per operation", "current": "N/A"},
+                    "viral_coefficient": {"target": "0.3+ for sustainable growth", "current": "0"}
                 }
             }
         }
@@ -215,11 +252,19 @@ class PM33DailyAgent:
                 },
                 {
                     "type": "vendor-signup",
-                    "task": "Sign up for core services (Railway, Resend, PostHog, Pinecone)",
+                    "task": "Sign up for core services + Stripe billing (Railway, Resend, PostHog, Pinecone, Stripe)",
                     "id": "w1d1-vendors",
                     "priority": "critical",
                     "estimated_time": "1 hour",
-                    "commands": ["Visit signup URLs from execution-commands.md", "Configure API keys in .env"]
+                    "commands": ["Visit signup URLs from execution-commands.md", "Setup Stripe for Intelligence Operations billing", "Configure API keys in .env"]
+                },
+                {
+                    "type": "billing-infrastructure",
+                    "task": "Setup Intelligence Operations usage tracking and billing",
+                    "id": "w1d1-billing",
+                    "priority": "critical", 
+                    "estimated_time": "2 hours",
+                    "commands": ["Create operations tracking database schema", "Setup Stripe subscription tiers ($29/$79/$199/$599)", "Test operations billing flow"]
                 },
                 {
                     "type": "development",
@@ -276,13 +321,21 @@ class PM33DailyAgent:
                 }
             ])
         else:
-            # Fallback to continuing previous day's work
-            tasks.append({
-                "type": "development",
-                "task": "Continue Strategic AI implementation",
-                "priority": "high",
-                "estimated_time": "3 hours"
-            })
+            # Fallback to Intelligence Operations development
+            tasks.extend([
+                {
+                    "type": "development",
+                    "task": "Continue Intelligence Operations API development",
+                    "priority": "high", 
+                    "estimated_time": "2 hours"
+                },
+                {
+                    "type": "billing",
+                    "task": "Test and refine operations-based billing flow",
+                    "priority": "high",
+                    "estimated_time": "1 hour"
+                }
+            ])
         
         return tasks
     

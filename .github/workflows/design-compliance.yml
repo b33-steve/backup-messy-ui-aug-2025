@@ -1,0 +1,55 @@
+name: PM33 Design Compliance
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  design-compliance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        cd app/frontend
+        npm ci
+        
+    - name: Check design docs exist
+      run: |
+        if [ ! -f "PM33_COMPLETE_UI_SYSTEM.md" ]; then
+          echo "ERROR: PM33_COMPLETE_UI_SYSTEM.md not found!"
+          exit 1
+        fi
+        if [ ! -f "PM33_ Complete _UX_System.md" ]; then
+          echo "ERROR: PM33_ Complete _UX_System.md not found!"
+          exit 1
+        fi
+        
+    - name: Run UI compliance tests
+      run: |
+        cd app/frontend
+        npm run test:ui-compliance
+        
+    - name: Run UX quality tests
+      run: |
+        cd app/frontend
+        npm run test:ux-quality
+        
+    - name: Check for forbidden patterns
+      run: |
+        if grep -r "border.*:.*1px solid black" --include="*.tsx" --include="*.jsx" ./app/frontend/src ./app/frontend/app; then
+          echo "Forbidden black borders found!"
+          exit 1
+        fi
+        
+    - name: Generate compliance report
+      run: node scripts/verify-design-compliance.js

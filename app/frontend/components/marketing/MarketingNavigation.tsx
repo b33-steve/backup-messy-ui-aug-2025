@@ -129,7 +129,7 @@ export default function MarketingNavigation() {
             </Button>
 
             {/* Mobile Menu */}
-            <Menu opened={opened} onChange={setOpened} width={300} position="bottom-end" withinPortal hiddenFrom="lg">
+            <Menu opened={opened} onChange={setOpened} width={300} position="bottom-end" withinPortal>
               <Menu.Target>
                 <Burger opened={opened} onClick={() => setOpened((o) => !o)} hiddenFrom="lg" size="sm" />
               </Menu.Target>

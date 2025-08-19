@@ -1,4 +1,4 @@
-import StrategicChat from '@/components/StrategicChat';
+import StrategicChat from '../../../components/shared/StrategicChat';
 
 export default function StrategicChatPage() {
   return (

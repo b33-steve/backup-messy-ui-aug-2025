@@ -1,0 +1,54 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.template
+*.env
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# API Keys and credentials
+secrets.json
+credentials.json
+*.key
+*.pem
+*.p12
+*.jks
+
+# Local configuration
+config.local.json
+settings.local.py
+
+# Python cache and build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+
+# Database migrations (if they contain sensitive data)
+# Uncomment if your migrations have sensitive seed data
+# alembic/versions/*.py
+
+# Logs with potential sensitive data
+*.log
+logs/
+
+# Backup files that might contain sensitive data
+*.bak
+*.backup
+*.old
+
+# IDE files that might contain sensitive paths
+.vscode/settings.json
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

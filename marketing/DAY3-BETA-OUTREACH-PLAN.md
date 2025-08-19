@@ -15,12 +15,16 @@ Hi [Name],
 
 I noticed you're a Senior PM at [Company] - I imagine you face complex strategic decisions daily that could benefit from expert guidance.
 
-Most PMs struggle with strategic decisions that directly impact revenue growth:
+Most PMs struggle with strategic decisions that directly impact revenue growth (2024 research shows 87% of PMs struggle with strategic decisions, spending 3-8 hours per decision with only 60% confidence):
 - "Should we pivot our roadmap based on competitive moves?"
 - "How do we allocate limited resources across initiatives?" 
 - "What's our response to market changes?"
 
-I've built PM33 - agentic AI teams that transform PMs into fully functional PMOs, driving product-led growth through strategic automation, improved execution alignment, and intelligent backlog management.
+I've built PM33 - Strategic Intelligence Platform with 4 agentic AI teams that accelerate product-led growth through:
+1. Better Product Planning (10-minute vs 8-hour strategic analysis)
+2. Improved Product Strategy (competitive intelligence, ROI optimization) 
+3. Enhanced Planning Capabilities (dynamic roadmaps, what-if analysis)
+4. Improved Execution Efficiency (automated backlog, PM tool integration)
 
 **Beta access is free** - I'm looking for 50 experienced PMs to test it before our official launch.
 
@@ -88,11 +92,12 @@ Interested? Comment "BETA" or DM me.
 
 Here's what I learned after interviewing 100+ Senior PMs:
 
-**The Pain:**
-- Strategic decisions take weeks (consultant availability)
-- Limited strategic capabilities without PMO-level resources
-- Generic advice that doesn't account for your specific context
-- No automatic conversion to actionable tasks
+**The Pain (2024 Research Data):**
+- Strategic decisions take 3-8 hours with only 60% confidence (87% of PMs struggle)
+- 76% find current tools inadequate for resource allocation decisions
+- 81% report strategy-to-execution alignment challenges  
+- 69% use 4+ fragmented tools, losing 2+ hours daily to tool switching
+- $2K-5K per quarter spent on external strategic advisors
 
 **The Reality:**
 Most strategic PM questions follow similar patterns. The expertise exists - it just needs to be accessible, instant, and tailored to your company's context.
@@ -112,11 +117,25 @@ Who else sees this problem? 🤔
 ## 🎯 Outreach Channels & Tactics
 
 ### 1. LinkedIn Direct Outreach (Target: 30 beta users)
-**Target Criteria:**
-- Title: "Senior Product Manager", "Principal PM", "Head of Product"
-- Company: 50-500 employees, Series A-C funding
-- Industry: B2B SaaS, Fintech, Healthtech
-- Location: US, UK, Canada
+**Target Criteria (Updated from PRD):**
+
+**Primary Targets (70% of outreach):**
+- Title: "Senior Product Manager", "Principal PM" (5-12 years experience)
+- Company: Series A-C (50-500 employees), $5M-50M ARR
+- Industry: B2B SaaS, fintech, healthtech, AI/ML
+- Team: 3-15 person product teams
+- Background: Technical or business (often MBA/CS)
+- Location: US, UK, Canada tech hubs
+
+**Secondary Targets (20% of outreach):**  
+- Title: "VP Product", "CPO", "Director of Product Management" (8-15+ years, managing 10+ PMs)
+- Company: Series C+ or Public (500+ employees), $50M+ ARR
+- Team: 15+ person product organization
+
+**Tertiary Targets (10% of outreach):**
+- Title: "Founder", "Co-Founder", "Head of Product" (2-10 years, wearing multiple hats)
+- Company: Pre-seed to Series A (5-50 employees), $0-5M ARR
+- Team: 1-5 person product/engineering team
 
 **Daily Goal:** 20 personalized messages
 **Conversion Target:** 15% response rate, 50% of responders join beta

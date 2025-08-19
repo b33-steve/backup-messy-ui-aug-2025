@@ -28,22 +28,52 @@
 
 **Market Position**: Strategic Intelligence Platform (not generic PM tool enhancement)
 
-### **Target Audience Alignment**
+### **Core Problem & Solution (PRD-Based)**
 
-**Primary ICP (UNIFIED)**:
-- **Title**: Senior PM, Principal PM, Head of Product, VP Product
-- **Company**: Series A-C, 50-500 employees, $5M-50M ARR
-- **Team Size**: 3-15 person product teams
-- **Pain Point**: Need PMO-level strategic capabilities without PMO-level budget
-- **Current Spend**: $5K-15K/year per PM on tools/consulting
+**Core Problem Solved**: Product Managers spend 40% of their time on strategic analysis that should be AI-augmented, while struggling to translate strategic insights into executable workflows that drive measurable business outcomes.
 
-**Secondary & Tertiary ICPs remain consistent with current documentation**
+**Market Research Data (2024)**:
+- 87% of PMs struggle with strategic decisions (average 3-8 hours per decision with 60% confidence)
+- 76% find current tools inadequate for resource allocation decisions  
+- 81% report strategy-to-execution alignment challenges
+- 69% use 4+ fragmented tools for competitive intelligence
 
-### **Pricing Strategy (FINAL)**
-- **Professional**: $49/month (Enhanced individual PM capabilities)
-- **Enterprise**: $99/month (Full agentic AI teams - PRIMARY DRIVER) 
-- **Strategic**: $199/month (Custom PMO transformation)
-- **Revenue Target**: $100K MRR by December 31, 2025
+**Strategic Intelligence Solution**: PM33 accelerates product-led growth through:
+1. **Better Product Planning** - AI-powered strategic decision intelligence (10-minute vs 8-hour analysis)
+2. **Improved Product Strategy** - Competitive intelligence, market positioning, ROI optimization  
+3. **Enhanced Planning Capabilities** - Dynamic roadmap planning, what-if analysis, resource allocation
+4. **Improved Execution Efficiency** - Automated backlog management, strategic-to-execution integration, PM tool sync
+
+### **Target Audience Alignment (Updated from PRD)**
+
+**Primary ICP: Senior Product Manager at Scale-Up Companies**
+- **Demographics**: 5-12 years in product management, Technical or business background (often MBA/CS), US/EU tech hubs
+- **Firmographics**: Series A-C (50-500 employees), $5M-50M ARR, 3-15 person product team, $5K-15K/year per PM on tools/consulting
+- **Pain Points**: Need PMO-level strategic capabilities without PMO-level budget, struggle with strategic decision confidence
+
+**Secondary ICP: Enterprise Product Leaders**  
+- **Demographics**: VP Product, CPO, Director of Product Management (8-15+ years, managing 10+ PMs)
+- **Firmographics**: Series C+ or Public (500+ employees), $50M+ ARR, 15+ person product organization, $50K-200K/year organization-wide PM tool spend
+- **Pain Points**: Strategic planning for entire product organization, need consistent framework application across teams
+
+**Tertiary ICP: Early-Stage Founders & CPOs**
+- **Demographics**: Founder, Co-Founder, CPO, Head of Product (2-10 years, wearing multiple hats)  
+- **Firmographics**: Pre-seed to Series A (5-50 employees), $0-5M ARR, 1-5 person product/engineering team, $500-3K/year total PM tool spend
+- **Pain Points**: Product strategy without dedicated PM staff, need strategic guidance with limited resources
+
+### **Pricing Strategy (Intelligence Operations Model)**
+
+**New Aggressive Pricing for Market Capture**:
+
+- **Starter**: $29/month (40 intelligence operations, core strategic engine, basic integrations) - Target: 2,000 customers = $58K MRR
+- **Team**: $79/month (200 intelligence operations, advanced AI advisor, multi-framework analysis) - Target: 600 customers = $47.4K MRR  
+- **Scale**: $199/month (800 intelligence operations, full strategic platform, unlimited integrations) - Target: 200 customers = $39.8K MRR
+- **Enterprise**: $599+/month (3,000+ intelligence operations, custom AI training, white-label deployment) - Target: 50 customers = $29.95K MRR
+- **AutoPilot Add-On**: $10-100/month additional automated operations across all tiers
+
+**Revenue Model**: Intelligence Operations at $0.08 cost per operation, 60-89% gross margins
+
+**Total Revenue Target**: $187K MRR by Month 5, $598K MRR by Month 12 (6,000 customers)
 
 ### **Marketing Approach (COMMUNITY-DRIVEN + CONVERSION)**
 
@@ -152,7 +182,7 @@
 - [ ] Update all marketing pages to use unified Strategic Intelligence messaging
 - [ ] Implement Marketing Design System with bold conversion focus
 - [ ] Create landing pages targeting high-intent keywords
-- [ ] Update pricing pages to reflect $49-199 strategic tiers
+- [ ] Update pricing pages to reflect $29-599+ Intelligence Operations tiers
 
 ### **Phase 2: Community Content Templates (Week 2)**  
 - [ ] Revise all community templates to use authentic, peer-focused approach
@@ -183,8 +213,8 @@
 ### **Marketing Conversion (Paid/Direct)**
 - Trial signup conversion rates from marketing materials
 - Strategic intelligence positioning message resonance
-- Revenue conversion through $99 Enterprise tier focus
-- PMO transformation use case adoption
+- Revenue conversion through aggressive $29 entry tier driving volume
+- PMO transformation use case adoption and tier expansion
 
 ### **Unified Brand Health**
 - Consistent strategic intelligence positioning across all contexts

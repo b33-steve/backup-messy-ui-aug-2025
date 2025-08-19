@@ -143,6 +143,49 @@
   - About: `/about`
   - Trial: `/trial`
 
+## 🎨 **PM33 Coding Standards & UI Design Principles**
+
+### **📝 Code Quality Standards**
+
+#### **IMPORTANT:**
+- **Always prioritize writing clean, simple, and modular code**
+- **Use simple & easy-to-understand language. Write in short sentences**
+- **Don't be lazy! Always read files in full**
+
+#### **💬 COMMENTS**
+- **Write lots of comments in your code.** Explain exactly what you are doing in your comments
+- **Be strategic:** Do not explain obvious syntax - instead explain your thought process at the time of writing the code!
+- **NEVER delete explanatory comments** from the code you're editing (unless they are wrong/obsolete)
+- **Focus on explaining the non-obvious stuff** in the comments, the nuances/details
+- **DO NOT delete comments currently in our code.** If the comment is obsolete or wrong, then update it - but NEVER mindlessly remove comments without reason
+
+#### **📄 HEADER COMMENTS**
+**EVERY file HAS TO start with 4 lines of comments:**
+1. **Exact file location in codebase**
+2. **Clear description of what this file does**
+3. **Clear description of WHY this file exists**  
+4. **RELEVANT FILES:** comma-separated list of 2-4 most relevant files
+
+**NEVER delete these "header comments" from the files you're editing.**
+
+### **🎯 UI Design Principles**
+
+#### **🎨 Design System**
+- **Minimalist UI** with clean, simple layouts and ample spacing
+- **Consistent text hierarchy** with proper contrast ratios
+- **Card-based layout** with subtle borders and clean separation
+- **Responsive design** that adapts from mobile to desktop
+- **Interactive elements** have clear hover states and transitions
+
+#### **🎨 Color Usage Rules**
+- **DO NOT use colors like** `'text-gray-XXX'` or `'bg-gray-XXX'`
+- **INSTEAD, use** `'neutral-XXX'` for consistency!
+- **Always use design system tokens** from APP_DESIGN_SYSTEM.md and MARKETING_DESIGN_SYSTEM.md
+
+#### **📱 Responsive Design**
+- **Responsive desktop-first design.** Always think of how the UI will look on mobile
+- **ALSO ensure our UI works on tablet/iPad size**
+
 ## 🧪 **Testing & Quality Assurance**
 
 ### **Current Testing Setup**
@@ -242,7 +285,216 @@ Production Deployment (Industry-Leading Quality + Continuous Monitoring)
 
 **Development Ethos**: Think hard, write short, update before create, test continuously with Playwright
 
+
+## 📚 **Comprehensive Project Documentation Patterns**
+
+### **🏗️ Codebase Architecture Overview**
+
+#### **Project Structure**
+```
+pm33-claude-execution/
+├── app/frontend/          # Next.js 15.4.6 application
+│   ├── app/              # App router pages
+│   ├── components/       # Reusable UI components
+│   └── src/             # Shared utilities and types
+├── app/backend/         # FastAPI services (planned)
+├── .claude/             # Claude Code configuration
+│   ├── commands/        # Custom slash commands
+│   └── settings.json    # Claude Code settings
+├── .github/             # GitHub Actions workflows
+├── marketing/           # Marketing strategy and content
+├── strategy/            # Strategic planning documents
+└── templates/           # Reusable templates
+```
+
+#### **Core System Components**
+
+**Frontend Architecture (✅ Production Ready)**
+- **Framework**: Next.js 15.4.6 with App Router
+- **UI Library**: Mantine UI 8.2.5 (enterprise components)
+- **Styling**: Dual design system (Marketing + App separation)
+- **Key Pages**: Strategic Intelligence, Command Center, Pricing
+- **Navigation**: Professional PM33-branded responsive UI
+
+**Backend Services (🟡 In Development)**
+- **API Layer**: FastAPI with Python
+- **Database**: Railway PostgreSQL + Pinecone vector storage
+- **Multi-AI Integration**: Claude + OpenAI + Together AI orchestration
+- **Authentication**: API token-based (no OAuth complexity)
+
+**Infrastructure Services (✅ All Configured)**
+- **Railway**: PostgreSQL database and deployment
+- **Pinecone**: Vector embeddings for AI team memory
+- **Supabase**: Backend-as-a-Service features
+- **PostHog**: Product analytics and user behavior
+- **Resend**: Professional email automation
+- **Stripe**: Payment processing
+
+### **🔧 API Endpoints Documentation**
+
+#### **Strategic Intelligence AI Team Endpoints**
+```typescript
+// Strategic analysis with multi-framework support
+POST /api/strategic/analyze
+{
+  "framework": "ICE" | "RICE" | "Porter's Five Forces",
+  "context": "company_data",
+  "objectives": ["strategic_goal_1", "strategic_goal_2"]
+}
+
+// Competitive intelligence analysis
+GET /api/strategic/competitive/{company_id}
+Response: {
+  "competitive_landscape": CompetitiveAnalysis,
+  "strategic_recommendations": Recommendation[],
+  "market_positioning": MarketPosition
+}
+```
+
+#### **Workflow Execution AI Team Endpoints**
+```typescript
+// Automated workflow creation
+POST /api/workflows/create
+{
+  "pm_tool": "jira" | "linear" | "monday" | "asana",
+  "workflow_type": "epic" | "feature" | "sprint",
+  "requirements": ProjectRequirement[]
+}
+
+// Cross-functional coordination
+GET /api/workflows/coordination/{project_id}
+Response: {
+  "timeline": ProjectTimeline,
+  "dependencies": TaskDependency[],
+  "resource_allocation": ResourcePlan
+}
+```
+
+#### **Data Intelligence AI Team Endpoints**
+```typescript
+// Company-specific learning
+POST /api/data/learn
+{
+  "company_data": CompanyData,
+  "historical_patterns": Pattern[],
+  "learning_objectives": Objective[]
+}
+
+// Predictive analytics
+GET /api/data/predictions/{company_id}
+Response: {
+  "performance_predictions": Prediction[],
+  "optimization_opportunities": Opportunity[],
+  "risk_assessments": Risk[]
+}
+```
+
+#### **Communication AI Team Endpoints**
+```typescript
+// Stakeholder communication generation
+POST /api/communication/generate
+{
+  "audience": "executives" | "team" | "clients",
+  "content_type": "update" | "presentation" | "report",
+  "strategic_context": StrategicContext
+}
+
+// Cross-team alignment facilitation
+POST /api/communication/align
+{
+  "teams": TeamInfo[],
+  "objectives": AlignmentObjective[],
+  "communication_preferences": Preference[]
+}
+```
+
+### **🎯 Strategic Development Workflows**
+
+#### **PM33 Feature Development Process**
+1. **Strategic Analysis**: Assess business impact on $100K MRR target
+2. **AI Team Mapping**: Determine which of 4 AI teams are involved
+3. **Service Integration**: Map to Railway/Pinecone/Claude/OpenAI/Together AI
+4. **Coding Standards**: Apply PM33 header comments and quality standards
+5. **Testing**: Playwright validation + strategic UX testing
+6. **Documentation**: Update CLAUDE.md with strategic context
+7. **Deployment**: Preserve daily work with git workflows
+
+#### **PMO Transformation Validation**
+**Before Every Feature Release:**
+- ✅ **Strategic Intelligence Impact**: Does this enhance strategic analysis?
+- ✅ **Workflow Execution Enhancement**: Does this improve PM tool integration?
+- ✅ **Data Intelligence Value**: Does this increase predictive capabilities?
+- ✅ **Communication Effectiveness**: Does this improve stakeholder alignment?
+- ✅ **PMO Capability Multiplier**: Does this transform PM into PMO function?
+
+### **🤖 Development Best Practices Integration**
+
+#### **Claude Code Optimization**
+- **Custom Commands**: 8 strategic git workflow commands
+- **Daily Snapshots**: Automated GitHub Actions with strategic context
+- **MCP Integration**: 4 AI team context providers
+- **Quality Automation**: Linting, formatting, coding standards validation
+- **Strategic Hooks**: Business impact analysis on every commit
+
+#### **Multi-Claude Architecture**
+```yaml
+# Strategic Intelligence Claude Instance
+claude_strategic:
+  focus: "Complex strategic reasoning and analysis"
+  tools: ["strategic_frameworks", "competitive_analysis"]
+  memory: "Strategic context and market intelligence"
+
+# Workflow Execution Claude Instance  
+claude_workflow:
+  focus: "Task automation and PM tool integration"
+  tools: ["pm_apis", "workflow_generation", "timeline_management"]
+  memory: "Workflow patterns and execution history"
+
+# Data Intelligence Claude Instance
+claude_data:
+  focus: "Pattern recognition and predictive analytics"
+  tools: ["data_processing", "trend_analysis", "optimization"]
+  memory: "Company patterns and performance data"
+
+# Communication Claude Instance
+claude_communication:
+  focus: "Stakeholder communication and alignment"
+  tools: ["content_generation", "presentation_creation"]
+  memory: "Communication preferences and effectiveness"
+```
+
+### **📊 Key Performance Indicators**
+
+#### **Development Metrics**
+- **Strategic Commit Ratio**: 85%+ commits with strategic context
+- **AI Team Coverage**: 4/4 teams represented in weekly development
+- **PMO Capability Growth**: 300% improvement in PM effectiveness
+- **Quality Standards**: 95%+ header comment compliance
+- **Daily Preservation**: 100% work backup through automated workflows
+
+#### **Business Impact Tracking**
+- **$100K MRR Progress**: Daily calculation and tracking
+- **PMO Transformation Success**: Client capability enhancement metrics
+- **Service Integration Health**: 8/8 services operational status
+- **Strategic Intelligence Accuracy**: Framework analysis success rates
+- **Workflow Execution Efficiency**: PM tool integration effectiveness
+
+### **🔄 Next Development Session Integration**
+
+#### **Immediate Priorities with Enhanced Documentation**
+1. **Service Integration Documentation**: Complete FastAPI endpoint documentation
+2. **AI Team Coordination Patterns**: Document multi-AI orchestration workflows
+3. **PMO Transformation Metrics**: Implement capability measurement systems
+4. **Strategic Context Preservation**: Enhance CLAUDE.md with implementation details
+5. **Quality Automation Enhancement**: Advanced hooks and testing integration
+
+#### **Long-term Architecture Evolution**
+- **MCP Server Implementation**: Build 4 AI team context providers
+- **Multi-Claude Orchestration**: Specialized instances for each AI team
+- **Enterprise Integration**: Advanced Railway/Pinecone/Multi-AI workflows
+- **PMO Platform Completion**: Full transformation capability delivery
+
 ---
 
-*Updated with corrected vision, current system state, service architecture, proven patterns, and AI development ethos*
+*Updated with comprehensive project documentation patterns, API specifications, strategic workflows, and enhanced Claude Code integration*
 *Priority: PMO transformation through agentic AI teams using services-based SAAS architecture with industry-leading quality standards*

@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json.schemastore.org/claude-mcp.json",
+  "name": "PM33 Strategic Intelligence Platform",
+  "description": "MCP configuration for PM33 Strategic Intelligence Platform development with 4 agentic AI teams",
+  "version": "1.0.0",
+  "servers": {
+    "pm33-strategic-context": {
+      "command": "node",
+      "args": [".mcp/servers/strategic-context.js"],
+      "description": "Strategic Intelligence AI Team context provider",
+      "capabilities": {
+        "resources": {
+          "pm33-mission": {
+            "name": "PM33 Mission Context",
+            "description": "Core mission and $100K MRR target context",
+            "mimeType": "application/json"
+          },
+          "ai-teams-status": {
+            "name": "4 Agentic AI Teams Status",
+            "description": "Real-time status of all 4 AI teams implementation",
+            "mimeType": "application/json"
+          }
+        },
+        "tools": {
+          "calculate-mrr-progress": {
+            "name": "Calculate MRR Progress",
+            "description": "Calculate progress toward $100K MRR target with timeline analysis"
+          },
+          "analyze-strategic-impact": {
+            "name": "Analyze Strategic Impact", 
+            "description": "Assess business impact of code changes on PM33 mission"
+          }
+        }
+      }
+    },
+    "pm33-workflow-execution": {
+      "command": "python3",
+      "args": [".mcp/servers/workflow_execution.py"],
+      "description": "Workflow Execution AI Team automation server",
+      "capabilities": {
+        "tools": {
+          "execute-pm33-workflow": {
+            "name": "Execute PM33 Workflow",
+            "description": "Execute standardized PM33 development workflows"
+          },
+          "validate-coding-standards": {
+            "name": "Validate Coding Standards",
+            "description": "Ensure PM33 coding standards compliance"
+          },
+          "generate-strategic-tests": {
+            "name": "Generate Strategic Tests",
+            "description": "Generate tests with strategic business context"
+          }
+        }
+      }
+    },
+    "pm33-data-intelligence": {
+      "command": "node",
+      "args": [".mcp/servers/data-intelligence.js"],
+      "description": "Data Intelligence AI Team analytics and insights",
+      "capabilities": {
+        "resources": {
+          "development-metrics": {
+            "name": "Development Metrics",
+            "description": "Real-time development velocity and quality metrics",
+            "mimeType": "application/json"
+          },
+          "strategic-insights": {
+            "name": "Strategic Insights",
+            "description": "Data-driven insights for PM33 platform optimization",
+            "mimeType": "application/json"
+          }
+        },
+        "tools": {
+          "analyze-codebase-health": {
+            "name": "Analyze Codebase Health",
+            "description": "Comprehensive codebase health analysis with strategic recommendations"
+          },
+          "track-feature-progress": {
+            "name": "Track Feature Progress",
+            "description": "Monitor feature development progress across 4 AI teams"
+          }
+        }
+      }
+    },
+    "pm33-communication": {
+      "command": "python3",
+      "args": [".mcp/servers/communication.py"],
+      "description": "Communication AI Team for documentation and collaboration",
+      "capabilities": {
+        "tools": {
+          "generate-strategic-docs": {
+            "name": "Generate Strategic Documentation",
+            "description": "Auto-generate PM33-aligned documentation with strategic context"
+          },
+          "create-pr-summary": {
+            "name": "Create Strategic PR Summary", 
+            "description": "Generate comprehensive PR summaries with business impact analysis"
+          },
+          "update-stakeholder-reports": {
+            "name": "Update Stakeholder Reports",
+            "description": "Generate progress reports for PM33 stakeholders"
+          }
+        }
+      }
+    }
+  },
+  "mcpServers": {
+    "pm33-github-integration": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-github", "--repo", "pm33-claude-execution"],
+      "description": "Enhanced GitHub integration for PM33 development workflows",
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "pm33-filesystem": {
+      "command": "npx", 
+      "args": ["@modelcontextprotocol/server-filesystem", "--allowed-directory", "/Users/ssaper/Desktop/my-projects/pm33-claude-execution"],
+      "description": "Strategic filesystem access for PM33 project structure"
+    }
+  },
+  "settings": {
+    "pm33": {
+      "mission": "Transform PMs into PMOs through 4 agentic AI teams",
+      "target": "$100K MRR by December 31, 2025",
+      "architecture": "Services-based SAAS (Railway, Pinecone, Claude, OpenAI, Together AI)",
+      "aiTeams": [
+        "Strategic Intelligence",
+        "Workflow Execution", 
+        "Data Intelligence",
+        "Communication"
+      ],
+      "developmentPrinciples": [
+        "Strategic context in all commits",
+        "Business impact assessment required",
+        "4 AI teams implementation tracking",
+        "Daily progress preservation",
+        "Quality-first development approach"
+      ]
+    },
+    "automation": {
+      "dailySnapshots": true,
+      "strategicCommits": true,
+      "businessImpactAnalysis": true,
+      "codingStandardsValidation": true,
+      "progressTracking": true
+    }
+  }
+}

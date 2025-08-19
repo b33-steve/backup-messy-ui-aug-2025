@@ -101,36 +101,101 @@ jobs:
         
         echo "critical_changed=$CRITICAL_CHANGED" >> $GITHUB_OUTPUT
         
-    - name: Add and commit snapshot
+    - name: Repository health check
       run: |
-        # Add all changes
+        echo "🏥 Running PM33 Repository Health Check"
+        echo "======================================"
+        
+        # Repository structure analysis
+        echo "📊 Repository Basics:"
+        echo "   Current branch: $(git branch --show-current)"
+        echo "   Total commits: $(git rev-list --count HEAD)"
+        echo "   Commits (last 24h): $(git rev-list --count --since="24 hours ago" HEAD)"
+        echo "   Repository size: $(du -sh .git | cut -f1)"
+        
+        # Check PM33 critical files
+        echo ""
+        echo "📋 PM33 Critical Files:"
+        for file in "CLAUDE.md" "INSTRUCTIONS-FOR-FUTURE-AGENTS.md" ".claude/commands/" "app/frontend/package.json"; do
+          if [ -e "$file" ]; then
+            echo "   ✅ $file: Present"
+          else
+            echo "   ❌ $file: Missing"
+          fi
+        done
+        
+        # Working directory health  
+        UNTRACKED=$(git ls-files --others --exclude-standard | wc -l)
+        MODIFIED=$(git diff --name-only | wc -l)
+        echo ""
+        echo "💾 Working Directory:"
+        echo "   Untracked files: $UNTRACKED"
+        echo "   Modified files: $MODIFIED"
+        
+        # Strategic development analysis
+        echo ""
+        echo "🎯 Strategic Development Status:"
+        echo "   Days to \$100K MRR: ${{ steps.snapshot.outputs.days_remaining }}"
+        
+        # Check for 4 Agentic AI Teams implementation
+        for team in "Strategic Intelligence" "Workflow Execution" "Data Intelligence" "Communication"; do
+          team_files=$(find . -name "*.md" -o -name "*.tsx" -o -name "*.py" | xargs grep -l "$team" 2>/dev/null | wc -l || echo 0)
+          echo "   $team AI Team: $team_files files"
+        done
+        
+    - name: Git sync and backup
+      run: |
+        echo "🔄 Running PM33 Git Sync & Backup Process"
+        echo "======================================="
+        
+        # Pre-backup status
+        echo "📊 Pre-Backup Status:"
+        git status --porcelain
+        
+        # Add all changes following Claude Code best practices
         git add -A
         
         # Check if there are changes to commit
         if git diff --staged --quiet; then
-          echo "No changes to commit"
-          exit 0
+          echo "✅ No changes to commit - repository is clean"
+        else
+          echo "💾 Creating strategic backup commit..."
+          
+          # Create comprehensive commit message following PM33 standards
+          COMMIT_MSG="📸 Daily PM33 Development Snapshot - $(date +%Y-%m-%d)
+          
+          🎯 PMO Transformation Platform Development
+          📅 Days to \$100K MRR Target: ${{ steps.snapshot.outputs.days_remaining }}
+          
+          📊 Development Activity:
+          - Files modified: $(git diff --staged --name-only | wc -l)
+          - Documentation updates: $(git diff --staged --name-only | grep '\.md$' | wc -l || echo 0)
+          - Frontend components: $(git diff --staged --name-only | grep -E '\.(tsx?|ts)$' | wc -l || echo 0)
+          - Backend services: $(git diff --staged --name-only | grep '\.py$' | wc -l || echo 0)
+          - Configuration files: $(git diff --staged --name-only | grep -E '\.(json|yml|yaml|env)$' | wc -l || echo 0)
+          
+          🏗️ Strategic Areas Updated:
+          $(git diff --staged --name-only | head -10 | sed 's/^/- /')
+          
+          🔧 Agentic AI Teams Status:
+          - Strategic Intelligence: $(find . -name "*.md" -o -name "*.tsx" -o -name "*.py" | xargs grep -l "Strategic Intelligence" 2>/dev/null | wc -l || echo 0) references
+          - Workflow Execution: $(find . -name "*.md" -o -name "*.tsx" -o -name "*.py" | xargs grep -l "Workflow Execution" 2>/dev/null | wc -l || echo 0) references
+          - Data Intelligence: $(find . -name "*.md" -o -name "*.tsx" -o -name "*.py" | xargs grep -l "Data Intelligence" 2>/dev/null | wc -l || echo 0) references  
+          - Communication: $(find . -name "*.md" -o -name "*.tsx" -o -name "*.py" | xargs grep -l "Communication" 2>/dev/null | wc -l || echo 0) references
+          
+          💾 Backup Metadata:
+          - Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          - Workflow: Daily Snapshot (Automated)
+          - Total project files: $(find . -type f | wc -l)
+          - Git objects: $(git count-objects | awk '{print $1}')
+          
+          🧠 Generated with Claude Code - Daily Snapshot Workflow
+          
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+          
+          git commit -m "$COMMIT_MSG"
+          echo "✅ Strategic backup commit created"
         fi
-        
-        # Create comprehensive commit message
-        COMMIT_MSG="📸 Daily Snapshot $(date +%Y-%m-%d): PM33 Development Progress
-        
-        🎯 PMO Transformation Platform Development
-        📅 Days to \$100K MRR Target: ${{ steps.snapshot.outputs.days_remaining }}
-        
-        📊 Development Activity:
-        - Files modified: $(git diff --staged --name-only | wc -l)
-        - Documentation updates: $(git diff --staged --name-only | grep '\.md$' | wc -l || echo 0)
-        - Code changes: $(git diff --staged --name-only | grep -E '\.(tsx?|py)$' | wc -l || echo 0)
-        
-        🚀 Key Areas:
-        $(git diff --staged --name-only | head -10 | sed 's/^/- /')
-        
-        🧠 Generated with Claude Code
-        
-        Co-Authored-By: Claude <noreply@anthropic.com>"
-        
-        git commit -m "$COMMIT_MSG"
         
     - name: Push changes
       run: |

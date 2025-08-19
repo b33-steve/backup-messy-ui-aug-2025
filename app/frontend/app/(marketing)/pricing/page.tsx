@@ -3,7 +3,7 @@
 import { Container, Grid, Card, Badge, Title, Text, Group, Stack, Button, List, Box } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import Link from 'next/link';
-import Navigation from '../../components/Navigation';
+import Navigation from '../../../components/shared/Navigation';
 
 export default function PricingPage() {
   const plans = [
