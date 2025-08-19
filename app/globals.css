@@ -1,0 +1,493 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * PM33 Complete UI System - SINGLE SOURCE OF TRUTH
+ * Implementation of PM33_COMPLETE_UI_SYSTEM.MD specifications
+ * 
+ * This file implements the premium strategic intelligence platform aesthetic
+ * with glass morphism, signature gradients, and AI-powered visual language.
+ * 
+ * REFERENCE: PM33_COMPLETE_UI_SYSTEM.MD
+ * ENFORCEMENT: Every UI component must use these design tokens
+ * COMPATIBILITY: Maintains Mantine UI component integration
+ */
+
+/* ===============================================
+   PM33 PREMIUM COLOR SYSTEM - COPY THIS EXACTLY
+   =============================================== */
+:root {
+  /* Primary Brand Gradients */
+  --pm33-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --pm33-brand-hover: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+  --pm33-brand-active: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  
+  /* Strategic Intelligence Colors */
+  --pm33-ai-glow: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  --pm33-ai-processing: linear-gradient(135deg, #667eea 0%, #00d2ff 100%);
+  --pm33-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --pm33-warning: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
+  --pm33-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  
+  /* Glass Morphism Backgrounds */
+  --pm33-glass: rgba(255, 255, 255, 0.1);
+  --pm33-glass-border: rgba(255, 255, 255, 0.18);
+  --pm33-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  
+  /* Dark Mode Surfaces */
+  --pm33-dark-0: #0a0e27;  /* Deep background */
+  --pm33-dark-1: #0f1429;  /* Card background */
+  --pm33-dark-2: #151b3b;  /* Elevated surface */
+  --pm33-dark-3: #1e2749;  /* Hover surface */
+  
+  /* Light Mode Surfaces */
+  --pm33-light-0: #fafbff;  /* Soft background */
+  --pm33-light-1: #ffffff;  /* Pure white */
+  --pm33-light-2: rgba(255, 255, 255, 0.95);
+  --pm33-light-3: rgba(248, 250, 252, 0.98);
+  
+  /* Semantic Colors */
+  --pm33-text-primary: #0f172a;
+  --pm33-text-secondary: #475569;
+  --pm33-text-tertiary: #94a3b8;
+  --pm33-border-subtle: rgba(0, 0, 0, 0.06);
+  --pm33-border-default: rgba(0, 0, 0, 0.12);
+
+  /* Legacy/Mantine Compatibility */
+  --background: var(--pm33-dark-0);
+  --foreground: var(--pm33-light-1);
+}
+
+/* Dark Mode (Default) */
+[data-theme="dark"], :root {
+  --pm33-bg-primary: var(--pm33-dark-0);
+  --pm33-bg-secondary: var(--pm33-dark-1);
+  --pm33-bg-tertiary: var(--pm33-dark-2);
+  --pm33-bg-elevated: var(--pm33-dark-3);
+  --pm33-text-primary: var(--pm33-light-1);
+  --pm33-text-secondary: rgba(255, 255, 255, 0.8);
+  --pm33-text-tertiary: rgba(255, 255, 255, 0.6);
+  --pm33-border-subtle: rgba(255, 255, 255, 0.06);
+  --pm33-border-default: rgba(255, 255, 255, 0.12);
+}
+
+/* Light Mode Override */
+[data-theme="light"] {
+  --background: var(--pm33-light-0);
+  --foreground: var(--pm33-text-primary);
+  --pm33-bg-primary: var(--pm33-light-0);
+  --pm33-bg-secondary: var(--pm33-light-1);
+  --pm33-bg-tertiary: var(--pm33-light-2);
+  --pm33-bg-elevated: var(--pm33-light-3);
+  --pm33-text-primary: #0f172a;
+  --pm33-text-secondary: #475569;
+  --pm33-text-tertiary: #94a3b8;
+  --pm33-border-subtle: rgba(0, 0, 0, 0.06);
+  --pm33-border-default: rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================================
+   PM33 TYPOGRAPHY SYSTEM - REQUIRED FOR ALL TEXT
+   =============================================== */
+.pm33-typography {
+  /* Headlines */
+  --font-h1: 2.5rem;    /* 40px */
+  --font-h2: 2rem;      /* 32px */
+  --font-h3: 1.5rem;    /* 24px */
+  --font-h4: 1.25rem;   /* 20px */
+  
+  /* Body Text */
+  --font-large: 1.125rem;  /* 18px */
+  --font-base: 1rem;       /* 16px */
+  --font-small: 0.875rem;  /* 14px */
+  --font-tiny: 0.75rem;    /* 12px */
+  
+  /* Font Weights */
+  --weight-bold: 700;
+  --weight-semibold: 600;
+  --weight-medium: 500;
+  --weight-regular: 400;
+  
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  
+  /* Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+}
+
+/* ===============================================
+   PM33 SPACING SYSTEM (8pt Grid) - USE ONLY THESE VALUES
+   =============================================== */
+.pm33-spacing {
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+}
+
+/* ===============================================
+   REQUIRED PM33 ANIMATIONS & MICRO-INTERACTIONS
+   =============================================== */
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glow pulse for AI elements */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5),
+                0 0 40px rgba(102, 126, 234, 0.3),
+                inset 0 0 20px rgba(102, 126, 234, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.8),
+                0 0 60px rgba(102, 126, 234, 0.4),
+                inset 0 0 30px rgba(102, 126, 234, 0.2);
+  }
+}
+
+/* Fade up animation for lists */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Progress bar animation */
+@keyframes progress {
+  0% { 
+    width: 0%;
+    opacity: 0;
+  }
+  50% {
+    width: 70%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+/* Float animation for cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* Apply to elements */
+.pm33-animate-glow { animation: glow-pulse 2s ease-in-out infinite; }
+.pm33-animate-float { animation: float 3s ease-in-out infinite; }
+.pm33-animate-fade-up { animation: fade-up 0.5s ease-out forwards; }
+.pm33-animate-gradient { animation: gradient-shift 15s ease infinite; }
+.pm33-animate-shimmer { 
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ===============================================
+   PM33 GLASS MORPHISM CARDS - SIGNATURE STYLE
+   =============================================== */
+.pm33-glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: var(--space-6);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.pm33-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  pointer-events: none;
+}
+
+.pm33-glass-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 60px 0 rgba(31, 38, 135, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* ===============================================
+   GLOBAL STYLES & BODY CONFIGURATION
+   =============================================== */
+body {
+  background: var(--pm33-bg-primary);
+  color: var(--pm33-text-secondary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  min-height: 100vh;
+  line-height: var(--leading-normal);
+  font-size: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced scrollbar with premium styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pm33-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pm33-brand);
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pm33-brand-hover);
+}
+
+/* Premium focus states */
+*:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px var(--pm33-ai-glow),
+    0 0 0 4px rgba(0, 210, 255, 0.1);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Premium text selection */
+::selection {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+  color: var(--pm33-text-primary);
+}
+
+/* ===============================================
+   MANTINE UI COMPONENT INTEGRATION
+   =============================================== */
+
+/* Override Mantine theme to use PM33 colors */
+.mantine-Button-root {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.mantine-Button-root:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.mantine-Card-root {
+  background: var(--pm33-bg-secondary) !important;
+  border: 1px solid var(--pm33-border-subtle) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.mantine-Card-root:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pm33-glass-shadow) !important;
+}
+
+.mantine-Input-input {
+  background: var(--pm33-bg-tertiary) !important;
+  border: 1px solid var(--pm33-border-default) !important;
+  color: var(--pm33-text-primary) !important;
+  transition: all 0.2s ease !important;
+}
+
+.mantine-Input-input:focus {
+  border-color: transparent !important;
+  box-shadow: 
+    0 0 0 2px var(--pm33-ai-glow),
+    0 0 0 4px rgba(0, 210, 255, 0.1) !important;
+}
+
+/* ===============================================
+   PM33 UTILITY CLASSES
+   =============================================== */
+
+/* Text gradient utilities */
+.pm33-text-gradient {
+  background: var(--pm33-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pm33-text-ai-gradient {
+  background: var(--pm33-ai-glow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism button */
+.pm33-btn-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: var(--pm33-text-primary);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.pm33-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Primary gradient button */
+.pm33-btn-primary {
+  background: var(--pm33-brand);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.4);
+}
+
+.pm33-btn-primary:hover {
+  background: var(--pm33-brand-hover);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px 0 rgba(118, 75, 162, 0.5);
+}
+
+/* AI processing indicator */
+.pm33-ai-processing {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 20px;
+  color: var(--pm33-text-secondary);
+  font-size: var(--font-small);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.pm33-ai-processing::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--pm33-ai-glow);
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Confidence indicator styles */
+.pm33-confidence-high { color: #38ef7d; }
+.pm33-confidence-medium { color: #f2c94c; }
+.pm33-confidence-low { color: #f45c43; }
+
+/* ===============================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   =============================================== */
+@media (max-width: 768px) {
+  .pm33-glass-card {
+    padding: var(--space-4);
+    border-radius: 12px;
+  }
+  
+  .pm33-glass-card:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  body {
+    font-size: var(--font-small);
+  }
+}
+
+/* ===============================================
+   ACCESSIBILITY ENHANCEMENTS
+   =============================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --pm33-border-default: rgba(255, 255, 255, 0.3);
+    --pm33-border-subtle: rgba(255, 255, 255, 0.2);
+  }
+  
+  [data-theme="light"] {
+    --pm33-border-default: rgba(0, 0, 0, 0.3);
+    --pm33-border-subtle: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===============================================
+   THEME TRANSITION UTILITIES
+   =============================================== */
+.theme-transition * {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+/* Print styles */
+@media print {
+  .pm33-glass-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  
+  .pm33-btn-primary,
+  .pm33-btn-glass {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+}

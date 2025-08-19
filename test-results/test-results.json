@@ -1,0 +1,657 @@
+{
+  "config": {
+    "configFile": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/playwright.config.ts",
+    "rootDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.54.2",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "strategic-ai-chat.spec.ts",
+      "file": "strategic-ai-chat.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Strategic AI Chat - PM33 UX/UI Compliance",
+          "file": "strategic-ai-chat.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display PM33 branding and navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:13.494Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-dac9ed480f0c5946faeb",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "should show subscription tier and usage stats with PM33 design compliance",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 12624,
+                      "error": {
+                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('[role=\"progressbar\"]')\nExpected: visible\nReceived: hidden\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"progressbar\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <div aria-valuemin=\"0\" aria-valuenow=\"0\" role=\"progressbar\" aria-valuemax=\"100\" aria-valuetext=\"0%\" class=\"m_2242eb65 mantine-Progress-section\"></div>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n",
+                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('[role=\"progressbar\"]')\nExpected: visible\nReceived: hidden\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"progressbar\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <div aria-valuemin=\"0\" aria-valuenow=\"0\" role=\"progressbar\" aria-valuemax=\"100\" aria-valuetext=\"0%\" class=\"m_2242eb65 mantine-Progress-section\"></div>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:33:31",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                          "column": 31,
+                          "line": 33
+                        },
+                        "snippet": "  31 |     // Check for progress bar\n  32 |     const progressBar = page.locator('[role=\"progressbar\"]');\n> 33 |     await expect(progressBar).toBeVisible();\n     |                               ^\n  34 |     \n  35 |     // Verify subscription tier badge (Starter/Team/Scale/Enterprise)\n  36 |     const tierBadge = page.locator('text=/Starter|Team|Scale|Enterprise/').first();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                            "column": 31,
+                            "line": 33
+                          },
+                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('[role=\"progressbar\"]')\nExpected: visible\nReceived: hidden\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"progressbar\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <div aria-valuemin=\"0\" aria-valuenow=\"0\" role=\"progressbar\" aria-valuemax=\"100\" aria-valuetext=\"0%\" class=\"m_2242eb65 mantine-Progress-section\"></div>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n\n  31 |     // Check for progress bar\n  32 |     const progressBar = page.locator('[role=\"progressbar\"]');\n> 33 |     await expect(progressBar).toBeVisible();\n     |                               ^\n  34 |     \n  35 |     // Verify subscription tier badge (Starter/Team/Scale/Enterprise)\n  36 |     const tierBadge = page.locator('text=/Starter|Team|Scale|Enterprise/').first();\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:33:31"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:13.527Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-ce782-with-PM33-design-compliance-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                        "column": 31,
+                        "line": 33
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-734c00cacf99388042ac",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 21,
+              "column": 7
+            },
+            {
+              "title": "should have PM33-compliant glass morphism cards",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 8754,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"blur\"\u001b[39m\nReceived string:    \u001b[31m\"none\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"blur\"\u001b[39m\nReceived string:    \u001b[31m\"none\"\u001b[39m\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:47:72",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                          "column": 72,
+                          "line": 47
+                        },
+                        "snippet": "  45 |     // Verify glass morphism styling (backdrop-filter should be applied)\n  46 |     const cardStyle = await queryCard.evaluate(el => window.getComputedStyle(el));\n> 47 |     expect(cardStyle.backdropFilter || cardStyle.webkitBackdropFilter).toContain('blur');\n     |                                                                        ^\n  48 |   });\n  49 |\n  50 |   test('should display strategic query examples with PM33 interaction patterns', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                            "column": 72,
+                            "line": 47
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"blur\"\u001b[39m\nReceived string:    \u001b[31m\"none\"\u001b[39m\n\n  45 |     // Verify glass morphism styling (backdrop-filter should be applied)\n  46 |     const cardStyle = await queryCard.evaluate(el => window.getComputedStyle(el));\n> 47 |     expect(cardStyle.backdropFilter || cardStyle.webkitBackdropFilter).toContain('blur');\n     |                                                                        ^\n  48 |   });\n  49 |\n  50 |   test('should display strategic query examples with PM33 interaction patterns', async ({ page }) => {\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:47:72"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:13.521Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-804a5-pliant-glass-morphism-cards-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-804a5-pliant-glass-morphism-cards-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-804a5-pliant-glass-morphism-cards-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                        "column": 72,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-ac83eeae43ef20ed5305",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "should display strategic query examples with PM33 interaction patterns",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 8956,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:13.562Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-8ff886d5c6966c815b7d",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "should execute intelligence operation with PM33 UX patterns",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 26513,
+                      "error": {
+                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Intelligence Operation Results')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Intelligence Operation Results')\u001b[22m\n",
+                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Intelligence Operation Results')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Intelligence Operation Results')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:84:68",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                          "column": 68,
+                          "line": 84
+                        },
+                        "snippet": "  82 |     \n  83 |     // Verify strategic analysis results appear\n> 84 |     await expect(page.getByText('Intelligence Operation Results')).toBeVisible();\n     |                                                                    ^\n  85 |     await expect(page.getByText(/Strategic Analysis:/)).toBeVisible();\n  86 |     \n  87 |     // Check for key recommendations section"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                            "column": 68,
+                            "line": 84
+                          },
+                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Intelligence Operation Results')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Intelligence Operation Results')\u001b[22m\n\n\n  82 |     \n  83 |     // Verify strategic analysis results appear\n> 84 |     await expect(page.getByText('Intelligence Operation Results')).toBeVisible();\n     |                                                                    ^\n  85 |     await expect(page.getByText(/Strategic Analysis:/)).toBeVisible();\n  86 |     \n  87 |     // Check for key recommendations section\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:84:68"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:20.622Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-2ad8d-ation-with-PM33-UX-patterns-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                        "column": 68,
+                        "line": 84
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-3c168eb4e0a6244ff9df",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 67,
+              "column": 7
+            },
+            {
+              "title": "should display operations pricing with Intelligence Operations model",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 13119,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:25.144Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-7250e8485d316f89a0aa",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 97,
+              "column": 7
+            },
+            {
+              "title": "should show proper hover states and animations (PM33 compliance)",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 12935,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m3\u001b[39m\nReceived:   \u001b[31m7\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m3\u001b[39m\nReceived:   \u001b[31m7\u001b[39m\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:150:37",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                          "column": 37,
+                          "line": 150
+                        },
+                        "snippet": "  148 |       !error.includes('Lighthouse')\n  149 |     );\n> 150 |     expect(unexpectedErrors.length).toBeLessThan(3);\n      |                                     ^\n  151 |   });\n  152 |\n  153 |   test('should be responsive and mobile-friendly (PM33 compliance)', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                            "column": 37,
+                            "line": 150
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m3\u001b[39m\nReceived:   \u001b[31m7\u001b[39m\n\n  148 |       !error.includes('Lighthouse')\n  149 |     );\n> 150 |     expect(unexpectedErrors.length).toBeLessThan(3);\n      |                                     ^\n  151 |   });\n  152 |\n  153 |   test('should be responsive and mobile-friendly (PM33 compliance)', async ({ page }) => {\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts:150:37"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:23.132Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/strategic-ai-chat-Strategi-00bfa-animations-PM33-compliance--chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/strategic-ai-chat.spec.ts",
+                        "column": 37,
+                        "line": 150
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-55253bf7e0207e726694",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 120,
+              "column": 7
+            },
+            {
+              "title": "should be responsive and mobile-friendly (PM33 compliance)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 18052,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:28.238Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-278c7fff6b41c4ac32e9",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 153,
+              "column": 7
+            },
+            {
+              "title": "should handle authentication properly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 11698,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:39.121Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-c858daa66d141d74b085",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 175,
+              "column": 7
+            },
+            {
+              "title": "should follow PM33 8pt grid spacing system",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4592,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-19T20:20:38.556Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0a17bc00eb98dc79e0da-ce2d4795b77d3c90801b",
+              "file": "strategic-ai-chat.spec.ts",
+              "line": 184,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-19T20:20:11.501Z",
+    "duration": 40167.832,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}
