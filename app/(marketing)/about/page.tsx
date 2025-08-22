@@ -1,338 +1,362 @@
-import { ArrowRight, CheckCircle, Users, Target, Lightbulb, Heart, Sparkles, Building2, Award, Clock } from 'lucide-react'
-import Link from 'next/link'
-import Navigation from '../../../components/shared/Navigation'
+import { Container, Title, Text, Button, Card, Group, List, Stack, Badge, Grid, Divider } from '@mantine/core';
+import { IconRocket, IconBrain, IconTarget, IconShield, IconClock, IconTrendingUp, IconUsers, IconChartLine, IconCheck, IconHeart, IconBuilding, IconAward, IconSparkles } from '@tabler/icons-react';
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
+    <Container size={1400} px={24} py={40}>
 
       {/* Hero Section */}
-      <section className="px-6 py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-sm font-semibold rounded-full mb-8">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Our Story & Mission
-              </div>
-              
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-                Built by PMs,
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent block mt-2">
-                  For PMs
-                </span>
-              </h1>
-              
-              <p className="text-xl text-gray-700 mb-10 leading-relaxed">
-                We're product managers who got tired of spending 80% of our time on busywork instead of strategy. 
-                So we built the AI assistant we always wanted - one that enhances your existing tools instead of replacing them.
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-6 mb-10">
-                {[
-                  { icon: Users, stat: "2,500+", label: "PMs using PM33" },
-                  { icon: Clock, stat: "72hrs", label: "Saved per PM monthly" },
-                  { icon: Target, stat: "40%", label: "More features shipped" },
-                  { icon: Award, stat: "89%", label: "Team satisfaction" }
-                ].map((metric, index) => (
-                  <div key={index} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
-                    <div className="flex items-center mb-3">
-                      <metric.icon className="h-6 w-6 text-indigo-600 mr-3" />
-                      <div className="text-3xl font-bold text-indigo-600">{metric.stat}</div>
-                    </div>
-                    <div className="text-gray-600 font-medium">{metric.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <Card shadow="md" padding={64} radius={20} mb={60} 
+            style={{ 
+              background: 'linear-gradient(135deg, var(--marketing-primary-light) 0%, var(--marketing-bg-primary) 50%, var(--marketing-success-light) 100%)',
+              textAlign: 'center'
+            }}>
+        <Grid>
+          <Grid.Col span={{ base: 12, lg: 6 }}>
+            <Badge
+              size="lg"
+              leftSection={<IconSparkles size={16} />}
+              variant="gradient"
+              gradient={{ from: 'indigo', to: 'purple' }}
+              radius="xl"
+              mb={32}
+            >
+              Our Story & Mission
+            </Badge>
             
-            <div className="relative">
-              <div className="bg-white p-10 rounded-3xl shadow-2xl border border-gray-200">
-                <div className="text-center mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Building2 className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Founded in 2024</h3>
-                  <p className="text-gray-600">By product managers, for product managers</p>
+            <Title order={1} size="h1" fw={900} mb={32} style={{ lineHeight: 1.2 }}>
+              Built by PMs,
+              <Text
+                component="span"
+                variant="gradient"
+                gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}
+                inherit
+                display="block"
+                mt={8}
+              >
+                For PMs
+              </Text>
+            </Title>
+            
+            <Text size="xl" mb={40} style={{ lineHeight: 1.7 }}>
+              We're product managers who got tired of spending 80% of our time on busywork instead of strategy. 
+              So we built the AI assistant we always wanted - one that enhances your existing tools instead of replacing them.
+            </Text>
+            
+            <Grid mb={40}>
+              {[
+                { icon: IconUsers, stat: "2,500+", label: "PMs using PM33" },
+                { icon: IconClock, stat: "72hrs", label: "Saved per PM monthly" },
+                { icon: IconTarget, stat: "40%", label: "More features shipped" },
+                { icon: IconAward, stat: "89%", label: "Team satisfaction" }
+              ].map((metric, index) => (
+                <Grid.Col key={index} span={{ base: 12, md: 6 }}>
+                  <Card padding="lg" radius="lg" shadow="sm">
+                    <Group mb={12}>
+                      <metric.icon size={24} color="var(--marketing-primary)" />
+                      <Text size="xl" fw={700} c="var(--marketing-primary)">{metric.stat}</Text>
+                    </Group>
+                    <Text size="sm" fw={500}>{metric.label}</Text>
+                  </Card>
+                </Grid.Col>
+              ))}
+            </Grid>
+          </Grid.Col>
+          
+          <Grid.Col span={{ base: 12, lg: 6 }}>
+            <Card padding="xl" radius="xl" shadow="xl">
+              <Stack align="center" mb={32}>
+                <div style={{ 
+                  width: 80, 
+                  height: 80, 
+                  background: 'linear-gradient(45deg, var(--marketing-primary) 0%, purple 100%)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 16
+                }}>
+                  <IconBuilding size={40} color="white" />
                 </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center text-gray-700">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 mr-3" />
-                    <span>Remote-first team across 3 continents</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 mr-3" />
-                    <span>Backed by experienced PM leaders</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 mr-3" />
-                    <span>Community-driven development approach</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                <Title order={3} mb={8}>Founded in 2024</Title>
+                <Text c="dimmed">By product managers, for product managers</Text>
+              </Stack>
+              
+              <Stack gap="md">
+                {[
+                  "Remote-first team across 3 continents",
+                  "Backed by experienced PM leaders", 
+                  "Community-driven development approach"
+                ].map((item, index) => (
+                  <Group key={index}>
+                    <IconCheck size={20} color="var(--marketing-success)" />
+                    <Text>{item}</Text>
+                  </Group>
+                ))}
+              </Stack>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Card>
 
       {/* Mission Section */}
-      <section className="px-6 py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Mission
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              To free product managers from busywork so they can focus on what matters most: strategic thinking and customer impact.
-            </p>
-          </div>
+      <Card shadow="md" padding={48} radius={16} mb={60}>
+        <Stack align="center" mb={48}>
+          <Title order={2} size="h1" fw={700} ta="center" mb={24}>
+            Our Mission
+          </Title>
+          <Text size="xl" ta="center" maw={800} mx="auto" style={{ lineHeight: 1.7 }}>
+            To free product managers from busywork so they can focus on what matters most: strategic thinking and customer impact.
+          </Text>
+        </Stack>
 
-          <div className="grid lg:grid-cols-3 gap-12">
+        <Grid>
             {[
               {
-                icon: Heart,
+                icon: IconHeart,
                 title: "PM-First Approach",
                 description: "Every feature is designed by product managers who understand the daily challenges of the role. We don't build for engineers or marketers - we build for PMs."
               },
               {
-                icon: Target,
+                icon: IconTarget,
                 title: "Enhancement Philosophy", 
                 description: "We believe in making your existing tools smarter, not forcing you to abandon workflows that already work. Integration over replacement, always."
               },
               {
-                icon: Lightbulb,
+                icon: IconBrain,
                 title: "Community-Driven Innovation",
                 description: "Our roadmap is shaped by the PM community. Every feature request, every use case, every workflow optimization comes from real PMs doing real work."
               }
             ].map((value, index) => (
-              <div key={index} className="text-center group">
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-500 w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <value.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </div>
+              <Grid.Col key={index} span={{ base: 12, lg: 4 }}>
+                <Stack align="center" ta="center">
+                  <div style={{ 
+                    background: 'linear-gradient(45deg, var(--marketing-primary) 0%, purple 100%)',
+                    width: 64, 
+                    height: 64, 
+                    borderRadius: 16,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: 24,
+                    transition: 'transform 0.3s ease'
+                  }}>
+                    <value.icon size={32} color="white" />
+                  </div>
+                  <Title order={3} mb={16}>{value.title}</Title>
+                  <Text c="dimmed" style={{ lineHeight: 1.7 }}>{value.description}</Text>
+                </Stack>
+              </Grid.Col>
             ))}
-          </div>
-        </div>
-      </section>
+        </Grid>
+      </Card>
 
       {/* Founder Story */}
-      <section className="px-6 py-24 bg-gradient-to-br from-gray-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                The Story Behind PM33
-              </h2>
-              
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-                <p>
-                  <strong>The frustration was real.</strong> As senior PMs at fast-growing startups, we were spending 
-                  4+ hours daily on documentation, status updates, and data synthesis instead of customer research 
-                  and strategic planning.
-                </p>
-                
-                <p>
-                  We tried every PM tool on the market. Each promised to solve our problems, but they all had the 
-                  same fatal flaw: <strong>they wanted us to abandon our existing workflows</strong> and migrate 
-                  everything to their platform.
-                </p>
-                
-                <p>
-                  That's when we realized the solution wasn't another PM tool - it was an <strong>AI layer that 
-                  makes existing tools smarter</strong>. Why force teams to learn new systems when you can enhance 
-                  the ones they already know?
-                </p>
-                
-                <p>
-                  Six months later, PM33 was born. Today, over 2,500 product managers use it to reclaim 70+ hours 
-                  monthly for strategic work.
-                </p>
-              </div>
-              
-              <div className="mt-10 p-8 bg-white rounded-2xl shadow-lg border border-gray-200">
-                <div className="text-lg font-semibold text-indigo-600 mb-3">"Our North Star"</div>
-                <blockquote className="text-gray-700 italic text-xl leading-relaxed">
-                  "Every hour we save a PM from busywork is an hour they can spend understanding their customers better."
-                </blockquote>
-                <div className="text-gray-600 font-medium mt-4">— PM33 Founding Team</div>
-              </div>
-            </div>
+      <Card shadow="md" padding={48} radius={16} mb={80} 
+            style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+        <Grid align="center">
+          <Grid.Col span={{ base: 12, lg: 6 }}>
+            <Title order={2} size="h1" fw={700} mb={32}>
+              The Story Behind PM33
+            </Title>
             
-            <div className="space-y-8">
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Before PM33</h3>
-                <div className="space-y-3 text-gray-600">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                    <span>4+ hours daily on documentation</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                    <span>Scattered data across 8+ tools</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                    <span>Manual synthesis and reporting</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                    <span>Strategic time: 20% of day</span>
-                  </div>
-                </div>
-              </div>
+            <Stack gap={24}>
+              <Text size="lg" style={{ lineHeight: 1.7 }}>
+                <Text component="span" fw={700}>The frustration was real.</Text> As senior PMs at fast-growing startups, we were spending 
+                4+ hours daily on documentation, status updates, and data synthesis instead of customer research 
+                and strategic planning.
+              </Text>
               
-              <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-8 rounded-2xl border border-emerald-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">After PM33</h3>
-                <div className="space-y-3 text-gray-700">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full mr-3"></div>
-                    <span>15 minutes for comprehensive PRDs</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full mr-3"></div>
-                    <span>Unified intelligence across all tools</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full mr-3"></div>
-                    <span>AI-powered insights and recommendations</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full mr-3"></div>
-                    <span>Strategic time: 70% of day</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              <Text size="lg" style={{ lineHeight: 1.7 }}>
+                We tried every PM tool on the market. Each promised to solve our problems, but they all had the 
+                same fatal flaw: <Text component="span" fw={700}>they wanted us to abandon our existing workflows</Text> and migrate 
+                everything to their platform.
+              </Text>
+              
+              <Text size="lg" style={{ lineHeight: 1.7 }}>
+                That's when we realized the solution wasn't another PM tool - it was an <Text component="span" fw={700}>AI layer that 
+                makes existing tools smarter</Text>. Why force teams to learn new systems when you can enhance 
+                the ones they already know?
+              </Text>
+              
+              <Text size="lg" style={{ lineHeight: 1.7 }}>
+                Six months later, PM33 was born. Today, over 2,500 product managers use it to reclaim 70+ hours 
+                monthly for strategic work.
+              </Text>
+            </Stack>
+            
+            <Card padding="xl" radius="xl" shadow="lg" mt={40}
+                  style={{ backgroundColor: 'white' }}>
+              <Text size="lg" fw={600} c="var(--marketing-primary)" mb={12}>
+                "Our North Star"
+              </Text>
+              <Text size="xl" fs="italic" mb={16} style={{ lineHeight: 1.6 }}>
+                "Every hour we save a PM from busywork is an hour they can spend understanding their customers better."
+              </Text>
+              <Text c="dimmed" fw={500}>— PM33 Founding Team</Text>
+            </Card>
+          </Grid.Col>
+          
+          <Grid.Col span={{ base: 12, lg: 6 }}>
+            <Stack gap={24}>
+              <Card padding="xl" radius="xl" shadow="xl">
+                <Title order={3} fw={700} mb={16}>Before PM33</Title>
+                <Stack gap={12}>
+                  {[
+                    "4+ hours daily on documentation",
+                    "Scattered data across 8+ tools", 
+                    "Manual synthesis and reporting",
+                    "Strategic time: 20% of day"
+                  ].map((item, index) => (
+                    <Group key={index}>
+                      <div style={{ 
+                        width: 12, 
+                        height: 12, 
+                        backgroundColor: '#ef4444', 
+                        borderRadius: '50%' 
+                      }} />
+                      <Text>{item}</Text>
+                    </Group>
+                  ))}
+                </Stack>
+              </Card>
+              
+              <Card padding="xl" radius="xl" shadow="lg"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #dcfce7 0%, #a7f3d0 100%)',
+                      border: '1px solid #10b981'
+                    }}>
+                <Title order={3} fw={700} mb={16}>After PM33</Title>
+                <Stack gap={12}>
+                  {[
+                    "15 minutes for comprehensive PRDs",
+                    "Unified intelligence across all tools",
+                    "AI-powered insights and recommendations", 
+                    "Strategic time: 70% of day"
+                  ].map((item, index) => (
+                    <Group key={index}>
+                      <div style={{ 
+                        width: 12, 
+                        height: 12, 
+                        backgroundColor: '#10b981', 
+                        borderRadius: '50%' 
+                      }} />
+                      <Text>{item}</Text>
+                    </Group>
+                  ))}
+                </Stack>
+              </Card>
+            </Stack>
+          </Grid.Col>
+        </Grid>
+      </Card>
 
       {/* Team Values */}
-      <section className="px-6 py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              How We Work
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our values shape every product decision and customer interaction.
-            </p>
-          </div>
+      <Card shadow="md" padding={48} radius={16} mb={80}>
+        <Stack align="center" mb={48}>
+          <Title order={2} size="h1" fw={700} ta="center">
+            How We Work
+          </Title>
+          <Text size="xl" ta="center" c="dimmed" maw={600} mx="auto">
+            Our values shape every product decision and customer interaction.
+          </Text>
+        </Stack>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { 
-                title: "PM Empathy",
-                description: "We're all practicing PMs. Every decision comes from real experience managing products and teams."
-              },
-              {
-                title: "No BS Approach", 
-                description: "Clear communication, honest pricing, no hidden fees. We say what we mean and deliver what we promise."
-              },
-              {
-                title: "Community First",
-                description: "The PM community shapes our roadmap. We build what PMs actually need, not what we think they should want."
-              },
-              {
-                title: "Continuous Learning",
-                description: "Product management evolves fast. We stay current with the latest frameworks, tools, and methodologies."
-              }
-            ].map((value, index) => (
-              <div key={index} className="text-center p-6 bg-gradient-to-br from-gray-50 to-indigo-50 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300">
-                <h3 className="text-lg font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <Grid>
+          {[
+            { 
+              title: "PM Empathy",
+              description: "We're all practicing PMs. Every decision comes from real experience managing products and teams."
+            },
+            {
+              title: "No BS Approach", 
+              description: "Clear communication, honest pricing, no hidden fees. We say what we mean and deliver what we promise."
+            },
+            {
+              title: "Community First",
+              description: "The PM community shapes our roadmap. We build what PMs actually need, not what we think they should want."
+            },
+            {
+              title: "Continuous Learning",
+              description: "Product management evolves fast. We stay current with the latest frameworks, tools, and methodologies."
+            }
+          ].map((value, index) => (
+            <Grid.Col key={index} span={{ base: 12, md: 6, lg: 3 }}>
+              <Card padding="lg" radius="lg" shadow="sm" 
+                    style={{ 
+                      height: '100%', 
+                      textAlign: 'center',
+                      background: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)',
+                      border: '1px solid #cbd5e1',
+                      transition: 'all 0.3s ease'
+                    }}
+                    className="hover:shadow-lg">
+                <Title order={4} fw={700} mb={12}>{value.title}</Title>
+                <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>
+                  {value.description}
+                </Text>
+              </Card>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Card>
 
       {/* CTA Section */}
-      <section className="relative px-6 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-700 to-cyan-600"></div>
+      <Card shadow="xl" padding={64} radius={20} 
+            style={{ 
+              background: 'linear-gradient(135deg, var(--marketing-primary) 0%, purple 100%)',
+              color: 'white',
+              textAlign: 'center'
+            }}>
+        <Title order={2} size="h1" fw={700} mb={32} style={{ color: 'white' }}>
+          Join the PM Community Revolution
+        </Title>
+        <Text size="xl" mb={48} maw={800} mx="auto" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+          Be part of the movement that's freeing product managers from busywork. 
+          Start your transformation today.
+        </Text>
         
-        <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Join the PM Community Revolution
-          </h2>
-          <p className="text-xl text-indigo-100 mb-12">
-            Be part of the movement that's freeing product managers from busywork. 
-            Start your transformation today.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-10">
-            <Link 
-              href="/trial"
-              className="group bg-white text-indigo-600 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-indigo-50 transition-all duration-300 shadow-2xl hover:shadow-white/25 transform hover:scale-105 flex items-center justify-center"
-            >
-              Start Your Free Trial
-              <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link 
-              href="/contact"
-              className="group border-2 border-white/30 backdrop-blur-md text-white px-10 py-5 rounded-2xl text-xl font-bold hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center"
-            >
-              Get in Touch
-            </Link>
-          </div>
-          
-          <p className="text-indigo-200">
-            Join 2,500+ product managers who've already made the switch
-          </p>
-        </div>
-      </section>
+        <Group justify="center" gap={24}>
+          <Button 
+            component={Link}
+            href="/trial"
+            size="xl"
+            radius="xl"
+            variant="white"
+            style={{ 
+              fontSize: '20px',
+              padding: '20px 40px',
+              height: 'auto',
+              color: 'var(--marketing-primary)'
+            }}
+            leftSection={<IconRocket size={24} />}
+          >
+            Start Your Free Trial
+          </Button>
+          <Button 
+            component={Link}
+            href="/contact"
+            size="xl"
+            variant="outline"
+            radius="xl"
+            style={{ 
+              borderColor: 'rgba(255, 255, 255, 0.3)',
+              color: 'white',
+              fontSize: '18px',
+              padding: '18px 32px',
+              height: 'auto'
+            }}
+          >
+            Get in Touch
+          </Button>
+        </Group>
+        
+        <Text mt={24} style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+          Join 2,500+ product managers who've already made the switch
+        </Text>
+      </Card>
 
-      {/* Footer */}
-      <footer className="px-6 py-16 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-12">
-            <div className="md:col-span-1">
-              <div className="flex items-center mb-6">
-                <div className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">PM33</div>
-                <div className="ml-3 px-2 py-1 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-300 text-xs font-medium rounded-full border border-indigo-500/30">
-                  AI-Powered
-                </div>
-              </div>
-              <p className="text-gray-400 leading-relaxed">
-                Built by PMs, for PMs. Enhancing your existing tools with AI intelligence.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Product</h4>
-              <div className="space-y-4 text-gray-400">
-                <Link href="/features" className="block hover:text-indigo-400 transition-colors">Features</Link>
-                <Link href="/pricing" className="block hover:text-indigo-400 transition-colors">Pricing</Link>
-                <Link href="/templates" className="block hover:text-indigo-400 transition-colors">Templates</Link>
-                <Link href="/security" className="block hover:text-indigo-400 transition-colors">Security</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Company</h4>
-              <div className="space-y-4 text-gray-400">
-                <Link href="/about" className="block hover:text-indigo-400 transition-colors">About</Link>
-                <Link href="/contact" className="block hover:text-indigo-400 transition-colors">Contact</Link>
-                <Link href="/privacy" className="block hover:text-indigo-400 transition-colors">Privacy</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Connect</h4>
-              <div className="space-y-4 text-gray-400">
-                <div className="hover:text-indigo-400 transition-colors">PM Community</div>
-                <div className="hover:text-indigo-400 transition-colors">LinkedIn</div>
-                <div className="hover:text-indigo-400 transition-colors">Twitter</div>
-                <div className="hover:text-indigo-400 transition-colors">Newsletter</div>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 PM33. Built with ❤️ by the PM community, for the PM community.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+    </Container>
+  );
 }

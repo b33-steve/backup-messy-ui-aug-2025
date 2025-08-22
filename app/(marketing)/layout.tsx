@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import MantineWrapper from "../../components/shared/MantineProvider";
 import { DesignSystemProvider } from "../../components/marketing/DesignSystemProvider";
+import Navigation from "../../components/shared/Navigation";
+import { Container, Text, Grid, Group, Stack, Divider } from '@mantine/core';
+import Link from 'next/link';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,51 +23,119 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <style>{`
-          /* Marketing-Specific Color Tokens - REQUIRED USE ONLY */
-          :root {
-            /* Primary Marketing Colors */
-            --marketing-primary: #1E40AF;      /* Strategic Blue - headlines, CTAs */
-            --marketing-primary-hover: #1E3A8A; /* Interactive states */
-            --marketing-primary-light: #EFF6FF; /* Backgrounds, highlights */
-            
-            /* Success & Growth (Conversion Colors) */
-            --marketing-success: #059669;      /* Success indicators, testimonials */
-            --marketing-success-light: #ECFDF5; /* Success backgrounds */
-            
-            /* Energy & Action (CTA Colors) */
-            --marketing-cta: #EA580C;          /* Primary CTAs, urgency */
-            --marketing-cta-hover: #DC2626;    /* CTA hover states */
-            --marketing-cta-light: #FFF7ED;    /* CTA backgrounds */
-            
-            /* Professional Neutrals */
-            --marketing-text-primary: #1E293B;   /* Headlines, key copy */
-            --marketing-text-secondary: #64748B; /* Supporting copy */
-            --marketing-text-muted: #94A3B8;     /* Captions, meta info */
-            
-            /* Marketing Backgrounds */
-            --marketing-bg-primary: #FFFFFF;     /* Clean white base */
-            --marketing-bg-secondary: #F8FAFC;   /* Section alternating */
-            --marketing-bg-accent: #F1F5F9;      /* Feature highlights */
-          }
-        `}</style>
-      </head>
-      <body
-        className={`${inter.variable} antialiased marketing-context`}
-        style={{
-          fontFamily: 'var(--font-inter)',
-          color: 'var(--marketing-text-primary)',
-          backgroundColor: 'var(--marketing-bg-primary)'
-        }}
-      >
-        <MantineWrapper>
-          <DesignSystemProvider context="marketing">
+    <div 
+      className={`${inter.variable} antialiased marketing-context`}
+      style={{
+        fontFamily: 'var(--font-inter)',
+        color: 'var(--marketing-text-primary)',
+        backgroundColor: 'var(--marketing-bg-primary)',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
+      <MantineWrapper>
+        <DesignSystemProvider context="marketing">
+          <Navigation />
+          <main style={{ flex: 1 }}>
             {children}
-          </DesignSystemProvider>
-        </MantineWrapper>
-      </body>
-    </html>
+          </main>
+          {/* Comprehensive Footer */}
+          <footer style={{ 
+            backgroundColor: 'var(--marketing-bg-secondary)', 
+            borderTop: '1px solid #e0e0e0',
+            marginTop: 'auto' 
+          }}>
+            <Container size={1400} px={24} py={48}>
+              <Grid>
+                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
+                  <Stack gap={16}>
+                    <Text fw={700} size="lg">Product</Text>
+                    <Stack gap={8}>
+                      <Text component={Link} href="/command-center-demo" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Demo
+                      </Text>
+                      <Text component={Link} href="/pricing" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Pricing
+                      </Text>
+                      <Text component={Link} href="/features" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Integrations
+                      </Text>
+                    </Stack>
+                  </Stack>
+                </Grid.Col>
+                
+                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
+                  <Stack gap={16}>
+                    <Text fw={700} size="lg">Community</Text>
+                    <Stack gap={8}>
+                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Community
+                      </Text>
+                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Blog
+                      </Text>
+                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        PM Community
+                      </Text>
+                    </Stack>
+                  </Stack>
+                </Grid.Col>
+                
+                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
+                  <Stack gap={16}>
+                    <Text fw={700} size="lg">Resources</Text>
+                    <Stack gap={8}>
+                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Resources
+                      </Text>
+                      <Text component={Link} href="/features" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Templates
+                      </Text>
+                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Case Studies
+                      </Text>
+                    </Stack>
+                  </Stack>
+                </Grid.Col>
+                
+                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
+                  <Stack gap={16}>
+                    <Text fw={700} size="lg">Company</Text>
+                    <Stack gap={8}>
+                      <Text component={Link} href="/about" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        About
+                      </Text>
+                      <Text component={Link} href="/contact" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Contact
+                      </Text>
+                      <Text component={Link} href="/privacy" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                        Privacy
+                      </Text>
+                    </Stack>
+                  </Stack>
+                </Grid.Col>
+              </Grid>
+              
+              <Divider my={32} />
+              
+              <Group justify="space-between" align="center">
+                <Text size="sm" c="dimmed">
+                  © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+                </Text>
+                <Group gap={16}>
+                  <Text component={Link} href="/privacy" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                    Privacy Policy
+                  </Text>
+                  <Text component={Link} href="/privacy" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
+                    Terms of Service
+                  </Text>
+                </Group>
+              </Group>
+            </Container>
+          </footer>
+        </DesignSystemProvider>
+      </MantineWrapper>
+    </div>
   );
 }

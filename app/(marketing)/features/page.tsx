@@ -1,317 +1,389 @@
-import { ArrowRight, CheckCircle, Zap, Brain, Target, Users, Lightbulb, TrendingUp, Clock, Sparkles } from 'lucide-react'
-import Link from 'next/link'
-import Navigation from '../../../components/shared/Navigation'
+'use client';
+
+import { Container, Title, Text, Button, Card, Group, List, Stack, Badge, Grid, Divider } from '@mantine/core';
+import { IconRocket, IconBrain, IconShield, IconTarget, IconChartLine, IconUsers, IconClock, IconSettings, IconLightbulb, IconTrendingUp, IconCheck, IconArrowRight, IconSparkles } from '@tabler/icons-react';
+import Link from 'next/link';
+
+/**
+ * Component: Features - Comprehensive Product Capabilities
+ * Route: /features  
+ * Purpose: Showcase PM33's strategic intelligence features and capabilities
+ * Target: Product Managers seeking PMO-level strategic enhancement
+ */
 
 export default function FeaturesPage() {
+  const coreFeatures = [
+    {
+      icon: IconBrain,
+      title: "Strategic Intelligence Engine",
+      description: "Multi-framework analysis using ICE, RICE, Porter's Five Forces, and custom strategic models to guide product decisions.",
+      benefits: [
+        "85% more confident strategic decisions",
+        "3x faster competitive analysis",
+        "Automated market positioning insights"
+      ]
+    },
+    {
+      icon: IconTarget,
+      title: "AI Workflow Orchestration", 
+      description: "Intelligent automation that connects your existing PM tools and creates seamless workflows across your entire stack.",
+      benefits: [
+        "70+ hours saved monthly per PM",
+        "Seamless tool integration",
+        "Automated task prioritization"
+      ]
+    },
+    {
+      icon: IconChartLine,
+      title: "Predictive Analytics & Intelligence",
+      description: "Advanced data analysis that learns your company patterns and predicts outcomes before you ship.",
+      benefits: [
+        "40% improvement in feature success rate", 
+        "Early risk detection and mitigation",
+        "Data-driven roadmap optimization"
+      ]
+    },
+    {
+      icon: IconUsers,
+      title: "Stakeholder Communication AI",
+      description: "Professional communication generation for executives, teams, and clients with context-aware messaging.",
+      benefits: [
+        "89% stakeholder satisfaction improvement",
+        "Automated status reports and updates",
+        "Executive-level strategic presentations"
+      ]
+    }
+  ];
+
+  const integrations = [
+    { name: "Jira", icon: IconSettings, status: "Full Integration" },
+    { name: "Linear", icon: IconTarget, status: "Full Integration" },
+    { name: "Monday.com", icon: IconCheck, status: "Full Integration" },
+    { name: "Asana", icon: IconCheck, status: "Full Integration" },
+    { name: "Slack", icon: IconUsers, status: "Native Integration" },
+    { name: "Notion", icon: IconBrain, status: "Native Integration" }
+  ];
+
+  const aiTeams = [
+    {
+      team: "Strategic Intelligence AI",
+      lead: "Claude (Anthropic)",
+      focus: "Complex strategic analysis, competitive intelligence, multi-framework decision support",
+      output: "Strategic recommendations, market analysis, competitive response strategies"
+    },
+    {
+      team: "Workflow Execution AI", 
+      lead: "OpenAI GPT-4",
+      focus: "Task automation, cross-functional coordination, PM tool orchestration", 
+      output: "Automated workflows, timeline management, progress tracking dashboards"
+    },
+    {
+      team: "Data Intelligence AI",
+      lead: "Together AI", 
+      focus: "Pattern recognition, predictive analytics, company-specific learning",
+      output: "Performance predictions, optimization opportunities, risk assessments"
+    },
+    {
+      team: "Communication AI",
+      lead: "Claude + OpenAI",
+      focus: "Professional communication, stakeholder alignment, executive reporting",
+      output: "Strategic presentations, status updates, cross-team alignment materials"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
-
+    <Container size={1400} px={24} py={40}>
+      
       {/* Hero Section */}
-      <section className="px-6 py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-sm font-semibold rounded-full mb-8">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Product Management Features That Actually Work
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-            Every <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">PM Feature</span> You Need,
-            <span className="block mt-2">Zero Tool Migration</span>
-          </h1>
-          
-          <p className="text-xl text-gray-700 mb-12 leading-relaxed max-w-4xl mx-auto">
-            PM33 connects to your existing tools (Jira, Monday, Asana) and adds AI-powered strategic intelligence. 
-            Get advanced PM capabilities without abandoning workflows your team already knows.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Link 
-              href="/trial"
-              className="group bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-2xl text-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-xl hover:shadow-2xl flex items-center justify-center transform hover:scale-105"
-            >
-              Try All Features Free
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link 
-              href="/pricing"
-              className="group border-2 border-indigo-300 text-indigo-700 px-10 py-4 rounded-2xl text-lg font-semibold hover:bg-indigo-50 hover:border-indigo-400 transition-all duration-200 flex items-center justify-center"
-            >
-              View Pricing
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Features */}
-      <section className="px-6 py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Core PM Capabilities
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything product managers need for strategic planning, documentation, and team alignment.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {[
-              {
-                icon: Brain,
-                title: "AI Strategic Intelligence",
-                description: "Turn scattered data into strategic insights across all your existing PM tools",
-                features: [
-                  "Cross-platform data analysis (Jira + Slack + Customer feedback)",
-                  "AI-powered impact scoring and feature prioritization",
-                  "Predictive churn analysis and growth opportunities",
-                  "Automated competitive intelligence reports"
-                ],
-                demo: "Analyzes 847 support tickets → Recommends mobile optimization → Predicts 34% churn reduction"
-              },
-              {
-                icon: Zap,
-                title: "Automated Documentation",
-                description: "Generate comprehensive PRDs, user stories, and requirements in minutes, not hours",
-                features: [
-                  "AI PRD generation from brief descriptions",
-                  "User story creation with acceptance criteria",
-                  "Technical specification drafting",
-                  "Automatic formatting for team standards"
-                ],
-                demo: "Input: 'Improve checkout flow' → Complete PRD with stories, criteria, and metrics in 3 minutes"
-              },
-              {
-                icon: Target,
-                title: "Smart Roadmap Planning",
-                description: "AI-powered roadmap optimization based on business impact and resource constraints",
-                features: [
-                  "Automated roadmap generation from backlog",
-                  "Resource capacity planning and allocation",
-                  "Dependency mapping and risk analysis",
-                  "Timeline optimization with confidence intervals"
-                ],
-                demo: "Creates Q1 2025 roadmap → Identifies 3 blockers → Suggests 2 alternative paths → 89% delivery confidence"
-              },
-              {
-                icon: Users,
-                title: "Team Collaboration Hub",
-                description: "Centralize PM communication and decision-making across distributed teams",
-                features: [
-                  "Real-time commenting and feedback collection",
-                  "Stakeholder notification and approval workflows",
-                  "Decision history and rationale tracking",
-                  "Cross-functional alignment dashboards"
-                ],
-                demo: "Stakeholder feedback → AI synthesis → Decision recommendations → Automatic team notifications"
-              }
-            ].map((feature, index) => (
-              <div key={index} className="group relative">
-                <div className="bg-white p-10 rounded-3xl shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="flex items-start mb-8">
-                    <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-4 rounded-2xl mr-6 shadow-lg">
-                      <feature.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                      <p className="text-lg text-gray-600 leading-relaxed">{feature.description}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4 mb-8">
-                    {feature.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="bg-gray-900 p-6 rounded-2xl">
-                    <div className="text-emerald-400 font-bold text-xs mb-2 uppercase tracking-wide">Live Example</div>
-                    <p className="text-gray-300 text-sm font-mono leading-relaxed">{feature.demo}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Integration Features */}
-      <section className="px-6 py-24 bg-gradient-to-br from-gray-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Works With Your Existing Stack
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              PM33 enhances your current tools instead of replacing them. No migration, no retraining, no disruption.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {[
-              { tool: "Jira", description: "Bi-directional sync with ticket analysis and automated story creation" },
-              { tool: "Monday.com", description: "Project intelligence and automated status updates" },
-              { tool: "Asana", description: "Task prioritization and team workload optimization" },
-              { tool: "Slack", description: "Discussion synthesis and decision tracking" },
-              { tool: "GitHub", description: "Development velocity analysis and release planning" },
-              { tool: "Figma", description: "Design feedback integration and user story generation" }
-            ].map((integration, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300">
-                <div className="text-2xl font-bold text-indigo-600 mb-4">{integration.tool}</div>
-                <p className="text-gray-600">{integration.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-white p-10 rounded-3xl shadow-xl border border-gray-200 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">5-Minute Setup Process</h3>
-            <div className="grid md:grid-cols-4 gap-6 text-sm">
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-3">1</div>
-                <p className="text-gray-600">Connect your tools</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-3">2</div>
-                <p className="text-gray-600">AI analyzes your data</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-3">3</div>
-                <p className="text-gray-600">Receive first insights</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-3">4</div>
-                <p className="text-gray-600">Start strategic planning</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Feature Comparison */}
-      <section className="px-6 py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              How PM33 Compares
-            </h2>
-            <p className="text-xl text-gray-600">
-              See why teams choose enhancement over replacement
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl shadow-xl border border-gray-200">
-              <thead>
-                <tr className="bg-gradient-to-r from-indigo-50 to-purple-50">
-                  <th className="p-6 text-left font-bold text-gray-900">Capability</th>
-                  <th className="p-6 text-center font-bold text-indigo-600">PM33</th>
-                  <th className="p-6 text-center font-semibold text-gray-600">Traditional PM Tools</th>
-                  <th className="p-6 text-center font-semibold text-gray-600">AI-Only Solutions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: "Works with existing tools", pm33: "✅", traditional: "❌", ai: "❌" },
-                  { feature: "AI strategic insights", pm33: "✅", traditional: "❌", ai: "✅" },
-                  { feature: "No migration required", pm33: "✅", traditional: "❌", ai: "❌" },
-                  { feature: "Team familiarity", pm33: "✅", traditional: "✅", ai: "❌" },
-                  { feature: "Advanced automation", pm33: "✅", traditional: "❌", ai: "✅" },
-                  { feature: "Cross-platform intelligence", pm33: "✅", traditional: "❌", ai: "❌" }
-                ].map((row, index) => (
-                  <tr key={index} className="border-t border-gray-200">
-                    <td className="p-6 font-medium text-gray-900">{row.feature}</td>
-                    <td className="p-6 text-center text-2xl">{row.pm33}</td>
-                    <td className="p-6 text-center text-2xl">{row.traditional}</td>
-                    <td className="p-6 text-center text-2xl">{row.ai}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative px-6 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-700 to-cyan-600"></div>
+      <Stack gap={32} ta="center" mb={80}>
+        <Badge
+          size="lg"
+          variant="gradient"
+          gradient={{ from: 'blue', to: 'purple' }}
+          radius="xl"
+        >
+          ⚡ PMO-Level Strategic Capabilities
+        </Badge>
         
-        <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Ready to Experience All Features?
-          </h2>
-          <p className="text-xl text-indigo-100 mb-12">
-            Start your free 14-day trial and see how PM33 transforms your product management workflow.
-          </p>
+        <Title order={1} size="h1" fw={700} maw={900} mx="auto">
+          Transform from PM to Strategic PMO with
+          <Text
+            component="span"
+            variant="gradient"
+            gradient={{ from: 'blue', to: 'purple', deg: 45 }}
+            inherit
+            display="block"
+            mt={8}
+          >
+            4 Agentic AI Teams
+          </Text>
+        </Title>
+        
+        <Text size="xl" c="dimmed" maw={700} mx="auto" mb={32}>
+          Stop managing features. Start strategically dominating your market with AI teams that deliver 
+          PMO-level intelligence, workflow automation, and strategic execution.
+        </Text>
+        
+        <Group justify="center" gap={24}>
+          <Button 
+            component={Link}
+            href="/trial"
+            size="xl"
+            radius="xl"
+            leftSection={<IconRocket size={24} />}
+            style={{
+              fontSize: '18px',
+              padding: '16px 32px',
+              height: 'auto'
+            }}
+          >
+            Start Free 14-Day Trial
+          </Button>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link 
-              href="/trial"
-              className="group bg-white text-indigo-600 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-indigo-50 transition-all duration-300 shadow-2xl hover:shadow-white/25 transform hover:scale-105 flex items-center justify-center"
-            >
-              Start Free Trial - All Features
-              <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link 
-              href="/pricing"
-              className="group border-2 border-white/30 backdrop-blur-md text-white px-10 py-5 rounded-2xl text-xl font-bold hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center"
-            >
-              View Pricing Plans
-            </Link>
-          </div>
-        </div>
-      </section>
+          <Button 
+            component={Link}
+            href="/trial"
+            size="xl"
+            variant="outline"
+            radius="xl"
+            leftSection={<IconBrain size={24} />}
+            style={{
+              fontSize: '16px', 
+              padding: '16px 32px',
+              height: 'auto'
+            }}
+          >
+            See Live Demo
+          </Button>
+        </Group>
+      </Stack>
 
-      {/* Footer */}
-      <footer className="px-6 py-16 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-12">
-            <div className="md:col-span-1">
-              <div className="flex items-center mb-6">
-                <div className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">PM33</div>
-                <div className="ml-3 px-2 py-1 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-300 text-xs font-medium rounded-full border border-indigo-500/30">
-                  AI-Powered
-                </div>
-              </div>
-              <p className="text-gray-400 leading-relaxed">
-                The AI brain that supercharges your existing PM tools without migration headaches.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Features</h4>
-              <div className="space-y-4 text-gray-400">
-                <div className="hover:text-indigo-400 transition-colors">AI Strategic Intelligence</div>
-                <div className="hover:text-indigo-400 transition-colors">Automated Documentation</div>
-                <div className="hover:text-indigo-400 transition-colors">Smart Roadmap Planning</div>
-                <div className="hover:text-indigo-400 transition-colors">Team Collaboration</div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Integrations</h4>
-              <div className="space-y-4 text-gray-400">
-                <div className="hover:text-indigo-400 transition-colors">Jira Integration</div>
-                <div className="hover:text-indigo-400 transition-colors">Monday.com Sync</div>
-                <div className="hover:text-indigo-400 transition-colors">Asana Connect</div>
-                <div className="hover:text-indigo-400 transition-colors">Slack Integration</div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Company</h4>
-              <div className="space-y-4 text-gray-400">
-                <Link href="/about" className="block hover:text-indigo-400 transition-colors">About</Link>
-                <Link href="/contact" className="block hover:text-indigo-400 transition-colors">Contact</Link>
-                <Link href="/privacy" className="block hover:text-indigo-400 transition-colors">Privacy</Link>
-                <Link href="/security" className="block hover:text-indigo-400 transition-colors">Security</Link>
-              </div>
-            </div>
+      {/* 4 AI Teams Overview */}
+      <Card shadow="xl" padding={64} radius={20} mb={80}
+            style={{ 
+              background: 'linear-gradient(135deg, var(--marketing-primary-light) 0%, var(--marketing-bg-primary) 50%, var(--marketing-success-light) 100%)'
+            }}>
+        <Title order={2} ta="center" mb={48} size="h1" fw={700}>
+          🤖 Meet Your 4 AI Teams
+        </Title>
+        
+        <Text size="xl" ta="center" mb={48} maw={800} mx="auto">
+          Each AI team is powered by the best models for their specific domain, working together 
+          to transform you into a strategic PMO leader.
+        </Text>
+
+        <Grid>
+          {aiTeams.map((team, index) => (
+            <Grid.Col key={index} span={{ base: 12, lg: 6 }}>
+              <Card padding="xl" radius="lg" shadow="md" style={{ height: '100%' }}>
+                <Stack gap={16}>
+                  <Group justify="space-between">
+                    <Title order={3} size="h3" fw={700}>
+                      {team.team}
+                    </Title>
+                    <Badge size="sm" color="blue">{team.lead}</Badge>
+                  </Group>
+                  <Text c="dimmed" mb={12}>
+                    <strong>Focus:</strong> {team.focus}
+                  </Text>
+                  <Text>
+                    <strong>Delivers:</strong> {team.output}
+                  </Text>
+                </Stack>
+              </Card>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Card>
+
+      {/* Core Features Grid */}
+      <Title order={2} ta="center" mb={64} size="h1" fw={700}>
+        🎯 Strategic Intelligence Platform Features
+      </Title>
+      
+      <Grid mb={80}>
+        {coreFeatures.map((feature, index) => (
+          <Grid.Col key={index} span={{ base: 12, lg: 6 }}>
+            <Card padding="xl" radius="lg" shadow="lg" style={{ height: '100%' }}>
+              <Stack gap={24}>
+                <Group>
+                  <div style={{ 
+                    background: 'linear-gradient(45deg, var(--marketing-primary) 0%, purple 100%)',
+                    width: 56, 
+                    height: 56, 
+                    borderRadius: 16,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <feature.icon size={28} color="white" />
+                  </div>
+                  <Title order={3} fw={700}>{feature.title}</Title>
+                </Group>
+                
+                <Text c="dimmed" size="lg" style={{ lineHeight: 1.6 }}>
+                  {feature.description}
+                </Text>
+                
+                <Stack gap={8}>
+                  <Text fw={600} c="var(--marketing-primary)">Key Benefits:</Text>
+                  {feature.benefits.map((benefit, idx) => (
+                    <Group key={idx} gap={8}>
+                      <IconCheck size={16} color="var(--marketing-success)" />
+                      <Text size="sm">{benefit}</Text>
+                    </Group>
+                  ))}
+                </Stack>
+              </Stack>
+            </Card>
+          </Grid.Col>
+        ))}
+      </Grid>
+
+      {/* Tool Integrations */}
+      <Card shadow="md" padding={48} radius={16} mb={80}>
+        <Title order={2} ta="center" mb={32} fw={700}>
+          🔗 Seamless Tool Integration
+        </Title>
+        
+        <Text size="lg" ta="center" mb={48} c="dimmed" maw={700} mx="auto">
+          PM33 enhances your existing PM tools instead of replacing them. No migration headaches, 
+          just instant intelligence across your entire stack.
+        </Text>
+        
+        <Grid>
+          {integrations.map((integration, index) => (
+            <Grid.Col key={index} span={{ base: 12, md: 6, lg: 4 }}>
+              <Card padding="lg" radius="lg" shadow="sm" style={{ textAlign: 'center' }}>
+                <integration.icon size={40} style={{ marginBottom: 16 }} />
+                <Title order={4} mb={8}>{integration.name}</Title>
+                <Badge size="sm" color="green" variant="light">{integration.status}</Badge>
+              </Card>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Card>
+
+      {/* Success Metrics */}
+      <Card shadow="md" padding={48} radius={16} mb={80} 
+            style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+        <Title order={2} ta="center" mb={48} fw={700}>
+          📊 Proven Results from 2,500+ Product Managers
+        </Title>
+        
+        <Grid>
+          {[
+            { metric: "300%", label: "Increase in strategic decision confidence", icon: IconTrendingUp },
+            { metric: "72hrs", label: "Monthly time saved per PM", icon: IconClock },
+            { metric: "40%", label: "Improvement in feature success rate", icon: IconTarget },
+            { metric: "89%", label: "Stakeholder satisfaction increase", icon: IconUsers }
+          ].map((stat, index) => (
+            <Grid.Col key={index} span={{ base: 12, md: 6, lg: 3 }}>
+              <Stack align="center" ta="center">
+                <stat.icon size={48} color="var(--marketing-primary)" style={{ marginBottom: 16 }} />
+                <Text size="3xl" fw={900} c="var(--marketing-primary)">{stat.metric}</Text>
+                <Text c="dimmed" fw={600}>{stat.label}</Text>
+              </Stack>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Card>
+
+      {/* Risk Reversal Guarantee */}
+      <Card shadow="xl" padding={48} radius={20} mb={80}
+            style={{ borderLeft: '8px solid var(--marketing-success)' }}>
+        <Group align="center" mb={32}>
+          <IconShield size={48} color="var(--marketing-success)" />
+          <div>
+            <Title order={2} fw={700} mb={8}>
+              Zero-Risk PMO Transformation Guarantee
+            </Title>
+            <Text c="dimmed" size="lg">
+              We're so confident PM33 will transform your strategic capabilities
+            </Text>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 PM33. Don't replace your PM tools - make them 10x smarter.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+        </Group>
+        
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Stack align="center" ta="center">
+              <Text size="xl" fw={700} c="var(--marketing-success)">14 Days Free</Text>
+              <Text>No credit card required</Text>
+            </Stack>
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Stack align="center" ta="center">
+              <Text size="xl" fw={700} c="var(--marketing-success)">30-Day Guarantee</Text>
+              <Text>Full refund if not satisfied</Text>
+            </Stack>
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Stack align="center" ta="center">
+              <Text size="xl" fw={700} c="var(--marketing-success)">Keep Everything</Text>
+              <Text>All generated strategic documents</Text>
+            </Stack>
+          </Grid.Col>
+        </Grid>
+      </Card>
+
+      {/* Final CTA */}
+      <Card shadow="xl" padding={64} radius={20} 
+            style={{ 
+              background: 'linear-gradient(135deg, var(--marketing-primary) 0%, purple 100%)',
+              color: 'white',
+              textAlign: 'center'
+            }}>
+        <IconSparkles size={64} style={{ marginBottom: 32 }} />
+        <Title order={1} size="h1" fw={700} mb={24} style={{ color: 'white' }}>
+          Ready to Transform from PM to Strategic PMO?
+        </Title>
+        
+        <Text size="xl" mb={48} maw={800} mx="auto" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+          Join 2,500+ product managers who've already transformed their strategic capabilities. 
+          Start your PMO transformation today.
+        </Text>
+        
+        <Group justify="center" gap={24}>
+          <Button 
+            component={Link}
+            href="/trial"
+            size="xl"
+            radius="xl"
+            variant="white"
+            style={{ 
+              fontSize: '20px',
+              padding: '20px 40px',
+              height: 'auto',
+              color: 'var(--marketing-primary)'
+            }}
+            leftSection={<IconRocket size={24} />}
+          >
+            Start Free Trial - No Credit Card
+          </Button>
+          <Button 
+            component={Link}
+            href="/trial"
+            size="xl"
+            variant="outline"
+            radius="xl"
+            style={{ 
+              borderColor: 'rgba(255, 255, 255, 0.3)',
+              color: 'white',
+              fontSize: '18px',
+              padding: '18px 32px',
+              height: 'auto'
+            }}
+            rightSection={<IconArrowRight size={20} />}
+          >
+            See Live Demo
+          </Button>
+        </Group>
+        
+        <Text mt={32} style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+          🚀 Transform in 14 days or less — Guaranteed
+        </Text>
+      </Card>
+      
+    </Container>
+  );
 }

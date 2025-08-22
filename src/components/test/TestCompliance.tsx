@@ -68,8 +68,7 @@ const TestCompliance: React.FC<TestComplianceProps> = ({
         shadow="xl"
         padding={32}
         radius={16}
-        style={demoStyles}
-        sx={hoverStyles}
+        style={{...demoStyles, ...hoverStyles}}
       >
         {/* Demo Mode Badge */}
         {isDemoMode && (

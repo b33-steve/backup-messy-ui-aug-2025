@@ -547,7 +547,7 @@ const StrategicIntelligenceEngine: React.FC = () => {
               <Title order={3} size="h3" mb={24}>🧠 Analysis Progress</Title>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {workflowSteps.map((step, index) => (
+                {syncSteps.map((step, index) => (
                   <Card key={step.id} padding={16} withBorder>
                     <Group justify="space-between" align="center">
                       <Group gap={8}>
@@ -579,11 +579,11 @@ const StrategicIntelligenceEngine: React.FC = () => {
                 ))}
               </div>
 
-              {analysisResult && (
+              {syncResult && (
                 <Alert color="green" title="Analysis Complete" mt={24}>
                   <Stack gap={16}>
                     <Text >
-                      Strategic analysis completed with {analysisResult.confidenceScore}% confidence score
+                      Strategic analysis completed with {syncResult.confidenceScore}% confidence score
                     </Text>
                     <Group>
                       <Button
@@ -602,7 +602,7 @@ const StrategicIntelligenceEngine: React.FC = () => {
                         
                         onClick={() => {
                           setActiveWorkflow(null);
-                          setAnalysisResult(null);
+                          setSyncResult(null);
                           setStrategicQuery('');
                         }}
                       >
@@ -620,31 +620,31 @@ const StrategicIntelligenceEngine: React.FC = () => {
             <Card shadow="md" padding={24} radius={16}>
               <Title order={3} size="h3" mb={24}>📋 Strategic Analysis: {strategicQuery}</Title>
               
-              {analysisResult ? (
+              {syncResult ? (
                 <Stack gap={32}>
                   <Card padding={24} withBorder>
                     <Title order={4} size="h4" mb={16}>📊 Strategic Overview</Title>
                     <Stack gap={24}>
                       <Stack gap={8}>
                         <Text fw={600} >📊 Situation Assessment</Text>
-                        <Text  c="dimmed">{analysisResult.situationAssessment}</Text>
+                        <Text  c="dimmed">{syncResult.situationAssessment}</Text>
                       </Stack>
                       
                       <Group>
                         <Badge size="lg" color="blue" variant="light">
-                          Confidence Score: {analysisResult.confidenceScore}%
+                          Confidence Score: {syncResult.confidenceScore}%
                         </Badge>
                         <Badge size="lg" color="green" variant="light">
-                          {analysisResult.frameworksApplied.length} Frameworks Applied
+                          {syncResult.toolUpdates.length} Tool Updates
                         </Badge>
                       </Group>
 
                       <Stack gap={8}>
-                        <Text fw={600} >🛠️ Frameworks Applied</Text>
+                        <Text fw={600} >🎯 Success Metrics</Text>
                         <Group gap={8}>
-                          {analysisResult.frameworksApplied.map((framework, index) => (
+                          {syncResult.successMetrics.map((metric, index) => (
                             <Badge key={index} variant="outline" >
-                              {framework}
+                              {metric}
                             </Badge>
                           ))}
                         </Group>
@@ -657,23 +657,23 @@ const StrategicIntelligenceEngine: React.FC = () => {
                     <Stack gap={24}>
                       <Stack gap={8}>
                         <Text fw={600} >💡 Strategic Recommendation</Text>
-                        <Text >{analysisResult.recommendation}</Text>
+                        <Text >{syncResult.strategicRecommendation}</Text>
                       </Stack>
                       
                       <Stack gap={8}>
-                        <Text fw={600} >⚠️ Key Risks & Mitigations</Text>
+                        <Text fw={600} >🎯 Next Actions</Text>
                         <Stack gap={8}>
-                          {analysisResult.keyRisks.map((risk, index) => (
-                            <Alert key={index} color="yellow" variant="light" >
-                              {risk}
+                          {syncResult.nextActions.map((action, index) => (
+                            <Alert key={index} color="blue" variant="light" >
+                              {action}
                             </Alert>
                           ))}
                         </Stack>
                       </Stack>
 
                       <Stack gap={8}>
-                        <Text fw={600} >📅 Timeline</Text>
-                        <Text  c="dimmed">{analysisResult.timeline}</Text>
+                        <Text fw={600} >📊 Situation Assessment</Text>
+                        <Text  c="dimmed">{syncResult.situationAssessment}</Text>
                       </Stack>
                     </Stack>
                   </Card>
@@ -683,7 +683,7 @@ const StrategicIntelligenceEngine: React.FC = () => {
                     <Stack gap={16}>
                       <Text fw={600} >🎯 Success Metrics</Text>
                       <Stack gap={12}>
-                        {analysisResult.successMetrics.map((metric, index) => (
+                        {syncResult.successMetrics.map((metric, index) => (
                           <Card key={index} padding={16} withBorder>
                             <Text >{metric}</Text>
                           </Card>
@@ -695,7 +695,7 @@ const StrategicIntelligenceEngine: React.FC = () => {
               ) : (
                 <Stack gap={16}>
                   <Text c="dimmed">Strategic analysis in progress...</Text>
-                  {workflowSteps.map((step, index) => (
+                  {syncSteps.map((step, index) => (
                     step.status === 'completed' && step.output ? (
                       <Card key={step.id} padding={16} withBorder>
                         <Text fw={600}  mb={8}>✓ {step.name}</Text>
@@ -712,6 +712,7 @@ const StrategicIntelligenceEngine: React.FC = () => {
         </Grid>
       )}
     </Container>
+    </div>
   );
 };
 

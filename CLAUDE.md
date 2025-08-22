@@ -3,18 +3,26 @@
 
 ## 🔴 STOP! Before writing ANY code:
 
-1. **READ THESE FILES COMPLETELY:**
-   - `PM33_COMPLETE_UI_SYSTEM.md` - ALL UI standards
-   - `PM33_COMPLETE_UX_SYSTEM.md` - ALL UX patterns
-   - Run: `cat PM33_COMPLETE_UI_SYSTEM.md` and `cat PM33_COMPLETE_UX_SYSTEM.md`
+**1. DETERMINE CONTEXT FIRST:**
+   - **Marketing Website?** → Use `MARKETING_THEME_GUIDE.md`
+   - **PM33 App?** → Use `APP_THEME_GUIDE.md`
 
-2. **CONFIRM UNDERSTANDING:**
-   Before any UI/UX work, explicitly state:
-   "I have read PM33_COMPLETE_UI_SYSTEM.md and PM33_COMPLETE_UX_SYSTEM.md and will follow them exactly."
+**2. READ CONTEXT-SPECIFIC DOCUMENTATION:**
 
-3. **REFERENCE REQUIREMENTS:**
-   For EVERY component, cite the specific section from the design docs:
-   "Following PM33_COMPLETE_UI_SYSTEM.md section 3.1 - Glass Morphism Cards"
+   **For Marketing Pages:**
+   - `MARKETING_THEME_GUIDE.md` - Marketing theme system & examples
+   - `MARKETING_DESIGN_SYSTEM.md` - Marketing component standards
+   - Use `.marketing-context` class and `--marketing-*` colors
+
+   **For PM33 App Pages:**  
+   - `APP_THEME_GUIDE.md` - PM33 premium theme system & glass morphism
+   - `APP_DESIGN_SYSTEM.md` - Core app component standards
+   - Use ThemeProvider and `--pm33-*` colors
+
+**3. CONFIRM UNDERSTANDING:**
+   Before any work, explicitly state your context:
+   - "I am working on a MARKETING page and will follow MARKETING_THEME_GUIDE.md"
+   - "I am working on a PM33 APP page and will follow APP_THEME_GUIDE.md"
 
 ## 🚫 AUTOMATIC REJECTION TRIGGERS
 
@@ -90,25 +98,34 @@ npx playwright test --ui  # Interactive test runner
 npm test -- --watch # Jest tests in watch mode
 ```
 
-## 🎯 Development Workflow - MANDATORY TESTING
+## 🎯 Development Workflow - DUAL-FRAMEWORK ARCHITECTURE
 
-### 1. Test-Driven Development - REQUIRED FOR EVERY COMPONENT
-- **ALWAYS run Playwright tests IMMEDIATELY after creating/editing any component**
-- **Write tests first** before implementing features  
-- Use visual validation with screenshots
-- Iterate code until tests pass
-- **NEVER commit code without passing tests**
+### 1. **Context-Aware Development - CRITICAL**
+**Marketing Context (`app/(marketing)/`)**:
+- Use **Mantine UI** components exclusively
+- Apply `.marketing-context` class styling  
+- Clean, professional design (no glass morphism)
+- Marketing color tokens (`--marketing-*`)
 
-### 2. MANDATORY Testing Commands - Run After Every Change
+**Core App Context (`app/(app)/`)**:
+- Use **shadcn/ui + PM33** components
+- Apply `.app-context` class styling
+- PM33 glass morphism and premium animations
+- PM33 design system tokens (`--pm33-*`)
+
+### 2. Test-Driven Development - CONTEXT SPECIFIC
 ```bash
-# REQUIRED: Run after every component creation/edit
-npx playwright test tests/[component-name].spec.ts --project=chromium
+# Marketing context testing
+npm run test:marketing
 
-# REQUIRED: For visual validation
-npx playwright test --update-snapshots
+# Core app context testing  
+npm run test:app
 
-# REQUIRED: Full test suite before commits
-npx playwright test --project=chromium
+# Both design systems validation
+npm run test:design-systems
+
+# Full test suite
+npm run test:all
 ```
 
 ### 3. Component Development Pattern - ENFORCED ORDER
@@ -129,22 +146,52 @@ npx playwright test --project=chromium
 
 ## 🎨 Code Style Guidelines
 
-### Component Structure
+### Component Structure - CONTEXT SPECIFIC
+
+**Marketing Components:**
 ```tsx
 'use client';
+import { Container, Card, Title, Text, Button } from '@mantine/core';
 
-import React from 'react';
-import { Container, Card, Title, Text } from '@mantine/core';
-
-const ComponentName: React.FC = () => {
+const MarketingComponent: React.FC = () => {
   return (
     <Container size={1200} px={24} py={48}>
-      {/* Component content */}
+      <Card shadow="md" padding={32} radius={16}>
+        <Title order={1} c="var(--marketing-text-primary)">
+          Marketing Headline
+        </Title>
+        <Button color="var(--marketing-primary)">
+          Call to Action
+        </Button>
+      </Card>
     </Container>
   );
 };
+```
 
-export default ComponentName;
+**Core App Components:**
+```tsx
+'use client';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { PM33Card } from '@/components/PM33Card';
+
+const AppComponent: React.FC = () => {
+  return (
+    <div className="pm33-glass-card">
+      <CardHeader>
+        <CardTitle className="pm33-text-gradient">
+          Strategic Intelligence
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button variant="default" className="pm33-btn-primary">
+          Process with AI
+        </Button>
+      </CardContent>
+    </div>
+  );
+};
 ```
 
 ### Naming Conventions
@@ -219,36 +266,63 @@ await expect(page.locator('.result')).toContainText('Analysis');
 /settings/integrations # Integration setup
 ```
 
-## 🎨 Design System Usage
+## 🎨 Dual Design System Usage
 
-### Mantine Components
+### Marketing Context - Mantine UI
 ```tsx
-// Standard container
-<Container size={1200} px={24} py={48}>
-
-// Card with demo mode
-<Card shadow="lg" padding={32} radius={16} style={demoStyles}>
-
-// Button patterns
-<Button 
-  size="lg" 
-  variant="gradient" 
-  gradient={{ from: 'blue', to: 'cyan' }}
-  leftSection={<IconBrain size={20} />}
->
-  Analyze
-</Button>
+// Clean marketing layout
+<Container size={1200} px={24} py={80}>
+  <Card shadow="md" padding={32} radius={16}>
+    <Title order={1} c="var(--marketing-text-primary)">
+      Professional Headline
+    </Title>
+    <Button 
+      size="lg"
+      style={{ backgroundColor: 'var(--marketing-primary)' }}
+    >
+      Start Free Trial
+    </Button>
+  </Card>
+</Container>
 ```
 
-### Color System
+### Core App Context - shadcn/ui + PM33
 ```tsx
-// Primary brand colors
-colors: {
-  primary: '#1971c2',   // Strategic blue
-  success: '#51cf66',   // Growth green
-  warning: '#ffd43b',   // Demo yellow
-  danger: '#ff6b6b'     // Alert red
-}
+// PM33 glass morphism layout
+<div className="pm33-glass-card">
+  <CardHeader>
+    <CardTitle className="pm33-text-gradient">
+      Strategic Intelligence
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <Button variant="default" className="pm33-btn-primary">
+      <IconBrain className="mr-2 h-4 w-4" />
+      Process with AI
+    </Button>
+  </CardContent>
+</div>
+```
+
+### Dual Color System
+```tsx
+// Marketing Context Colors
+const marketingColors = {
+  primary: '#1E40AF',      // Strategic Blue - headlines, CTAs
+  success: '#059669',      // Success indicators, testimonials  
+  cta: '#EA580C',          // Primary CTAs, urgency
+  textPrimary: '#1E293B',  // Headlines, key copy
+  bgPrimary: '#FFFFFF'     // Clean white base
+};
+
+// Core App Context Colors (PM33 Design System)
+const pm33Colors = {
+  brand: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  aiGlow: 'linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%)',
+  glass: 'rgba(255, 255, 255, 0.1)',
+  textPrimary: '#0f172a',
+  bgPrimary: '#0a0e27'     // Deep background
+};
 ```
 
 ### Typography

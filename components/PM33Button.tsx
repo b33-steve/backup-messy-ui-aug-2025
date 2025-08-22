@@ -84,7 +84,7 @@ export const PM33Button = ({
         alignItems: 'center',
         justifyContent: 'center',
         gap: '8px',
-        border: variants[variant].border || 'none',
+        border: 'border' in variants[variant] ? (variants[variant] as any).border : 'none',
         cursor: loading ? 'wait' : 'pointer',
         opacity: loading ? 0.7 : 1,
         position: 'relative',
@@ -97,11 +97,11 @@ export const PM33Button = ({
           if (variants[variant].hoverBackground) {
             e.currentTarget.style.background = variants[variant].hoverBackground;
           }
-          if (variants[variant].hoverBoxShadow) {
-            e.currentTarget.style.boxShadow = variants[variant].hoverBoxShadow;
+          if ('hoverBoxShadow' in variants[variant] && (variants[variant] as any).hoverBoxShadow) {
+            e.currentTarget.style.boxShadow = (variants[variant] as any).hoverBoxShadow;
           }
-          if (variants[variant].hoverBorder) {
-            e.currentTarget.style.border = variants[variant].hoverBorder;
+          if ('hoverBorder' in variants[variant] && (variants[variant] as any).hoverBorder) {
+            e.currentTarget.style.border = (variants[variant] as any).hoverBorder;
           }
         }
       }}
@@ -109,8 +109,8 @@ export const PM33Button = ({
         if (!loading) {
           e.currentTarget.style.transform = 'scale(1)';
           e.currentTarget.style.background = variants[variant].background;
-          e.currentTarget.style.boxShadow = variants[variant].boxShadow || '';
-          e.currentTarget.style.border = variants[variant].border || 'none';
+          e.currentTarget.style.boxShadow = 'boxShadow' in variants[variant] ? (variants[variant] as any).boxShadow : '';
+          e.currentTarget.style.border = 'border' in variants[variant] ? (variants[variant] as any).border : 'none';
         }
       }}
       onMouseDown={(e) => {

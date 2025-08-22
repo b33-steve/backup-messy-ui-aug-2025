@@ -22,7 +22,6 @@ import '@mantine/spotlight/styles.css';
 const theme = createTheme({
   /** PM33 Strategic Intelligence Platform Theme - Premium Implementation */
   primaryColor: 'pm33Brand',
-  defaultColorScheme: 'dark',
   
   colors: {
     // PM33 Brand Colors (aligned with gradient system)

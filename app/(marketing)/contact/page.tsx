@@ -1,422 +1,382 @@
-import { ArrowRight, Mail, MessageSquare, Calendar, MapPin, Clock, Phone, Sparkles, CheckCircle } from 'lucide-react'
-import Link from 'next/link'
-import Navigation from '../../../components/shared/Navigation'
+'use client';
+
+import { Container, Title, Text, Button, Card, Group, Stack, Badge, Grid, Divider } from '@mantine/core';
+import { IconMail, IconPhone, IconMessageCircle, IconCalendar, IconUsers, IconBrain, IconRocket, IconClock, IconMapPin, IconArrowRight, IconHeadset, IconTrophy } from '@tabler/icons-react';
+import Link from 'next/link';
+
+/**
+ * Component: Contact - Professional Contact & Support Center
+ * Route: /contact
+ * Purpose: Provide multiple contact channels and support options for PM33 users and prospects
+ * Target: Current users needing support, prospects with questions, enterprise inquiries
+ */
 
 export default function ContactPage() {
+  const contactMethods = [
+    {
+      icon: IconMessageCircle,
+      title: "Live Chat Support",
+      description: "Get instant help from our PM experts",
+      availability: "24/7 for Enterprise • Business hours for Pro",
+      cta: "Start Chat",
+      href: "#chat",
+      color: "blue"
+    },
+    {
+      icon: IconMail,
+      title: "Email Support", 
+      description: "Detailed questions and technical assistance",
+      availability: "Response within 4 hours",
+      cta: "Send Email",
+      href: "mailto:support@pm33.ai",
+      color: "green"
+    },
+    {
+      icon: IconCalendar,
+      title: "Schedule Strategy Call",
+      description: "One-on-one session with PM33 strategic advisor",
+      availability: "30-min sessions • Same day booking",
+      cta: "Book Call",
+      href: "/book-call", 
+      color: "purple"
+    },
+    {
+      icon: IconUsers,
+      title: "Enterprise Sales",
+      description: "Custom pricing and implementation for teams",
+      availability: "Enterprise solutions specialist",
+      cta: "Contact Sales",
+      href: "mailto:enterprise@pm33.ai",
+      color: "orange"
+    }
+  ];
+
+  const supportTopics = [
+    {
+      category: "Getting Started",
+      topics: [
+        "Account setup and onboarding",
+        "First-time strategic analysis", 
+        "Tool integrations (Jira, Linear, etc.)",
+        "AI team configuration"
+      ]
+    },
+    {
+      category: "Strategic Intelligence", 
+      topics: [
+        "Framework customization (ICE, RICE, Porter's)",
+        "Competitive analysis setup",
+        "Market positioning guidance",
+        "Strategic recommendation tuning"
+      ]
+    },
+    {
+      category: "Workflow & Automation",
+      topics: [
+        "PM tool synchronization",
+        "Automated task prioritization",
+        "Cross-functional coordination",
+        "Progress tracking optimization"
+      ]
+    },
+    {
+      category: "Enterprise & Teams",
+      topics: [
+        "Multi-team deployment",
+        "Custom integrations",
+        "Security and compliance", 
+        "Training and adoption"
+      ]
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
-
+    <Container size={1400} px={24} py={40}>
+      
       {/* Hero Section */}
-      <section className="px-6 py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-sm font-semibold rounded-full mb-8">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Get in Touch with PM33
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-            Let's Talk About Your
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent block mt-2">
-              PM Transformation
-            </span>
-          </h1>
-          
-          <p className="text-xl text-gray-700 mb-12 leading-relaxed max-w-4xl mx-auto">
-            Whether you need a demo, have questions about integration, or want to discuss enterprise features, 
-            our PM experts are here to help you succeed.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Link 
-              href="/trial"
-              className="group bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-2xl text-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-xl hover:shadow-2xl flex items-center justify-center transform hover:scale-105"
-            >
-              Start Free Trial First
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a 
-              href="#contact-form"
-              className="group border-2 border-indigo-300 text-indigo-700 px-10 py-4 rounded-2xl text-lg font-semibold hover:bg-indigo-50 hover:border-indigo-400 transition-all duration-200 flex items-center justify-center"
-            >
-              <MessageSquare className="mr-2 h-5 w-5" />
-              Send Us a Message
-            </a>
-          </div>
-        </div>
-      </section>
+      <Stack gap={32} ta="center" mb={80}>
+        <Badge
+          size="lg"
+          variant="gradient"
+          gradient={{ from: 'blue', to: 'purple' }}
+          radius="xl"
+        >
+          🗣️ Expert Support & Strategic Guidance
+        </Badge>
+        
+        <Title order={1} size="h1" fw={700} maw={800} mx="auto">
+          Get Expert Help from
+          <Text
+            component="span"
+            variant="gradient"
+            gradient={{ from: 'blue', to: 'purple', deg: 45 }}
+            inherit
+            display="block"
+            mt={8}
+          >
+            PM33 Strategic Advisors
+          </Text>
+        </Title>
+        
+        <Text size="xl" c="dimmed" maw={700} mx="auto">
+          Whether you're getting started with strategic intelligence or scaling PMO capabilities 
+          across your team, our PM experts are here to help you succeed.
+        </Text>
+      </Stack>
 
-      {/* Contact Options */}
-      <section className="px-6 py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Choose How You'd Like to Connect
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're here to support your PM journey in whatever way works best for you.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                icon: Calendar,
-                title: "Book a Demo",
-                description: "See PM33 in action with a personalized demo tailored to your use case",
-                action: "Schedule 30-min demo",
-                highlight: "Most Popular",
-                color: "from-indigo-500 to-purple-500",
-                bgColor: "from-indigo-50 to-purple-50"
-              },
-              {
-                icon: MessageSquare,
-                title: "Send a Message", 
-                description: "Have questions? Send us a message and we'll respond within 4 hours",
-                action: "Contact form below",
-                highlight: "Quick Response",
-                color: "from-emerald-500 to-teal-500",
-                bgColor: "from-emerald-50 to-teal-50"
-              },
-              {
-                icon: Phone,
-                title: "Enterprise Sales",
-                description: "Discuss custom features, security requirements, and volume pricing",
-                action: "Schedule sales call",
-                highlight: "For Teams 25+",
-                color: "from-cyan-500 to-blue-500",
-                bgColor: "from-cyan-50 to-blue-50"
-              }
-            ].map((option, index) => (
-              <div key={index} className="group relative">
-                <div className={`absolute -top-3 -right-3 bg-gradient-to-r ${option.color} text-white px-3 py-1 rounded-full text-xs font-bold`}>
-                  {option.highlight}
+      {/* Contact Methods Grid */}
+      <Title order={2} ta="center" mb={48} fw={700}>
+        ⚡ Choose Your Preferred Contact Method
+      </Title>
+      
+      <Grid mb={80}>
+        {contactMethods.map((method, index) => (
+          <Grid.Col key={index} span={{ base: 12, md: 6 }}>
+            <Card padding="xl" radius="lg" shadow="lg" style={{ height: '100%', textAlign: 'center' }}>
+              <Stack gap={24}>
+                <div style={{ 
+                  background: `linear-gradient(45deg, var(--mantine-color-${method.color}-6), var(--mantine-color-${method.color}-8))`,
+                  width: 64, 
+                  height: 64, 
+                  borderRadius: 16,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto'
+                }}>
+                  <method.icon size={32} color="white" />
                 </div>
-                <div className={`bg-gradient-to-br ${option.bgColor} p-8 rounded-3xl border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full`}>
-                  <div className={`bg-gradient-to-r ${option.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                    <option.icon className="h-8 w-8 text-white" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{option.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{option.description}</p>
-                  
-                  <button className="w-full bg-white text-gray-900 py-3 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 border border-gray-200">
-                    {option.action}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section id="contact-form" className="px-6 py-24 bg-gradient-to-br from-gray-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Send Us a Message
-            </h2>
-            <p className="text-xl text-gray-600">
-              Tell us about your PM challenges and we'll show you how PM33 can help
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-white p-10 rounded-3xl shadow-xl border border-gray-200">
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                </div>
-
+                
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Work Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                    required
-                  />
+                  <Title order={3} fw={700} mb={8}>{method.title}</Title>
+                  <Text c="dimmed" mb={16}>{method.description}</Text>
+                  <Badge size="sm" color={method.color} variant="light">
+                    {method.availability}
+                  </Badge>
                 </div>
-
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company *
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Role
-                  </label>
-                  <select
-                    id="role"
-                    name="role"
-                    className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  >
-                    <option value="">Select your role</option>
-                    <option value="product-manager">Product Manager</option>
-                    <option value="senior-pm">Senior Product Manager</option>
-                    <option value="head-of-product">Head of Product</option>
-                    <option value="vp-product">VP Product</option>
-                    <option value="cpo">Chief Product Officer</option>
-                    <option value="founder">Founder/CEO</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    What would you like to discuss?
-                  </label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {['Product Demo', 'Integration Questions', 'Enterprise Features', 'Pricing', 'Implementation', 'Other'].map((topic) => (
-                      <label key={topic} className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="topics"
-                          value={topic}
-                          className="mr-2 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                        />
-                        <span className="text-sm text-gray-700">{topic}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Tell us about your PM challenges
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                    placeholder="What PM tasks take up most of your time? What tools do you currently use?"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-8 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center"
+                
+                <Button
+                  component={method.href.startsWith('#') ? 'button' : method.href.startsWith('mailto:') ? 'a' : Link}
+                  href={method.href.startsWith('#') ? undefined : method.href}
+                  size="lg"
+                  color={method.color}
+                  radius="xl"
+                  rightSection={<IconArrowRight size={16} />}
                 >
-                  Send Message
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
+                  {method.cta}
+                </Button>
+              </Stack>
+            </Card>
+          </Grid.Col>
+        ))}
+      </Grid>
 
-                <p className="text-xs text-gray-500 text-center">
-                  We'll respond within 4 hours during business days. For urgent matters, 
-                  <Link href="/trial" className="text-indigo-600 hover:underline ml-1">start your free trial</Link> immediately.
-                </p>
-              </form>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Get Immediate Help</h3>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="bg-indigo-100 p-3 rounded-xl mr-4">
-                      <Clock className="h-6 w-6 text-indigo-600" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900">Response Time</div>
-                      <div className="text-gray-600">Within 4 hours on business days</div>
-                      <div className="text-sm text-gray-500">Monday-Friday, 9 AM - 6 PM PST</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="bg-emerald-100 p-3 rounded-xl mr-4">
-                      <Mail className="h-6 w-6 text-emerald-600" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900">Email Support</div>
-                      <div className="text-indigo-600 hover:underline">support@pm33.com</div>
-                      <div className="text-sm text-gray-500">For technical questions and support</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="bg-purple-100 p-3 rounded-xl mr-4">
-                      <MessageSquare className="h-6 w-6 text-purple-600" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900">Sales Inquiries</div>
-                      <div className="text-indigo-600 hover:underline">sales@pm33.com</div>
-                      <div className="text-sm text-gray-500">For demos and enterprise discussions</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-2xl border border-indigo-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Why PMs Love Working With Us</h3>
-                
-                <div className="space-y-4">
-                  {[
-                    "We're PMs ourselves - we get your challenges",
-                    "No pushy sales tactics, just honest conversations",
-                    "Custom onboarding for your specific workflow",
-                    "Ongoing support from our PM community"
-                  ].map((benefit, index) => (
-                    <div key={index} className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{benefit}</span>
-                    </div>
+      {/* Popular Support Topics */}
+      <Card shadow="md" padding={48} radius={16} mb={80}>
+        <Title order={2} ta="center" mb={48} fw={700}>
+          🎯 Popular Support Topics
+        </Title>
+        
+        <Grid>
+          {supportTopics.map((section, index) => (
+            <Grid.Col key={index} span={{ base: 12, md: 6 }}>
+              <Card padding="lg" radius="lg" shadow="sm" style={{ height: '100%' }}>
+                <Title order={3} mb={16} fw={700} c="var(--marketing-primary)">
+                  {section.category}
+                </Title>
+                <Stack gap={8}>
+                  {section.topics.map((topic, idx) => (
+                    <Group key={idx} gap={8}>
+                      <IconArrowRight size={14} color="var(--marketing-success)" />
+                      <Text size="sm">{topic}</Text>
+                    </Group>
                   ))}
-                </div>
+                </Stack>
+              </Card>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Card>
 
-                <div className="mt-6 p-4 bg-white rounded-xl">
-                  <div className="text-sm text-indigo-600 font-bold mb-1">Average Setup Time</div>
-                  <div className="text-2xl font-bold text-gray-900">5 minutes</div>
-                  <div className="text-sm text-gray-500">From signup to first AI insights</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Response Time Guarantee */}
+      <Card shadow="md" padding={48} radius={16} mb={80}
+            style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+        <Grid align="center">
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <IconHeadset size={80} color="var(--marketing-success)" style={{ marginBottom: 24 }} />
+            <Title order={2} fw={700} mb={24}>
+              ✅ Guaranteed Response Times
+            </Title>
+            <Stack gap={16}>
+              <Group>
+                <Badge color="green" size="lg">Enterprise</Badge>
+                <Text size="lg">24/7 Priority Support • <strong>15-minute response</strong></Text>
+              </Group>
+              <Group>
+                <Badge color="blue" size="lg">Professional</Badge>
+                <Text size="lg">Business Hours • <strong>4-hour response</strong></Text>
+              </Group>
+              <Group>
+                <Badge color="gray" size="lg">Free Trial</Badge>
+                <Text size="lg">Community Support • <strong>24-hour response</strong></Text>
+              </Group>
+            </Stack>
+          </Grid.Col>
+          
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Card padding="xl" radius="xl" shadow="lg">
+              <Stack align="center" ta="center">
+                <IconTrophy size={48} color="var(--marketing-primary)" />
+                <Title order={3} fw={700}>95% Customer Satisfaction</Title>
+                <Text c="dimmed" mb={24}>
+                  Our PM experts consistently receive 5-star ratings for strategic guidance and technical support.
+                </Text>
+                <Stack gap={8} style={{ width: '100%' }}>
+                  <Group justify="space-between">
+                    <Text size="sm">Problem Resolution</Text>
+                    <Text size="sm" fw={700}>97%</Text>
+                  </Group>
+                  <Group justify="space-between">
+                    <Text size="sm">Strategic Value Added</Text>
+                    <Text size="sm" fw={700}>94%</Text>
+                  </Group>
+                  <Group justify="space-between">
+                    <Text size="sm">Response Timeliness</Text>
+                    <Text size="sm" fw={700}>96%</Text>
+                  </Group>
+                </Stack>
+              </Stack>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Card>
 
-      {/* FAQ Section */}
-      <section className="px-6 py-24 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Quick answers to common questions about PM33
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {[
-              {
-                question: "How quickly can I get started with PM33?",
-                answer: "Most teams are up and running in under 5 minutes. Simply connect your existing PM tools (Jira, Monday, Asana), and PM33's AI immediately begins analyzing your data to provide insights."
-              },
-              {
-                question: "Do you offer custom integrations for enterprise tools?",
-                answer: "Yes! We work with enterprise teams to integrate with custom tools, internal APIs, and specialized PM platforms. Contact our sales team to discuss your specific requirements."
-              },
-              {
-                question: "What kind of support do you provide during onboarding?",
-                answer: "Every new customer gets a personalized 30-minute onboarding session with a PM expert, plus access to our comprehensive knowledge base and responsive support team."
-              },
-              {
-                question: "Can I schedule a demo before starting my trial?",
-                answer: "Absolutely! We offer personalized demos where we show PM33 working with your specific tools and use cases. Book a demo using the calendar link above."
-              },
-              {
-                question: "What if PM33 doesn't integrate with my current tools?",
-                answer: "We support 20+ major PM tools and are constantly adding new integrations. If we don't support your tool yet, contact us - we prioritize integrations based on customer demand."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{faq.question}</h3>
-                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">Still have questions?</p>
-            <Link 
-              href="/trial" 
-              className="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200"
+      {/* Office Information & Community */}
+      <Grid mb={80}>
+        <Grid.Col span={{ base: 12, lg: 6 }}>
+          <Card shadow="md" padding={32} radius={16} style={{ height: '100%' }}>
+            <Title order={3} mb={24} fw={700}>
+              🌍 Remote-First Company
+            </Title>
+            <Stack gap={16}>
+              <Group>
+                <IconMapPin size={20} />
+                <Text>Distributed team across 15+ time zones</Text>
+              </Group>
+              <Group>
+                <IconClock size={20} />
+                <Text>24/7 support coverage for Enterprise customers</Text>
+              </Group>
+              <Group>
+                <IconUsers size={20} />
+                <Text>Headquarters: San Francisco, CA</Text>
+              </Group>
+            </Stack>
+            <Divider my={24} />
+            <Title order={4} mb={16}>Legal & Compliance</Title>
+            <Text size="sm" c="dimmed">
+              <strong>PM33 Strategic Intelligence Inc.</strong><br />
+              Business Registration: Delaware, USA<br />
+              SOC 2 Type II Certified • GDPR Compliant<br />
+              Enterprise-grade security and privacy
+            </Text>
+          </Card>
+        </Grid.Col>
+        
+        <Grid.Col span={{ base: 12, lg: 6 }}>
+          <Card shadow="md" padding={32} radius={16} style={{ height: '100%' }}>
+            <Title order={3} mb={24} fw={700}>
+              💬 Join the PM33 Community
+            </Title>
+            <Stack gap={16} mb={24}>
+              <Text c="dimmed">
+                Connect with 2,500+ product managers using PM33 for strategic intelligence, 
+                best practices, and peer learning.
+              </Text>
+              <Group>
+                <IconUsers size={20} color="#0077B5" />
+                <Text>Follow us on LinkedIn for PM insights</Text>
+              </Group>
+              <Group>
+                <IconMessageCircle size={20} color="#1DA1F2" />
+                <Text>@PM33_AI for product management tips</Text>
+              </Group>
+              <Group>
+                <IconMessageCircle size={20} />
+                <Text>Slack community for peer support</Text>
+              </Group>
+            </Stack>
+            <Button 
+              component={Link}
+              href="/community"
+              variant="outline"
+              radius="xl"
+              rightSection={<IconArrowRight size={16} />}
             >
-              Start Free Trial - No Risk
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+              Join Community
+            </Button>
+          </Card>
+        </Grid.Col>
+      </Grid>
 
-      {/* Footer */}
-      <footer className="px-6 py-16 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-12">
-            <div className="md:col-span-1">
-              <div className="flex items-center mb-6">
-                <div className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">PM33</div>
-                <div className="ml-3 px-2 py-1 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-300 text-xs font-medium rounded-full border border-indigo-500/30">
-                  AI-Powered
-                </div>
-              </div>
-              <p className="text-gray-400 leading-relaxed">
-                Ready to help with your PM transformation. Reach out anytime.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Contact</h4>
-              <div className="space-y-4 text-gray-400">
-                <div>support@pm33.com</div>
-                <div>sales@pm33.com</div>
-                <div>Book a Demo</div>
-                <div>Help Center</div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Product</h4>
-              <div className="space-y-4 text-gray-400">
-                <Link href="/features" className="block hover:text-indigo-400 transition-colors">Features</Link>
-                <Link href="/pricing" className="block hover:text-indigo-400 transition-colors">Pricing</Link>
-                <Link href="/templates" className="block hover:text-indigo-400 transition-colors">Templates</Link>
-                <Link href="/security" className="block hover:text-indigo-400 transition-colors">Security</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white">Company</h4>
-              <div className="space-y-4 text-gray-400">
-                <Link href="/about" className="block hover:text-indigo-400 transition-colors">About</Link>
-                <Link href="/contact" className="block hover:text-indigo-400 transition-colors">Contact</Link>
-                <Link href="/privacy" className="block hover:text-indigo-400 transition-colors">Privacy</Link>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 PM33. We're here to help you succeed.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+      {/* Emergency Contact CTA */}
+      <Card shadow="xl" padding={64} radius={20} 
+            style={{ 
+              background: 'linear-gradient(135deg, var(--marketing-primary) 0%, purple 100%)',
+              color: 'white',
+              textAlign: 'center'
+            }}>
+        <IconRocket size={64} style={{ marginBottom: 32 }} />
+        <Title order={2} size="h1" fw={700} mb={24} style={{ color: 'white' }}>
+          Need Immediate Strategic Assistance?
+        </Title>
+        
+        <Text size="xl" mb={48} maw={700} mx="auto" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+          For urgent strategic decisions or critical product launches, our emergency PM advisory 
+          service provides same-day strategic analysis and recommendations.
+        </Text>
+        
+        <Group justify="center" gap={24}>
+          <Button 
+            component={Link}
+            href="/emergency-advisory"
+            size="xl"
+            radius="xl"
+            variant="white"
+            style={{ 
+              fontSize: '20px',
+              padding: '20px 40px',
+              height: 'auto',
+              color: 'var(--marketing-primary)'
+            }}
+            leftSection={<IconPhone size={24} />}
+          >
+            Emergency PM Advisory
+          </Button>
+          <Button 
+            component={Link}
+            href="/trial"
+            size="xl"
+            variant="outline"
+            radius="xl"
+            style={{ 
+              borderColor: 'rgba(255, 255, 255, 0.3)',
+              color: 'white',
+              fontSize: '18px',
+              padding: '18px 32px',
+              height: 'auto'
+            }}
+            rightSection={<IconArrowRight size={20} />}
+          >
+            Start Free Trial
+          </Button>
+        </Group>
+        
+        <Text mt={32} style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+          ⚙️ Available 24/7 for Enterprise customers
+        </Text>
+      </Card>
+      
+    </Container>
+  );
 }

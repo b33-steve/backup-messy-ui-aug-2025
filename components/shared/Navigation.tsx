@@ -25,12 +25,12 @@ export default function Navigation() {
   };
 
   const navLinks = [
-    { href: '/strategic-intelligence', label: '🧠 Strategic Intelligence', special: true, description: 'AI-powered strategic analysis' },
-    { href: '/command-center', label: '🎯 Command Center', special: true, description: '4 AI teams orchestration' },
-    { href: '/resource-optimizer', label: '💡 Resource Optimizer', special: true, demo: true, description: 'Coming soon - Resource allocation' },
-    { href: '/strategic-dashboard', label: '📊 Strategic Dashboard', special: true, demo: true, description: 'Coming soon - Executive insights' },
+    { href: '/features', label: 'Features', description: 'PM33 capabilities' },
+    { href: '/blog', label: 'Blog', description: 'Strategic insights and updates' },
     { href: '/pricing', label: 'Pricing', description: 'Simple, transparent pricing' },
-    { href: '/about', label: 'About', description: 'Learn about PM33' }
+    { href: '/about', label: 'About', description: 'Learn about PM33' },
+    { href: '/contact', label: 'Contact', description: 'Get in touch' },
+    { href: '/command-center-demo', label: 'Demo', special: true, description: 'See PM33 in action' }
   ];
 
   return (
@@ -45,22 +45,28 @@ export default function Navigation() {
         borderBottom: '1px solid rgba(229, 231, 235, 0.5)'
       }}
     >
-      <Container size={1200} px={24}>
-        <Group h={56} justify="space-between">
+      <Container size={1200} px={24} py={16}>
+        <Group h={64} justify="space-between" align="center">
           {/* Logo Section */}
-          <Group>
+          <Group gap={16} align="center">
             <Anchor component={Link} href="/" style={{ textDecoration: 'none' }}>
-              <Group gap={12}>
-                <img src="/pm33-logo.png" alt="PM33 Strategic Intelligence Platform Logo" style={{ height: '32px' }} />
-              </Group>
+              <img 
+                src="/pm33-logo.png" 
+                alt="PM33 Strategic Intelligence Platform Logo" 
+                style={{ 
+                  height: '36px',
+                  width: 'auto',
+                  objectFit: 'contain'
+                }} 
+              />
             </Anchor>
             <Badge
               size="sm"
               variant="gradient"
-              gradient={{ from: 'teal', to: 'green' }}
-              style={{ marginLeft: 8 }}
+              gradient={{ from: 'indigo', to: 'purple' }}
+              radius="lg"
             >
-              Strategic AI Co-Pilot
+              AI Product Management
             </Badge>
           </Group>
 
