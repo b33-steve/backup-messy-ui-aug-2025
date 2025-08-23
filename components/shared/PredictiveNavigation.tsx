@@ -51,7 +51,7 @@ import {
   IconCommand,
   IconKeyboard,
   IconBolt,
-  IconMagic,
+  IconWand,
   IconRoute
 } from '@tabler/icons-react';
 import { usePM33UX } from './PM33UXProvider';
@@ -486,7 +486,7 @@ export const SmartBreadcrumbs: React.FC<SmartBreadcrumbsProps> = ({
             {getSmartSuggestions().map((suggestion, index) => (
               <Menu.Item
                 key={index}
-                leftSection={<IconMagic size={14} />}
+                leftSection={<IconWand size={14} />}
                 onClick={() => handleBreadcrumbClick(suggestion.path, suggestion.label)}
               >
                 <Group justify="space-between">

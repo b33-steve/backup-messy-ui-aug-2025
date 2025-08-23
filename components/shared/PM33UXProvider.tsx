@@ -19,8 +19,8 @@ import {
   IconRocket,
   IconTarget,
   IconHeart,
-  IconConfetti,
-  IconMagic,
+  IconSparkles as IconConfetti,
+  IconWand,
   IconBrain
 } from '@tabler/icons-react';
 
