@@ -197,12 +197,12 @@ const ChatPage: React.FC = () => {
                   disabled={!query.trim()}
                   className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
                   onClick={() => {
-                    // TODO: Implement AI analysis
-                    console.log('Analyzing:', query);
+                    // Navigate to strategic chat with pre-filled question
+                    window.location.href = `/chat/strategic?q=${encodeURIComponent(query)}`;
                   }}
                 >
                   <Brain className="mr-2 h-5 w-5" />
-                  Generate Analysis
+                  Start Strategic Chat
                 </Button>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
                   ⚡ AI-powered analysis with framework application
