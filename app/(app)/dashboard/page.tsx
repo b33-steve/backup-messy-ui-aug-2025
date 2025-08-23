@@ -24,7 +24,8 @@ import {
   Sparkles,
   Target,
   Check,
-  Star
+  Star,
+  Link2
 } from 'lucide-react';
 import Link from 'next/link';
 import CoreAppNavigation from '../../../components/app/CoreAppNavigation';
@@ -58,6 +59,8 @@ interface StrategicRecommendation {
 
 export default function PMCommandCenter() {
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isConnectedToJira, setIsConnectedToJira] = useState(false);
+  const [jiraWorkspace, setJiraWorkspace] = useState<string | null>(null);
   const [userContext, setUserContext] = useState<UserContext>({
     name: 'Sarah',
     timeOfDay: 'morning',
@@ -109,6 +112,38 @@ export default function PMCommandCenter() {
       estimatedTime: '5 min review'
     }
   ]);
+
+  // OAuth functionality
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const connected = localStorage.getItem('pm33_demo_jira_connected') === 'true';
+      const workspace = localStorage.getItem('pm33_demo_jira_workspace');
+      setIsConnectedToJira(connected);
+      setJiraWorkspace(workspace);
+    }
+  }, []);
+
+  const handleConnectJira = () => {
+    const setupMessage = `🔧 PM33 OAuth Setup Instructions for Jira
+
+To connect your real Jira workspace:
+1. Go to: https://developer.atlassian.com/console/myapps/
+2. Click "Create" → "OAuth 2.0 (3LO)" 
+3. Add redirect URI: http://localhost:3000/api/integrations/oauth/callback/jira
+
+📝 Currently in DEMO MODE
+Click OK to simulate a successful connection.`;
+
+    if (confirm(setupMessage)) {
+      alert(`✅ Demo Connection Successful!
+
+Jira workspace "Demo Company" connected!`);
+      localStorage.setItem('pm33_demo_jira_connected', 'true');
+      localStorage.setItem('pm33_demo_jira_workspace', 'Demo Company');
+      setIsConnectedToJira(true);
+      setJiraWorkspace('Demo Company');
+    }
+  };
 
   const getContextualGreeting = () => {
     const { name, timeOfDay, completedToday, totalToday } = userContext;
@@ -242,6 +277,71 @@ export default function PMCommandCenter() {
                         <p className="text-sm text-slate-500 dark:text-slate-400">Strategic Score</p>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* OAuth Integration Section */}
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                    <Link2 className="h-5 w-5" />
+                    PM Tool Integrations
+                  </h2>
+                  <Badge variant={isConnectedToJira ? "default" : "secondary"} className="text-sm">
+                    {isConnectedToJira ? "Connected" : "Not Connected"}
+                  </Badge>
+                </div>
+                
+                <div className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span className="text-white font-bold text-lg">J</span>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                          Atlassian Jira
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400">
+                          {isConnectedToJira 
+                            ? `Connected to: ${jiraWorkspace}` 
+                            : 'Connect your Jira workspace for task automation'
+                          }
+                        </p>
+                      </div>
+                    </div>
+
+                    <Button
+                      onClick={handleConnectJira}
+                      size="sm"
+                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                    >
+                      Connect Jira
+                    </Button>
+                  </div>
+
+                  {isConnectedToJira && (
+                    <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                      <div className="flex items-center mb-2">
+                        <Check className="text-green-600 text-sm h-4 w-4 mr-2" />
+                        <h4 className="font-medium text-green-800 dark:text-green-200">Active Integration</h4>
+                      </div>
+                      <p className="text-sm text-green-700 dark:text-green-300">
+                        Ready for task automation and strategic workflow execution
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-2 text-sm text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 px-3 py-2 rounded-full">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    Currently in Demo Mode
                   </div>
                 </div>
               </div>
