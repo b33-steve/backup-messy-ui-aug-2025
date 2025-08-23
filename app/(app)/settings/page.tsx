@@ -1,436 +1,201 @@
+/**
+ * Component: SettingsPage
+ * Design Reference: APP_THEME_GUIDE.md - Core app design system
+ * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Settings interface patterns
+ * Relevant Files: components/ui/card.tsx, components/ui/button.tsx, components/ui/tabs.tsx, components/integrations/IntegrationOAuthButton.tsx
+ */
+
 'use client';
 
-import React, { useState } from 'react';
-import { 
-  Container, 
-  Card, 
-  Title, 
-  Text, 
-  Group, 
-  Stack, 
-  Button, 
-  Box,
-  TextInput,
-  Select,
-  Switch,
-  Tabs,
-  Divider,
-  Avatar,
-  FileInput
-} from '@mantine/core';
-import { 
-  IconSettings, 
-  IconUser,
-  IconBell,
-  IconShield,
-  IconPalette,
-  IconDatabase,
-  IconUpload,
-  IconKey
-} from '@tabler/icons-react';
-import AppNavigation from '../../../components/app/AppNavigation';
-import { useDesignSystem } from '../../../components/app/DesignSystemProvider';
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Settings, User, Shield, Bell, Zap } from 'lucide-react';
+// Temporarily commenting out OAuth imports to isolate issue
+// import IntegrationOAuthButton from '../../../components/integrations/IntegrationOAuthButton';
+// import { IntegrationProvider, IntegrationConfig, IntegrationStatus } from '../../../lib/integrations/types';
+// import { oauthService } from '../../../lib/integrations/oauth-service';
 
-export default function SettingsPage() {
-  const { theme } = useDesignSystem();
-  const [notifications, setNotifications] = useState({
-    insights: true,
-    projects: true,
-    security: false,
-    marketing: false
-  });
+const SettingsPage: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('integrations');
+  // const [connectedIntegrations, setConnectedIntegrations] = useState<IntegrationConfig[]>([]);
+  const [isConnecting, setIsConnecting] = useState<string | null>(null);
+
+  // Handle initial tab state from URL on component mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tab = urlParams.get('tab');
+      console.log('URL tab parameter:', tab);
+      if (tab === 'integrations') {
+        console.log('Setting active tab to integrations');
+        setActiveTab('integrations');
+      }
+    }
+  }, []);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('Active tab changed to:', activeTab);
+  }, [activeTab]);
+
+  // Placeholder integration configurations
+  const integrationConfigs = [
+    {
+      name: 'Jira',
+      description: 'Connect your Atlassian Jira workspace for automated task creation and project management.'
+    },
+    {
+      name: 'Linear',
+      description: 'Integrate with Linear for streamlined issue tracking and sprint planning.'
+    },
+    {
+      name: 'Monday.com',
+      description: 'Connect Monday.com for visual project management and team collaboration.'
+    },
+    {
+      name: 'Asana',
+      description: 'Integrate with Asana for task management and team productivity.'
+    }
+  ];
 
   return (
-    <Box style={{ minHeight: '100vh', backgroundColor: theme.colors.bgSecondary }}>
-      <AppNavigation />
-      
-      <Container size={1000} py={32}>
-        <Stack gap={32}>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <div className="container mx-auto px-6 py-12 max-w-7xl">
+        <div className="space-y-8">
           {/* Header */}
-          <Stack gap={8}>
-            <Group>
-              <IconSettings size={32} style={{ color: theme.colors.primary }} />
-              <Stack gap={4}>
-                <Title order={1} fw={700} style={{ color: theme.colors.textPrimary, fontSize: '28px' }}>
-                  Settings & Preferences
-                </Title>
-                <Text size="lg" style={{ color: theme.colors.textSecondary }}>
-                  Customize your PM33 strategic intelligence experience
-                </Text>
-              </Stack>
-            </Group>
-          </Stack>
+          <div className="space-y-2">
+            <div className="flex items-center gap-4">
+              <Settings className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <div className="space-y-1">
+                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
+                  Settings
+                </h1>
+                <p className="text-lg text-slate-600 dark:text-slate-400">
+                  Manage your account preferences and integrations
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Settings Tabs */}
-          <Tabs defaultValue="account" variant="outline">
-            <Tabs.List>
-              <Tabs.Tab value="account" leftSection={<IconUser size={16} />}>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="account" className="flex items-center gap-2">
+                <User className="h-4 w-4" />
                 Account
-              </Tabs.Tab>
-              <Tabs.Tab value="notifications" leftSection={<IconBell size={16} />}>
-                Notifications
-              </Tabs.Tab>
-              <Tabs.Tab value="security" leftSection={<IconShield size={16} />}>
-                Security
-              </Tabs.Tab>
-              <Tabs.Tab value="integrations" leftSection={<IconDatabase size={16} />}>
+              </TabsTrigger>
+              <TabsTrigger value="integrations" className="flex items-center gap-2">
+                <Zap className="h-4 w-4" />
                 Integrations
-              </Tabs.Tab>
-            </Tabs.List>
+              </TabsTrigger>
+              <TabsTrigger value="notifications" className="flex items-center gap-2">
+                <Bell className="h-4 w-4" />
+                Notifications
+              </TabsTrigger>
+              <TabsTrigger value="security" className="flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                Security
+              </TabsTrigger>
+            </TabsList>
 
-            <Tabs.Panel value="account" pt="xl">
-              <Stack gap={24}>
-                {/* Profile Card */}
-                <Card 
-                  p={32}
-                  radius={12}
-                  shadow="sm"
-                  style={{ 
-                    backgroundColor: theme.colors.bgPrimary,
-                    border: `1px solid ${theme.colors.bgAccent}`
-                  }}
-                >
-                  <Stack gap={24}>
-                    <Title order={3} fw={600} style={{ color: theme.colors.textPrimary }}>
-                      Profile Information
-                    </Title>
-                    
-                    <Group gap={24} align="flex-start">
-                      <Stack align="center" gap={16}>
-                        <Avatar size={80} radius="xl" color="blue">
-                          <IconUser size={32} />
-                        </Avatar>
-                        <FileInput
-                          leftSection={<IconUpload size={16} />}
-                          placeholder="Upload photo"
-                          size="sm"
-                          variant="subtle"
-                        />
-                      </Stack>
-                      
-                      <Stack gap={16} style={{ flex: 1 }}>
-                        <Group gap={16}>
-                          <TextInput
-                            label="First Name"
-                            placeholder="John"
-                            style={{ flex: 1 }}
-                            styles={{
-                              label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                              input: { 
-                                backgroundColor: theme.colors.bgTertiary,
-                                border: `1px solid ${theme.colors.bgAccent}`,
-                                '&:focus': { borderColor: theme.colors.primary }
-                              }
-                            }}
-                          />
-                          <TextInput
-                            label="Last Name"
-                            placeholder="Doe"
-                            style={{ flex: 1 }}
-                            styles={{
-                              label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                              input: { 
-                                backgroundColor: theme.colors.bgTertiary,
-                                border: `1px solid ${theme.colors.bgAccent}`,
-                                '&:focus': { borderColor: theme.colors.primary }
-                              }
-                            }}
-                          />
-                        </Group>
-                        
-                        <TextInput
-                          label="Email Address"
-                          placeholder="john.doe@company.com"
-                          styles={{
-                            label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                            input: { 
-                              backgroundColor: theme.colors.bgTertiary,
-                              border: `1px solid ${theme.colors.bgAccent}`,
-                              '&:focus': { borderColor: theme.colors.primary }
-                            }
-                          }}
-                        />
-                        
-                        <Group gap={16}>
-                          <TextInput
-                            label="Job Title"
-                            placeholder="Senior Product Manager"
-                            style={{ flex: 1 }}
-                            styles={{
-                              label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                              input: { 
-                                backgroundColor: theme.colors.bgTertiary,
-                                border: `1px solid ${theme.colors.bgAccent}`,
-                                '&:focus': { borderColor: theme.colors.primary }
-                              }
-                            }}
-                          />
-                          <Select
-                            label="Time Zone"
-                            placeholder="Select timezone"
-                            data={['UTC-8 (PST)', 'UTC-5 (EST)', 'UTC+0 (GMT)', 'UTC+1 (CET)']}
-                            style={{ flex: 1 }}
-                            styles={{
-                              label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                              input: { 
-                                backgroundColor: theme.colors.bgTertiary,
-                                border: `1px solid ${theme.colors.bgAccent}`,
-                                '&:focus': { borderColor: theme.colors.primary }
-                              }
-                            }}
-                          />
-                        </Group>
-                      </Stack>
-                    </Group>
-                    
-                    <Group justify="flex-end">
-                      <Button variant="outline" color="gray">
-                        Cancel
-                      </Button>
-                      <Button
-                        style={{
-                          backgroundColor: theme.colors.primary,
-                          '&:hover': { backgroundColor: theme.colors.primaryHover }
-                        }}
-                      >
-                        Save Changes
-                      </Button>
-                    </Group>
-                  </Stack>
-                </Card>
-              </Stack>
-            </Tabs.Panel>
-
-            <Tabs.Panel value="notifications" pt="xl">
-              <Card 
-                p={32}
-                radius={12}
-                shadow="sm"
-                style={{ 
-                  backgroundColor: theme.colors.bgPrimary,
-                  border: `1px solid ${theme.colors.bgAccent}`
-                }}
-              >
-                <Stack gap={24}>
-                  <Title order={3} fw={600} style={{ color: theme.colors.textPrimary }}>
-                    Notification Preferences
-                  </Title>
-                  
-                  <Stack gap={20}>
-                    <Group justify="space-between">
-                      <Stack gap={4}>
-                        <Text fw={500} style={{ color: theme.colors.textPrimary }}>
-                          Strategic Intelligence Alerts
-                        </Text>
-                        <Text size="sm" style={{ color: theme.colors.textTertiary }}>
-                          Get notified when AI generates new strategic insights
-                        </Text>
-                      </Stack>
-                      <Switch
-                        checked={notifications.insights}
-                        onChange={(event) => setNotifications({...notifications, insights: event.currentTarget.checked})}
-                        color="blue"
-                      />
-                    </Group>
-                    
-                    <Divider />
-                    
-                    <Group justify="space-between">
-                      <Stack gap={4}>
-                        <Text fw={500} style={{ color: theme.colors.textPrimary }}>
-                          Project Updates
-                        </Text>
-                        <Text size="sm" style={{ color: theme.colors.textTertiary }}>
-                          Receive updates about project status changes and deadlines
-                        </Text>
-                      </Stack>
-                      <Switch
-                        checked={notifications.projects}
-                        onChange={(event) => setNotifications({...notifications, projects: event.currentTarget.checked})}
-                        color="blue"
-                      />
-                    </Group>
-                    
-                    <Divider />
-                    
-                    <Group justify="space-between">
-                      <Stack gap={4}>
-                        <Text fw={500} style={{ color: theme.colors.textPrimary }}>
-                          Security Alerts
-                        </Text>
-                        <Text size="sm" style={{ color: theme.colors.textTertiary }}>
-                          Important security and account notifications
-                        </Text>
-                      </Stack>
-                      <Switch
-                        checked={notifications.security}
-                        onChange={(event) => setNotifications({...notifications, security: event.currentTarget.checked})}
-                        color="blue"
-                      />
-                    </Group>
-                    
-                    <Divider />
-                    
-                    <Group justify="space-between">
-                      <Stack gap={4}>
-                        <Text fw={500} style={{ color: theme.colors.textPrimary }}>
-                          Product Updates
-                        </Text>
-                        <Text size="sm" style={{ color: theme.colors.textTertiary }}>
-                          News about new features and platform improvements
-                        </Text>
-                      </Stack>
-                      <Switch
-                        checked={notifications.marketing}
-                        onChange={(event) => setNotifications({...notifications, marketing: event.currentTarget.checked})}
-                        color="blue"
-                      />
-                    </Group>
-                  </Stack>
-                </Stack>
+            {/* Account Tab */}
+            <TabsContent value="account" className="space-y-4 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <User className="h-5 w-5" />
+                    Account Settings
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-slate-600 dark:text-slate-400">
+                    Manage your profile, preferences, and personal information.
+                  </p>
+                  <Button variant="outline">Edit Profile</Button>
+                </CardContent>
               </Card>
-            </Tabs.Panel>
+            </TabsContent>
 
-            <Tabs.Panel value="security" pt="xl">
-              <Stack gap={24}>
-                <Card 
-                  p={32}
-                  radius={12}
-                  shadow="sm"
-                  style={{ 
-                    backgroundColor: theme.colors.bgPrimary,
-                    border: `1px solid ${theme.colors.bgAccent}`
-                  }}
-                >
-                  <Stack gap={24}>
-                    <Title order={3} fw={600} style={{ color: theme.colors.textPrimary }}>
-                      Password & Authentication
-                    </Title>
-                    
-                    <Stack gap={16}>
-                      <TextInput
-                        label="Current Password"
-                        type="password"
-                        placeholder="••••••••"
-                        styles={{
-                          label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                          input: { 
-                            backgroundColor: theme.colors.bgTertiary,
-                            border: `1px solid ${theme.colors.bgAccent}`,
-                            '&:focus': { borderColor: theme.colors.primary }
-                          }
-                        }}
-                      />
-                      
-                      <Group gap={16}>
-                        <TextInput
-                          label="New Password"
-                          type="password"
-                          placeholder="••••••••"
-                          style={{ flex: 1 }}
-                          styles={{
-                            label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                            input: { 
-                              backgroundColor: theme.colors.bgTertiary,
-                              border: `1px solid ${theme.colors.bgAccent}`,
-                              '&:focus': { borderColor: theme.colors.primary }
-                            }
-                          }}
-                        />
-                        <TextInput
-                          label="Confirm Password"
-                          type="password"
-                          placeholder="••••••••"
-                          style={{ flex: 1 }}
-                          styles={{
-                            label: { color: theme.colors.textSecondary, fontWeight: 500 },
-                            input: { 
-                              backgroundColor: theme.colors.bgTertiary,
-                              border: `1px solid ${theme.colors.bgAccent}`,
-                              '&:focus': { borderColor: theme.colors.primary }
-                            }
-                          }}
-                        />
-                      </Group>
-                    </Stack>
-                    
-                    <Group justify="flex-end">
-                      <Button
-                        style={{
-                          backgroundColor: theme.colors.primary,
-                          '&:hover': { backgroundColor: theme.colors.primaryHover }
-                        }}
-                      >
-                        Update Password
-                      </Button>
-                    </Group>
-                  </Stack>
-                </Card>
-              </Stack>
-            </Tabs.Panel>
-
-            <Tabs.Panel value="integrations" pt="xl">
-              <Card 
-                p={32}
-                radius={12}
-                shadow="sm"
-                style={{ 
-                  backgroundColor: theme.colors.bgPrimary,
-                  border: `1px solid ${theme.colors.bgAccent}`
-                }}
-              >
-                <Stack gap={24}>
-                  <Title order={3} fw={600} style={{ color: theme.colors.textPrimary }}>
-                    Tool Integrations
-                  </Title>
+            {/* Integrations Tab */}
+            <TabsContent value="integrations" className="space-y-4 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Zap className="h-5 w-5" />
+                    PM Tool Integrations
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-slate-600 dark:text-slate-400">
+                    Connect your PM tools to enable automated task creation from strategic analysis.
+                  </p>
                   
-                  <Text size="sm" style={{ color: theme.colors.textTertiary }}>
-                    Connect your existing PM tools to supercharge them with AI intelligence
-                  </Text>
-                  
-                  <Stack gap={16}>
-                    {['Jira', 'Monday.com', 'Asana', 'Linear', 'Notion'].map((tool) => (
-                      <Group key={tool} justify="space-between" p={16} style={{ 
-                        backgroundColor: theme.colors.bgTertiary,
-                        borderRadius: '8px',
-                        border: `1px solid ${theme.colors.bgAccent}`
-                      }}>
-                        <Group>
-                          <Box
-                            style={{
-                              width: 40,
-                              height: 40,
-                              borderRadius: '8px',
-                              backgroundColor: theme.colors.primary,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}
+                  {/* Placeholder Integration Buttons */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {integrationConfigs.map((config, index) => (
+                      <div key={index} className="p-4 border rounded-lg">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h4 className="font-semibold">{config.name}</h4>
+                            <p className="text-sm text-slate-600 mt-1">{config.description}</p>
+                          </div>
+                          <Button 
+                            variant="outline" 
+                            onClick={() => alert(`OAuth flow would initiate for ${config.name}`)}
                           >
-                            <IconKey size={20} color="white" />
-                          </Box>
-                          <Stack gap={2}>
-                            <Text fw={500} style={{ color: theme.colors.textPrimary }}>
-                              {tool}
-                            </Text>
-                            <Text size="sm" style={{ color: theme.colors.textTertiary }}>
-                              Connect your {tool} workspace
-                            </Text>
-                          </Stack>
-                        </Group>
-                        
-                        <Button variant="outline" size="sm">
-                          Connect
-                        </Button>
-                      </Group>
+                            Connect {config.name}
+                          </Button>
+                        </div>
+                      </div>
                     ))}
-                  </Stack>
-                </Stack>
+                  </div>
+                </CardContent>
               </Card>
-            </Tabs.Panel>
+            </TabsContent>
+
+            {/* Notifications Tab */}
+            <TabsContent value="notifications" className="space-y-4 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Bell className="h-5 w-5" />
+                    Notification Settings
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-slate-600 dark:text-slate-400">
+                    Configure alerts and updates for strategic analysis and task creation.
+                  </p>
+                  <Button variant="outline">Configure Notifications</Button>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Security Tab */}
+            <TabsContent value="security" className="space-y-4 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Shield className="h-5 w-5" />
+                    Security Settings
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-slate-600 dark:text-slate-400">
+                    Manage your password, two-factor authentication, and security preferences.
+                  </p>
+                  <Button variant="outline">Manage Security</Button>
+                </CardContent>
+              </Card>
+            </TabsContent>
           </Tabs>
-        </Stack>
-      </Container>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default SettingsPage;
