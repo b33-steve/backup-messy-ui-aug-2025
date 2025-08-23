@@ -1,317 +1,457 @@
 'use client';
 
-import { Container, Title, Text, Button, Card, Group, List, Stack, Badge, Grid, Divider } from '@mantine/core';
-import { IconRocket, IconBrain, IconTarget, IconShield, IconClock, IconTrendingUp, IconUsers, IconChartLine } from '@tabler/icons-react';
+import React from 'react';
+import { Container, Grid, Card, Title, Text, Button, Group, Stack, Badge, SimpleGrid, Box, Center, ThemeIcon } from '@mantine/core';
+import { IconArrowRight, IconCheck, IconBolt, IconBrain, IconClock, IconTrendingUp, IconSparkles, IconTarget, IconUsers, IconBulb, IconCircleCheck } from '@tabler/icons-react';
 import Link from 'next/link';
-// import CompanyCarousel from '../../components/shared/CompanyCarousel';
-// import { trackCAC } from '../../lib/posthog'; // Temporarily disabled for compatibility
+// Temporarily removed broken imports - will be fixed in next deployment
+// import Navigation from '../components/Navigation';  
+// import Footer from '../components/Footer';
 
-/**
- * Component: PM33 Homepage - Optimized for Maximum Conversion
- * Design Reference: PM33 Sales Playbook integration with Marketing Design System
- * Sales Strategy: Hook > Problem > Solution > Demo > ROI > Risk Reversal > CTA
- * 
- * Optimization Focus:
- * - [ ] Sales Playbook messaging integration
- * - [ ] Multi-audience value propositions
- * - [ ] Strategic transformation positioning
- * - [ ] Demo funnel integration
- * - [ ] Conversion rate optimization
- */
-
-export default function OptimizedHomepage() {
+export default function HomePage() {
   return (
-    <Container size={1400} px={24} py={40}>
-      <div className="marketing-context">
-        
-        {/* HERO SECTION: Sales Playbook Hook */}
-        <Card shadow="xl" padding={64} radius={20} mb={60} 
-              style={{ 
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: 'white',
-                textAlign: 'center'
-              }}>
-          <Title order={1} size="64px" fw={900} mb={32}>
-            Transform from Reactive Product Manager to Strategic PMO Leader in 30 Days
-          </Title>
-          
-          <Text size="xl" mb={40} maw={800} mx="auto">
-            PM33: Your AI Strategy Copilot - Think McKinsey + PM mentor + Data scientist in one platform
-          </Text>
-          
-          <Group justify="center" gap={32} mt={48}>
-            <Button 
-              component={Link}
-              href="/trial"
-              size="xl"
-              radius="xl"
-              style={{ 
-                backgroundColor: 'var(--marketing-cta)',
-                fontSize: '20px',
-                padding: '20px 48px',
-                height: 'auto'
-              }}
-              leftSection={<IconRocket size={24} />}
-              onClick={() => {
-                // Track trial signup initiation for $100K MRR funnel
-                console.log('Trial signup started from homepage hero');
-              }}
+    <Box>
+      {/* <Navigation /> */}
+
+      {/* Hero Section - Clean, Professional, Inspired by Linear/Stripe */}
+      <Box 
+        py={120}
+        style={{ 
+          background: 'linear-gradient(135deg, #f8faff 0%, #ffffff 100%)',
+          borderBottom: '1px solid #e5e7eb'
+        }}
+      >
+        <Container size={1200}>
+          <Stack align="center" gap={48}>
+            <Badge 
+              size="lg" 
+              variant="light" 
+              color="indigo"
+              leftSection={<IconSparkles size={16} />}
             >
-              Start Free 14-Day Trial
-            </Button>
+              Trusted by 2,500+ Product Managers
+            </Badge>
             
-            <Button 
-              component={Link}
-              href="/trial"
-              size="xl"
-              variant="outline"
-              radius="xl"
-              style={{ 
-                borderColor: 'rgba(255, 255, 255, 0.8)',
-                color: 'white',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                fontSize: '18px',
-                padding: '18px 40px',
-                height: 'auto'
-              }}
-              leftSection={<IconBrain size={20} />}
-              onClick={() => {
-                // Track demo interest for conversion analysis
-                console.log('Demo interest from homepage');
-              }}
-            >
-              See Live Demo
-            </Button>
-          </Group>
-          
-          <Text size="sm" mt={24} opacity={0.9}>
-            No credit card required • 2-minute setup • Instant strategic value
-          </Text>
-        </Card>
-
-        {/* PROBLEM AGITATION: Weekly PM Pain Points */}
-        <Card shadow="md" padding={48} radius={16} mb={60}>
-          <Title order={2} size="48px" fw={700} mb={32} ta="center">
-            Are You Stuck in the Tactical Trap?
-          </Title>
-          
-          <Grid>
-            <Grid.Col span={{ base: 12, md: 6 }}>
-              <Stack gap="lg">
-                <Group>
-                  <IconClock color="var(--marketing-cta)" size={32} />
-                  <Text size="lg">16+ hours/week on "strategic" analysis that competitors ignore</Text>
-                </Group>
-                <Group>
-                  <IconUsers color="var(--marketing-cta)" size={32} />
-                  <Text size="lg">Arguing about resource allocation with gut feelings, not data</Text>
-                </Group>
-                <Group>
-                  <IconChartLine color="var(--marketing-cta)" size={32} />
-                  <Text size="lg">Building roadmaps that competitors outmaneuver in weeks</Text>
-                </Group>
-              </Stack>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 6 }}>
-              <Card padding="xl" style={{ backgroundColor: 'var(--marketing-cta)', color: 'white' }}>
-                <Title order={3} mb={16}>The Strategic Reality:</Title>
-                <Text size="lg" mb={16}>
-                  While you spend 40% of your time on analysis, your competitors are using AI to make strategic decisions in minutes.
+            <Stack align="center" gap={24} maw={800}>
+              <Title 
+                order={1} 
+                size="h1"
+                ta="center"
+                fw={700}
+                lh={1.1}
+                style={{ fontSize: '64px', letterSpacing: '-0.02em' }}
+              >
+                Don't Replace Your PM Tools—
+                <Text 
+                  span 
+                  variant="gradient" 
+                  gradient={{ from: 'indigo', to: 'cyan' }}
+                  style={{ display: 'block', marginTop: 12 }}
+                >
+                  Make Them 10x Smarter
                 </Text>
-                <Badge size="xl" variant="white" color="orange">
-                  You're fighting 2025 battles with 1990s tools
-                </Badge>
-              </Card>
-            </Grid.Col>
-          </Grid>
-        </Card>
+              </Title>
+              
+              <Text size="xl" c="dimmed" ta="center" maw={600} lh={1.6} style={{ fontSize: '22px' }}>
+                Transform Jira, Monday.com, and Asana into AI-powered strategic engines. 
+                <Text span fw={600} c="indigo.6"> No migration headaches.</Text> Immediate productivity gains.
+              </Text>
+            </Stack>
+            
+            <Group gap={24}>
+              <Button 
+                component={Link}
+                href="/trial"
+                size="xl"
+                h={56}
+                px={32}
+                variant="gradient"
+                gradient={{ from: 'indigo', to: 'purple' }}
+                rightSection={<IconArrowRight size={20} />}
+                style={{ borderRadius: 12, fontSize: '16px', fontWeight: 600 }}
+              >
+                Start Free 14-Day Trial
+              </Button>
+              <Button 
+                component={Link}
+                href="/strategic-intelligence"
+                size="xl"
+                h={56}
+                px={32}
+                variant="outline"
+                color="indigo"
+                leftSection={<IconBulb size={20} />}
+                style={{ borderRadius: 12, fontSize: '16px', fontWeight: 600 }}
+              >
+                Try Live Demo
+              </Button>
+            </Group>
+            
+            <Group gap={40}>
+              <Group gap={12}>
+                <IconCheck size={18} color="var(--mantine-color-teal-6)" />
+                <Text size="sm" c="dimmed" fw={500}>No credit card required</Text>
+              </Group>
+              <Group gap={12}>
+                <IconCheck size={18} color="var(--mantine-color-teal-6)" />
+                <Text size="sm" c="dimmed" fw={500}>Setup in 5 minutes</Text>
+              </Group>
+              <Group gap={12}>
+                <IconCheck size={18} color="var(--mantine-color-teal-6)" />
+                <Text size="sm" c="dimmed" fw={500}>Cancel anytime</Text>
+              </Group>
+            </Group>
+          </Stack>
+        </Container>
+      </Box>
 
-        {/* SOLUTION: PM33 AI Strategy Copilot */}
-        <Card shadow="md" padding={48} radius={16} mb={60}>
-          <Title order={2} size="48px" fw={700} mb={32} ta="center">
-            PM33: Your AI Strategy Copilot - Think McKinsey + PM mentor + Data scientist in one platform
-          </Title>
-          
-          <Text size="xl" ta="center" mb={48} maw={1000} mx="auto">
-            4 specialized AI teams working together to transform you from reactive Product Manager 
-            into strategic PMO leader with McKinsey-level analysis capabilities.
-          </Text>
-          
-          <Grid>
-            <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-              <Card padding="lg" shadow="sm" h="100%">
-                <IconBrain size={48} color="var(--marketing-primary)" />
-                <Title order={4} mt="sm">Strategic Intelligence AI</Title>
-                <Text size="sm" c="dimmed">
-                  Multi-framework analysis (ICE, RICE, Porter's Five Forces) with competitive intelligence
-                </Text>
+      {/* Demo Section - Clean Cards */}
+      <Box py={96} bg="white">
+        <Container size={1200}>
+          <Stack align="center" gap={64}>
+            <Stack align="center" gap={24} maw={700}>
+              <Badge size="lg" color="indigo" variant="light">
+                ✨ Live Demo Experience
+              </Badge>
+              <Title order={2} size="h2" ta="center" fw={700} style={{ fontSize: '48px' }}>
+                See PM33 in Action
+              </Title>
+              <Text size="lg" c="dimmed" ta="center" lh={1.6}>
+                Experience the full power of AI-driven product management with our interactive demo workflows.
+              </Text>
+            </Stack>
+            
+            <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32} w="100%">
+              {/* Strategic Intelligence Demo */}
+              <Card 
+                shadow="lg" 
+                radius={16}
+                p={40}
+                component={Link}
+                href="/strategic-intelligence"
+                style={{ 
+                  backgroundColor: 'white',
+                  border: '1px solid var(--mantine-color-gray-2)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  height: '100%'
+                }}
+                className="hover:shadow-2xl hover:translate-y-[-4px]"
+              >
+                <Stack gap={24}>
+                  <Group>
+                    <ThemeIcon size={56} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }} radius={12}>
+                      <IconBrain size={28} />
+                    </ThemeIcon>
+                    <Stack gap={4} style={{ flex: 1 }}>
+                      <Text fw={700} size="xl">Strategic Intelligence Engine</Text>
+                      <Badge color="green" variant="light" size="sm">✅ Ready to Try</Badge>
+                    </Stack>
+                  </Group>
+                  
+                  <Text c="dimmed" lh={1.6} size="md">
+                    Transform strategic questions into executable workflows with automated priority scoring and AI analysis
+                  </Text>
+                  
+                  <Stack gap={12}>
+                    <Group gap={8}>
+                      <IconCheck size={16} color="var(--mantine-color-indigo-6)" />
+                      <Text size="sm" fw={500} c="indigo.6">Multi-framework analysis</Text>
+                    </Group>
+                    <Group gap={8}>
+                      <IconCheck size={16} color="var(--mantine-color-indigo-6)" />
+                      <Text size="sm" fw={500} c="indigo.6">Confidence-scored recommendations</Text>
+                    </Group>
+                    <Group gap={8}>
+                      <IconCheck size={16} color="var(--mantine-color-indigo-6)" />
+                      <Text size="sm" fw={500} c="indigo.6">Predictive outcome modeling</Text>
+                    </Group>
+                  </Stack>
+                  
+                  <Button 
+                    variant="light"
+                    fullWidth
+                    rightSection={<IconArrowRight size={16} />}
+                    style={{ marginTop: 'auto' }}
+                  >
+                    Try Strategic Intelligence
+                  </Button>
+                </Stack>
               </Card>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-              <Card padding="lg" shadow="sm" h="100%">
-                <IconTarget size={48} color="var(--marketing-primary)" />
-                <Title order={4} mt="sm">Workflow Execution AI</Title>
-                <Text size="sm" c="dimmed">
-                  Automated task creation and cross-functional coordination with PM tool integration
-                </Text>
+
+              {/* Command Center Demo */}
+              <Card 
+                shadow="lg" 
+                radius={16}
+                p={40}
+                component={Link}
+                href="/command-center"
+                style={{ 
+                  backgroundColor: 'white',
+                  border: '1px solid var(--mantine-color-gray-2)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  height: '100%'
+                }}
+                className="hover:shadow-2xl hover:translate-y-[-4px]"
+              >
+                <Stack gap={24}>
+                  <Group>
+                    <ThemeIcon size={56} variant="gradient" gradient={{ from: 'cyan', to: 'blue' }} radius={12}>
+                      <IconTarget size={28} />
+                    </ThemeIcon>
+                    <Stack gap={4} style={{ flex: 1 }}>
+                      <Text fw={700} size="xl">Strategic Command Center</Text>
+                      <Badge color="green" variant="light" size="sm">✅ Ready to Try</Badge>
+                    </Stack>
+                  </Group>
+                  
+                  <Text c="dimmed" lh={1.6} size="md">
+                    Real-time orchestration of 4 specialized AI teams transforming PM workflows with live metrics
+                  </Text>
+                  
+                  <Stack gap={12}>
+                    <Group gap={8}>
+                      <IconCheck size={16} color="var(--mantine-color-cyan-6)" />
+                      <Text size="sm" fw={500} c="cyan.6">4 AI teams coordination</Text>
+                    </Group>
+                    <Group gap={8}>
+                      <IconCheck size={16} color="var(--mantine-color-cyan-6)" />
+                      <Text size="sm" fw={500} c="cyan.6">Real-time strategic metrics</Text>
+                    </Group>
+                    <Group gap={8}>
+                      <IconCheck size={16} color="var(--mantine-color-cyan-6)" />
+                      <Text size="sm" fw={500} c="cyan.6">End-to-end workflow automation</Text>
+                    </Group>
+                  </Stack>
+                  
+                  <Button 
+                    variant="light"
+                    color="cyan"
+                    fullWidth
+                    rightSection={<IconArrowRight size={16} />}
+                    style={{ marginTop: 'auto' }}
+                  >
+                    Try Command Center
+                  </Button>
+                </Stack>
               </Card>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-              <Card padding="lg" shadow="sm" h="100%">
-                <IconChartLine size={48} color="var(--marketing-primary)" />
-                <Title order={4} mt="sm">Data Intelligence AI</Title>
-                <Text size="sm" c="dimmed">
-                  Company-specific learning and predictive analytics with performance optimization
-                </Text>
-              </Card>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-              <Card padding="lg" shadow="sm" h="100%">
-                <IconUsers size={48} color="var(--marketing-primary)" />
-                <Title order={4} mt="sm">Communication AI</Title>
-                <Text size="sm" c="dimmed">
-                  Stakeholder communication and executive summaries with alignment facilitation
-                </Text>
-              </Card>
-            </Grid.Col>
-          </Grid>
-        </Card>
+            </SimpleGrid>
+          </Stack>
+        </Container>
+      </Box>
 
-        {/* ROI JUSTIFICATION */}
-        <Card shadow="md" padding={48} radius={16} mb={60} 
-              style={{ backgroundColor: 'var(--marketing-success)', color: 'white' }}>
-          <Title order={2} size="48px" fw={700} mb={32} ta="center">
-            The ROI Math is Simple
-          </Title>
-          
-          <Grid>
-            <Grid.Col span={{ base: 12, md: 4 }}>
-              <Stack align="center">
-                <IconClock size={64} />
-                <Text size="lg" fw={600}>Current Reality</Text>
-                <Text ta="center">16 hours/week on strategic analysis = 64 hours/month</Text>
-              </Stack>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 4 }}>
-              <Stack align="center">
-                <IconTrendingUp size={64} />
-                <Text size="lg" fw={600}>With PM33</Text>
-                <Text ta="center">Reduced to 4 hours/month = 60 hours saved</Text>
-              </Stack>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 4 }}>
-              <Stack align="center">
-                <IconShield size={64} />
-                <Text size="lg" fw={600}>Value Created</Text>
-                <Text ta="center">At $100/hour PM value = $6,000 monthly value</Text>
-              </Stack>
-            </Grid.Col>
-          </Grid>
-          
-          <Divider my="xl" />
-          
-          <Text size="48px" ta="center" fw={900} mb={16}>
-            PM33 costs $29/month → 207x return on investment
-          </Text>
-          
-          <Text size="xl" ta="center">
-            Plus: 85% decision confidence vs 60% • Respond in hours, not weeks
-          </Text>
-        </Card>
+      {/* Problem Section - Professional Layout */}
+      <Box py={96} bg="gray.0">
+        <Container size={1200}>
+          <Stack align="center" gap={64}>
+            <Stack align="center" gap={24} maw={700}>
+              <Badge size="lg" color="red" variant="light">
+                ⚠️ The Reality Check
+              </Badge>
+              <Title order={2} size="h2" ta="center" fw={700} style={{ fontSize: '48px' }}>
+                The Problem Every Product Manager Faces
+              </Title>
+              <Text size="lg" c="dimmed" ta="center" lh={1.6}>
+                You're drowning in admin work. <Text span fw={600} c="red.6">60-80% of your time</Text> goes to busywork instead of strategy.
+              </Text>
+            </Stack>
+            
+            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32} w="100%">
+              {[
+                { 
+                  icon: IconClock, 
+                  title: "Writing PRDs manually", 
+                  description: "4 hours per document",
+                  stat: "32 hours/month"
+                },
+                { 
+                  icon: IconTrendingUp, 
+                  title: "Synthesizing feedback", 
+                  description: "Scattered across tools",
+                  stat: "24 hours/month"
+                },
+                { 
+                  icon: IconBrain, 
+                  title: "Creating presentations", 
+                  description: "From scratch every time",
+                  stat: "16 hours/month"
+                }
+              ].map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <Card 
+                    key={index}
+                    shadow="md"
+                    radius={16}
+                    p={32}
+                    bg="white"
+                    style={{ 
+                      border: '1px solid var(--mantine-color-red-2)',
+                      position: 'relative'
+                    }}
+                  >
+                    <Badge 
+                      pos="absolute"
+                      top={16}
+                      right={16}
+                      size="sm"
+                      color="red"
+                      variant="filled"
+                    >
+                      {item.stat}
+                    </Badge>
+                    
+                    <Stack gap={24}>
+                      <ThemeIcon size={48} color="red" variant="light" radius={12}>
+                        <IconComponent size={24} />
+                      </ThemeIcon>
+                      
+                      <Stack gap={12}>
+                        <Title order={3} size="h4" fw={600}>
+                          {item.title}
+                        </Title>
+                        <Text c="dimmed" lh={1.6}>
+                          {item.description}
+                        </Text>
+                      </Stack>
+                    </Stack>
+                  </Card>
+                );
+              })}
+            </SimpleGrid>
+          </Stack>
+        </Container>
+      </Box>
 
-        {/* RISK REVERSAL */}
-        <Card shadow="md" padding={48} radius={16} mb={60} 
-              style={{ borderLeft: '8px solid var(--marketing-success)' }}>
-          <Title order={2} size="42px" fw={700} mb={32} ta="center">
-            30-Day Transformation Guarantee
-          </Title>
-          
-          <Grid>
-            <Grid.Col span={{ base: 12, md: 6 }}>
-              <List spacing="md" size="lg">
-                <List.Item icon={<IconShield color="var(--marketing-success)" />}>
-                  <Text>No credit card required for 14-day full access</Text>
-                </List.Item>
-                <List.Item icon={<IconShield color="var(--marketing-success)" />}>
-                  <Text>Keep all generated strategic documents even if you cancel</Text>
-                </List.Item>
-                <List.Item icon={<IconShield color="var(--marketing-success)" />}>
-                  <Text>Free migration assistance from current tools</Text>
-                </List.Item>
-              </List>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 6 }}>
-              <List spacing="md" size="lg">
-                <List.Item icon={<IconShield color="var(--marketing-success)" />}>
-                  <Text>30-day money-back guarantee after purchase</Text>
-                </List.Item>
-                <List.Item icon={<IconShield color="var(--marketing-success)" />}>
-                  <Text>Grandfather pricing: Lock in launch rates forever</Text>
-                </List.Item>
-                <List.Item icon={<IconShield color="var(--marketing-success)" />}>
-                  <Text>Dedicated PMO transformation consultant included</Text>
-                </List.Item>
-              </List>
-            </Grid.Col>
-          </Grid>
-        </Card>
+      {/* Social Proof */}
+      <Box py={96} bg="white">
+        <Container size={1200}>
+          <Stack align="center" gap={64}>
+            <Stack align="center" gap={24} maw={700}>
+              <Badge size="lg" color="green" variant="light">
+                🏆 Customer Success Stories
+              </Badge>
+              <Title order={2} size="h2" ta="center" fw={700} style={{ fontSize: '48px' }}>
+                Real Results from PM Teams
+              </Title>
+            </Stack>
+            
+            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32} w="100%">
+              {[
+                {
+                  metric: "40%",
+                  label: "More Features Shipped",
+                  description: "Without adding headcount",
+                  author: "Sarah Chen, Head of Product",
+                  company: "TechFlow (Series B)"
+                },
+                {
+                  metric: "72h", 
+                  label: "Time Saved Monthly",
+                  description: "Per product manager",
+                  author: "Marcus Rodriguez, VP Product",
+                  company: "DataSync (Growth-stage)"
+                },
+                {
+                  metric: "<5min",
+                  label: "Average Setup Time", 
+                  description: "From signup to insights",
+                  author: "Jennifer Liu, Senior PM",
+                  company: "CloudOps (Enterprise)"
+                }
+              ].map((stat, index) => (
+                <Card 
+                  key={index}
+                  p={32}
+                  radius={16}
+                  shadow="md"
+                  bg="white"
+                  style={{ border: '1px solid var(--mantine-color-gray-2)' }}
+                >
+                  <Stack gap={24}>
+                    <Text size="xl" fw={800} c="indigo.6" style={{ fontSize: '48px' }}>
+                      {stat.metric}
+                    </Text>
+                    <Stack gap={8}>
+                      <Text fw={600} size="lg">
+                        {stat.label}
+                      </Text>
+                      <Text size="sm" c="dimmed">
+                        {stat.description}
+                      </Text>
+                    </Stack>
+                    <Box pt={16} style={{ borderTop: '1px solid var(--mantine-color-gray-2)' }}>
+                      <Text size="sm" fw={600}>{stat.author}</Text>
+                      <Text size="xs" c="dimmed">{stat.company}</Text>
+                    </Box>
+                  </Stack>
+                </Card>
+              ))}
+            </SimpleGrid>
+          </Stack>
+        </Container>
+      </Box>
 
-        {/* FINAL CTA */}
-        <Card shadow="xl" padding={64} radius={20} 
-              style={{ 
-                background: 'linear-gradient(135deg, #EA580C 0%, #DC2626 100%)',
-                color: 'white',
-                textAlign: 'center'
-              }}>
-          <Title order={2} size="42px" fw={700} mb={32}>
-            Every day without strategic intelligence is a day your competitors pull ahead
-          </Title>
-          
-          <Text size="xl" mb={48} maw={800} mx="auto">
-            Every day without strategic intelligence is market position you'll never recover. 
-            Start your PMO transformation today.
-          </Text>
-          
-          <Group justify="center" gap={32}>
-            <Button 
-              component={Link}
-              href="/trial"
-              size="xl"
-              variant="white"
-              radius="xl"
-              style={{ 
-                fontSize: '22px', 
-                padding: '20px 56px',
-                height: 'auto',
-                color: 'var(--marketing-cta)'
-              }}
-              onClick={() => {
-                // Track final CTA conversion for urgency messaging effectiveness
-                console.log('Final CTA conversion from homepage');
-              }}
-            >
-              Transform Now - Free Trial
-            </Button>
-          </Group>
-          
-          <Text size="lg" mt={24} opacity={0.9}>
-            No credit card required • 2-minute setup • Instant PMO capabilities
-          </Text>
-        </Card>
+      {/* CTA Section */}
+      <Box 
+        py={120}
+        style={{ 
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          color: 'white'
+        }}
+      >
+        <Container size={1200}>
+          <Stack align="center" gap={48}>
+            <Badge size="lg" color="white" variant="light">
+              ✨ Transform Your PM Work Today
+            </Badge>
+            
+            <Stack align="center" gap={24} maw={700}>
+              <Title order={2} size="h1" ta="center" c="white" fw={700} style={{ fontSize: '56px' }}>
+                Ready to 10x Your PM Productivity?
+              </Title>
+              <Text size="xl" c="rgba(255, 255, 255, 0.9)" ta="center" lh={1.6}>
+                Join 2,500+ product teams using PM33 to focus on strategy, not busywork.
+              </Text>
+            </Stack>
+            
+            <Group gap={24}>
+              <Button
+                component={Link}
+                href="/trial"
+                size="xl"
+                h={56}
+                px={32}
+                color="white"
+                variant="white"
+                c="indigo"
+                rightSection={<IconArrowRight size={20} />}
+                style={{ borderRadius: 12, fontSize: '16px', fontWeight: 600 }}
+              >
+                Start Your Free 14-Day Trial
+              </Button>
+              <Button
+                component={Link}
+                href="/strategic-intelligence" 
+                size="xl"
+                h={56}
+                px={32}
+                variant="outline"
+                color="white"
+                leftSection={<IconBulb size={20} />}
+                style={{ borderRadius: 12, fontSize: '16px', fontWeight: 600 }}
+              >
+                Try Strategic Intelligence
+              </Button>
+            </Group>
+          </Stack>
+        </Container>
+      </Box>
 
-        {/* Companies We Work With Section - Temporarily disabled for debugging */}
-        {/* <CompanyCarousel 
-          title="Companies We Work With"
-          subtitle="Trusted by leading product teams who've transformed from reactive PMs to strategic PMO leaders"
-        /> */}
-        
-        {/* Sales Playbook Integration Tracking */}
-        {/* Generated by PM33 Non-Landing Optimization System */}
-        {/* Sales strategy: Complete Sales Playbook integration */}
-        {/* Optimized: 2025-08-21 */}
-        
-      </div>
-    </Container>
-  );
+      {/* <Footer /> */}
+    </Box>
+  )
 }
