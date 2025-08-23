@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { ThemeProvider } from '@/components/providers/theme-provider';
 import '@mantine/core/styles.css';
 import './globals.css';
 
@@ -18,13 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <ColorSchemeScript />
       </head>
       <body className={inter.className}>
         <MantineProvider>
-          <main>{children}</main>
+          <ThemeProvider>
+            <div className="min-h-screen transition-all duration-300 bg-gradient-light dark:bg-gradient-dark">
+              {children}
+            </div>
+          </ThemeProvider>
         </MantineProvider>
       </body>
     </html>

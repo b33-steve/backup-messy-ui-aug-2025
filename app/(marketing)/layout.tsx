@@ -1,8 +1,10 @@
-// Marketing route group layout - simplified for build compatibility
-// WHY: Route groups should not render complete HTML documents
-// RELEVANT FILES: app/layout.tsx (main layout), app/(marketing)/page.tsx
+// Marketing route group layout - with navigation and footer
+// WHY: Marketing pages need consistent navigation and footer across all marketing routes
+// RELEVANT FILES: components/marketing/Navigation.tsx, components/marketing/Footer.tsx
 
 import type { Metadata } from "next";
+import Navigation from '../../components/marketing/Navigation';
+import Footer from '../../components/marketing/Footer';
 
 export const metadata: Metadata = {
   title: "PM33 - AI Product Management Tool",
@@ -16,7 +18,11 @@ export default function MarketingLayout({
 }>) {
   return (
     <div className="marketing-context">
-      {children}
+      <Navigation />
+      <main className="pt-16">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }

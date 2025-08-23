@@ -8,6 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import { ActionIcon, Tooltip } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
+import { useTheme } from '../providers/theme-provider';
 
 interface ThemeToggleProps {
   size?: 'sm' | 'md' | 'lg';
@@ -20,19 +21,12 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   variant = 'default',
   showTooltip = true
 }) => {
-  const [theme, setTheme] = useState<'dark' | 'light'>('light');
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Ensure component is mounted on client side to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
-    
-    // Check for saved theme preference or default to light mode
-    const savedTheme = (localStorage.getItem('pm33-theme') as 'dark' | 'light') || 'light';
-    setTheme(savedTheme);
-    
-    // Apply theme to document
-    document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
   const toggleTheme = () => {
@@ -41,9 +35,6 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
     
     // Save to localStorage
     localStorage.setItem('pm33-theme', newTheme);
-    
-    // Apply to document
-    document.documentElement.setAttribute('data-theme', newTheme);
   };
 
   // Prevent hydration mismatch by not rendering until mounted

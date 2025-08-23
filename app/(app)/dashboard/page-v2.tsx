@@ -1,17 +1,3 @@
-/**
- * Component: PMCommandCenter (Dashboard) - Enhanced Version
- * Design Reference: APP_THEME_GUIDE.md - Core app design system
- * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Section 2.1 PM Command Center
- * 
- * Compliance Checklist:
- * - [x] Uses shadcn/ui components exclusively
- * - [x] Professional B2B SaaS design with glass morphism
- * - [x] lucide-react icons with framer-motion animations
- * - [x] Progress indicators present with real-time updates
- * - [x] Follows responsive grid system
- * - [x] Real API integration with fallback data
- */
-
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -27,12 +13,14 @@ import {
   Target,
   Star,
   Link2,
-  CheckCircle
+  Lightbulb,
+  CheckCircle,
+  Zap
 } from 'lucide-react'
 import Link from 'next/link'
 import CoreAppNavigation from '../../../components/app/CoreAppNavigation'
 
-// Glass Card Component with enhanced styling
+// Glass Card Component
 const GlassCard = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
   <Card className={`
     bg-gradient-to-br from-white/60 to-white/30 
@@ -292,7 +280,6 @@ export default function DashboardPage() {
     customerTickets: 12,
     recommendations: 2
   })
-  const [isLoading, setIsLoading] = useState(false)
 
   // Fetch real data from backend
   useEffect(() => {
@@ -301,37 +288,22 @@ export default function DashboardPage() {
 
   const fetchDashboardData = async () => {
     try {
-      setIsLoading(true)
       // Connect to your actual backend
       const response = await fetch('/api/dashboard/summary')
+      const data = await response.json()
       
-      if (response.ok) {
-        const result = await response.json()
-        if (result.success && result.data) {
-          const { data } = result
-          if (data.metrics) setMetrics(data.metrics)
-          if (data.intelligenceOps) setIntelligenceOps(data.intelligenceOps)
-          if (data.user) setUser(data.user)
-        }
-      }
+      if (data.metrics) setMetrics(data.metrics)
+      if (data.intelligenceOps) setIntelligenceOps(data.intelligenceOps)
+      if (data.user) setUser(data.user)
     } catch (error) {
       console.error('Failed to fetch dashboard data:', error)
       // Keep default demo data if API fails
-    } finally {
-      setIsLoading(false)
     }
   }
 
-  const handleStrategicReview = () => {
-    // Track action completion
-    fetch('/api/dashboard/summary', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        action: 'complete_action', 
-        data: { action: 'strategic_review_clicked' } 
-      })
-    }).catch(console.error)
+  const handleStrategicReview = async () => {
+    // Navigate to strategic intelligence with real data
+    window.location.href = '/strategic-intelligence'
   }
 
   return (
@@ -425,13 +397,13 @@ export default function DashboardPage() {
 
           {/* Quick Actions */}
           <div className="flex flex-col sm:flex-row gap-6">
-            <Link href="/chat/strategic" className="flex-1">
+            <Link href="/strategic-intelligence" className="flex-1">
               <Button 
                 size="lg"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               >
                 <Brain className="mr-2 h-5 w-5" />
-                Strategic Chat
+                Strategic Intelligence
               </Button>
             </Link>
             <Link href="/tasks" className="flex-1">
@@ -445,19 +417,6 @@ export default function DashboardPage() {
               </Button>
             </Link>
           </div>
-
-          {/* Loading State */}
-          {isLoading && (
-            <GlassCard>
-              <div className="flex items-center gap-3">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
-                <div>
-                  <p className="font-medium text-slate-900 dark:text-white">Loading dashboard data...</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">Updating metrics and intelligence operations</p>
-                </div>
-              </div>
-            </GlassCard>
-          )}
         </motion.div>
       </div>
     </div>
