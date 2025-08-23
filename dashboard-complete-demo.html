@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM33 Enhanced Dashboard - Live Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-1': 'bounce 1s infinite',
+                        'bounce-2': 'bounce 1s infinite 100ms',
+                        'bounce-3': 'bounce 1s infinite 200ms',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)' },
+                        },
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                        '4xl': '72px',
+                    },
+                    colors: {
+                        pm33: {
+                            500: '#667eea',
+                            600: '#5a67d8',
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Enhanced Global Styles */
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.25);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            color: #1e293b;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            transform: scale(1.05);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
+        .nav-glass {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        
+        .metric-card {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #64748b;
+        }
+        
+        .badge-success {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .badge-warning {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #fef3c7;
+            color: #a16207;
+            border: 1px solid #fde68a;
+        }
+        
+        .badge-error {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #fecaca;
+            color: #b91c1c;
+            border: 1px solid #fca5a5;
+        }
+        
+        .ai-processing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background-color: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1.5rem;
+            color: #1e40af;
+            font-size: 0.875rem;
+            font-weight: 500;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            height: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            border-radius: 9999px;
+            transition: width 0.5s ease-out;
+        }
+        
+        .skill-level-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
+            color: white;
+        }
+        
+        .progress-ring {
+            position: relative;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .loading-dots {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .loading-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            animation: bounce 1s infinite;
+        }
+        
+        .loading-dot:nth-child(2) {
+            animation-delay: 100ms;
+        }
+        
+        .loading-dot:nth-child(3) {
+            animation-delay: 200ms;
+        }
+        
+        .integration-card {
+            position: relative;
+        }
+        
+        .integration-connected {
+            border-left: 4px solid #22c55e;
+        }
+        
+        .integration-disconnected {
+            border-left: 4px solid #ef4444;
+        }
+        
+        .strategic-card {
+            border-left: 4px solid #7c3aed;
+            position: relative;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .glass-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">P33</span>
+                    </div>
+                    <h1 class="text-xl font-bold text-gradient">PM33</h1>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-blue-600 font-semibold relative">
+                        Dashboard
+                        <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                    </a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Analytics</a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Settings</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-20 px-6">
+        <div class="max-w-7xl mx-auto animate-fade-in">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-slate-900 mb-2">
+                    Good morning, Sarah! Here's your strategic focus for today.
+                </h1>
+                <p class="text-lg text-slate-600">
+                    Strategic Intelligence Operations - Friday, August 23, 2024
+                </p>
+            </div>
+
+            <!-- AI Summary Card -->
+            <div class="glass-card mb-8 animate-slide-up">
+                <div class="ai-processing-indicator mb-4">
+                    <div class="loading-dots">
+                        <div class="loading-dot"></div>
+                        <div class="loading-dot"></div>
+                        <div class="loading-dot"></div>
+                    </div>
+                    Intelligence Operations Summary
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div class="text-green-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <div class="text-green-800">
+                        <strong>Intelligence Operations Summary</strong><br />
+                        While you were away, PM33 analyzed <strong>3 competitor updates</strong>, 
+                        reviewed <strong>12 customer tickets</strong>, and prepared <strong>2 strategic recommendations</strong>.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Priority Action Card -->
+            <div class="glass-card mb-8">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div class="space-y-2">
+                            <h2 class="text-xl font-semibold text-slate-900">🎯 Priority Action</h2>
+                            <p class="text-slate-600">Your highest-impact next step</p>
+                        </div>
+                        <div class="badge-error">High Priority</div>
+                    </div>
+
+                    <div>
+                        <button class="btn-primary w-full h-14 text-lg" onclick="handleStrategicReview()">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                            Review Strategic Recommendations (3 min)
+                        </button>
+                        <p class="text-sm text-slate-500 mt-2">Then: Team standup prep (2 min)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Ring Card -->
+            <div class="glass-card mb-8">
+                <h2 class="text-xl font-semibold text-slate-900 mb-6">📊 Today's Progress</h2>
+                
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Progress Ring -->
+                    <div class="flex justify-center md:justify-start">
+                        <div class="progress-ring" style="background: conic-gradient(#667eea 0deg 288deg, #e2e8f0 288deg 360deg);">
+                            <div class="w-24 h-24 bg-white rounded-full flex flex-col items-center justify-center">
+                                <div class="text-2xl font-bold text-slate-900">80%</div>
+                                <div class="text-xs text-slate-500">Complete</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metrics Grid -->
+                    <div class="flex-1">
+                        <div class="dashboard-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">4/5</div>
+                                <div class="metric-label">Decisions Made</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" style="color: #22c55e;">92%</div>
+                                <div class="metric-label">Team Aligned</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="flex items-center justify-center gap-2 mb-2">
+                                    <div class="metric-value" style="color: #eab308;">A+</div>
+                                    <div class="badge-success text-xs">improved</div>
+                                </div>
+                                <div class="metric-label">Strategic Score</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integrations Card -->
+            <div class="glass-card mb-8">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-slate-900 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                            </svg>
+                            PM Tool Integrations
+                        </h2>
+                        <div class="badge-success">Connected</div>
+                    </div>
+                    
+                    <div class="integration-card integration-connected glass-card">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                                    <span class="text-white font-bold text-lg">J</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-slate-900">Atlassian Jira</h3>
+                                    <p class="text-slate-600">Connected to: Demo Company</p>
+                                </div>
+                            </div>
+
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors" onclick="handleJiraConfig()">
+                                Configure
+                            </button>
+                        </div>
+
+                        <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <svg class="text-green-600 w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <h4 class="font-medium text-green-800">Active Integration</h4>
+                            </div>
+                            <p class="text-sm text-green-700">Ready for task automation and strategic workflow execution</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="badge-warning">Currently in Demo Mode</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM Skill Tree -->
+            <div class="glass-card mb-8">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-slate-900">🚀 PM Skill Tree</h2>
+                        <p class="text-sm text-slate-500">Level up your product management expertise</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Strategic Thinking -->
+                        <div class="strategic-card glass-card">
+                            <div class="flex items-center gap-4">
+                                <div class="skill-level-badge">Lvl 7</div>
+                                
+                                <div class="flex-1 space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <h3 class="font-semibold text-slate-900">Strategic Thinking</h3>
+                                        <span class="text-sm text-slate-500">73%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 73%"></div>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row gap-2 text-xs">
+                                        <p class="text-blue-600 flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                            </svg>
+                                            Next: Blue Ocean Analysis
+                                        </p>
+                                        <p class="text-green-600 flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            Made 10 data-driven decisions
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Execution Excellence -->
+                        <div class="glass-card">
+                            <div class="flex items-center gap-4">
+                                <div class="skill-level-badge">Lvl 5</div>
+                                
+                                <div class="flex-1 space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <h3 class="font-semibold text-slate-900">Execution Excellence</h3>
+                                        <span class="text-sm text-slate-500">45%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45%"></div>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row gap-2 text-xs">
+                                        <p class="text-blue-600 flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                            </svg>
+                                            Next: Automated Sprint Planning
+                                        </p>
+                                        <p class="text-green-600 flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            Shipped 3 features on time
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Leadership -->
+                        <div class="glass-card">
+                            <div class="flex items-center gap-4">
+                                <div class="skill-level-badge">Lvl 6</div>
+                                
+                                <div class="flex-1 space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <h3 class="font-semibold text-slate-900">Team Leadership</h3>
+                                        <span class="text-sm text-slate-500">60%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%"></div>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row gap-2 text-xs">
+                                        <p class="text-blue-600 flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                            </svg>
+                                            Next: AI Team Coaching
+                                        </p>
+                                        <p class="text-green-600 flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            Team happiness at 95%
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="flex flex-col sm:flex-row gap-6 mb-8">
+                <button class="btn-primary flex-1" onclick="navigateToStrategic()">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                    Strategic Chat
+                </button>
+                <button class="btn-secondary flex-1" onclick="navigateToTasks()">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                    </svg>
+                    Task Management
+                </button>
+            </div>
+
+            <!-- Demo Features -->
+            <div class="glass-card">
+                <h3 class="text-lg font-semibold text-slate-900 mb-4">✨ Enhanced Dashboard Features</h3>
+                <div class="dashboard-grid">
+                    <div class="text-center space-y-2">
+                        <div class="text-2xl">🎨</div>
+                        <h4 class="font-semibold">Glass Morphism Design</h4>
+                        <p class="text-sm text-slate-600">Beautiful translucent cards with backdrop blur effects</p>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <div class="text-2xl">🚀</div>
+                        <h4 class="font-semibold">Enhanced Tailwind Config</h4>
+                        <p class="text-sm text-slate-600">Custom animations, colors, and component classes</p>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <div class="text-2xl">⚡</div>
+                        <h4 class="font-semibold">Real API Integration</h4>
+                        <p class="text-sm text-slate-600">Backend APIs with dashboard metrics and OAuth flows</p>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <div class="text-2xl">📊</div>
+                        <h4 class="font-semibold">Component Class System</h4>
+                        <p class="text-sm text-slate-600">Ready-to-use CSS classes for rapid development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive functions
+        function handleStrategicReview() {
+            alert('🧠 Strategic Intelligence Demo\n\nThis would navigate to the Strategic Intelligence page with:\n• Real-time competitive analysis\n• Framework-based recommendations\n• AI-powered strategic insights\n\nThe Strategic Chat component is fully functional at /chat/strategic!');
+        }
+        
+        function navigateToStrategic() {
+            alert('🧠 Strategic Chat Demo\n\nThis would navigate to:\n/chat/strategic\n\nFully functional Strategic Chat component with:\n• Real API integration\n• Framework detection (ICE, RICE, Porter\'s)\n• Confidence scoring\n• Loading animations');
+        }
+        
+        function navigateToTasks() {
+            alert('📋 Task Management Demo\n\nThis would navigate to:\n/tasks\n\nTask management features:\n• Workflow automation\n• Cross-functional coordination\n• PM tool integration');
+        }
+        
+        function handleJiraConfig() {
+            alert('🔧 Jira Integration Configuration\n\nReal OAuth setup:\n1. https://developer.atlassian.com/console/myapps/\n2. Create OAuth 2.0 (3LO) app\n3. Add redirect URI\n\nCurrently showing demo connection status');
+        }
+
+        // Add some interactive animations
+        setTimeout(() => {
+            document.querySelectorAll('.glass-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 100}ms`;
+                card.classList.add('animate-slide-up');
+            });
+        }, 500);
+
+        // Simulate real-time data updates
+        setInterval(() => {
+            const percentage = 75 + Math.floor(Math.random() * 20);
+            const progressRing = document.querySelector('.progress-ring');
+            const progressText = progressRing.querySelector('.text-2xl');
+            
+            progressRing.style.background = `conic-gradient(#667eea 0deg ${(percentage/100)*360}deg, #e2e8f0 ${(percentage/100)*360}deg 360deg)`;
+            progressText.textContent = `${percentage}%`;
+        }, 5000);
+    </script>
+</body>
+</html>
