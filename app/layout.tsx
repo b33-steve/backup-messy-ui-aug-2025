@@ -1,32 +1,33 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import '@mantine/core/styles.css';
-import './globals.css';
+import './globals.css'
+import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@/components/providers/theme-provider'
+import Navigation from '@/components/layout/Navigation'
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'PM33 - PMO Transformation Platform',
   description: 'Transform from Product Manager to Strategic PMO with 4 Agentic AI Teams',
   keywords: 'product management, PMO, AI, strategic intelligence, workflow automation',
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <ColorSchemeScript />
-      </head>
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <MantineProvider>
-          <main>{children}</main>
-        </MantineProvider>
+        <ThemeProvider>
+          <div className="min-h-screen transition-all duration-300 bg-gradient-light dark:bg-gradient-dark">
+            <Navigation />
+            <main className="pt-16">
+              {children}
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
