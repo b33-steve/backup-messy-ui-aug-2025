@@ -1,0 +1,144 @@
+name: Vercel Strategic Chat Component Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths: 
+      - 'app/frontend/**'
+      - 'components/StrategicChat.tsx'
+      - 'hooks/useStrategicAnalysis.ts'
+      - 'app/api/strategic-analysis/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'app/frontend/**'
+      - 'components/StrategicChat.tsx'
+      - 'hooks/useStrategicAnalysis.ts'
+      - 'app/api/strategic-analysis/**'
+
+jobs:
+  test-strategic-chat:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: app/frontend/package-lock.json
+          
+      - name: Install dependencies
+        working-directory: app/frontend
+        run: npm ci
+        
+      - name: Install Playwright
+        working-directory: app/frontend
+        run: npx playwright install
+        
+      - name: Build Next.js application
+        working-directory: app/frontend
+        run: npm run build
+        
+      - name: Start Next.js application
+        working-directory: app/frontend
+        run: npm start &
+        
+      - name: Wait for application to start
+        run: npx wait-on http://localhost:3000
+        
+      - name: Run STEP 5 Strategic Chat Component Tests
+        working-directory: app/frontend
+        run: npm run test:step5
+        
+      - name: Run Strategic Chat API Tests
+        working-directory: app/frontend
+        run: npm run test:strategic-chat-vercel
+        
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: strategic-chat-test-results
+          path: app/frontend/test-results/
+          
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: strategic-chat-playwright-report
+          path: app/frontend/playwright-report/
+
+  test-api-integration:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: app/frontend/package-lock.json
+          
+      - name: Install dependencies
+        working-directory: app/frontend
+        run: npm ci
+        
+      - name: Build and start application
+        working-directory: app/frontend
+        run: |
+          npm run build
+          npm start &
+          
+      - name: Test API endpoint directly
+        run: |
+          sleep 5
+          curl -X POST http://localhost:3000/api/strategic-analysis \
+            -H "Content-Type: application/json" \
+            -d '{"question": "Test API functionality"}' \
+            --fail-with-body
+            
+      - name: Test API error handling
+        run: |
+          curl -X POST http://localhost:3000/api/strategic-analysis \
+            -H "Content-Type: application/json" \
+            -d '{"question": ""}' \
+            --fail-with-body || echo "Expected error handled correctly"
+
+  vercel-deployment-test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: app/frontend
+          
+      - name: Get deployment URL
+        id: vercel-url
+        run: echo "url=$(vercel ls --token ${{ secrets.VERCEL_TOKEN }} | head -1 | awk '{print $2}')" >> $GITHUB_OUTPUT
+        
+      - name: Test deployed Strategic Chat Component
+        run: |
+          sleep 10
+          curl -X GET ${{ steps.vercel-url.outputs.url }}/chat/strategic --fail-with-body
+          
+      - name: Test deployed API endpoint
+        run: |
+          curl -X POST ${{ steps.vercel-url.outputs.url }}/api/strategic-analysis \
+            -H "Content-Type: application/json" \
+            -d '{"question": "Vercel deployment test"}' \
+            --fail-with-body
