@@ -4,8 +4,8 @@ import React from 'react';
 import { Container, Grid, Card, Title, Text, Button, Group, Stack, Badge, SimpleGrid, Box, Center, ThemeIcon } from '@mantine/core';
 import { IconArrowRight, IconCheck, IconBolt, IconBrain, IconClock, IconTrendingUp, IconSparkles, IconTarget, IconUsers, IconBulb, IconCircleCheck } from '@tabler/icons-react';
 import Link from 'next/link';
-import Navigation from '../../components/marketing/Navigation';  
-import Footer from '../../components/marketing/Footer';
+import Navigation from '../components/marketing/Navigation';  
+import Footer from '../components/marketing/Footer';
 
 export default function HomePage() {
   return (
