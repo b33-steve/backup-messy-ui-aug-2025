@@ -21,8 +21,7 @@ import {
   IconHeart,
   IconConfetti,
   IconMagic,
-  IconBrain,
-  IconBolt
+  IconBrain
 } from '@tabler/icons-react';
 
 // PM33 UX Context Types
