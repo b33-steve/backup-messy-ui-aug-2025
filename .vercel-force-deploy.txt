@@ -1,0 +1,8 @@
+Force deployment trigger - Aug 24 2025 01:04 EEST
+This file is used to trigger a new Vercel deployment when all other methods fail.
+Latest changes include:
+- Dark mode functionality fully implemented with ThemeProvider integration
+- Navigation and Footer components restored to all pages through layout system
+- Theme persistence via localStorage working
+- All import paths fixed for component references
+- Professional PM33 marketing website ready for production
