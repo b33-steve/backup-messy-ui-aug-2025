@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Fix workspace root warning
-  outputFileTracingRoot: __dirname,
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
@@ -12,12 +10,12 @@ const nextConfig = {
     return config;
   },
   typescript: {
-    // Temporarily ignore TypeScript errors to resolve infinite type checking
+    // Allow building even with TypeScript errors for production deployment
     ignoreBuildErrors: true,
   },
   eslint: {
-    // Allow building even with ESLint errors during development  
-    ignoreDuringBuilds: true,
+    // Allow building even with ESLint errors during development
+    ignoreDuringBuilds: process.env.NODE_ENV === 'development',
   },
 };
 

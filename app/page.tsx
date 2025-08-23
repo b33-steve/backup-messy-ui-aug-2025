@@ -1,3 +1,5 @@
+'use client';
+
 // app/frontend/app/page.tsx
 // Minimal homepage - Native HTML/CSS for guaranteed build success
 // WHY: Complex Mantine components were causing build failures on Vercel
@@ -65,8 +67,8 @@ export default function HomePage() {
               fontSize: '1.1rem',
               transition: 'transform 0.2s ease'
             }}
-            onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
-            onMouseOut={(e) => e.target.style.transform = 'translateY(0px)'}
+            onMouseOver={(e) => (e.target as HTMLElement).style.transform = 'translateY(-2px)'}
+            onMouseOut={(e) => (e.target as HTMLElement).style.transform = 'translateY(0px)'}
           >
             Start Free Trial
           </a>
@@ -84,8 +86,8 @@ export default function HomePage() {
               border: '2px solid rgba(255, 255, 255, 0.3)',
               transition: 'transform 0.2s ease'
             }}
-            onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
-            onMouseOut={(e) => e.target.style.transform = 'translateY(0px)'}
+            onMouseOver={(e) => (e.target as HTMLElement).style.transform = 'translateY(-2px)'}
+            onMouseOut={(e) => (e.target as HTMLElement).style.transform = 'translateY(0px)'}
           >
             Live Demo
           </a>
