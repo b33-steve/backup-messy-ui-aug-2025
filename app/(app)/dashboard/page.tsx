@@ -1,435 +1,406 @@
 /**
- * Component: PMCommandCenter (Dashboard)
- * Design Reference: APP_THEME_GUIDE.md - Core app design system
- * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Section 2.1 PM Command Center
+ * Component: PM33CommandCenter (Dashboard)
+ * Design Reference: HTML Prototype - Three-column dashboard layout
+ * UX Pattern: Strategic tools sidebar + AI briefing center + metrics sidebar
  * 
  * Compliance Checklist:
- * - [x] Uses shadcn/ui components exclusively
- * - [x] Professional B2B SaaS design
- * - [x] lucide-react icons
+ * - [x] Glass morphism applied
+ * - [x] Animations implemented
+ * - [x] Hover states added
+ * - [x] AI intelligence visible
  * - [x] Progress indicators present
- * - [x] Follows responsive grid system
+ * - [x] Follows 8pt grid spacing
  */
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import {
-  Brain,
-  Sparkles,
-  Target,
-  Check,
-  Star,
-  Link2
-} from 'lucide-react';
-import Link from 'next/link';
-import CoreAppNavigation from '../../../components/app/CoreAppNavigation';
+import React, { useState } from 'react';
+import { 
+  PM33GlassCard, 
+  PM33AIBriefingCard, 
+  PM33SectionTitle, 
+  PM33ToolItem 
+} from '../../../components/shared/PM33GlassCard';
+import { usePM33Theme } from '../../../components/shared/PM33ThemeProvider';
 
-// Types following Intelligence Operations model
-interface UserContext {
-  name: string;
-  timeOfDay: 'morning' | 'afternoon' | 'evening';
-  completedToday: number;
-  totalToday: number;
-  strategicScore: 'A+' | 'A' | 'B+' | 'B' | 'C';
-  teamAlignment: number;
-}
+export default function PM33CommandCenter() {
+  const [selectedTool, setSelectedTool] = useState('chat');
+  const [selectedScenario, setSelectedScenario] = useState<string | null>(null);
+  const { theme } = usePM33Theme();
 
-interface PMSkill {
-  level: number;
-  name: string;
-  progress: number;
-  nextUnlock: string;
-  recentAchievement: string;
-}
-
-interface StrategicRecommendation {
-  id: string;
-  title: string;
-  confidence: number;
-  type: 'competitor_response' | 'feature_priority' | 'resource_allocation';
-  urgency: 'high' | 'medium' | 'low';
-  estimatedTime: string;
-}
-
-export default function PMCommandCenter() {
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [isConnectedToJira, setIsConnectedToJira] = useState(false);
-  const [jiraWorkspace, setJiraWorkspace] = useState<string | null>(null);
-  const [userContext, setUserContext] = useState<UserContext>({
-    name: 'Sarah',
-    timeOfDay: 'morning',
-    completedToday: 4,
-    totalToday: 5,
-    strategicScore: 'A+',
-    teamAlignment: 92
-  });
-
-  const [skills] = useState<Record<string, PMSkill>>({
-    strategic: {
-      level: 7,
-      name: "Strategic Thinking",
-      progress: 73,
-      nextUnlock: "Blue Ocean Analysis",
-      recentAchievement: "Made 10 data-driven decisions"
-    },
-    execution: {
-      level: 5,
-      name: "Execution Excellence", 
-      progress: 45,
-      nextUnlock: "Automated Sprint Planning",
-      recentAchievement: "Shipped 3 features on time"
-    },
-    leadership: {
-      level: 6,
-      name: "Team Leadership",
-      progress: 60,
-      nextUnlock: "AI Team Coaching",
-      recentAchievement: "Team happiness at 95%"
-    }
-  });
-
-  const [recommendations] = useState<StrategicRecommendation[]>([
+  const strategicScenarios = [
     {
-      id: 'rec_1',
-      title: 'Competitor launched AI features - Strategic response needed',
-      confidence: 94,
-      type: 'competitor_response',
-      urgency: 'high',
-      estimatedTime: '3 min review'
+      id: 'competitive',
+      category: 'COMPETITIVE STRATEGY',
+      title: 'Competitor launched similar features',
+      description: 'They have 10x funding. Strategic response?',
+      color: '#3b82f6'
     },
     {
-      id: 'rec_2', 
-      title: 'Reallocate engineering resources for Q4 impact',
-      confidence: 87,
-      type: 'resource_allocation',
-      urgency: 'medium',
-      estimatedTime: '5 min review'
+      id: 'resource',
+      category: 'RESOURCE ALLOCATION', 
+      title: 'Hire developer vs marketing spend',
+      description: '$15k budget to reach 50 beta users',
+      color: '#10b981'
+    },
+    {
+      id: 'growth',
+      category: 'GROWTH STRATEGY',
+      title: 'Low beta-to-paid conversion',
+      description: 'Great feedback, poor conversion rates',
+      color: '#f59e0b'
+    },
+    {
+      id: 'market',
+      category: 'MARKET STRATEGY',
+      title: 'Enterprise vs SMB focus',
+      description: 'Bigger deals vs momentum building',
+      color: '#8b5cf6'
     }
-  ]);
+  ];
 
-  // OAuth functionality
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const connected = localStorage.getItem('pm33_demo_jira_connected') === 'true';
-      const workspace = localStorage.getItem('pm33_demo_jira_workspace');
-      setIsConnectedToJira(connected);
-      setJiraWorkspace(workspace);
+  const mockConversation = [
+    {
+      type: 'ai',
+      message: 'Good morning! I\'ll help analyze strategic decisions using proven PM frameworks. Ask me anything about competitive strategy, resource allocation, or market positioning.'
+    },
+    {
+      type: 'user',
+      message: 'Our main competitor just raised $10M Series A. What\'s our strategic response?'
+    },
+    {
+      type: 'ai',
+      message: 'I recommend using the Competitive Response Framework for this analysis. Based on PM33\'s beta stage and $15k budget, here\'s my strategic analysis:\n\nApply ICE Framework? [Yes] [No]\nThis will help prioritize your competitive response actions.'
     }
-  }, []);
+  ];
 
-  const handleConnectJira = () => {
-    const setupMessage = `🔧 PM33 OAuth Setup Instructions for Jira
-
-To connect your real Jira workspace:
-1. Go to: https://developer.atlassian.com/console/myapps/
-2. Click "Create" → "OAuth 2.0 (3LO)" 
-3. Add redirect URI: http://localhost:3000/api/integrations/oauth/callback/jira
-
-📝 Currently in DEMO MODE
-Click OK to simulate a successful connection.`;
-
-    if (confirm(setupMessage)) {
-      alert(`✅ Demo Connection Successful!
-
-Jira workspace "Demo Company" connected!`);
-      localStorage.setItem('pm33_demo_jira_connected', 'true');
-      localStorage.setItem('pm33_demo_jira_workspace', 'Demo Company');
-      setIsConnectedToJira(true);
-      setJiraWorkspace('Demo Company');
-    }
-  };
-
-  const getContextualGreeting = () => {
-    const { name, timeOfDay, completedToday, totalToday } = userContext;
-    const completionRate = Math.round((completedToday / totalToday) * 100);
-    
-    if (timeOfDay === 'morning') {
-      return `Good morning, ${name}! Here's your strategic focus for today.`;
-    } else if (timeOfDay === 'afternoon') {
-      return `Afternoon check-in: You're ${completionRate}% through today's priorities.`;
-    } else {
-      return `Evening review: Strong progress on strategic initiatives today.`;
-    }
+  const getCurrentTime = () => {
+    return new Date().toLocaleTimeString('en-US', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: true 
+    });
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <CoreAppNavigation />
-      <div className="container mx-auto px-6 py-12 max-w-7xl">
-        <div className="space-y-8">
-          {/* Contextual Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
-              {getContextualGreeting()}
-            </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
-              Strategic Intelligence Operations - {new Date().toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-            </p>
+    <div 
+      className="min-h-screen transition-all duration-300 ease-in-out"
+      style={{ background: 'var(--pm33-bg-gradient)', color: 'var(--pm33-text-primary)' }}
+    >
+      {/* Main Container */}
+      <div className="max-w-[1600px] mx-auto p-8">
+        {/* Three Column Dashboard Grid */}
+        <div 
+          className="grid gap-8 min-h-[calc(100vh-120px)]"
+          style={{ gridTemplateColumns: '300px 1fr 350px' }}
+        >
+          {/* Left Sidebar - Strategic Tools */}
+          <div className="w-[300px] space-y-4">
+            <PM33GlassCard hover={false}>
+              <PM33SectionTitle icon="🎯">STRATEGIC TOOLS</PM33SectionTitle>
+              
+              <PM33ToolItem
+                icon="💬"
+                active={selectedTool === 'chat'}
+                onClick={() => setSelectedTool('chat')}
+              >
+                Strategic Chat
+              </PM33ToolItem>
+              
+              <PM33ToolItem
+                icon="🚀"
+                active={selectedTool === 'delivery'}
+                onClick={() => setSelectedTool('delivery')}
+              >
+                Project Delivery
+              </PM33ToolItem>
+              
+              <PM33ToolItem
+                icon="📊"
+                active={selectedTool === 'analytics'}
+                onClick={() => setSelectedTool('analytics')}
+              >
+                Analytics
+              </PM33ToolItem>
+              
+              <PM33ToolItem
+                icon="🎯"
+                active={selectedTool === 'okr'}
+                onClick={() => setSelectedTool('okr')}
+              >
+                OKR Planner
+              </PM33ToolItem>
+            </PM33GlassCard>
+            
+            <PM33GlassCard hover={false}>
+              <PM33SectionTitle>COMPANY CONTEXT</PM33SectionTitle>
+              <div className="space-y-3 text-sm">
+                <div><strong>🏢 Company Profile</strong></div>
+                <div><strong>🎯 Current Priorities</strong></div>
+                <div><strong>🕵️ Competitive Intel</strong></div>
+                <div><strong>👥 Team Resources</strong></div>
+              </div>
+            </PM33GlassCard>
           </div>
 
-          {/* The Magic Moment - AI Already Did The Work */}
-          <Card className="mb-8">
-            <Alert className="border-green-200 bg-green-50 dark:bg-green-900/20 dark:border-green-800">
-              <Sparkles className="h-4 w-4" />
-              <AlertDescription className="text-green-800 dark:text-green-200">
-                <strong>Intelligence Operations Summary</strong><br />
-                While you were away, PM33 analyzed <strong>3 competitor updates</strong>, 
-                reviewed <strong>12 customer tickets</strong>, and prepared <strong>2 strategic recommendations</strong>.
-              </AlertDescription>
-            </Alert>
-          </Card>
-
-          {/* Clear Next Action */}
-          <Card className="mb-8">
-            <CardContent className="p-6">
-              <div className="space-y-6">
-                <div className="flex justify-between items-center">
-                  <div className="space-y-2">
-                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-                      🎯 Priority Action
-                    </h2>
-                    <p className="text-slate-600 dark:text-slate-400">
-                      Your highest-impact next step
-                    </p>
-                  </div>
-                  <Badge variant="destructive" className="text-sm">
-                    High Priority
-                  </Badge>
-                </div>
-
-                <div>
-                  <Link href="/strategic-intelligence" className="block">
-                    <Button
-                      size="lg"
-                      className="w-full h-14 text-lg font-semibold"
-                      onClick={() => setIsProcessing(true)}
-                    >
-                      <Brain className="mr-2 h-5 w-5" />
-                      Review Strategic Recommendations (3 min)
-                    </Button>
-                  </Link>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
-                    Then: Team standup prep (2 min)
-                  </p>
-                </div>
+          {/* Center Content - AI Briefing */}
+          <div className="min-w-0 space-y-8">
+            {/* Page Header */}
+            <div>
+              <h1 
+                className="text-4xl font-bold mb-2"
+                style={{
+                  background: theme === 'light' 
+                    ? 'linear-gradient(135deg, #1e293b 0%, #3b82f6 100%)'
+                    : 'linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Command Center
+              </h1>
+              <p 
+                className="text-lg mb-2"
+                style={{ color: 'var(--pm33-text-secondary)' }}
+              >
+                Good morning! Let's tackle today's strategic priorities.
+              </p>
+              <div 
+                className="flex items-center gap-4 text-sm opacity-60"
+                style={{ color: 'var(--pm33-text-secondary)' }}
+              >
+                <span>{getCurrentTime()}</span>
+                <span>|</span>
+                <span>Current Progress: 15 signups (30%)</span>
               </div>
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* Progress Dopamine Hit */}
-          <Card className="mb-8">
-            <CardContent className="p-6">
-              <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-                  📊 Today's Progress
+            {/* AI Intelligence Briefing */}
+            <PM33GlassCard hover={false}>
+              <PM33AIBriefingCard isLive={true}>
+                <h2 className="text-2xl font-semibold mb-4">
+                  Strategic AI Co-Pilot Ready
                 </h2>
                 
-                <div className="flex flex-col md:flex-row gap-8">
-                  {/* Daily Progress Ring */}
-                  <div className="relative w-32 h-32 mx-auto md:mx-0">
-                    <Progress 
-                      value={Math.round((userContext.completedToday / userContext.totalToday) * 100)} 
-                      className="w-32 h-32 rounded-full"
-                    />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-2xl font-bold text-slate-900 dark:text-white">
-                        {Math.round((userContext.completedToday / userContext.totalToday) * 100)}%
-                      </span>
-                      <span className="text-xs text-slate-500 dark:text-slate-400">Complete</span>
-                    </div>
-                  </div>
+                <p className="text-base leading-relaxed mb-6 opacity-80">
+                  Ask any strategic question. I'll suggest frameworks like ICE or RICE, 
+                  then apply them with your company context to generate executable workflows.
+                </p>
 
-                  {/* Metrics */}
-                  <div className="flex-1">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                      <div>
-                        <p className="text-2xl font-bold text-slate-900 dark:text-white">
-                          {userContext.completedToday}/{userContext.totalToday}
-                        </p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">Decisions Made</p>
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-                          {userContext.teamAlignment}%
-                        </p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">Team Aligned</p>
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
-                            {userContext.strategicScore}
-                          </p>
-                          <Badge variant="secondary" className="text-xs">
-                            improved
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">Strategic Score</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* OAuth Integration Section */}
-          <Card className="mb-8">
-            <CardContent className="p-6">
-              <div className="space-y-6">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                    <Link2 className="h-5 w-5" />
-                    PM Tool Integrations
-                  </h2>
-                  <Badge variant={isConnectedToJira ? "default" : "secondary"} className="text-sm">
-                    {isConnectedToJira ? "Connected" : "Not Connected"}
-                  </Badge>
-                </div>
-                
-                <div className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">J</span>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-                          Atlassian Jira
-                        </h3>
-                        <p className="text-slate-600 dark:text-slate-400">
-                          {isConnectedToJira 
-                            ? `Connected to: ${jiraWorkspace}` 
-                            : 'Connect your Jira workspace for task automation'
-                          }
-                        </p>
-                      </div>
-                    </div>
-
-                    <Button
-                      onClick={handleConnectJira}
-                      size="sm"
-                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                {/* Scenario Grid */}
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {strategicScenarios.map((scenario) => (
+                    <div
+                      key={scenario.id}
+                      className="p-4 rounded-lg cursor-pointer transition-all duration-200 ease-out border border-transparent"
+                      style={{ 
+                        background: 'rgba(0,0,0,0.1)', 
+                        border: '1px solid rgba(0,0,0,0.1)' 
+                      }}
+                      onClick={() => setSelectedScenario(scenario.id)}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
                     >
-                      Connect Jira
-                    </Button>
-                  </div>
-
-                  {isConnectedToJira && (
-                    <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-                      <div className="flex items-center mb-2">
-                        <Check className="text-green-600 text-sm h-4 w-4 mr-2" />
-                        <h4 className="font-medium text-green-800 dark:text-green-200">Active Integration</h4>
+                      <div 
+                        className="text-xs font-semibold mb-2 uppercase tracking-wider"
+                        style={{ color: scenario.color }}
+                      >
+                        {scenario.category}
                       </div>
-                      <p className="text-sm text-green-700 dark:text-green-300">
-                        Ready for task automation and strategic workflow execution
+                      <h4 className="text-sm font-semibold mb-1">
+                        {scenario.title}
+                      </h4>
+                      <p className="text-xs opacity-70">
+                        {scenario.description}
                       </p>
                     </div>
-                  )}
+                  ))}
                 </div>
+              </PM33AIBriefingCard>
 
-                <div className="text-center">
-                  <div className="inline-flex items-center gap-2 text-sm text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 px-3 py-2 rounded-full">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    Currently in Demo Mode
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* PM Skill Tree */}
-          <Card className="mb-8">
-            <CardContent className="p-6">
-              <div className="space-y-6">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-                    🚀 PM Skill Tree
-                  </h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
-                    Level up your product management expertise
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  {Object.entries(skills).map(([key, skill]) => (
-                    <div
-                      key={key}
-                      className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+              {/* Chat Interface */}
+              <div 
+                className="rounded-xl overflow-hidden"
+                style={{ border: '1px solid rgba(0,0,0,0.1)' }}
+              >
+                {/* Chat Messages */}
+                <div 
+                  className="h-80 p-4 overflow-y-auto space-y-4"
+                  style={{ background: 'rgba(0,0,0,0.05)' }}
+                >
+                  {mockConversation.map((msg, index) => (
+                    <div 
+                      key={index}
+                      className={`flex gap-3 ${msg.type === 'user' ? 'flex-row-reverse' : ''}`}
                     >
-                      <div className="flex items-center gap-4">
-                        <Badge variant="default" className="text-sm px-3 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white">
-                          Lvl {skill.level}
-                        </Badge>
-                        
-                        <div className="flex-1 space-y-2">
-                          <div className="flex justify-between items-center">
-                            <h3 className="font-semibold text-slate-900 dark:text-white">{skill.name}</h3>
-                            <span className="text-sm text-slate-500 dark:text-slate-400">{skill.progress}%</span>
-                          </div>
-                          <Progress 
-                            value={skill.progress} 
-                            className="h-2"
-                          />
-                          <div className="flex flex-col sm:flex-row gap-2 text-xs">
-                            <p className="text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                              <Star className="h-3 w-3" />
-                              Next: {skill.nextUnlock}
-                            </p>
-                            <p className="text-green-600 dark:text-green-400 flex items-center gap-1">
-                              <Check className="h-3 w-3" />
-                              {skill.recentAchievement}
-                            </p>
-                          </div>
-                        </div>
+                      <div 
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-xs flex-shrink-0"
+                        style={{
+                          background: msg.type === 'ai' 
+                            ? 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)'
+                            : 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)'
+                        }}
+                      >
+                        {msg.type === 'ai' ? '🧠' : '👤'}
+                      </div>
+                      <div 
+                        className="max-w-[80%] p-3 rounded-xl text-sm leading-relaxed whitespace-pre-line"
+                        style={{
+                          background: msg.type === 'ai' 
+                            ? 'rgba(0,0,0,0.1)'
+                            : 'rgba(59,130,246,0.15)',
+                          border: msg.type === 'ai'
+                            ? '1px solid rgba(0,0,0,0.1)'
+                            : '1px solid rgba(59,130,246,0.2)'
+                        }}
+                      >
+                        {msg.message}
                       </div>
                     </div>
                   ))}
                 </div>
+                
+                {/* Chat Input */}
+                <div 
+                  className="p-4 flex gap-3"
+                  style={{ 
+                    background: 'rgba(0,0,0,0.02)', 
+                    borderTop: '1px solid rgba(0,0,0,0.1)' 
+                  }}
+                >
+                  <input
+                    type="text"
+                    placeholder="Ask any strategic question... (I'll suggest which framework to use)"
+                    className="flex-1 p-3 rounded-lg text-sm outline-none"
+                    style={{
+                      background: 'rgba(0,0,0,0.05)',
+                      border: '1px solid rgba(0,0,0,0.1)',
+                      color: 'var(--pm33-text-primary)'
+                    }}
+                  />
+                  <button 
+                    className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 text-white"
+                    style={{
+                      background: theme === 'light' 
+                        ? 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)'
+                        : theme === 'dark'
+                          ? 'linear-gradient(135deg, #64748b 0%, #334155 100%)'
+                          : 'linear-gradient(135deg, #9ca3af 0%, #6b7280 100%)',
+                      boxShadow: theme === 'light'
+                        ? '0 2px 10px rgba(59,130,246,0.3)'
+                        : theme === 'dark'
+                          ? '0 2px 10px rgba(100,116,139,0.3)'
+                          : '0 2px 10px rgba(156,163,175,0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-1px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    Send
+                  </button>
+                </div>
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Quick Actions */}
-          <div className="flex flex-col sm:flex-row gap-6">
-            <Link href="/strategic-intelligence" className="flex-1">
-              <Button size="lg" className="w-full">
-                <Brain className="mr-2 h-5 w-5" />
-                Strategic Intelligence
-              </Button>
-            </Link>
-            <Link href="/tasks" className="flex-1">
-              <Button variant="secondary" size="lg" className="w-full">
-                <Target className="mr-2 h-5 w-5" />
-                Task Management
-              </Button>
-            </Link>
+            </PM33GlassCard>
           </div>
-          
-          {/* AI Processing State */}
-          {isProcessing && (
-            <Card className="mt-8">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
-                  <div>
-                    <p className="font-medium text-slate-900 dark:text-white">Analyzing strategic intelligence...</p>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Preparing your customized recommendations</p>
+
+          {/* Right Sidebar - Metrics & Context */}
+          <div className="w-[350px] space-y-4">
+            <PM33GlassCard hover={false}>
+              <PM33SectionTitle icon="⚡">Competitive Landscape</PM33SectionTitle>
+              
+              <div className="space-y-4 text-sm">
+                <div>
+                  <div className="font-semibold mb-1">Primary: Productboard</div>
+                  <div className="opacity-70 text-xs">Series C, $100M+ funding, roadmap focus</div>
+                </div>
+                
+                <div>
+                  <div className="font-semibold mb-1">Secondary: Aha!</div>
+                  <div className="opacity-70 text-xs">Profitable, strategy docs, enterprise</div>
+                </div>
+                
+                <div 
+                  className="p-3 rounded-lg"
+                  style={{
+                    background: 'rgba(59,130,246,0.1)',
+                    border: '1px solid rgba(59,130,246,0.2)'
+                  }}
+                >
+                  <div 
+                    className="text-xs font-semibold"
+                    style={{ color: '#3b82f6' }}
+                  >
+                    Our Advantage: Strategic AI + execution
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          )}
+              </div>
+            </PM33GlassCard>
+
+            <PM33GlassCard hover={false}>
+              <PM33SectionTitle icon="👥">Team & Resources</PM33SectionTitle>
+              
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between">
+                  <span>Team Size:</span>
+                  <span className="font-semibold">3 people</span>
+                </div>
+                <div className="text-xs opacity-70 mb-3">1 PM, 2 Engineers</div>
+                
+                <div className="flex justify-between">
+                  <span>Runway:</span>
+                  <span className="font-semibold">6 months</span>
+                </div>
+                
+                <div className="flex justify-between">
+                  <span>Key Constraint:</span>
+                  <span className="font-semibold" style={{ color: '#f59e0b' }}>Limited marketing</span>
+                </div>
+              </div>
+            </PM33GlassCard>
+
+            <PM33GlassCard hover={false}>
+              <PM33SectionTitle icon="📊">Key Metrics</PM33SectionTitle>
+              
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between">
+                  <span>Beta Signups:</span>
+                  <span className="font-semibold">15 total</span>
+                </div>
+                
+                <div className="flex justify-between">
+                  <span>Available Budget:</span>
+                  <span className="font-semibold">$15,000</span>
+                </div>
+                
+                {/* Progress Bar */}
+                <div className="mt-2">
+                  <div 
+                    className="w-full h-2 rounded-full overflow-hidden"
+                    style={{ background: 'rgba(0,0,0,0.1)' }}
+                  >
+                    <div 
+                      className="h-full transition-all duration-300"
+                      style={{ 
+                        width: '30%',
+                        background: 'linear-gradient(90deg, #3b82f6 0%, #1e40af 100%)'
+                      }}
+                    />
+                  </div>
+                  <div className="text-xs mt-1 opacity-60">
+                    30% to goal (50 beta users)
+                  </div>
+                </div>
+              </div>
+            </PM33GlassCard>
+          </div>
         </div>
       </div>
     </div>

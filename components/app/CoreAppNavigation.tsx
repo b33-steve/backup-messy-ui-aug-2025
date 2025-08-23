@@ -120,42 +120,99 @@ const CoreAppNavigation: React.FC = () => {
             </div>
 
             {/* Navigation Items */}
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center gap-2">
               {navigationItems.map((item) => {
                 const active = isActive(item.href);
                 
                 return (
-                  <Button
+                  <Link
                     key={item.href}
-                    asChild
-                    variant={active ? 'default' : 'ghost'}
-                    size="sm"
-                    className={`${active ? 'bg-primary text-primary-foreground pm33-btn-primary' : 'text-muted-foreground hover:text-foreground pm33-btn-secondary'}`}
+                    href={item.href}
+                    className={`
+                      flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm
+                      transition-all duration-300 ease-in-out border border-transparent
+                      ${active 
+                        ? 'transform scale-95' 
+                        : 'hover:transform hover:-translate-y-0.5'
+                      }
+                    `}
+                    style={{
+                      color: active 
+                        ? 'var(--pm33-accent)' 
+                        : 'var(--pm33-text-secondary)',
+                      background: active 
+                        ? 'rgba(59,130,246,0.15)' 
+                        : 'transparent',
+                      borderColor: active 
+                        ? 'rgba(59,130,246,0.3)' 
+                        : 'transparent',
+                    }}
                     data-testid={item.testId}
                     data-active={active}
+                    onMouseEnter={(e) => {
+                      if (!active) {
+                        e.currentTarget.style.background = theme === 'light' 
+                          ? 'rgba(59,130,246,0.1)' 
+                          : 'rgba(255,255,255,0.1)';
+                        e.currentTarget.style.borderColor = theme === 'light'
+                          ? 'rgba(59,130,246,0.2)'
+                          : 'rgba(255,255,255,0.2)';
+                        e.currentTarget.style.color = theme === 'light'
+                          ? '#3b82f6'
+                          : 'rgba(255,255,255,0.9)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!active) {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.borderColor = 'transparent';
+                        e.currentTarget.style.color = 'var(--pm33-text-secondary)';
+                      }
+                    }}
                   >
-                    <Link href={item.href} className="flex items-center space-x-2">
-                      {item.icon}
-                      <span>{item.label}</span>
-                    </Link>
-                  </Button>
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </Link>
                 );
               })}
             </div>
 
-            {/* Demo Mode Toggle */}
+            {/* User Profile */}
             <div className="flex items-center">
-              <Button
-                onClick={toggleDemoMode}
-                size="sm"
-                variant={isDemoMode ? 'default' : 'outline'}
-                data-testid="core-app-demo-toggle"
-                data-demo-active={isDemoMode}
-                className={`flex items-center space-x-2 ${isDemoMode ? 'pm33-btn-primary' : 'pm33-btn-secondary'}`}
+              <div 
+                className="px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer"
+                style={{
+                  background: theme === 'light' 
+                    ? 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)'
+                    : theme === 'dark'
+                      ? 'linear-gradient(135deg, #64748b 0%, #334155 100%)'
+                      : 'linear-gradient(135deg, #9ca3af 0%, #6b7280 100%)',
+                  color: 'white',
+                  boxShadow: theme === 'light'
+                    ? '0 2px 10px rgba(59,130,246,0.3)'
+                    : theme === 'dark'
+                      ? '0 2px 10px rgba(100,116,139,0.3)'
+                      : '0 2px 10px rgba(156,163,175,0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = theme === 'light'
+                    ? '0 4px 15px rgba(59,130,246,0.4)'
+                    : theme === 'dark'
+                      ? '0 4px 15px rgba(100,116,139,0.4)'
+                      : '0 4px 15px rgba(156,163,175,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = theme === 'light'
+                    ? '0 2px 10px rgba(59,130,246,0.3)'
+                    : theme === 'dark'
+                      ? '0 2px 10px rgba(100,116,139,0.3)'
+                      : '0 2px 10px rgba(156,163,175,0.3)';
+                }}
               >
-                <span className={`w-2 h-2 rounded-full ${isDemoMode ? 'bg-green-500' : 'bg-gray-400'}`}></span>
-                <span>DEMO</span>
-              </Button>
+                Steve Saper - PM33 Founder
+              </div>
             </div>
           </div>
         </div>
