@@ -1,9 +1,7 @@
-'use client';
-
 // app/frontend/app/page.tsx
-// Minimal homepage - Native HTML/CSS for guaranteed build success
-// WHY: Complex Mantine components were causing build failures on Vercel
-// RELEVANT FILES: app/layout.tsx
+// ULTRA-MINIMAL homepage - Pure Next.js for guaranteed success
+// WHY: Removing ALL client-side features to ensure Vercel build success
+// TIMESTAMP: Force rebuild - no client components, no event handlers
 
 export default function HomePage() {
   return (
@@ -67,8 +65,6 @@ export default function HomePage() {
               fontSize: '1.1rem',
               transition: 'transform 0.2s ease'
             }}
-            onMouseOver={(e) => (e.target as HTMLElement).style.transform = 'translateY(-2px)'}
-            onMouseOut={(e) => (e.target as HTMLElement).style.transform = 'translateY(0px)'}
           >
             Start Free Trial
           </a>
@@ -86,8 +82,6 @@ export default function HomePage() {
               border: '2px solid rgba(255, 255, 255, 0.3)',
               transition: 'transform 0.2s ease'
             }}
-            onMouseOver={(e) => (e.target as HTMLElement).style.transform = 'translateY(-2px)'}
-            onMouseOut={(e) => (e.target as HTMLElement).style.transform = 'translateY(0px)'}
           >
             Live Demo
           </a>
