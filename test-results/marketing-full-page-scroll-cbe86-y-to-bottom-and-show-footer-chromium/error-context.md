@@ -1,0 +1,135 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]
+          - generic [ref=e10]: AI Product Management
+        - generic [ref=e11]:
+          - link "Features" [ref=e13] [cursor=pointer]:
+            - /url: /features
+          - link "Resources" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+          - link "Pricing" [ref=e17] [cursor=pointer]:
+            - /url: /pricing
+          - link "About" [ref=e19] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e21] [cursor=pointer]:
+            - /url: /contact
+          - paragraph [ref=e23]: Demo
+        - generic [ref=e24]:
+          - button "Switch to dark mode" [ref=e25] [cursor=pointer]:
+            - img [ref=e27] [cursor=pointer]
+          - link "Start Free Trial" [ref=e29] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e31] [cursor=pointer]: Start Free Trial
+    - main [ref=e32]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e37]: Strategic Intelligence Hub
+          - heading "PM33 Resources" [level=1] [ref=e38]
+          - paragraph [ref=e39]: Strategic intelligence, AI-powered insights, and PMO transformation resources for modern product teams
+        - paragraph [ref=e41]: 🔍 Advanced search and filtering coming soon - browse all resources below
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - img [ref=e44]
+            - heading "Featured Resources" [level=2] [ref=e47]
+          - 'link "Featured PM33: Strategic Intelligence for Modern Product Teams Discover how AI-powered frameworks like ICE and RICE can transform your strategic decision-making process. Strategic Intelligence 8 min read" [ref=e51] [cursor=pointer]':
+            - /url: /about
+            - generic [ref=e53]: Featured
+            - 'heading "PM33: Strategic Intelligence for Modern Product Teams" [level=3] [ref=e54] [cursor=pointer]'
+            - paragraph [ref=e55] [cursor=pointer]: Discover how AI-powered frameworks like ICE and RICE can transform your strategic decision-making process.
+            - generic [ref=e56] [cursor=pointer]:
+              - generic [ref=e58]: Strategic Intelligence
+              - paragraph [ref=e59] [cursor=pointer]: 8 min read
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - img [ref=e62]
+            - heading "All Resources" [level=2] [ref=e69]
+            - generic [ref=e71]: 3 articles
+          - generic [ref=e73]:
+            - 'link "The Future of Product Management: AI-Enhanced Workflows Learn how PM33 integrates with your existing tools to provide PMO-level strategic capabilities. Product Management 12 min read" [ref=e75] [cursor=pointer]':
+              - /url: /features
+              - 'heading "The Future of Product Management: AI-Enhanced Workflows" [level=4] [ref=e76] [cursor=pointer]'
+              - paragraph [ref=e77] [cursor=pointer]: Learn how PM33 integrates with your existing tools to provide PMO-level strategic capabilities.
+              - generic [ref=e79] [cursor=pointer]:
+                - generic [ref=e81]: Product Management
+                - paragraph [ref=e82] [cursor=pointer]: 12 min read
+            - link "PMO Capabilities for Individual Product Managers Transform from individual contributor to strategic PMO function with AI-powered intelligence. PMO Transformation 10 min read" [ref=e84] [cursor=pointer]:
+              - /url: /pricing
+              - heading "PMO Capabilities for Individual Product Managers" [level=4] [ref=e85] [cursor=pointer]
+              - paragraph [ref=e86] [cursor=pointer]: Transform from individual contributor to strategic PMO function with AI-powered intelligence.
+              - generic [ref=e88] [cursor=pointer]:
+                - generic [ref=e90]: PMO Transformation
+                - paragraph [ref=e91] [cursor=pointer]: 10 min read
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - img [ref=e94]
+            - heading "Ready to Transform Your PM Workflow?" [level=2] [ref=e98]
+          - paragraph [ref=e99]: Join 2,500+ product managers using PM33's AI-powered strategic intelligence platform
+          - generic [ref=e100]:
+            - link "Start Free Trial" [ref=e101] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e103] [cursor=pointer]: Start Free Trial
+            - link "Explore Features" [ref=e104] [cursor=pointer]:
+              - /url: /features
+              - generic [ref=e106] [cursor=pointer]: Explore Features
+    - contentinfo [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - heading "Product" [level=3] [ref=e111]
+            - generic [ref=e112]:
+              - link "Features" [ref=e113] [cursor=pointer]:
+                - /url: /features
+              - link "Pricing" [ref=e114] [cursor=pointer]:
+                - /url: /pricing
+              - link "Free Trial" [ref=e115] [cursor=pointer]:
+                - /url: /trial
+              - link "Demo" [ref=e116] [cursor=pointer]:
+                - /url: /demo
+          - generic [ref=e117]:
+            - heading "Resources" [level=3] [ref=e118]
+            - generic [ref=e119]:
+              - link "Resources" [ref=e120] [cursor=pointer]:
+                - /url: /blog
+              - link "About Us" [ref=e121] [cursor=pointer]:
+                - /url: /about
+              - link "Contact" [ref=e122] [cursor=pointer]:
+                - /url: /contact
+              - link "Support" [ref=e123] [cursor=pointer]:
+                - /url: /support
+          - generic [ref=e124]:
+            - heading "Legal" [level=3] [ref=e125]
+            - generic [ref=e126]:
+              - link "Privacy Policy" [ref=e127] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Service" [ref=e128] [cursor=pointer]:
+                - /url: /terms
+              - link "Security" [ref=e129] [cursor=pointer]:
+                - /url: /security
+          - generic [ref=e130]:
+            - heading "Connect" [level=3] [ref=e131]
+            - generic [ref=e132]:
+              - link "LinkedIn" [ref=e133] [cursor=pointer]:
+                - /url: https://linkedin.com/company/pm33
+              - link "Twitter" [ref=e134] [cursor=pointer]:
+                - /url: https://twitter.com/PM33_AI
+              - link "Community" [ref=e135] [cursor=pointer]:
+                - /url: /community
+        - generic [ref=e136]:
+          - paragraph [ref=e137]: © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+          - generic [ref=e138]:
+            - link "Privacy" [ref=e139] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms" [ref=e140] [cursor=pointer]:
+              - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e146] [cursor=pointer]:
+    - img [ref=e147] [cursor=pointer]
+  - alert [ref=e150]: PM33 Resources
+```

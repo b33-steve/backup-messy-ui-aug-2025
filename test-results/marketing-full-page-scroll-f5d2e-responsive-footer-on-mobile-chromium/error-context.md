@@ -1,0 +1,206 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]
+          - generic [ref=e10]: AI Product Management
+        - generic [ref=e11]:
+          - button "Switch to dark mode" [ref=e12] [cursor=pointer]:
+            - img [ref=e14] [cursor=pointer]
+          - button [ref=e16] [cursor=pointer]
+    - main [ref=e18]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e23]: About PM33
+          - heading "Built by PMs, For PMs" [level=1] [ref=e24]
+          - paragraph [ref=e25]: We're on a mission to transform individual Product Managers into fully functional PMOs through AI-powered strategic intelligence
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - heading "Our Story" [level=2] [ref=e30]
+            - paragraph [ref=e31]: "PM33 was born from a simple frustration: spending 80% of our time on tactical busywork instead of strategic thinking. As experienced Product Managers, we knew there had to be a better way."
+            - paragraph [ref=e32]: We didn't want to replace the tools we already loved. Instead, we built the AI brain that makes every PM tool 10x smarter. PM33 transforms individual Product Managers into strategic PMOs with four specialized AI teams working around the clock.
+            - paragraph [ref=e33]: Today, over 2,500 product managers reclaim 75% of their time for strategic work, making better decisions with AI-powered intelligence that spans strategic frameworks, competitive analysis, and cross-functional coordination.
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - img [ref=e38]
+              - generic [ref=e41]:
+                - paragraph [ref=e42]: $100K MRR Target
+                - paragraph [ref=e43]: EOY 2025 Growth Goal
+            - generic [ref=e44]:
+              - img [ref=e45]
+              - generic [ref=e50]:
+                - paragraph [ref=e51]: 2,500+ PMs
+                - paragraph [ref=e52]: Transformed into Strategic Leaders
+            - generic [ref=e53]:
+              - img [ref=e54]
+              - generic [ref=e61]:
+                - paragraph [ref=e62]: 4 AI Teams
+                - paragraph [ref=e63]: Strategic, Workflow, Data, Communication
+        - generic [ref=e64]:
+          - heading "Our Philosophy" [level=2] [ref=e65]
+          - generic [ref=e67]:
+            - generic [ref=e70]:
+              - img [ref=e72]
+              - heading "Think Hard, Write Short" [level=3] [ref=e75]
+              - paragraph [ref=e76]: Deep strategic thinking with concise, impactful execution. Every feature decision backed by rigorous analysis, delivered with elegant simplicity.
+            - generic [ref=e79]:
+              - img [ref=e81]
+              - heading "Update Before Create" [level=3] [ref=e85]
+              - paragraph [ref=e86]: Enhance and optimize existing workflows before building new ones. We believe in making what works better, not reinventing everything from scratch.
+            - generic [ref=e89]:
+              - img [ref=e91]
+              - heading "PM Success First" [level=3] [ref=e93]
+              - paragraph [ref=e94]: Every decision optimized for PM success. We measure our success by how much strategic time we return to Product Managers worldwide.
+        - generic [ref=e95]:
+          - heading "Our Culture" [level=2] [ref=e96]
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - heading "Core Values" [level=3] [ref=e100]
+              - list [ref=e101]:
+                - listitem [ref=e102]:
+                  - paragraph [ref=e105]:
+                    - strong [ref=e106]: "Strategic First:"
+                    - text: Every feature must enhance strategic thinking, not just operational efficiency
+                - listitem [ref=e107]:
+                  - paragraph [ref=e110]:
+                    - strong [ref=e111]: "Quality Over Speed:"
+                    - text: Industry-leading solutions built for long-term success
+                - listitem [ref=e112]:
+                  - paragraph [ref=e115]:
+                    - strong [ref=e116]: "PM Empathy:"
+                    - text: Built by PMs who understand the daily challenges and strategic pressures
+                - listitem [ref=e117]:
+                  - paragraph [ref=e120]:
+                    - strong [ref=e121]: "Continuous Learning:"
+                    - text: Self-improving AI systems that evolve with user needs
+                - listitem [ref=e122]:
+                  - paragraph [ref=e125]:
+                    - strong [ref=e126]: "Transparent Growth:"
+                    - text: Open about our journey from startup to PMO transformation leader
+            - generic [ref=e127]:
+              - heading "Work Environment" [level=3] [ref=e128]
+              - paragraph [ref=e129]:
+                - strong [ref=e130]: "Remote-First:"
+                - text: Distributed team of PM experts and AI engineers working across time zones
+              - paragraph [ref=e131]:
+                - strong [ref=e132]: "Asynchronous Collaboration:"
+                - text: Deep work blocks with strategic alignment sessions
+              - paragraph [ref=e133]:
+                - strong [ref=e134]: "Outcome-Focused:"
+                - text: Measured by PM transformation success, not hours logged
+              - paragraph [ref=e135]:
+                - strong [ref=e136]: "Continuous Improvement:"
+                - text: Weekly retrospectives and monthly strategic planning sessions
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - img [ref=e139]
+            - heading "Join Our Mission" [level=2] [ref=e143]
+            - paragraph [ref=e144]: Help us transform Product Management through AI. We're looking for passionate builders who understand the strategic challenges PMs face every day.
+          - generic [ref=e146]:
+            - generic [ref=e148]:
+              - heading "Senior AI Engineer" [level=4] [ref=e149]
+              - paragraph [ref=e150]: Build multi-AI orchestration systems
+              - generic [ref=e152]: Remote
+              - generic [ref=e154]: Full-time
+            - generic [ref=e156]:
+              - heading "Product Strategy Lead" [level=4] [ref=e157]
+              - paragraph [ref=e158]: Define PMO transformation strategies
+              - generic [ref=e160]: Remote
+              - generic [ref=e162]: Full-time
+          - link "View All Positions" [ref=e164] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e165] [cursor=pointer]:
+              - img [ref=e167] [cursor=pointer]
+              - generic [ref=e171] [cursor=pointer]: View All Positions
+        - generic [ref=e172]:
+          - heading "Leadership Team" [level=2] [ref=e173]
+          - paragraph [ref=e174]: Former Product Managers from high-growth startups and Fortune 500 companies, united by the mission to eliminate PM busywork through AI.
+          - generic [ref=e176]:
+            - generic [ref=e178]:
+              - heading "Strategic Vision" [level=4] [ref=e179]
+              - paragraph [ref=e180]: Former PM, 8+ years strategic product leadership
+              - paragraph [ref=e181]: "\"Every PM deserves PMO-level strategic capabilities. That's what we're building.\""
+            - generic [ref=e183]:
+              - heading "Technical Excellence" [level=4] [ref=e184]
+              - paragraph [ref=e185]: AI/ML Engineer, 10+ years distributed systems
+              - paragraph [ref=e186]: "\"Multi-AI orchestration is the key to transforming individual PMs into strategic leaders.\""
+            - generic [ref=e188]:
+              - heading "Product Operations" [level=4] [ref=e189]
+              - paragraph [ref=e190]: Former PMO Director, enterprise transformation
+              - paragraph [ref=e191]: "\"We're not just building software - we're reimagining how Product Management works.\""
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - img [ref=e194]
+            - heading "Ready to Join the PMO Transformation?" [level=2] [ref=e199]
+          - paragraph [ref=e200]: Experience how PM33's AI teams transform individual PMs into strategic PMO leaders
+          - generic [ref=e201]:
+            - link "Start Free Trial" [ref=e202] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e203] [cursor=pointer]:
+                - img [ref=e205] [cursor=pointer]
+                - generic [ref=e209] [cursor=pointer]: Start Free Trial
+            - link "Get In Touch" [ref=e210] [cursor=pointer]:
+              - /url: /contact
+              - generic [ref=e211] [cursor=pointer]:
+                - img [ref=e213] [cursor=pointer]
+                - generic [ref=e215] [cursor=pointer]: Get In Touch
+    - contentinfo [ref=e216]:
+      - generic [ref=e217]:
+        - generic [ref=e218]:
+          - generic [ref=e219]:
+            - heading "Product" [level=3] [ref=e220]
+            - generic [ref=e221]:
+              - link "Features" [ref=e222] [cursor=pointer]:
+                - /url: /features
+              - link "Pricing" [ref=e223] [cursor=pointer]:
+                - /url: /pricing
+              - link "Free Trial" [ref=e224] [cursor=pointer]:
+                - /url: /trial
+              - link "Demo" [ref=e225] [cursor=pointer]:
+                - /url: /demo
+          - generic [ref=e226]:
+            - heading "Resources" [level=3] [ref=e227]
+            - generic [ref=e228]:
+              - link "Resources" [ref=e229] [cursor=pointer]:
+                - /url: /blog
+              - link "About Us" [ref=e230] [cursor=pointer]:
+                - /url: /about
+              - link "Contact" [ref=e231] [cursor=pointer]:
+                - /url: /contact
+              - link "Support" [ref=e232] [cursor=pointer]:
+                - /url: /support
+          - generic [ref=e233]:
+            - heading "Legal" [level=3] [ref=e234]
+            - generic [ref=e235]:
+              - link "Privacy Policy" [ref=e236] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Service" [ref=e237] [cursor=pointer]:
+                - /url: /terms
+              - link "Security" [ref=e238] [cursor=pointer]:
+                - /url: /security
+          - generic [ref=e239]:
+            - heading "Connect" [level=3] [ref=e240]
+            - generic [ref=e241]:
+              - link "LinkedIn" [ref=e242] [cursor=pointer]:
+                - /url: https://linkedin.com/company/pm33
+              - link "Twitter" [ref=e243] [cursor=pointer]:
+                - /url: https://twitter.com/PM33_AI
+              - link "Community" [ref=e244] [cursor=pointer]:
+                - /url: /community
+        - generic [ref=e245]:
+          - paragraph [ref=e246]: © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+          - generic [ref=e247]:
+            - link "Privacy" [ref=e248] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms" [ref=e249] [cursor=pointer]:
+              - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e255] [cursor=pointer]:
+    - img [ref=e256] [cursor=pointer]
+  - alert [ref=e259]
+```

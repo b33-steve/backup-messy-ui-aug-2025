@@ -1,0 +1,113 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]
+          - generic [ref=e10]: AI Product Management
+        - generic [ref=e11]:
+          - button "Switch to dark mode" [ref=e12] [cursor=pointer]:
+            - img [ref=e14] [cursor=pointer]
+          - button [ref=e16] [cursor=pointer]
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e22]:
+            - generic [ref=e23]:
+              - heading "🎯 PM33 Strategic Command Center" [level=1] [ref=e24]
+              - paragraph [ref=e25]: Real-time orchestration of 4 specialized AI teams transforming PM workflows
+            - generic [ref=e26]:
+              - button "Refresh dashboard data" [ref=e27] [cursor=pointer]:
+                - img [ref=e29] [cursor=pointer]
+              - generic [ref=e34]: Day 3 Beta Demo
+          - region "Key strategic metrics" [ref=e35]:
+            - generic [ref=e36]:
+              - generic [ref=e38]:
+                - paragraph [ref=e39]: 11,436
+                - paragraph [ref=e40]: Total Work Items
+              - generic [ref=e42]:
+                - paragraph [ref=e43]: 10,842
+                - paragraph [ref=e44]: Synced Items
+              - generic [ref=e46]:
+                - paragraph [ref=e47]: 87%
+                - paragraph [ref=e48]: Strategic Optimization
+              - generic [ref=e50]:
+                - paragraph [ref=e51]: 94%
+                - paragraph [ref=e52]: Roadmap Health
+              - generic [ref=e54]:
+                - paragraph [ref=e55]: "23"
+                - paragraph [ref=e56]: What-if Scenarios
+              - generic [ref=e58]:
+                - paragraph [ref=e59]: "189"
+                - paragraph [ref=e60]: Jira Updates
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - 'heading "🚀 PM33: The Ultimate Product Agent" [level=2] [ref=e64]'
+              - paragraph [ref=e65]: Strategic Intelligence Platform - Transforming PMs into Strategic Superstars
+              - paragraph [ref=e66]: "Day 3 Beta Demo: 4 AI teams orchestrating end-to-end strategic workflows"
+            - generic [ref=e67]:
+              - generic [ref=e69]: Live Demo Active
+              - generic [ref=e70]:
+                - generic [ref=e72]: ✅ MDM Sync
+                - generic [ref=e74]: ✅ AI Teams
+                - generic [ref=e76]: ✅ Strategic Intelligence
+        - paragraph [ref=e78]: © 2025 PM33. Strategic Command Center.
+    - contentinfo [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - heading "Product" [level=3] [ref=e83]
+            - generic [ref=e84]:
+              - link "Features" [ref=e85] [cursor=pointer]:
+                - /url: /features
+              - link "Pricing" [ref=e86] [cursor=pointer]:
+                - /url: /pricing
+              - link "Free Trial" [ref=e87] [cursor=pointer]:
+                - /url: /trial
+              - link "Demo" [ref=e88] [cursor=pointer]:
+                - /url: /demo
+          - generic [ref=e89]:
+            - heading "Resources" [level=3] [ref=e90]
+            - generic [ref=e91]:
+              - link "Resources" [ref=e92] [cursor=pointer]:
+                - /url: /blog
+              - link "About Us" [ref=e93] [cursor=pointer]:
+                - /url: /about
+              - link "Contact" [ref=e94] [cursor=pointer]:
+                - /url: /contact
+              - link "Support" [ref=e95] [cursor=pointer]:
+                - /url: /support
+          - generic [ref=e96]:
+            - heading "Legal" [level=3] [ref=e97]
+            - generic [ref=e98]:
+              - link "Privacy Policy" [ref=e99] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Service" [ref=e100] [cursor=pointer]:
+                - /url: /terms
+              - link "Security" [ref=e101] [cursor=pointer]:
+                - /url: /security
+          - generic [ref=e102]:
+            - heading "Connect" [level=3] [ref=e103]
+            - generic [ref=e104]:
+              - link "LinkedIn" [ref=e105] [cursor=pointer]:
+                - /url: https://linkedin.com/company/pm33
+              - link "Twitter" [ref=e106] [cursor=pointer]:
+                - /url: https://twitter.com/PM33_AI
+              - link "Community" [ref=e107] [cursor=pointer]:
+                - /url: /community
+        - generic [ref=e108]:
+          - paragraph [ref=e109]: © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+          - generic [ref=e110]:
+            - link "Privacy" [ref=e111] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms" [ref=e112] [cursor=pointer]:
+              - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e118] [cursor=pointer]:
+    - img [ref=e119] [cursor=pointer]
+  - alert [ref=e122]: 🎯 PM33 Strategic Command Center
+```

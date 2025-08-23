@@ -1,0 +1,536 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]
+        - generic [ref=e10]: AI Product Management
+      - generic [ref=e11]:
+        - link "Features" [ref=e13] [cursor=pointer]:
+          - /url: /features
+        - link "Resources" [ref=e15] [cursor=pointer]:
+          - /url: /blog
+        - link "Pricing" [ref=e17] [cursor=pointer]:
+          - /url: /pricing
+        - link "About" [ref=e19] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=e21] [cursor=pointer]:
+          - /url: /contact
+        - paragraph [ref=e23]: Demo
+      - generic [ref=e24]:
+        - button [disabled] [ref=e25]:
+          - img [ref=e27]
+        - link "Start Free Trial" [ref=e29] [cursor=pointer]:
+          - /url: /trial
+          - generic [ref=e31] [cursor=pointer]: Start Free Trial
+  - main [ref=e32]:
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e36]: 💰 Transparent Pricing • No Hidden Fees
+        - heading "Choose Your PMO Transformation Plan" [level=1] [ref=e37]:
+          - text: Choose Your
+          - generic [ref=e38]: PMO Transformation Plan
+        - paragraph [ref=e39]: From individual PM to strategic PMO leader. Choose the plan that matches your ambition and scale. All plans include our 30-day transformation guarantee.
+        - generic [ref=e40]:
+          - link "Start Free 14-Day Trial" [ref=e41] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e42] [cursor=pointer]:
+              - img [ref=e44] [cursor=pointer]
+              - generic [ref=e48] [cursor=pointer]: Start Free 14-Day Trial
+          - link "See Live Demo" [ref=e49] [cursor=pointer]:
+            - /url: /command-center-demo
+            - generic [ref=e50] [cursor=pointer]:
+              - img [ref=e52] [cursor=pointer]
+              - generic [ref=e59] [cursor=pointer]: See Live Demo
+      - generic [ref=e61]:
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - heading "Free Trial" [level=3] [ref=e66]
+            - generic [ref=e67]:
+              - paragraph [ref=e68]: $0
+              - paragraph [ref=e69]: /14 days
+            - generic [ref=e71]: 5 intelligence operations
+            - paragraph [ref=e72]: Perfect for evaluating PM33's strategic intelligence capabilities
+          - generic [ref=e73]:
+            - heading "✨ What's Included:" [level=4] [ref=e74]
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - img [ref=e77]
+                - paragraph [ref=e79]: Full access to all 4 AI teams
+              - generic [ref=e80]:
+                - img [ref=e81]
+                - paragraph [ref=e83]: 5 strategic intelligence operations
+              - generic [ref=e84]:
+                - img [ref=e85]
+                - paragraph [ref=e87]: Basic workflow automation
+              - generic [ref=e88]:
+                - img [ref=e89]
+                - paragraph [ref=e91]: PM tool integration (1 tool)
+              - generic [ref=e92]:
+                - img [ref=e93]
+                - paragraph [ref=e95]: Community support
+              - generic [ref=e96]:
+                - img [ref=e97]
+                - paragraph [ref=e99]: All strategic documents included
+            - separator
+            - heading "⚠️ Limitations:" [level=4] [ref=e100]
+            - generic [ref=e101]:
+              - generic [ref=e102]:
+                - img [ref=e103]
+                - paragraph [ref=e106]: Limited to 5 operations total
+              - generic [ref=e107]:
+                - img [ref=e108]
+                - paragraph [ref=e111]: 1 PM tool integration only
+              - generic [ref=e112]:
+                - img [ref=e113]
+                - paragraph [ref=e116]: Standard response times
+          - link "Start Free Trial" [ref=e117] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e118] [cursor=pointer]:
+              - generic [ref=e119] [cursor=pointer]: Start Free Trial
+              - img [ref=e121] [cursor=pointer]
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - img [ref=e128]
+            - generic [ref=e130]: Most Popular
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - heading "Starter" [level=3] [ref=e133]
+              - generic [ref=e134]:
+                - paragraph [ref=e135]: $29
+                - paragraph [ref=e136]: /per month
+              - generic [ref=e138]: 40 intelligence operations
+              - paragraph [ref=e139]: Complete PMO transformation for individual product managers
+            - generic [ref=e140]:
+              - heading "✨ What's Included:" [level=4] [ref=e141]
+              - generic [ref=e142]:
+                - generic [ref=e143]:
+                  - img [ref=e144]
+                  - paragraph [ref=e146]: 40 intelligence operations per month
+                - generic [ref=e147]:
+                  - img [ref=e148]
+                  - paragraph [ref=e150]: All 4 AI teams (Strategic, Workflow, Data, Communication)
+                - generic [ref=e151]:
+                  - img [ref=e152]
+                  - paragraph [ref=e154]: Core strategic intelligence
+                - generic [ref=e155]:
+                  - img [ref=e156]
+                  - paragraph [ref=e158]: Basic PM tool integrations
+                - generic [ref=e159]:
+                  - img [ref=e160]
+                  - paragraph [ref=e162]: Email support
+                - generic [ref=e163]:
+                  - img [ref=e164]
+                  - paragraph [ref=e166]: Strategic documents & reports
+                - generic [ref=e167]:
+                  - img [ref=e168]
+                  - paragraph [ref=e170]: Basic competitive analysis
+                - generic [ref=e171]:
+                  - img [ref=e172]
+                  - paragraph [ref=e174]: Workflow automation
+            - link "Start with Starter" [ref=e175] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e176] [cursor=pointer]:
+                - generic [ref=e177] [cursor=pointer]: Start with Starter
+                - img [ref=e179] [cursor=pointer]
+        - generic [ref=e184]:
+          - generic [ref=e185]:
+            - heading "Team" [level=3] [ref=e186]
+            - generic [ref=e187]:
+              - paragraph [ref=e188]: $79
+              - paragraph [ref=e189]: /per month
+            - generic [ref=e191]: 200 intelligence operations
+            - paragraph [ref=e192]: Advanced AI advisor for growing PM teams
+          - generic [ref=e193]:
+            - heading "✨ What's Included:" [level=4] [ref=e194]
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - img [ref=e197]
+                - paragraph [ref=e199]: 200 intelligence operations per month
+              - generic [ref=e200]:
+                - img [ref=e201]
+                - paragraph [ref=e203]: Advanced AI advisor capabilities
+              - generic [ref=e204]:
+                - img [ref=e205]
+                - paragraph [ref=e207]: Multi-framework analysis (ICE, RICE, Porter's Five Forces)
+              - generic [ref=e208]:
+                - img [ref=e209]
+                - paragraph [ref=e211]: All PM tool integrations
+              - generic [ref=e212]:
+                - img [ref=e213]
+                - paragraph [ref=e215]: Priority email support
+              - generic [ref=e216]:
+                - img [ref=e217]
+                - paragraph [ref=e219]: Team collaboration features
+              - generic [ref=e220]:
+                - img [ref=e221]
+                - paragraph [ref=e223]: Advanced competitive intelligence
+              - generic [ref=e224]:
+                - img [ref=e225]
+                - paragraph [ref=e227]: Custom strategic frameworks
+          - link "Upgrade to Team" [ref=e228] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e229] [cursor=pointer]:
+              - generic [ref=e230] [cursor=pointer]: Upgrade to Team
+              - img [ref=e232] [cursor=pointer]
+        - generic [ref=e237]:
+          - generic [ref=e238]:
+            - heading "Scale" [level=3] [ref=e239]
+            - generic [ref=e240]:
+              - paragraph [ref=e241]: $199
+              - paragraph [ref=e242]: /per month
+            - generic [ref=e244]: 800 intelligence operations
+            - paragraph [ref=e245]: Full strategic platform for product organizations
+          - generic [ref=e246]:
+            - heading "✨ What's Included:" [level=4] [ref=e247]
+            - generic [ref=e248]:
+              - generic [ref=e249]:
+                - img [ref=e250]
+                - paragraph [ref=e252]: 800 intelligence operations per month
+              - generic [ref=e253]:
+                - img [ref=e254]
+                - paragraph [ref=e256]: Full strategic platform access
+              - generic [ref=e257]:
+                - img [ref=e258]
+                - paragraph [ref=e260]: Unlimited PM tool integrations
+              - generic [ref=e261]:
+                - img [ref=e262]
+                - paragraph [ref=e264]: Custom AI training
+              - generic [ref=e265]:
+                - img [ref=e266]
+                - paragraph [ref=e268]: Priority support (2-hour response)
+              - generic [ref=e269]:
+                - img [ref=e270]
+                - paragraph [ref=e272]: Advanced analytics & reporting
+              - generic [ref=e273]:
+                - img [ref=e274]
+                - paragraph [ref=e276]: White-label deployment options
+              - generic [ref=e277]:
+                - img [ref=e278]
+                - paragraph [ref=e280]: Dedicated success manager
+          - link "Contact Sales" [ref=e281] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e282] [cursor=pointer]:
+              - generic [ref=e283] [cursor=pointer]: Contact Sales
+              - img [ref=e285] [cursor=pointer]
+        - generic [ref=e290]:
+          - generic [ref=e291]:
+            - heading "Enterprise" [level=3] [ref=e292]
+            - generic [ref=e293]:
+              - paragraph [ref=e294]: $599+
+              - paragraph [ref=e295]: /per month
+            - generic [ref=e297]: 3,000+ intelligence operations
+            - paragraph [ref=e298]: Custom PMO transformation for large organizations
+          - generic [ref=e299]:
+            - heading "✨ What's Included:" [level=4] [ref=e300]
+            - generic [ref=e301]:
+              - generic [ref=e302]:
+                - img [ref=e303]
+                - paragraph [ref=e305]: 3,000+ intelligence operations per month
+              - generic [ref=e306]:
+                - img [ref=e307]
+                - paragraph [ref=e309]: Custom AI team configurations
+              - generic [ref=e310]:
+                - img [ref=e311]
+                - paragraph [ref=e313]: Enterprise-grade security (SOC 2)
+              - generic [ref=e314]:
+                - img [ref=e315]
+                - paragraph [ref=e317]: On-premise deployment
+              - generic [ref=e318]:
+                - img [ref=e319]
+                - paragraph [ref=e321]: 24/7 priority support (15-min response)
+              - generic [ref=e322]:
+                - img [ref=e323]
+                - paragraph [ref=e325]: Custom integrations & workflows
+              - generic [ref=e326]:
+                - img [ref=e327]
+                - paragraph [ref=e329]: Executive strategic briefings
+              - generic [ref=e330]:
+                - img [ref=e331]
+                - paragraph [ref=e333]: Dedicated technical account manager
+              - generic [ref=e334]:
+                - img [ref=e335]
+                - paragraph [ref=e337]: AutoPilot add-on available
+          - link "Enterprise Sales" [ref=e338] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e339] [cursor=pointer]:
+              - generic [ref=e340] [cursor=pointer]: Enterprise Sales
+              - img [ref=e342] [cursor=pointer]
+      - generic [ref=e345]:
+        - heading "📊 Detailed Feature Comparison" [level=2] [ref=e346]
+        - table [ref=e348]:
+          - rowgroup [ref=e349]:
+            - row "Feature Free Trial Professional Team Enterprise" [ref=e350]:
+              - cell "Feature" [ref=e351]
+              - cell "Free Trial" [ref=e352]
+              - cell "Professional" [ref=e353]
+              - cell "Team" [ref=e354]
+              - cell "Enterprise" [ref=e355]
+          - rowgroup [ref=e356]:
+            - row "Strategic Intelligence Queries 5 total Unlimited Unlimited Unlimited" [ref=e357]:
+              - cell "Strategic Intelligence Queries" [ref=e358]
+              - cell "5 total" [ref=e359]
+              - cell "Unlimited" [ref=e360]
+              - cell "Unlimited" [ref=e361]
+              - cell "Unlimited" [ref=e362]
+            - row "AI Teams Access All 4 teams All 4 teams All 4 teams All 4 teams" [ref=e363]:
+              - cell "AI Teams Access" [ref=e364]
+              - cell "All 4 teams" [ref=e365]
+              - cell "All 4 teams" [ref=e366]
+              - cell "All 4 teams" [ref=e367]
+              - cell "All 4 teams" [ref=e368]
+            - row "PM Tool Integrations 1 tool All tools All tools All tools + Custom" [ref=e369]:
+              - cell "PM Tool Integrations" [ref=e370]
+              - cell "1 tool" [ref=e371]
+              - cell "All tools" [ref=e372]
+              - cell "All tools" [ref=e373]
+              - cell "All tools + Custom" [ref=e374]
+            - row "Support Response Time 24 hours 4 hours 2 hours 15 minutes" [ref=e375]:
+              - cell "Support Response Time" [ref=e376]
+              - cell "24 hours" [ref=e377]
+              - cell "4 hours" [ref=e378]
+              - cell "2 hours" [ref=e379]
+              - cell "15 minutes" [ref=e380]
+            - row "Team Members 1 user 1 user Up to 5 users Unlimited" [ref=e381]:
+              - cell "Team Members" [ref=e382]
+              - cell "1 user" [ref=e383]
+              - cell "1 user" [ref=e384]
+              - cell "Up to 5 users" [ref=e385]
+              - cell "Unlimited" [ref=e386]
+            - row "Custom Frameworks ❌ ✅ ✅ ✅" [ref=e387]:
+              - cell "Custom Frameworks" [ref=e388]
+              - cell "❌" [ref=e389]
+              - cell "✅" [ref=e390]
+              - cell "✅" [ref=e391]
+              - cell "✅" [ref=e392]
+            - row "API Access ❌ Basic Advanced Enterprise" [ref=e393]:
+              - cell "API Access" [ref=e394]
+              - cell "❌" [ref=e395]
+              - cell "Basic" [ref=e396]
+              - cell "Advanced" [ref=e397]
+              - cell "Enterprise" [ref=e398]
+            - row "Enterprise Security ❌ ❌ ❌ ✅" [ref=e399]:
+              - cell "Enterprise Security" [ref=e400]
+              - cell "❌" [ref=e401]
+              - cell "❌" [ref=e402]
+              - cell "❌" [ref=e403]
+              - cell "✅" [ref=e404]
+      - generic [ref=e405]:
+        - heading "💡 Calculate Your ROI" [level=2] [ref=e406]
+        - generic [ref=e408]:
+          - generic [ref=e410]:
+            - generic [ref=e411]:
+              - paragraph [ref=e412]: "Your Current PM Time Allocation:"
+              - generic [ref=e413]:
+                - generic [ref=e414]:
+                  - paragraph [ref=e415]: "Administrative Tasks:"
+                  - paragraph [ref=e416]: 60% (4.8 hrs/day)
+                - generic [ref=e417]:
+                  - paragraph [ref=e418]: "Strategic Work:"
+                  - paragraph [ref=e419]: 40% (3.2 hrs/day)
+            - separator
+            - generic [ref=e420]:
+              - paragraph [ref=e421]: "With PM33 Professional ($29/month):"
+              - generic [ref=e422]:
+                - generic [ref=e423]:
+                  - paragraph [ref=e424]: "Administrative Tasks:"
+                  - paragraph [ref=e425]: 20% (1.6 hrs/day)
+                - generic [ref=e426]:
+                  - paragraph [ref=e427]: "Strategic Work:"
+                  - paragraph [ref=e428]: 80% (6.4 hrs/day)
+          - generic [ref=e431]:
+            - img [ref=e432]
+            - heading "Monthly Value Added" [level=3] [ref=e436]
+            - generic [ref=e438]:
+              - generic [ref=e439]:
+                - paragraph [ref=e440]: +72 hrs
+                - paragraph [ref=e441]: Strategic time gained
+              - generic [ref=e442]:
+                - paragraph [ref=e443]: $7,200
+                - paragraph [ref=e444]: Value at $100/hr PM rate
+            - separator
+            - generic [ref=e445]:
+              - paragraph [ref=e446]: "ROI:"
+              - paragraph [ref=e447]: 24,800%
+            - paragraph [ref=e448]: $29 investment → $7,200 monthly value
+      - generic [ref=e449]:
+        - generic [ref=e450]:
+          - img [ref=e451]
+          - generic [ref=e453]:
+            - heading "🛡️ Zero-Risk PMO Transformation Guarantee" [level=2] [ref=e454]
+            - paragraph [ref=e455]: We're confident PM33 will transform your strategic capabilities within 30 days
+        - generic [ref=e457]:
+          - generic [ref=e459]:
+            - img [ref=e460]
+            - paragraph [ref=e463]: 14 Days Free
+            - paragraph [ref=e464]: No credit card required for full access trial
+          - generic [ref=e466]:
+            - img [ref=e467]
+            - paragraph [ref=e471]: 30-Day Guarantee
+            - paragraph [ref=e472]: Full refund if not completely satisfied
+          - generic [ref=e474]:
+            - img [ref=e475]
+            - paragraph [ref=e479]: Keep Everything
+            - paragraph [ref=e480]: All strategic documents and insights yours to keep
+      - generic [ref=e481]:
+        - generic [ref=e482]:
+          - img [ref=e483]
+          - heading "🧮 Interactive ROI Calculator" [level=2] [ref=e486]
+          - paragraph [ref=e487]: Calculate your exact ROI based on your current strategic analysis time
+        - generic [ref=e489]:
+          - generic [ref=e491]:
+            - heading "Your Current Situation" [level=3] [ref=e492]
+            - generic [ref=e493]:
+              - generic [ref=e494]:
+                - paragraph [ref=e495]: "Hours/week on strategic analysis: 16"
+                - generic [ref=e498] [cursor=pointer]:
+                  - slider [ref=e500] [cursor=pointer]
+                  - generic:
+                    - generic:
+                      - generic: 5h
+                    - generic:
+                      - generic: 20h
+                    - generic:
+                      - generic: 40h
+              - generic [ref=e501]:
+                - paragraph [ref=e502]: "Your hourly PM value: $100"
+                - generic [ref=e505] [cursor=pointer]:
+                  - slider [ref=e507] [cursor=pointer]
+                  - generic:
+                    - generic:
+                      - generic: $50
+                    - generic:
+                      - generic: $100
+                    - generic:
+                      - generic: $200
+              - generic [ref=e508]:
+                - paragraph [ref=e509]: "PM33 Plan: $29/month"
+                - generic [ref=e510]:
+                  - button "Starter - $29/month" [ref=e511] [cursor=pointer]:
+                    - generic [ref=e513] [cursor=pointer]: Starter - $29/month
+                  - button "Team - $79/month" [ref=e514] [cursor=pointer]:
+                    - generic [ref=e516] [cursor=pointer]: Team - $79/month
+                  - button "Scale - $199/month" [ref=e517] [cursor=pointer]:
+                    - generic [ref=e519] [cursor=pointer]: Scale - $199/month
+          - generic [ref=e521]:
+            - heading "Your PM33 ROI Results" [level=3] [ref=e522]
+            - generic [ref=e523]:
+              - generic [ref=e524]:
+                - paragraph [ref=e525]: "Current monthly time cost:"
+                - paragraph [ref=e526]: $6,400
+              - generic [ref=e527]:
+                - paragraph [ref=e528]: "Time saved per month:"
+                - paragraph [ref=e529]: 48 hours
+              - generic [ref=e530]:
+                - paragraph [ref=e531]: "Value of time saved:"
+                - paragraph [ref=e532]: $4,800
+              - generic [ref=e533]:
+                - paragraph [ref=e534]: "PM33 cost:"
+                - paragraph [ref=e535]: $29
+              - separator
+              - generic [ref=e536]:
+                - paragraph [ref=e537]: "Net monthly savings:"
+                - paragraph [ref=e538]: $4,771
+              - generic [ref=e539]:
+                - paragraph [ref=e540]: "Return on Investment:"
+                - paragraph [ref=e541]: 16452%
+              - generic [ref=e542]:
+                - paragraph [ref=e543]: "Annual savings:"
+                - paragraph [ref=e544]: $57,252
+            - link "Start Saving Time Today" [ref=e545] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e546] [cursor=pointer]:
+                - img [ref=e548] [cursor=pointer]
+                - generic [ref=e552] [cursor=pointer]: Start Saving Time Today
+      - generic [ref=e553]:
+        - heading "🤔 Frequently Asked Questions" [level=2] [ref=e554]
+        - generic [ref=e556]:
+          - generic [ref=e558]:
+            - heading "Can I upgrade or downgrade my plan anytime?" [level=4] [ref=e559]
+            - paragraph [ref=e560]: Yes! You can upgrade immediately for more features or downgrade at your next billing cycle. No penalties or long-term commitments.
+          - generic [ref=e562]:
+            - heading "What happens to my data if I cancel?" [level=4] [ref=e563]
+            - paragraph [ref=e564]: You keep all strategic documents, analyses, and insights generated during your subscription. We provide data export tools for easy migration.
+          - generic [ref=e566]:
+            - heading "Do you offer discounts for annual payments?" [level=4] [ref=e567]
+            - paragraph [ref=e568]: Yes! Save 20% with annual billing. Professional becomes $278/year ($23/month) and Team becomes $1,430/year ($119/month).
+          - generic [ref=e570]:
+            - heading "Can I try Team or Enterprise features?" [level=4] [ref=e571]
+            - paragraph [ref=e572]: Absolutely! Contact our sales team to arrange a custom trial with team features or enterprise security requirements.
+          - generic [ref=e574]:
+            - heading "What if I need custom integrations?" [level=4] [ref=e575]
+            - paragraph [ref=e576]: Team and Enterprise plans include custom API development. Our technical team works with you to integrate PM33 with your unique tool stack.
+          - generic [ref=e578]:
+            - heading "Is my strategic data secure?" [level=4] [ref=e579]
+            - paragraph [ref=e580]: Yes! SOC 2 Type II certified, end-to-end encryption, and enterprise-grade security. Your strategic intelligence stays confidential.
+      - generic [ref=e581]:
+        - img [ref=e582]
+        - heading "Ready to Transform from PM to Strategic PMO?" [level=1] [ref=e584]
+        - paragraph [ref=e585]: Join 2,500+ product managers who've already made the transformation. Start your strategic intelligence journey with zero risk.
+        - generic [ref=e586]:
+          - link "Start Free 14-Day Trial" [ref=e587] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e588] [cursor=pointer]:
+              - img [ref=e590] [cursor=pointer]
+              - generic [ref=e594] [cursor=pointer]: Start Free 14-Day Trial
+          - link "Talk to Sales" [ref=e595] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e596] [cursor=pointer]:
+              - generic [ref=e597] [cursor=pointer]: Talk to Sales
+              - img [ref=e599] [cursor=pointer]
+        - paragraph [ref=e602]: 🚀 No credit card required • 30-day money-back guarantee • Keep all strategic insights
+  - contentinfo [ref=e603]:
+    - generic [ref=e604]:
+      - generic [ref=e605]:
+        - generic [ref=e606]:
+          - heading "Product" [level=3] [ref=e607]
+          - generic [ref=e608]:
+            - link "Features" [ref=e609] [cursor=pointer]:
+              - /url: /features
+            - link "Pricing" [ref=e610] [cursor=pointer]:
+              - /url: /pricing
+            - link "Free Trial" [ref=e611] [cursor=pointer]:
+              - /url: /trial
+            - link "Demo" [ref=e612] [cursor=pointer]:
+              - /url: /demo
+        - generic [ref=e613]:
+          - heading "Resources" [level=3] [ref=e614]
+          - generic [ref=e615]:
+            - link "Resources" [ref=e616] [cursor=pointer]:
+              - /url: /blog
+            - link "About Us" [ref=e617] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e618] [cursor=pointer]:
+              - /url: /contact
+            - link "Support" [ref=e619] [cursor=pointer]:
+              - /url: /support
+        - generic [ref=e620]:
+          - heading "Legal" [level=3] [ref=e621]
+          - generic [ref=e622]:
+            - link "Privacy Policy" [ref=e623] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e624] [cursor=pointer]:
+              - /url: /terms
+            - link "Security" [ref=e625] [cursor=pointer]:
+              - /url: /security
+        - generic [ref=e626]:
+          - heading "Connect" [level=3] [ref=e627]
+          - generic [ref=e628]:
+            - link "LinkedIn" [ref=e629] [cursor=pointer]:
+              - /url: https://linkedin.com/company/pm33
+            - link "Twitter" [ref=e630] [cursor=pointer]:
+              - /url: https://twitter.com/PM33_AI
+            - link "Community" [ref=e631] [cursor=pointer]:
+              - /url: /community
+      - generic [ref=e632]:
+        - paragraph [ref=e633]: © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+        - generic [ref=e634]:
+          - link "Privacy" [ref=e635] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e636] [cursor=pointer]:
+            - /url: /terms
+```

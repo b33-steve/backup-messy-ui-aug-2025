@@ -1,0 +1,80 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]
+        - generic [ref=e10]: AI Product Management
+      - generic [ref=e11]:
+        - button [disabled] [ref=e12]:
+          - img [ref=e14]
+        - link "Start Free Trial" [ref=e16] [cursor=pointer]:
+          - /url: /trial
+          - generic [ref=e18] [cursor=pointer]: Start Free Trial
+        - button [ref=e19] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e24]:
+      - 'heading "AI-powered product management 2024: The Tool That Supercharges Your Existing Stack" [level=1] [ref=e25]'
+      - paragraph [ref=e26]: Don't replace your PM tools - make them 10x smarter with AI-powered intelligence.
+      - generic [ref=e27]:
+        - link "Start Free 14-Day Trial" [ref=e28] [cursor=pointer]:
+          - /url: /trial
+          - generic [ref=e30] [cursor=pointer]: Start Free 14-Day Trial
+        - link "See Live Demo" [ref=e31] [cursor=pointer]:
+          - /url: /strategic-intelligence
+          - generic [ref=e33] [cursor=pointer]: See Live Demo
+  - contentinfo [ref=e34]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - heading "Product" [level=3] [ref=e38]
+          - generic [ref=e39]:
+            - link "Features" [ref=e40] [cursor=pointer]:
+              - /url: /features
+            - link "Pricing" [ref=e41] [cursor=pointer]:
+              - /url: /pricing
+            - link "Free Trial" [ref=e42] [cursor=pointer]:
+              - /url: /trial
+            - link "Demo" [ref=e43] [cursor=pointer]:
+              - /url: /demo
+        - generic [ref=e44]:
+          - heading "Resources" [level=3] [ref=e45]
+          - generic [ref=e46]:
+            - link "Resources" [ref=e47] [cursor=pointer]:
+              - /url: /blog
+            - link "About Us" [ref=e48] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e49] [cursor=pointer]:
+              - /url: /contact
+            - link "Support" [ref=e50] [cursor=pointer]:
+              - /url: /support
+        - generic [ref=e51]:
+          - heading "Legal" [level=3] [ref=e52]
+          - generic [ref=e53]:
+            - link "Privacy Policy" [ref=e54] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e55] [cursor=pointer]:
+              - /url: /terms
+            - link "Security" [ref=e56] [cursor=pointer]:
+              - /url: /security
+        - generic [ref=e57]:
+          - heading "Connect" [level=3] [ref=e58]
+          - generic [ref=e59]:
+            - link "LinkedIn" [ref=e60] [cursor=pointer]:
+              - /url: https://linkedin.com/company/pm33
+            - link "Twitter" [ref=e61] [cursor=pointer]:
+              - /url: https://twitter.com/PM33_AI
+            - link "Community" [ref=e62] [cursor=pointer]:
+              - /url: /community
+      - generic [ref=e63]:
+        - paragraph [ref=e64]: © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+        - generic [ref=e65]:
+          - link "Privacy" [ref=e66] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e67] [cursor=pointer]:
+            - /url: /terms
+```

@@ -23,21 +23,16 @@ import {
   ThemeIcon,
   RingProgress,
   Timeline,
-  Confetti
+  // Confetti component doesn't exist in Mantine
 } from '@mantine/core';
 import {
   IconTrophy,
   IconSparkles,
   IconRocket,
   IconTarget,
-  IconZap,
-  IconHeart,
-  IconStar,
-  IconConfetti,
   IconBolt,
-  IconMagic,
-  IconFirework,
-  IconCelebration
+  IconHeart,
+  IconStar
 } from '@tabler/icons-react';
 import { usePM33UX } from './PM33UXProvider';
 

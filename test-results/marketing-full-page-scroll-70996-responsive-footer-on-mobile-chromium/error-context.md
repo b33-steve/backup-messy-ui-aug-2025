@@ -1,0 +1,180 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]
+          - generic [ref=e10]: AI Product Management
+        - generic [ref=e11]:
+          - button "Switch to dark mode" [ref=e12] [cursor=pointer]:
+            - img [ref=e14] [cursor=pointer]
+          - button [ref=e16] [cursor=pointer]
+    - main [ref=e18]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - heading "Transform from Reactive Product Manager to Strategic PMO Leader in 30 Days" [level=1] [ref=e22]
+          - paragraph [ref=e23]: "PM33: Your AI Strategy Copilot - Think McKinsey + PM mentor + Data scientist in one platform"
+          - generic [ref=e24]:
+            - link "Start Free 14-Day Trial" [ref=e25] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e26] [cursor=pointer]:
+                - img [ref=e28] [cursor=pointer]
+                - generic [ref=e32] [cursor=pointer]: Start Free 14-Day Trial
+            - link "See Live Demo" [ref=e33] [cursor=pointer]:
+              - /url: /demo
+              - generic [ref=e34] [cursor=pointer]:
+                - img [ref=e36] [cursor=pointer]
+                - generic [ref=e43] [cursor=pointer]: See Live Demo
+          - paragraph [ref=e44]: No credit card required • 2-minute setup • Instant strategic value
+        - generic [ref=e45]:
+          - heading "Are You Stuck in the Tactical Trap?" [level=2] [ref=e46]
+          - generic [ref=e48]:
+            - generic [ref=e50]:
+              - generic [ref=e51]:
+                - img [ref=e52]
+                - paragraph [ref=e55]: 16+ hours/week on "strategic" analysis that competitors ignore
+              - generic [ref=e56]:
+                - img [ref=e57]
+                - paragraph [ref=e62]: Arguing about resource allocation with gut feelings, not data
+              - generic [ref=e63]:
+                - img [ref=e64]
+                - paragraph [ref=e66]: Building roadmaps that competitors outmaneuver in weeks
+            - generic [ref=e68]:
+              - heading "The Strategic Reality:" [level=3] [ref=e69]
+              - paragraph [ref=e70]: While you spend 40% of your time on analysis, your competitors are using AI to make strategic decisions in minutes.
+              - generic [ref=e72]: You're fighting 2025 battles with 1990s tools
+        - generic [ref=e73]:
+          - 'heading "PM33: Your AI Strategy Copilot" [level=2] [ref=e74]'
+          - paragraph [ref=e75]: 4 specialized AI teams working together to transform you from reactive Product Manager into strategic PMO leader with McKinsey-level analysis capabilities.
+          - generic [ref=e77]:
+            - generic [ref=e79]:
+              - img [ref=e80]
+              - heading "Strategic Intelligence AI" [level=4] [ref=e87]
+              - paragraph [ref=e88]: Multi-framework analysis (ICE, RICE, Porter's Five Forces) with competitive intelligence
+            - generic [ref=e90]:
+              - img [ref=e91]
+              - heading "Workflow Execution AI" [level=4] [ref=e95]
+              - paragraph [ref=e96]: Automated task creation and cross-functional coordination with PM tool integration
+            - generic [ref=e98]:
+              - img [ref=e99]
+              - heading "Data Intelligence AI" [level=4] [ref=e101]
+              - paragraph [ref=e102]: Company-specific learning and predictive analytics with performance optimization
+            - generic [ref=e104]:
+              - img [ref=e105]
+              - heading "Communication AI" [level=4] [ref=e110]
+              - paragraph [ref=e111]: Stakeholder communication and executive summaries with alignment facilitation
+        - generic [ref=e112]:
+          - heading "Seamless Integration with Your Existing PM Stack" [level=2] [ref=e113]
+          - paragraph [ref=e114]: Don't replace your PM tools—make them 10x smarter. PM33 works with what you already use.
+          - generic [ref=e116]:
+            - generic [ref=e118]:
+              - img "Jira" [ref=e120]
+              - heading "Jira Integration" [level=4] [ref=e121]
+              - paragraph [ref=e122]: Strategic context for every ticket, automated story creation, and intelligent backlog prioritization
+            - generic [ref=e124]:
+              - img "Linear" [ref=e126]
+              - heading "Linear Integration" [level=4] [ref=e127]
+              - paragraph [ref=e128]: AI-powered issue insights, strategic milestone tracking, and automated workflow orchestration
+            - generic [ref=e130]:
+              - img "Asana" [ref=e132]
+              - heading "Asana Integration" [level=4] [ref=e133]
+              - paragraph [ref=e134]: Strategic project planning, intelligent resource allocation, and cross-team coordination
+            - generic [ref=e136]:
+              - img "Monday.com" [ref=e138]
+              - heading "Monday.com Integration" [level=4] [ref=e139]
+              - paragraph [ref=e140]: Enhanced workflow intelligence, strategic board management, and automated status updates
+        - generic [ref=e141]:
+          - heading "Proven Results from PM Leaders" [level=2] [ref=e142]
+          - generic [ref=e144]:
+            - generic [ref=e146]:
+              - img [ref=e147]
+              - paragraph [ref=e150]: +47 NPS Points
+              - paragraph [ref=e151]: Average NPS boost from executive stakeholders within 90 days
+            - generic [ref=e153]:
+              - img [ref=e154]
+              - paragraph [ref=e159]: 73% Team Satisfaction
+              - paragraph [ref=e160]: Engineering teams report higher clarity on strategic priorities
+            - generic [ref=e162]:
+              - img [ref=e163]
+              - paragraph [ref=e165]: 34% Faster Decisions
+              - paragraph [ref=e166]: Strategic decision cycles reduced from 2.3 weeks to 1.5 weeks average
+          - separator [ref=e167]
+          - paragraph [ref=e168]: "\"PM33 transformed how our product team makes strategic decisions. We went from gut-feel prioritization to data-driven strategic intelligence.\""
+          - paragraph [ref=e169]: — Sarah Chen, VP Product at TechFlow (Series B, 200+ employees)
+        - generic [ref=e170]:
+          - heading "The ROI Math is Simple" [level=2] [ref=e171]
+          - generic [ref=e173]:
+            - generic [ref=e175]:
+              - img [ref=e176]
+              - paragraph [ref=e179]: Current Reality
+              - paragraph [ref=e180]: 16 hours/week on strategic analysis = 64 hours/month
+            - generic [ref=e182]:
+              - img [ref=e183]
+              - paragraph [ref=e186]: With PM33
+              - paragraph [ref=e187]: Reduced to 4 hours/month = 60 hours saved
+            - generic [ref=e189]:
+              - img [ref=e190]
+              - paragraph [ref=e192]: Value Created
+              - paragraph [ref=e193]: At $100/hour PM value = $6,000 monthly value
+          - separator [ref=e194]
+          - paragraph [ref=e195]: PM33 Starter ($29/month) → 207x return on investment
+          - paragraph [ref=e196]: "Plus: Better strategic decisions, faster execution, happier stakeholders"
+    - contentinfo [ref=e197]:
+      - generic [ref=e198]:
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - heading "Product" [level=3] [ref=e201]
+            - generic [ref=e202]:
+              - link "Features" [ref=e203] [cursor=pointer]:
+                - /url: /features
+              - link "Pricing" [ref=e204] [cursor=pointer]:
+                - /url: /pricing
+              - link "Free Trial" [ref=e205] [cursor=pointer]:
+                - /url: /trial
+              - link "Demo" [ref=e206] [cursor=pointer]:
+                - /url: /demo
+          - generic [ref=e207]:
+            - heading "Resources" [level=3] [ref=e208]
+            - generic [ref=e209]:
+              - link "Blog" [ref=e210] [cursor=pointer]:
+                - /url: /blog
+              - link "About Us" [ref=e211] [cursor=pointer]:
+                - /url: /about
+              - link "Contact" [ref=e212] [cursor=pointer]:
+                - /url: /contact
+              - link "Support" [ref=e213] [cursor=pointer]:
+                - /url: /support
+          - generic [ref=e214]:
+            - heading "Legal" [level=3] [ref=e215]
+            - generic [ref=e216]:
+              - link "Privacy Policy" [ref=e217] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Service" [ref=e218] [cursor=pointer]:
+                - /url: /terms
+              - link "Security" [ref=e219] [cursor=pointer]:
+                - /url: /security
+          - generic [ref=e220]:
+            - heading "Connect" [level=3] [ref=e221]
+            - generic [ref=e222]:
+              - link "LinkedIn" [ref=e223] [cursor=pointer]:
+                - /url: https://linkedin.com/company/pm33
+              - link "Twitter" [ref=e224] [cursor=pointer]:
+                - /url: https://twitter.com/PM33_AI
+              - link "Community" [ref=e225] [cursor=pointer]:
+                - /url: /community
+        - generic [ref=e226]:
+          - paragraph [ref=e227]: © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+          - generic [ref=e228]:
+            - link "Privacy" [ref=e229] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms" [ref=e230] [cursor=pointer]:
+              - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e236] [cursor=pointer]:
+    - img [ref=e237] [cursor=pointer]
+  - alert [ref=e240]
+```

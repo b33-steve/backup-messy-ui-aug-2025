@@ -237,11 +237,15 @@ export const AIEnhancedField: React.FC<AIEnhancedFieldProps> = ({
 
     switch (type) {
       case 'textarea':
-        return <Textarea {...commonProps} minRows={3} autosize />;
+        // Create props without the ref for textarea to avoid type conflict
+        const { ref, ...textareaProps } = commonProps;
+        return <Textarea {...textareaProps} minRows={3} autosize />;
       case 'select':
-        return <Select {...commonProps} data={options || []} searchable />;
+        const { ref: selectRef, ...selectProps } = commonProps;
+        return <Select {...selectProps} data={options || []} searchable />;
       case 'multiselect':
-        return <MultiSelect {...commonProps} data={options || []} searchable />;
+        const { ref: multiRef, ...multiProps } = commonProps;
+        return <MultiSelect {...multiProps} data={options || []} searchable />;
       case 'number':
         return <NumberInput {...commonProps} />;
       default:

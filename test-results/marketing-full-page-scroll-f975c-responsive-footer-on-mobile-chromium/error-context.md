@@ -1,0 +1,278 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]
+          - generic [ref=e10]: AI Product Management
+        - generic [ref=e11]:
+          - button "Switch to dark mode" [ref=e12] [cursor=pointer]:
+            - img [ref=e14] [cursor=pointer]
+          - button [ref=e16] [cursor=pointer]
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e22]: ⚡ PMO-Level Strategic Capabilities
+          - heading "Transform from PM to Strategic PMO with 4 Agentic AI Teams" [level=1] [ref=e23]:
+            - text: Transform from PM to Strategic PMO with
+            - generic [ref=e24]: 4 Agentic AI Teams
+          - paragraph [ref=e25]: Stop managing features. Start strategically dominating your market with AI teams that deliver PMO-level intelligence, workflow automation, and strategic execution.
+          - generic [ref=e26]:
+            - link "Start Free 14-Day Trial" [ref=e27] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e28] [cursor=pointer]:
+                - img [ref=e30] [cursor=pointer]
+                - generic [ref=e34] [cursor=pointer]: Start Free 14-Day Trial
+            - link "See Live Demo" [ref=e35] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e36] [cursor=pointer]:
+                - img [ref=e38] [cursor=pointer]
+                - generic [ref=e45] [cursor=pointer]: See Live Demo
+        - generic [ref=e46]:
+          - heading "🤖 Meet Your 4 AI Teams" [level=2] [ref=e47]
+          - paragraph [ref=e48]: Each AI team is powered by the best models for their specific domain, working together to transform you into a strategic PMO leader.
+          - generic [ref=e50]:
+            - generic [ref=e53]:
+              - generic [ref=e54]:
+                - heading "Strategic Intelligence AI" [level=3] [ref=e55]
+                - generic [ref=e57]: Claude (Anthropic)
+              - paragraph [ref=e58]:
+                - strong [ref=e59]: "Focus:"
+                - text: Complex strategic analysis, competitive intelligence, multi-framework decision support
+              - paragraph [ref=e60]:
+                - strong [ref=e61]: "Delivers:"
+                - text: Strategic recommendations, market analysis, competitive response strategies
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - heading "Workflow Execution AI" [level=3] [ref=e66]
+                - generic [ref=e68]: OpenAI GPT-4
+              - paragraph [ref=e69]:
+                - strong [ref=e70]: "Focus:"
+                - text: Task automation, cross-functional coordination, PM tool orchestration
+              - paragraph [ref=e71]:
+                - strong [ref=e72]: "Delivers:"
+                - text: Automated workflows, timeline management, progress tracking dashboards
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - heading "Data Intelligence AI" [level=3] [ref=e77]
+                - generic [ref=e79]: Together AI
+              - paragraph [ref=e80]:
+                - strong [ref=e81]: "Focus:"
+                - text: Pattern recognition, predictive analytics, company-specific learning
+              - paragraph [ref=e82]:
+                - strong [ref=e83]: "Delivers:"
+                - text: Performance predictions, optimization opportunities, risk assessments
+            - generic [ref=e86]:
+              - generic [ref=e87]:
+                - heading "Communication AI" [level=3] [ref=e88]
+                - generic [ref=e90]: Claude + OpenAI
+              - paragraph [ref=e91]:
+                - strong [ref=e92]: "Focus:"
+                - text: Professional communication, stakeholder alignment, executive reporting
+              - paragraph [ref=e93]:
+                - strong [ref=e94]: "Delivers:"
+                - text: Strategic presentations, status updates, cross-team alignment materials
+        - heading "🎯 Strategic Intelligence Platform Features" [level=2] [ref=e95]
+        - generic [ref=e97]:
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - img [ref=e103]
+              - heading "Strategic Intelligence Engine" [level=3] [ref=e110]
+            - paragraph [ref=e111]: Multi-framework analysis using ICE, RICE, Porter's Five Forces, and custom strategic models to guide product decisions.
+            - generic [ref=e112]:
+              - paragraph [ref=e113]: "Key Benefits:"
+              - generic [ref=e114]:
+                - img [ref=e115]
+                - paragraph [ref=e117]: 85% more confident strategic decisions
+              - generic [ref=e118]:
+                - img [ref=e119]
+                - paragraph [ref=e121]: 3x faster competitive analysis
+              - generic [ref=e122]:
+                - img [ref=e123]
+                - paragraph [ref=e125]: Automated market positioning insights
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - img [ref=e131]
+              - heading "AI Workflow Orchestration" [level=3] [ref=e135]
+            - paragraph [ref=e136]: Intelligent automation that connects your existing PM tools and creates seamless workflows across your entire stack.
+            - generic [ref=e137]:
+              - paragraph [ref=e138]: "Key Benefits:"
+              - generic [ref=e139]:
+                - img [ref=e140]
+                - paragraph [ref=e142]: 70+ hours saved monthly per PM
+              - generic [ref=e143]:
+                - img [ref=e144]
+                - paragraph [ref=e146]: Seamless tool integration
+              - generic [ref=e147]:
+                - img [ref=e148]
+                - paragraph [ref=e150]: Automated task prioritization
+          - generic [ref=e153]:
+            - generic [ref=e154]:
+              - img [ref=e156]
+              - heading "Predictive Analytics & Intelligence" [level=3] [ref=e159]
+            - paragraph [ref=e160]: Advanced data analysis that learns your company patterns and predicts outcomes before you ship.
+            - generic [ref=e161]:
+              - paragraph [ref=e162]: "Key Benefits:"
+              - generic [ref=e163]:
+                - img [ref=e164]
+                - paragraph [ref=e166]: 40% improvement in feature success rate
+              - generic [ref=e167]:
+                - img [ref=e168]
+                - paragraph [ref=e170]: Early risk detection and mitigation
+              - generic [ref=e171]:
+                - img [ref=e172]
+                - paragraph [ref=e174]: Data-driven roadmap optimization
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - img [ref=e180]
+              - heading "Stakeholder Communication AI" [level=3] [ref=e185]
+            - paragraph [ref=e186]: Professional communication generation for executives, teams, and clients with context-aware messaging.
+            - generic [ref=e187]:
+              - paragraph [ref=e188]: "Key Benefits:"
+              - generic [ref=e189]:
+                - img [ref=e190]
+                - paragraph [ref=e192]: 89% stakeholder satisfaction improvement
+              - generic [ref=e193]:
+                - img [ref=e194]
+                - paragraph [ref=e196]: Automated status reports and updates
+              - generic [ref=e197]:
+                - img [ref=e198]
+                - paragraph [ref=e200]: Executive-level strategic presentations
+        - generic [ref=e201]:
+          - heading "🔗 Seamless Tool Integration" [level=2] [ref=e202]
+          - paragraph [ref=e203]: PM33 enhances your existing PM tools instead of replacing them. No migration headaches, just instant intelligence across your entire stack.
+          - generic [ref=e205]:
+            - generic [ref=e207]:
+              - img [ref=e208]
+              - heading "Jira" [level=4] [ref=e211]
+              - generic [ref=e213]: Full Integration
+            - generic [ref=e215]:
+              - img [ref=e216]
+              - heading "Linear" [level=4] [ref=e220]
+              - generic [ref=e222]: Full Integration
+            - generic [ref=e224]:
+              - img [ref=e225]
+              - heading "Monday.com" [level=4] [ref=e227]
+              - generic [ref=e229]: Full Integration
+            - generic [ref=e231]:
+              - img [ref=e232]
+              - heading "Asana" [level=4] [ref=e234]
+              - generic [ref=e236]: Full Integration
+            - generic [ref=e238]:
+              - img [ref=e239]
+              - heading "Slack" [level=4] [ref=e244]
+              - generic [ref=e246]: Native Integration
+            - generic [ref=e248]:
+              - img [ref=e249]
+              - heading "Notion" [level=4] [ref=e256]
+              - generic [ref=e258]: Native Integration
+        - generic [ref=e259]:
+          - heading "📊 Proven Results from 2,500+ Product Managers" [level=2] [ref=e260]
+          - generic [ref=e262]:
+            - generic [ref=e264]:
+              - img [ref=e265]
+              - paragraph [ref=e268]: 300%
+              - paragraph [ref=e269]: Increase in strategic decision confidence
+            - generic [ref=e271]:
+              - img [ref=e272]
+              - paragraph [ref=e275]: 72hrs
+              - paragraph [ref=e276]: Monthly time saved per PM
+            - generic [ref=e278]:
+              - img [ref=e279]
+              - paragraph [ref=e283]: 40%
+              - paragraph [ref=e284]: Improvement in feature success rate
+            - generic [ref=e286]:
+              - img [ref=e287]
+              - paragraph [ref=e292]: 89%
+              - paragraph [ref=e293]: Stakeholder satisfaction increase
+        - generic [ref=e294]:
+          - generic [ref=e295]:
+            - img [ref=e296]
+            - generic [ref=e298]:
+              - heading "Zero-Risk PMO Transformation Guarantee" [level=2] [ref=e299]
+              - paragraph [ref=e300]: We're so confident PM33 will transform your strategic capabilities
+          - generic [ref=e302]:
+            - generic [ref=e304]:
+              - paragraph [ref=e305]: 14 Days Free
+              - paragraph [ref=e306]: No credit card required
+            - generic [ref=e308]:
+              - paragraph [ref=e309]: 30-Day Guarantee
+              - paragraph [ref=e310]: Full refund if not satisfied
+            - generic [ref=e312]:
+              - paragraph [ref=e313]: Keep Everything
+              - paragraph [ref=e314]: All generated strategic documents
+        - generic [ref=e315]:
+          - img [ref=e316]
+          - heading "Ready to Transform from PM to Strategic PMO?" [level=1] [ref=e318]
+          - paragraph [ref=e319]: Join 2,500+ product managers who've already transformed their strategic capabilities. Start your PMO transformation today.
+          - generic [ref=e320]:
+            - link "Start Free Trial - No Credit Card" [ref=e321] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e322] [cursor=pointer]:
+                - img [ref=e324] [cursor=pointer]
+                - generic [ref=e328] [cursor=pointer]: Start Free Trial - No Credit Card
+            - link "See Live Demo" [ref=e329] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e330] [cursor=pointer]:
+                - generic [ref=e331] [cursor=pointer]: See Live Demo
+                - img [ref=e333] [cursor=pointer]
+          - paragraph [ref=e336]: 🚀 Transform in 14 days or less — Guaranteed
+    - contentinfo [ref=e337]:
+      - generic [ref=e338]:
+        - generic [ref=e339]:
+          - generic [ref=e340]:
+            - heading "Product" [level=3] [ref=e341]
+            - generic [ref=e342]:
+              - link "Features" [ref=e343] [cursor=pointer]:
+                - /url: /features
+              - link "Pricing" [ref=e344] [cursor=pointer]:
+                - /url: /pricing
+              - link "Free Trial" [ref=e345] [cursor=pointer]:
+                - /url: /trial
+              - link "Demo" [ref=e346] [cursor=pointer]:
+                - /url: /demo
+          - generic [ref=e347]:
+            - heading "Resources" [level=3] [ref=e348]
+            - generic [ref=e349]:
+              - link "Resources" [ref=e350] [cursor=pointer]:
+                - /url: /blog
+              - link "About Us" [ref=e351] [cursor=pointer]:
+                - /url: /about
+              - link "Contact" [ref=e352] [cursor=pointer]:
+                - /url: /contact
+              - link "Support" [ref=e353] [cursor=pointer]:
+                - /url: /support
+          - generic [ref=e354]:
+            - heading "Legal" [level=3] [ref=e355]
+            - generic [ref=e356]:
+              - link "Privacy Policy" [ref=e357] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Service" [ref=e358] [cursor=pointer]:
+                - /url: /terms
+              - link "Security" [ref=e359] [cursor=pointer]:
+                - /url: /security
+          - generic [ref=e360]:
+            - heading "Connect" [level=3] [ref=e361]
+            - generic [ref=e362]:
+              - link "LinkedIn" [ref=e363] [cursor=pointer]:
+                - /url: https://linkedin.com/company/pm33
+              - link "Twitter" [ref=e364] [cursor=pointer]:
+                - /url: https://twitter.com/PM33_AI
+              - link "Community" [ref=e365] [cursor=pointer]:
+                - /url: /community
+        - generic [ref=e366]:
+          - paragraph [ref=e367]: © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
+          - generic [ref=e368]:
+            - link "Privacy" [ref=e369] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms" [ref=e370] [cursor=pointer]:
+              - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e376] [cursor=pointer]:
+    - img [ref=e377] [cursor=pointer]
+  - alert [ref=e380]
+```

@@ -1,19 +1,5 @@
 {
   "version": 2,
-  "name": "pm33-website",
-  "alias": ["pm33-website.vercel.app"],
-  "builds": [
-    {
-      "src": "next.config.mjs",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "env": {
     "NODE_ENV": "production"
   },

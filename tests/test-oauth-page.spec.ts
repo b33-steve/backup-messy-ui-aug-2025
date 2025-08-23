@@ -22,8 +22,8 @@ test.describe('Test OAuth Page', () => {
     // Check page loaded correctly
     await expect(page.locator('h1')).toContainText('PM33 OAuth Test Page');
     
-    // Check Connect Jira button is visible
-    const connectButton = page.locator('text=Connect Jira');
+    // Check Connect Jira button is visible (specifically the button)
+    const connectButton = page.locator('button', { hasText: 'Connect Jira' });
     await expect(connectButton).toBeVisible();
     
     // Click the button
@@ -49,11 +49,12 @@ test.describe('Test OAuth Page', () => {
     await page.waitForLoadState('networkidle');
     
     // Initial state should show Connect button
-    await expect(page.locator('text=Connect Jira')).toBeVisible();
+    const connectBtn = page.locator('button', { hasText: 'Connect Jira' });
+    await expect(connectBtn).toBeVisible();
     await expect(page.locator('text=Not Connected')).toBeVisible();
     
     // Click Connect
-    await page.locator('text=Connect Jira').click();
+    await connectBtn.click();
     await page.waitForTimeout(2000);
     
     // Should have both setup dialog and success dialog
