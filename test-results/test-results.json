@@ -1,0 +1,519 @@
+{
+  "config": {
+    "configFile": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/playwright.config.ts",
+    "rootDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "settings-oauth.spec.ts",
+      "file": "settings-oauth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Settings Page OAuth Integration",
+          "file": "settings-oauth.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should load settings page successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 9974,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/PM33/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/PM33/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"\"\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:15:24",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                          "column": 24,
+                          "line": 15
+                        },
+                        "snippet": "  13 |     \n  14 |     // Check that page loads\n> 15 |     await expect(page).toHaveTitle(/PM33/);\n     |                        ^\n  16 |     \n  17 |     // Check for main heading\n  18 |     await expect(page.locator('h1')).toContainText('Settings');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                            "column": 24,
+                            "line": 15
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/PM33/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"\"\u001b[22m\n\n\n  13 |     \n  14 |     // Check that page loads\n> 15 |     await expect(page).toHaveTitle(/PM33/);\n     |                        ^\n  16 |     \n  17 |     // Check for main heading\n  18 |     await expect(page.locator('h1')).toContainText('Settings');\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:15:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T08:25:11.033Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-17d77--settings-page-successfully-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-17d77--settings-page-successfully-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-17d77--settings-page-successfully-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                        "column": 24,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b85fbea2d36d3f4a290-41691818a6a40c3bb651",
+              "file": "settings-oauth.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should show integrations tab as active by default",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 16883,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=PM Tool Integrations')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=PM Tool Integrations')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=PM Tool Integrations')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=PM Tool Integrations')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:31:61",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                          "column": 61,
+                          "line": 31
+                        },
+                        "snippet": "  29 |     \n  30 |     // Check that PM Tool Integrations section is visible\n> 31 |     await expect(page.locator('text=PM Tool Integrations')).toBeVisible();\n     |                                                             ^\n  32 |     \n  33 |     // Check for Connect buttons\n  34 |     await expect(page.locator('text=Connect').first()).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                            "column": 61,
+                            "line": 31
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=PM Tool Integrations')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=PM Tool Integrations')\u001b[22m\n\n\n  29 |     \n  30 |     // Check that PM Tool Integrations section is visible\n> 31 |     await expect(page.locator('text=PM Tool Integrations')).toBeVisible();\n     |                                                             ^\n  32 |     \n  33 |     // Check for Connect buttons\n  34 |     await expect(page.locator('text=Connect').first()).toBeVisible();\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:31:61"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T08:25:11.030Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-76fed-ns-tab-as-active-by-default-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-76fed-ns-tab-as-active-by-default-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-76fed-ns-tab-as-active-by-default-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                        "column": 61,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b85fbea2d36d3f4a290-4be155de866f5320fb1a",
+              "file": "settings-oauth.spec.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "should show Connect Jira button and handle click",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 10007,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=Connect').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=Connect').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect').first()\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:52:33",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                          "column": 33,
+                          "line": 52
+                        },
+                        "snippet": "  50 |     // Find and click Connect button for Jira\n  51 |     const connectButton = page.locator('text=Connect').first();\n> 52 |     await expect(connectButton).toBeVisible();\n     |                                 ^\n  53 |     \n  54 |     // Click the Connect button\n  55 |     await connectButton.click();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                            "column": 33,
+                            "line": 52
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=Connect').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect').first()\u001b[22m\n\n\n  50 |     // Find and click Connect button for Jira\n  51 |     const connectButton = page.locator('text=Connect').first();\n> 52 |     await expect(connectButton).toBeVisible();\n     |                                 ^\n  53 |     \n  54 |     // Click the Connect button\n  55 |     await connectButton.click();\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:52:33"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T08:25:11.036Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-e65f9-ira-button-and-handle-click-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-e65f9-ira-button-and-handle-click-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-e65f9-ira-button-and-handle-click-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                        "column": 33,
+                        "line": 52
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b85fbea2d36d3f4a290-62dd064b2d250e7019af",
+              "file": "settings-oauth.spec.ts",
+              "line": 37,
+              "column": 7
+            },
+            {
+              "title": "should show success message after demo connection",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "timedOut",
+                      "duration": 31085,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                            "column": 25,
+                            "line": 80
+                          },
+                          "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Connect').first()\u001b[22m\n\n\n  78 |     // Click Connect Jira button\n  79 |     const connectButton = page.locator('text=Connect').first();\n> 80 |     await connectButton.click();\n     |                         ^\n  81 |     \n  82 |     // Wait for demo connection simulation\n  83 |     await page.waitForTimeout(2000);\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:80:25"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T08:25:11.069Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-7e560-ssage-after-demo-connection-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-7e560-ssage-after-demo-connection-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-7e560-ssage-after-demo-connection-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b85fbea2d36d3f4a290-311b6ee28943abecae05",
+              "file": "settings-oauth.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should show all four integration providers",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 6615,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=Jira')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Jira')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=Jira')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Jira')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:101:45",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                          "column": 45,
+                          "line": 101
+                        },
+                        "snippet": "   99 |     \n  100 |     // Check for all four providers\n> 101 |     await expect(page.locator('text=Jira')).toBeVisible();\n      |                                             ^\n  102 |     await expect(page.locator('text=Linear')).toBeVisible();\n  103 |     await expect(page.locator('text=Monday.com')).toBeVisible();\n  104 |     await expect(page.locator('text=Asana')).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                            "column": 45,
+                            "line": 101
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=Jira')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Jira')\u001b[22m\n\n\n   99 |     \n  100 |     // Check for all four providers\n> 101 |     await expect(page.locator('text=Jira')).toBeVisible();\n      |                                             ^\n  102 |     await expect(page.locator('text=Linear')).toBeVisible();\n  103 |     await expect(page.locator('text=Monday.com')).toBeVisible();\n  104 |     await expect(page.locator('text=Asana')).toBeVisible();\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts:101:45"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T08:25:23.616Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-c24b3--four-integration-providers-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-c24b3--four-integration-providers-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/settings-oauth-Settings-Pa-c24b3--four-integration-providers-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/settings-oauth.spec.ts",
+                        "column": 45,
+                        "line": 101
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b85fbea2d36d3f4a290-c781069717d8a0dbe877",
+              "file": "settings-oauth.spec.ts",
+              "line": 96,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-23T08:25:10.356Z",
+    "duration": 33106.57,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

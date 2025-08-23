@@ -67,7 +67,7 @@ import {
   IconAlignLeft
 } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
-import { DatePicker } from '@mantine/dates';
+import { DatePickerInput } from '@mantine/dates';
 
 // Sprint planning interfaces
 interface TeamMember {
@@ -489,7 +489,7 @@ export default function SprintPlanner({ workItems, teams, onSprintCreated, onCan
 
                 <Grid>
                   <Grid.Col span={{ base: 12, sm: 6 }}>
-                    <DatePicker
+                    <DatePickerInput
                       label="Start Date"
                       value={sprintConfig.startDate}
                       onChange={(date) => {
@@ -501,7 +501,7 @@ export default function SprintPlanner({ workItems, teams, onSprintCreated, onCan
                     />
                   </Grid.Col>
                   <Grid.Col span={{ base: 12, sm: 6 }}>
-                    <DatePicker
+                    <DatePickerInput
                       label="End Date"
                       value={sprintConfig.endDate}
                       onChange={(date) => date && setSprintConfig(prev => ({ ...prev, endDate: date }))}

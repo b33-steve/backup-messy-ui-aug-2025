@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { initPostHog, trackCAC } from '../lib/posthog';
 
@@ -15,7 +15,8 @@ interface PostHogProviderProps {
   children: React.ReactNode;
 }
 
-export default function PostHogProvider({ children }: PostHogProviderProps) {
+// Internal component that uses useSearchParams
+function PostHogTracker({ children }: PostHogProviderProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -72,6 +73,14 @@ export default function PostHogProvider({ children }: PostHogProviderProps) {
   }, [pathname, searchParams]);
 
   return <>{children}</>;
+}
+
+export default function PostHogProvider({ children }: PostHogProviderProps) {
+  return (
+    <Suspense fallback={<>{children}</>}>
+      <PostHogTracker>{children}</PostHogTracker>
+    </Suspense>
+  );
 }
 
 /**
