@@ -4,25 +4,25 @@
 ## 🔴 STOP! Before writing ANY code:
 
 **1. DETERMINE CONTEXT FIRST:**
-   - **Marketing Website?** → Use `MARKETING_THEME_GUIDE.md`
-   - **PM33 App?** → Use `APP_THEME_GUIDE.md`
+   - **Marketing Website?** → Use `app/(marketing)/docs/MARKETING_THEME_GUIDE.md`
+   - **PM33 App?** → Use `app/(app)/docs/APP_THEME_GUIDE.md`
 
 **2. READ CONTEXT-SPECIFIC DOCUMENTATION:**
 
    **For Marketing Pages:**
-   - `MARKETING_THEME_GUIDE.md` - Marketing theme system & examples
-   - `MARKETING_DESIGN_SYSTEM.md` - Marketing component standards
+   - `app/(marketing)/docs/MARKETING_THEME_GUIDE.md` - Marketing theme system & examples
+   - `app/(marketing)/docs/MARKETING_DESIGN_SYSTEM.md` - Marketing component standards
    - Use `.marketing-context` class and `--marketing-*` colors
 
    **For PM33 App Pages:**  
-   - `APP_THEME_GUIDE.md` - PM33 premium theme system & glass morphism
-   - `APP_DESIGN_SYSTEM.md` - Core app component standards
+   - `app/(app)/docs/APP_THEME_GUIDE.md` - PM33 premium theme system & glass morphism
+   - `app/(app)/docs/APP_DESIGN_SYSTEM.md` - Core app component standards
    - Use ThemeProvider and `--pm33-*` colors
 
 **3. CONFIRM UNDERSTANDING:**
    Before any work, explicitly state your context:
-   - "I am working on a MARKETING page and will follow MARKETING_THEME_GUIDE.md"
-   - "I am working on a PM33 APP page and will follow APP_THEME_GUIDE.md"
+   - "I am working on a MARKETING page and will follow app/(marketing)/docs/MARKETING_THEME_GUIDE.md"
+   - "I am working on a PM33 APP page and will follow app/(app)/docs/APP_THEME_GUIDE.md"
 
 ## 🚫 AUTOMATIC REJECTION TRIGGERS
 
@@ -102,14 +102,16 @@ npm test -- --watch # Jest tests in watch mode
 
 ### 1. **Context-Aware Development - CRITICAL**
 **Marketing Context (`app/(marketing)/`)**:
-- Use **Mantine UI** components exclusively
+- Use **Mantine UI 8.2.5** components exclusively
 - Apply `.marketing-context` class styling  
 - Clean, professional design (no glass morphism)
 - Marketing color tokens (`--marketing-*`)
+- @tabler/icons-react for icons
 
 **Core App Context (`app/(app)/`)**:
-- Use **shadcn/ui + PM33** components
-- Apply `.app-context` class styling
+- Use **shadcn/ui (Radix UI primitives)** + Tailwind CSS
+- lucide-react icons, framer-motion animations
+- class-variance-authority, clsx, tailwind-merge utilities
 - PM33 glass morphism and premium animations
 - PM33 design system tokens (`--pm33-*`)
 
@@ -148,10 +150,11 @@ npm run test:all
 
 ### Component Structure - CONTEXT SPECIFIC
 
-**Marketing Components:**
+**Marketing Components (Mantine UI 8.2.5):**
 ```tsx
 'use client';
 import { Container, Card, Title, Text, Button } from '@mantine/core';
+import { IconRocket } from '@tabler/icons-react';
 
 const MarketingComponent: React.FC = () => {
   return (
@@ -160,7 +163,10 @@ const MarketingComponent: React.FC = () => {
         <Title order={1} c="var(--marketing-text-primary)">
           Marketing Headline
         </Title>
-        <Button color="var(--marketing-primary)">
+        <Button 
+          leftSection={<IconRocket size={16} />}
+          color="var(--marketing-primary)"
+        >
           Call to Action
         </Button>
       </Card>
@@ -169,16 +175,23 @@ const MarketingComponent: React.FC = () => {
 };
 ```
 
-**Core App Components:**
+**Core App Components (shadcn/ui + Radix UI):**
 ```tsx
 'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PM33Card } from '@/components/PM33Card';
+import { Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 const AppComponent: React.FC = () => {
   return (
-    <div className="pm33-glass-card">
+    <motion.div 
+      className={cn("pm33-glass-card")}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <CardHeader>
         <CardTitle className="pm33-text-gradient">
           Strategic Intelligence
@@ -186,10 +199,11 @@ const AppComponent: React.FC = () => {
       </CardHeader>
       <CardContent>
         <Button variant="default" className="pm33-btn-primary">
+          <Brain className="mr-2 h-4 w-4" />
           Process with AI
         </Button>
       </CardContent>
-    </div>
+    </motion.div>
   );
 };
 ```
@@ -268,9 +282,12 @@ await expect(page.locator('.result')).toContainText('Analysis');
 
 ## 🎨 Dual Design System Usage
 
-### Marketing Context - Mantine UI
+### Marketing Context - Mantine UI 8.2.5
 ```tsx
-// Clean marketing layout
+// Clean marketing layout with Mantine components
+import { Container, Card, Title, Button } from '@mantine/core';
+import { IconRocket } from '@tabler/icons-react';
+
 <Container size={1200} px={24} py={80}>
   <Card shadow="md" padding={32} radius={16}>
     <Title order={1} c="var(--marketing-text-primary)">
@@ -278,6 +295,7 @@ await expect(page.locator('.result')).toContainText('Analysis');
     </Title>
     <Button 
       size="lg"
+      leftSection={<IconRocket size={16} />}
       style={{ backgroundColor: 'var(--marketing-primary)' }}
     >
       Start Free Trial
@@ -286,10 +304,19 @@ await expect(page.locator('.result')).toContainText('Analysis');
 </Container>
 ```
 
-### Core App Context - shadcn/ui + PM33
+### Core App Context - shadcn/ui (Radix UI primitives)
 ```tsx
-// PM33 glass morphism layout
-<div className="pm33-glass-card">
+// PM33 glass morphism with shadcn/ui components
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+<motion.div 
+  className="pm33-glass-card"
+  whileHover={{ scale: 1.02 }}
+  transition={{ duration: 0.2 }}
+>
   <CardHeader>
     <CardTitle className="pm33-text-gradient">
       Strategic Intelligence
@@ -297,11 +324,11 @@ await expect(page.locator('.result')).toContainText('Analysis');
   </CardHeader>
   <CardContent>
     <Button variant="default" className="pm33-btn-primary">
-      <IconBrain className="mr-2 h-4 w-4" />
+      <Brain className="mr-2 h-4 w-4" />
       Process with AI
     </Button>
   </CardContent>
-</div>
+</motion.div>
 ```
 
 ### Dual Color System

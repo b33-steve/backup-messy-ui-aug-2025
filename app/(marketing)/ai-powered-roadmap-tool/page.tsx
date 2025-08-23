@@ -1,6 +1,6 @@
 import { ArrowRight, CheckCircle, Zap, Brain, Target, TrendingUp, Clock, Sparkles, Users, Star, Calendar, Map } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '../../../components/shared/Navigation'
+import Navigation from '../../../components/marketing/Navigation'
 
 export default function AIPoweredRoadmapToolPage() {
   return (

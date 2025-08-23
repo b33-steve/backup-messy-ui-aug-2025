@@ -649,6 +649,56 @@ body {
   color: white !important;
 }
 
+/* ===============================================
+   MARKETING DARK THEME SUPPORT
+   =============================================== */
+[data-theme="dark"] .marketing-context {
+  background-color: var(--pm33-dark-0) !important;
+  color: var(--pm33-text-primary) !important;
+  
+  --marketing-bg-primary: var(--pm33-dark-0) !important;
+  --marketing-bg-secondary: var(--pm33-dark-1) !important;
+  --marketing-text-primary: var(--pm33-light-1) !important;
+  --marketing-text-secondary: rgba(255, 255, 255, 0.8) !important;
+  
+  --mantine-color-text: var(--pm33-light-1) !important;
+  --mantine-color-body: var(--pm33-dark-0) !important;
+  --mantine-color-dimmed: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-theme="dark"] .marketing-context h1,
+[data-theme="dark"] .marketing-context h2,
+[data-theme="dark"] .marketing-context h3,
+[data-theme="dark"] .marketing-context h4,
+[data-theme="dark"] .marketing-context h5,
+[data-theme="dark"] .marketing-context h6 {
+  color: var(--pm33-light-1) !important;
+}
+
+[data-theme="dark"] .marketing-context p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Card-root {
+  background: var(--pm33-dark-1) !important;
+  color: var(--pm33-light-1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Text-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Title-root {
+  color: var(--pm33-light-1) !important;
+}
+
+[data-theme="dark"] .marketing-context nav {
+  background-color: rgba(10, 14, 39, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
 /*
  ---break---
  */

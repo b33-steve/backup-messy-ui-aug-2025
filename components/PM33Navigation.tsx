@@ -46,15 +46,9 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
         {/* Logo */}
         <Link href="/dashboard" style={{ textDecoration: 'none' }}>
           <div style={{
-            fontSize: '1.75rem',
-            fontWeight: 'bold',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
+            gap: '0.75rem',
             cursor: 'pointer',
             transition: 'all 0.3s ease'
           }}
@@ -66,12 +60,18 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
             e.currentTarget.style.transform = 'scale(1)';
             e.currentTarget.style.filter = 'none';
           }}>
-            PM33
+            <img 
+              src="/PM 33 New Logo Horizontal V1.2 WHITE.png" 
+              alt="PM33 Strategic Intelligence Platform" 
+              style={{ height: '32px' }}
+            />
             <span style={{
               fontSize: '0.75rem',
               background: 'linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: 'bold',
               animation: 'glow-pulse 2s ease-in-out infinite'
             }}>BETA</span>
           </div>

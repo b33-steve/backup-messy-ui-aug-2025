@@ -26,35 +26,40 @@ Are you working on...
 
 ## 📚 **Documentation Map**
 
-| Context | Primary Guide | Component Standards | Code Patterns |
-|---------|---------------|-------------------|---------------|
-| **Marketing** | `MARKETING_THEME_GUIDE.md` | `MARKETING_DESIGN_SYSTEM.md` | `.marketing-context` + Mantine UI |
-| **PM33 App** | `APP_THEME_GUIDE.md` | `APP_DESIGN_SYSTEM.md` | `ThemeProvider` + shadcn/ui + PM33 |
+| Context | Primary Guide | Component Standards | Technology Stack |
+|---------|---------------|-------------------|------------------|
+| **Marketing** | `MARKETING_THEME_GUIDE.md` | `MARKETING_DESIGN_SYSTEM.md` | Mantine UI 8.2.5 + @tabler/icons |
+| **PM33 App** | `APP_THEME_GUIDE.md` | `APP_DESIGN_SYSTEM.md` | shadcn/ui (Radix) + Tailwind + lucide-react + framer-motion |
 
 ## ⚡ **Quick Implementation**
 
-### **Marketing Page Setup**
+### **Marketing Page Setup (Mantine UI 8.2.5)**
 ```tsx
 // 1. Wrap in marketing context
 <div className="marketing-context">
 
-// 2. Use Mantine components
+// 2. Use Mantine components + Tabler icons
 import { Container, Card, Button } from '@mantine/core';
+import { IconRocket } from '@tabler/icons-react';
 
 // 3. Use marketing colors
 backgroundColor: 'var(--marketing-primary)'
 ```
 
-### **PM33 App Page Setup**  
+### **PM33 App Page Setup (shadcn/ui + Radix UI)**  
 ```tsx
-// 1. Use ThemeProvider (already in layout)
+// 1. Use ThemeProvider + shadcn/ui components
 import { useTheme } from '@/providers/ThemeProvider';
-
-// 2. Use shadcn/ui + PM33 components
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-// 3. Use PM33 styling
-className="pm33-glass-card pm33-animate-glow"
+// 2. Use lucide-react icons + framer-motion
+import { Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+
+// 3. Use PM33 styling with utility classes
+className={cn("pm33-glass-card pm33-animate-glow")}
 ```
 
 ## 🎨 **Color Reference**
@@ -89,10 +94,11 @@ className="pm33-glass-card pm33-animate-glow"
   Start Free Trial
 </Button>
 
-/* PM33 App Button */
-<button className="pm33-btn-primary">
+/* PM33 App Button (shadcn/ui) */
+<Button className="pm33-btn-primary">
+  <Brain className="mr-2 h-4 w-4" />
   Process with AI
-</button>
+</Button>
 ```
 
 ### **Cards**
@@ -104,12 +110,17 @@ className="pm33-glass-card pm33-animate-glow"
   </Title>
 </Card>
 
-/* PM33 App Card */
-<div className="pm33-glass-card pm33-animate-float">
-  <h3 className="pm33-text-gradient">
-    Premium Glass Morphism Card
-  </h3>
-</div>
+/* PM33 App Card (shadcn/ui) */
+<motion.div className="pm33-glass-card pm33-animate-float">
+  <CardHeader>
+    <CardTitle className="pm33-text-gradient">
+      Premium Glass Morphism Card
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    {/* Content */}
+  </CardContent>
+</motion.div>
 ```
 
 ## 🎯 **Theme Options (PM33 App Only)**
@@ -132,7 +143,10 @@ import { ThemeSwitcher } from '@/providers/ThemeProvider';
 ### **Wrong Context Usage**
 ```tsx
 // ❌ DON'T: Mantine in PM33 app  
-import { Button } from '@mantine/core'; // In app/(app)/
+import { Button } from '@mantine/core'; // In app/(app)/ - Use shadcn/ui instead
+
+// ❌ DON'T: shadcn/ui in marketing
+import { Button } from '@/components/ui/button'; // In app/(marketing)/ - Use Mantine instead
 
 // ❌ DON'T: PM33 components in marketing
 <div className="pm33-glass-card"> // In app/(marketing)/
@@ -185,10 +199,12 @@ app/frontend/
 
 ### **PM33 App Component Checklist:**
 - [ ] Used `ThemeProvider` context
-- [ ] Imported from `@/components/ui/*`  
-- [ ] Applied `pm33-*` CSS classes
-- [ ] Glass morphism styling
-- [ ] Premium animations/interactions
+- [ ] Imported shadcn/ui components from `@/components/ui/*`
+- [ ] Used lucide-react icons (not Tabler icons)
+- [ ] Added framer-motion animations where appropriate
+- [ ] Applied `pm33-*` CSS classes with `cn()` utility
+- [ ] Glass morphism styling implemented
+- [ ] Premium animations/interactions working
 
 ---
 

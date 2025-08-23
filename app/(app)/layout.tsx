@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
+import CoreAppNavigation from "../../components/app/CoreAppNavigation";
 import { DesignSystemProvider } from "../../components/app/DesignSystemProvider";
-import SimplifiedNavigation from "../../components/shared/SimplifiedNavigation";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,18 +20,13 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div
-      className={`${inter.variable} antialiased app-context`}
-      style={{
-        fontFamily: 'var(--font-inter)',
-        color: 'var(--app-text-secondary)',
-        backgroundColor: 'var(--app-bg-secondary)',
-        minHeight: '100vh'
-      }}
-    >
-      <DesignSystemProvider context="app">
-        {children}
-      </DesignSystemProvider>
-    </div>
+    <DesignSystemProvider context="app">
+      <div className={`${inter.variable} antialiased min-h-screen bg-background`}>
+        <CoreAppNavigation />
+        <main>
+          {children}
+        </main>
+      </div>
+    </DesignSystemProvider>
   );
 }

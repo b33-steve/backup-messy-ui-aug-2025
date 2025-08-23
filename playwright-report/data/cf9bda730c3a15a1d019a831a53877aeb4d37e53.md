@@ -1,0 +1,62 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e5]:
+      - link "PM33" [ref=e7] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e8] [cursor=pointer]
+        - generic [ref=e16] [cursor=pointer]: PM33
+      - generic [ref=e17]:
+        - link "Strategic Intelligence" [ref=e18] [cursor=pointer]:
+          - /url: /strategic-intelligence
+          - img [ref=e19] [cursor=pointer]
+          - generic [ref=e27] [cursor=pointer]: Strategic Intelligence
+        - link "Chat" [ref=e28] [cursor=pointer]:
+          - /url: /chat
+          - img [ref=e29] [cursor=pointer]
+          - generic [ref=e31] [cursor=pointer]: Chat
+        - link "Dashboard" [ref=e32] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e33] [cursor=pointer]
+          - generic [ref=e35] [cursor=pointer]: Dashboard
+        - link "Tasks" [ref=e36] [cursor=pointer]:
+          - /url: /tasks
+          - img [ref=e37] [cursor=pointer]
+          - generic [ref=e40] [cursor=pointer]: Tasks
+        - link "Data" [ref=e41] [cursor=pointer]:
+          - /url: /data
+          - img [ref=e42] [cursor=pointer]
+          - generic [ref=e46] [cursor=pointer]: Data
+        - link "Settings" [ref=e47] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e48] [cursor=pointer]
+          - generic [ref=e51] [cursor=pointer]: Settings
+      - button "DEMO" [ref=e53]:
+        - generic [ref=e54]: DEMO
+  - main [ref=e55]:
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - heading "PM33 OAuth Test Page" [level=1] [ref=e59]
+        - paragraph [ref=e60]: Test the Connect Jira button functionality
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e65]: J
+            - generic [ref=e66]:
+              - heading "Atlassian Jira" [level=3] [ref=e67]
+              - paragraph [ref=e68]: Connect your Jira workspace for task automation
+          - generic [ref=e70]: Not Connected
+        - button "Connect Jira" [ref=e72]
+        - generic [ref=e74]:
+          - paragraph [ref=e75]: Currently in Demo Mode
+          - paragraph [ref=e76]: This demonstrates the OAuth flow. In production, clicking "Connect" would redirect to Atlassian's OAuth page.
+      - generic [ref=e77]:
+        - heading "How to Test:" [level=4] [ref=e78]
+        - list [ref=e79]:
+          - listitem [ref=e80]: Click "Connect Jira" to see OAuth setup instructions
+          - listitem [ref=e81]: Click "OK" to simulate a successful connection
+          - listitem [ref=e82]: Page will refresh showing the connected state
+          - listitem [ref=e83]: Click "Disconnect" to test the disconnect flow
+```

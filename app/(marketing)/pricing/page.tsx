@@ -1,9 +1,10 @@
 'use client';
 
-import { Container, Title, Text, Button, Card, Group, List, Stack, Badge, Grid, Divider } from '@mantine/core';
-import { IconRocket, IconBrain, IconShield, IconCheck, IconX, IconStar, IconTrophy, IconUsers, IconClock, IconTarget, IconSparkles, IconArrowRight, IconCrown } from '@tabler/icons-react';
+import { Container, Title, Text, Button, Card, Group, List, Stack, Badge, Grid, Divider, Slider, NumberInput } from '@mantine/core';
+import { IconRocket, IconBrain, IconShield, IconCheck, IconX, IconStar, IconTrophy, IconUsers, IconClock, IconTarget, IconSparkles, IconArrowRight, IconCrown, IconCalculator } from '@tabler/icons-react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { trackCAC } from '../../../lib/posthog';
+// import { trackCAC } from '@/lib/posthog'; // Temporarily disabled for compatibility
 
 /**
  * Component: Pricing - Strategic Intelligence Plans & Pricing
@@ -13,22 +14,26 @@ import { trackCAC } from '../../../lib/posthog';
  */
 
 export default function PricingPage() {
+  const [currentHours, setCurrentHours] = useState(16);
+  const [hourlyRate, setHourlyRate] = useState(100);
+  const [selectedPlan, setSelectedPlan] = useState(29);
   const pricingPlans = [
     {
       name: "Free Trial",
       price: "$0",
       period: "14 days",
+      operations: "5 intelligence operations",
       description: "Perfect for evaluating PM33's strategic intelligence capabilities",
       features: [
         "Full access to all 4 AI teams",
-        "Strategic Intelligence analysis (5 queries)",
+        "5 strategic intelligence operations",
         "Basic workflow automation",
         "PM tool integration (1 tool)",
         "Community support",
         "All strategic documents included"
       ],
       limitations: [
-        "Limited to 5 strategic analyses",
+        "Limited to 5 operations total",
         "1 PM tool integration only",
         "Standard response times"
       ],
@@ -38,66 +43,87 @@ export default function PricingPage() {
       color: "gray"
     },
     {
-      name: "Professional PM", 
+      name: "Starter", 
       price: "$29",
       period: "per month",
+      operations: "40 intelligence operations",
       description: "Complete PMO transformation for individual product managers",
       features: [
-        "Unlimited strategic intelligence queries",
+        "40 intelligence operations per month",
         "All 4 AI teams (Strategic, Workflow, Data, Communication)",
-        "Advanced competitive analysis",
-        "All PM tool integrations (Jira, Linear, Monday, Asana)",
-        "Automated workflow orchestration",
-        "Stakeholder communication generation",
-        "Priority support (4-hour response)",
-        "Custom strategic frameworks",
-        "Performance analytics & insights"
+        "Core strategic intelligence",
+        "Basic PM tool integrations",
+        "Email support",
+        "Strategic documents & reports",
+        "Basic competitive analysis",
+        "Workflow automation"
       ],
       limitations: [],
-      cta: "Start Professional",
+      cta: "Start with Starter",
       ctaVariant: "filled", 
       popular: true,
       color: "blue"
     },
     {
-      name: "Team Intelligence",
-      price: "$149", 
+      name: "Team",
+      price: "$79", 
       period: "per month",
-      description: "Strategic intelligence for PM teams (up to 5 PMs)",
+      operations: "200 intelligence operations",
+      description: "Advanced AI advisor for growing PM teams",
       features: [
-        "Everything in Professional",
-        "Multi-PM team coordination",
-        "Cross-project strategic alignment",
-        "Team performance analytics",
-        "Shared strategic knowledge base",
-        "Advanced integrations & APIs",
-        "Team onboarding & training",
+        "200 intelligence operations per month",
+        "Advanced AI advisor capabilities",
+        "Multi-framework analysis (ICE, RICE, Porter's Five Forces)",
+        "All PM tool integrations",
+        "Priority email support",
+        "Team collaboration features",
+        "Advanced competitive intelligence",
+        "Custom strategic frameworks"
+      ],
+      limitations: [],
+      cta: "Upgrade to Team",
+      ctaVariant: "outline",
+      popular: false,
+      color: "purple"
+    },
+    {
+      name: "Scale",
+      price: "$199",
+      period: "per month", 
+      operations: "800 intelligence operations",
+      description: "Full strategic platform for product organizations",
+      features: [
+        "800 intelligence operations per month",
+        "Full strategic platform access",
+        "Unlimited PM tool integrations",
+        "Custom AI training",
         "Priority support (2-hour response)",
-        "Custom AI model fine-tuning",
+        "Advanced analytics & reporting",
+        "White-label deployment options",
         "Dedicated success manager"
       ],
       limitations: [],
       cta: "Contact Sales",
       ctaVariant: "outline",
       popular: false,
-      color: "purple"
+      color: "green"
     },
     {
-      name: "Enterprise PMO",
-      price: "Custom",
-      period: "pricing",
-      description: "Full PMO transformation for large product organizations",
+      name: "Enterprise",
+      price: "$599+",
+      period: "per month",
+      operations: "3,000+ intelligence operations",
+      description: "Custom PMO transformation for large organizations",
       features: [
-        "Everything in Team Intelligence",
-        "Unlimited team members",
-        "Enterprise-grade security (SOC 2)",
+        "3,000+ intelligence operations per month",
         "Custom AI team configurations",
-        "Advanced analytics & reporting",
+        "Enterprise-grade security (SOC 2)",
+        "On-premise deployment",
         "24/7 priority support (15-min response)",
-        "On-premise deployment options",
         "Custom integrations & workflows",
         "Executive strategic briefings",
-        "Dedicated technical account manager"
+        "Dedicated technical account manager",
+        "AutoPilot add-on available"
       ],
       limitations: [],
       cta: "Enterprise Sales",
@@ -125,9 +151,12 @@ export default function PricingPage() {
       <Stack gap={32} ta="center" mb={80}>
         <Badge
           size="lg"
-          variant="gradient"
-          gradient={{ from: 'green', to: 'blue' }}
           radius="xl"
+          style={{
+            background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+            color: 'white',
+            border: 'none'
+          }}
         >
           💰 Transparent Pricing • No Hidden Fees
         </Badge>
@@ -136,11 +165,15 @@ export default function PricingPage() {
           Choose Your
           <Text
             component="span"
-            variant="gradient"
-            gradient={{ from: 'green', to: 'blue', deg: 45 }}
             inherit
             display="block"
             mt={8}
+            style={{
+              background: 'linear-gradient(45deg, #10b981 0%, #3b82f6 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
           >
             PMO Transformation Plan
           </Text>
@@ -230,6 +263,16 @@ export default function PricingPage() {
                     </Text>
                     <Text c="dimmed">/{plan.period}</Text>
                   </Group>
+
+                  <Badge 
+                    size="md" 
+                    color={plan.color} 
+                    variant="light" 
+                    mb={16}
+                    style={{ display: 'block', margin: '0 auto', width: 'fit-content' }}
+                  >
+                    {plan.operations}
+                  </Badge>
                   
                   <Text size="sm" ta="center" c="dimmed" mb={24}>
                     {plan.description}
@@ -280,12 +323,8 @@ export default function PricingPage() {
                   rightSection={<IconArrowRight size={16} />}
                   onClick={() => {
                     // Track pricing plan selection for $100K MRR analysis
-                    if (plan.cta === 'Start Free Trial') {
-                      trackCAC.signupStarted(`pricing_${plan.name.toLowerCase().replace(' ', '_')}`, window.location.href);
-                      trackCAC.trialStarted(`user_${Date.now()}`, plan.name);
-                    } else if (plan.cta.includes('Sales')) {
-                      trackCAC.signupStarted(`pricing_sales_${plan.name.toLowerCase().replace(' ', '_')}`, window.location.href);
-                    }
+                    // Temporarily disabled for compatibility
+                    console.log('Pricing plan selected:', plan.name);
                   }}
                 >
                   {plan.cta}
@@ -439,6 +478,162 @@ export default function PricingPage() {
               <Text size="xl" fw={700} c="var(--marketing-success)">Keep Everything</Text>
               <Text>All strategic documents and insights yours to keep</Text>
             </Stack>
+          </Grid.Col>
+        </Grid>
+      </Card>
+
+      {/* Interactive ROI Calculator */}
+      <Card shadow="xl" padding={48} radius={20} mb={80} 
+            style={{ 
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white'
+            }}>
+        <Stack align="center" mb={40}>
+          <IconCalculator size={64} style={{ color: 'white' }} />
+          <Title order={2} ta="center" fw={700} style={{ color: 'white' }}>
+            🧮 Interactive ROI Calculator
+          </Title>
+          <Text size="lg" ta="center" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+            Calculate your exact ROI based on your current strategic analysis time
+          </Text>
+        </Stack>
+
+        <Grid>
+          <Grid.Col span={{ base: 12, lg: 6 }}>
+            <Card padding="xl" radius="lg" style={{ background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}>
+              <Title order={3} mb={24} style={{ color: 'white' }}>Your Current Situation</Title>
+              
+              <Stack gap={20}>
+                <div>
+                  <Text mb={8} style={{ color: 'white' }}>Hours/week on strategic analysis: {currentHours}</Text>
+                  <Slider
+                    value={currentHours}
+                    onChange={setCurrentHours}
+                    min={5}
+                    max={40}
+                    step={1}
+                    marks={[
+                      { value: 5, label: '5h' },
+                      { value: 20, label: '20h' },
+                      { value: 40, label: '40h' }
+                    ]}
+                    color="white"
+                    style={{ color: 'white' }}
+                  />
+                </div>
+
+                <div>
+                  <Text mb={8} style={{ color: 'white' }}>Your hourly PM value: ${hourlyRate}</Text>
+                  <Slider
+                    value={hourlyRate}
+                    onChange={setHourlyRate}
+                    min={50}
+                    max={200}
+                    step={10}
+                    marks={[
+                      { value: 50, label: '$50' },
+                      { value: 100, label: '$100' },
+                      { value: 200, label: '$200' }
+                    ]}
+                    color="white"
+                  />
+                </div>
+
+                <div>
+                  <Text mb={8} style={{ color: 'white' }}>PM33 Plan: ${selectedPlan}/month</Text>
+                  <Stack gap={8}>
+                    {[
+                      { value: 29, label: 'Starter - $29/month' },
+                      { value: 79, label: 'Team - $79/month' },
+                      { value: 199, label: 'Scale - $199/month' }
+                    ].map((plan) => (
+                      <Button
+                        key={plan.value}
+                        variant={selectedPlan === plan.value ? 'white' : 'outline'}
+                        color={selectedPlan === plan.value ? 'dark' : 'white'}
+                        onClick={() => setSelectedPlan(plan.value)}
+                        size="sm"
+                      >
+                        {plan.label}
+                      </Button>
+                    ))}
+                  </Stack>
+                </div>
+              </Stack>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col span={{ base: 12, lg: 6 }}>
+            <Card padding="xl" radius="lg" style={{ background: 'rgba(255, 255, 255, 0.95)', color: '#333' }}>
+              <Title order={3} mb={24} c="dark">Your PM33 ROI Results</Title>
+              
+              {(() => {
+                const weeklyHours = currentHours;
+                const monthlyHours = weeklyHours * 4;
+                const currentMonthlyCost = monthlyHours * hourlyRate;
+                const timeSavings = Math.round(monthlyHours * 0.75); // 75% time savings
+                const monthlySavings = timeSavings * hourlyRate;
+                const netSavings = monthlySavings - selectedPlan;
+                const roi = Math.round((netSavings / selectedPlan) * 100);
+
+                return (
+                  <Stack gap={16}>
+                    <Group justify="space-between">
+                      <Text fw={600}>Current monthly time cost:</Text>
+                      <Text fw={700} c="red">${currentMonthlyCost.toLocaleString()}</Text>
+                    </Group>
+
+                    <Group justify="space-between">
+                      <Text fw={600}>Time saved per month:</Text>
+                      <Text fw={700} c="green">{timeSavings} hours</Text>
+                    </Group>
+
+                    <Group justify="space-between">
+                      <Text fw={600}>Value of time saved:</Text>
+                      <Text fw={700} c="green">${monthlySavings.toLocaleString()}</Text>
+                    </Group>
+
+                    <Group justify="space-between">
+                      <Text fw={600}>PM33 cost:</Text>
+                      <Text fw={700} c="blue">${selectedPlan}</Text>
+                    </Group>
+
+                    <Divider />
+
+                    <Group justify="space-between">
+                      <Text size="lg" fw={700}>Net monthly savings:</Text>
+                      <Text size="xl" fw={900} c="green">${netSavings.toLocaleString()}</Text>
+                    </Group>
+
+                    <Group justify="space-between">
+                      <Text size="lg" fw={700}>Return on Investment:</Text>
+                      <Text size="2xl" fw={900} c="green">{roi}%</Text>
+                    </Group>
+
+                    <Group justify="space-between">
+                      <Text size="sm" c="dimmed">Annual savings:</Text>
+                      <Text fw={700} c="green">${(netSavings * 12).toLocaleString()}</Text>
+                    </Group>
+                  </Stack>
+                );
+              })()}
+
+              <Button 
+                fullWidth 
+                size="lg" 
+                mt={24}
+                component={Link}
+                href="/trial"
+                leftSection={<IconRocket size={20} />}
+                style={{
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  color: 'white',
+                  border: 'none'
+                }}
+              >
+                Start Saving Time Today
+              </Button>
+            </Card>
           </Grid.Col>
         </Grid>
       </Card>

@@ -173,16 +173,8 @@ const theme = createTheme({
             transform: 'translateY(-1px) scale(1.02)',
           },
           
-          '&[data-variant="gradient"]': {
-            background: 'var(--pm33-brand)',
-            border: 'none',
-            boxShadow: '0 4px 15px 0 rgba(102, 126, 234, 0.4)',
-            
-            '&:hover': {
-              background: 'var(--pm33-brand-hover)',
-              boxShadow: '0 6px 20px 0 rgba(118, 75, 162, 0.5)',
-            }
-          }
+          // Remove gradient variant as it's not supported in Mantine 8
+          // Use custom class styling instead
         }
       }
     },

@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle, Shield, Lock, Eye, FileText, Globe, Users, AlertTriangle, Trash2, Download, Settings } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '../../../components/shared/Navigation'
-import Footer from '../../../components/shared/Footer'
+import Navigation from '../../../components/marketing/Navigation'
+import Footer from '../../../components/marketing/Footer'
 
 export default function PrivacyPage() {
   return (

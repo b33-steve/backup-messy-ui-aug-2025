@@ -1,44 +1,33 @@
 /**
  * Component: PMCommandCenter (Dashboard)
- * Design Reference: PM33_COMPLETE_UI_SYSTEM.md - Section 3.1 Glass Morphism Cards
- * UX Pattern: PM33_ Complete _UX_System.md - Section 2.1 PM Command Center
+ * Design Reference: APP_THEME_GUIDE.md - Core app design system
+ * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Section 2.1 PM Command Center
  * 
  * Compliance Checklist:
- * - [x] Glass morphism applied
- * - [x] Animations implemented
- * - [x] Hover states added
- * - [x] AI intelligence visible
+ * - [x] Uses shadcn/ui components exclusively
+ * - [x] Professional B2B SaaS design
+ * - [x] lucide-react icons
  * - [x] Progress indicators present
- * - [x] Follows 8pt grid spacing
+ * - [x] Follows responsive grid system
  */
 
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { PM33PageWrapper } from '@/components/PM33PageWrapper';
-import { PM33Navigation } from '@/components/PM33Navigation';
-import { PM33Card } from '@/components/PM33Card';
-import { PM33Button } from '@/components/PM33Button';
-import { PM33AIProcessing } from '@/components/PM33AIProcessing';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
-  Container,
-  Title,
-  Text,
-  Group,
-  Stack,
-  Badge,
-  Progress,
-  Alert,
-  Box
-} from '@mantine/core';
-import {
-  IconBrain,
-  IconSparkles,
-  IconTarget,
-  IconCheck,
-  IconStar
-} from '@tabler/icons-react';
+  Brain,
+  Sparkles,
+  Target,
+  Check,
+  Star
+} from 'lucide-react';
 import Link from 'next/link';
+import CoreAppNavigation from '../../../components/app/CoreAppNavigation';
 
 // Types following Intelligence Operations model
 interface UserContext {
@@ -135,269 +124,214 @@ export default function PMCommandCenter() {
   };
 
   return (
-    <PM33PageWrapper>
-      <PM33Navigation currentPage="dashboard" />
-      <Container size={1200} style={{ padding: '48px 24px', color: 'white' }}>
-        <Stack gap={32}>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <CoreAppNavigation />
+      <div className="container mx-auto px-6 py-12 max-w-7xl">
+        <div className="space-y-8">
           {/* Contextual Header */}
-          <Box mb={32}>
-            <Title
-              order={1}
-              size="h1"
-              style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                fontSize: '2.5rem',
-                fontWeight: 700,
-                letterSpacing: '-0.025em',
-                marginBottom: '8px'
-              }}
-            >
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
               {getContextualGreeting()}
-            </Title>
-            <Text size="lg" c="dimmed">
+            </h1>
+            <p className="text-lg text-slate-600 dark:text-slate-400">
               Strategic Intelligence Operations - {new Date().toLocaleDateString('en-US', { 
                 weekday: 'long', 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
               })}
-            </Text>
-          </Box>
+            </p>
+          </div>
 
           {/* The Magic Moment - AI Already Did The Work */}
-          <PM33Card style={{ marginBottom: '32px' }}>
-            <Alert 
-              color="green" 
-              title="Intelligence Operations Summary"
-              icon={<IconSparkles size={20} />}
-              styles={{
-                root: {
-                  background: 'linear-gradient(135deg, rgba(81, 207, 102, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%)',
-                  border: '1px solid rgba(81, 207, 102, 0.3)'
-                }
-              }}
-            >
-              <Text size="md">
+          <Card className="mb-8">
+            <Alert className="border-green-200 bg-green-50 dark:bg-green-900/20 dark:border-green-800">
+              <Sparkles className="h-4 w-4" />
+              <AlertDescription className="text-green-800 dark:text-green-200">
+                <strong>Intelligence Operations Summary</strong><br />
                 While you were away, PM33 analyzed <strong>3 competitor updates</strong>, 
                 reviewed <strong>12 customer tickets</strong>, and prepared <strong>2 strategic recommendations</strong>.
-              </Text>
+              </AlertDescription>
             </Alert>
-          </PM33Card>
+          </Card>
 
           {/* Clear Next Action */}
-          <PM33Card style={{ marginBottom: '32px' }}>
-            <Stack gap={24}>
-              <Group justify="space-between" align="center">
-                <Stack gap={8}>
-                  <Title order={2} size="h3">
-                    🎯 Priority Action
-                  </Title>
-                  <Text c="dimmed">
-                    Your highest-impact next step
-                  </Text>
-                </Stack>
-                <Badge size="lg" color="red" variant="filled">
-                  High Priority
-                </Badge>
-              </Group>
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <div className="space-y-2">
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+                      🎯 Priority Action
+                    </h2>
+                    <p className="text-slate-600 dark:text-slate-400">
+                      Your highest-impact next step
+                    </p>
+                  </div>
+                  <Badge variant="destructive" className="text-sm">
+                    High Priority
+                  </Badge>
+                </div>
 
-              <Box>
-                <Link href="/strategic-intelligence" style={{ textDecoration: 'none', display: 'block' }}>
-                  <PM33Button
-                    variant="primary"
-                    size="lg"
-                    icon={<IconBrain size={20} />}
-                    style={{
-                      width: '100%',
-                      height: '60px',
-                      fontSize: '18px',
-                      fontWeight: 600
-                    }}
-                    onClick={() => setIsProcessing(true)}
-                  >
-                    Review Strategic Recommendations (3 min)
-                  </PM33Button>
-                </Link>
-                <Text size="sm" c="dimmed" mt={8}>
-                  Then: Team standup prep (2 min)
-                </Text>
-              </Box>
-            </Stack>
-          </PM33Card>
+                <div>
+                  <Link href="/strategic-intelligence" className="block">
+                    <Button
+                      size="lg"
+                      className="w-full h-14 text-lg font-semibold"
+                      onClick={() => setIsProcessing(true)}
+                    >
+                      <Brain className="mr-2 h-5 w-5" />
+                      Review Strategic Recommendations (3 min)
+                    </Button>
+                  </Link>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                    Then: Team standup prep (2 min)
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Progress Dopamine Hit */}
-          <PM33Card style={{ marginBottom: '32px' }}>
-            <Stack gap={24}>
-              <Title order={2} size="h3">
-                📊 Today's Progress
-              </Title>
-              
-              <Group gap={32}>
-                {/* Daily Progress Ring */}
-                <Box style={{ position: 'relative', width: '120px', height: '120px' }}>
-                  <svg className="w-full h-full transform -rotate-90">
-                    <circle
-                      cx="60"
-                      cy="60"
-                      r="50"
-                      stroke="rgba(255,255,255,0.1)"
-                      strokeWidth="6"
-                      fill="none"
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <div className="space-y-6">
+                <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+                  📊 Today's Progress
+                </h2>
+                
+                <div className="flex flex-col md:flex-row gap-8">
+                  {/* Daily Progress Ring */}
+                  <div className="relative w-32 h-32 mx-auto md:mx-0">
+                    <Progress 
+                      value={Math.round((userContext.completedToday / userContext.totalToday) * 100)} 
+                      className="w-32 h-32 rounded-full"
                     />
-                    <circle
-                      cx="60"
-                      cy="60"
-                      r="50"
-                      stroke="url(#progress-gradient)"
-                      strokeWidth="6"
-                      fill="none"
-                      strokeDasharray={`${2 * Math.PI * 50}`}
-                      strokeDashoffset={`${2 * Math.PI * 50 * (1 - (userContext.completedToday / userContext.totalToday))}`}
-                      className="transition-all duration-1000 ease-out"
-                      style={{ filter: 'drop-shadow(0 0 10px rgba(102, 126, 234, 0.8))' }}
-                    />
-                    <defs>
-                      <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#00d2ff" />
-                        <stop offset="100%" stopColor="#3a7bd5" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-2xl font-bold text-white">
-                      {Math.round((userContext.completedToday / userContext.totalToday) * 100)}%
-                    </span>
-                    <span className="text-xs text-gray-300">Complete</span>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span className="text-2xl font-bold text-slate-900 dark:text-white">
+                        {Math.round((userContext.completedToday / userContext.totalToday) * 100)}%
+                      </span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">Complete</span>
+                    </div>
                   </div>
-                </Box>
 
-                {/* Metrics */}
-                <Stack gap={16} style={{ flex: 1 }}>
-                  <Group gap={32}>
-                    <Box>
-                      <Text size="xl" fw={700} c="white">
-                        {userContext.completedToday}/{userContext.totalToday}
-                      </Text>
-                      <Text size="sm" c="dimmed">Decisions Made</Text>
-                    </Box>
-                    <Box>
-                      <Text size="xl" fw={700} c="green.4">
-                        {userContext.teamAlignment}%
-                      </Text>
-                      <Text size="sm" c="dimmed">Team Aligned</Text>
-                    </Box>
-                    <Box>
-                      <Group gap={8} align="center">
-                        <Text size="xl" fw={700} c="yellow.4">
-                          {userContext.strategicScore}
-                        </Text>
-                        <Badge size="sm" color="yellow" variant="light">
-                          improved
-                        </Badge>
-                      </Group>
-                      <Text size="sm" c="dimmed">Strategic Score</Text>
-                    </Box>
-                  </Group>
-                </Stack>
-              </Group>
-            </Stack>
-          </PM33Card>
+                  {/* Metrics */}
+                  <div className="flex-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                      <div>
+                        <p className="text-2xl font-bold text-slate-900 dark:text-white">
+                          {userContext.completedToday}/{userContext.totalToday}
+                        </p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">Decisions Made</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                          {userContext.teamAlignment}%
+                        </p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">Team Aligned</p>
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
+                            {userContext.strategicScore}
+                          </p>
+                          <Badge variant="secondary" className="text-xs">
+                            improved
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">Strategic Score</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* PM Skill Tree */}
-          <PM33Card style={{ marginBottom: '32px' }}>
-            <Stack gap={24}>
-              <Group justify="space-between" align="center">
-                <Title order={2} size="h3">
-                  🚀 PM Skill Tree
-                </Title>
-                <Text size="sm" c="dimmed">
-                  Level up your product management expertise
-                </Text>
-              </Group>
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+                    🚀 PM Skill Tree
+                  </h2>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    Level up your product management expertise
+                  </p>
+                </div>
 
-              <Stack gap={16}>
-                {Object.entries(skills).map(([key, skill]) => (
-                  <div
-                    key={key}
-                    style={{
-                      padding: '20px',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      marginBottom: '16px'
-                    }}
-                  >
-                    <Group gap={16} align="center">
-                      <Badge size="lg" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>
-                        Lvl {skill.level}
-                      </Badge>
-                      
-                      <Stack gap={4} style={{ flex: 1 }}>
-                        <Group justify="space-between" align="center">
-                          <Text fw={600} size="md">{skill.name}</Text>
-                          <Text size="sm" c="dimmed">{skill.progress}%</Text>
-                        </Group>
-                        <Progress 
-                          value={skill.progress} 
-                          color="blue"
-                          size="sm"
-                          radius="xl"
-                        />
-                        <Group gap={16}>
-                          <Text size="xs" c="blue.4">
-                            <IconStar size={12} style={{ display: 'inline', marginRight: '4px' }} />
-                            Next: {skill.nextUnlock}
-                          </Text>
-                          <Text size="xs" c="green.4">
-                            <IconCheck size={12} style={{ display: 'inline', marginRight: '4px' }} />
-                            {skill.recentAchievement}
-                          </Text>
-                        </Group>
-                      </Stack>
-                    </Group>
-                  </div>
-                ))}
-              </Stack>
-            </Stack>
-          </PM33Card>
+                <div className="space-y-4">
+                  {Object.entries(skills).map(([key, skill]) => (
+                    <div
+                      key={key}
+                      className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    >
+                      <div className="flex items-center gap-4">
+                        <Badge variant="default" className="text-sm px-3 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white">
+                          Lvl {skill.level}
+                        </Badge>
+                        
+                        <div className="flex-1 space-y-2">
+                          <div className="flex justify-between items-center">
+                            <h3 className="font-semibold text-slate-900 dark:text-white">{skill.name}</h3>
+                            <span className="text-sm text-slate-500 dark:text-slate-400">{skill.progress}%</span>
+                          </div>
+                          <Progress 
+                            value={skill.progress} 
+                            className="h-2"
+                          />
+                          <div className="flex flex-col sm:flex-row gap-2 text-xs">
+                            <p className="text-blue-600 dark:text-blue-400 flex items-center gap-1">
+                              <Star className="h-3 w-3" />
+                              Next: {skill.nextUnlock}
+                            </p>
+                            <p className="text-green-600 dark:text-green-400 flex items-center gap-1">
+                              <Check className="h-3 w-3" />
+                              {skill.recentAchievement}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Quick Actions */}
-          <Group gap={24}>
-            <Link href="/strategic-intelligence" style={{ textDecoration: 'none', flex: 1 }}>
-              <PM33Button
-                variant="primary"
-                size="lg"
-                icon={<IconBrain size={20} />}
-                style={{ width: '100%' }}
-              >
+          <div className="flex flex-col sm:flex-row gap-6">
+            <Link href="/strategic-intelligence" className="flex-1">
+              <Button size="lg" className="w-full">
+                <Brain className="mr-2 h-5 w-5" />
                 Strategic Intelligence
-              </PM33Button>
+              </Button>
             </Link>
-            <Link href="/command-center" style={{ textDecoration: 'none', flex: 1 }}>
-              <PM33Button
-                variant="secondary"
-                size="lg"
-                icon={<IconTarget size={20} />}
-                style={{ width: '100%' }}
-              >
-                Command Center
-              </PM33Button>
+            <Link href="/tasks" className="flex-1">
+              <Button variant="secondary" size="lg" className="w-full">
+                <Target className="mr-2 h-5 w-5" />
+                Task Management
+              </Button>
             </Link>
-          </Group>
+          </div>
           
           {/* AI Processing State */}
           {isProcessing && (
-            <PM33Card style={{ marginTop: '32px' }}>
-              <PM33AIProcessing 
-                message="Analyzing strategic intelligence..."
-                subMessage="Preparing your customized recommendations"
-              />
-            </PM33Card>
+            <Card className="mt-8">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                  <div>
+                    <p className="font-medium text-slate-900 dark:text-white">Analyzing strategic intelligence...</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Preparing your customized recommendations</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           )}
-        </Stack>
-      </Container>
-    </PM33PageWrapper>
+        </div>
+      </div>
+    </div>
   );
 }

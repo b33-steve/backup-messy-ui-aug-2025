@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle, Zap, Brain, Target, TrendingUp, Clock, Sparkles, Users, Star, MessageCircle, ThumbsUp, Award, BarChart, Lightbulb } from 'lucide-react'
 import Link from 'next/link'
-import Navigation from '../../../components/shared/Navigation'
-import Footer from '../../../components/shared/Footer'
+import Navigation from '../../../components/marketing/Navigation'
+import Footer from '../../../components/marketing/Footer'
 
 export default function MondayAlternativePage() {
   return (

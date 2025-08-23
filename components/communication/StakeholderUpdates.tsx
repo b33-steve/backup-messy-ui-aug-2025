@@ -1,7 +1,10 @@
-# app/frontend/components/communication/StakeholderUpdates.tsx
-# Frontend component for creating AI-powered stakeholder updates and team communications
-# Provides context-aware update templates, automated content generation, and multi-audience targeting
-# RELEVANT FILES: communication_service.py, ExecutiveSummary.tsx, AlignmentDashboard.tsx, workflow_execution_service.py
+/**
+ * Component: StakeholderUpdates
+ * Location: app/frontend/components/communication/StakeholderUpdates.tsx
+ * Purpose: Frontend component for creating AI-powered stakeholder updates and team communications
+ * Features: Provides context-aware update templates, automated content generation, and multi-audience targeting
+ * RELEVANT FILES: communication_service.py, ExecutiveSummary.tsx, AlignmentDashboard.tsx, workflow_execution_service.py
+ */
 
 'use client';
 

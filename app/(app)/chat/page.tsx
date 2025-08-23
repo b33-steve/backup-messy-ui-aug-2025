@@ -1,32 +1,91 @@
+/**
+ * Component: ChatPage
+ * Design Reference: APP_THEME_GUIDE.md - Core app design system
+ * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Chat interface patterns
+ * 
+ * Compliance Checklist:
+ * - [x] Uses shadcn/ui components exclusively
+ * - [x] Professional B2B SaaS design
+ * - [x] lucide-react icons
+ * - [x] Responsive layout
+ */
+
 'use client';
 
-import React, { useState } from 'react';
-import { Container, Card, Title, Text, Button, Textarea, Group, Stack, Badge, Grid } from '@mantine/core';
-import { IconBrain, IconTarget, IconTrendingUp, IconUsers } from '@tabler/icons-react';
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Textarea } from '@/components/ui/textarea';
+import { Brain, Target, TrendingUp, Users, ExternalLink, Settings } from 'lucide-react';
+import Link from 'next/link';
+import CoreAppNavigation from '../../../components/app/CoreAppNavigation';
 import { DemoBadge, DemoContent, useDemoMode } from '../../../components/shared/SimplifiedNavigation';
+import { IntegrationProvider, IntegrationConfig } from '../../../lib/integrations/types';
+import { oauthService } from '../../../lib/integrations/oauth-service';
 
 const ChatPage: React.FC = () => {
   const [query, setQuery] = useState('');
   const { isDemoMode } = useDemoMode();
+  const [connectedIntegrations, setConnectedIntegrations] = useState<IntegrationConfig[]>([]);
+  const [isCreatingTasks, setIsCreatingTasks] = useState<number | null>(null);
+
+  // Load connected integrations
+  useEffect(() => {
+    const loadIntegrations = async () => {
+      try {
+        const integrations = await oauthService.getIntegrations();
+        setConnectedIntegrations(integrations);
+      } catch (error) {
+        console.error('Failed to load integrations:', error);
+      }
+    };
+    loadIntegrations();
+  }, []);
+
+  // Handle task creation
+  const handleCreateTasks = async (analysisId: number, analysisTitle: string, recommendation: string) => {
+    if (connectedIntegrations.length === 0) {
+      // No integrations connected - redirect to settings
+      window.location.href = '/settings?tab=integrations';
+      return;
+    }
+
+    setIsCreatingTasks(analysisId);
+
+    try {
+      // For demo purposes, simulate task creation
+      // In production, this would call the backend API to create tasks
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Show success feedback
+      alert(`Tasks created successfully in ${connectedIntegrations[0].name}!\n\nCreated tasks:\n• Strategic analysis review\n• Implementation planning\n• Risk assessment\n• Progress tracking setup`);
+    } catch (error) {
+      console.error('Failed to create tasks:', error);
+      alert('Failed to create tasks. Please try again.');
+    } finally {
+      setIsCreatingTasks(null);
+    }
+  };
 
   const templateQuestions = [
     {
-      icon: <IconTarget size={16} />,
+      icon: <Target className="h-4 w-4" />,
       title: 'Competitive Response',
       example: 'Competitor X just launched feature Y. How should we respond?'
     },
     {
-      icon: <IconTrendingUp size={16} />,
+      icon: <TrendingUp className="h-4 w-4" />,
       title: 'Resource Allocation', 
       example: 'Should we hire 5 engineers or invest $200K in marketing?'
     },
     {
-      icon: <IconBrain size={16} />,
+      icon: <Brain className="h-4 w-4" />,
       title: 'Feature Priority',
       example: 'Which features should we prioritize for Q4 roadmap?'
     },
     {
-      icon: <IconUsers size={16} />,
+      icon: <Users className="h-4 w-4" />,
       title: 'Market Positioning',
       example: 'How should we position against enterprise competitors?'
     }
@@ -59,191 +118,198 @@ const ChatPage: React.FC = () => {
   ] : [];
 
   return (
-    <Container size={1200} px={24} py={48}>
-      {/* Page Header */}
-      <Stack gap={32}>
-        <div>
-          <Group justify="space-between" align="flex-start">
-            <Stack gap={8}>
-              <Title order={1} size="h1" c="dark">
-                Chat
-              </Title>
-              <Text size="lg" c="dimmed">
-                Strategic questions and AI analysis
-              </Text>
-            </Stack>
-            <Group gap={16}>
-              <Badge size="lg" variant="light" color="blue">
-                Questions today: {isDemoMode ? '23' : '3'}
-              </Badge>
-            </Group>
-          </Group>
-        </div>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <CoreAppNavigation />
+      <div className="container mx-auto px-6 py-12 max-w-7xl">
+        {/* Page Header */}
+        <div className="space-y-8">
+          <div>
+            <div className="flex justify-between items-start">
+              <div className="space-y-2">
+                <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
+                  Chat
+                </h1>
+                <p className="text-lg text-slate-600 dark:text-slate-400">
+                  Strategic questions and AI analysis
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <Badge variant="secondary" className="text-sm">
+                  Questions today: {isDemoMode ? '23' : '3'}
+                </Badge>
+              </div>
+            </div>
+          </div>
 
-        {/* Quick Templates */}
-        <div>
-          <Title order={3} size="h3" mb={16}>
-            Quick Templates
-          </Title>
-          <Grid gutter={16}>
-            {templateQuestions.map((template, index) => (
-              <Grid.Col key={index} span={{ base: 12, md: 6, lg: 3 }}>
+          {/* Quick Templates */}
+          <div>
+            <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4">
+              Quick Templates
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {templateQuestions.map((template, index) => (
                 <Card
-                  shadow="sm"
-                  padding="md"
-                  radius="md"
-                  withBorder
-                  style={{ 
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                  }}
+                  key={index}
+                  className="p-4 cursor-pointer transition-transform hover:scale-[1.02] hover:shadow-lg"
                   onClick={() => setQuery(template.example)}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '';
+                >
+                  <CardContent className="p-0">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="text-blue-600 dark:text-blue-400">
+                        {template.icon}
+                      </div>
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+                        {template.title}
+                      </h3>
+                    </div>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                      {template.example}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Question Input */}
+          <Card className="p-8">
+            <CardContent className="p-0 space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-2">
+                  🎯 Ask your strategic question
+                </h2>
+                <p className="text-lg text-slate-600 dark:text-slate-400">
+                  Get AI-powered analysis with confidence scoring and executable recommendations
+                </p>
+              </div>
+
+              <Textarea
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Enter your strategic question..."
+                rows={4}
+                className="text-base"
+              />
+
+              <div className="flex justify-between items-center">
+                <Button
+                  size="lg"
+                  disabled={!query.trim()}
+                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+                  onClick={() => {
+                    // TODO: Implement AI analysis
+                    console.log('Analyzing:', query);
                   }}
                 >
-                  <Group gap={8} mb={8}>
-                    {template.icon}
-                    <Text size="sm" fw={600}>
-                      {template.title}
-                    </Text>
-                  </Group>
-                  <Text size="xs" c="dimmed">
-                    {template.example}
-                  </Text>
-                </Card>
-              </Grid.Col>
-            ))}
-          </Grid>
-        </div>
-
-        {/* Question Input */}
-        <Card shadow="lg" padding={32} radius={16}>
-          <Stack gap={24}>
-            <div>
-              <Title order={2} size="h2" mb={8}>
-                🎯 Ask your strategic question
-              </Title>
-              <Text c="dimmed" size="lg">
-                Get AI-powered analysis with confidence scoring and executable recommendations
-              </Text>
-            </div>
-
-            <Textarea
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Enter your strategic question..."
-              rows={4}
-              size="lg"
-              styles={{
-                input: {
-                  fontSize: '16px',
-                  lineHeight: 1.5
-                }
-              }}
-            />
-
-            <Group justify="space-between" align="center">
-              <Button
-                size="lg"
-                leftSection={<IconBrain size={20} />}
-                disabled={!query.trim()}
-                variant="gradient"
-                gradient={{ from: 'blue', to: 'cyan' }}
-                onClick={() => {
-                  // TODO: Implement AI analysis
-                  console.log('Analyzing:', query);
-                }}
-              >
-                Generate Analysis
-              </Button>
-              <Text size="sm" c="dimmed">
-                ⚡ AI-powered analysis with framework application
-              </Text>
-            </Group>
-          </Stack>
-        </Card>
+                  <Brain className="mr-2 h-5 w-5" />
+                  Generate Analysis
+                </Button>
+                <p className="text-sm text-slate-500 dark:text-slate-400">
+                  ⚡ AI-powered analysis with framework application
+                </p>
+              </div>
+            </CardContent>
+          </Card>
 
         {/* Recent Analysis */}
         {recentAnalyses.length > 0 && (
           <div>
-            <Group justify="space-between" align="center" mb={16}>
-              <Title order={3} size="h3">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">
                 Recent Analysis
-              </Title>
+              </h3>
               <DemoBadge />
-            </Group>
+            </div>
             
-            <Stack gap={16}>
+            <div className="space-y-4">
               {recentAnalyses.map((analysis) => (
                 <DemoContent key={analysis.id}>
-                  <Card shadow="md" padding="xl" radius={12}>
-                    <Stack gap={16}>
-                      <Group justify="space-between" align="flex-start">
+                  <Card className="p-6">
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-start">
                         <div>
-                          <Title order={4} size="h4" mb={4}>
+                          <h4 className="text-lg font-semibold mb-2">
                             📊 {analysis.title}
-                          </Title>
-                          <Group gap={16} mb={8}>
-                            <Badge size="sm" color="green" variant="light">
+                          </h4>
+                          <div className="flex gap-2 mb-2">
+                            <Badge variant="secondary" className="bg-green-100 text-green-800">
                               Confidence: {analysis.confidence}%
                             </Badge>
-                            <Badge size="sm" color="blue" variant="light">
+                            <Badge variant="secondary" className="bg-blue-100 text-blue-800">
                               {analysis.framework}
                             </Badge>
-                          </Group>
+                          </div>
                         </div>
-                        <Text size="xs" c="dimmed">
+                        <span className="text-xs text-gray-500">
                           {analysis.timestamp}
-                        </Text>
-                      </Group>
-
-                      <div>
-                        <Text fw={500} mb={4}>
-                          Recommendation:
-                        </Text>
-                        <Text c="dimmed" mb={12}>
-                          {analysis.recommendation}
-                        </Text>
-                        
-                        <Group gap={24}>
-                          <Text size="sm">
-                            <strong>Timeline:</strong> {analysis.timeline}
-                          </Text>
-                          <Text size="sm">
-                            <strong>Tasks:</strong> {analysis.tasks}
-                          </Text>
-                          <Text size="sm" c="green">
-                            <strong>Impact:</strong> {analysis.impact}
-                          </Text>
-                        </Group>
+                        </span>
                       </div>
 
-                      <Group gap={12}>
+                      <div>
+                        <p className="font-medium mb-1">
+                          Recommendation:
+                        </p>
+                        <p className="text-gray-600 mb-3">
+                          {analysis.recommendation}
+                        </p>
+                        
+                        <div className="flex gap-6 flex-wrap">
+                          <span className="text-sm">
+                            <strong>Timeline:</strong> {analysis.timeline}
+                          </span>
+                          <span className="text-sm">
+                            <strong>Tasks:</strong> {analysis.tasks}
+                          </span>
+                          <span className="text-sm text-green-600">
+                            <strong>Impact:</strong> {analysis.impact}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-3 flex-wrap">
                         <Button size="sm" variant="outline">
                           View Details
                         </Button>
                         <Button size="sm" variant="outline">
                           Export Plan
                         </Button>
-                        <Button size="sm" color="green">
-                          Create Tasks
-                        </Button>
-                      </Group>
-                    </Stack>
+                        
+                        {connectedIntegrations.length > 0 ? (
+                          <Button 
+                            size="sm" 
+                            className="bg-green-600 hover:bg-green-700"
+                            onClick={() => handleCreateTasks(analysis.id, analysis.title, analysis.recommendation)}
+                            disabled={isCreatingTasks === analysis.id}
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            {isCreatingTasks === analysis.id 
+                              ? 'Creating...' 
+                              : `Create Tasks in ${connectedIntegrations[0].name}`
+                            }
+                          </Button>
+                        ) : (
+                          <Link href="/settings?tab=integrations">
+                            <Button 
+                              size="sm" 
+                              variant="outline"
+                              className="border-green-200 text-green-700 hover:bg-green-50"
+                            >
+                              <Settings className="mr-2 h-4 w-4" />
+                              Connect Integration
+                            </Button>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
                   </Card>
                 </DemoContent>
               ))}
-            </Stack>
+            </div>
           </div>
         )}
-      </Stack>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

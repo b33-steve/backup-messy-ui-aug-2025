@@ -63,7 +63,7 @@ export default function AppNavigation() {
           <Group>
             <Anchor component={Link} href="/app/dashboard" style={{ textDecoration: 'none' }}>
               <Group gap={12}>
-                <img src="/pm33-logo.png" alt="PM33 Platform" style={{ height: '28px' }} />
+                <img src="/PM 33 New Logo Horizontal V1.2 WHITE.png" alt="PM33 Strategic Intelligence Platform" style={{ height: '32px' }} />
                 <Text size="sm" fw={600} style={{ color: theme.colors.textSecondary }}>
                   Strategic Intelligence
                 </Text>

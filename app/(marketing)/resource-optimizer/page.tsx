@@ -1,17 +1,13 @@
 'use client';
 
 import React from 'react';
-import { Container, Title, Text, Button, Card, Stack, Badge, Group, SimpleGrid, Box, ThemeIcon, Progress, Alert } from '@mantine/core';
+import { Container, Title, Text, Button, Card, Stack, Badge, Group, SimpleGrid, ThemeIcon, Progress, Alert } from '@mantine/core';
 import { IconTrendingUp, IconUsers, IconTarget, IconBrain, IconRocket, IconMail } from '@tabler/icons-react';
 import Link from 'next/link';
-import Navigation from '../../../components/shared/Navigation';
-import Footer from '../../../components/shared/Footer';
 
 export default function ResourceOptimizerPage() {
   return (
-    <Box style={{ minHeight: '100vh', backgroundColor: 'var(--mantine-color-gray-0)' }}>
-      <Navigation />
-      
+    <div className="marketing-context">
       <Container size="xl" px="md" py="xl">
         {/* Header Section */}
         <Stack align="center" gap={32} mb={64}>
@@ -158,8 +154,6 @@ export default function ResourceOptimizerPage() {
           </Stack>
         </Card>
       </Container>
-      
-      <Footer />
-    </Box>
+    </div>
   );
 }

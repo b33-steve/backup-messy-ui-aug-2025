@@ -1,0 +1,321 @@
+/**
+ * File: app/(app)/components/pm33-ui/StatusIndicator.tsx
+ * Description: System status and health indicator components
+ * Purpose: Consistent status display for AI backends, integrations, and system health
+ * 
+ * RELEVANT FILES: lib/utils.ts, styles/globals.css, strategic-intelligence/page.tsx, AIProcessingIndicator.tsx
+ */
+
+"use client"
+
+import React from 'react'
+import { cn, statusIndicators } from '@/lib/utils'
+import { Badge } from '@/components/ui/badge'
+import { 
+  CheckCircle, 
+  AlertTriangle, 
+  XCircle, 
+  Wifi,
+  WifiOff,
+  Activity,
+  Clock
+} from 'lucide-react'
+
+export type StatusType = 'healthy' | 'warning' | 'error' | 'offline'
+
+interface StatusIndicatorProps {
+  status: StatusType
+  label?: string
+  message?: string
+  showIcon?: boolean
+  size?: 'sm' | 'md' | 'lg'
+  variant?: 'badge' | 'card' | 'inline'
+  className?: string
+  lastUpdated?: Date
+}
+
+const statusConfig = {
+  healthy: {
+    icon: CheckCircle,
+    label: 'Healthy',
+    bgClass: 'bg-green-50 dark:bg-green-900/20',
+    borderClass: 'border-green-200 dark:border-green-800',
+    textClass: 'text-green-700 dark:text-green-300',
+    iconClass: 'text-green-500',
+  },
+  warning: {
+    icon: AlertTriangle,
+    label: 'Warning',
+    bgClass: 'bg-yellow-50 dark:bg-yellow-900/20',
+    borderClass: 'border-yellow-200 dark:border-yellow-800',
+    textClass: 'text-yellow-700 dark:text-yellow-300',
+    iconClass: 'text-yellow-500',
+  },
+  error: {
+    icon: XCircle,
+    label: 'Error',
+    bgClass: 'bg-red-50 dark:bg-red-900/20',
+    borderClass: 'border-red-200 dark:border-red-800',
+    textClass: 'text-red-700 dark:text-red-300',
+    iconClass: 'text-red-500',
+  },
+  offline: {
+    icon: WifiOff,
+    label: 'Offline',
+    bgClass: 'bg-slate-50 dark:bg-slate-900/20',
+    borderClass: 'border-slate-200 dark:border-slate-800',
+    textClass: 'text-slate-700 dark:text-slate-300',
+    iconClass: 'text-slate-500',
+  },
+}
+
+/**
+ * StatusIndicator Component
+ * 
+ * Displays system status with consistent visual indicators
+ * and optional additional context
+ */
+export function StatusIndicator({
+  status,
+  label,
+  message,
+  showIcon = true,
+  size = 'md',
+  variant = 'badge',
+  className,
+  lastUpdated
+}: StatusIndicatorProps) {
+  const config = statusConfig[status]
+  const Icon = config.icon
+  
+  const sizeClasses = {
+    sm: showIcon ? 'text-xs gap-1 px-2 py-1' : 'text-xs px-2 py-1',
+    md: showIcon ? 'text-sm gap-2 px-3 py-1' : 'text-sm px-3 py-1',
+    lg: showIcon ? 'text-base gap-2 px-4 py-2' : 'text-base px-4 py-2',
+  }
+  
+  const iconSizes = {
+    sm: 12,
+    md: 14,
+    lg: 16,
+  }
+
+  if (variant === 'badge') {
+    return (
+      <Badge
+        className={cn(
+          'inline-flex items-center font-medium rounded-full border',
+          config.bgClass,
+          config.borderClass,
+          config.textClass,
+          sizeClasses[size],
+          className
+        )}
+      >
+        {showIcon && <Icon size={iconSizes[size]} className="flex-shrink-0" />}
+        {label || config.label}
+      </Badge>
+    )
+  }
+
+  if (variant === 'card') {
+    return (
+      <div className={cn(
+        'p-4 rounded-lg border',
+        config.bgClass,
+        config.borderClass,
+        className
+      )}>
+        <div className="flex items-start gap-3">
+          {showIcon && (
+            <Icon size={20} className={cn('flex-shrink-0 mt-0.5', config.iconClass)} />
+          )}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between">
+              <h4 className={cn('font-medium', config.textClass)}>
+                {label || config.label}
+              </h4>
+              {lastUpdated && (
+                <span className="text-xs text-slate-500 dark:text-slate-400">
+                  {formatLastUpdated(lastUpdated)}
+                </span>
+              )}
+            </div>
+            {message && (
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                {message}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // inline variant
+  return (
+    <span className={cn(
+      'inline-flex items-center gap-1',
+      config.textClass,
+      className
+    )}>
+      {showIcon && <Icon size={iconSizes[size]} className="flex-shrink-0" />}
+      {label || config.label}
+    </span>
+  )
+}
+
+/**
+ * AI Backend Status Component
+ */
+interface AIBackendStatusProps {
+  engines: Array<{
+    name: string
+    status: StatusType
+    responseTime?: number
+    lastCheck?: Date
+  }>
+  className?: string
+}
+
+export function AIBackendStatus({ engines, className }: AIBackendStatusProps) {
+  const overallStatus = engines.some(e => e.status === 'error') ? 'error' :
+                       engines.some(e => e.status === 'warning') ? 'warning' :
+                       engines.every(e => e.status === 'healthy') ? 'healthy' : 'offline'
+
+  return (
+    <div className={cn('space-y-3', className)}>
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-medium text-slate-900 dark:text-white">
+          AI Engine Status
+        </h3>
+        <StatusIndicator 
+          status={overallStatus} 
+          size="sm" 
+          label={`${engines.filter(e => e.status === 'healthy').length}/${engines.length} Online`}
+        />
+      </div>
+      
+      <div className="space-y-2">
+        {engines.map((engine, index) => (
+          <div key={index} className="flex items-center justify-between p-2 bg-slate-50 dark:bg-slate-800 rounded">
+            <div className="flex items-center gap-2">
+              <StatusIndicator 
+                status={engine.status} 
+                variant="inline" 
+                size="sm"
+                showIcon={false}
+              />
+              <span className="text-sm text-slate-700 dark:text-slate-300">
+                {engine.name}
+              </span>
+            </div>
+            
+            <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+              {engine.responseTime && (
+                <span>{engine.responseTime}ms</span>
+              )}
+              {engine.lastCheck && (
+                <span>{formatLastUpdated(engine.lastCheck)}</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/**
+ * System Health Dashboard
+ */
+interface SystemHealthProps {
+  services: Array<{
+    name: string
+    status: StatusType
+    uptime?: string
+    issues?: string[]
+  }>
+  className?: string
+}
+
+export function SystemHealth({ services, className }: SystemHealthProps) {
+  const healthyCount = services.filter(s => s.status === 'healthy').length
+  const totalCount = services.length
+  const healthPercentage = Math.round((healthyCount / totalCount) * 100)
+
+  return (
+    <div className={cn('space-y-4', className)}>
+      <div className="flex items-center justify-between">
+        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+          System Health
+        </h3>
+        <div className="flex items-center gap-2">
+          <Activity size={16} className="text-slate-500" />
+          <span className="text-sm text-slate-600 dark:text-slate-400">
+            {healthPercentage}% Operational
+          </span>
+        </div>
+      </div>
+
+      <div className="grid gap-3">
+        {services.map((service, index) => (
+          <StatusIndicator
+            key={index}
+            status={service.status}
+            label={service.name}
+            message={
+              service.status === 'healthy' 
+                ? `Uptime: ${service.uptime || 'Unknown'}`
+                : service.issues?.join(', ')
+            }
+            variant="card"
+            size="sm"
+            lastUpdated={new Date()}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/**
+ * Connection Status for real-time features
+ */
+interface ConnectionStatusProps {
+  isConnected: boolean
+  lastSync?: Date
+  className?: string
+}
+
+export function ConnectionStatus({ isConnected, lastSync, className }: ConnectionStatusProps) {
+  return (
+    <div className={cn('flex items-center gap-2', className)}>
+      {isConnected ? (
+        <Wifi size={14} className="text-green-500" />
+      ) : (
+        <WifiOff size={14} className="text-red-500" />
+      )}
+      <span className="text-xs text-slate-500 dark:text-slate-400">
+        {isConnected ? 'Connected' : 'Disconnected'}
+        {lastSync && ` • Last sync ${formatLastUpdated(lastSync)}`}
+      </span>
+    </div>
+  )
+}
+
+/**
+ * Utility function to format last updated time
+ */
+function formatLastUpdated(date: Date): string {
+  const now = new Date()
+  const diff = now.getTime() - date.getTime()
+  const seconds = Math.floor(diff / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+
+  if (seconds < 60) return `${seconds}s ago`
+  if (minutes < 60) return `${minutes}m ago`
+  if (hours < 24) return `${hours}h ago`
+  return date.toLocaleDateString()
+}

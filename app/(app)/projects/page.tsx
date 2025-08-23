@@ -1,38 +1,38 @@
+/**
+ * Component: ProjectsPage
+ * Design Reference: APP_THEME_GUIDE.md - Core app design system
+ * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Project management patterns
+ * 
+ * Compliance Checklist:
+ * - [x] Uses shadcn/ui components exclusively
+ * - [x] Professional B2B SaaS design
+ * - [x] lucide-react icons
+ * - [x] Responsive grid layout
+ */
+
 'use client';
 
 import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { 
-  Container, 
-  Card, 
-  Title, 
-  Text, 
-  Group, 
-  Stack, 
-  Button, 
-  Box,
-  Badge,
-  Progress,
-  ActionIcon,
-  Select,
-  TextInput,
-  Table,
-  Avatar
-} from '@mantine/core';
-import { 
-  IconFolders, 
-  IconPlus,
-  IconSearch,
-  IconFilter,
-  IconDots,
-  IconCalendar,
-  IconUsers,
-  IconTarget
-} from '@tabler/icons-react';
-import AppNavigation from '../../../components/app/AppNavigation';
-import { useDesignSystem } from '../../../components/app/DesignSystemProvider';
+  Folder, 
+  Plus,
+  Search,
+  Filter,
+  MoreHorizontal,
+  Calendar,
+  Users,
+  Target
+} from 'lucide-react';
+import CoreAppNavigation from '../../../components/app/CoreAppNavigation';
 
 export default function ProjectsPage() {
-  const { theme } = useDesignSystem();
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
 
@@ -94,188 +94,150 @@ export default function ProjectsPage() {
   };
 
   return (
-    <Box style={{ minHeight: '100vh', backgroundColor: theme.colors.bgSecondary }}>
-      <AppNavigation />
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <CoreAppNavigation />
       
-      <Container size={1200} py={32}>
-        <Stack gap={32}>
+      <div className="container mx-auto px-6 py-12 max-w-7xl">
+        <div className="space-y-8">
           {/* Header */}
-          <Stack gap={8}>
-            <Group justify="space-between">
-              <Group>
-                <IconFolders size={32} style={{ color: theme.colors.primary }} />
-                <Stack gap={4}>
-                  <Title order={1} fw={700} style={{ color: theme.colors.textPrimary, fontSize: '28px' }}>
+          <div className="space-y-2">
+            <div className="flex justify-between items-start">
+              <div className="flex items-center gap-4">
+                <Folder className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <div className="space-y-1">
+                  <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
                     Project Management
-                  </Title>
-                  <Text size="lg" style={{ color: theme.colors.textSecondary }}>
+                  </h1>
+                  <p className="text-lg text-slate-600 dark:text-slate-400">
                     Strategic project oversight with AI-powered insights
-                  </Text>
-                </Stack>
-              </Group>
+                  </p>
+                </div>
+              </div>
               
-              <Button
-                leftSection={<IconPlus size={16} />}
-                size="md"
-                style={{
-                  backgroundColor: theme.colors.primary,
-                  '&:hover': { backgroundColor: theme.colors.primaryHover }
-                }}
-              >
+              <Button size="lg">
+                <Plus className="mr-2 h-4 w-4" />
                 New Project
               </Button>
-            </Group>
-          </Stack>
+            </div>
+          </div>
 
           {/* Filters */}
-          <Card 
-            p={24}
-            radius={12}
-            shadow="sm"
-            style={{ 
-              backgroundColor: theme.colors.bgPrimary,
-              border: `1px solid ${theme.colors.bgAccent}`
-            }}
-          >
-            <Group justify="space-between">
-              <Group gap={16}>
-                <TextInput
-                  placeholder="Search projects..."
-                  leftSection={<IconSearch size={16} />}
-                  value={searchQuery}
-                  onChange={(event) => setSearchQuery(event.currentTarget.value)}
-                  style={{ minWidth: '300px' }}
-                  styles={{
-                    input: { 
-                      backgroundColor: theme.colors.bgTertiary,
-                      border: `1px solid ${theme.colors.bgAccent}`,
-                      '&:focus': { borderColor: theme.colors.primary }
-                    }
-                  }}
-                />
+          <Card className="p-6">
+            <div className="flex justify-between items-center">
+              <div className="flex gap-4">
+                <div className="relative min-w-[300px]">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
+                  <Input
+                    placeholder="Search projects..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10"
+                  />
+                </div>
                 
-                <Select
-                  placeholder="Filter by status"
-                  leftSection={<IconFilter size={16} />}
-                  data={[
-                    { value: 'all', label: 'All Status' },
-                    { value: 'planning', label: 'Planning' },
-                    { value: 'in-progress', label: 'In Progress' },
-                    { value: 'completed', label: 'Completed' }
-                  ]}
-                  value={statusFilter}
-                  onChange={(value) => setStatusFilter(value || 'all')}
-                  styles={{
-                    input: { 
-                      backgroundColor: theme.colors.bgTertiary,
-                      border: `1px solid ${theme.colors.bgAccent}`,
-                      '&:focus': { borderColor: theme.colors.primary }
-                    }
-                  }}
-                />
-              </Group>
+                <Select value={statusFilter} onValueChange={setStatusFilter}>
+                  <SelectTrigger className="w-[180px]">
+                    <div className="flex items-center gap-2">
+                      <Filter className="h-4 w-4" />
+                      <SelectValue placeholder="Filter by status" />
+                    </div>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Status</SelectItem>
+                    <SelectItem value="planning">Planning</SelectItem>
+                    <SelectItem value="in-progress">In Progress</SelectItem>
+                    <SelectItem value="completed">Completed</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               
-              <Text size="sm" style={{ color: theme.colors.textTertiary }}>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
                 {projects.length} projects total
-              </Text>
-            </Group>
+              </p>
+            </div>
           </Card>
 
           {/* Projects Grid */}
-          <Stack gap={16}>
+          <div className="space-y-4">
             {projects.map((project) => (
-              <Card
-                key={project.id}
-                p={24}
-                radius={12}
-                shadow="sm"
-                style={{ 
-                  backgroundColor: theme.colors.bgPrimary,
-                  border: `1px solid ${theme.colors.bgAccent}`
-                }}
-              >
-                <Group justify="space-between" align="flex-start">
-                  <Stack gap={16} style={{ flex: 1 }}>
-                    <Group justify="space-between">
-                      <Group gap={12}>
-                        <Title order={4} fw={600} style={{ color: theme.colors.textPrimary }}>
+              <Card key={project.id} className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1 space-y-4">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
                           {project.name}
-                        </Title>
+                        </h3>
                         <Badge
-                          color={statusColors[project.status as keyof typeof statusColors]}
-                          variant="light"
-                          size="sm"
+                          variant={project.status === 'Completed' ? 'default' : project.status === 'In Progress' ? 'secondary' : 'outline'}
+                          className="text-xs"
                         >
                           {project.status}
                         </Badge>
                         <Badge
-                          color={priorityColors[project.priority as keyof typeof priorityColors]}
                           variant="outline"
-                          size="sm"
+                          className={`text-xs ${
+                            project.priority === 'Critical' ? 'border-red-200 text-red-700 bg-red-50 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300' :
+                            project.priority === 'High' ? 'border-orange-200 text-orange-700 bg-orange-50 dark:bg-orange-900/20 dark:border-orange-800 dark:text-orange-300' :
+                            project.priority === 'Medium' ? 'border-blue-200 text-blue-700 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-300' :
+                            'border-slate-200 text-slate-700 bg-slate-50 dark:bg-slate-900/20 dark:border-slate-800 dark:text-slate-300'
+                          }`}
                         >
                           {project.priority}
                         </Badge>
-                      </Group>
+                      </div>
                       
-                      <ActionIcon variant="subtle" color="gray">
-                        <IconDots size={16} />
-                      </ActionIcon>
-                    </Group>
+                      <Button variant="ghost" size="sm">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    </div>
                     
-                    <Text size="sm" style={{ color: theme.colors.textTertiary }}>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       {project.description}
-                    </Text>
+                    </p>
                     
-                    <Group gap={24} align="center">
-                      <Group gap={8}>
-                        <IconTarget size={16} style={{ color: theme.colors.textMuted }} />
-                        <Text size="sm" style={{ color: theme.colors.textTertiary }}>
+                    <div className="flex flex-col sm:flex-row gap-6">
+                      <div className="flex items-center gap-2">
+                        <Target className="h-4 w-4 text-slate-500" />
+                        <span className="text-sm text-slate-600 dark:text-slate-400">
                           Progress: {project.progress}%
-                        </Text>
-                        <Box style={{ width: '120px' }}>
-                          <Progress
-                            value={project.progress}
-                            size="sm"
-                            color={project.progress > 75 ? 'green' : project.progress > 50 ? 'blue' : 'orange'}
-                            radius="xl"
-                          />
-                        </Box>
-                      </Group>
+                        </span>
+                        <div className="w-24">
+                          <Progress value={project.progress} className="h-2" />
+                        </div>
+                      </div>
                       
-                      <Group gap={8}>
-                        <IconCalendar size={16} style={{ color: theme.colors.textMuted }} />
-                        <Text size="sm" style={{ color: theme.colors.textTertiary }}>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-slate-500" />
+                        <span className="text-sm text-slate-600 dark:text-slate-400">
                           Due: {project.dueDate}
-                        </Text>
-                      </Group>
+                        </span>
+                      </div>
                       
-                      <Group gap={8}>
-                        <IconUsers size={16} style={{ color: theme.colors.textMuted }} />
-                        <Group gap={4}>
+                      <div className="flex items-center gap-2">
+                        <Users className="h-4 w-4 text-slate-500" />
+                        <div className="flex gap-1">
                           {project.team.map((member, index) => (
-                            <Avatar
-                              key={index}
-                              size={24}
-                              radius="xl"
-                              color="blue"
-                            >
-                              {member}
+                            <Avatar key={index} className="h-6 w-6">
+                              <AvatarFallback className="text-xs">
+                                {member}
+                              </AvatarFallback>
                             </Avatar>
                           ))}
-                        </Group>
-                      </Group>
-                    </Group>
-                  </Stack>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   
-                  <Button variant="subtle" size="sm">
+                  <Button variant="outline" size="sm" className="ml-4">
                     View Details
                   </Button>
-                </Group>
+                </div>
               </Card>
             ))}
-          </Stack>
-        </Stack>
-      </Container>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

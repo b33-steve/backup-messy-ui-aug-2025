@@ -1,7 +1,9 @@
-# app/frontend/components/shared/AIEnhancedForm.tsx
-# AI-powered form enhancement system with pre-filling, validation, and impact previews
-# Makes forms feel intelligent and helpful rather than tedious
-# RELEVANT FILES: PM33UXProvider.tsx, SmartNotification.tsx, ImpactPreview.tsx
+/**
+ * File: app/frontend/components/shared/AIEnhancedForm.tsx
+ * Purpose: AI-powered form enhancement system with pre-filling, validation, and impact previews
+ * Why: Makes forms feel intelligent and helpful rather than tedious
+ * RELEVANT FILES: PM33UXProvider.tsx, SmartNotification.tsx, ImpactPreview.tsx
+ */
 
 'use client';
 
@@ -43,10 +45,9 @@ import {
   IconTarget,
   IconBulb,
   IconRefresh,
-  IconMagic,
-  IconZap,
+  IconBolt,
   IconRocket,
-  IconAI
+  IconRobot
 } from '@tabler/icons-react';
 import { usePM33UX } from './PM33UXProvider';
 

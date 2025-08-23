@@ -53,7 +53,7 @@ export default function MarketingNavigation() {
           <Group>
             <Anchor component={Link} href="/" style={{ textDecoration: 'none' }}>
               <Group gap={12}>
-                <img src="/pm33-logo.png" alt="PM33 Strategic Intelligence Platform Logo" style={{ height: '32px' }} />
+                <img src="/PM 33 New Logo Horizontal V1.2.png" alt="PM33 Strategic Intelligence Platform" style={{ height: '32px' }} />
               </Group>
             </Anchor>
             <Badge

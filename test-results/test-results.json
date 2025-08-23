@@ -9,9 +9,9 @@
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
-    "maxFailures": 1,
+    "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 2
     },
     "preserveOutput": "always",
     "reporter": [
@@ -43,7 +43,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "chromium",
         "name": "chromium",
@@ -59,7 +59,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "firefox",
         "name": "firefox",
@@ -75,7 +75,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "webkit",
         "name": "webkit",
@@ -91,7 +91,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "Mobile Chrome",
         "name": "Mobile Chrome",
@@ -107,7 +107,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "Mobile Safari",
         "name": "Mobile Safari",
@@ -122,26 +122,26 @@
     "shard": null,
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
-    "version": "1.54.2",
+    "version": "1.55.0",
     "workers": 4,
     "webServer": null
   },
   "suites": [
     {
-      "title": "marketing/full-page-scroll-validation.spec.ts",
-      "file": "marketing/full-page-scroll-validation.spec.ts",
+      "title": "test-oauth-page.spec.ts",
+      "file": "test-oauth-page.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "PM33 Marketing Full Page Scroll Validation",
-          "file": "marketing/full-page-scroll-validation.spec.ts",
+          "title": "Test OAuth Page",
+          "file": "test-oauth-page.spec.ts",
           "line": 10,
           "column": 6,
           "specs": [
             {
-              "title": "Homepage should scroll completely to bottom and show footer",
+              "title": "should load test-oauth page and Connect Jira button works",
               "ok": false,
               "tags": [],
               "tests": [
@@ -156,80 +156,150 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 8525,
+                      "duration": 3014,
                       "error": {
-                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('footer').locator('text=Product')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('footer').locator('text=Product')\u001b[22m\n",
-                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('footer').locator('text=Product')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('footer').locator('text=Product')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/marketing/full-page-scroll-validation.spec.ts:55:52",
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=Connect Jira') resolved to 3 elements:\n    1) <p class=\"text-gray-600\">Test the Connect Jira button functionality</p> aka getByText('Test the Connect Jira button')\n    2) <button class=\"px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105\">Connect Jira</button> aka getByRole('button', { name: 'Connect Jira' })\n    3) <li>Click \"Connect Jira\" to see OAuth setup instructi…</li> aka getByText('Click \"Connect Jira\" to see')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect Jira')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=Connect Jira') resolved to 3 elements:\n    1) <p class=\"text-gray-600\">Test the Connect Jira button functionality</p> aka getByText('Test the Connect Jira button')\n    2) <button class=\"px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105\">Connect Jira</button> aka getByRole('button', { name: 'Connect Jira' })\n    3) <li>Click \"Connect Jira\" to see OAuth setup instructi…</li> aka getByText('Click \"Connect Jira\" to see')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect Jira')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts:27:33",
                         "location": {
-                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/marketing/full-page-scroll-validation.spec.ts",
-                          "column": 52,
-                          "line": 55
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts",
+                          "column": 33,
+                          "line": 27
                         },
-                        "snippet": "  53 |       // Verify comprehensive footer structure per user requirements\n  54 |       // User specified: \"Demo Pricing Integrations Community Blog PM Community Resources Company About Contact Privacy\"\n> 55 |       await expect(footer.locator('text=Product')).toBeVisible();\n     |                                                    ^\n  56 |       await expect(footer.locator('text=Demo')).toBeVisible();\n  57 |       await expect(footer.locator('text=Pricing')).toBeVisible();\n  58 |       await expect(footer.locator('text=Integrations')).toBeVisible();"
+                        "snippet": "  25 |     // Check Connect Jira button is visible\n  26 |     const connectButton = page.locator('text=Connect Jira');\n> 27 |     await expect(connectButton).toBeVisible();\n     |                                 ^\n  28 |     \n  29 |     // Click the button\n  30 |     await connectButton.click();"
                       },
                       "errors": [
                         {
                           "location": {
-                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/marketing/full-page-scroll-validation.spec.ts",
-                            "column": 52,
-                            "line": 55
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts",
+                            "column": 33,
+                            "line": 27
                           },
-                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('footer').locator('text=Product')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('footer').locator('text=Product')\u001b[22m\n\n\n  53 |       // Verify comprehensive footer structure per user requirements\n  54 |       // User specified: \"Demo Pricing Integrations Community Blog PM Community Resources Company About Contact Privacy\"\n> 55 |       await expect(footer.locator('text=Product')).toBeVisible();\n     |                                                    ^\n  56 |       await expect(footer.locator('text=Demo')).toBeVisible();\n  57 |       await expect(footer.locator('text=Pricing')).toBeVisible();\n  58 |       await expect(footer.locator('text=Integrations')).toBeVisible();\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/marketing/full-page-scroll-validation.spec.ts:55:52"
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=Connect Jira') resolved to 3 elements:\n    1) <p class=\"text-gray-600\">Test the Connect Jira button functionality</p> aka getByText('Test the Connect Jira button')\n    2) <button class=\"px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105\">Connect Jira</button> aka getByRole('button', { name: 'Connect Jira' })\n    3) <li>Click \"Connect Jira\" to see OAuth setup instructi…</li> aka getByText('Click \"Connect Jira\" to see')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect Jira')\u001b[22m\n\n\n  25 |     // Check Connect Jira button is visible\n  26 |     const connectButton = page.locator('text=Connect Jira');\n> 27 |     await expect(connectButton).toBeVisible();\n     |                                 ^\n  28 |     \n  29 |     // Click the button\n  30 |     await connectButton.click();\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts:27:33"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-22T06:06:38.098Z",
+                      "startTime": "2025-08-23T08:55:39.346Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/marketing-full-page-scroll-64ed3-y-to-bottom-and-show-footer-chromium/test-failed-1.png"
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/test-oauth-page-Test-OAuth-44703-d-Connect-Jira-button-works-chromium/test-failed-1.png"
                         },
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/marketing-full-page-scroll-64ed3-y-to-bottom-and-show-footer-chromium/video.webm"
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/test-oauth-page-Test-OAuth-44703-d-Connect-Jira-button-works-chromium/video.webm"
                         },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
-                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/marketing-full-page-scroll-64ed3-y-to-bottom-and-show-footer-chromium/error-context.md"
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/test-oauth-page-Test-OAuth-44703-d-Connect-Jira-button-works-chromium/error-context.md"
                         }
                       ],
                       "errorLocation": {
-                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/marketing/full-page-scroll-validation.spec.ts",
-                        "column": 52,
-                        "line": 55
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts",
+                        "column": 33,
+                        "line": 27
                       }
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "96f7581bad233ae3994d-8813d44adda69a4a55f4",
-              "file": "marketing/full-page-scroll-validation.spec.ts",
-              "line": 24,
-              "column": 9
+              "id": "80e588ee49bae7f2a25e-ddc62d171c4f920dc356",
+              "file": "test-oauth-page.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should handle connect and disconnect flow",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 3028,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=Connect Jira') resolved to 3 elements:\n    1) <p class=\"text-gray-600\">Test the Connect Jira button functionality</p> aka getByText('Test the Connect Jira button')\n    2) <button class=\"px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105\">Connect Jira</button> aka getByRole('button', { name: 'Connect Jira' })\n    3) <li>Click \"Connect Jira\" to see OAuth setup instructi…</li> aka getByText('Click \"Connect Jira\" to see')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect Jira')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=Connect Jira') resolved to 3 elements:\n    1) <p class=\"text-gray-600\">Test the Connect Jira button functionality</p> aka getByText('Test the Connect Jira button')\n    2) <button class=\"px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105\">Connect Jira</button> aka getByRole('button', { name: 'Connect Jira' })\n    3) <li>Click \"Connect Jira\" to see OAuth setup instructi…</li> aka getByText('Click \"Connect Jira\" to see')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect Jira')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts:52:53",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts",
+                          "column": 53,
+                          "line": 52
+                        },
+                        "snippet": "  50 |     \n  51 |     // Initial state should show Connect button\n> 52 |     await expect(page.locator('text=Connect Jira')).toBeVisible();\n     |                                                     ^\n  53 |     await expect(page.locator('text=Not Connected')).toBeVisible();\n  54 |     \n  55 |     // Click Connect"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts",
+                            "column": 53,
+                            "line": 52
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=Connect Jira') resolved to 3 elements:\n    1) <p class=\"text-gray-600\">Test the Connect Jira button functionality</p> aka getByText('Test the Connect Jira button')\n    2) <button class=\"px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105\">Connect Jira</button> aka getByRole('button', { name: 'Connect Jira' })\n    3) <li>Click \"Connect Jira\" to see OAuth setup instructi…</li> aka getByText('Click \"Connect Jira\" to see')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Connect Jira')\u001b[22m\n\n\n  50 |     \n  51 |     // Initial state should show Connect button\n> 52 |     await expect(page.locator('text=Connect Jira')).toBeVisible();\n     |                                                     ^\n  53 |     await expect(page.locator('text=Not Connected')).toBeVisible();\n  54 |     \n  55 |     // Click Connect\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts:52:53"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T08:55:39.352Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/test-oauth-page-Test-OAuth-0ba28-connect-and-disconnect-flow-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/test-oauth-page-Test-OAuth-0ba28-connect-and-disconnect-flow-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/test-oauth-page-Test-OAuth-0ba28-connect-and-disconnect-flow-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/test-oauth-page.spec.ts",
+                        "column": 53,
+                        "line": 52
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "80e588ee49bae7f2a25e-d81a25b33bffa5dd837c",
+              "file": "test-oauth-page.spec.ts",
+              "line": 40,
+              "column": 7
             }
           ]
         }
       ]
     }
   ],
-  "errors": [
-    {
-      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
-    }
-  ],
+  "errors": [],
   "stats": {
-    "startTime": "2025-08-22T06:06:37.528Z",
-    "duration": 9571.608999999999,
+    "startTime": "2025-08-23T08:55:38.651Z",
+    "duration": 35026.263,
     "expected": 0,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 2,
     "flaky": 0
   }
 }

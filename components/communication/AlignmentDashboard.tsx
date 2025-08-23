@@ -1,7 +1,10 @@
-# app/frontend/components/communication/AlignmentDashboard.tsx
-# Frontend component for cross-team alignment dashboard and collaboration insights
-# Provides team coordination metrics, alignment visualization, and collaboration recommendations
-# RELEVANT FILES: communication_service.py, ExecutiveSummary.tsx, StakeholderUpdates.tsx, data_intelligence_service.py
+/**
+ * Component: AlignmentDashboard
+ * Location: app/frontend/components/communication/AlignmentDashboard.tsx
+ * Purpose: Frontend component for cross-team alignment dashboard and collaboration insights
+ * Features: Provides team coordination metrics, alignment visualization, and collaboration recommendations
+ * RELEVANT FILES: communication_service.py, ExecutiveSummary.tsx, StakeholderUpdates.tsx, data_intelligence_service.py
+ */
 
 'use client';
 
@@ -44,6 +47,7 @@ import {
   IconTrendingUp,
   IconTarget,
   IconCalendar,
+  IconClock,
   IconChartBar,
   IconNetwork,
   IconBulb,

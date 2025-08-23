@@ -3,9 +3,7 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import MantineWrapper from "../../components/shared/MantineProvider";
 import { DesignSystemProvider } from "../../components/marketing/DesignSystemProvider";
-import Navigation from "../../components/shared/Navigation";
-import { Container, Text, Grid, Group, Stack, Divider } from '@mantine/core';
-import Link from 'next/link';
+import Navigation from "../../components/marketing/Navigation";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,95 +42,73 @@ export default function MarketingLayout({
           <footer style={{ 
             backgroundColor: 'var(--marketing-bg-secondary)', 
             borderTop: '1px solid #e0e0e0',
-            marginTop: 'auto' 
+            marginTop: 'auto',
+            padding: '48px 24px 24px 24px'
           }}>
-            <Container size={1400} px={24} py={48}>
-              <Grid>
-                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-                  <Stack gap={16}>
-                    <Text fw={700} size="lg">Product</Text>
-                    <Stack gap={8}>
-                      <Text component={Link} href="/command-center-demo" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Demo
-                      </Text>
-                      <Text component={Link} href="/pricing" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Pricing
-                      </Text>
-                      <Text component={Link} href="/features" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Integrations
-                      </Text>
-                    </Stack>
-                  </Stack>
-                </Grid.Col>
+            <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+                gap: '32px',
+                marginBottom: '32px'
+              }}>
+                <div>
+                  <h3 style={{ fontWeight: 700, marginBottom: '16px', fontSize: '18px' }}>Product</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <a href="/features" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Features</a>
+                    <a href="/pricing" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Pricing</a>
+                    <a href="/trial" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Free Trial</a>
+                    <a href="/demo" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Demo</a>
+                  </div>
+                </div>
                 
-                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-                  <Stack gap={16}>
-                    <Text fw={700} size="lg">Community</Text>
-                    <Stack gap={8}>
-                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Community
-                      </Text>
-                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Blog
-                      </Text>
-                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        PM Community
-                      </Text>
-                    </Stack>
-                  </Stack>
-                </Grid.Col>
+                <div>
+                  <h3 style={{ fontWeight: 700, marginBottom: '16px', fontSize: '18px' }}>Resources</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <a href="/blog" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Resources</a>
+                    <a href="/about" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>About Us</a>
+                    <a href="/contact" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Contact</a>
+                    <a href="/support" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Support</a>
+                  </div>
+                </div>
                 
-                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-                  <Stack gap={16}>
-                    <Text fw={700} size="lg">Resources</Text>
-                    <Stack gap={8}>
-                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Resources
-                      </Text>
-                      <Text component={Link} href="/features" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Templates
-                      </Text>
-                      <Text component={Link} href="/blog" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Case Studies
-                      </Text>
-                    </Stack>
-                  </Stack>
-                </Grid.Col>
+                <div>
+                  <h3 style={{ fontWeight: 700, marginBottom: '16px', fontSize: '18px' }}>Legal</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <a href="/privacy" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Privacy Policy</a>
+                    <a href="/terms" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Terms of Service</a>
+                    <a href="/security" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Security</a>
+                  </div>
+                </div>
                 
-                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-                  <Stack gap={16}>
-                    <Text fw={700} size="lg">Company</Text>
-                    <Stack gap={8}>
-                      <Text component={Link} href="/about" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        About
-                      </Text>
-                      <Text component={Link} href="/contact" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Contact
-                      </Text>
-                      <Text component={Link} href="/privacy" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                        Privacy
-                      </Text>
-                    </Stack>
-                  </Stack>
-                </Grid.Col>
-              </Grid>
+                <div>
+                  <h3 style={{ fontWeight: 700, marginBottom: '16px', fontSize: '18px' }}>Connect</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <a href="https://linkedin.com/company/pm33" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>LinkedIn</a>
+                    <a href="https://twitter.com/PM33_AI" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Twitter</a>
+                    <a href="/community" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Community</a>
+                  </div>
+                </div>
+              </div>
               
-              <Divider my={32} />
-              
-              <Group justify="space-between" align="center">
-                <Text size="sm" c="dimmed">
+              <div style={{ 
+                borderTop: '1px solid #e0e0e0',
+                paddingTop: '24px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '16px'
+              }}>
+                <p style={{ margin: 0, fontSize: '14px', color: 'var(--marketing-text-secondary)' }}>
                   © 2025 PM33. Strategic Intelligence Platform. All rights reserved.
-                </Text>
-                <Group gap={16}>
-                  <Text component={Link} href="/privacy" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                    Privacy Policy
-                  </Text>
-                  <Text component={Link} href="/privacy" size="sm" c="dimmed" style={{ textDecoration: 'none' }}>
-                    Terms of Service
-                  </Text>
-                </Group>
-              </Group>
-            </Container>
+                </p>
+                <div style={{ display: 'flex', gap: '24px' }}>
+                  <a href="/privacy" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Privacy</a>
+                  <a href="/terms" style={{ textDecoration: 'none', color: 'var(--marketing-text-secondary)', fontSize: '14px' }}>Terms</a>
+                </div>
+              </div>
+            </div>
           </footer>
         </DesignSystemProvider>
       </MantineWrapper>

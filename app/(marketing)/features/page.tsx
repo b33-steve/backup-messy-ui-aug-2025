@@ -1,7 +1,7 @@
 'use client';
 
 import { Container, Title, Text, Button, Card, Group, List, Stack, Badge, Grid, Divider } from '@mantine/core';
-import { IconRocket, IconBrain, IconShield, IconTarget, IconChartLine, IconUsers, IconClock, IconSettings, IconLightbulb, IconTrendingUp, IconCheck, IconArrowRight, IconSparkles } from '@tabler/icons-react';
+import { IconRocket, IconBrain, IconShield, IconTarget, IconTrendingUp, IconUsers, IconClock, IconSettings, IconCheck, IconArrowRight, IconSparkles } from '@tabler/icons-react';
 import Link from 'next/link';
 
 /**
@@ -34,7 +34,7 @@ export default function FeaturesPage() {
       ]
     },
     {
-      icon: IconChartLine,
+      icon: IconTrendingUp,
       title: "Predictive Analytics & Intelligence",
       description: "Advanced data analysis that learns your company patterns and predicts outcomes before you ship.",
       benefits: [
@@ -98,9 +98,12 @@ export default function FeaturesPage() {
       <Stack gap={32} ta="center" mb={80}>
         <Badge
           size="lg"
-          variant="gradient"
-          gradient={{ from: 'blue', to: 'purple' }}
           radius="xl"
+          style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            border: 'none'
+          }}
         >
           ⚡ PMO-Level Strategic Capabilities
         </Badge>
@@ -109,9 +112,13 @@ export default function FeaturesPage() {
           Transform from PM to Strategic PMO with
           <Text
             component="span"
-            variant="gradient"
-            gradient={{ from: 'blue', to: 'purple', deg: 45 }}
             inherit
+            style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
             display="block"
             mt={8}
           >

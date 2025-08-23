@@ -109,11 +109,11 @@ const SimplifiedNavigation: React.FC = () => {
             <Link href="/dashboard" style={{ textDecoration: 'none' }}>
               <Group gap={12} align="center" data-testid="pm33-logo">
                 <Image
-                  src="/pm33-logo.png"
-                  alt="PM33"
+                  src="/PM 33 New Logo Horizontal V1.2.png"
+                  alt="PM33 Strategic Intelligence Platform"
                   width={32}
                   height={32}
-                  fallbackSrc="/pm33-logo.svg"
+                  fallbackSrc="/PM 33 New Logo Horizontal V1.2.png"
                 />
                 <Text size="xl" fw={700} c="dark">
                   PM33

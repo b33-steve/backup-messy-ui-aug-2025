@@ -1,7 +1,9 @@
-# app/frontend/components/shared/CelebrationMoment.tsx
-# Celebration moments for achievements and milestones - dopamine-driven engagement
-# Creates delightful micro-interactions that make users feel accomplished
-# RELEVANT FILES: PM33UXProvider.tsx, QuickWinsDisplay.tsx, AchievementBadge.tsx
+/**
+ * File: app/frontend/components/shared/CelebrationMoment.tsx
+ * Purpose: Celebration moments for achievements and milestones - dopamine-driven engagement
+ * Why: Creates delightful micro-interactions that make users feel accomplished
+ * RELEVANT FILES: PM33UXProvider.tsx, QuickWinsDisplay.tsx, AchievementBadge.tsx
+ */
 
 'use client';
 

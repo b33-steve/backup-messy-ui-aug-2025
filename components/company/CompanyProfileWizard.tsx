@@ -399,7 +399,7 @@ export default function CompanyProfileWizard({
                 </Center>
               }
             />
-            <Text align="center" size="xs" c="dimmed" mt="xs">Complete</Text>
+            <Text ta="center" size="xs" c="dimmed" mt="xs">Complete</Text>
           </div>
         </Group>
       </Paper>
@@ -595,14 +595,7 @@ export default function CompanyProfileWizard({
                       label="Key Products/Services"
                       placeholder="Your main offerings"
                       data={[]}
-                      creatable
                       searchable
-                      getCreateLabel={(query) => `+ Add "${query}"`}
-                      onCreate={(query) => {
-                        const newProducts = [...form.values.keyProducts, query];
-                        form.setFieldValue('keyProducts', newProducts);
-                        return query;
-                      }}
                       {...form.getInputProps('keyProducts')}
                     />
                   </Grid.Col>
@@ -689,14 +682,7 @@ export default function CompanyProfileWizard({
                   label="Main Competitors"
                   placeholder="Who are your primary competitors?"
                   data={[]}
-                  creatable
                   searchable
-                  getCreateLabel={(query) => `+ Add "${query}"`}
-                  onCreate={(query) => {
-                    const newCompetitors = [...form.values.mainCompetitors, query];
-                    form.setFieldValue('mainCompetitors', newCompetitors);
-                    return query;
-                  }}
                   {...form.getInputProps('mainCompetitors')}
                 />
 

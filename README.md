@@ -3,7 +3,7 @@
 **File:** `app/frontend/README.md`  
 **Purpose:** Complete frontend architecture overview and development guide  
 **Context:** Dual design system with marketing (Mantine) + core app (shadcn/ui + PM33)  
-**RELEVANT FILES:** `CLAUDE.md`, `MARKETING_DESIGN_SYSTEM.md`, `APP_DESIGN_SYSTEM.md`
+**RELEVANT FILES:** `CLAUDE.md`, `app/(marketing)/docs/MARKETING_DESIGN_SYSTEM.md`, `app/(app)/docs/APP_DESIGN_SYSTEM.md`
 
 ## 🏗️ **Architecture Overview**
 
@@ -29,18 +29,43 @@ app/
 ## 🎯 **Context-Specific Design Systems**
 
 ### **Marketing Context** (`app/(marketing)/`)
-- **Framework:** Mantine UI 8.2.5
+- **Framework:** Mantine UI 8.2.5 (React components library)
+- **Icons:** @tabler/icons-react
 - **Purpose:** Lead generation, conversion optimization
 - **Design:** Clean, professional, trust-building
 - **Colors:** Marketing tokens (`--marketing-*`)
 - **Class:** `.marketing-context`
 
 ### **Core App Context** (`app/(app)/`)  
-- **Framework:** shadcn/ui + PM33 components
+- **Primary UI Library:** shadcn/ui (based on Radix UI primitives)
+- **Styling:** Tailwind CSS with CSS custom properties
+- **Icons:** lucide-react
+- **Animations:** framer-motion
+- **Utilities:** class-variance-authority, clsx, tailwind-merge
 - **Purpose:** PMO transformation, strategic intelligence  
 - **Design:** Glass morphism, premium animations, AI-powered UX
 - **Colors:** PM33 tokens (`--pm33-*`)
-- **Class:** `.app-context`
+
+## 📚 **Documentation Navigation**
+
+### **Context-Specific Documentation**
+
+**🎯 Marketing Context Documentation** (`app/(marketing)/docs/`):
+- **[MARKETING_DESIGN_SYSTEM.md](app/(marketing)/docs/MARKETING_DESIGN_SYSTEM.md)** - Mantine UI design standards
+- **[MARKETING_THEME_GUIDE.md](app/(marketing)/docs/MARKETING_THEME_GUIDE.md)** - Marketing theme implementation
+- **[MARKETING_STRATEGY.md](app/(marketing)/docs/MARKETING_STRATEGY.md)** - Complete marketing strategy
+- **[WEBSITE_MAP.md](app/(marketing)/docs/WEBSITE_MAP.md)** - Complete website structure guide
+- **[CONTENT_FACTORY_GUIDE.md](app/(marketing)/docs/CONTENT_FACTORY_GUIDE.md)** - Content factory integration
+
+**⚡ Core App Context Documentation** (`app/(app)/docs/`):
+- **[APP_DESIGN_SYSTEM.md](app/(app)/docs/APP_DESIGN_SYSTEM.md)** - shadcn/ui + PM33 design standards
+- **[APP_THEME_GUIDE.md](app/(app)/docs/APP_THEME_GUIDE.md)** - Core app theme implementation
+- **[CORE_APP_DESIGN_SYSTEM.md](app/(app)/docs/CORE_APP_DESIGN_SYSTEM.md)** - Detailed core app standards
+
+**🗂️ Project-Wide Documentation** (root level):
+- **[CLAUDE.md](CLAUDE.md)** - Claude Code instructions and project memory
+- **[PLATFORM_DEVELOPMENT_PLAN.md](PLATFORM_DEVELOPMENT_PLAN.md)** - Overall platform strategy and roadmap
+- **[README.md](README.md)** - This file - architecture overview
 
 ## 🚀 **Quick Start**
 
@@ -82,19 +107,34 @@ export function MarketingFeature() {
 }
 ```
 
-**Core App Component:**
+**Core App Component (shadcn/ui + PM33):**
 ```tsx
 'use client';
 import { Button } from '@/components/ui/button';
-import { PM33Card } from '@/components/PM33Card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 export function AppFeature() {
   return (
-    <PM33Card className="pm33-animate-float">
-      <Button className="pm33-btn-primary pm33-animate-glow">
-        Process with AI
-      </Button>
-    </PM33Card>
+    <motion.div 
+      className={cn("pm33-glass-card pm33-animate-float")}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+    >
+      <CardHeader>
+        <CardTitle className="pm33-text-gradient">
+          Strategic Feature
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button className="pm33-btn-primary pm33-animate-glow">
+          <Brain className="mr-2 h-4 w-4" />
+          Process with AI
+        </Button>
+      </CardContent>
+    </motion.div>
   );
 }
 ```
@@ -164,9 +204,17 @@ import {
 
 **shadcn/ui + PM33 (Core App):**
 ```tsx
+// shadcn/ui base components (Radix UI primitives)
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { PM33Card, PM33Button, PM33AIProcessing } from '@/components/PM33*';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Textarea } from '@/components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
+// PM33 custom components & utilities
+import { Brain, Activity } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 ```
 
 ## 🧪 **Testing Architecture** 
@@ -223,15 +271,16 @@ test('should use PM33 glass morphism', async ({ page }) => {
   "@mantine/hooks": "^8.2.5",
   "@mantine/notifications": "^8.2.5",
   
-  "// Core App Framework": "",
+  "// Core App Framework (shadcn/ui stack)": "",
   "class-variance-authority": "^0.7.1", 
   "clsx": "^2.1.1",
   "tailwind-merge": "^3.3.1",
   "@radix-ui/react-slot": "^1.2.3",
+  "framer-motion": "^11.0.0",
   
   "// Icons": "",
-  "@tabler/icons-react": "^3.34.1",  // Marketing
-  "lucide-react": "^0.539.0",        // Core app
+  "@tabler/icons-react": "^3.34.1",  // Marketing (Mantine)
+  "lucide-react": "^0.539.0",        // Core app (shadcn/ui)
   
   "// Testing": "",
   "@playwright/test": "^1.54.2"
@@ -243,10 +292,10 @@ test('should use PM33 glass morphism', async ({ page }) => {
 # Install all dependencies
 npm install
 
-# Install additional shadcn/ui components
-npx shadcn@latest add button card input
+# Install shadcn/ui components for core app
+npx shadcn@latest add button card input textarea badge tabs scroll-area separator
 
-# Install additional Mantine components  
+# Install additional Mantine components for marketing
 npm install @mantine/dates @mantine/form @mantine/dropzone
 ```
 

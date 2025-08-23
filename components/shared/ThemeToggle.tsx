@@ -20,15 +20,15 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   variant = 'default',
   showTooltip = true
 }) => {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
   const [mounted, setMounted] = useState(false);
 
   // Ensure component is mounted on client side to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
     
-    // Check for saved theme preference or default to dark mode
-    const savedTheme = localStorage.getItem('pm33-theme') as 'dark' | 'light' || 'dark';
+    // Check for saved theme preference or default to light mode
+    const savedTheme = (localStorage.getItem('pm33-theme') as 'dark' | 'light') || 'light';
     setTheme(savedTheme);
     
     // Apply theme to document
@@ -51,12 +51,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
     return (
       <ActionIcon
         size={size}
-        variant={variant}
-        style={{ 
-          backgroundColor: 'var(--app-bg-tertiary)',
-          color: 'var(--app-text-muted)',
-          border: '1px solid var(--app-border-muted)'
-        }}
+        variant="subtle"
         disabled
       >
         <IconMoon size={18} />
@@ -68,46 +63,26 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   const icon = isDark ? <IconSun size={18} /> : <IconMoon size={18} />;
   const tooltipLabel = `Switch to ${isDark ? 'light' : 'dark'} mode`;
 
-  const buttonStyle = {
-    backgroundColor: 'var(--app-bg-tertiary)',
-    color: 'var(--app-text-secondary)',
-    border: '1px solid var(--app-border-muted)',
-    transition: 'all 0.2s ease',
-    '&:hover': {
-      backgroundColor: 'var(--app-bg-elevated)',
-      color: 'var(--app-text-primary)',
-      borderColor: 'var(--app-border-focus)',
-      transform: 'scale(1.05)'
-    }
-  };
-
-  if (showTooltip) {
-    return (
-      <Tooltip label={tooltipLabel} position="bottom">
-        <ActionIcon
-          size={size}
-          variant="subtle"
-          onClick={toggleTheme}
-          style={buttonStyle}
-          aria-label={tooltipLabel}
-        >
-          {icon}
-        </ActionIcon>
-      </Tooltip>
-    );
-  }
-
-  return (
+  const button = (
     <ActionIcon
       size={size}
       variant="subtle"
       onClick={toggleTheme}
-      style={buttonStyle}
       aria-label={tooltipLabel}
     >
       {icon}
     </ActionIcon>
   );
+
+  if (showTooltip) {
+    return (
+      <Tooltip label={tooltipLabel} position="bottom">
+        {button}
+      </Tooltip>
+    );
+  }
+
+  return button;
 };
 
 export default ThemeToggle;

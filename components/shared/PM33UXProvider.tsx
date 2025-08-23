@@ -1,7 +1,9 @@
-# app/frontend/components/shared/PM33UXProvider.tsx
-# PM33 UX Enhancement Provider - Creates delightful, sticky product experiences
-# Provides dopamine-driven engagement, smart notifications, celebrations, and AI assistance
-# RELEVANT FILES: PM33Card.tsx, AIProcessingState.tsx, CelebrationMoment.tsx, SmartNotification.tsx
+/**
+ * File: app/frontend/components/shared/PM33UXProvider.tsx
+ * Purpose: PM33 UX Enhancement Provider - Creates delightful, sticky product experiences
+ * Why: Provides dopamine-driven engagement, smart notifications, celebrations, and AI assistance
+ * RELEVANT FILES: PM33Card.tsx, AIProcessingState.tsx, CelebrationMoment.tsx, SmartNotification.tsx
+ */
 
 'use client';
 

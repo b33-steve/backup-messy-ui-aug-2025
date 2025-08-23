@@ -8,8 +8,24 @@ import { test, expect } from '@playwright/test';
 test.describe('PM33 UI Compliance', () => {
   
   test.beforeEach(async ({ page }) => {
-    // Navigate to the main application
-    await page.goto('http://localhost:3000');
+    // Navigate to the strategic intelligence page (core app with shadcn/ui components)
+    await page.goto('http://localhost:3000/strategic-intelligence');
+    
+    // Wait for page to load completely
+    await page.waitForLoadState('networkidle');
+    
+    // Scroll to see full page content including below the fold
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    
+    // Scroll back to top to start tests from beginning
+    await page.evaluate(() => {
+      window.scrollTo(0, 0);
+    });
+    
+    // Small delay to ensure page is stable
+    await page.waitForTimeout(500);
   });
 
   test('should use glass morphism styling', async ({ page }) => {

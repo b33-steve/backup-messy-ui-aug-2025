@@ -97,9 +97,12 @@ export default function ContactPage() {
       <Stack gap={32} ta="center" mb={80}>
         <Badge
           size="lg"
-          variant="gradient"
-          gradient={{ from: 'blue', to: 'purple' }}
           radius="xl"
+          style={{
+            background: 'linear-gradient(135deg, blue 0%, purple 100%)',
+            color: 'white',
+            border: 'none'
+          }}
         >
           🗣️ Expert Support & Strategic Guidance
         </Badge>
@@ -108,11 +111,15 @@ export default function ContactPage() {
           Get Expert Help from
           <Text
             component="span"
-            variant="gradient"
-            gradient={{ from: 'blue', to: 'purple', deg: 45 }}
             inherit
             display="block"
             mt={8}
+            style={{
+              background: 'linear-gradient(45deg, blue 0%, purple 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
           >
             PM33 Strategic Advisors
           </Text>

@@ -1,7 +1,7 @@
 'use client';
 
 import { Container, Title, Text, Button, Card, Alert } from '@mantine/core';
-import { IconAlertCircle, IconCheckCircle } from '@tabler/icons-react';
+import { IconAlertCircle, IconCheck } from '@tabler/icons-react';
 import Link from 'next/link';
 
 export default function TooexpenIveHandlerPage() {
@@ -22,7 +22,7 @@ export default function TooexpenIveHandlerPage() {
             ROI: 75x return - saves 60 hours/month at $100/hour PM value
           </Text>
           
-          <Alert icon={<IconCheckCircle size={16} />} title="The PM33 Difference" color="green">
+          <Alert icon={<IconCheck size={16} />} title="The PM33 Difference" color="green">
             Ready to see how PM33 specifically addresses this concern?
           </Alert>
         </Card>

@@ -719,7 +719,7 @@ export default function SprintPlanner({ workItems, teams, onSprintCreated, onCan
                           Risk level: {optimizationResults.riskLevel}
                         </Text>
                       </div>
-                    </Grid>
+                    </Group>
                     
                     <Grid>
                       <Grid.Col span={6}>

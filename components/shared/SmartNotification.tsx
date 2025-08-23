@@ -1,7 +1,9 @@
-# app/frontend/components/shared/SmartNotification.tsx
-# Smart notification system that reduces anxiety and provides contextual assistance
-# Learns from user behavior to optimize notification timing and content
-# RELEVANT FILES: PM33UXProvider.tsx, CelebrationMoment.tsx, AIProcessingState.tsx
+/**
+ * File: app/frontend/components/shared/SmartNotification.tsx
+ * Purpose: Smart notification system that reduces anxiety and provides contextual assistance
+ * Why: Learns from user behavior to optimize notification timing and content
+ * RELEVANT FILES: PM33UXProvider.tsx, CelebrationMoment.tsx, AIProcessingState.tsx
+ */
 
 'use client';
 

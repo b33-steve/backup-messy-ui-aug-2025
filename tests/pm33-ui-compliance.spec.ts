@@ -10,7 +10,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('PM33 UI Compliance', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/strategic-intelligence-demo');
+    await page.goto('/strategic-intelligence');
   });
 
   test('No forbidden UI elements exist', async ({ page }) => {

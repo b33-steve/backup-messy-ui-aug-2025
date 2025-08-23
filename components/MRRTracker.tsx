@@ -9,7 +9,7 @@
 
 import { useState, useEffect } from 'react';
 import { Container, Card, Title, Text, Group, Progress, Badge, Stack, Grid } from '@mantine/core';
-import { IconTrendingUp, IconTarget, IconCalendar, IconUsers, IconDollarSign } from '@tabler/icons-react';
+import { IconTrendingUp, IconTarget, IconCalendar, IconUsers } from '@tabler/icons-react';
 import { trackMRRProgress } from '../lib/posthog';
 
 interface MRRData {
@@ -133,7 +133,7 @@ export default function MRRTracker() {
           <Grid.Col span={{ base: 12, md: 4 }}>
             <Card padding="lg" radius="md" h="100%">
               <Group mb={16}>
-                <IconDollarSign size={24} color="var(--marketing-success)" />
+                <IconTarget size={24} color="var(--marketing-success)" />
                 <div>
                   <Text size="xs" c="dimmed" fw={600}>CUSTOMER ACQUISITION COST</Text>
                   <Text size="xl" fw={900}>${mrrData.averageCAC}</Text>

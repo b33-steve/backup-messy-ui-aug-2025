@@ -352,9 +352,9 @@ const StrategicIntelligenceEngine: React.FC = () => {
                 <IconHome size={18} />
               </ActionIcon>
               <img 
-                src="/pm33-logo.png" 
+                src="/PM 33 New Logo Horizontal V1.2 WHITE.png" 
                 alt="PM33 Strategic Intelligence Platform" 
-                style={{ height: '36px', filter: 'brightness(0) invert(1)' }} 
+                style={{ height: '32px' }} 
               />
               <Stack gap={4}>
                 <Title 

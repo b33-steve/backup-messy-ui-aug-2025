@@ -4,8 +4,8 @@ import React from 'react';
 import { Container, Title, Text, Button, Card, Stack, Badge, Group, SimpleGrid, Box, ThemeIcon, Progress, Alert } from '@mantine/core';
 import { IconChartLine, IconEye, IconTrendingUp, IconBrain, IconRocket, IconMail } from '@tabler/icons-react';
 import Link from 'next/link';
-import Navigation from '../../../components/shared/Navigation';
-import Footer from '../../../components/shared/Footer';
+import Navigation from '../../../components/marketing/Navigation';
+import Footer from '../../../components/marketing/Footer';
 
 export default function StrategicDashboardPage() {
   return (

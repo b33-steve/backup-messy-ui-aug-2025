@@ -1,7 +1,9 @@
-# app/frontend/components/shared/PredictiveNavigation.tsx
-# Predictive navigation system that learns user patterns and suggests next actions
-# Makes the app feel like it anticipates user needs and works WITH them
-# RELEVANT FILES: PM33UXProvider.tsx, SmartNotification.tsx, KeyboardShortcuts.tsx
+/**
+ * File: app/frontend/components/shared/PredictiveNavigation.tsx
+ * Purpose: Predictive navigation system that learns user patterns and suggests next actions
+ * Why: Makes the app feel like it anticipates user needs and works WITH them
+ * RELEVANT FILES: PM33UXProvider.tsx, SmartNotification.tsx, KeyboardShortcuts.tsx
+ */
 
 'use client';
 

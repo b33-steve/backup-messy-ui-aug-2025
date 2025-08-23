@@ -1,8 +1,22 @@
+/**
+ * Component: DataAnalyticsPage
+ * Design Reference: APP_THEME_GUIDE.md - Core app design system
+ * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Analytics dashboard patterns
+ * 
+ * Compliance Checklist:
+ * - [x] Uses shadcn/ui components exclusively
+ * - [x] Professional B2B SaaS design
+ * - [x] lucide-react icons
+ * - [x] Responsive grid layout
+ */
+
 'use client';
 
 import React from 'react';
-import { Container, Card, Title, Text, Group, Stack, Badge, Grid, RingProgress } from '@mantine/core';
-import { IconTrendingUp, IconClock, IconTarget, IconBrain } from '@tabler/icons-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { TrendingUp, Clock, Target, Brain } from 'lucide-react';
 import { DemoBadge, DemoContent, useDemoMode } from '../../../components/shared/SimplifiedNavigation';
 
 const DataPage: React.FC = () => {
@@ -15,28 +29,28 @@ const DataPage: React.FC = () => {
       value: isDemoMode ? '94%' : '76%',
       change: isDemoMode ? '+12%' : '+6%',
       color: 'green',
-      icon: <IconBrain size={24} />
+      icon: <Brain className="h-6 w-6" />
     },
     {
       title: 'Resource Efficiency',
       value: isDemoMode ? '+23%' : '+11%',
       change: isDemoMode ? '+8%' : '+3%',
       color: 'blue',
-      icon: <IconTrendingUp size={24} />
+      icon: <TrendingUp className="h-6 w-6" />
     },
     {
       title: 'Strategic Alignment',
       value: isDemoMode ? '87%' : '72%',
       change: isDemoMode ? '+15%' : '+5%',
       color: 'violet',
-      icon: <IconTarget size={24} />
+      icon: <Target className="h-6 w-6" />
     },
     {
       title: 'Time to Decision',
       value: isDemoMode ? '8hr → 10min' : '8hr → 3hr',
       change: isDemoMode ? '47x improvement' : '3x improvement',
       color: 'orange',
-      icon: <IconClock size={24} />
+      icon: <Clock className="h-6 w-6" />
     }
   ];
 
@@ -91,211 +105,194 @@ const DataPage: React.FC = () => {
   ];
 
   return (
-    <Container size={1200} px={24} py={48}>
-      <Stack gap={32}>
+    <div className="container mx-auto px-6 py-12 max-w-7xl">
+      <div className="space-y-8">
         {/* Page Header */}
-        <Group justify="space-between" align="flex-start">
-          <Stack gap={8}>
-            <Title order={1} size="h1" c="dark">
+        <div className="flex justify-between items-start">
+          <div className="space-y-2">
+            <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
               Data
-            </Title>
-            <Text size="lg" c="dimmed">
+            </h1>
+            <p className="text-lg text-slate-600 dark:text-slate-400">
               Analytics and insights
-            </Text>
-          </Stack>
-          <Group gap={16}>
-            <Badge size="lg" variant="light" color="blue">
+            </p>
+          </div>
+          <div className="flex gap-4">
+            <Badge variant="secondary" className="text-sm">
               Last update: 30s ago
             </Badge>
-          </Group>
-        </Group>
+          </div>
+        </div>
 
         {/* Performance Overview */}
         <div>
-          <Title order={3} size="h3" mb={16}>
+          <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4">
             Performance Overview
-          </Title>
-          <Grid gutter={16}>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {performanceMetrics.map((metric, index) => (
-              <Grid.Col key={index} span={{ base: 12, md: 6, lg: 3 }}>
-                <Card shadow="sm" padding="lg" radius="md" withBorder>
-                  <Group gap={12} mb={12}>
-                    <div style={{ color: `var(--mantine-color-${metric.color}-6)` }}>
+              <Card key={index} className="p-6">
+                <CardContent className="p-0">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="text-blue-600 dark:text-blue-400">
                       {metric.icon}
                     </div>
-                    <Text size="sm" c="dimmed">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       {metric.title}
-                    </Text>
-                  </Group>
+                    </p>
+                  </div>
                   
-                  <Text size="xl" fw={700} mb={4}>
+                  <p className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                     {metric.value}
-                  </Text>
+                  </p>
                   
-                  <Badge
-                    size="sm"
-                    color={metric.color}
-                    variant="light"
-                  >
+                  <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50 dark:bg-green-900/20 dark:border-green-700 dark:text-green-400">
                     ↑ {metric.change}
                   </Badge>
-                </Card>
-              </Grid.Col>
+                </CardContent>
+              </Card>
             ))}
-          </Grid>
+          </div>
         </div>
 
         {/* Question Categories */}
         <div>
-          <Group justify="space-between" align="center" mb={16}>
-            <Title order={3} size="h3">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
               Question Categories (Last 30 Days)
-            </Title>
+            </h2>
             <DemoBadge />
-          </Group>
+          </div>
           
           <DemoContent>
-            <Card shadow="md" padding="xl" radius={12}>
-              <Grid>
-                <Grid.Col span={{ base: 12, md: 6 }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
-                    <RingProgress
-                      size={200}
-                      thickness={20}
-                      sections={questionCategories.map(cat => ({
-                        value: cat.percentage,
-                        color: cat.color
-                      }))}
-                    />
+            <Card className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="flex justify-center">
+                  <div className="relative w-48 h-48">
+                    {/* Simple circular progress representation */}
+                    <div className="w-full h-full rounded-full border-8 border-slate-200 dark:border-slate-700 flex items-center justify-center">
+                      <div className="text-center">
+                        <p className="text-2xl font-bold text-slate-900 dark:text-white">Categories</p>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">Distribution</p>
+                      </div>
+                    </div>
                   </div>
-                </Grid.Col>
+                </div>
                 
-                <Grid.Col span={{ base: 12, md: 6 }}>
-                  <Stack gap={12}>
-                    {questionCategories.map((category, index) => (
-                      <Group key={index} justify="space-between">
-                        <Group gap={8}>
-                          <div
-                            style={{
-                              width: 12,
-                              height: 12,
-                              borderRadius: '50%',
-                              backgroundColor: `var(--mantine-color-${category.color}-6)`
-                            }}
-                          />
-                          <Text size="sm">
-                            {category.category}
-                          </Text>
-                        </Group>
-                        <Group gap={16}>
-                          <Text size="sm" c="dimmed">
-                            {category.count} questions
-                          </Text>
-                          <Text size="sm" fw={600}>
-                            {category.percentage}%
-                          </Text>
-                        </Group>
-                      </Group>
-                    ))}
-                  </Stack>
-                </Grid.Col>
-              </Grid>
+                <div className="space-y-3">
+                  {questionCategories.map((category, index) => (
+                    <div key={index} className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <div
+                          className="w-3 h-3 rounded-full"
+                          style={{ backgroundColor: category.color === 'red' ? '#ef4444' : category.color === 'blue' ? '#3b82f6' : category.color === 'green' ? '#10b981' : '#8b5cf6' }}
+                        />
+                        <span className="text-sm text-slate-700 dark:text-slate-300">
+                          {category.category}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <span className="text-sm text-slate-500 dark:text-slate-400">
+                          {category.count} questions
+                        </span>
+                        <span className="text-sm font-semibold text-slate-900 dark:text-white">
+                          {category.percentage}%
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </Card>
           </DemoContent>
         </div>
 
         {/* ROI Impact Measurement */}
         <div>
-          <Group justify="space-between" align="center" mb={16}>
-            <Title order={3} size="h3">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
               ROI Impact Measurement
-            </Title>
+            </h2>
             <DemoBadge />
-          </Group>
+          </div>
           
           <DemoContent>
-            <Card shadow="md" padding="xl" radius={12}>
-              <Stack gap={24}>
+            <Card className="p-8">
+              <div className="space-y-6">
                 <div>
-                  <Title order={4} size="h4" mb={16}>
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
                     Value Delivered This Month
-                  </Title>
+                  </h3>
                   
-                  <Grid gutter={24}>
-                    <Grid.Col span={{ base: 12, md: 6 }}>
-                      <Stack gap={12}>
-                        <Text>
-                          <strong>Time Savings:</strong> {roiMetrics.timeSaved} saved (vs consultant analysis)
-                        </Text>
-                        <Text>
-                          <strong>Cost Avoidance:</strong> {roiMetrics.costAvoidance} (consultant fees not paid)
-                        </Text>
-                        <Text>
-                          <strong>Resource Optimization:</strong> {roiMetrics.resourceOptimization}
-                        </Text>
-                        <Text>
-                          <strong>Decision Speed:</strong> {roiMetrics.decisionSpeed} strategic analysis
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <p className="text-slate-700 dark:text-slate-300">
+                        <strong>Time Savings:</strong> {roiMetrics.timeSaved} saved (vs consultant analysis)
+                      </p>
+                      <p className="text-slate-700 dark:text-slate-300">
+                        <strong>Cost Avoidance:</strong> {roiMetrics.costAvoidance} (consultant fees not paid)
+                      </p>
+                      <p className="text-slate-700 dark:text-slate-300">
+                        <strong>Resource Optimization:</strong> {roiMetrics.resourceOptimization}
+                      </p>
+                      <p className="text-slate-700 dark:text-slate-300">
+                        <strong>Decision Speed:</strong> {roiMetrics.decisionSpeed} strategic analysis
+                      </p>
+                    </div>
                     
-                    <Grid.Col span={{ base: 12, md: 6 }}>
-                      <Stack gap={12}>
-                        <Text>
-                          <strong>Strategic Outcomes:</strong>
-                        </Text>
-                        <Text size="sm" pl={16}>
+                    <div className="space-y-3">
+                      <p className="text-slate-700 dark:text-slate-300">
+                        <strong>Strategic Outcomes:</strong>
+                      </p>
+                      <div className="pl-4 space-y-2">
+                        <p className="text-sm text-slate-600 dark:text-slate-400">
                           • Decision confidence: {roiMetrics.confidence} average
-                        </Text>
-                        <Text size="sm" pl={16}>
+                        </p>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">
                           • Task completion rate: {roiMetrics.taskCompletion} strategic alignment
-                        </Text>
-                        <Text size="sm" pl={16}>
+                        </p>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">
                           • Resource efficiency: {roiMetrics.efficiency} improvement
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                  </Grid>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </Stack>
+              </div>
             </Card>
           </DemoContent>
         </div>
 
         {/* Integration Health */}
         <div>
-          <Title order={3} size="h3" mb={16}>
+          <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4">
             Integration Health
-          </Title>
-          <Grid gutter={16}>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {integrationHealth.map((integration, index) => (
-              <Grid.Col key={index} span={{ base: 12, md: 4 }}>
-                <Card shadow="sm" padding="md" radius="md" withBorder>
-                  <Group justify="space-between" align="flex-start" mb={8}>
-                    <Text fw={600} size="sm">
+              <Card key={index} className="p-4">
+                <CardContent className="p-0">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
                       {integration.name}
-                    </Text>
-                    <Badge
-                      size="xs"
-                      color="green"
-                      variant="filled"
-                    >
+                    </h4>
+                    <Badge variant="default" className="text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                       🟢 {integration.status}
                     </Badge>
-                  </Group>
-                  <Text size="xs" c="dimmed" mb={4}>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">
                     {integration.reliability} reliability
-                  </Text>
-                  <Text size="xs" c="dimmed">
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     {integration.items}
-                  </Text>
-                </Card>
-              </Grid.Col>
+                  </p>
+                </CardContent>
+              </Card>
             ))}
-          </Grid>
+          </div>
         </div>
-      </Stack>
-    </Container>
+      </div>
+    </div>
   );
 };
 
