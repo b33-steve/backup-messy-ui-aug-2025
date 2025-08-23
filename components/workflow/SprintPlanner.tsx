@@ -378,7 +378,7 @@ export default function SprintPlanner({ workItems, teams, onSprintCreated, onCan
                 </Center>
               }
             />
-            <Text align="center" size="xs" c="dimmed" mt="xs">Team Utilization</Text>
+            <Text ta="center" size="xs" c="dimmed" mt="xs">Team Utilization</Text>
           </div>
         </Group>
       </Paper>
@@ -812,7 +812,7 @@ export default function SprintPlanner({ workItems, teams, onSprintCreated, onCan
                             })}
                             
                             {assignedItems.length === 0 && (
-                              <Text size="sm" c="dimmed" align="center" py="md">
+                              <Text size="sm" c="dimmed" ta="center" py="md">
                                 No items assigned
                               </Text>
                             )}

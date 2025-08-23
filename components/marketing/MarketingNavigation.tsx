@@ -113,20 +113,23 @@ export default function MarketingNavigation() {
 
           {/* CTA + Mobile Menu */}
           <Group gap={16}>
-            <Button
-              component={Link}
-              href="/trial"
-              variant="gradient"
-              gradient={{ from: 'orange', to: 'red' }}
-              size="sm"
-              radius="lg"
-              visibleFrom="sm"
-              style={{
-                background: `linear-gradient(135deg, ${theme.colors.cta} 0%, ${theme.colors.ctaHover} 100%)`
-              }}
-            >
-              Start Free Trial
-            </Button>
+            <Group gap={8} visibleFrom="sm">
+              <Button
+                component={Link}
+                href="/trial"
+                variant="gradient"
+                gradient={{ from: 'blue', to: 'indigo' }}
+                size="sm"
+                radius="lg"
+                styles={{
+                  root: {
+                    fontWeight: 600,
+                  }
+                }}
+              >
+                Start Free Trial
+              </Button>
+            </Group>
 
             {/* Mobile Menu */}
             <Menu opened={opened} onChange={setOpened} width={300} position="bottom-end" withinPortal>
@@ -165,20 +168,18 @@ export default function MarketingNavigation() {
                     </Box>
                   ))}
                   
-                  <Button
-                    component={Link}
-                    href="/trial"
-                    variant="gradient"
-                    gradient={{ from: 'orange', to: 'red' }}
-                    fullWidth
-                    mt="md"
-                    style={{
-                      background: `linear-gradient(135deg, ${theme.colors.cta} 0%, ${theme.colors.ctaHover} 100%)`
-                    }}
-                    onClick={() => setOpened(false)}
-                  >
-                    Start Free Trial
-                  </Button>
+                  <Stack gap="sm" mt="md">
+                    <Button
+                      component={Link}
+                      href="/trial"
+                      variant="gradient"
+                      gradient={{ from: 'blue', to: 'indigo' }}
+                      fullWidth
+                      onClick={() => setOpened(false)}
+                    >
+                      Start Free Trial
+                    </Button>
+                  </Stack>
                 </Stack>
               </Menu.Dropdown>
             </Menu>

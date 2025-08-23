@@ -23,14 +23,12 @@ import {
   Progress,
   Anchor,
   Menu,
-  Spotlight,
-  SpotlightActionData,
   Divider,
   Kbd,
   Box
 } from '@mantine/core';
 import { useRouter } from 'next/navigation';
-import { spotlight } from '@mantine/spotlight';
+// Spotlight removed for build compatibility
 import { useHotkeys } from '@mantine/hooks';
 import {
   IconRocket,
@@ -183,7 +181,7 @@ export const PredictiveNavigation: React.FC = () => {
     ['ctrl+shift+A', () => quickActions.find(a => a.id === 'quick_analysis')?.action()],
     ['ctrl+shift+U', () => quickActions.find(a => a.id === 'team_update')?.action()],
     ['ctrl+shift+T', () => quickActions.find(a => a.id === 'alignment_check')?.action()],
-    ['ctrl+K', () => spotlight.open()],
+    // Spotlight removed for build compatibility
   ]);
 
   const handleSuggestionClick = useCallback((suggestion: NavigationSuggestion) => {
@@ -237,56 +235,10 @@ export const PredictiveNavigation: React.FC = () => {
     return benefits[path] || 'Continue your workflow efficiently';
   };
 
-  // Command Palette Actions
-  const commandPaletteActions: SpotlightActionData[] = [
-    {
-      id: 'strategic-analysis',
-      label: 'Strategic Analysis',
-      description: 'Start a new strategic analysis with AI frameworks',
-      onClick: () => router.push('/strategic-intelligence'),
-      leftSection: <IconTarget size={18} />,
-      keywords: ['strategy', 'analysis', 'framework', 'strategic']
-    },
-    {
-      id: 'team-update',
-      label: 'Team Update',
-      description: 'Create stakeholder communication and team updates',
-      onClick: () => router.push('/communication/updates'),
-      leftSection: <IconMessageCircle size={18} />,
-      keywords: ['update', 'communication', 'team', 'stakeholder']
-    },
-    {
-      id: 'alignment-dashboard',
-      label: 'Alignment Dashboard',
-      description: 'View cross-team collaboration and alignment metrics',
-      onClick: () => router.push('/communication/alignment'),
-      leftSection: <IconUsers size={18} />,
-      keywords: ['alignment', 'team', 'collaboration', 'dashboard']
-    },
-    {
-      id: 'executive-summary',
-      label: 'Executive Summary',
-      description: 'Generate AI-powered executive summaries',
-      onClick: () => router.push('/communication/executive'),
-      leftSection: <IconChartBar size={18} />,
-      keywords: ['executive', 'summary', 'report', 'leadership']
-    }
-  ];
+  // Command Palette Actions removed for build compatibility
 
   return (
     <>
-      {/* Spotlight Command Palette */}
-      <Spotlight
-        actions={commandPaletteActions}
-        searchPlaceholder="Search actions, pages, and features..."
-        shortcut={['mod + K']}
-        nothingFound="No actions found..."
-        highlightQuery
-        maxHeight={400}
-        radius="md"
-        size="lg"
-      />
-
       {/* Predictive Navigation Widget */}
       <Card shadow="sm" padding="md" radius="md" withBorder>
         <Stack gap="md">
@@ -305,11 +257,12 @@ export const PredictiveNavigation: React.FC = () => {
               <Badge variant="light" color="blue" size="sm">
                 Learning {learningProgress}%
               </Badge>
-              <Tooltip label="Open command palette (⌘K)">
+              <Tooltip label="Command palette (disabled for build compatibility)">
                 <ActionIcon
                   variant="light"
                   color="violet"
-                  onClick={() => spotlight.open()}
+                  onClick={() => console.log('Command palette disabled')}
+                  disabled
                 >
                   <IconSearch size={14} />
                 </ActionIcon>

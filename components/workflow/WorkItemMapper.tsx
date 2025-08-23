@@ -472,7 +472,7 @@ export default function WorkItemMapper({ workItems, onMappingComplete, onCancel 
                 </Center>
               }
             />
-            <Text align="center" size="xs" c="dimmed" mt="xs">Mapping Confidence</Text>
+            <Text ta="center" size="xs" c="dimmed" mt="xs">Mapping Confidence</Text>
           </div>
         </Group>
       </Paper>
@@ -617,7 +617,7 @@ export default function WorkItemMapper({ workItems, onMappingComplete, onCancel 
                       </Card>
                     ))}
                     {workItems.length > 3 && (
-                      <Text size="sm" c="dimmed" align="center">
+                      <Text size="sm" c="dimmed" ta="center">
                         +{workItems.length - 3} more work items...
                       </Text>
                     )}

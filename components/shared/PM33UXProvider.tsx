@@ -216,8 +216,8 @@ export const PM33UXProvider: React.FC<PM33UXProviderProps> = ({
         title: '🎯 Strategic Thinker',
         description: 'Completed your first strategic analysis',
         icon: <IconBrain size={20} />,
-        category: 'milestone',
-        rarity: 'common',
+        category: 'milestone' as const,
+        rarity: 'common' as const,
         xp_value: 100
       },
       efficiency_master: {
@@ -225,8 +225,8 @@ export const PM33UXProvider: React.FC<PM33UXProviderProps> = ({
         title: '⚡ Efficiency Master',
         description: 'Saved 2+ hours through PM33 automation',
         icon: <IconBolt size={20} />,
-        category: 'efficiency',
-        rarity: 'uncommon',
+        category: 'efficiency' as const,
+        rarity: 'uncommon' as const,
         xp_value: 250
       },
       streak_champion: {
@@ -234,8 +234,8 @@ export const PM33UXProvider: React.FC<PM33UXProviderProps> = ({
         title: '🔥 Streak Champion',
         description: '7-day consecutive productivity streak',
         icon: <IconRocket size={20} />,
-        category: 'streak',
-        rarity: 'rare',
+        category: 'streak' as const,
+        rarity: 'rare' as const,
         xp_value: 500
       }
     };

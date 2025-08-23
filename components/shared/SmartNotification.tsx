@@ -33,7 +33,7 @@ import {
   IconClock,
   IconCheck,
   IconX,
-  IconInfo,
+  IconInfoCircle,
   IconAlertTriangle,
   IconStar,
   IconBolt,

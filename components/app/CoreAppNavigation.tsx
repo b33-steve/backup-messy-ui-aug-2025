@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Brain, MessageCircle, BarChart3, CheckSquare, Database, Settings } from 'lucide-react';
+import { Brain, MessageCircle, BarChart3, CheckSquare, Database, Settings, User, LogOut } from 'lucide-react';
 
 interface NavigationItem {
   label: string;
