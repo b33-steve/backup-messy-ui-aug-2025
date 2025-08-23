@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import CoreAppNavigation from "../../components/app/CoreAppNavigation";
 import { DesignSystemProvider } from "../../components/app/DesignSystemProvider";
+import { PM33ThemeProvider, PM33ThemeToggle } from "../../components/shared/PM33ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,12 +22,15 @@ export default function AppLayout({
 }>) {
   return (
     <DesignSystemProvider context="app">
-      <div className={`${inter.variable} antialiased min-h-screen bg-background`}>
-        <CoreAppNavigation />
-        <main>
-          {children}
-        </main>
-      </div>
+      <PM33ThemeProvider defaultTheme="light">
+        <div className={`${inter.variable} antialiased min-h-screen`}>
+          <PM33ThemeToggle />
+          <CoreAppNavigation />
+          <main>
+            {children}
+          </main>
+        </div>
+      </PM33ThemeProvider>
     </DesignSystemProvider>
   );
 }

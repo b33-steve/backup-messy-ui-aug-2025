@@ -1,19 +1,31 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import '@mantine/core/styles.css';
+import './globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "PM33 - PMO Transformation Platform",
-  description: "Transform individual Product Managers into fully functional PMOs through agentic AI teams. $100K MRR by EOY 2025.",
+  title: 'PM33 - PMO Transformation Platform',
+  description: 'Transform from Product Manager to Strategic PMO with 4 Agentic AI Teams',
+  keywords: 'product management, PMO, AI, strategic intelligence, workflow automation',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, padding: 0 }}>
-        {children}
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body className={inter.className}>
+        <MantineProvider>
+          <main>{children}</main>
+        </MantineProvider>
       </body>
     </html>
   );

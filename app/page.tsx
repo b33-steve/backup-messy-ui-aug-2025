@@ -1,100 +1,161 @@
-// app/frontend/app/page.tsx
-// ULTRA-MINIMAL homepage - Pure Next.js for guaranteed success
-// WHY: Removing ALL client-side features to ensure Vercel build success
-// TIMESTAMP: Force rebuild - no client components, no event handlers
+'use client';
+
+import { Container, Title, Text, Button, Card, Group, Stack, Badge, Grid, Paper } from '@mantine/core';
+import { IconRocket, IconTarget, IconBrain, IconChartBar, IconUsers, IconBolt } from '@tabler/icons-react';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    }}>
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.1)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: '20px',
-        padding: '60px 40px',
-        textAlign: 'center',
-        maxWidth: '800px',
-        border: '1px solid rgba(255, 255, 255, 0.2)'
-      }}>
-        <h1 style={{
-          fontSize: '3.5rem',
-          fontWeight: '700',
-          color: 'white',
-          marginBottom: '20px',
-          lineHeight: '1.1'
-        }}>
-          PM33
-        </h1>
-        
-        <p style={{
-          fontSize: '1.5rem',
-          color: 'rgba(255, 255, 255, 0.9)',
-          marginBottom: '40px',
-          lineHeight: '1.6'
-        }}>
-          PMO Transformation Platform
-        </p>
-        
-        <p style={{
-          fontSize: '1.1rem',
-          color: 'rgba(255, 255, 255, 0.8)',
-          marginBottom: '50px',
-          lineHeight: '1.6'
-        }}>
-          Transform individual Product Managers into fully functional PMOs through agentic AI teams
-        </p>
-        
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <a 
-            href="/trial" 
-            style={{
-              background: 'white',
-              color: '#667eea',
-              padding: '15px 30px',
-              borderRadius: '12px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '1.1rem',
-              transition: 'transform 0.2s ease'
-            }}
-          >
-            Start Free Trial
-          </a>
+    <Container size={1200} px={24} py={40}>
+      {/* Hero Section */}
+      <Card shadow="md" padding={48} radius={16} mb={40}>
+        <Stack align="center" gap={24}>
+          <Badge size="lg" variant="gradient" gradient={{ from: 'blue', to: 'purple' }}>
+            PMO Transformation Platform
+          </Badge>
           
-          <a 
-            href="/demo" 
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              color: 'white',
-              padding: '15px 30px',
-              borderRadius: '12px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '1.1rem',
-              border: '2px solid rgba(255, 255, 255, 0.3)',
-              transition: 'transform 0.2s ease'
+          <Title order={1} size="48px" fw={700} ta="center" c="dark">
+            Transform from Product Manager to Strategic PMO
+          </Title>
+          
+          <Text size="xl" ta="center" c="dimmed" maw={800}>
+            Transform individual Product Managers into fully functional PMOs through 4 agentic AI teams. 
+            Strategic Intelligence, Workflow Execution, Data Intelligence, and Communication coordination.
+          </Text>
+          
+          <Group gap={16}>
+            <Button 
+              component={Link}
+              href="/trial"
+              size="xl"
+              leftSection={<IconRocket size={20} />}
+              style={{ 
+                backgroundColor: '#1E40AF',
+                fontSize: '18px',
+                padding: '16px 32px',
+                height: 'auto'
+              }}
+            >
+              Start Free 14-Day Trial
+            </Button>
+            
+            <Button 
+              component={Link}
+              href="/demo"
+              size="xl"
+              variant="outline"
+              leftSection={<IconChartBar size={20} />}
+              style={{ 
+                fontSize: '18px',
+                padding: '16px 32px',
+                height: 'auto'
+              }}
+            >
+              Live Demo
+            </Button>
+          </Group>
+          
+          <Text size="sm" c="dimmed">
+            No credit card required • 2-minute setup • Instant strategic value
+          </Text>
+        </Stack>
+      </Card>
+
+      {/* Features Grid */}
+      <Title order={2} size="32px" fw={600} ta="center" mb={32}>
+        4 Agentic AI Teams for Complete PMO Transformation
+      </Title>
+
+      <Grid mb={40}>
+        <Grid.Col span={{ base: 12, md: 6 }}>
+          <Paper shadow="sm" p={32} radius={12} h="100%">
+            <Group mb={16}>
+              <IconBrain size={32} color="#1E40AF" />
+              <Title order={3} c="dark">Strategic Intelligence AI</Title>
+            </Group>
+            <Text c="dimmed" mb={16}>
+              Multi-framework strategic analysis (ICE/RICE/Porter's Five Forces), competitive intelligence, 
+              and strategic recommendations powered by Anthropic Claude.
+            </Text>
+            <Badge variant="light" color="blue">Anthropic Claude + Pinecone</Badge>
+          </Paper>
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 12, md: 6 }}>
+          <Paper shadow="sm" p={32} radius={12} h="100%">
+            <Group mb={16}>
+              <IconBolt size={32} color="#059669" />
+              <Title order={3} c="dark">Workflow Execution AI</Title>
+            </Group>
+            <Text c="dimmed" mb={16}>
+              Automated task creation, cross-functional coordination, PM tool integration, 
+              and timeline management with structured outputs.
+            </Text>
+            <Badge variant="light" color="green">OpenAI + Railway + PM APIs</Badge>
+          </Paper>
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 12, md: 6 }}>
+          <Paper shadow="sm" p={32} radius={12} h="100%">
+            <Group mb={16}>
+              <IconChartBar size={32} color="#7C3AED" />
+              <Title order={3} c="dark">Data Intelligence AI</Title>
+            </Group>
+            <Text c="dimmed" mb={16}>
+              Company-specific context learning, historical pattern recognition, 
+              predictive analytics and performance optimization.
+            </Text>
+            <Badge variant="light" color="violet">Together AI + Pinecone</Badge>
+          </Paper>
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 12, md: 6 }}>
+          <Paper shadow="sm" p={32} radius={12} h="100%">
+            <Group mb={16}>
+              <IconUsers size={32} color="#EA580C" />
+              <Title order={3} c="dark">Communication AI</Title>
+            </Group>
+            <Text c="dimmed" mb={16}>
+              Stakeholder communication, executive summaries, cross-team alignment, 
+              and professional presentation generation.
+            </Text>
+            <Badge variant="light" color="orange">Claude/OpenAI + Resend</Badge>
+          </Paper>
+        </Grid.Col>
+      </Grid>
+
+      {/* CTA Section */}
+      <Card shadow="md" padding={48} radius={16}>
+        <Stack align="center" gap={24}>
+          <Badge size="lg" variant="gradient" gradient={{ from: 'orange', to: 'red' }}>
+            Target: $100K MRR by EOY 2025
+          </Badge>
+          
+          <Title order={2} size="36px" fw={600} ta="center" c="dark">
+            Ready to Transform Your PM Capabilities?
+          </Title>
+          
+          <Text size="lg" ta="center" c="dimmed" maw={600}>
+            Join the PMO transformation movement. Start with our 14-day free trial and experience 
+            PMO-level strategic capabilities through agentic AI teams.
+          </Text>
+          
+          <Button 
+            component={Link}
+            href="/trial"
+            size="xl"
+            leftSection={<IconTarget size={20} />}
+            style={{ 
+              backgroundColor: '#EA580C',
+              fontSize: '18px',
+              padding: '16px 32px',
+              height: 'auto'
             }}
           >
-            Live Demo
-          </a>
-        </div>
-      </div>
-      
-      <div style={{
-        marginTop: '40px',
-        color: 'rgba(255, 255, 255, 0.7)',
-        fontSize: '0.9rem'
-      }}>
-        🚀 Target: $100K MRR by EOY 2025 • 4 Agentic AI Teams • PMO-Level Capabilities
-      </div>
-    </div>
+            Start PMO Transformation Today
+          </Button>
+        </Stack>
+      </Card>
+    </Container>
   );
 }

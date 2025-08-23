@@ -13,6 +13,8 @@ import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Brain, MessageCircle, BarChart3, CheckSquare, Database, Settings, User, LogOut } from 'lucide-react';
+import { PM33Logo } from '../shared/PM33Logo';
+import { usePM33Theme } from '../shared/PM33ThemeProvider';
 
 interface NavigationItem {
   label: string;
@@ -80,6 +82,7 @@ export const useCoreAppDemoMode = () => {
 const CoreAppNavigation: React.FC = () => {
   const [isDemoMode, setIsDemoMode] = useState(true);
   const pathname = usePathname();
+  const { theme } = usePM33Theme();
 
   // Persist demo mode preference
   useEffect(() => {
@@ -101,15 +104,19 @@ const CoreAppNavigation: React.FC = () => {
 
   return (
     <CoreAppDemoModeContext.Provider value={{ isDemoMode, toggleDemoMode }}>
-      <nav className="border-b bg-background" data-testid="core-app-navigation">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+      <nav 
+        className="sticky top-0 z-100 backdrop-blur-xl transition-all duration-300 ease-in-out"
+        data-testid="core-app-navigation"
+        style={{
+          background: 'var(--pm33-glass-bg)',
+          borderBottom: '1px solid var(--pm33-glass-border)',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-8 py-4">
+          <div className="flex justify-between items-center">
             {/* Logo Section */}
             <div className="flex items-center">
-              <Link href="/dashboard" className="flex items-center space-x-3">
-                <Brain className="w-8 h-8 text-primary" />
-                <span className="text-xl font-semibold text-foreground">PM33</span>
-              </Link>
+              <PM33Logo href="/dashboard" />
             </div>
 
             {/* Navigation Items */}
