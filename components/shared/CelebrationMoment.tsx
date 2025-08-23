@@ -83,7 +83,7 @@ export const CelebrationMoment: React.FC<CelebrationMomentProps> = ({
   // Configuration for different celebration types
   const celebrationConfigs = {
     quick_win: {
-      icon: <IconZap size={24} />,
+      icon: <IconBolt size={24} />,
       color: 'green',
       gradient: { from: 'green.6', to: 'teal.6' },
       title: '⚡ Quick Win!',
@@ -417,7 +417,7 @@ export const QuickWinsDisplay: React.FC<QuickWinsDisplayProps> = ({
                     win.impact === 'medium' ? 'yellow' : 'blue'
                   }
                 >
-                  <IconZap size={12} />
+                  <IconBolt size={12} />
                 </ThemeIcon>
               }
               title={

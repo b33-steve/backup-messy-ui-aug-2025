@@ -50,7 +50,7 @@ import {
   IconAnalyze,
   IconCommand,
   IconKeyboard,
-  IconZap,
+  IconBolt,
   IconMagic,
   IconRoute
 } from '@tabler/icons-react';
@@ -417,7 +417,7 @@ export const PredictiveNavigation: React.FC = () => {
               </Group>
               <Text size="xs" c="dimmed">•</Text>
               <Group gap={4}>
-                <IconZap size={12} />
+                <IconBolt size={12} />
                 <Text size="xs" c="dimmed">⌘⇧A</Text>
                 <Text size="xs" c="dimmed">Quick Analysis</Text>
               </Group>

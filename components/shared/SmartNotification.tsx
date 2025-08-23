@@ -36,7 +36,7 @@ import {
   IconInfo,
   IconAlertTriangle,
   IconStar,
-  IconZap,
+  IconBolt,
   IconEye,
   IconSettings,
   IconBell,
@@ -288,7 +288,7 @@ export const SmartNotification: React.FC<SmartNotificationProps> = ({
                   size="xs"
                   variant="light"
                   color={config.color}
-                  leftSection={<IconZap size={14} />}
+                  leftSection={<IconBolt size={14} />}
                   onClick={handleAction}
                 >
                   {actionLabel}
