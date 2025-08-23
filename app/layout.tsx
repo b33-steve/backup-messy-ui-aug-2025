@@ -1,21 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import MantineWrapper from "../components/shared/MantineProvider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: "PM33 - AI Product Management Tool",
-  description: "Don't replace your PM tools - make them 10x smarter. PM33 is the AI brain that supercharges your existing PM stack without migration headaches.",
+  title: "PM33 - PMO Transformation Platform",
+  description: "Transform individual Product Managers into fully functional PMOs through agentic AI teams. $100K MRR by EOY 2025.",
 };
 
 export default function RootLayout({
@@ -25,12 +12,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <MantineWrapper>
-          {children}
-        </MantineWrapper>
+      <body style={{ margin: 0, padding: 0 }}>
+        {children}
       </body>
     </html>
   );
