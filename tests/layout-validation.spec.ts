@@ -26,7 +26,7 @@ test.describe('Dashboard Layout Validation', () => {
     await page.waitForTimeout(500);
     
     // Test for three-column grid structure
-    const mainGrid = page.locator('.grid, [class*="grid"], [class*="lg:grid-cols-3"], main > div');
+    const mainGrid = page.locator('.grid.lg\\:grid-cols-3');
     await expect(mainGrid).toBeVisible();
     
     // Validate left column (Strategic Tools & Company Context)

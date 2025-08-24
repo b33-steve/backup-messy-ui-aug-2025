@@ -25,6 +25,7 @@
     "test:strategic-chat": "playwright test tests/step5-strategic-chat-component.spec.ts --project=chromium",
     "test:strategic-chat-vercel": "playwright test tests/strategic-chat-vercel.spec.ts --project=chromium",
     "test:step5": "npm run test:strategic-chat && npm run test:strategic-chat-vercel",
+    "test:dashboard-health": "playwright test tests/dashboard-health-check.spec.ts --project=chromium --reporter=list",
     "test:premium-experience": "npm run test:critical && npm run test:marketing && npm run test:accessibility && npm run test:theme-contrast-comprehensive && npm run test:layout",
     "test:all": "npm run test:marketing && npm run test:app && npm run test:ux-quality && npm run test:visual && npm run test:step5",
     "test:design-systems": "npm run test:marketing && npm run test:app",

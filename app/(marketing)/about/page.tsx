@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Container, Title, Text, Card, Stack, Badge, Button, Group, SimpleGrid, Box, Grid, ThemeIcon, Anchor, List } from '@mantine/core';
-import { IconBrain, IconRocket, IconUsers, IconTrendingUp, IconAward, IconBuildingSkyscraper, IconCode, IconChartBar, IconShield, IconTarget, IconHeart, IconCoffee, IconGrowth, IconWorld, IconMail, IconArrowRight } from '@tabler/icons-react';
+import { IconBrain, IconRocket, IconUsers, IconTrendingUp, IconAward, IconBuildingSkyscraper, IconCode, IconChartBar, IconShield, IconTarget, IconHeart, IconCoffee, IconTrendingUp2, IconWorld, IconMail, IconArrowRight } from '@tabler/icons-react';
 import Link from 'next/link';
 
 export default function AboutPage() {
@@ -55,7 +55,7 @@ export default function AboutPage() {
     {
       title: "Learning & Growth",
       description: "Continuous learning isn't just encouraged—it's essential. We invest heavily in team development and skill advancement.",
-      icon: IconGrowth,
+      icon: IconTrendingUp2,
       highlights: ["$2,000 annual learning budget", "Conference speaking opportunities", "Internal skill sharing sessions"]
     },
     {
