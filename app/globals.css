@@ -1041,7 +1041,13 @@ a:hover, a:focus {
 
   /* Progress Components */
   .progress-ring {
-    @apply relative inline-flex items-center justify-center w-32 h-32 rounded-full;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
   }
 
   .progress-bar {
