@@ -1,7 +1,7 @@
 /**
  * Component: StrategicIntelligencePage
- * Design Reference: PM33_COMPLETE_UI_SYSTEM.md - Section 4.1 (Strategic Analysis Interface)
- * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Section 3.1 (AI-Powered Chat Experience)
+ * Design Reference: docs/shared/PM33_COMPLETE_UI_SYSTEM.md - Section 4.1 (Strategic Analysis Interface)
+ * UX Pattern: docs/shared/PM33_COMPLETE_UX_SYSTEM.md - Section 3.1 (AI-Powered Chat Experience)
  * 
  * Compliance Checklist:
  * - [x] Glass morphism applied

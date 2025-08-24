@@ -40,8 +40,8 @@ These will cause IMMEDIATE rejection:
 // EVERY component must have this header comment:
 /**
  * Component: [ComponentName]
- * Design Reference: PM33_COMPLETE_UI_SYSTEM.md - Section [X.X]
- * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Section [X.X]
+ * Design Reference: docs/shared/PM33_COMPLETE_UI_SYSTEM.md - Section [X.X]
+ * UX Pattern: docs/shared/PM33_COMPLETE_UX_SYSTEM.md - Section [X.X]
  * 
  * Compliance Checklist:
  * - [ ] Glass morphism applied
@@ -60,12 +60,12 @@ These will cause IMMEDIATE rejection:
 ## ⚠️ MANDATORY SESSION INITIALIZATION
 
 **BEFORE ANY DEVELOPMENT WORK, CONFIRM:**
-"I have read PM33_COMPLETE_UI_SYSTEM.md and PM33_ Complete _UX_System.md and will follow them exactly."
+"I have read docs/shared/PM33_COMPLETE_UI_SYSTEM.md and docs/shared/PM33_COMPLETE_UX_SYSTEM.md and will follow them exactly."
 
 **Required Reading:**
-- `PM33_COMPLETE_UI_SYSTEM.md` - ALL UI standards
-- `PM33_ Complete _UX_System.md` - ALL UX patterns  
-- `CLAUDE_CODE_INSTRUCTIONS.md` - Enforcement rules
+- `docs/shared/PM33_COMPLETE_UI_SYSTEM.md` - ALL UI standards
+- `docs/shared/PM33_COMPLETE_UX_SYSTEM.md` - ALL UX patterns  
+- `docs/shared/CLAUDE_CODE_INSTRUCTIONS.md` - Enforcement rules
 
 **For this session, I will:**
 - Use ONLY glass morphism cards with gradients
@@ -93,7 +93,7 @@ npm run typecheck    # ❌ TypeScript dependencies not installed
 **Alternative Development Methods:**
 ```bash
 # HTML Demo Development (✅ Working)
-open dashboard-complete-demo.html    # Immediate interactive dashboard
+open dashboard-complete-demo.html    # Immediate interactive dashboard (exists in frontend root)
 
 # Vercel Deployment (⚠️ Rate Limited)
 npx vercel --prod                    # Limited to 100/day, currently rate limited

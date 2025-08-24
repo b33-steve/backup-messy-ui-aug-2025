@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ThemeToggle } from '../shared/ThemeToggle';
 
 export default function NavigationSimple() {
   const pathname = usePathname();
@@ -25,8 +26,10 @@ export default function NavigationSimple() {
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
       backdropFilter: 'blur(12px)',
       borderBottom: '1px solid rgba(229, 231, 235, 0.5)',
-      padding: '16px 0'
-    }}>
+      padding: '16px 0',
+      transition: 'all 0.3s ease'
+    }}
+    className="theme-transition">
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto',
@@ -68,6 +71,11 @@ export default function NavigationSimple() {
               {link.label}
             </Link>
           ))}
+          
+          {/* Theme Toggle */}
+          <div style={{ margin: '0 8px' }}>
+            <ThemeToggle size="md" showTooltip={true} />
+          </div>
           
           {/* CTA Button */}
           <Link
