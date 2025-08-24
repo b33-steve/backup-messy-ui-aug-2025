@@ -1101,7 +1101,12 @@ a:hover, a:focus {
   }
 
   .nav-link-active {
-    @apply text-blue-600 dark:text-blue-400 font-semibold;
+    color: rgb(37, 99, 235);
+    font-weight: 600;
+  }
+  
+  .dark .nav-link-active {
+    color: rgb(96, 165, 250);
   }
 
   .nav-link-active::after {
