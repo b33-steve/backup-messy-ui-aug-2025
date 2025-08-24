@@ -88,8 +88,8 @@ test.describe('Three-Column Layout Visual Validation', () => {
       };
     });
     
-    // Should be single column on mobile
-    expect(gridStyles.gridTemplateColumns).toBe('1fr');
+    // Should be single column on mobile (width matches viewport or 1fr)
+    expect(gridStyles.gridTemplateColumns).toMatch(/^(1fr|375px)$/);
     
     // Take screenshot to validate mobile layout
     await expect(page).toHaveScreenshot('single-column-mobile-layout.png', {

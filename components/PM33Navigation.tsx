@@ -15,10 +15,17 @@
 'use client';
 
 import Link from 'next/link';
+import { usePM33Theme } from '../components/shared/PM33ThemeProvider';
 
 export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
+  const { theme } = usePM33Theme();
+  
+  // Use appropriate logo based on theme
+  const logoSrc = theme === 'light' ? '/pm33-logo-light.png' : '/PM 33 New Logo Horizontal V1.2 WHITE.png';
+  
   const navItems = [
     { id: 'dashboard', label: 'Command Center', icon: '🎯' },
+    { id: 'dashboard-v1', label: 'Command Center v1', icon: '✨' },
     { id: 'strategic-intelligence', label: 'Strategic Intelligence', icon: '🧠' },
     { id: 'resource-optimizer', label: 'Resource Optimizer', icon: '⚡' },
     { id: 'analytics', label: 'Analytics', icon: '📊' },
@@ -61,7 +68,7 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
             e.currentTarget.style.filter = 'none';
           }}>
             <img 
-              src="/PM 33 New Logo Horizontal V1.2 WHITE.png" 
+              src={logoSrc} 
               alt="PM33 Strategic Intelligence Platform" 
               style={{ height: '32px' }}
             />
@@ -101,7 +108,7 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
                 } : {
                   background: 'transparent',
                   border: '1px solid transparent',
-                  color: 'rgba(255,255,255,0.7)'
+                  color: '#ffffff' // Pure white for proper contrast
                 })
               }}
               onMouseEnter={(e) => {
@@ -116,7 +123,7 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
                 if (currentPage !== item.id) {
                   e.currentTarget.style.background = 'transparent';
                   e.currentTarget.style.borderColor = 'transparent';
-                  e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
+                  e.currentTarget.style.color = '#ffffff'; // Maintain proper contrast on mouse leave
                   e.currentTarget.style.transform = 'translateY(0)';
                 }
               }}

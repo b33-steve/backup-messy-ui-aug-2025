@@ -32,13 +32,13 @@
   --pm33-warning: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
   --pm33-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
 
-  /* 8pt Grid Spacing System */
+  /* 8pt Grid Spacing System - Compact Layout */
   --pm33-spacing-unit: 8px;
-  --pm33-spacing-xs: calc(var(--pm33-spacing-unit) * 1);  /* 8px */
-  --pm33-spacing-sm: calc(var(--pm33-spacing-unit) * 2);  /* 16px */
-  --pm33-spacing-md: calc(var(--pm33-spacing-unit) * 3);  /* 24px */
-  --pm33-spacing-lg: calc(var(--pm33-spacing-unit) * 4);  /* 32px */
-  --pm33-spacing-xl: calc(var(--pm33-spacing-unit) * 6);  /* 48px */
+  --pm33-spacing-xs: calc(var(--pm33-spacing-unit) * 0.5);  /* 4px - extra tight */
+  --pm33-spacing-sm: calc(var(--pm33-spacing-unit) * 1);    /* 8px - compact */
+  --pm33-spacing-md: calc(var(--pm33-spacing-unit) * 2);    /* 16px - reduced from 24px */
+  --pm33-spacing-lg: calc(var(--pm33-spacing-unit) * 3);    /* 24px - reduced from 32px */
+  --pm33-spacing-xl: calc(var(--pm33-spacing-unit) * 4);    /* 32px - reduced from 48px */
 
   /* Glass Morphism Backgrounds */
   --pm33-glass: rgba(255, 255, 255, 0.1);
@@ -57,14 +57,15 @@
   --pm33-light-2: #fafbfc;  /* Very subtle gray */
   --pm33-light-3: #f5f6f7;  /* Light gray surface */
 
-  /* Text Colors - WCAG Compliant */
+  /* Text Colors - WCAG Compliant - Light Theme Default */
   --pm33-text-primary: #1a202c;    /* 16.75:1 contrast on white */
   --pm33-text-secondary: #4a5568;  /* 7.54:1 contrast on white */
   --pm33-text-muted: #718096;      /* 4.5:1 contrast on white */
 
-  /* Background Colors */
+  /* Background Colors - Light Theme Default */
   --pm33-bg-primary: #ffffff;      /* Light mode primary bg */
   --pm33-bg-secondary: #f7fafc;    /* Light mode secondary bg */
+  --pm33-bg-tertiary: #edf2f7;     /* Light mode tertiary bg */
 
   /* Primary Brand Colors (solid) */
   --pm33-primary: #667eea;         /* Primary brand color */
@@ -99,7 +100,22 @@ div.pm33-glass-card:hover,
     inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Dark theme glass morphism - Enhanced contrast */
+/* ===============================================
+   THEME-SPECIFIC CONTRAST OVERRIDES - WCAG COMPLIANT
+   =============================================== */
+
+/* DARK THEME - High contrast for accessibility */
+.dark,
+[data-theme="dark"],
+body.dark {
+  --pm33-text-primary: #ffffff !important;      /* Pure white - 21:1 contrast */
+  --pm33-text-secondary: #e2e8f0 !important;   /* Light gray - 14:1 contrast */
+  --pm33-text-muted: #cbd5e0 !important;       /* Muted gray - 8:1 contrast */
+  --pm33-bg-primary: #0a0e27 !important;       /* Deep blue-black */
+  --pm33-bg-secondary: #0f1429 !important;     /* Slightly lighter */
+  --pm33-bg-tertiary: #1a202c !important;      /* Card backgrounds */
+}
+
 .dark .pm33-glass-card,
 [data-theme="dark"] .pm33-glass-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
@@ -107,7 +123,7 @@ div.pm33-glass-card:hover,
   box-shadow: 
     0 8px 32px 0 rgba(0, 0, 0, 0.4),
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-  color: var(--pm33-text-primary);
+  color: var(--pm33-text-primary) !important;
 }
 
 .dark .pm33-glass-card:hover,
@@ -117,6 +133,68 @@ div.pm33-glass-card:hover,
   box-shadow: 
     0 20px 60px 0 rgba(0, 0, 0, 0.5),
     inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* GRAY THEME - Warm sophisticated contrast */
+.gray,
+[data-theme="gray"],
+body.gray {
+  --pm33-text-primary: #f9fafb !important;      /* Off-white - 18.5:1 contrast */
+  --pm33-text-secondary: #d1d5db !important;   /* Light gray - 10.8:1 contrast */
+  --pm33-text-muted: #9ca3af !important;       /* Medium gray - 5.1:1 contrast */
+  --pm33-bg-primary: #1f2937 !important;       /* Warm charcoal */
+  --pm33-bg-secondary: #374151 !important;     /* Lighter warm gray */
+  --pm33-bg-tertiary: #4b5563 !important;      /* Card backgrounds */
+}
+
+.gray .pm33-glass-card,
+[data-theme="gray"] .pm33-glass-card {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.3) 0%, rgba(55, 65, 81, 0.2) 100%);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  box-shadow: 
+    0 4px 20px rgba(31, 41, 55, 0.4),
+    inset 0 0 0 1px rgba(156, 163, 175, 0.1);
+  color: var(--pm33-text-primary) !important;
+}
+
+.gray .pm33-glass-card:hover,
+[data-theme="gray"] .pm33-glass-card:hover {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.4) 0%, rgba(55, 65, 81, 0.3) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 
+    0 8px 30px rgba(167, 139, 250, 0.15),
+    inset 0 0 0 1px rgba(156, 163, 175, 0.15);
+}
+
+/* LIGHT THEME - Enhanced contrast */
+.light,
+[data-theme="light"],
+body.light {
+  --pm33-text-primary: #1a202c !important;     /* Very dark gray - 16.75:1 contrast */
+  --pm33-text-secondary: #2d3748 !important;   /* Dark gray - 11.5:1 contrast */
+  --pm33-text-muted: #4a5568 !important;       /* Medium gray - 7.54:1 contrast */
+  --pm33-bg-primary: #ffffff !important;       /* Pure white */
+  --pm33-bg-secondary: #f7fafc !important;     /* Very light gray */
+  --pm33-bg-tertiary: #edf2f7 !important;      /* Light gray backgrounds */
+}
+
+.light .pm33-glass-card,
+[data-theme="light"] .pm33-glass-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.light .pm33-glass-card:hover,
+[data-theme="light"] .pm33-glass-card:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 
+    0 20px 60px 0 rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9) !important;
 }
 
 /* ===============================================
@@ -860,7 +938,22 @@ a:hover, a:focus {
   }
 
   .btn-secondary {
-    @apply bg-gradient-to-r from-slate-200 to-slate-300 text-slate-800 font-semibold py-3 px-6 rounded-xl hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2;
+    background: linear-gradient(to right, rgb(226, 232, 240), rgb(203, 213, 225));
+    color: rgb(30, 41, 59);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    transform: scale(1.05);
   }
 
   .btn-success {
@@ -2099,4 +2192,925 @@ p, span {
   content: "";
   display: table;
   clear: both;
+}
+
+/* ===============================================
+   PM33 COMPACT LAYOUT UTILITIES - NEW
+   =============================================== */
+
+/* Compact spacing utilities for dashboard layout */
+.pm33-compact-container {
+  padding: var(--pm33-spacing-sm) !important;  /* 8px instead of 24px */
+}
+
+.pm33-compact-section {
+  margin-bottom: var(--pm33-spacing-md) !important;  /* 16px instead of 24px */
+}
+
+.pm33-compact-card {
+  padding: var(--pm33-spacing-md) !important;  /* 16px instead of 24px */
+}
+
+.pm33-compact-card-content {
+  padding: var(--pm33-spacing-sm) !important;  /* 8px instead of 16px */
+}
+
+/* Tight vertical spacing for AI teams section */
+.pm33-ai-teams-compact {
+  gap: var(--pm33-spacing-sm) !important;  /* 8px gap between team cards */
+}
+
+.pm33-ai-teams-compact .pm33-glass-card {
+  padding: var(--pm33-spacing-sm) var(--pm33-spacing-md) !important;  /* 8px vertical, 16px horizontal */
+}
+
+/* Bottom sidebar compact styling */
+.pm33-sidebar-compact {
+  gap: var(--pm33-spacing-md) !important;  /* 16px between sidebar sections */
+}
+
+.pm33-sidebar-compact .pm33-glass-card {
+  padding: var(--pm33-spacing-md) !important;  /* 16px all around */
+}
+
+.pm33-sidebar-compact .pm33-glass-card h3,
+.pm33-sidebar-compact .pm33-glass-card h4 {
+  margin-bottom: var(--pm33-spacing-xs) !important;  /* 4px bottom margin */
+}
+
+/* Compact navigation spacing */
+.pm33-nav-compact {
+  padding: var(--pm33-spacing-sm) var(--pm33-spacing-lg) !important;  /* 8px vertical, 24px horizontal */
+}
+
+/* Global compact mode class */
+.pm33-layout-compact {
+  --pm33-spacing-unit: 6px;  /* Even tighter spacing when compact mode is active */
+}
+
+.pm33-layout-compact .pm33-glass-card {
+  padding: var(--pm33-spacing-sm) var(--pm33-spacing-md) !important;
+}
+
+.pm33-layout-compact .space-y-6 > * + * {
+  margin-top: var(--pm33-spacing-md) !important;  /* Reduce space-y-6 to 16px */
+}
+
+.pm33-layout-compact .space-y-4 > * + * {
+  margin-top: var(--pm33-spacing-sm) !important;  /* Reduce space-y-4 to 8px */
+}
+
+.pm33-layout-compact .gap-6 {
+  gap: var(--pm33-spacing-md) !important;  /* Reduce gap-6 to 16px */
+}
+
+.pm33-layout-compact .p-6 {
+  padding: var(--pm33-spacing-md) !important;  /* Reduce p-6 to 16px */
+}
+
+/* Enhanced minimum touch targets for accessibility */
+.pm33-touch-target {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ===============================================
+   BOTTOM LEFT SIDEBAR CONTRAST & SPACING FIXES
+   =============================================== */
+
+/* Strategic Tools Card - Enhanced contrast and accessibility */
+.pm33-glass-card:has(h3:contains("Strategic Tools")),
+.pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")) {
+  --pm33-glass-bg-enhanced: rgba(255, 255, 255, 0.12);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Strategic Tools buttons - WCAG AA/AAA compliance */
+.pm33-glass-card button[class*="justify-start"] {
+  min-height: 44px !important;
+  padding: 12px 16px !important;
+  margin: 4px 0 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Primary Strategic Chat button - Enhanced visibility */
+.pm33-glass-card button[class*="bg-blue-500/10"] {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.4) !important;
+  color: #1e40af !important; /* WCAG AAA 7:1 contrast on white */
+}
+
+.pm33-glass-card button[class*="bg-blue-500/10"]:hover {
+  background: rgba(59, 130, 246, 0.25) !important;
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  color: #1e3a8a !important;
+  transform: translateX(4px) !important;
+}
+
+/* Secondary strategic tools buttons - Enhanced contrast */
+.pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]) {
+  color: var(--pm33-text-primary) !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]):hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  color: var(--pm33-text-primary) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Strategic Tools text - Enhanced readability */
+.pm33-glass-card button .font-medium {
+  color: inherit !important;
+  font-weight: 600 !important;
+}
+
+.pm33-glass-card button .text-xs {
+  color: inherit !important;
+  opacity: 0.8 !important;
+}
+
+/* Company Context Card - Enhanced contrast and spacing */
+.pm33-glass-card:has(h3:contains("Company Context")),
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) {
+  --pm33-glass-bg-enhanced: rgba(255, 255, 255, 0.12);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Company Context items - Enhanced accessibility */
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center {
+  min-height: 44px !important;
+  padding: 8px 12px !important;
+  margin: 2px 0 !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid transparent !important;
+}
+
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  transform: translateX(2px) !important;
+}
+
+/* Company Context icons - Enhanced visibility */
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .w-4.h-4 {
+  color: var(--pm33-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Company Context text - WCAG compliance */
+.pm33-glass-card:has([class*="CardTitle"]) .text-sm,
+.pm33-glass-card span.text-sm {
+  color: var(--pm33-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Force all Company Context spans to have proper contrast */
+.pm33-glass-card [class*="CardContent"] span {
+  color: var(--pm33-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Nuclear option - force all spans in glass cards to have proper contrast */
+.pm33-glass-card span {
+  color: var(--pm33-text-primary) !important;
+}
+
+/* Ensure text elements in glass cards meet contrast requirements */
+.pm33-glass-card .text-sm:not([class*="text-blue"]):not([class*="text-green"]):not([class*="text-purple"]):not([class*="text-orange"]) {
+  color: var(--pm33-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Dark theme overrides for sidebar components */
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")),
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) {
+  --pm33-glass-bg-enhanced: rgba(255, 255, 255, 0.08);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .pm33-glass-card button[class*="bg-blue-500/10"] {
+  background: rgba(96, 165, 250, 0.2) !important;
+  border: 1px solid rgba(96, 165, 250, 0.4) !important;
+  color: #93c5fd !important; /* Enhanced contrast for dark theme */
+}
+
+[data-theme="dark"] .pm33-glass-card button[class*="bg-blue-500/10"]:hover {
+  background: rgba(96, 165, 250, 0.3) !important;
+  border-color: rgba(96, 165, 250, 0.6) !important;
+  color: #dbeafe !important;
+}
+
+[data-theme="dark"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]) {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]):hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+}
+
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .w-4.h-4 {
+  color: #60a5fa !important;
+}
+
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .text-sm {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pm33-glass-card [class*="CardContent"] span {
+  color: #ffffff !important;
+}
+
+/* Dark theme - force all spans in glass cards */
+[data-theme="dark"] .pm33-glass-card span:not([class*="text-blue"]):not([class*="text-green"]):not([class*="text-purple"]):not([class*="text-orange"]) {
+  color: #ffffff !important;
+}
+
+/* Gray theme overrides for sidebar components */
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")),
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) {
+  --pm33-glass-bg-enhanced: rgba(156, 163, 175, 0.15);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(156, 163, 175, 0.3) !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[class*="bg-blue-500/10"] {
+  background: rgba(167, 139, 250, 0.2) !important; /* Purple accent for gray theme */
+  border: 1px solid rgba(167, 139, 250, 0.4) !important;
+  color: #7c3aed !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[class*="bg-blue-500/10"]:hover {
+  background: rgba(167, 139, 250, 0.3) !important;
+  border-color: rgba(167, 139, 250, 0.6) !important;
+  color: #6d28d9 !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]) {
+  color: #f9fafb !important;
+  background: rgba(75, 85, 99, 0.3) !important;
+  border: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]):hover {
+  background: rgba(75, 85, 99, 0.4) !important;
+  border-color: rgba(156, 163, 175, 0.4) !important;
+  color: #f9fafb !important;
+}
+
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center:hover {
+  background: rgba(75, 85, 99, 0.3) !important;
+  border-color: rgba(167, 139, 250, 0.4) !important;
+}
+
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .w-4.h-4 {
+  color: #a78bfa !important; /* Purple accent for gray theme */
+}
+
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .text-sm {
+  color: #f9fafb !important;
+}
+
+[data-theme="gray"] .pm33-glass-card [class*="CardContent"] span {
+  color: #f9fafb !important;
+}
+
+/* Gray theme - force all spans in glass cards */
+[data-theme="gray"] .pm33-glass-card span:not([class*="text-blue"]):not([class*="text-green"]):not([class*="text-purple"]):not([class*="text-orange"]) {
+  color: #f9fafb !important;
+}
+
+/* Compact spacing overrides for sidebar sections */
+.pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")) .space-y-2 > * + * {
+  margin-top: 4px !important; /* Tighter spacing for buttons */
+}
+
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .space-y-3 > * + * {
+  margin-top: 4px !important; /* Tighter spacing for context items */
+}
+
+/* Card header spacing optimization */
+.pm33-glass-card [class*="CardHeader"] {
+  padding-bottom: 12px !important; /* Reduced from default */
+}
+
+.pm33-glass-card [class*="CardContent"] {
+  padding-top: 8px !important; /* Reduced from default */
+}
+
+/* Focus states for accessibility */
+.pm33-glass-card button:focus-visible {
+  outline: 2px solid var(--pm33-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
+}
+
+.pm33-glass-card .flex.items-center:focus-visible {
+  outline: 2px solid var(--pm33-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* ===============================================
+   AI TEAMS SECTION COMPACT SPACING OPTIMIZATION
+   =============================================== */
+
+/* Strategic Metrics Overview - Compact layout matching target design */
+.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6:has(.pm33-glass-card .text-blue-600:contains("Active")) {
+  gap: var(--pm33-spacing-md) !important; /* 16px instead of 24px */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; /* Smaller minimum width */
+}
+
+/* AI Team status cards - Compact padding */
+.pm33-glass-card:has(.text-blue-600:contains("Active")) .p-6,
+.pm33-glass-card:has(.text-green-600:contains("Ready")) .p-6,
+.pm33-glass-card:has(.text-purple-600:contains("Learning")) .p-6,
+.pm33-glass-card:has(.text-orange-600:contains("Standby")) .p-6 {
+  padding: var(--pm33-spacing-md) !important; /* 16px instead of 24px */
+}
+
+/* AI Team cards - Tighter internal spacing */
+.pm33-glass-card:has([class*="text-blue-600"]) .flex.items-center.gap-4,
+.pm33-glass-card:has([class*="text-green-600"]) .flex.items-center.gap-4,
+.pm33-glass-card:has([class*="text-purple-600"]) .flex.items-center.gap-4,
+.pm33-glass-card:has([class*="text-orange-600"]) .flex.items-center.gap-4 {
+  gap: var(--pm33-spacing-sm) !important; /* 8px instead of 16px */
+}
+
+/* AI Team icon containers - Slightly smaller for compact design */
+.pm33-glass-card:has([class*="text-blue-600"]) .w-12.h-12,
+.pm33-glass-card:has([class*="text-green-600"]) .w-12.h-12,
+.pm33-glass-card:has([class*="text-purple-600"]) .w-12.h-12,
+.pm33-glass-card:has([class*="text-orange-600"]) .w-12.h-12 {
+  width: 40px !important;  /* Slightly smaller icon containers */
+  height: 40px !important;
+}
+
+/* AI Team status text - Maintain readability with compact spacing */
+.pm33-glass-card:has([class*="text-blue-600"]) .text-sm,
+.pm33-glass-card:has([class*="text-green-600"]) .text-sm,
+.pm33-glass-card:has([class*="text-purple-600"]) .text-sm,
+.pm33-glass-card:has([class*="text-orange-600"]) .text-sm {
+  margin-bottom: 2px !important; /* Tighter text spacing */
+  font-weight: 500 !important;
+  opacity: 0.9 !important;
+}
+
+/* AI Team status values - Bold and prominent */
+.pm33-glass-card .text-2xl.font-bold {
+  line-height: 1.2 !important;
+  margin-top: 0 !important;
+}
+
+/* Responsive behavior for AI teams section */
+@media (max-width: 768px) {
+  .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6:has(.pm33-glass-card .text-blue-600) {
+    grid-template-columns: 1fr 1fr !important; /* 2 columns on mobile */
+    gap: var(--pm33-spacing-sm) !important; /* 8px gap on mobile */
+  }
+  
+  .pm33-glass-card:has([class*="text-blue-600"]) .p-6,
+  .pm33-glass-card:has([class*="text-green-600"]) .p-6,
+  .pm33-glass-card:has([class*="text-purple-600"]) .p-6,
+  .pm33-glass-card:has([class*="text-orange-600"]) .p-6 {
+    padding: var(--pm33-spacing-sm) !important; /* 8px padding on mobile */
+  }
+  
+  .pm33-glass-card:has([class*="text-blue-600"]) .w-12.h-12,
+  .pm33-glass-card:has([class*="text-green-600"]) .w-12.h-12,
+  .pm33-glass-card:has([class*="text-purple-600"]) .w-12.h-12,
+  .pm33-glass-card:has([class*="text-orange-600"]) .w-12.h-12 {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .pm33-glass-card .text-2xl.font-bold {
+    font-size: 1.5rem !important; /* Smaller text on mobile */
+  }
+}
+
+/* General spacing optimization for sections containing AI teams */
+.space-y-6:has(.grid.lg\\:grid-cols-4) > * + * {
+  margin-top: var(--pm33-spacing-lg) !important; /* 24px instead of 48px between sections */
+}
+
+/* Motion div containing AI teams - reduce padding */
+motion-div:has(.grid.lg\\:grid-cols-4) {
+  padding-bottom: var(--pm33-spacing-md) !important;
+}
+
+/* AI status banner - compact spacing */
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) {
+  margin-bottom: var(--pm33-spacing-md) !important; /* 16px instead of 24px */
+}
+
+/* BETA badge positioning optimization */
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) .flex.items-center.gap-2 {
+  gap: var(--pm33-spacing-sm) !important; /* Tighter spacing in AI status banner */
+}
+
+/* Strategic processing metrics - compact display */
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) .flex.items-center.gap-6 {
+  gap: var(--pm33-spacing-md) !important; /* 16px instead of 24px between metrics */
+}
+
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) .text-sm.text-muted-foreground {
+  font-size: 0.8125rem !important; /* Slightly smaller metrics text */
+}
+
+/* ===============================================
+   UNIVERSAL .pm33-glass CLASS - APPLY TO ALL CARDS
+   =============================================== */
+
+/* Universal glass morphism class for consistent styling across ALL cards */
+.pm33-glass {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative !important;
+}
+
+.pm33-glass:hover {
+  transform: scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2) !important;
+}
+
+/* Dark theme glass */
+.dark .pm33-glass {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .pm33-glass:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Gray theme glass */
+.gray .pm33-glass {
+  background: rgba(156, 163, 175, 0.08) !important;
+  border-color: rgba(156, 163, 175, 0.15) !important;
+}
+
+.gray .pm33-glass:hover {
+  background: rgba(156, 163, 175, 0.12) !important;
+  border-color: rgba(156, 163, 175, 0.2) !important;
+}
+
+/* ===============================================
+   HEADER FIXES - Remove theme switcher, add Start Free Trial
+   =============================================== */
+
+/* Hide theme switcher buttons in header */
+nav .flex.items-center.gap-1 button {
+  display: none !important;
+}
+
+/* Start Free Trial button styling */
+.pm33-start-trial-btn {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+}
+
+.pm33-start-trial-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4) !important;
+  background: linear-gradient(135deg, #7c3aed, #db2777) !important;
+}
+
+/* Navigation active state */
+.pm33-nav-active {
+  background: rgba(59, 130, 246, 0.1) !important;
+  border-bottom: 2px solid #3b82f6 !important;
+  color: #1d4ed8 !important;
+  font-weight: 600 !important;
+}
+
+/* Navigation items spacing and hover */
+nav .flex.items-center.gap-4 a {
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+}
+
+nav .flex.items-center.gap-4 a:hover {
+  background: rgba(59, 130, 246, 0.08) !important;
+  color: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ===============================================
+   AI TEAMS STATUS BAR GLASS MORPHISM
+   =============================================== */
+
+/* AI Teams status bar glass effect */
+.pm33-ai-status-bar {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin-bottom: 24px !important;
+}
+
+/* AI Teams active indicator styling */
+.pm33-ai-active-indicator {
+  background: linear-gradient(135deg, #10b981, #34d399) !important;
+  color: white !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+}
+
+/* ===============================================
+   MAIN CONTENT CARDS - Consistent height and glass
+   =============================================== */
+
+/* Main scenario cards consistent styling */
+.pm33-scenario-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  height: 200px !important; /* Make them squares/consistent height */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.pm33-scenario-card:hover {
+  transform: scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15) !important;
+}
+
+/* Scenario card headers with gradient text */
+.pm33-scenario-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 8px !important;
+}
+
+/* Scenario card titles */
+.pm33-scenario-title {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  color: var(--pm33-text-primary) !important;
+  margin-bottom: 8px !important;
+}
+
+/* Scenario card descriptions */
+.pm33-scenario-description {
+  color: var(--pm33-text-secondary) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Main content area grid spacing */
+.pm33-main-content-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .pm33-main-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* ===============================================
+   RIGHT SIDEBAR - Glass containers and progress bar
+   =============================================== */
+
+/* Right sidebar section containers */
+.pm33-right-sidebar-section {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+/* Right sidebar headers */
+.pm33-right-sidebar-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 16px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.pm33-right-sidebar-header svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: var(--pm33-primary) !important;
+}
+
+/* Progress bar styling */
+.pm33-progress-container {
+  margin-top: 12px !important;
+}
+
+.pm33-progress-bar {
+  width: 100% !important;
+  height: 8px !important;
+  background: rgba(148, 163, 184, 0.2) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  margin-bottom: 8px !important;
+}
+
+.pm33-progress-fill {
+  height: 100% !important;
+  background: linear-gradient(135deg, #10b981, #34d399) !important;
+  border-radius: 4px !important;
+  transition: width 0.3s ease !important;
+}
+
+.pm33-progress-text {
+  font-size: 12px !important;
+  color: var(--pm33-text-muted) !important;
+  text-align: center !important;
+}
+
+/* Metrics formatting */
+.pm33-metric-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
+}
+
+.pm33-metric-row:last-child {
+  border-bottom: none !important;
+}
+
+.pm33-metric-label {
+  font-size: 14px !important;
+  color: var(--pm33-text-secondary) !important;
+}
+
+.pm33-metric-value {
+  font-weight: 600 !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.pm33-metric-highlight {
+  color: var(--pm33-primary) !important;
+  font-weight: 700 !important;
+}
+
+.pm33-metric-warning,
+Badge.pm33-metric-warning,
+span.pm33-metric-warning,
+div.pm33-metric-warning {
+  color: rgb(245, 158, 11) !important; /* Orange/warning color - explicit RGB */
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+/* ===============================================
+   TYPOGRAPHY HIERARCHY AND SPACING
+   =============================================== */
+
+/* Main heading enhancement */
+.pm33-main-heading {
+  font-size: 3rem !important; /* 48px to exceed 40px+ requirement */
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  color: var(--pm33-text-primary) !important;
+  margin-bottom: 12px !important;
+}
+
+/* Main subheading styling */
+.pm33-main-subheading {
+  font-size: 1.125rem !important;
+  color: var(--pm33-text-muted) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 32px !important;
+}
+
+/* Section headers with gradient */
+.pm33-section-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 12px !important;
+}
+
+/* Icon consistency */
+.pm33-icon-standard {
+  width: 20px !important;
+  height: 20px !important;
+  color: var(--pm33-primary) !important;
+  opacity: 0.8 !important;
+}
+
+/* ===============================================
+   CONSISTENT BORDER RADIUS AND SPACING
+   =============================================== */
+
+/* Force consistent border radius on ALL cards */
+.pm33-glass,
+.pm33-glass-card,
+[class*="glass"],
+[class*="Card"],
+.pm33-scenario-card,
+.pm33-right-sidebar-section,
+.pm33-ai-status-bar {
+  border-radius: 12px !important;
+}
+
+/* Consistent internal spacing */
+.pm33-card-content {
+  padding: 20px !important;
+  line-height: 1.6 !important;
+}
+
+/* Section spacing */
+.pm33-section-spacing {
+  margin-bottom: 24px !important;
+}
+
+/* List item spacing */
+.pm33-list-item {
+  margin-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 0 !important;
+}
+
+/* ===============================================
+   RESPONSIVE LAYOUT ENHANCEMENTS
+   =============================================== */
+
+/* Three-column layout optimization */
+.pm33-three-column-layout {
+  display: grid !important;
+  grid-template-columns: 320px 1fr 360px !important;
+  gap: 24px !important;
+  min-height: calc(100vh - 80px) !important;
+}
+
+@media (max-width: 1440px) {
+  .pm33-three-column-layout {
+    grid-template-columns: 300px 1fr 320px !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pm33-three-column-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+/* Left sidebar optimization */
+.pm33-left-sidebar {
+  min-width: 300px !important;
+  max-width: 320px !important;
+}
+
+/* Right sidebar optimization */
+.pm33-right-sidebar {
+  min-width: 320px !important;
+  max-width: 360px !important;
+}
+
+/* Main content area */
+.pm33-main-content {
+  min-width: 0 !important; /* Prevent overflow */
+  flex: 1 !important;
+}
+
+/* ===============================================
+   ACCESSIBILITY AND MOTION ENHANCEMENTS
+   =============================================== */
+
+/* Focus states */
+.pm33-glass:focus-visible,
+.pm33-scenario-card:focus-visible {
+  outline: 2px solid var(--pm33-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pm33-glass,
+  .pm33-glass-card,
+  .pm33-scenario-card,
+  .pm33-start-trial-btn {
+    transition: none !important;
+  }
+  
+  .pm33-glass:hover,
+  .pm33-scenario-card:hover,
+  .pm33-start-trial-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .pm33-glass,
+  .pm33-right-sidebar-section,
+  .pm33-ai-status-bar {
+    border-color: currentColor !important;
+    border-width: 2px !important;
+  }
+  
+  .pm33-scenario-header,
+  .pm33-section-header {
+    background: currentColor !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+  }
+}
+
+/* ===============================================
+   NAVIGATION STYLING FIXES
+   =============================================== */
+
+/* Navigation links proper spacing and WCAG AA contrast */
+nav a, .navigation-link {
+  padding: 12px 16px !important;
+  min-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  color: #ffffff !important; /* Force pure white for WCAG AA compliance */
+}
+
+nav a:hover, .navigation-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-1px) !important;
+  color: #ffffff !important; /* Maintain contrast on hover */
 }

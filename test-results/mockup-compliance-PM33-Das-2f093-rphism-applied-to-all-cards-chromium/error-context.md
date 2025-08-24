@@ -1,0 +1,224 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - button "Light" [ref=e12]
+      - button "Dark" [ref=e13]
+      - button "Gray" [ref=e14]
+    - navigation [ref=e15]:
+      - generic [ref=e16]:
+        - link "PM33 Strategic Intelligence Platform BETA" [ref=e17] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=e18] [cursor=pointer]:
+            - img "PM33 Strategic Intelligence Platform" [ref=e19] [cursor=pointer]
+            - generic [ref=e20] [cursor=pointer]: BETA
+        - generic [ref=e21]:
+          - link "🎯 Command Center" [ref=e22] [cursor=pointer]:
+            - /url: /dashboard
+            - generic [ref=e23] [cursor=pointer]: 🎯
+            - generic [ref=e24] [cursor=pointer]: Command Center
+          - link "🧠 Strategic Intelligence" [ref=e25] [cursor=pointer]:
+            - /url: /strategic-intelligence
+            - generic [ref=e26] [cursor=pointer]: 🧠
+            - generic [ref=e27] [cursor=pointer]: Strategic Intelligence
+          - link "⚡ Resource Optimizer" [ref=e28] [cursor=pointer]:
+            - /url: /resource-optimizer
+            - generic [ref=e29] [cursor=pointer]: ⚡
+            - generic [ref=e30] [cursor=pointer]: Resource Optimizer
+          - link "📊 Analytics" [ref=e31] [cursor=pointer]:
+            - /url: /analytics
+            - generic [ref=e32] [cursor=pointer]: 📊
+            - generic [ref=e33] [cursor=pointer]: Analytics
+        - button "Steve Saper - PM33 Founder" [ref=e34] [cursor=pointer]
+    - main [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - generic [ref=e43]: AI TEAMS ACTIVE
+              - generic [ref=e44]:
+                - img [ref=e45]
+                - text: 4 Teams Processing
+            - generic [ref=e48]:
+              - generic [ref=e49]: "PMO Transformation: 847% capability increase"
+              - generic [ref=e50]: •
+              - generic [ref=e51]: "Strategic Processing: 23min avg"
+          - generic [ref=e52]:
+            - heading "PMO Command Center" [level=1] [ref=e53]
+            - paragraph [ref=e54]: Good morning! Your 4 AI teams have prepared strategic intelligence and workflow recommendations.
+        - generic [ref=e56]:
+          - generic [ref=e59]:
+            - img [ref=e61]
+            - generic [ref=e69]:
+              - paragraph [ref=e70]: Strategic Intelligence
+              - paragraph [ref=e71]: Active
+          - generic [ref=e74]:
+            - img [ref=e76]
+            - generic [ref=e78]:
+              - paragraph [ref=e79]: Workflow Execution
+              - paragraph [ref=e80]: Ready
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - generic [ref=e89]:
+              - paragraph [ref=e90]: Data Intelligence
+              - paragraph [ref=e91]: Learning
+          - generic [ref=e94]:
+            - img [ref=e96]
+            - generic [ref=e101]:
+              - paragraph [ref=e102]: Communication
+              - paragraph [ref=e103]: Standby
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - img [ref=e108]
+                - heading "Strategic Tools" [level=3] [ref=e112]
+              - generic [ref=e113]:
+                - button "Strategic Chat AI-powered strategic analysis" [ref=e115]:
+                  - img [ref=e116]
+                  - generic [ref=e118]:
+                    - generic [ref=e119]: Strategic Chat
+                    - generic [ref=e120]: AI-powered strategic analysis
+                - button "Workflow Execution Generate PM workflows" [ref=e122]:
+                  - img [ref=e123]
+                  - generic [ref=e128]:
+                    - generic [ref=e129]: Workflow Execution
+                    - generic [ref=e130]: Generate PM workflows
+                - button "Analytics Strategic metrics & insights" [ref=e132]:
+                  - img [ref=e133]
+                  - generic [ref=e135]:
+                    - generic [ref=e136]: Analytics
+                    - generic [ref=e137]: Strategic metrics & insights
+                - button "OKR Planning Objectives & key results" [ref=e139]:
+                  - img [ref=e140]
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: OKR Planning
+                    - generic [ref=e146]: Objectives & key results
+            - generic [ref=e147]:
+              - heading "Company Context" [level=3] [ref=e148]
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - img [ref=e151]
+                  - generic [ref=e154]: Company Profile
+                - generic [ref=e155]:
+                  - img [ref=e156]
+                  - generic [ref=e160]: Current Priorities
+                - generic [ref=e161]:
+                  - img [ref=e162]
+                  - generic [ref=e164]: Competitive Intel
+                - generic [ref=e165]:
+                  - img [ref=e166]
+                  - generic [ref=e171]: Team Resources
+          - generic [ref=e172]:
+            - generic [ref=e173]:
+              - generic [ref=e174]:
+                - generic [ref=e176]: AI INTELLIGENCE BRIEFING - LIVE
+                - generic [ref=e177]: Strategic AI Co-Pilot Ready
+                - paragraph [ref=e178]: Ask any strategic question. I'll suggest frameworks like ICE or RICE, then apply them with your company context to generate executable workflows.
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - heading "Competitive Strategy" [level=3] [ref=e182]
+                  - paragraph [ref=e183]: Competitor launched similar features
+                  - paragraph [ref=e184]: They have 10x funding. Strategic response?
+                - generic [ref=e185]:
+                  - heading "Resource Allocation" [level=3] [ref=e186]
+                  - paragraph [ref=e187]: Hire developer vs marketing spend
+                  - paragraph [ref=e188]: $15k budget to reach 50 beta users
+                - generic [ref=e189]:
+                  - heading "Growth Strategy" [level=3] [ref=e190]
+                  - paragraph [ref=e191]: Low beta-to-paid conversion
+                  - paragraph [ref=e192]: Great feedback, poor conversion rates
+                - generic [ref=e193]:
+                  - heading "Market Strategy" [level=3] [ref=e194]
+                  - paragraph [ref=e195]: Enterprise vs SMB focus
+                  - paragraph [ref=e196]: Bigger deals vs momentum building
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - generic [ref=e199]:
+                  - img [ref=e202]
+                  - generic [ref=e210]:
+                    - heading "Strategic AI Co-Pilot" [level=3] [ref=e211]
+                    - paragraph [ref=e212]: Framework-driven analysis • Live insights
+                - generic [ref=e213]:
+                  - generic [ref=e214]: ● ACTIVE
+                  - generic [ref=e215]: "Response: ~23s avg"
+              - generic [ref=e216]:
+                - generic [ref=e218]:
+                  - img [ref=e220]
+                  - generic [ref=e224]:
+                    - paragraph [ref=e225]: I'll analyze strategic decisions using proven PM frameworks like ICE, RICE, Porter's Five Forces, and Jobs-to-be-Done. Ask about competitive strategy, resource allocation, or market positioning.
+                    - generic [ref=e226]:
+                      - button "Competitive Analysis" [ref=e227]:
+                        - img [ref=e228]
+                        - text: Competitive Analysis
+                      - button "Resource Planning" [ref=e232]:
+                        - img [ref=e233]
+                        - text: Resource Planning
+                      - button "Growth Strategy" [ref=e235]:
+                        - img [ref=e236]
+                        - text: Growth Strategy
+                - generic [ref=e240]:
+                  - generic [ref=e241]:
+                    - generic [ref=e242]:
+                      - textbox "Ask me anything strategic... I'll suggest the best framework to use" [ref=e243]
+                      - generic [ref=e245]: ⏎
+                    - button [ref=e246]:
+                      - img [ref=e247]
+                  - generic [ref=e250]:
+                    - generic [ref=e251]:
+                      - img [ref=e252]
+                      - generic [ref=e254]: AI will auto-suggest frameworks based on your question
+                    - generic [ref=e255]:
+                      - generic [ref=e256]: Powered by
+                      - generic [ref=e257]: Claude
+          - generic [ref=e258]:
+            - generic [ref=e259]:
+              - generic [ref=e260]:
+                - img [ref=e261]
+                - heading "Competitive Landscape" [level=3] [ref=e263]
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - generic [ref=e266]: "Primary: Productboard"
+                  - generic [ref=e267]: Series C, $100M+ funding, roadmap focus
+                - generic [ref=e268]:
+                  - generic [ref=e269]: "Secondary: Aha!"
+                  - generic [ref=e270]: Profitable, strategy docs, enterprise
+                - generic [ref=e272]: "Our Advantage: Strategic AI + execution"
+            - generic [ref=e273]:
+              - generic [ref=e274]:
+                - img [ref=e275]
+                - heading "Team & Resources" [level=3] [ref=e280]
+              - generic [ref=e281]:
+                - generic [ref=e282]:
+                  - generic [ref=e283]: "Team Size:"
+                  - generic [ref=e284]: 3 people
+                - generic [ref=e285]: 1 PM, 2 Engineers
+                - generic [ref=e286]:
+                  - generic [ref=e287]: "Runway:"
+                  - generic [ref=e288]: 6 months
+                - generic [ref=e289]:
+                  - generic [ref=e290]: "Key Constraint:"
+                  - generic [ref=e291]: Limited marketing
+            - generic [ref=e292]:
+              - generic [ref=e293]:
+                - img [ref=e294]
+                - heading "Key Metrics" [level=3] [ref=e296]
+              - generic [ref=e297]:
+                - generic [ref=e298]:
+                  - generic [ref=e299]:
+                    - generic [ref=e300]: "Beta Signups:"
+                    - generic [ref=e301]: 15 total
+                  - generic [ref=e302]:
+                    - generic [ref=e303]: "Available Budget:"
+                    - generic [ref=e304]: $15,000
+                - generic [ref=e305]:
+                  - generic [ref=e306]:
+                    - generic [ref=e307]: Progress to Goal
+                    - generic [ref=e308]: 30%
+                  - generic [ref=e309]: 30% to goal (50 beta users)
+  - button "Open Next.js Dev Tools" [ref=e315] [cursor=pointer]:
+    - img [ref=e316] [cursor=pointer]
+  - alert [ref=e319]
+```
