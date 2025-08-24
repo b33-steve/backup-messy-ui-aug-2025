@@ -1,0 +1,13 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+
+[variables]
+NODE_ENV = "production"
+NEXT_PUBLIC_APP_ENV = "production"
+NEXT_PUBLIC_DEMO_MODE = "auto"
+NEXT_PUBLIC_ENABLE_ANALYTICS = "false"

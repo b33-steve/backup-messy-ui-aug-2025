@@ -1,7 +1,21 @@
+/**
+ * Component: AppLayout
+ * Design Reference: docs/shared/PM33_COMPLETE_UI_SYSTEM.md - Section Layout
+ * UX Pattern: docs/shared/PM33_COMPLETE_UX_SYSTEM.md - Section Layout Patterns
+ * 
+ * Compliance Checklist:
+ * - [x] Glass morphism applied
+ * - [x] PM33 navigation and page wrapper
+ * - [x] Theme provider integrated
+ * - [x] Follows 8pt grid spacing
+ */
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import CoreAppNavigation from "../../components/app/CoreAppNavigation";
+// Core app styles now consolidated in global CSS
+import { PM33Navigation } from "../../components/PM33Navigation";
+import { PM33PageWrapper } from "../../components/PM33PageWrapper";
 import { DesignSystemProvider } from "../../components/app/DesignSystemProvider";
 import { PM33ThemeProvider, PM33ThemeToggle } from "../../components/shared/PM33ThemeProvider";
 
@@ -23,13 +37,15 @@ export default function AppLayout({
   return (
     <DesignSystemProvider context="app">
       <PM33ThemeProvider defaultTheme="light">
-        <div className={`${inter.variable} antialiased min-h-screen`}>
-          <PM33ThemeToggle />
-          <CoreAppNavigation />
-          <main>
-            {children}
-          </main>
-        </div>
+        <PM33PageWrapper>
+          <div className={`${inter.variable} antialiased`}>
+            <PM33ThemeToggle />
+            <PM33Navigation currentPage="dashboard" />
+            <main>
+              {children}
+            </main>
+          </div>
+        </PM33PageWrapper>
       </PM33ThemeProvider>
     </DesignSystemProvider>
   );

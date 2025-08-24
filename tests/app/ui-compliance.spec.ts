@@ -8,8 +8,8 @@ import { test, expect } from '@playwright/test';
 test.describe('PM33 UI Compliance', () => {
   
   test.beforeEach(async ({ page }) => {
-    // Navigate to the strategic intelligence page (core app with shadcn/ui components)
-    await page.goto('http://localhost:3000/strategic-intelligence');
+    // Navigate to the intelligence page (core app with PM33 components)
+    await page.goto('http://localhost:3001/intelligence');
     
     // Wait for page to load completely
     await page.waitForLoadState('networkidle');
@@ -25,23 +25,37 @@ test.describe('PM33 UI Compliance', () => {
     });
     
     // Small delay to ensure page is stable
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(1000);
   });
 
-  test('should use glass morphism styling', async ({ page }) => {
+  test('should use proper glass morphism styling', async ({ page }) => {
     // Check for glass morphism CSS properties
-    const cards = page.locator('div[style*="backdrop-filter"]');
-    await expect(cards.first()).toBeVisible();
+    const glassCards = page.locator('[data-testid="pm33-card"]');
+    await expect(glassCards.first()).toBeVisible();
     
-    // Verify backdrop-filter is applied
-    const style = await cards.first().getAttribute('style');
+    // Verify proper backdrop-filter is applied (blur + saturate)
+    const style = await glassCards.first().getAttribute('style');
     expect(style).toContain('backdrop-filter');
+    expect(style).toContain('blur(40px)');
+    expect(style).toContain('saturate(150%)');
+    
+    // Verify no basic HTML divs with inline styles remain
+    const basicDivs = page.locator('div[style*="background-color"]:not([data-testid])');
+    await expect(basicDivs).toHaveCount(0);
   });
 
-  test('should have gradient backgrounds', async ({ page }) => {
-    // Check for gradient styling
-    const gradientElements = page.locator('div[style*="gradient"], button[style*="gradient"]');
-    await expect(gradientElements.first()).toBeVisible();
+  test('should have proper gradient backgrounds on all cards', async ({ page }) => {
+    // Check that all PM33 cards have gradient backgrounds
+    const pm33Cards = page.locator('[data-testid="pm33-card"]');
+    const cardCount = await pm33Cards.count();
+    
+    if (cardCount > 0) {
+      for (let i = 0; i < cardCount; i++) {
+        const card = pm33Cards.nth(i);
+        const style = await card.getAttribute('style');
+        expect(style).toMatch(/background.*gradient|background.*linear-gradient/);
+      }
+    }
   });
 
   test('should not use forbidden black borders', async ({ page }) => {
@@ -82,23 +96,15 @@ test.describe('PM33 UI Compliance', () => {
     }
   });
 
-  test('should follow 8pt grid system', async ({ page }) => {
-    // Check padding and margin values are multiples of 8
-    const elements = page.locator('div, section, main');
-    const firstElement = elements.first();
+  test('should use consistent PM33 spacing system', async ({ page }) => {
+    // Check for consistent padding classes (p-6, mb-8, gap-6)
+    const cardsWithSpacing = page.locator('[data-testid="pm33-card"] .p-6, .mb-8, .gap-6');
+    await expect(cardsWithSpacing.first()).toBeVisible();
     
-    if (await firstElement.isVisible()) {
-      const paddingTop = await firstElement.evaluate(
-        el => window.getComputedStyle(el).paddingTop
-      );
-      
-      const paddingValue = parseInt(paddingTop.replace('px', ''));
-      
-      // Should be multiple of 8 (allowing for browser defaults)
-      if (paddingValue > 0) {
-        expect(paddingValue % 8).toBe(0);
-      }
-    }
+    // Verify proper card content spacing
+    const cardContent = page.locator('[data-testid="pm33-card"] .p-6');
+    const cardCount = await cardContent.count();
+    expect(cardCount).toBeGreaterThan(0);
   });
 
   test('should have proper responsive behavior', async ({ page }) => {
@@ -133,6 +139,86 @@ test.describe('PM33 UI Compliance', () => {
     
     if (demoModeActive) {
       await expect(demoIndicators.first()).toBeVisible();
+    }
+  });
+
+  test('should use Lucide React icons throughout', async ({ page }) => {
+    // Check for Lucide React icons (svg elements with specific attributes)
+    const lucideIcons = page.locator('svg[class*="lucide"]');
+    const iconCount = await lucideIcons.count();
+    
+    // Should have multiple Lucide icons in the interface
+    expect(iconCount).toBeGreaterThan(2);
+    
+    // Icons should be properly sized
+    const firstIcon = lucideIcons.first();
+    const iconClass = await firstIcon.getAttribute('class');
+    expect(iconClass).toMatch(/h-[4-8] w-[4-8]/);
+  });
+
+  test('should have proper typography with correct font sizes and weights', async ({ page }) => {
+    // Check main heading typography
+    const mainHeading = page.locator('h1');
+    if (await mainHeading.count() > 0) {
+      const headingClass = await mainHeading.first().getAttribute('class');
+      expect(headingClass).toContain('text-4xl');
+      expect(headingClass).toContain('font-bold');
+    }
+    
+    // Check card titles
+    const cardTitles = page.locator('[data-testid="pm33-card"] h2, [data-testid="pm33-card"] h3');
+    if (await cardTitles.count() > 0) {
+      const titleClass = await cardTitles.first().getAttribute('class');
+      expect(titleClass).toMatch(/font-semibold|font-bold/);
+    }
+  });
+
+  test('should have hover effects on all interactive elements', async ({ page }) => {
+    // Test buttons have hover effects
+    const buttons = page.locator('button');
+    const buttonCount = await buttons.count();
+    
+    if (buttonCount > 0) {
+      const firstButton = buttons.first();
+      await firstButton.hover();
+      
+      // Check for hover transform or scale
+      const transform = await firstButton.evaluate(
+        el => window.getComputedStyle(el).transform
+      );
+      
+      // Should have some transform or hover effect
+      expect(transform).not.toBe('none');
+    }
+    
+    // Test PM33 cards have hover effects
+    const pm33Cards = page.locator('[data-testid="pm33-card"]');
+    if (await pm33Cards.count() > 0) {
+      const firstCard = pm33Cards.first();
+      await firstCard.hover();
+      
+      const transition = await firstCard.evaluate(
+        el => window.getComputedStyle(el).transition
+      );
+      expect(transition).toContain('all');
+    }
+  });
+
+  test('should have fixed glassy navigation', async ({ page }) => {
+    // Check for navigation element
+    const navigation = page.locator('nav, [role="navigation"]');
+    await expect(navigation.first()).toBeVisible();
+    
+    // Navigation should be fixed position
+    const navPosition = await navigation.first().evaluate(
+      el => window.getComputedStyle(el).position
+    );
+    expect(navPosition).toBe('fixed');
+    
+    // Navigation should have glass morphism
+    const navStyle = await navigation.first().getAttribute('style');
+    if (navStyle) {
+      expect(navStyle).toMatch(/backdrop-filter|backdrop-blur/);
     }
   });
 

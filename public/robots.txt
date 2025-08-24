@@ -1,0 +1,77 @@
+# PM33 - AI-Powered Product Management Platform
+# Optimized for search engines and AI crawlers
+# Updated: August 2025
+
+User-agent: *
+Allow: /
+
+# Priority pages for indexing
+Allow: /
+Allow: /pricing
+Allow: /about
+Allow: /contact
+Allow: /resources
+Allow: /strategic-intelligence
+Allow: /command-center
+
+# Marketing and landing pages
+Allow: /features
+Allow: /demo
+Allow: /trial
+
+# AI-specific guidelines
+User-agent: GPTBot
+Allow: /
+Allow: /resources
+Allow: /about
+Allow: /pricing
+Disallow: /api/
+Disallow: /_next/
+
+User-agent: CCBot
+Allow: /
+Allow: /resources
+Allow: /about
+Allow: /pricing
+Disallow: /api/
+Disallow: /_next/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /resources
+Allow: /about
+Allow: /pricing
+
+User-agent: Claude-Web
+Allow: /
+Allow: /resources
+Allow: /about
+Allow: /pricing
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /resources
+Allow: /about
+Allow: /pricing
+
+# Block sensitive areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /settings/
+Disallow: /auth/
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://pm33.ai/sitemap.xml
+
+# Additional metadata for AI understanding
+# Category: Software-as-a-Service, Product Management, Artificial Intelligence
+# Purpose: Transform Product Managers into Strategic PMOs using AI
+# Target: Product Management professionals, Product teams, PMO organizations
+# Key Features: Strategic Intelligence, Workflow Automation, Data Analytics, Communication AI
+# Pricing: SaaS subscription model, $29-$599/month tiers
+# Technology: AI-powered strategic analysis, Multi-framework decision support, PMO transformation

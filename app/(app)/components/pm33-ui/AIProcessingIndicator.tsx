@@ -104,7 +104,7 @@ export function AIProcessingIndicator({
       {/* Content */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between">
-          <p className="font-medium text-slate-900 dark:text-white">
+          <p className="font-medium text-foreground">
             {message || config.message}
           </p>
           
@@ -120,7 +120,7 @@ export function AIProcessingIndicator({
           )}
         </div>
         
-        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+        <p className="text-sm text-muted-foreground mt-1">
           {subMessage || config.description}
         </p>
         
@@ -175,7 +175,7 @@ export function MultiStageProcessing({ stages, className }: MultiStageProcessing
           >
             <div className="flex-shrink-0">
               {stage.status === 'pending' && (
-                <div className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
+                <div className="w-2 h-2 rounded-full bg-muted" />
               )}
               {stage.status === 'active' && (
                 <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
@@ -186,11 +186,11 @@ export function MultiStageProcessing({ stages, className }: MultiStageProcessing
             </div>
             
             <div className="flex-1">
-              <p className="text-sm font-medium text-slate-900 dark:text-white">
+              <p className="text-sm font-medium text-foreground">
                 {stage.name}
               </p>
               {stage.message && (
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   {stage.message}
                 </p>
               )}

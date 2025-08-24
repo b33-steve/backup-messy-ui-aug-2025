@@ -1,465 +1,545 @@
 /**
- * Component: PMCommandCenter (Dashboard) - Enhanced Version
- * Design Reference: APP_THEME_GUIDE.md - Core app design system
- * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Section 2.1 PM Command Center
+ * Component: DashboardPage - Premium Glass Morphism PMO Command Center
+ * Design Reference: PM33_COMPLETE_UI_SYSTEM.md - Glass morphism dashboard
+ * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - PMO Command Center patterns
  * 
  * Compliance Checklist:
- * - [x] Uses shadcn/ui components exclusively
- * - [x] Professional B2B SaaS design with glass morphism
- * - [x] lucide-react icons with framer-motion animations
- * - [x] Progress indicators present with real-time updates
- * - [x] Follows responsive grid system
- * - [x] Real API integration with fallback data
+ * - [✅] Glass morphism applied (premium cards with backdrop blur)
+ * - [✅] Animations implemented (hover states, AI processing)
+ * - [✅] Hover states added (all interactive elements)
+ * - [✅] AI intelligence visible (live processing indicators)
+ * - [✅] Progress indicators present (strategic metrics)
+ * - [✅] Follows 8pt grid spacing (consistent layout)
  */
 
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { useState, useEffect } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Alert, AlertDescription } from '@/components/ui/alert'
-import {
+import { 
+  Target, 
+  Rocket, 
+  BarChart3, 
   Brain,
-  Check,
-  Target,
-  Star,
-  Link2,
-  CheckCircle
+  MessageSquare,
+  Building,
+  Users,
+  TrendingUp,
+  Zap,
+  Send,
+  Activity,
+  Database,
+  Sparkles
 } from 'lucide-react'
-import Link from 'next/link'
-import CoreAppNavigation from '../../../components/app/CoreAppNavigation'
-
-// Glass Card Component with enhanced styling
-const GlassCard = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
-  <Card className={`
-    bg-gradient-to-br from-white/60 to-white/30 
-    backdrop-blur-xl border border-white/20 
-    shadow-2xl hover:shadow-3xl hover:scale-[1.02] 
-    transition-all duration-300 
-    ${className}
-  `}>
-    <CardContent className="p-6">
-      {children}
-    </CardContent>
-  </Card>
-)
-
-// Progress Section Component
-const ProgressSection = ({ metrics }: { metrics: any }) => (
-  <div className="space-y-6">
-    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-      📊 Today's Progress
-    </h2>
-    
-    <div className="flex flex-col md:flex-row gap-8">
-      {/* Progress Ring */}
-      <div className="relative w-32 h-32 mx-auto md:mx-0">
-        <div className={`
-          w-32 h-32 rounded-full flex items-center justify-center
-          bg-gradient-to-br from-blue-500 to-purple-600
-        `} style={{
-          background: `conic-gradient(#667eea 0deg ${(metrics.progressPercent / 100) * 360}deg, #e2e8f0 ${(metrics.progressPercent / 100) * 360}deg 360deg)`
-        }}>
-          <div className="w-24 h-24 bg-white rounded-full flex flex-col items-center justify-center">
-            <span className="text-2xl font-bold text-slate-900">{metrics.progressPercent}%</span>
-            <span className="text-xs text-slate-500">Complete</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Metrics Grid */}
-      <div className="flex-1">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div>
-            <p className="text-2xl font-bold text-slate-900 dark:text-white">
-              {metrics.decisionsToday}/{metrics.decisionsTotal}
-            </p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Decisions Made</p>
-          </div>
-          <div>
-            <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-              {metrics.teamAlignment}%
-            </p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Team Aligned</p>
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
-                {metrics.strategicScore}
-              </p>
-              <Badge variant="secondary" className="text-xs">
-                improved
-              </Badge>
-            </div>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Strategic Score</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
-
-// Integrations Section Component
-const IntegrationsSection = () => {
-  const [isConnectedToJira, setIsConnectedToJira] = useState(false)
-  const [jiraWorkspace, setJiraWorkspace] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const connected = localStorage.getItem('pm33_demo_jira_connected') === 'true'
-      const workspace = localStorage.getItem('pm33_demo_jira_workspace')
-      setIsConnectedToJira(connected)
-      setJiraWorkspace(workspace)
-    }
-  }, [])
-
-  const handleConnectJira = () => {
-    const setupMessage = `🔧 PM33 OAuth Setup Instructions for Jira
-
-To connect your real Jira workspace:
-1. Go to: https://developer.atlassian.com/console/myapps/
-2. Click "Create" → "OAuth 2.0 (3LO)" 
-3. Add redirect URI: http://localhost:3000/api/integrations/oauth/callback/jira
-
-📝 Currently in DEMO MODE
-Click OK to simulate a successful connection.`
-
-    if (confirm(setupMessage)) {
-      alert(`✅ Demo Connection Successful!
-
-Jira workspace "Demo Company" connected!`)
-      localStorage.setItem('pm33_demo_jira_connected', 'true')
-      localStorage.setItem('pm33_demo_jira_workspace', 'Demo Company')
-      setIsConnectedToJira(true)
-      setJiraWorkspace('Demo Company')
-    }
-  }
-
-  return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-          <Link2 className="h-5 w-5" />
-          PM Tool Integrations
-        </h2>
-        <Badge variant={isConnectedToJira ? "default" : "secondary"} className="text-sm">
-          {isConnectedToJira ? "Connected" : "Not Connected"}
-        </Badge>
-      </div>
-      
-      <div className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">J</span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-                Atlassian Jira
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400">
-                {isConnectedToJira 
-                  ? `Connected to: ${jiraWorkspace}` 
-                  : 'Connect your Jira workspace for task automation'
-                }
-              </p>
-            </div>
-          </div>
-
-          <Button
-            onClick={handleConnectJira}
-            size="sm"
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            {isConnectedToJira ? 'Configure' : 'Connect Jira'}
-          </Button>
-        </div>
-
-        {isConnectedToJira && (
-          <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-            <div className="flex items-center mb-2">
-              <Check className="text-green-600 text-sm h-4 w-4 mr-2" />
-              <h4 className="font-medium text-green-800 dark:text-green-200">Active Integration</h4>
-            </div>
-            <p className="text-sm text-green-700 dark:text-green-300">
-              Ready for task automation and strategic workflow execution
-            </p>
-          </div>
-        )}
-      </div>
-
-      <div className="text-center">
-        <div className="inline-flex items-center gap-2 text-sm text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 px-3 py-2 rounded-full">
-          <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-          Currently in Demo Mode
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// Skill Tree Section Component
-const SkillTreeSection = () => {
-  const skills = {
-    strategic: {
-      level: 7,
-      name: "Strategic Thinking",
-      progress: 73,
-      nextUnlock: "Blue Ocean Analysis",
-      recentAchievement: "Made 10 data-driven decisions"
-    },
-    execution: {
-      level: 5,
-      name: "Execution Excellence", 
-      progress: 45,
-      nextUnlock: "Automated Sprint Planning",
-      recentAchievement: "Shipped 3 features on time"
-    },
-    leadership: {
-      level: 6,
-      name: "Team Leadership",
-      progress: 60,
-      nextUnlock: "AI Team Coaching",
-      recentAchievement: "Team happiness at 95%"
-    }
-  }
-
-  return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-          🚀 PM Skill Tree
-        </h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Level up your product management expertise
-        </p>
-      </div>
-
-      <div className="space-y-4">
-        {Object.entries(skills).map(([key, skill]) => (
-          <div
-            key={key}
-            className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
-          >
-            <div className="flex items-center gap-4">
-              <Badge variant="default" className="text-sm px-3 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white">
-                Lvl {skill.level}
-              </Badge>
-              
-              <div className="flex-1 space-y-2">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-slate-900 dark:text-white">{skill.name}</h3>
-                  <span className="text-sm text-slate-500 dark:text-slate-400">{skill.progress}%</span>
-                </div>
-                <Progress 
-                  value={skill.progress} 
-                  className="h-2"
-                />
-                <div className="flex flex-col sm:flex-row gap-2 text-xs">
-                  <p className="text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                    <Star className="h-3 w-3" />
-                    Next: {skill.nextUnlock}
-                  </p>
-                  <p className="text-green-600 dark:text-green-400 flex items-center gap-1">
-                    <Check className="h-3 w-3" />
-                    {skill.recentAchievement}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function DashboardPage() {
-  const [user, setUser] = useState({ name: 'Sarah' })
-  const [metrics, setMetrics] = useState({
-    decisionsToday: 4,
-    decisionsTotal: 5,
-    teamAlignment: 92,
-    strategicScore: 'A+',
-    betaSignups: 15,
-    progressPercent: 80
-  })
-  const [intelligenceOps, setIntelligenceOps] = useState({
-    competitorUpdates: 3,
-    customerTickets: 12,
-    recommendations: 2
-  })
-  const [isLoading, setIsLoading] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const [chatInput, setChatInput] = useState('')
 
-  // Fetch real data from backend
   useEffect(() => {
-    fetchDashboardData()
+    setMounted(true)
   }, [])
 
-  const fetchDashboardData = async () => {
-    try {
-      setIsLoading(true)
-      // Connect to your actual backend
-      const response = await fetch('/api/dashboard/summary')
-      
-      if (response.ok) {
-        const result = await response.json()
-        if (result.success && result.data) {
-          const { data } = result
-          if (data.metrics) setMetrics(data.metrics)
-          if (data.intelligenceOps) setIntelligenceOps(data.intelligenceOps)
-          if (data.user) setUser(data.user)
-        }
-      }
-    } catch (error) {
-      console.error('Failed to fetch dashboard data:', error)
-      // Keep default demo data if API fails
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleStrategicReview = () => {
-    // Track action completion
-    fetch('/api/dashboard/summary', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        action: 'complete_action', 
-        data: { action: 'strategic_review_clicked' } 
-      })
-    }).catch(console.error)
-  }
+  if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <CoreAppNavigation />
-      
-      <div className="container mx-auto px-6 py-12 pt-24 max-w-7xl">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8"
-        >
-          {/* Contextual Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
-              Good morning, {user.name}! Here's your strategic focus for today.
-            </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
-              Strategic Intelligence Operations - {new Date().toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-            </p>
-          </div>
-
-          {/* AI Summary Card */}
-          <GlassCard>
-            <Alert className="border-green-200 bg-green-50 dark:bg-green-900/20 dark:border-green-800">
-              <CheckCircle className="h-4 w-4" />
-              <AlertDescription className="text-green-800 dark:text-green-200">
-                <strong>Intelligence Operations Summary</strong><br />
-                While you were away, PM33 analyzed <strong>{intelligenceOps.competitorUpdates} competitor updates</strong>, 
-                reviewed <strong>{intelligenceOps.customerTickets} customer tickets</strong>, 
-                and prepared <strong>{intelligenceOps.recommendations} strategic recommendations</strong>.
-              </AlertDescription>
-            </Alert>
-          </GlassCard>
-
-          {/* Priority Action Card */}
-          <GlassCard>
-            <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <div className="space-y-2">
-                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-                    🎯 Priority Action
-                  </h2>
-                  <p className="text-slate-600 dark:text-slate-400">
-                    Your highest-impact next step
-                  </p>
+    <div className="min-h-screen p-6 space-y-6">
+      {/* PMO Command Center Header */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="space-y-4"
+      >
+        {/* AI Status Banner */}
+        <Card className="pm33-glass-card border-0 bg-transparent" style={{
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+          backdropFilter: 'blur(40px) saturate(150%)',
+          WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+          border: '1px solid rgba(255, 255, 255, 0.18)',
+          boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+          borderRadius: '16px'
+        }}>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-sm font-semibold text-green-600">AI TEAMS ACTIVE</span>
                 </div>
-                <Badge variant="destructive" className="text-sm">
-                  High Priority
+                <Badge variant="outline" className="bg-blue-500/10 border-blue-500/30 text-blue-600">
+                  <Sparkles className="w-3 h-3 mr-1" />
+                  4 Teams Processing
                 </Badge>
               </div>
-
-              <div>
-                <Link href="/strategic-intelligence">
-                  <Button 
-                    size="lg"
-                    className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                    onClick={handleStrategicReview}
-                  >
-                    <Brain className="mr-2 h-5 w-5" />
-                    Review Strategic Recommendations (3 min)
-                  </Button>
-                </Link>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
-                  Then: Team standup prep (2 min)
-                </p>
+              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                <span>PMO Transformation: 847% capability increase</span>
+                <span>•</span>
+                <span>Strategic Processing: 23min avg</span>
               </div>
             </div>
-          </GlassCard>
+          </CardContent>
+        </Card>
 
-          {/* Progress Ring Card */}
-          <GlassCard>
-            <ProgressSection metrics={metrics} />
-          </GlassCard>
+        {/* Main Header */}
+        <div>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+            PMO Command Center
+          </h1>
+          <p className="text-lg text-muted-foreground mt-2">
+            Good morning! Your 4 AI teams have prepared strategic intelligence and workflow recommendations.
+          </p>
+        </div>
+      </motion.div>
 
-          {/* Integrations Card */}
-          <GlassCard>
-            <IntegrationsSection />
-          </GlassCard>
-
-          {/* Skill Tree Card */}
-          <GlassCard>
-            <SkillTreeSection />
-          </GlassCard>
-
-          {/* Quick Actions */}
-          <div className="flex flex-col sm:flex-row gap-6">
-            <Link href="/chat/strategic" className="flex-1">
-              <Button 
-                size="lg"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-              >
-                <Brain className="mr-2 h-5 w-5" />
-                Strategic Chat
-              </Button>
-            </Link>
-            <Link href="/tasks" className="flex-1">
-              <Button 
-                variant="secondary" 
-                size="lg"
-                className="w-full"
-              >
-                <Target className="mr-2 h-5 w-5" />
-                Task Management
-              </Button>
-            </Link>
-          </div>
-
-          {/* Loading State */}
-          {isLoading && (
-            <GlassCard>
-              <div className="flex items-center gap-3">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+      {/* Strategic Metrics Overview */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <Card className="pm33-glass-card border-0 bg-transparent" style={{
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+            backdropFilter: 'blur(40px) saturate(150%)',
+            WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            borderRadius: '16px'
+          }}>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                  <Brain className="w-6 h-6 text-white" />
+                </div>
                 <div>
-                  <p className="font-medium text-slate-900 dark:text-white">Loading dashboard data...</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">Updating metrics and intelligence operations</p>
+                  <p className="text-sm text-muted-foreground">Strategic Intelligence</p>
+                  <p className="text-2xl font-bold text-blue-600">Active</p>
                 </div>
               </div>
-            </GlassCard>
-          )}
-        </motion.div>
-      </div>
+            </CardContent>
+          </Card>
+
+          <Card className="pm33-glass-card border-0 bg-transparent" style={{
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+            backdropFilter: 'blur(40px) saturate(150%)',
+            WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            borderRadius: '16px'
+          }}>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                  <Activity className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Workflow Execution</p>
+                  <p className="text-2xl font-bold text-green-600">Ready</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="pm33-glass-card border-0 bg-transparent" style={{
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+            backdropFilter: 'blur(40px) saturate(150%)',
+            WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            borderRadius: '16px'
+          }}>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                  <Database className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Data Intelligence</p>
+                  <p className="text-2xl font-bold text-purple-600">Learning</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="pm33-glass-card border-0 bg-transparent" style={{
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+            backdropFilter: 'blur(40px) saturate(150%)',
+            WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            borderRadius: '16px'
+          }}>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Communication</p>
+                  <p className="text-2xl font-bold text-orange-600">Standby</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </motion.div>
+
+      {/* Main Dashboard Grid */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+      >
+        {/* Strategic Navigation */}
+        <div className="space-y-6">
+          <Card className="pm33-glass-card border-0 bg-transparent">
+            <CardHeader>
+              <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                <Target className="w-4 h-4" />
+                Strategic Tools
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <motion.div whileHover={{ scale: 1.02, x: 4 }}>
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start h-auto p-4 bg-blue-500/10 border border-blue-500/30 hover:bg-blue-500/20"
+                >
+                  <MessageSquare className="w-5 h-5 mr-3 text-blue-600" />
+                  <div className="text-left">
+                    <div className="font-medium text-blue-700">Strategic Chat</div>
+                    <div className="text-xs text-muted-foreground">AI-powered strategic analysis</div>
+                  </div>
+                </Button>
+              </motion.div>
+              
+              <motion.div whileHover={{ scale: 1.02, x: 4 }}>
+                <Button variant="ghost" className="w-full justify-start h-auto p-4">
+                  <Rocket className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <div className="font-medium">Workflow Execution</div>
+                    <div className="text-xs text-muted-foreground">Generate PM workflows</div>
+                  </div>
+                </Button>
+              </motion.div>
+              
+              <motion.div whileHover={{ scale: 1.02, x: 4 }}>
+                <Button variant="ghost" className="w-full justify-start h-auto p-4">
+                  <BarChart3 className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <div className="font-medium">Analytics</div>
+                    <div className="text-xs text-muted-foreground">Strategic metrics & insights</div>
+                  </div>
+                </Button>
+              </motion.div>
+              
+              <motion.div whileHover={{ scale: 1.02, x: 4 }}>
+                <Button variant="ghost" className="w-full justify-start h-auto p-4">
+                  <Target className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <div className="font-medium">OKR Planning</div>
+                    <div className="text-xs text-muted-foreground">Objectives & key results</div>
+                  </div>
+                </Button>
+              </motion.div>
+            </CardContent>
+          </Card>
+
+          <Card className="pm33-glass-card border-0 bg-transparent">
+            <CardHeader>
+              <CardTitle className="text-sm font-semibold">Company Context</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                <Building className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm">Company Profile</span>
+              </div>
+              <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                <Target className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm">Current Priorities</span>
+              </div>
+              <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                <Zap className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm">Competitive Intel</span>
+              </div>
+              <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                <Users className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm">Team Resources</span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Strategic Intelligence Hub */}
+        <div className="lg:col-span-2 space-y-6">
+          <Card className="pm33-glass-card border-0 bg-transparent">
+            <CardHeader>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                <Badge variant="outline" className="bg-green-500/10 border-green-500/30 text-green-600">
+                  AI INTELLIGENCE BRIEFING - LIVE
+                </Badge>
+              </div>
+              <CardTitle className="text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Strategic AI Co-Pilot Ready
+              </CardTitle>
+              <p className="text-muted-foreground mt-2">
+                Ask any strategic question. I'll suggest frameworks like ICE or RICE, then apply them with your company context to generate executable workflows.
+              </p>
+            </CardHeader>
+
+            <CardContent className="space-y-6">
+              {/* Strategic Scenario Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <motion.div whileHover={{ scale: 1.02, y: -2 }}>
+                  <Card className="pm33-glass-card border-0 cursor-pointer hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-4">
+                      <Badge variant="outline" className="bg-blue-500/10 border-blue-500/30 text-blue-600 mb-2">
+                        Competitive Strategy
+                      </Badge>
+                      <h4 className="font-semibold mb-2">Competitor launched similar features</h4>
+                      <p className="text-sm text-muted-foreground">
+                        They have 10x funding. Strategic response?
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+                
+                <motion.div whileHover={{ scale: 1.02, y: -2 }}>
+                  <Card className="pm33-glass-card border-0 cursor-pointer hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-4">
+                      <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-600 mb-2">
+                        Resource Allocation
+                      </Badge>
+                      <h4 className="font-semibold mb-2">Hire developer vs marketing spend</h4>
+                      <p className="text-sm text-muted-foreground">
+                        $15k budget to reach 50 beta users
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+                
+                <motion.div whileHover={{ scale: 1.02, y: -2 }}>
+                  <Card className="pm33-glass-card border-0 cursor-pointer hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-4">
+                      <Badge variant="outline" className="bg-amber-500/10 border-amber-500/30 text-amber-600 mb-2">
+                        Growth Strategy
+                      </Badge>
+                      <h4 className="font-semibold mb-2">Low beta-to-paid conversion</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Great feedback, poor conversion rates
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+                
+                <motion.div whileHover={{ scale: 1.02, y: -2 }}>
+                  <Card className="pm33-glass-card border-0 cursor-pointer hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-4">
+                      <Badge variant="outline" className="bg-purple-500/10 border-purple-500/30 text-purple-600 mb-2">
+                        Market Strategy
+                      </Badge>
+                      <h4 className="font-semibold mb-2">Enterprise vs SMB focus</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Bigger deals vs momentum building
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Strategic Chat Interface */}
+          <Card className="pm33-glass-card border-0 bg-transparent">
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Brain className="w-5 h-5 text-blue-600" />
+                Strategic Intelligence Chat
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="border rounded-xl overflow-hidden bg-muted/30">
+                <div className="h-72 p-4 overflow-y-auto space-y-4">
+                  {/* AI Message */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex gap-3"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                      <Brain className="w-4 h-4 text-white" />
+                    </div>
+                    <Card className="max-w-[80%] pm33-glass-card border-0">
+                      <CardContent className="p-3">
+                        <p className="text-sm">
+                          Good morning! I'll help analyze strategic decisions using proven PM frameworks. Ask me anything about competitive strategy, resource allocation, or market positioning.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                  
+                  {/* User Message */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex gap-3 flex-row-reverse"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                      <Users className="w-4 h-4 text-white" />
+                    </div>
+                    <Card className="max-w-[80%] bg-blue-500/10 border-blue-500/30">
+                      <CardContent className="p-3">
+                        <p className="text-sm">
+                          Our main competitor just raised $10M Series A. What's our strategic response?
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                  
+                  {/* AI Response */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex gap-3"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                      <Brain className="w-4 h-4 text-white" />
+                    </div>
+                    <Card className="max-w-[80%] pm33-glass-card border-0">
+                      <CardContent className="p-3">
+                        <p className="text-sm mb-2">
+                          I recommend using the <strong>Competitive Response Framework</strong> for this analysis. Based on PM33's beta stage and $15k budget, here's my strategic analysis:
+                        </p>
+                        <div className="flex gap-2">
+                          <Button size="sm" variant="outline">Apply ICE Framework</Button>
+                          <Button size="sm" variant="ghost">No</Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </div>
+                
+                <div className="p-4 border-t flex gap-3 bg-muted/20">
+                  <input
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    placeholder="Ask any strategic question... (I'll suggest which framework to use)"
+                    className="flex-1 p-3 rounded-lg text-sm outline-none bg-background border"
+                  />
+                  <Button size="sm">
+                    <Send className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Strategic Context & Metrics */}
+        <div className="space-y-6">
+          <Card className="pm33-glass-card border-0 bg-transparent">
+            <CardHeader>
+              <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                <Zap className="w-4 h-4" />
+                Competitive Landscape
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <div className="text-sm font-semibold mb-1">Primary: Productboard</div>
+                <div className="text-xs text-muted-foreground">
+                  Series C, $100M+ funding, roadmap focus
+                </div>
+              </div>
+              
+              <div>
+                <div className="text-sm font-semibold mb-1">Secondary: Aha!</div>
+                <div className="text-xs text-muted-foreground">
+                  Profitable, strategy docs, enterprise
+                </div>
+              </div>
+              
+              <Card className="bg-blue-500/10 border-blue-500/30">
+                <CardContent className="p-3">
+                  <div className="text-blue-600 text-sm font-semibold">
+                    Our Advantage: Strategic AI + execution
+                  </div>
+                </CardContent>
+              </Card>
+            </CardContent>
+          </Card>
+
+          <Card className="pm33-glass-card border-0 bg-transparent">
+            <CardHeader>
+              <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                <Users className="w-4 h-4" />
+                Team & Resources
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Team Size:</span>
+                <span className="font-semibold">3 people</span>
+              </div>
+              <div className="text-xs text-muted-foreground">1 PM, 2 Engineers</div>
+              
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Runway:</span>
+                <span className="font-semibold">6 months</span>
+              </div>
+              
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Key Constraint:</span>
+                <Badge variant="outline" className="bg-amber-500/10 border-amber-500/30 text-amber-600">
+                  Limited marketing
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="pm33-glass-card border-0 bg-transparent">
+            <CardHeader>
+              <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                <BarChart3 className="w-4 h-4" />
+                Key Metrics
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Beta Signups:</span>
+                  <span className="font-semibold">15 total</span>
+                </div>
+                
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Available Budget:</span>
+                  <span className="font-semibold">$15,000</span>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Progress to Goal</span>
+                  <span className="font-semibold">30%</span>
+                </div>
+                <Progress value={30} className="h-2" />
+                <div className="text-xs text-muted-foreground">
+                  30% to goal (50 beta users)
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </motion.div>
     </div>
   )
 }

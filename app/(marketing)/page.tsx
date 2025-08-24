@@ -427,20 +427,26 @@ export default function MarketingHomePage() {
               <Card 
                 shadow="xl" 
                 radius="xl" 
-                p={40}
-                bg="orange.0"
+                p={48}
                 style={{ 
-                  border: '2px solid var(--mantine-color-orange-2)',
+                  background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                  border: '1px solid var(--mantine-color-indigo-2)',
                   maxWidth: 800
                 }}
               >
                 <Stack align="center" gap={24}>
-                  <Text size="xl" style={{ fontSize: '64px' }}>⏰</Text>
-                  <Title order={3} size="h3" ta="center" lh={1.3}>
-                    Meanwhile, your competitors are shipping <Text span c="indigo.6">40% faster</Text> because their PMs focus on strategy, not busywork.
+                  <ThemeIcon size={80} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
+                    <IconTrendingUp size={40} />
+                  </ThemeIcon>
+                  <Title order={3} size="h3" ta="center" lh={1.3} c="dark.8">
+                    Meanwhile, your competitors are shipping{' '}
+                    <Text span variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
+                      40% faster
+                    </Text>
+                    {' '}because their PMs focus on strategy, not busywork.
                   </Title>
-                  <Text size="lg" c="dimmed" ta="center">
-                    While you're writing docs, they're analyzing market opportunities.
+                  <Text size="lg" c="dimmed" ta="center" lh={1.6}>
+                    While you're writing docs, they're analyzing market opportunities and making strategic decisions.
                   </Text>
                 </Stack>
               </Card>
@@ -449,57 +455,107 @@ export default function MarketingHomePage() {
         </Box>
 
         {/* CTA Section */}
-        <section className="relative px-6 py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-700 to-cyan-600"></div>
-          
-          <div className="max-w-4xl mx-auto text-center relative">
-            <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-md text-white text-sm font-semibold rounded-full mb-8">
-              ✨ Transform Your PM Work Today
-            </div>
-            
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-              Ready to <span className="bg-gradient-to-r from-cyan-300 to-emerald-300 bg-clip-text text-transparent">10x Your PM Productivity</span>?
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-indigo-100 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Join <span className="font-bold text-cyan-300">2,500+ product teams</span> using PM33 to focus on strategy, not busywork.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-              <Link 
-                href="/trial"
-                className="group bg-white text-indigo-600 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-indigo-50 transition-all duration-300 shadow-2xl hover:shadow-white/25 transform hover:scale-105 flex items-center justify-center"
+        <Box 
+          py={96} 
+          style={{ 
+            position: 'relative',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            overflow: 'hidden'
+          }}
+        >
+          <Container size="xl">
+            <Stack align="center" gap={48}>
+              <Badge 
+                size="lg" 
+                color="white" 
+                variant="light"
+                leftSection={<IconSparkles size={16} />}
               >
-                Start Your Free 14-Day Trial
-                <IconArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link 
-                href="/strategic-intelligence"
-                className="group border-2 border-white/30 backdrop-blur-md text-white px-10 py-5 rounded-2xl text-xl font-bold hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center"
-              >
-                <IconBulb className="mr-3 h-6 w-6" />
-                Try Strategic Intelligence
-              </Link>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              {[
-                { icon: IconCheck, text: "No credit card required" },
-                { icon: IconBolt, text: "5-minute setup" },
-                { icon: IconUsers, text: "Cancel anytime" }
-              ].map((item, index) => (
-                <div key={index} className="flex items-center justify-center text-indigo-100">
-                  <item.icon className="w-5 h-5 mr-3 text-emerald-300" />
-                  <span className="font-medium">{item.text}</span>
-                </div>
-              ))}
-            </div>
-            
-            <p className="text-indigo-200 text-lg">
-              Stop doing busywork. <span className="font-bold text-white">Start doing strategy.</span>
-            </p>
-          </div>
-        </section>
+                Transform Your PM Work Today
+              </Badge>
+              
+              <Stack align="center" gap={24}>
+                <Title 
+                  order={2} 
+                  size="h1"
+                  ta="center"
+                  c="white"
+                  maw={800}
+                  lh={1.1}
+                >
+                  Ready to{' '}
+                  <Text 
+                    span 
+                    variant="gradient" 
+                    gradient={{ from: 'cyan.3', to: 'teal.3' }}
+                  >
+                    10x Your PM Productivity
+                  </Text>
+                  ?
+                </Title>
+                
+                <Text size="xl" c="rgba(255, 255, 255, 0.9)" ta="center" maw={600} lh={1.6}>
+                  Join <Text span fw={700} c="cyan.3">2,500+ product teams</Text> using PM33 to focus on strategy, not busywork.
+                </Text>
+              </Stack>
+              
+              <Group gap={24} justify="center">
+                <Button 
+                  component={Link}
+                  href="/trial"
+                  size="xl"
+                  variant="white"
+                  color="dark"
+                  rightSection={<IconArrowRight size={20} />}
+                  style={{ 
+                    borderRadius: 16,
+                    fontWeight: 700,
+                    boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3)'
+                  }}
+                >
+                  Start Your Free 14-Day Trial
+                </Button>
+                <Button 
+                  component={Link}
+                  href="/strategic-intelligence"
+                  size="xl"
+                  variant="outline"
+                  style={{ 
+                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                    color: 'white',
+                    borderRadius: 16,
+                    backdropFilter: 'blur(10px)'
+                  }}
+                  leftSection={<IconBulb size={20} />}
+                >
+                  Try Strategic Intelligence
+                </Button>
+              </Group>
+              
+              <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32}>
+                {[
+                  { icon: IconCheck, text: "No credit card required" },
+                  { icon: IconBolt, text: "5-minute setup" },
+                  { icon: IconUsers, text: "Cancel anytime" }
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Group key={index} justify="center" gap={8}>
+                      <IconComponent size={20} color="rgba(167, 243, 208, 1)" />
+                      <Text c="rgba(255, 255, 255, 0.9)" fw={500}>
+                        {item.text}
+                      </Text>
+                    </Group>
+                  );
+                })}
+              </SimpleGrid>
+              
+              <Text size="lg" c="rgba(255, 255, 255, 0.8)" ta="center">
+                Stop doing busywork. <Text span fw={700} c="white">Start doing strategy.</Text>
+              </Text>
+            </Stack>
+          </Container>
+        </Box>
 
       </Box>
     </div>

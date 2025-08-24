@@ -27,9 +27,9 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
   return (
     <nav style={{
       background: 'rgba(255, 255, 255, 0.03)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      backdropFilter: 'blur(40px) saturate(150%)',
+      WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.18)',
       padding: '1rem 2rem',
       position: 'sticky',
       top: 0,
@@ -127,7 +127,7 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
           ))}
         </div>
 
-        {/* CTA Button */}
+        {/* User Info Button */}
         <button style={{
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           border: 'none',
@@ -153,7 +153,7 @@ export const PM33Navigation = ({ currentPage }: { currentPage: string }) => {
           e.currentTarget.style.boxShadow = '0 4px 15px 0 rgba(102,126,234,0.4)';
           e.currentTarget.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         }}>
-          Upgrade to Pro
+          Steve Saper - PM33 Founder
         </button>
       </div>
     </nav>

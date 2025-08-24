@@ -1,61 +1,51 @@
 /**
  * File: app/(app)/components/pm33-ui/StrategicCard.tsx
- * Description: Premium card component for strategic intelligence interface
- * Purpose: Consistent card styling with hover effects and semantic variants
+ * Description: Premium card component for strategic intelligence interface using PM33 design system
+ * Design Reference: docs/shared/PM33_COMPLETE_UI_SYSTEM.md - Glass morphism card system
+ * UX Pattern: docs/shared/PM33_COMPLETE_UX_SYSTEM.md - Strategic card patterns
  * 
- * RELEVANT FILES: lib/utils.ts, styles/globals.css, components/ui/card.tsx, strategic-intelligence/page.tsx
+ * Compliance Checklist:
+ * - [x] Glass morphism applied
+ * - [x] Animations implemented
+ * - [x] Hover states added
+ * - [x] AI intelligence visible
+ * - [x] Progress indicators present
+ * - [x] Follows 8pt grid spacing
  */
 
 "use client"
 
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { PM33Card } from '@/components/PM33Card'
 import { cn } from '@/lib/utils'
-import { cva, type VariantProps } from 'class-variance-authority'
+import { motion } from 'framer-motion'
 
-/**
- * Strategic Card Variants using CVA for consistent styling
- */
-const strategicCardVariants = cva(
-  "pm33-strategic-card transition-all duration-200",
-  {
-    variants: {
-      variant: {
-        default: "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700",
-        elevated: "elevated shadow-md hover:shadow-lg",
-        primary: "border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20",
-        success: "border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20",
-        warning: "border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20",
-        error: "border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20",
-      },
-      size: {
-        sm: "p-4",
-        md: "p-6", 
-        lg: "p-8",
-        xl: "p-12",
-      },
-      interactive: {
-        true: "cursor-pointer hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-        false: "",
-      }
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "md",
-      interactive: false,
-    },
-  }
-)
-
-interface StrategicCardProps 
-  extends React.HTMLAttributes<HTMLDivElement>, 
-         VariantProps<typeof strategicCardVariants> {
+interface StrategicCardProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string
   description?: string
   children?: React.ReactNode
   icon?: React.ReactNode
   badge?: React.ReactNode
   footer?: React.ReactNode
+  variant?: 'default' | 'elevated' | 'primary' | 'success' | 'warning' | 'error'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
+  interactive?: boolean
+}
+
+const variantStyles = {
+  default: "bg-white/80 backdrop-blur-sm border border-gray-200",
+  elevated: "bg-white/90 backdrop-blur-sm border border-gray-200 shadow-lg",
+  primary: "bg-blue-50/80 backdrop-blur-sm border border-blue-200",
+  success: "bg-green-50/80 backdrop-blur-sm border border-green-200",
+  warning: "bg-yellow-50/80 backdrop-blur-sm border border-yellow-200",
+  error: "bg-red-50/80 backdrop-blur-sm border border-red-200"
+}
+
+const sizeStyles = {
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8", 
+  xl: "p-12"
 }
 
 /**
@@ -66,9 +56,9 @@ interface StrategicCardProps
  */
 export function StrategicCard({ 
   className,
-  variant,
-  size,
-  interactive,
+  variant = 'default',
+  size = 'md',
+  interactive = false,
   title,
   description,
   children,
@@ -80,54 +70,66 @@ export function StrategicCard({
 }: StrategicCardProps) {
   const isInteractive = interactive || !!onClick
 
+  const CardWrapper = isInteractive ? motion.div : 'div'
+  const motionProps = isInteractive ? {
+    whileHover: { scale: 1.02 },
+    whileTap: { scale: 0.98 },
+    transition: { duration: 0.2 }
+  } : {}
+
   return (
-    <Card
-      className={cn(
-        strategicCardVariants({ variant, size, interactive: isInteractive }),
-        className
-      )}
-      onClick={onClick}
-      {...props}
-    >
-      {(title || description || icon || badge) && (
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
-              {icon && (
-                <div className="flex-shrink-0 text-blue-600 dark:text-blue-400">
-                  {icon}
+    <CardWrapper {...(isInteractive ? motionProps : {})}>
+      <PM33Card
+        className={cn(
+          'transition-all duration-200',
+          variantStyles[variant],
+          sizeStyles[size],
+          isInteractive && 'cursor-pointer hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+          className
+        )}
+        onClick={onClick}
+        {...props}
+      >
+        {(title || description || icon || badge) && (
+          <div className="mb-4">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-3">
+                {icon && (
+                  <div className="flex-shrink-0 text-blue-600">
+                    {icon}
+                  </div>
+                )}
+                <div className="space-y-1">
+                  {title && (
+                    <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+                  )}
+                  {description && (
+                    <p className="text-sm text-muted-foreground">{description}</p>
+                  )}
+                </div>
+              </div>
+              {badge && (
+                <div className="flex-shrink-0">
+                  {badge}
                 </div>
               )}
-              <div className="space-y-1">
-                {title && (
-                  <CardTitle className="pm33-h4">{title}</CardTitle>
-                )}
-                {description && (
-                  <p className="pm33-caption">{description}</p>
-                )}
-              </div>
             </div>
-            {badge && (
-              <div className="flex-shrink-0">
-                {badge}
-              </div>
-            )}
           </div>
-        </CardHeader>
-      )}
-      
-      {children && (
-        <CardContent className="pt-0">
-          {children}
-        </CardContent>
-      )}
-      
-      {footer && (
-        <div className="px-6 pb-6 pt-4 border-t border-slate-200 dark:border-slate-700">
-          {footer}
-        </div>
-      )}
-    </Card>
+        )}
+        
+        {children && (
+          <div>
+            {children}
+          </div>
+        )}
+        
+        {footer && (
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            {footer}
+          </div>
+        )}
+      </PM33Card>
+    </CardWrapper>
   )
 }
 

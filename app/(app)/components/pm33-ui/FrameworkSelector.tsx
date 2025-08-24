@@ -9,9 +9,8 @@
 "use client"
 
 import React, { useState } from 'react'
-import { cn, frameworkColors } from '@/lib/utils'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { PM33Button } from '@/components/PM33Button'
 import { 
   Target, 
   TrendingUp, 
@@ -142,10 +141,10 @@ export function FrameworkSelector({
                     <Icon size={16} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
+                    <h4 className="font-semibold text-sm text-foreground">
                       {framework.name}
                     </h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <p className="text-xs text-muted-foreground">
                       {framework.timeEstimate}
                     </p>
                   </div>
@@ -157,36 +156,33 @@ export function FrameworkSelector({
               </div>
 
               {/* Description */}
-              <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">
+              <p className="text-xs text-muted-foreground mb-3">
                 {framework.description}
               </p>
 
               {/* Complexity Badge */}
               <div className="flex items-center justify-between">
-                <Badge 
-                  variant="secondary" 
-                  className={cn(
-                    'text-xs',
-                    framework.complexity === 'Simple' && 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-                    framework.complexity === 'Moderate' && 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400', 
-                    framework.complexity === 'Advanced' && 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
-                  )}
-                >
+                <span className={cn(
+                  'px-2 py-1 rounded-full text-xs font-medium',
+                  framework.complexity === 'Simple' && 'bg-green-100 text-green-700',
+                  framework.complexity === 'Moderate' && 'bg-yellow-100 text-yellow-700', 
+                  framework.complexity === 'Advanced' && 'bg-red-100 text-red-700'
+                )}>
                   {framework.complexity}
-                </Badge>
+                </span>
                 
                 {showDetails && (isHovered || isSelected) && (
-                  <Button
-                    variant="ghost"
+                  <PM33Button
+                    variant="secondary"
                     size="sm"
-                    className="h-6 w-6 p-0 pm33-btn-secondary"
+                    className="h-6 w-6 p-0"
                     onClick={(e) => {
                       e.stopPropagation()
                       // Could open modal with detailed framework info
                     }}
                   >
                     <Info size={12} />
-                  </Button>
+                  </PM33Button>
                 )}
               </div>
             </div>
@@ -196,7 +192,7 @@ export function FrameworkSelector({
 
       {/* Selected Framework Details */}
       {selectedFramework && showDetails && (
-        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+        <div className="p-4 bg-blue-50/80 backdrop-blur-sm rounded-lg border border-blue-200">
           {(() => {
             const selected = frameworks.find(f => f.id === selectedFramework)
             if (!selected) return null
@@ -205,7 +201,7 @@ export function FrameworkSelector({
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <selected.icon size={16} className="text-blue-600 dark:text-blue-400" />
-                  <h4 className="font-semibold text-blue-900 dark:text-blue-100">
+                  <h4 className="font-semibold text-blue-900">
                     {selected.name} - Best Used For:
                   </h4>
                 </div>
@@ -214,14 +210,14 @@ export function FrameworkSelector({
                   {selected.bestFor.map((use, index) => (
                     <div key={index} className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                      <span className="text-sm text-blue-800 dark:text-blue-200">
+                      <span className="text-sm text-blue-800">
                         {use}
                       </span>
                     </div>
                   ))}
                 </div>
                 
-                <p className="text-sm text-blue-700 dark:text-blue-300">
+                <p className="text-sm text-blue-700">
                   Estimated analysis time: <strong>{selected.timeEstimate}</strong>
                 </p>
               </div>
@@ -254,16 +250,13 @@ export function QuickFrameworkSelector({
         const isSelected = selectedFramework === framework.id
         
         return (
-          <Button
+          <PM33Button
             key={framework.id}
-            variant={isSelected ? "default" : "outline"}
+            variant={isSelected ? "primary" : "secondary"}
             size="sm"
             disabled={disabled}
             onClick={() => onFrameworkSelect(framework.id)}
-            className={cn(
-              'flex items-center gap-2',
-              isSelected ? 'pm33-btn-primary ring-2 ring-blue-500 ring-offset-1' : 'pm33-btn-secondary'
-            )}
+            className="flex items-center gap-2"
           >
             <div className={cn(
               'p-1 rounded text-white',
@@ -273,7 +266,7 @@ export function QuickFrameworkSelector({
               <Icon size={12} />
             </div>
             {framework.name}
-          </Button>
+          </PM33Button>
         )
       })}
     </div>

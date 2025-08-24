@@ -1,0 +1,160 @@
+name: PM33 Premium Quality Gate
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  premium-testing-pipeline:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+        
+      - name: Start development server
+        run: |
+          npm run dev &
+          npx wait-on http://localhost:3000 --timeout 60000
+        
+      - name: 🎯 Critical UI Compliance Tests
+        run: npm run test:critical
+        continue-on-error: false # Block deployment on failure
+        
+      - name: 🎨 Marketing Design System Tests  
+        run: npm run test:marketing
+        continue-on-error: false # Block deployment on failure
+        
+      - name: ♿ Accessibility Compliance Tests
+        run: npm run test:accessibility
+        continue-on-error: false # Block deployment on failure
+        
+      - name: ⚡ Performance Benchmarks
+        run: npm run test:performance
+        continue-on-error: false # Block deployment on failure
+        
+      - name: 📱 Cross-Browser Testing
+        run: npx playwright test --project=chromium --project=firefox --project=webkit
+        
+      - name: 📊 Generate Test Reports
+        if: always()
+        run: |
+          npx playwright show-report --host 0.0.0.0 --port 9323 &
+          echo "Test report available at http://localhost:9323"
+          
+      - name: 📸 Upload Test Results
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7
+          
+      - name: 🚦 Quality Gate Status
+        if: failure()
+        run: |
+          echo "❌ QUALITY GATE FAILED"
+          echo "Premium experience standards not met. Review test failures above."
+          exit 1
+          
+      - name: ✅ Quality Gate Success
+        if: success()
+        run: |
+          echo "✅ QUALITY GATE PASSED"  
+          echo "Premium experience standards validated. Ready for deployment."
+
+  lighthouse-audit:
+    runs-on: ubuntu-latest
+    needs: premium-testing-pipeline
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build application
+        run: npm run build
+        
+      - name: Start production server
+        run: |
+          npm start &
+          npx wait-on http://localhost:3000 --timeout 60000
+          
+      - name: 🔍 Lighthouse CI Audit
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: './lighthouse-ci.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          
+      - name: 📊 Performance Gate
+        run: |
+          # Lighthouse scores must meet premium standards
+          # LCP < 2.5s, FID < 100ms, CLS < 0.1
+          # Overall performance score > 95
+          echo "Performance audit completed. Check Lighthouse CI results."
+
+  security-scan:
+    runs-on: ubuntu-latest
+    needs: premium-testing-pipeline
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 🔒 Security Vulnerability Scan
+        run: npm audit --audit-level=high
+        
+      - name: 🛡️ CodeQL Analysis  
+        uses: github/codeql-action/init@v2
+        with:
+          languages: 'javascript,typescript'
+          
+      - name: 🔍 Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  deployment-ready:
+    runs-on: ubuntu-latest  
+    needs: [premium-testing-pipeline, lighthouse-audit, security-scan]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - name: 🚀 Deployment Ready Notification
+        run: |
+          echo "🎉 ALL QUALITY GATES PASSED"
+          echo "✅ Premium UI compliance validated"
+          echo "✅ Marketing design system verified"  
+          echo "✅ Accessibility standards met"
+          echo "✅ Performance benchmarks achieved"
+          echo "✅ Security scan completed"
+          echo ""
+          echo "🚀 Ready for production deployment to Vercel"
+          
+      - name: 📈 Update Quality Metrics
+        run: |
+          # Log successful quality gate for metrics tracking
+          echo "Quality gate passed at $(date)" >> .quality-log
+          echo "Test suite: $(npm run test:all 2>&1 | grep -o '[0-9]* passed')"

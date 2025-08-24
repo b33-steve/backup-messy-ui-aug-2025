@@ -1,9 +1,9 @@
-# PM33 Frontend - Dual-Framework Architecture
+# PM33 Frontend - Clean Global CSS Architecture
 
 **File:** `app/frontend/README.md`  
 **Purpose:** Complete frontend architecture overview and development guide  
-**Context:** Dual design system with marketing (Mantine) + core app (shadcn/ui + PM33)  
-**RELEVANT FILES:** `CLAUDE.md`, `app/(marketing)/docs/MARKETING_DESIGN_SYSTEM.md`, `app/(app)/docs/APP_DESIGN_SYSTEM.md`
+**Context:** Clean PM33 platform with global CSS classes and independent deployment  
+**RELEVANT FILES:** `CLAUDE.md`, `app/globals.css`, component implementations
 
 ## 🏗️ **Architecture Overview**
 
@@ -36,15 +36,14 @@ app/
 - **Colors:** Marketing tokens (`--marketing-*`)
 - **Class:** `.marketing-context`
 
-### **Core App Context** (`app/(app)/`)  
-- **Primary UI Library:** shadcn/ui (based on Radix UI primitives)
-- **Styling:** Tailwind CSS with CSS custom properties
-- **Icons:** lucide-react
-- **Animations:** framer-motion
-- **Utilities:** class-variance-authority, clsx, tailwind-merge
+### **Core App Context** (`app/(app)/`) - **CLEAN IMPLEMENTATION**
+- **Global CSS Architecture:** Direct CSS classes for glass morphism and PM33 styling
+- **Key Classes:** `.glass-card`, `.btn-primary`, `.text-gradient`, `.input-field`, `.glass-nav`
+- **Icons:** lucide-react for clean, consistent iconography
+- **Framework:** Simple HTML/CSS with strategic enhancements
 - **Purpose:** PMO transformation, strategic intelligence  
-- **Design:** Glass morphism, premium animations, AI-powered UX
-- **Colors:** PM33 tokens (`--pm33-*`)
+- **Design:** Glass morphism effects via backdrop-blur-xl and backdrop-saturate-150
+- **Colors:** PM33 gradient system with CSS custom properties
 
 ## 📚 **Documentation Navigation**
 
@@ -107,34 +106,25 @@ export function MarketingFeature() {
 }
 ```
 
-**Core App Component (shadcn/ui + PM33):**
+**Core App Component (Clean Global CSS):**
 ```tsx
 'use client';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Brain } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
 
 export function AppFeature() {
   return (
-    <motion.div 
-      className={cn("pm33-glass-card pm33-animate-float")}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.2 }}
-    >
-      <CardHeader>
-        <CardTitle className="pm33-text-gradient">
-          Strategic Feature
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Button className="pm33-btn-primary pm33-animate-glow">
-          <Brain className="mr-2 h-4 w-4" />
-          Process with AI
-        </Button>
-      </CardContent>
-    </motion.div>
+    <div className="glass-card">
+      <h3 className="text-xl font-bold text-gradient mb-4">
+        Strategic Feature
+      </h3>
+      <p className="text-gray-600 mb-6">
+        AI-powered strategic analysis for your PMO transformation
+      </p>
+      <button className="btn-primary flex items-center gap-2">
+        <Brain className="w-4 h-4" />
+        Process with AI
+      </button>
+    </div>
   );
 }
 ```
@@ -202,19 +192,17 @@ import {
 } from '@mantine/core';
 ```
 
-**shadcn/ui + PM33 (Core App):**
+**Clean Global CSS (Core App):**
 ```tsx
-// shadcn/ui base components (Radix UI primitives)
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Textarea } from '@/components/ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+// Global CSS classes for consistent PM33 styling
+// .glass-card - Glass morphism cards with blur effects
+// .btn-primary - Primary buttons with gradients
+// .text-gradient - Text with PM33 brand gradients
+// .input-field - Form inputs with glass styling
+// .glass-nav - Fixed navigation with backdrop blur
 
-// PM33 custom components & utilities
-import { Brain, Activity } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+// Lucide React icons for consistent iconography
+import { Brain, Activity, Zap, Target } from 'lucide-react';
 ```
 
 ## 🧪 **Testing Architecture** 

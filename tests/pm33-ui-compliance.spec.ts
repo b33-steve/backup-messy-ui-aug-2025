@@ -10,7 +10,10 @@ import { test, expect } from '@playwright/test';
 
 test.describe('PM33 UI Compliance', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/strategic-intelligence');
+    await page.goto('/dashboard');
+    // Wait for React components to fully mount and CSS to be applied
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(1000);
   });
 
   test('No forbidden UI elements exist', async ({ page }) => {
@@ -23,11 +26,15 @@ test.describe('PM33 UI Compliance', () => {
     expect(grayClasses).toBe(0);
     
     // Check for basic buttons without PM33 styling (should use PM33Button)
-    const basicButtons = await page.locator('button:not([class*="pm33"]):not([style*="background"])').count();
+    // Exclude Next.js dev tools buttons
+    const basicButtons = await page.locator('button:not([class*="pm33"]):not([style*="background"]):not([data-nextjs-dev-tools-button])').count();
     expect(basicButtons).toBe(0);
   });
   
   test('Glass morphism is implemented correctly', async ({ page }) => {
+    // Wait for PM33 cards to appear (they use mounted state)
+    await page.waitForSelector('[data-testid="pm33-glass-card"]', { timeout: 10000 });
+    
     const cards = page.locator('.pm33-glass-card');
     const count = await cards.count();
     expect(count).toBeGreaterThan(0);
@@ -57,7 +64,8 @@ test.describe('PM33 UI Compliance', () => {
   });
   
   test('All interactive elements have hover states', async ({ page }) => {
-    const buttons = page.locator('button');
+    // Exclude Next.js dev tools buttons from hover requirements
+    const buttons = page.locator('button:not([data-nextjs-dev-tools-button])');
     const buttonCount = await buttons.count();
     
     for (let i = 0; i < buttonCount; i++) {
@@ -93,12 +101,12 @@ test.describe('PM33 UI Compliance', () => {
     for (let i = 0; i < cardCount; i++) {
       const card = cards.nth(i);
       
-      const transition = await card.evaluate(el => 
-        window.getComputedStyle(el).transition
+      const transitionProperty = await card.evaluate(el => 
+        window.getComputedStyle(el).transitionProperty
       );
       
-      // Should have transition property
-      expect(transition).toContain('all');
+      // Should have transition property set to 'all'
+      expect(transitionProperty).toBe('all');
     }
   });
   

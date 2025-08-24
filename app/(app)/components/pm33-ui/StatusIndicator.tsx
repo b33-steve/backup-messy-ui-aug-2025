@@ -9,8 +9,7 @@
 "use client"
 
 import React from 'react'
-import { cn, statusIndicators } from '@/lib/utils'
-import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
 import { 
   CheckCircle, 
   AlertTriangle, 
@@ -38,34 +37,34 @@ const statusConfig = {
   healthy: {
     icon: CheckCircle,
     label: 'Healthy',
-    bgClass: 'bg-green-50 dark:bg-green-900/20',
-    borderClass: 'border-green-200 dark:border-green-800',
-    textClass: 'text-green-700 dark:text-green-300',
+    bgClass: 'bg-green-50/80 backdrop-blur-sm',
+    borderClass: 'border-green-200',
+    textClass: 'text-green-700',
     iconClass: 'text-green-500',
   },
   warning: {
     icon: AlertTriangle,
     label: 'Warning',
-    bgClass: 'bg-yellow-50 dark:bg-yellow-900/20',
-    borderClass: 'border-yellow-200 dark:border-yellow-800',
-    textClass: 'text-yellow-700 dark:text-yellow-300',
+    bgClass: 'bg-yellow-50/80 backdrop-blur-sm',
+    borderClass: 'border-yellow-200',
+    textClass: 'text-yellow-700',
     iconClass: 'text-yellow-500',
   },
   error: {
     icon: XCircle,
     label: 'Error',
-    bgClass: 'bg-red-50 dark:bg-red-900/20',
-    borderClass: 'border-red-200 dark:border-red-800',
-    textClass: 'text-red-700 dark:text-red-300',
+    bgClass: 'bg-red-50/80 backdrop-blur-sm',
+    borderClass: 'border-red-200',
+    textClass: 'text-red-700',
     iconClass: 'text-red-500',
   },
   offline: {
     icon: WifiOff,
     label: 'Offline',
-    bgClass: 'bg-slate-50 dark:bg-slate-900/20',
-    borderClass: 'border-slate-200 dark:border-slate-800',
-    textClass: 'text-slate-700 dark:text-slate-300',
-    iconClass: 'text-slate-500',
+    bgClass: 'bg-gray-50/80 backdrop-blur-sm',
+    borderClass: 'border-gray-200',
+    textClass: 'text-muted-foreground',
+    iconClass: 'text-muted-foreground',
   },
 }
 
@@ -102,7 +101,7 @@ export function StatusIndicator({
 
   if (variant === 'badge') {
     return (
-      <Badge
+      <span
         className={cn(
           'inline-flex items-center font-medium rounded-full border',
           config.bgClass,
@@ -114,7 +113,7 @@ export function StatusIndicator({
       >
         {showIcon && <Icon size={iconSizes[size]} className="flex-shrink-0" />}
         {label || config.label}
-      </Badge>
+      </span>
     )
   }
 
@@ -136,13 +135,13 @@ export function StatusIndicator({
                 {label || config.label}
               </h4>
               {lastUpdated && (
-                <span className="text-xs text-slate-500 dark:text-slate-400">
+                <span className="text-xs text-muted-foreground">
                   {formatLastUpdated(lastUpdated)}
                 </span>
               )}
             </div>
             {message && (
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 {message}
               </p>
             )}
@@ -186,7 +185,7 @@ export function AIBackendStatus({ engines, className }: AIBackendStatusProps) {
   return (
     <div className={cn('space-y-3', className)}>
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium text-slate-900 dark:text-white">
+        <h3 className="text-sm font-medium text-foreground">
           AI Engine Status
         </h3>
         <StatusIndicator 
@@ -198,7 +197,7 @@ export function AIBackendStatus({ engines, className }: AIBackendStatusProps) {
       
       <div className="space-y-2">
         {engines.map((engine, index) => (
-          <div key={index} className="flex items-center justify-between p-2 bg-slate-50 dark:bg-slate-800 rounded">
+          <div key={index} className="flex items-center justify-between p-2 bg-gray-50/80 backdrop-blur-sm rounded">
             <div className="flex items-center gap-2">
               <StatusIndicator 
                 status={engine.status} 
@@ -206,12 +205,12 @@ export function AIBackendStatus({ engines, className }: AIBackendStatusProps) {
                 size="sm"
                 showIcon={false}
               />
-              <span className="text-sm text-slate-700 dark:text-slate-300">
+              <span className="text-sm text-foreground">
                 {engine.name}
               </span>
             </div>
             
-            <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+            <div className="flex items-center gap-3 text-xs text-muted-foreground">
               {engine.responseTime && (
                 <span>{engine.responseTime}ms</span>
               )}
@@ -247,12 +246,12 @@ export function SystemHealth({ services, className }: SystemHealthProps) {
   return (
     <div className={cn('space-y-4', className)}>
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+        <h3 className="text-lg font-semibold text-foreground">
           System Health
         </h3>
         <div className="flex items-center gap-2">
-          <Activity size={16} className="text-slate-500" />
-          <span className="text-sm text-slate-600 dark:text-slate-400">
+          <Activity size={16} className="text-muted-foreground" />
+          <span className="text-sm text-muted-foreground">
             {healthPercentage}% Operational
           </span>
         </div>
@@ -296,7 +295,7 @@ export function ConnectionStatus({ isConnected, lastSync, className }: Connectio
       ) : (
         <WifiOff size={14} className="text-red-500" />
       )}
-      <span className="text-xs text-slate-500 dark:text-slate-400">
+      <span className="text-xs text-muted-foreground">
         {isConnected ? 'Connected' : 'Disconnected'}
         {lastSync && ` • Last sync ${formatLastUpdated(lastSync)}`}
       </span>

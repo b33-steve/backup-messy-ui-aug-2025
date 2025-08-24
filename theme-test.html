@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM33 Theme Test</title>
+    <style>
+        :root {
+            /* Light theme (default) */
+            --pm33-primary: #667eea;
+            --pm33-marketingBg: #ffffff;
+            --pm33-marketingText: #1e293b;
+            --pm33-marketingTextSecondary: #64748b;
+            --pm33-surface: #ffffff;
+            --pm33-border: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --pm33-primary: #667eea;
+            --pm33-marketingBg: #0f172a;
+            --pm33-marketingText: #ffffff;
+            --pm33-marketingTextSecondary: #cbd5e1;
+            --pm33-surface: #1e293b;
+            --pm33-border: #334155;
+        }
+
+        [data-theme="native"] {
+            --pm33-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --pm33-marketingBg: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            --pm33-marketingText: #1e293b;
+            --pm33-marketingTextSecondary: #64748b;
+            --pm33-surface: rgba(255, 255, 255, 0.9);
+            --pm33-border: rgba(124, 58, 237, 0.2);
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--pm33-marketingBg);
+            color: var(--pm33-marketingText);
+            margin: 0;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            background-color: var(--pm33-surface);
+            border: 1px solid var(--pm33-border);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .theme-btn {
+            background: var(--pm33-primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .card {
+            background: var(--pm33-surface);
+            border: 1px solid var(--pm33-border);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .text-secondary {
+            color: var(--pm33-marketingTextSecondary);
+        }
+
+        .current-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--pm33-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <div class="current-theme" id="currentTheme">Dark Theme</div>
+    
+    <nav class="nav">
+        <img 
+            id="logo"
+            class="logo" 
+            src="/PM 33 New Logo Horizontal V1.2 WHITE.png" 
+            alt="PM33 Logo"
+        />
+        <div class="theme-buttons">
+            <button class="theme-btn" onclick="setTheme('light')">Light</button>
+            <button class="theme-btn" onclick="setTheme('dark')">Dark</button>
+            <button class="theme-btn" onclick="setTheme('native')">Native</button>
+        </div>
+    </nav>
+
+    <div class="card">
+        <h1>PM33 Theme Test</h1>
+        <p>This page tests the PM33 theme system implementation.</p>
+        <p class="text-secondary">This text uses the secondary text color.</p>
+    </div>
+
+    <div class="card">
+        <h2>Theme Switching Test</h2>
+        <p>Click the theme buttons above to test theme switching:</p>
+        <ul>
+            <li><strong>Light:</strong> White background, dark text</li>
+            <li><strong>Dark:</strong> Dark background, light text, white logo</li>
+            <li><strong>Native:</strong> Gradient background, special styling</li>
+        </ul>
+        <p class="text-secondary">The logo should switch between regular and white versions automatically.</p>
+    </div>
+
+    <script>
+        function setTheme(theme) {
+            const body = document.body;
+            const logo = document.getElementById('logo');
+            const currentThemeDisplay = document.getElementById('currentTheme');
+            
+            // Update data-theme attribute
+            body.setAttribute('data-theme', theme);
+            
+            // Update logo based on theme
+            if (theme === 'dark') {
+                logo.src = '/PM 33 New Logo Horizontal V1.2 WHITE.png';
+            } else {
+                logo.src = '/PM 33 New Logo Horizontal V1.2.png';
+            }
+            
+            // Update current theme display
+            currentThemeDisplay.textContent = theme.charAt(0).toUpperCase() + theme.slice(1) + ' Theme';
+            
+            console.log('Theme switched to:', theme);
+            console.log('CSS custom properties:');
+            const computedStyle = getComputedStyle(document.documentElement);
+            console.log('--pm33-marketingBg:', computedStyle.getPropertyValue('--pm33-marketingBg'));
+            console.log('--pm33-marketingText:', computedStyle.getPropertyValue('--pm33-marketingText'));
+            console.log('--pm33-surface:', computedStyle.getPropertyValue('--pm33-surface'));
+        }
+
+        // Log initial state
+        console.log('Initial theme test loaded');
+        console.log('Current data-theme:', document.body.getAttribute('data-theme'));
+        
+        // Test theme switching after page load
+        setTimeout(() => {
+            console.log('Testing theme switches...');
+            setTheme('light');
+            setTimeout(() => setTheme('dark'), 2000);
+            setTimeout(() => setTheme('native'), 4000);
+            setTimeout(() => setTheme('dark'), 6000);
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -16,58 +16,73 @@ This design system is **mandatory** for all authenticated app routes (`/app/*`).
 **Personality**: Sophisticated tool that amplifies PM capabilities
 **Promise**: "PMO-level strategic intelligence at your fingertips"
 
-## App Color System (Clean & Professional)
+## PM33 Theme System (Updated - August 2025)
 
-```css
-/* App-Specific Color Tokens - REQUIRED USE ONLY */
-:root {
-  /* Primary App Colors (Refined) */
-  --app-primary: #1E3A8A;           /* Strategic blue - navigation, key actions */
-  --app-primary-hover: #1D4ED8;     /* Interactive states */
-  --app-primary-light: #DBEAFE;     /* Subtle backgrounds */
-  --app-primary-ghost: #F0F7FF;     /* Minimal backgrounds */
-  
-  /* Success States (Understated) */
-  --app-success: #047857;           /* Success indicators */
-  --app-success-light: #D1FAE5;     /* Success backgrounds */
-  --app-success-ghost: #F0FDF4;     /* Subtle success */
-  
-  /* Warning States (Professional) */
-  --app-warning: #B45309;           /* Attention indicators */
-  --app-warning-light: #FED7AA;     /* Warning backgrounds */
-  --app-warning-ghost: #FFFBEB;     /* Subtle warnings */
-  
-  /* Error States (Controlled) */
-  --app-error: #DC2626;             /* Error indicators */
-  --app-error-light: #FECACA;       /* Error backgrounds */
-  --app-error-ghost: #FEF2F2;       /* Subtle errors */
-  
-  /* App Text Hierarchy */
-  --app-text-primary: #0F172A;      /* Headings, key content */
-  --app-text-secondary: #475569;    /* Body text */
-  --app-text-tertiary: #64748B;     /* Supporting text */
-  --app-text-muted: #94A3B8;        /* Captions, metadata */
-  
-  /* App Backgrounds */
-  --app-bg-primary: #FFFFFF;        /* Main content areas */
-  --app-bg-secondary: #F8FAFC;      /* Page backgrounds */
-  --app-bg-tertiary: #F1F5F9;       /* Card backgrounds */
-  --app-bg-elevated: #FFFFFF;       /* Modals, dropdowns */
-  
-  /* App Borders */
-  --app-border-default: #E2E8F0;    /* Standard borders */
-  --app-border-muted: #F1F5F9;      /* Subtle dividers */
-  --app-border-focus: var(--app-primary); /* Focus states */
-}
+**SINGLE SOURCE OF TRUTH**: `/lib/theme/pm33-theme.ts`
 
-/* AI-Specific App Colors */
-:root {
-  --app-ai-processing: #6366F1;     /* AI workflow states */
-  --app-ai-confidence-high: #059669; /* High confidence (90%+) */
-  --app-ai-confidence-med: #D97706;  /* Medium confidence (70-89%) */
-  --app-ai-confidence-low: #DC2626;  /* Low confidence (<70%) */
-  --app-ai-neutral: #6B7280;        /* Neutral AI states */
-}
+### Color System - Managed by Theme Provider
+
+```tsx
+// REQUIRED: Import theme system for all color usage
+import { PM33ThemeProvider, useTheme, pm33Theme } from '@/lib/theme/pm33-theme';
+
+// CSS Custom Properties - AUTO-INJECTED by PM33ThemeProvider:
+// --pm33-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+// --pm33-brand-hover: linear-gradient(135deg, #764ba2 0%, #f093fb 100%)
+// --pm33-ai-glow: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%)
+// --pm33-glass: rgba(255, 255, 255, 0.1)
+// --pm33-glass-border: rgba(255, 255, 255, 0.18)
+// --pm33-glass-backdrop-filter: blur(40px) saturate(150%)
+// + 40+ more variables managed automatically
+```
+
+### Glass Morphism System - Built-In
+
+```tsx
+// REQUIRED: Use glass styles from theme system
+import { getGlassStyle, glassStyles } from '@/lib/theme/pm33-theme';
+
+// Available glass variants:
+const cardStyle = getGlassStyle('card');     // Standard glass
+const premiumStyle = getGlassStyle('premium'); // Enhanced glass with insets
+const aiStyle = getGlassStyle('ai');         // AI-themed blue tint
+const minimalStyle = getGlassStyle('minimal'); // Subtle glass
+
+// CSS classes automatically available:
+// .pm33-glass - Standard glass morphism
+// .pm33-glass-card - Premium glass card
+// .pm33-text-gradient - PM33 brand gradient text
+// .pm33-text-ai-gradient - AI glow gradient text
+```
+
+### Animation System - Built-In
+
+```tsx
+// CSS Animation classes automatically injected:
+// .pm33-animate-float - 3s floating animation
+// .pm33-animate-glow - 2s glowing pulse animation
+// .pm33-animate-fade-up - 0.6s fade up entrance
+// .pm33-animate-gradient - 15s gradient shift animation
+// .pm33-animate-shimmer - 2s shimmer loading effect
+// .pm33-animate-bounce - 1.4s bounce animation
+// + more animations available via theme system
+```
+
+### Responsive Breakpoints - Managed
+
+```tsx
+// Breakpoints available via theme system:
+const { breakpoints } = pm33Theme;
+// xs: '475px', sm: '640px', md: '768px', lg: '1024px', xl: '1280px', '2xl': '1536px'
+
+// Responsive utility:
+import { getResponsiveValue, createResponsiveStyles } from '@/lib/theme/pm33-theme';
+
+const responsiveValue = getResponsiveValue({
+  sm: '1rem',
+  md: '1.5rem', 
+  lg: '2rem'
+}, '0.75rem');
 ```
 
 ## Typography Scale (App Productivity)
@@ -128,30 +143,124 @@ This design system is **mandatory** for all authenticated app routes (`/app/*`).
 }
 ```
 
-## App Component Library (Enforced Usage)
+## PM33 Component Library (Updated - August 2025)
 
-### Dashboard Component System
+### Required PM33 Components - ACTUAL IMPLEMENTATION
+
+**Location**: `/app/frontend/components/`
+
 ```tsx
-// REQUIRED: Use AppDashboard for all dashboard layouts
-interface AppDashboardProps {
-  title: string;
-  subtitle?: string;
-  actions?: React.ReactNode;
-  children: React.ReactNode;
-  sidebar?: React.ReactNode;
-}
+// REQUIRED: Import from actual PM33 components
+import { PM33PageWrapper } from '@/components/PM33PageWrapper';
+import { PM33Navigation } from '@/components/PM33Navigation';
+import { PM33Card } from '@/components/PM33Card';
+import { PM33Button } from '@/components/PM33Button';
+import { PM33AIProcessing } from '@/components/PM33AIProcessing';
 
-export const AppDashboard: React.FC<AppDashboardProps> = ({
-  title, subtitle, actions, children, sidebar
-}) => (
-  <div className="app-dashboard">
-    <AppHeader title={title} subtitle={subtitle} actions={actions} />
-    <div className="app-layout">
-      {sidebar && <AppSidebar>{sidebar}</AppSidebar>}
-      <AppMain>{children}</AppMain>
-    </div>
-  </div>
+// REQUIRED: Use PM33ThemeProvider from theme system
+import { PM33ThemeProvider, useTheme } from '@/lib/theme/pm33-theme';
+
+// Example page structure using actual components:
+export const AppPage = () => (
+  <PM33ThemeProvider>
+    <PM33PageWrapper>
+      <PM33Navigation currentPage="dashboard" />
+      <div className="pt-20 px-6">
+        <PM33Card>
+          <h1 className="pm33-text-gradient">Strategic Intelligence</h1>
+          <PM33Button variant="primary">
+            Process with AI
+          </PM33Button>
+          <PM33AIProcessing 
+            message="Analyzing strategic implications..."
+            showProgress={true}
+            size="md"
+          />
+        </PM33Card>
+      </div>
+    </PM33PageWrapper>
+  </PM33ThemeProvider>
 );
+```
+
+### PM33PageWrapper Component - ACTUAL SPECS
+**File**: `components/PM33PageWrapper.tsx`
+- ✅ Glass morphism background with animated orbs
+- ✅ PM33 CSS variables injected globally
+- ✅ Complete animation keyframes system
+- ✅ 8pt grid spacing utilities
+- ✅ Professional dark gradient background
+
+```tsx
+// Usage in every PM33 app page:
+<PM33PageWrapper backgroundVariant="strategic">
+  {/* All PM33 app content */}
+</PM33PageWrapper>
+```
+
+### PM33Navigation Component - ACTUAL SPECS
+**File**: `components/PM33Navigation.tsx`
+- ✅ Glass morphism: `backdrop-filter: blur(40px) saturate(150%)`
+- ✅ Brand gradient: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
+- ✅ Border: `1px solid rgba(255, 255, 255, 0.18)`
+- ✅ Sticky positioning with PM33 logo
+- ✅ Beta badge with gradient animation
+
+```tsx
+// Usage in every PM33 app page:
+<PM33Navigation currentPage="dashboard" />
+```
+
+### PM33Card Component - ACTUAL SPECS
+**File**: `components/PM33Card.tsx`
+- ✅ Glass morphism with animated gradient background
+- ✅ Hover animations: `translateY(-4px) scale(1.02)`
+- ✅ Progressive enhancement with backdrop blur
+- ✅ Premium card variants with inset shadows
+
+```tsx
+// Usage for all content cards:
+<PM33Card onClick={handleClick}>
+  <h3>Card Title</h3>
+  <p>Card content with glass morphism styling</p>
+</PM33Card>
+```
+
+### PM33Button Component - ACTUAL SPECS
+**File**: `components/PM33Button.tsx`
+- ✅ Primary: Brand gradient with hover transform
+- ✅ Secondary: Glass morphism with backdrop filter
+- ✅ Danger: Red gradient for destructive actions
+- ✅ Loading states with spinner animation
+- ✅ Icon support with proper spacing
+
+```tsx
+// Usage for all interactive buttons:
+<PM33Button 
+  variant="primary" 
+  loading={isProcessing}
+  icon={<BrainIcon />}
+>
+  Generate Analysis
+</PM33Button>
+```
+
+### PM33AIProcessing Component - ACTUAL SPECS
+**File**: `components/PM33AIProcessing.tsx`
+- ✅ Premium AI loader (never basic spinners)
+- ✅ Animated brain icon with pulsing rings
+- ✅ Thinking dots animation
+- ✅ Progress bar with gradient slide animation
+- ✅ Three sizes: sm, md, lg
+
+```tsx
+// Usage for all AI processing states:
+<PM33AIProcessing 
+  message="Analyzing strategic implications..."
+  subMessage="This may take a few moments"
+  showProgress={true}
+  size="md"
+/>
 ```
 
 ### App Button System (ENFORCED)

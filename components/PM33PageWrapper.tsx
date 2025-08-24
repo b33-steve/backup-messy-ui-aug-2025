@@ -20,7 +20,7 @@ export const PM33PageWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)',
+      background: 'var(--pm33-bg-gradient)',
       position: 'relative',
       overflow: 'hidden'
     }}>

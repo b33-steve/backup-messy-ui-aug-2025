@@ -16,7 +16,11 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { GlassCard } from '../../../components/ui/GlassCard'
+import { PM33PageWrapper } from '@/components/PM33PageWrapper'
+import { PM33Navigation } from '@/components/PM33Navigation'
+import { PM33Card } from '@/components/PM33Card'
+import { PM33Button } from '@/components/PM33Button'
+import { PM33AIProcessing } from '@/components/PM33AIProcessing'
 import { Brain, TrendingUp, Target, BarChart3 } from 'lucide-react'
 
 // Types
@@ -157,8 +161,9 @@ export default function StrategicIntelligencePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 pt-20">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <PM33PageWrapper>
+      <PM33Navigation currentPage="strategic-intelligence" />
+      <div className="pt-20 max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6">
           {/* Main Chat Area */}
           <div className="space-y-6">
@@ -172,17 +177,17 @@ export default function StrategicIntelligencePage() {
                 <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
                   <Brain className="w-6 h-6 text-white" />
                 </div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold pm33-text-gradient">
                   Strategic Intelligence
                 </h1>
               </div>
-              <p className="text-slate-600">
+              <p className="text-muted-foreground">
                 AI-powered strategic analysis using proven PM frameworks
               </p>
             </motion.div>
 
             {/* Chat Messages */}
-            <GlassCard className="h-[500px] flex flex-col">
+            <PM33Card className="h-[500px] flex flex-col">
               <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 <AnimatePresence>
                   {messages.map((message) => (
@@ -208,7 +213,7 @@ export default function StrategicIntelligencePage() {
                           {/* Framework Used */}
                           {message.framework && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
-                              <span className="text-xs text-gray-500">
+                              <span className="text-xs text-muted-foreground">
                                 Framework: {message.framework}
                               </span>
                               {message.confidence && (
@@ -222,7 +227,7 @@ export default function StrategicIntelligencePage() {
                           {/* Generated Tasks */}
                           {message.tasks && message.tasks.length > 0 && (
                             <div className="mt-4 space-y-2">
-                              <p className="text-sm font-semibold text-gray-700">
+                              <p className="text-sm font-semibold text-foreground">
                                 Recommended Actions:
                               </p>
                               {message.tasks.map((task, idx) => (
@@ -247,14 +252,14 @@ export default function StrategicIntelligencePage() {
                             <div className="mt-4 grid grid-cols-3 gap-3">
                               {Object.entries(message.metrics).map(([key, value]) => (
                                 <div key={key} className="text-center p-2 bg-gray-50 rounded-lg">
-                                  <div className="text-lg font-bold text-gray-900">{value}</div>
-                                  <div className="text-xs text-gray-500">{key}</div>
+                                  <div className="text-lg font-bold text-foreground">{value}</div>
+                                  <div className="text-xs text-muted-foreground">{key}</div>
                                 </div>
                               ))}
                             </div>
                           )}
                         </div>
-                        <div className="text-xs text-gray-500 mt-1 px-1">
+                        <div className="text-xs text-muted-foreground mt-1 px-1">
                           {new Date(message.timestamp).toLocaleTimeString()}
                         </div>
                       </div>
@@ -269,18 +274,11 @@ export default function StrategicIntelligencePage() {
                     animate={{ opacity: 1 }}
                     className="flex justify-start"
                   >
-                    <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-md">
-                      <div className="flex items-center gap-3">
-                        <div className="flex gap-1">
-                          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" />
-                          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce delay-100" />
-                          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce delay-200" />
-                        </div>
-                        <span className="text-sm text-gray-600">
-                          Analyzing with {selectedFramework || 'best'} framework...
-                        </span>
-                      </div>
-                    </div>
+                    <PM33AIProcessing 
+                      message={`Analyzing with ${selectedFramework || 'best'} framework...`}
+                      size="sm"
+                      showProgress={false}
+                    />
                   </motion.div>
                 )}
                 <div ref={messagesEndRef} />
@@ -291,36 +289,24 @@ export default function StrategicIntelligencePage() {
                 <form onSubmit={handleSubmit} className="space-y-3">
                   {/* Framework Selector */}
                   <div className="flex gap-2 flex-wrap items-center">
-                    <span className="text-sm text-gray-500">Framework:</span>
+                    <span className="text-sm text-muted-foreground">Framework:</span>
                     {frameworks.map((fw) => (
-                      <motion.button
+                      <PM33Button
                         key={fw.id}
-                        type="button"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        variant={selectedFramework === fw.id ? "primary" : "secondary"}
+                        size="sm"
                         onClick={() => setSelectedFramework(fw.id)}
-                        className={`px-3 py-1 text-xs rounded-full transition-all ${
-                          selectedFramework === fw.id
-                            ? 'bg-blue-600 text-white shadow-lg'
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                        }`}
                       >
                         {fw.name}
-                      </motion.button>
+                      </PM33Button>
                     ))}
-                    <motion.button
-                      type="button"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                    <PM33Button
+                      variant={!selectedFramework ? "primary" : "secondary"}
+                      size="sm"
                       onClick={() => setSelectedFramework(null)}
-                      className={`px-3 py-1 text-xs rounded-full transition-all ${
-                        !selectedFramework
-                          ? 'bg-green-600 text-white shadow-lg'
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                      }`}
                     >
                       Auto-select
-                    </motion.button>
+                    </PM33Button>
                   </div>
 
                   {/* Input Field */}
@@ -333,26 +319,17 @@ export default function StrategicIntelligencePage() {
                       className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
                       disabled={isAnalyzing}
                     />
-                    <motion.button
+                    <PM33Button
                       type="submit"
+                      variant="primary"
                       disabled={!input.trim() || isAnalyzing}
-                      whileHover={!isAnalyzing && input.trim() ? { scale: 1.05 } : {}}
-                      whileTap={!isAnalyzing && input.trim() ? { scale: 0.95 } : {}}
-                      className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isAnalyzing ? (
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Analyzing...
-                        </div>
-                      ) : (
-                        'Analyze'
-                      )}
-                    </motion.button>
+                      {isAnalyzing ? 'Analyzing...' : 'Analyze'}
+                    </PM33Button>
                   </div>
                 </form>
               </div>
-            </GlassCard>
+            </PM33Card>
 
             {/* Suggested Questions */}
             <motion.div
@@ -362,10 +339,10 @@ export default function StrategicIntelligencePage() {
               className="space-y-4"
             >
               {suggestedQuestions.map((category) => (
-                <GlassCard key={category.category} className="p-4">
+                <PM33Card key={category.category} className="p-4">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-2xl">{category.icon}</span>
-                    <h3 className="font-semibold text-gray-900">{category.category}</h3>
+                    <h3 className="font-semibold text-foreground">{category.category}</h3>
                   </div>
                   <div className="space-y-2">
                     {category.questions.map((question, idx) => (
@@ -374,13 +351,13 @@ export default function StrategicIntelligencePage() {
                         whileHover={{ scale: 1.02, backgroundColor: '#f1f5f9' }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => handleQuestionClick(question)}
-                        className="w-full text-left p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors text-sm text-gray-700"
+                        className="w-full text-left p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors text-sm text-foreground"
                       >
                         {question}
                       </motion.button>
                     ))}
                   </div>
-                </GlassCard>
+                </PM33Card>
               ))}
             </motion.div>
           </div>
@@ -393,31 +370,31 @@ export default function StrategicIntelligencePage() {
             className="space-y-6"
           >
             {/* Company Context */}
-            <GlassCard>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <PM33Card>
+              <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-blue-600" />
                 Company Context
               </h3>
               {companyContext ? (
                 <div className="space-y-3 text-sm">
                   <div>
-                    <span className="text-gray-500">Industry:</span>
+                    <span className="text-muted-foreground">Industry:</span>
                     <span className="ml-2 font-medium">{companyContext.industry}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Stage:</span>
+                    <span className="text-muted-foreground">Stage:</span>
                     <span className="ml-2 font-medium">{companyContext.stage}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Team Size:</span>
+                    <span className="text-muted-foreground">Team Size:</span>
                     <span className="ml-2 font-medium">{companyContext.teamSize}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Runway:</span>
+                    <span className="text-muted-foreground">Runway:</span>
                     <span className="ml-2 font-medium">{companyContext.runway}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Key Constraint:</span>
+                    <span className="text-muted-foreground">Key Constraint:</span>
                     <span className="ml-2 font-medium text-orange-600">
                       {companyContext.constraint}
                     </span>
@@ -434,11 +411,11 @@ export default function StrategicIntelligencePage() {
                   </motion.button>
                 </div>
               )}
-            </GlassCard>
+            </PM33Card>
 
             {/* Recent Analyses */}
-            <GlassCard>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <PM33Card>
+              <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-green-600" />
                 Recent Analyses
               </h3>
@@ -462,18 +439,18 @@ export default function StrategicIntelligencePage() {
                   confidence={95}
                 />
               </div>
-            </GlassCard>
+            </PM33Card>
 
             {/* Intelligence Metrics */}
-            <GlassCard>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <PM33Card>
+              <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Target className="w-5 h-5 text-purple-600" />
                 Intelligence Metrics
               </h3>
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600">Analysis Accuracy</span>
+                    <span className="text-muted-foreground">Analysis Accuracy</span>
                     <span className="font-medium">94%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -487,7 +464,7 @@ export default function StrategicIntelligencePage() {
                 </div>
                 <div>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600">Time Saved</span>
+                    <span className="text-muted-foreground">Time Saved</span>
                     <span className="font-medium">12.5 hrs/week</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -501,7 +478,7 @@ export default function StrategicIntelligencePage() {
                 </div>
                 <div>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600">Decisions Made</span>
+                    <span className="text-muted-foreground">Decisions Made</span>
                     <span className="font-medium">47 this month</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -514,11 +491,11 @@ export default function StrategicIntelligencePage() {
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </PM33Card>
           </motion.div>
         </div>
       </div>
-    </div>
+    </PM33PageWrapper>
   )
 }
 
@@ -535,15 +512,15 @@ function RecentAnalysisItem({ title, framework, time, confidence }: {
       className="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer"
     >
       <div className="flex justify-between items-start mb-1">
-        <h4 className="text-sm font-medium text-gray-900">{title}</h4>
+        <h4 className="text-sm font-medium text-foreground">{title}</h4>
         <span className={`text-xs font-medium ${
           confidence >= 90 ? 'text-green-600' : confidence >= 80 ? 'text-yellow-600' : 'text-red-600'
         }`}>
           {confidence}%
         </span>
       </div>
-      <p className="text-xs text-gray-500">{framework}</p>
-      <p className="text-xs text-gray-400 mt-1">{time}</p>
+      <p className="text-xs text-muted-foreground">{framework}</p>
+      <p className="text-xs text-muted-foreground/60 mt-1">{time}</p>
     </motion.div>
   )
 }

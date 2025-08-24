@@ -1,145 +1,195 @@
 /**
- * Component: IntelligencePage
- * Design Reference: APP_THEME_GUIDE.md - Core app design system
- * UX Pattern: PM33_COMPLETE_UX_SYSTEM.md - Intelligence interface patterns
+ * Component: StrategicIntelligencePage - Clean PM33 Implementation
+ * Design Reference: docs/shared/PM33_COMPLETE_UI_SYSTEM.md - Strategic intelligence interface
+ * UX Pattern: docs/shared/PM33_COMPLETE_UX_SYSTEM.md - Chat interface patterns
  * 
  * Compliance Checklist:
- * - [x] Uses shadcn/ui components exclusively
+ * - [x] Uses global CSS classes (glass-card, btn-primary, input-field)
  * - [x] Professional B2B SaaS design
- * - [x] lucide-react icons
- * - [x] Responsive layout
+ * - [x] lucide-react icons with clean styling
+ * - [x] Framework selection interface
+ * - [x] Suggested questions for user guidance
+ * - [x] Clean component architecture
  */
 
-'use client';
+'use client'
 
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Textarea } from '@/components/ui/textarea';
-import { Brain, Send, BarChart3, FileText, TrendingUp, Lightbulb } from 'lucide-react';
-import CoreAppNavigation from '../../../components/app/CoreAppNavigation';
+import { useState } from 'react'
+import { Send, Zap, DollarSign, Rocket, Target, Activity, TrendingUp, CheckCircle, Globe, Briefcase } from 'lucide-react'
 
-const IntelligencePage: React.FC = () => {
+export default function StrategicIntelligencePage() {
+  const [input, setInput] = useState('')
+  const [selectedFramework, setSelectedFramework] = useState('auto')
+
+  const frameworks = [
+    { id: 'ice', name: 'ICE Score' },
+    { id: 'rice', name: 'RICE Framework' },
+    { id: 'jobs', name: 'Jobs-to-be-Done' },
+    { id: 'porter', name: "Porter's Five Forces" },
+    { id: 'swot', name: 'SWOT Analysis' },
+    { id: 'auto', name: 'Auto-select' }
+  ]
+
+  const suggestedQuestions = [
+    {
+      category: 'Competitive Strategy',
+      icon: '⚔️',
+      questions: [
+        "Our competitor just raised $10M and launched a similar feature. What's our strategic response?",
+        "How do we differentiate when competitors have 10x our resources?",
+        "Should we match competitor pricing or maintain premium positioning?"
+      ]
+    },
+    {
+      category: 'Resource Allocation',
+      icon: '💰',
+      questions: [
+        "Should we hire 2 engineers or spend $50k on marketing?",
+        "How should we allocate our $15k monthly budget?",
+        "What's the ROI of building feature X vs improving existing?"
+      ]
+    }
+  ]
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <CoreAppNavigation />
-      
-      <div className="container mx-auto px-6 py-12 max-w-7xl">
-        <div className="space-y-8">
-          {/* Header */}
-          <div className="space-y-2">
+    <div className="min-h-screen">
+      {/* Premium Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-8">
+              {/* Logo */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-lg">P</span>
+                </div>
+                <span className="text-2xl font-bold text-gradient">PM33</span>
+                <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                  Beta
+                </span>
+              </div>
+
+              {/* Nav Links */}
+              <div className="hidden md:flex items-center gap-1">
+                {[
+                  { name: 'Dashboard', icon: Activity },
+                  { name: 'Strategic Intelligence', icon: Zap, active: true },
+                  { name: 'Tasks', icon: CheckCircle },
+                  { name: 'Data', icon: TrendingUp },
+                  { name: 'Settings', icon: null }
+                ].map((item) => (
+                  <button
+                    key={item.name}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                      item.active 
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' 
+                        : 'text-gray-600 hover:bg-gray-100'
+                    }`}
+                  >
+                    {item.icon && <item.icon className="w-4 h-4" />}
+                    <span className="font-medium">{item.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Theme Toggle */}
             <div className="flex items-center gap-4">
-              <Brain className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-              <div className="space-y-1">
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-                  Strategic Intelligence Engine
-                </h1>
-                <p className="text-lg text-slate-600 dark:text-slate-400">
-                  Transform strategic questions into executable insights with AI-powered analysis
-                </p>
+              <div className="flex gap-1 p-1 bg-gray-100 rounded-lg">
+                {['Light', 'Dark', 'Gray'].map((theme) => (
+                  <button
+                    key={theme}
+                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+                      theme === 'Light' 
+                        ? 'bg-white text-gray-900 shadow-sm' 
+                        : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    {theme}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
+        </div>
+      </nav>
 
-          {/* Main Intelligence Interface */}
-          <Card className="p-8">
-            <CardContent className="space-y-6">
-              <div className="flex justify-between items-start">
-                <div className="space-y-1">
-                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-                    New Strategic Analysis
-                  </h2>
-                  <p className="text-slate-600 dark:text-slate-400">
-                    Ask strategic questions and get AI-powered insights with confidence scoring
-                  </p>
-                </div>
-                <div className="flex gap-2">
-                  <Badge variant="secondary" className="bg-green-100 text-green-800">
-                    <Brain className="mr-1 h-3 w-3" />
-                    AI Engine Ready
-                  </Badge>
-                </div>
-              </div>
+      <main className="pt-24 px-6 pb-12 max-w-7xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            Strategic Intelligence
+          </h1>
+          <p className="text-lg text-gray-600">
+            AI-powered strategic analysis using proven PM frameworks
+          </p>
+        </div>
 
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                    Strategic Question
-                  </label>
-                  <Textarea
-                    placeholder="Enter your strategic question or challenge here..."
-                    rows={4}
-                    className="text-base"
-                  />
-                </div>
-
-                <div className="flex justify-end">
-                  <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
-                    <Send className="mr-2 h-4 w-4" />
-                    Generate Strategic Intelligence
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Features Preview */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="p-6 text-center">
-              <CardContent>
-                <BarChart3 className="h-12 w-12 mx-auto text-blue-600 dark:text-blue-400 mb-4" />
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
-                  Strategic Analysis
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Multi-framework analysis with confidence scoring
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center">
-              <CardContent>
-                <FileText className="h-12 w-12 mx-auto text-green-600 dark:text-green-400 mb-4" />
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
-                  Workflow Generation
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Executable action plans with timeline estimates
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center">
-              <CardContent>
-                <TrendingUp className="h-12 w-12 mx-auto text-purple-600 dark:text-purple-400 mb-4" />
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
-                  Competitive Intelligence
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Market positioning and response strategies
-                </p>
-              </CardContent>
-            </Card>
+        {/* Main Chat Interface */}
+        <div className="glass-card mb-8">
+          <div className="border-b border-gray-200 pb-4 mb-4">
+            <p className="text-gray-700">
+              I'm your Strategic AI Co-Pilot. Ask me anything about competitive strategy, 
+              resource allocation, or product decisions. I'll apply proven frameworks to your specific context.
+            </p>
           </div>
 
-          {/* Coming Soon Notice */}
-          <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
-            <CardContent className="p-8 text-center">
-              <Lightbulb className="h-16 w-16 mx-auto text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-                Advanced Intelligence Features Coming Soon
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                Full strategic intelligence capabilities including multi-AI analysis, workflow automation, 
-                and real-time competitive intelligence are currently in development.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </div>
-  );
-};
+          {/* Framework Selector */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            <span className="text-sm text-gray-600 w-full mb-2">Select Framework:</span>
+            {frameworks.map((fw) => (
+              <button
+                key={fw.id}
+                onClick={() => setSelectedFramework(fw.id)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  selectedFramework === fw.id
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {fw.name}
+              </button>
+            ))}
+          </div>
 
-export default IntelligencePage;
+          {/* Input Area */}
+          <div className="flex gap-3">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask a strategic question..."
+              className="input-field flex-1"
+            />
+            <button className="btn-primary flex items-center gap-2">
+              <Send className="w-4 h-4" />
+              Analyze
+            </button>
+          </div>
+        </div>
+
+        {/* Suggested Questions */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {suggestedQuestions.map((category) => (
+            <div key={category.category} className="glass-card">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="text-2xl">{category.icon}</span>
+                {category.category}
+              </h3>
+              <div className="space-y-2">
+                {category.questions.map((q, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setInput(q)}
+                    className="w-full text-left p-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm text-gray-700 transition-all"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  )
+}

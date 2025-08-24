@@ -18,7 +18,6 @@ import {
   Zap
 } from 'lucide-react'
 import Link from 'next/link'
-import CoreAppNavigation from '../../../components/app/CoreAppNavigation'
 
 // Glass Card Component
 const GlassCard = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
@@ -38,7 +37,7 @@ const GlassCard = ({ children, className = '' }: { children: React.ReactNode, cl
 // Progress Section Component
 const ProgressSection = ({ metrics }: { metrics: any }) => (
   <div className="space-y-6">
-    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+    <h2 className="text-xl font-semibold text-foreground">
       📊 Today's Progress
     </h2>
     
@@ -52,8 +51,8 @@ const ProgressSection = ({ metrics }: { metrics: any }) => (
           background: `conic-gradient(#667eea 0deg ${(metrics.progressPercent / 100) * 360}deg, #e2e8f0 ${(metrics.progressPercent / 100) * 360}deg 360deg)`
         }}>
           <div className="w-24 h-24 bg-white rounded-full flex flex-col items-center justify-center">
-            <span className="text-2xl font-bold text-slate-900">{metrics.progressPercent}%</span>
-            <span className="text-xs text-slate-500">Complete</span>
+            <span className="text-2xl font-bold text-foreground">{metrics.progressPercent}%</span>
+            <span className="text-xs text-muted-foreground">Complete</span>
           </div>
         </div>
       </div>
@@ -62,16 +61,16 @@ const ProgressSection = ({ metrics }: { metrics: any }) => (
       <div className="flex-1">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div>
-            <p className="text-2xl font-bold text-slate-900 dark:text-white">
+            <p className="text-2xl font-bold text-foreground">
               {metrics.decisionsToday}/{metrics.decisionsTotal}
             </p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Decisions Made</p>
+            <p className="text-sm text-muted-foreground">Decisions Made</p>
           </div>
           <div>
             <p className="text-2xl font-bold text-green-600 dark:text-green-400">
               {metrics.teamAlignment}%
             </p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Team Aligned</p>
+            <p className="text-sm text-muted-foreground">Team Aligned</p>
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -82,7 +81,7 @@ const ProgressSection = ({ metrics }: { metrics: any }) => (
                 improved
               </Badge>
             </div>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Strategic Score</p>
+            <p className="text-sm text-muted-foreground">Strategic Score</p>
           </div>
         </div>
       </div>
@@ -129,7 +128,7 @@ Jira workspace "Demo Company" connected!`)
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+        <h2 className="text-xl font-semibold text-foreground flex items-center gap-2">
           <Link2 className="h-5 w-5" />
           PM Tool Integrations
         </h2>
@@ -138,14 +137,14 @@ Jira workspace "Demo Company" connected!`)
         </Badge>
       </div>
       
-      <div className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+      <div className="p-5 rounded-lg bg-background border border-border">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">J</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Atlassian Jira
               </h3>
               <p className="text-slate-600 dark:text-slate-400">
@@ -218,10 +217,10 @@ const SkillTreeSection = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+        <h2 className="text-xl font-semibold text-foreground">
           🚀 PM Skill Tree
         </h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-sm text-muted-foreground">
           Level up your product management expertise
         </p>
       </div>
@@ -230,7 +229,7 @@ const SkillTreeSection = () => {
         {Object.entries(skills).map(([key, skill]) => (
           <div
             key={key}
-            className="p-5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+            className="p-5 rounded-lg bg-background border border-border"
           >
             <div className="flex items-center gap-4">
               <Badge variant="default" className="text-sm px-3 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white">
@@ -239,8 +238,8 @@ const SkillTreeSection = () => {
               
               <div className="flex-1 space-y-2">
                 <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-slate-900 dark:text-white">{skill.name}</h3>
-                  <span className="text-sm text-slate-500 dark:text-slate-400">{skill.progress}%</span>
+                  <h3 className="font-semibold text-foreground">{skill.name}</h3>
+                  <span className="text-sm text-muted-foreground">{skill.progress}%</span>
                 </div>
                 <Progress 
                   value={skill.progress} 
@@ -307,8 +306,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <CoreAppNavigation />
+    <div className="pt-16">
       
       <div className="container mx-auto px-6 py-12 pt-24 max-w-7xl">
         <motion.div 
@@ -319,7 +317,7 @@ export default function DashboardPage() {
         >
           {/* Contextual Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
+            <h1 className="text-4xl font-bold text-foreground mb-2">
               Good morning, {user.name}! Here's your strategic focus for today.
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400">
@@ -350,7 +348,7 @@ export default function DashboardPage() {
             <div className="space-y-6">
               <div className="flex justify-between items-center">
                 <div className="space-y-2">
-                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+                  <h2 className="text-xl font-semibold text-foreground">
                     🎯 Priority Action
                   </h2>
                   <p className="text-slate-600 dark:text-slate-400">
@@ -373,7 +371,7 @@ export default function DashboardPage() {
                     Review Strategic Recommendations (3 min)
                   </Button>
                 </Link>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   Then: Team standup prep (2 min)
                 </p>
               </div>

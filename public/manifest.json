@@ -1,0 +1,84 @@
+{
+  "name": "PM33 - AI-Powered Product Management Platform",
+  "short_name": "PM33",
+  "description": "Transform from Product Manager to Strategic PMO with 4 Agentic AI Teams",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PM33 Strategic Intelligence Dashboard"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "PM33 Mobile Command Center"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Strategic Intelligence",
+      "short_name": "Intelligence",
+      "description": "Access AI-powered strategic analysis",
+      "url": "/strategic-intelligence",
+      "icons": [
+        {
+          "src": "/shortcut-strategic.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Command Center",
+      "short_name": "Command",
+      "description": "Access PM workflow automation",
+      "url": "/command-center",
+      "icons": [
+        {
+          "src": "/shortcut-command.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+pm33",
+      "url": "/?action=%s"
+    }
+  ],
+  "prefer_related_applications": false
+}

@@ -30,7 +30,6 @@ import {
   Users,
   Target
 } from 'lucide-react';
-import CoreAppNavigation from '../../../components/app/CoreAppNavigation';
 
 export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -94,8 +93,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <CoreAppNavigation />
+    <div className="pt-16">
       
       <div className="container mx-auto px-6 py-12 max-w-7xl">
         <div className="space-y-8">

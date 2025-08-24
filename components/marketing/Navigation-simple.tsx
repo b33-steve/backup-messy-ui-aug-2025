@@ -14,8 +14,7 @@ export default function NavigationSimple() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/pricing', label: 'Pricing' },
-    { href: '/resources', label: 'Resources' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/resources', label: 'Resources & Blog' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ];
@@ -25,9 +24,9 @@ export default function NavigationSimple() {
       position: 'sticky',
       top: 0,
       zIndex: 50,
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      backgroundColor: 'var(--pm33-glass)',
       backdropFilter: 'blur(12px)',
-      borderBottom: '1px solid rgba(229, 231, 235, 0.5)',
+      borderBottom: '1px solid var(--pm33-border)',
       padding: '16px 0',
       transition: 'all 0.3s ease'
     }}
@@ -61,7 +60,7 @@ export default function NavigationSimple() {
               href={link.href}
               style={{
                 textDecoration: 'none',
-                color: isActive(link.href) ? '#6366f1' : '#1f2937',
+                color: isActive(link.href) ? 'var(--pm33-primary)' : 'var(--pm33-marketingText)',
                 fontWeight: isActive(link.href) ? 600 : 500,
                 fontSize: '14px',
                 padding: '8px 12px',

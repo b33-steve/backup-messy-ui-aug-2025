@@ -30,36 +30,33 @@ export const PM33Card = ({ children, className = '', style = {}, onClick, ...pro
   return (
     <div
       className={`pm33-glass-card ${className}`}
+      data-testid="pm33-glass-card"
       style={{
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+        // Glass morphism styles with exact specifications - theme-aware background
+        background: 'var(--pm33-glass-bg)',
         backdropFilter: 'blur(40px) saturate(150%)',
         WebkitBackdropFilter: 'blur(40px) saturate(150%)',
-        border: '1px solid rgba(255, 255, 255, 0.18)',
-        boxShadow: `
-          0 8px 32px 0 rgba(31, 38, 135, 0.15),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.1)
-        `,
+        border: '1px solid rgba(255,255,255,0.18)',
         borderRadius: '16px',
-        padding: '24px', // 8pt grid
-        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        padding: '24px',
         position: 'relative',
         overflow: 'hidden',
+        boxShadow: 'var(--pm33-glass-shadow)',
+        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
         cursor: isClickable ? 'pointer' : 'default',
+        color: 'var(--pm33-text-primary)',
         ...style
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
-        e.currentTarget.style.boxShadow = `
-          0 20px 60px 0 rgba(31, 38, 135, 0.25),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.2)
-        `;
+        e.currentTarget.style.boxShadow = 'var(--pm33-glass-hover-shadow)';
+        // Brighten the card on hover
+        e.currentTarget.style.filter = 'brightness(1.1)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0) scale(1)';
-        e.currentTarget.style.boxShadow = `
-          0 8px 32px 0 rgba(31, 38, 135, 0.15),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.1)
-        `;
+        e.currentTarget.style.boxShadow = 'var(--pm33-glass-shadow)';
+        e.currentTarget.style.filter = 'brightness(1)';
       }}
       onClick={onClick}
       {...props}

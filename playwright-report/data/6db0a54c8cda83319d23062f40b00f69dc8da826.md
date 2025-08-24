@@ -1,0 +1,70 @@
+# Page snapshot
+
+```yaml
+- generic:
+  - generic [active]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - navigation [ref=e6]:
+            - button "previous" [disabled] [ref=e7]:
+              - img "previous" [ref=e8]
+            - generic [ref=e10]:
+              - generic [ref=e11]: 1/
+              - generic [ref=e12]: "1"
+            - button "next" [disabled] [ref=e13]:
+              - img "next" [ref=e14]
+          - img
+        - generic [ref=e16]:
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic "Latest available version is detected (15.5.0)." [ref=e20]: Next.js 15.5.0
+            - generic [ref=e21]: Webpack
+          - img
+      - generic [ref=e22]:
+        - dialog "Runtime Error" [ref=e23]:
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - generic [ref=e28]:
+                - generic [ref=e30]: Runtime Error
+                - generic [ref=e31]:
+                  - button "Copy Error Info" [ref=e32] [cursor=pointer]:
+                    - img [ref=e33] [cursor=pointer]
+                  - button "No related documentation found" [disabled] [ref=e35]:
+                    - img [ref=e36]
+                  - link "Learn more about enabling Node.js inspector for server code with Chrome DevTools" [ref=e38] [cursor=pointer]:
+                    - /url: https://nextjs.org/docs/app/building-your-application/configuring/debugging#server-side-code
+                    - img [ref=e39] [cursor=pointer]
+              - paragraph [ref=e48]: "ENOENT: no such file or directory, open '/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/.next/server/app/(app)/dashboard/page.js'"
+            - generic [ref=e51]:
+              - paragraph [ref=e52]:
+                - text: Call Stack
+                - generic [ref=e53]: "27"
+              - button "Show 27 ignore-listed frame(s)" [ref=e54] [cursor=pointer]:
+                - text: Show 27 ignore-listed frame(s)
+                - img [ref=e55] [cursor=pointer]
+          - generic [ref=e57]:
+            - generic [ref=e58]: "1"
+            - generic [ref=e59]: "2"
+        - contentinfo [ref=e60]:
+          - region "Error feedback" [ref=e61]:
+            - paragraph [ref=e62]:
+              - link "Was this helpful?" [ref=e63] [cursor=pointer]:
+                - /url: https://nextjs.org/telemetry#error-feedback
+            - button "Mark as helpful" [ref=e64] [cursor=pointer]:
+              - img [ref=e65] [cursor=pointer]
+            - button "Mark as not helpful" [ref=e68] [cursor=pointer]:
+              - img [ref=e69] [cursor=pointer]
+    - generic [ref=e75] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e76] [cursor=pointer]:
+        - img [ref=e77] [cursor=pointer]
+      - generic [ref=e80] [cursor=pointer]:
+        - button "Open issues overlay" [ref=e81] [cursor=pointer]:
+          - generic [ref=e82] [cursor=pointer]:
+            - generic [ref=e83] [cursor=pointer]: "0"
+            - generic [ref=e84] [cursor=pointer]: "1"
+          - generic [ref=e85] [cursor=pointer]: Issue
+        - button "Collapse issues badge" [ref=e86] [cursor=pointer]:
+          - img [ref=e87] [cursor=pointer]
+  - alert [ref=e89]
+```

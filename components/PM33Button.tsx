@@ -37,24 +37,32 @@ export const PM33Button = ({
 }: PM33ButtonProps) => {
   const variants = {
     primary: {
+      // Solid background with glass overlay for better contrast
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       hoverBackground: 'linear-gradient(135deg, #764ba2 0%, #f093fb 100%)',
       color: 'white',
       boxShadow: '0 4px 15px 0 rgba(102,126,234,0.4)',
-      hoverBoxShadow: '0 6px 20px 0 rgba(118,75,162,0.5)'
+      hoverBoxShadow: '0 6px 20px 0 rgba(118,75,162,0.5)',
+      backdropFilter: 'blur(10px) saturate(120%)',
+      WebkitBackdropFilter: 'blur(10px) saturate(120%)'
     },
     secondary: {
-      background: 'rgba(255,255,255,0.05)',
-      hoverBackground: 'rgba(255,255,255,0.1)',
-      color: 'rgba(255,255,255,0.9)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      hoverBorder: '1px solid rgba(255,255,255,0.2)'
+      // Glass button that adapts to theme
+      background: 'var(--pm33-glass-bg)',
+      backdropFilter: 'blur(40px) saturate(150%)',
+      WebkitBackdropFilter: 'blur(40px) saturate(150%)',
+      hoverBackground: 'var(--pm33-glass-bg)',
+      color: 'var(--pm33-text-primary)',
+      border: '1px solid var(--pm33-glass-border)',
+      hoverBorder: '1px solid var(--pm33-glass-border)'
     },
     danger: {
       background: 'linear-gradient(135deg, #eb3349 0%, #f45c43 100%)',
       hoverBackground: 'linear-gradient(135deg, #f45c43 0%, #fc6767 100%)',
       color: 'white',
-      boxShadow: '0 4px 15px 0 rgba(235,51,73,0.4)'
+      boxShadow: '0 4px 15px 0 rgba(235,51,73,0.4)',
+      backdropFilter: 'blur(10px) saturate(120%)',
+      WebkitBackdropFilter: 'blur(10px) saturate(120%)'
     }
   };
   
@@ -84,6 +92,8 @@ export const PM33Button = ({
         alignItems: 'center',
         justifyContent: 'center',
         gap: '8px',
+        backdropFilter: 'backdropFilter' in variants[variant] ? (variants[variant] as any).backdropFilter : 'none',
+        WebkitBackdropFilter: 'WebkitBackdropFilter' in variants[variant] ? (variants[variant] as any).WebkitBackdropFilter : 'none',
         border: 'border' in variants[variant] ? (variants[variant] as any).border : 'none',
         cursor: loading ? 'wait' : 'pointer',
         opacity: loading ? 0.7 : 1,

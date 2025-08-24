@@ -3,6 +3,8 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
+  // Remove standalone output for development to fix clientReferenceManifest bug
+  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

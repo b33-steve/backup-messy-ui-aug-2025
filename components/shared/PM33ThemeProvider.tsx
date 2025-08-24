@@ -50,8 +50,9 @@ export function PM33ThemeProvider({ children, defaultTheme = 'light' }: PM33Them
   const setTheme = (newTheme: PM33Theme) => {
     setThemeState(newTheme);
     
-    // Apply theme to document body for global styles
+    // Apply theme to document body and html for global styles
     document.body.className = newTheme;
+    document.documentElement.className = newTheme;
     
     // Persist theme preference
     localStorage.setItem('pm33-theme', newTheme);
@@ -61,9 +62,14 @@ export function PM33ThemeProvider({ children, defaultTheme = 'light' }: PM33Them
   useEffect(() => {
     const savedTheme = localStorage.getItem('pm33-theme') as PM33Theme;
     if (savedTheme && ['light', 'dark', 'gray'].includes(savedTheme)) {
-      setTheme(savedTheme);
+      setThemeState(savedTheme);
+      // Apply theme immediately on load
+      document.body.className = savedTheme;
+      document.documentElement.className = savedTheme;
     } else {
-      setTheme(defaultTheme);
+      setThemeState(defaultTheme);
+      document.body.className = defaultTheme;
+      document.documentElement.className = defaultTheme;
     }
   }, [defaultTheme]);
 
@@ -73,36 +79,42 @@ export function PM33ThemeProvider({ children, defaultTheme = 'light' }: PM33Them
     
     switch (theme) {
       case 'light':
-        root.style.setProperty('--pm33-bg-gradient', 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%)');
-        root.style.setProperty('--pm33-text-primary', '#1e293b');
-        root.style.setProperty('--pm33-text-secondary', '#64748b');
+        // LIGHT THEME: Exact specifications
+        root.style.setProperty('--pm33-bg-gradient', 'linear-gradient(135deg, #f8f9fa, #ffffff)');
+        root.style.setProperty('--pm33-text-primary', '#1a1a1a');
+        root.style.setProperty('--pm33-text-secondary', '#4a4a4a');
         root.style.setProperty('--pm33-accent', '#3b82f6');
-        root.style.setProperty('--pm33-glass-bg', 'rgba(255,255,255,0.7)');
-        root.style.setProperty('--pm33-glass-border', 'rgba(0,0,0,0.1)');
-        root.style.setProperty('--pm33-glass-shadow', '0 4px 20px rgba(0,0,0,0.1)');
-        root.style.setProperty('--pm33-glass-hover-shadow', '0 8px 30px rgba(0,0,0,0.15)');
+        root.style.setProperty('--pm33-glass-bg', 'rgba(255,255,255,0.8)');
+        root.style.setProperty('--pm33-glass-border', 'rgba(0, 0, 0, 0.06)');
+        root.style.setProperty('--pm33-glass-shadow', '0 4px 20px rgba(0,0,0,0.08)');
+        root.style.setProperty('--pm33-glass-hover-shadow', '0 8px 30px rgba(0, 0, 0, 0.12)');
+        root.style.setProperty('--pm33-brand-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
         break;
         
       case 'dark':
-        root.style.setProperty('--pm33-bg-gradient', 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)');
-        root.style.setProperty('--pm33-text-primary', '#f8fafc');
-        root.style.setProperty('--pm33-text-secondary', 'rgba(248,250,252,0.7)');
-        root.style.setProperty('--pm33-accent', '#64748b');
+        // DARK THEME: Exact specifications
+        root.style.setProperty('--pm33-bg-gradient', 'linear-gradient(135deg, #0a0a0a, #1a1a1a)');
+        root.style.setProperty('--pm33-text-primary', '#ffffff');
+        root.style.setProperty('--pm33-text-secondary', '#d1d5db');
+        root.style.setProperty('--pm33-accent', '#60a5fa');
         root.style.setProperty('--pm33-glass-bg', 'rgba(255,255,255,0.05)');
-        root.style.setProperty('--pm33-glass-border', 'rgba(255,255,255,0.1)');
-        root.style.setProperty('--pm33-glass-shadow', '0 4px 20px rgba(0,0,0,0.3)');
-        root.style.setProperty('--pm33-glass-hover-shadow', '0 8px 30px rgba(0,0,0,0.4)');
+        root.style.setProperty('--pm33-glass-border', 'rgba(255, 255, 255, 0.1)');
+        root.style.setProperty('--pm33-glass-shadow', '0 8px 32px rgba(0,0,0,0.4)');
+        root.style.setProperty('--pm33-glass-hover-shadow', '0 8px 30px rgba(96, 165, 250, 0.2)');
+        root.style.setProperty('--pm33-brand-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
         break;
         
       case 'gray':
-        root.style.setProperty('--pm33-bg-gradient', 'linear-gradient(135deg, #f8f4ff 0%, #e9d5ff 30%, #f3e8ff 70%, #faf7ff 100%)');
-        root.style.setProperty('--pm33-text-primary', '#581c87');
-        root.style.setProperty('--pm33-text-secondary', 'rgba(88,28,135,0.7)');
-        root.style.setProperty('--pm33-accent', '#9ca3af');
-        root.style.setProperty('--pm33-glass-bg', 'rgba(255,255,255,0.1)');
-        root.style.setProperty('--pm33-glass-border', 'rgba(255,255,255,0.15)');
-        root.style.setProperty('--pm33-glass-shadow', '0 4px 20px rgba(0,0,0,0.2)');
-        root.style.setProperty('--pm33-glass-hover-shadow', '0 8px 30px rgba(0,0,0,0.3)');
+        // GRAY THEME: Warm charcoal background with sophisticated contrast - visually distinct from dark
+        root.style.setProperty('--pm33-bg-gradient', 'linear-gradient(135deg, #1f2937 0%, #374151 100%)'); // Warmer gray-blue
+        root.style.setProperty('--pm33-text-primary', '#f9fafb'); // Off-white headings  
+        root.style.setProperty('--pm33-text-secondary', '#d1d5db'); // Lighter gray body text
+        root.style.setProperty('--pm33-accent', '#a78bfa'); // Purple accent (different from dark theme blue)
+        root.style.setProperty('--pm33-glass-bg', 'rgba(75, 85, 99, 0.3)'); // Warm gray glass tint
+        root.style.setProperty('--pm33-glass-border', 'rgba(156, 163, 175, 0.2)'); // Gray border
+        root.style.setProperty('--pm33-glass-shadow', '0 4px 20px rgba(31, 41, 55, 0.4)'); // Warmer shadows
+        root.style.setProperty('--pm33-glass-hover-shadow', '0 8px 30px rgba(167, 139, 250, 0.15)'); // Purple glow effect
+        root.style.setProperty('--pm33-brand-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
         break;
     }
   }, [theme]);
@@ -116,9 +128,20 @@ export function PM33ThemeProvider({ children, defaultTheme = 'light' }: PM33Them
   return (
     <PM33ThemeContext.Provider value={contextValue}>
       <div 
-        className="min-h-screen transition-all duration-300 ease-in-out"
-        style={{ background: 'var(--pm33-bg-gradient)', color: 'var(--pm33-text-primary)' }}
-      >
+        className="min-h-screen transition-all duration-500 ease-in-out"
+        style={{ 
+          background: 'var(--pm33-bg-gradient)', 
+          color: 'var(--pm33-text-primary)',
+          // Ensure the background covers the full viewport
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: -1
+        }}
+      />
+      <div className="relative z-10 min-h-screen" style={{ color: 'var(--pm33-text-primary)' }}>
         {children}
       </div>
     </PM33ThemeContext.Provider>
@@ -153,6 +176,16 @@ export function PM33ThemeToggle() {
         <button
           key={themeOption.value}
           onClick={() => setTheme(themeOption.value)}
+          onMouseEnter={(e) => {
+            if (theme !== themeOption.value) {
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (theme !== themeOption.value) {
+              e.currentTarget.style.transform = 'scale(1)';
+            }
+          }}
           className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out
             ${theme === themeOption.value 
               ? 'transform scale-95 opacity-100' 
@@ -165,6 +198,7 @@ export function PM33ThemeToggle() {
             color: theme === themeOption.value 
               ? 'white' 
               : 'var(--pm33-text-secondary)',
+            transform: theme === themeOption.value ? 'scale(0.95)' : 'scale(1)',
           }}
         >
           {themeOption.label}

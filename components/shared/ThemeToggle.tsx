@@ -8,7 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import { ActionIcon, Tooltip } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
-import { useTheme } from '../providers/theme-provider';
+import { useTheme } from '../../providers/ThemeProvider';
 
 interface ThemeToggleProps {
   size?: 'sm' | 'md' | 'lg';
@@ -21,7 +21,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   variant = 'default',
   showTooltip = true
 }) => {
-  const { theme, setTheme } = useTheme();
+  const { currentTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Ensure component is mounted on client side to prevent hydration mismatch
@@ -30,11 +30,8 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
-    
-    // Save to localStorage
-    localStorage.setItem('pm33-theme', newTheme);
   };
 
   // Prevent hydration mismatch by not rendering until mounted
@@ -50,7 +47,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
     );
   }
 
-  const isDark = theme === 'dark';
+  const isDark = currentTheme === 'dark';
   const icon = isDark ? <IconSun size={18} /> : <IconMoon size={18} />;
   const tooltipLabel = `Switch to ${isDark ? 'light' : 'dark'} mode`;
 
@@ -60,6 +57,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
       variant="subtle"
       onClick={toggleTheme}
       aria-label={tooltipLabel}
+      data-testid="theme-toggle"
     >
       {icon}
     </ActionIcon>
