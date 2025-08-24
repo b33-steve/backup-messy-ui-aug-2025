@@ -1,233 +1,111 @@
-'use client';
-
-import React from 'react';
-import { Container, Title, Text, Card, Stack, Badge, Button, Group, SimpleGrid, Box } from '@mantine/core';
-import { IconBrain, IconRocket, IconUsers, IconTrendingUp } from '@tabler/icons-react';
-import Link from 'next/link';
-
 export default function AboutPage() {
   return (
-    <div className="marketing-context">
-      <Box style={{ minHeight: '100vh', backgroundColor: 'var(--mantine-color-gray-0)' }}>
+    <div className="marketing-context" style={{ minHeight: '100vh', padding: '4rem 2rem' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '2rem', color: 'var(--marketing-text-primary)' }}>
+          About PM33
+        </h1>
+        <p style={{ fontSize: '1.25rem', lineHeight: 1.6, marginBottom: '3rem', color: 'var(--marketing-text-secondary)' }}>
+          We're democratizing strategic product management through AI-powered intelligence teams.
+        </p>
         
-        {/* Hero Section */}
-        <Box 
-          style={{ 
-            position: 'relative',
-            padding: '4rem 0',
-            background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
-            overflow: 'hidden'
-          }}
-        >
-          <Container size="xl">
-            <Stack align="center" gap={32}>
-              <Badge 
-                size="lg" 
-                variant="gradient" 
-                gradient={{ from: 'indigo.1', to: 'purple.1' }}
-                c="indigo.7"
-                leftSection={<IconBrain size={16} />}
-              >
-                About PM33
-              </Badge>
-              
-              <Stack align="center" gap={16}>
-                <Title 
-                  order={1} 
-                  size="h1"
-                  lh={1.1}
-                  ta="center"
-                  style={{ 
-                    fontWeight: 800,
-                    color: 'var(--mantine-color-dark-8)'
-                  }}
-                >
-                  We're Democratizing
-                  <Text 
-                    span 
-                    variant="gradient" 
-                    gradient={{ from: 'indigo', to: 'cyan' }}
-                    style={{ display: 'block', marginTop: 8 }}
-                  >
-                    Strategic Product Management
-                  </Text>
-                </Title>
-                
-                <Text size="xl" c="dimmed" lh={1.6} ta="center" maw={800}>
-                  Every PM deserves PMO-level strategic capabilities. We're building the AI platform 
-                  that transforms individual contributors into strategic leaders, regardless of company 
-                  size or budget.
-                </Text>
-              </Stack>
-              
-              <Group gap={16}>
-                <Button 
-                  component={Link}
-                  href="/trial"
-                  size="lg"
-                  variant="gradient"
-                  gradient={{ from: 'indigo', to: 'purple' }}
-                  leftSection={<IconRocket size={18} />}
-                >
-                  Start Free Trial
-                </Button>
-                <Button 
-                  component={Link}
-                  href="/contact"
-                  size="lg"
-                  variant="outline"
-                  c="indigo.7"
-                >
-                  Get in Touch
-                </Button>
-              </Group>
-            </Stack>
-          </Container>
-        </Box>
-
-        {/* Stats Section */}
-        <Box py={64} bg="white">
-          <Container size="xl">
-            <SimpleGrid cols={{ base: 2, md: 4 }} spacing={32}>
-              <Card shadow="xl" radius="xl" p={24}>
-                <Stack align="center" gap={16}>
-                  <IconUsers size={48} color="var(--mantine-color-indigo-6)" />
-                  <Stack align="center" gap={4}>
-                    <Text size="24px" fw={700} c="indigo.6">2,500+</Text>
-                    <Text size="sm" c="dimmed" ta="center">Product Managers</Text>
-                  </Stack>
-                </Stack>
-              </Card>
-              
-              <Card shadow="xl" radius="xl" p={24}>
-                <Stack align="center" gap={16}>
-                  <IconTrendingUp size={48} color="var(--mantine-color-teal-6)" />
-                  <Stack align="center" gap={4}>
-                    <Text size="24px" fw={700} c="teal.6">300%</Text>
-                    <Text size="sm" c="dimmed" ta="center">Productivity Boost</Text>
-                  </Stack>
-                </Stack>
-              </Card>
-              
-              <Card shadow="xl" radius="xl" p={24}>
-                <Stack align="center" gap={16}>
-                  <IconBrain size={48} color="var(--mantine-color-orange-6)" />
-                  <Stack align="center" gap={4}>
-                    <Text size="24px" fw={700} c="orange.6">4</Text>
-                    <Text size="sm" c="dimmed" ta="center">AI Teams</Text>
-                  </Stack>
-                </Stack>
-              </Card>
-              
-              <Card shadow="xl" radius="xl" p={24}>
-                <Stack align="center" gap={16}>
-                  <IconRocket size={48} color="var(--mantine-color-green-6)" />
-                  <Stack align="center" gap={4}>
-                    <Text size="24px" fw={700} c="green.6">85%</Text>
-                    <Text size="sm" c="dimmed" ta="center">Success Rate</Text>
-                  </Stack>
-                </Stack>
-              </Card>
-            </SimpleGrid>
-          </Container>
-        </Box>
-
-        {/* Mission */}
-        <Box py={64} bg="gray.0">
-          <Container size="xl">
-            <Stack align="center" gap={48}>
-              <Stack align="center" gap={16}>
-                <Badge size="lg" color="indigo" variant="light">
-                  🎯 Our Mission
-                </Badge>
-                <Title order={2} size="h2" ta="center" maw={800}>
-                  From Individual Contributors to Strategic Leaders
-                </Title>
-              </Stack>
-              
-              <SimpleGrid cols={{ base: 1, md: 2 }} spacing={48}>
-                <Card shadow="xl" radius="xl" p={32} bg="indigo.0" style={{ border: '1px solid var(--mantine-color-indigo-2)' }}>
-                  <Stack gap={24}>
-                    <Title order={3} size="h3" c="indigo.8">
-                      The Problem We're Solving
-                    </Title>
-                    <Text c="dimmed" lh={1.6}>
-                      60-80% of PM time goes to administrative busywork instead of strategic thinking. 
-                      Writing PRDs, synthesizing feedback, creating presentations—all manually.
-                    </Text>
-                    <Text c="dimmed" lh={1.6}>
-                      Meanwhile, strategic opportunities slip by. Competitors ship faster because their 
-                      PMs focus on strategy while yours handle admin tasks.
-                    </Text>
-                  </Stack>
-                </Card>
-                
-                <Card shadow="xl" radius="xl" p={32} bg="teal.0" style={{ border: '1px solid var(--mantine-color-teal-2)' }}>
-                  <Stack gap={24}>
-                    <Title order={3} size="h3" c="teal.8">
-                      Our Solution
-                    </Title>
-                    <Text c="dimmed" lh={1.6}>
-                      PM33 provides 4 specialized AI teams that handle the busywork: Strategic Intelligence, 
-                      Workflow Execution, Data Analysis, and Communication.
-                    </Text>
-                    <Text c="dimmed" lh={1.6}>
-                      Transform from reactive task-handler to strategic leader in weeks. Focus on vision, 
-                      strategy, and market opportunities—not administrative overhead.
-                    </Text>
-                  </Stack>
-                </Card>
-              </SimpleGrid>
-            </Stack>
-          </Container>
-        </Box>
-
-        {/* CTA */}
-        <Box py={96} style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
-          <Container size="md">
-            <Stack align="center" gap={32}>
-              <Stack align="center" gap={16}>
-                <Badge size="lg" color="white" variant="light">
-                  💫 Experience PM33
-                </Badge>
-                <Title order={2} size="h2" c="white" ta="center">
-                  Ready to Transform Your PM Work?
-                </Title>
-                <Text size="lg" c="rgba(255, 255, 255, 0.9)" ta="center" maw={600}>
-                  Join 2,500+ product managers who've made the leap from busywork to strategic leadership.
-                </Text>
-              </Stack>
-              
-              <Group gap={16}>
-                <Button 
-                  size="xl"
-                  variant="white"
-                  color="dark"
-                  leftSection={<IconRocket size={20} />}
-                  component={Link}
-                  href="/trial"
-                >
-                  Start Free 14-Day Trial
-                </Button>
-                <Button 
-                  size="xl"
-                  variant="outline"
-                  style={{ borderColor: 'rgba(255, 255, 255, 0.3)', color: 'white' }}
-                  component={Link}
-                  href="/contact"
-                >
-                  Get in Touch
-                </Button>
-              </Group>
-              
-              <Text size="sm" c="rgba(255, 255, 255, 0.8)">
-                ✅ No credit card required • ✅ Setup in 5 minutes • ✅ Cancel anytime
-              </Text>
-            </Stack>
-          </Container>
-        </Box>
-
-      </Box>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--marketing-primary)', marginBottom: '0.5rem' }}>2,500+</h3>
+            <p style={{ color: 'var(--marketing-text-muted)', margin: 0 }}>Product Managers</p>
+          </div>
+          
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--marketing-primary)', marginBottom: '0.5rem' }}>300%</h3>
+            <p style={{ color: 'var(--marketing-text-muted)', margin: 0 }}>Productivity Boost</p>
+          </div>
+          
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--marketing-primary)', marginBottom: '0.5rem' }}>4</h3>
+            <p style={{ color: 'var(--marketing-text-muted)', margin: 0 }}>AI Teams</p>
+          </div>
+          
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--marketing-primary)', marginBottom: '0.5rem' }}>85%</h3>
+            <p style={{ color: 'var(--marketing-text-muted)', margin: 0 }}>Success Rate</p>
+          </div>
+        </div>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)', textAlign: 'left' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--marketing-text-primary)', marginBottom: '1rem' }}>
+              The Problem We're Solving
+            </h3>
+            <p style={{ color: 'var(--marketing-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
+              60-80% of PM time goes to administrative busywork instead of strategic thinking. 
+              Writing PRDs, synthesizing feedback, creating presentations—all manually.
+            </p>
+            <p style={{ color: 'var(--marketing-text-secondary)', lineHeight: 1.6, margin: 0 }}>
+              Meanwhile, strategic opportunities slip by. Competitors ship faster because their 
+              PMs focus on strategy while yours handle admin tasks.
+            </p>
+          </div>
+          
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)', textAlign: 'left' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--marketing-text-primary)', marginBottom: '1rem' }}>
+              Our Solution
+            </h3>
+            <p style={{ color: 'var(--marketing-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
+              PM33 provides 4 specialized AI teams that handle the busywork: Strategic Intelligence, 
+              Workflow Execution, Data Analysis, and Communication.
+            </p>
+            <p style={{ color: 'var(--marketing-text-secondary)', lineHeight: 1.6, margin: 0 }}>
+              Transform from reactive task-handler to strategic leader in weeks. Focus on vision, 
+              strategy, and market opportunities—not administrative overhead.
+            </p>
+          </div>
+        </div>
+        
+        <div style={{ padding: '3rem', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '12px', color: 'white' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '1rem', color: 'white' }}>
+            Ready to Transform Your PM Work?
+          </h2>
+          <p style={{ fontSize: '1.125rem', marginBottom: '2rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+            Join 2,500+ product managers who've made the leap from busywork to strategic leadership.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a 
+              href="/trial" 
+              style={{ 
+                display: 'inline-block',
+                padding: '12px 24px', 
+                backgroundColor: 'white', 
+                color: '#667eea', 
+                textDecoration: 'none', 
+                borderRadius: '8px', 
+                fontWeight: 600,
+                fontSize: '1.125rem'
+              }}
+            >
+              Start Free 14-Day Trial
+            </a>
+            <a 
+              href="/contact" 
+              style={{ 
+                display: 'inline-block',
+                padding: '12px 24px', 
+                backgroundColor: 'transparent', 
+                color: 'white', 
+                textDecoration: 'none', 
+                borderRadius: '8px', 
+                fontWeight: 600,
+                fontSize: '1.125rem',
+                border: '2px solid rgba(255, 255, 255, 0.3)'
+              }}
+            >
+              Get in Touch
+            </a>
+          </div>
+          <p style={{ fontSize: '0.875rem', marginTop: '1rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+            ✅ No credit card required • ✅ Setup in 5 minutes • ✅ Cancel anytime
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
