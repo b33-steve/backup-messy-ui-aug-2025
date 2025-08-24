@@ -2,16 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "rewrites": [
-    {
-      "source": "/((?!api/.*).*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/api/strategic-analysis",
-      "destination": "/api/strategic-analysis"
-    }
-  ],
   "functions": {
     "app/api/strategic-analysis/route.ts": {
       "maxDuration": 30
