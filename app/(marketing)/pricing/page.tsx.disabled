@@ -1,0 +1,149 @@
+'use client';
+
+import { Container, Card, Title, Text, Button, Grid } from '@mantine/core';
+import { useState } from 'react';
+
+const pricingPlans = [
+  {
+    name: 'Starter',
+    price: 29,
+    annualPrice: 24,
+    description: 'Perfect for individual PMs starting their AI transformation',
+    features: ['1 PM workspace', '50 AI analyses per month', 'Basic frameworks (ICE, RICE)', 'Email support']
+  },
+  {
+    name: 'Team',
+    price: 79,
+    annualPrice: 65,
+    description: 'For product teams ready to scale strategic intelligence',
+    features: ['5 PM workspaces', '200 AI analyses per month', 'Advanced frameworks', 'Priority support'],
+    popular: true
+  },
+  {
+    name: 'Enterprise',
+    price: 599,
+    annualPrice: 499,
+    description: 'For enterprises requiring full PMO transformation',
+    features: ['Unlimited workspaces', 'Unlimited AI analyses', 'Custom frameworks', 'Dedicated support'],
+    isEnterprise: true
+  }
+];
+
+export default function PricingPage() {
+  const [isAnnual, setIsAnnual] = useState(false);
+
+  return (
+    <div className="marketing-context">
+      <Container size={1200} px={24} py={80}>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <Title order={1} size="3.5rem" style={{ color: 'var(--marketing-text-primary)', marginBottom: '24px' }}>
+            Intelligence Operations Pricing
+          </Title>
+          <Text size="xl" style={{ color: 'var(--marketing-text-secondary)', maxWidth: '700px', margin: '0 auto 48px auto' }}>
+            Usage-based pricing that scales with your PMO transformation. No per-seat limits, no feature restrictions—just pure intelligence.
+          </Text>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <Text style={{ fontWeight: isAnnual ? 400 : 600, color: 'var(--marketing-text-primary)' }}>Monthly</Text>
+          <Button
+            onClick={() => setIsAnnual(!isAnnual)}
+            variant="light"
+            size="sm"
+            style={{ backgroundColor: isAnnual ? 'var(--marketing-primary)' : 'var(--marketing-bg-secondary)' }}
+          >
+            {isAnnual ? 'Annual' : 'Monthly'}
+          </Button>
+          <Text style={{ fontWeight: isAnnual ? 600 : 400, color: 'var(--marketing-text-primary)' }}>Annual</Text>
+          {isAnnual && <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', borderRadius: '12px', backgroundColor: 'var(--marketing-success)', color: 'white' }}>Save 20%</span>}
+        </div>
+
+        <Grid>
+          {pricingPlans.map((plan, index) => (
+            <Grid.Col key={index} span={{ base: 12, md: 4 }}>
+              <Card
+                shadow="md"
+                padding={32}
+                radius={16}
+                h="100%"
+                style={{
+                  backgroundColor: 'var(--marketing-bg-primary)',
+                  border: plan.popular ? '2px solid var(--marketing-primary)' : '1px solid rgba(0,0,0,0.08)',
+                  position: 'relative'
+                }}
+              >
+                {plan.popular && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '-12px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    backgroundColor: 'var(--marketing-primary)',
+                    color: 'white',
+                    padding: '0.5rem 1.5rem',
+                    borderRadius: '20px',
+                    fontSize: '0.8rem',
+                    fontWeight: 600
+                  }}>
+                    Most Popular
+                  </div>
+                )}
+
+                <Title order={3} style={{ color: 'var(--marketing-text-primary)', marginBottom: '8px' }}>
+                  {plan.name}
+                </Title>
+                <Text size="sm" style={{ color: 'var(--marketing-text-secondary)', marginBottom: '32px' }}>
+                  {plan.description}
+                </Text>
+
+                <div style={{ marginBottom: '2rem' }}>
+                  <Text size="3rem" style={{ fontWeight: 700, color: 'var(--marketing-primary)', lineHeight: 1 }}>
+                    ${isAnnual ? plan.annualPrice : plan.price}
+                  </Text>
+                  <Text size="sm" style={{ color: 'var(--marketing-text-secondary)', marginTop: '8px' }}>
+                    {isAnnual ? 'per month (billed annually)' : 'per month'}
+                  </Text>
+                </div>
+
+                <div style={{ marginBottom: '2rem' }}>
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                      <div style={{
+                        width: '16px',
+                        height: '16px',
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--marketing-success)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '10px',
+                        color: 'white'
+                      }}>
+                        ✓
+                      </div>
+                      <Text size="sm" style={{ color: 'var(--marketing-text-secondary)' }}>
+                        {feature}
+                      </Text>
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  size="lg"
+                  fullWidth
+                  variant={plan.isEnterprise ? 'outline' : 'filled'}
+                  style={plan.isEnterprise ? { color: 'var(--marketing-text-primary)' } : {
+                    backgroundColor: 'var(--marketing-primary)',
+                    color: 'white'
+                  }}
+                >
+                  {plan.isEnterprise ? 'Contact Sales' : '✨ Start Free Trial'}
+                </Button>
+              </Card>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Container>
+    </div>
+  );
+}

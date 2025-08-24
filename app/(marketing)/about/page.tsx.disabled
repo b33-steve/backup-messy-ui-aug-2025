@@ -1,0 +1,32 @@
+'use client';
+
+import { Container, Card, Title, Text } from '@mantine/core';
+
+export default function AboutPage() {
+  return (
+    <div className="marketing-context">
+      <Container size={1200} px={24} py={80}>
+        <Card
+          shadow="md"
+          padding={48}
+          radius={16}
+          style={{
+            backgroundColor: 'var(--marketing-bg-primary)',
+            border: '1px solid rgba(0,0,0,0.08)',
+            textAlign: 'center'
+          }}
+        >
+          <Title order={1} style={{ color: 'var(--marketing-text-primary)', marginBottom: '24px' }}>
+            About PM33
+          </Title>
+          <Text 
+            size="lg" 
+            style={{ lineHeight: 1.7, maxWidth: '700px', margin: '0 auto', color: 'var(--marketing-text-secondary)' }}
+          >
+            We're transforming how Product Managers work by providing PMO-level strategic capabilities through intelligent AI teams. Our mission is to turn every PM into a strategic powerhouse.
+          </Text>
+        </Card>
+      </Container>
+    </div>
+  );
+}
