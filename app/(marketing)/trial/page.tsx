@@ -1,140 +1,99 @@
-'use client';
-
-import React from 'react';
-import { Container, Title, Text, Button, Card, Stack, Box, Badge, Center, Group } from '@mantine/core';
-import { IconArrowRight, IconCheck, IconSparkles } from '@tabler/icons-react';
-import Link from 'next/link';
-
 export default function TrialPage() {
   return (
-    <div className="marketing-context">
-      <Box style={{ minHeight: '100vh', backgroundColor: 'var(--mantine-color-gray-0)' }}>
+    <div className="marketing-context" style={{ minHeight: '100vh', padding: '4rem 2rem' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '2rem', color: 'var(--marketing-text-primary)' }}>
+          Start Your Free Trial
+        </h1>
+        <p style={{ fontSize: '1.25rem', lineHeight: 1.6, marginBottom: '3rem', color: 'var(--marketing-text-secondary)' }}>
+          Experience PM33's AI-powered intelligence teams. Transform from task manager to strategic leader in 14 days.
+        </p>
         
-        {/* Hero Section */}
-        <Box 
-          style={{ 
-            position: 'relative',
-            padding: '8rem 0 6rem 0',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            color: 'white'
-          }}
-        >
-          <Container size="md">
-            <Stack align="center" gap={32}>
-              <Badge 
-                size="lg" 
-                color="white" 
-                variant="light"
-                leftSection={<IconSparkles size={16} />}
-              >
-                Start Your Free 14-Day Trial
-              </Badge>
-              
-              <Stack align="center" gap={24}>
-                <Title 
-                  order={1} 
-                  size="h1"
-                  ta="center"
-                  lh={1.1}
-                  style={{ fontSize: '3.5rem', fontWeight: 800 }}
-                >
-                  Experience PM33 for Free
-                </Title>
-                
-                <Text size="xl" ta="center" mw={600} lh={1.6} c="rgba(255, 255, 255, 0.9)">
-                  No credit card required. Full access to all 4 AI teams. 
-                  Cancel anytime. Start transforming your PM workflow today.
-                </Text>
-              </Stack>
-              
-              <Button 
-                component={Link}
-                href="/strategic-intelligence"
-                size="xl"
-                variant="white"
-                color="dark"
-                rightSection={<IconArrowRight size={20} />}
-                style={{ 
-                  borderRadius: 16,
-                  fontWeight: 700,
-                  fontSize: '18px',
-                  padding: '16px 32px',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3)'
-                }}
-              >
-                Start Your Free Trial Now
-              </Button>
-              
-              <Text size="sm" c="rgba(255, 255, 255, 0.8)" ta="center">
-                Join 2,500+ product managers already using PM33
-              </Text>
-            </Stack>
-          </Container>
-        </Box>
-
-        {/* Features Section */}
-        <Box py={80}>
-          <Container size="lg">
-            <Stack align="center" gap={48}>
-              <Title order={2} size="h2" ta="center" mb={24}>
-                What's Included in Your Free Trial
-              </Title>
-              
-              <Stack gap={24} mw={800}>
-                {[
-                  { icon: IconCheck, text: "Full access to Strategic Intelligence AI Team" },
-                  { icon: IconCheck, text: "Complete Command Center with 4 AI teams orchestration" },
-                  { icon: IconCheck, text: "50 AI operations to test all workflows" },
-                  { icon: IconCheck, text: "Real strategic analysis with your data" },
-                  { icon: IconCheck, text: "14-day unlimited access - no restrictions" },
-                  { icon: IconCheck, text: "Email support and onboarding guidance" }
-                ].map((item, index) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <Group key={index} gap={16}>
-                      <IconComponent size={24} color="var(--mantine-color-teal-6)" />
-                      <Text size="lg" fw={500}>
-                        {item.text}
-                      </Text>
-                    </Group>
-                  );
-                })}
-              </Stack>
-
-              <Card 
-                shadow="xl" 
-                radius="xl" 
-                p={48}
-                style={{ 
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid var(--mantine-color-gray-2)',
-                  maxWidth: 600
-                }}
-              >
-                <Stack align="center" gap={24}>
-                  <Title order={3} size="h3" ta="center" c="dark.8">
-                    Ready to Transform Your PM Work?
-                  </Title>
-                  <Text size="lg" c="dimmed" ta="center" lh={1.6}>
-                    Start with our Strategic Intelligence demo and see immediate results
-                  </Text>
-                  <Button 
-                    component={Link}
-                    href="/strategic-intelligence"
-                    size="xl"
-                    variant="gradient"
-                    gradient={{ from: 'indigo', to: 'purple' }}
-                    rightSection={<IconArrowRight size={20} />}
-                    style={{ borderRadius: 16 }}
-                  >
-                    Begin Free Trial
-                  </Button>
-                </Stack>
-              </Card>
-            </Stack>
-          </Container>
-        </Box>
-      </Box>
+        <div style={{ padding: '3rem', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '12px', color: 'white', marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '1rem', color: 'white' }}>
+            14-Day Free Trial
+          </h2>
+          <p style={{ fontSize: '1.125rem', marginBottom: '2rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+            Full access to all 4 AI intelligence teams. No credit card required.
+          </p>
+          <a 
+            href="mailto:sales@pm33.ai?subject=Free Trial Request" 
+            style={{ 
+              display: 'inline-block',
+              padding: '16px 32px', 
+              backgroundColor: 'white', 
+              color: '#667eea', 
+              textDecoration: 'none', 
+              borderRadius: '8px', 
+              fontWeight: 600,
+              fontSize: '1.25rem'
+            }}
+          >
+            Start Free Trial
+          </a>
+          <p style={{ fontSize: '0.875rem', marginTop: '1rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+            ✅ No credit card required • ✅ Setup in 5 minutes • ✅ Cancel anytime
+          </p>
+        </div>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--marketing-text-primary)', marginBottom: '1rem' }}>
+              Strategic Intelligence
+            </h3>
+            <p style={{ color: 'var(--marketing-text-secondary)', marginBottom: '1rem' }}>
+              AI-powered strategic analysis using frameworks like ICE, RICE, and Porter's Five Forces.
+            </p>
+            <ul style={{ textAlign: 'left', color: 'var(--marketing-text-muted)' }}>
+              <li>Multi-framework analysis</li>
+              <li>Competitive intelligence</li>
+              <li>Strategic recommendations</li>
+            </ul>
+          </div>
+          
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--marketing-text-primary)', marginBottom: '1rem' }}>
+              Workflow Execution
+            </h3>
+            <p style={{ color: 'var(--marketing-text-secondary)', marginBottom: '1rem' }}>
+              Automated task creation and cross-functional coordination with PM tool integration.
+            </p>
+            <ul style={{ textAlign: 'left', color: 'var(--marketing-text-muted)' }}>
+              <li>Automated workflows</li>
+              <li>Timeline management</li>
+              <li>Progress tracking</li>
+            </ul>
+          </div>
+          
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--marketing-text-primary)', marginBottom: '1rem' }}>
+              Data Intelligence
+            </h3>
+            <p style={{ color: 'var(--marketing-text-secondary)', marginBottom: '1rem' }}>
+              Company-specific context learning and predictive analytics for optimization.
+            </p>
+            <ul style={{ textAlign: 'left', color: 'var(--marketing-text-muted)' }}>
+              <li>Performance optimization</li>
+              <li>Trend analysis</li>
+              <li>Predictive insights</li>
+            </ul>
+          </div>
+          
+          <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--marketing-text-primary)', marginBottom: '1rem' }}>
+              Communication
+            </h3>
+            <p style={{ color: 'var(--marketing-text-secondary)', marginBottom: '1rem' }}>
+              Professional stakeholder communication and executive summary generation.
+            </p>
+            <ul style={{ textAlign: 'left', color: 'var(--marketing-text-muted)' }}>
+              <li>Executive summaries</li>
+              <li>Stakeholder alignment</li>
+              <li>Strategic presentations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

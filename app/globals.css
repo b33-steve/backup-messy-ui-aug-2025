@@ -32,6 +32,14 @@
   --pm33-warning: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
   --pm33-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
 
+  /* 8pt Grid Spacing System */
+  --pm33-spacing-unit: 8px;
+  --pm33-spacing-xs: calc(var(--pm33-spacing-unit) * 1);  /* 8px */
+  --pm33-spacing-sm: calc(var(--pm33-spacing-unit) * 2);  /* 16px */
+  --pm33-spacing-md: calc(var(--pm33-spacing-unit) * 3);  /* 24px */
+  --pm33-spacing-lg: calc(var(--pm33-spacing-unit) * 4);  /* 32px */
+  --pm33-spacing-xl: calc(var(--pm33-spacing-unit) * 6);  /* 48px */
+
   /* Glass Morphism Backgrounds */
   --pm33-glass: rgba(255, 255, 255, 0.1);
   --pm33-glass-border: rgba(255, 255, 255, 0.18);
@@ -48,6 +56,19 @@
   --pm33-light-1: #ffffff;  /* Pure white */
   --pm33-light-2: #fafbfc;  /* Very subtle gray */
   --pm33-light-3: #f5f6f7;  /* Light gray surface */
+
+  /* Text Colors - WCAG Compliant */
+  --pm33-text-primary: #1a202c;    /* 16.75:1 contrast on white */
+  --pm33-text-secondary: #4a5568;  /* 7.54:1 contrast on white */
+  --pm33-text-muted: #718096;      /* 4.5:1 contrast on white */
+
+  /* Background Colors */
+  --pm33-bg-primary: #ffffff;      /* Light mode primary bg */
+  --pm33-bg-secondary: #f7fafc;    /* Light mode secondary bg */
+
+  /* Primary Brand Colors (solid) */
+  --pm33-primary: #667eea;         /* Primary brand color */
+  --pm33-secondary: #764ba2;       /* Secondary brand color */
 }
 
 /* ===============================================

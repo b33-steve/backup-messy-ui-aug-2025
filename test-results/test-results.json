@@ -1,0 +1,178 @@
+{
+  "config": {
+    "configFile": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/playwright.config.ts",
+    "rootDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {},
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 0
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 0
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 0
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 0
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 0
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/communication.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js",
+      "stack": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/communication.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js\n    at Object.<anonymous> (/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/communication.api.spec.ts:7:1)",
+      "location": {
+        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/communication.api.spec.ts",
+        "column": 1,
+        "line": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mintegration/api/communication.api.spec.ts:7\n\n   5 |\n   6 | import { test, expect } from '@playwright/test';\n>  7 | import { TestDataManager } from '../../e2e/helpers/test-data-manager';\n     | ^\n   8 |\n   9 | interface CommunicationGenerationRequest {\n  10 |   type: 'executive_summary' | 'team_update' | 'stakeholder_report' | 'project_status' | 'strategic_brief';"
+    },
+    {
+      "message": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/data-intelligence.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js",
+      "stack": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/data-intelligence.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js\n    at Object.<anonymous> (/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/data-intelligence.api.spec.ts:7:1)",
+      "location": {
+        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/data-intelligence.api.spec.ts",
+        "column": 1,
+        "line": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mintegration/api/data-intelligence.api.spec.ts:7\n\n   5 |\n   6 | import { test, expect } from '@playwright/test';\n>  7 | import { TestDataManager } from '../../e2e/helpers/test-data-manager';\n     | ^\n   8 |\n   9 | interface DataLearningRequest {\n  10 |   company_data: CompanyDataContext;"
+    },
+    {
+      "message": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/strategic-intelligence.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js",
+      "stack": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/strategic-intelligence.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js\n    at Object.<anonymous> (/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/strategic-intelligence.api.spec.ts:7:1)",
+      "location": {
+        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/strategic-intelligence.api.spec.ts",
+        "column": 1,
+        "line": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mintegration/api/strategic-intelligence.api.spec.ts:7\n\n   5 |\n   6 | import { test, expect } from '@playwright/test';\n>  7 | import { TestDataManager } from '../../e2e/helpers/test-data-manager';\n     | ^\n   8 |\n   9 | interface StrategicAnalysisRequest {\n  10 |   question: string;"
+    },
+    {
+      "message": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/workflow-execution.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js",
+      "stack": "Error: Cannot find module '../../e2e/helpers/test-data-manager'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/workflow-execution.api.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js\n    at Object.<anonymous> (/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/workflow-execution.api.spec.ts:7:1)",
+      "location": {
+        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/integration/api/workflow-execution.api.spec.ts",
+        "column": 1,
+        "line": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mintegration/api/workflow-execution.api.spec.ts:7\n\n   5 |\n   6 | import { test, expect } from '@playwright/test';\n>  7 | import { TestDataManager } from '../../e2e/helpers/test-data-manager';\n     | ^\n   8 |\n   9 | interface WorkflowCreationRequest {\n  10 |   pm_tool: 'jira' | 'linear' | 'monday' | 'asana' | 'azure_devops';"
+    },
+    {
+      "message": "Error: Cannot find module '../e2e/helpers/performance-monitor'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/performance/performance-benchmarks.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js",
+      "stack": "Error: Cannot find module '../e2e/helpers/performance-monitor'\nRequire stack:\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/performance/performance-benchmarks.spec.ts\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/transform/transform.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/common/configLoader.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/playwright/lib/program.js\n- /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/node_modules/@playwright/test/cli.js\n    at Object.<anonymous> (/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/performance/performance-benchmarks.spec.ts:7:1)",
+      "location": {
+        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/performance/performance-benchmarks.spec.ts",
+        "column": 1,
+        "line": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mperformance/performance-benchmarks.spec.ts:7\n\n   5 |\n   6 | import { test, expect } from '@playwright/test';\n>  7 | import { PerformanceMonitor } from '../e2e/helpers/performance-monitor';\n     | ^\n   8 | import { TestDataManager } from '../e2e/helpers/test-data-manager';\n   9 |\n  10 | interface PerformanceBenchmark {"
+    }
+  ],
+  "stats": {
+    "startTime": "2025-08-24T18:40:52.179Z",
+    "duration": 11314.583,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

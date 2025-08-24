@@ -194,6 +194,11 @@ export default function DashboardPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 2fr 1fr', // Force three columns at desktop
+          gap: '24px'
+        }}
       >
         {/* Strategic Navigation */}
         <div className="space-y-6">
