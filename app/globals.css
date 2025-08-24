@@ -1051,7 +1051,15 @@ a:hover, a:focus {
   }
 
   .progress-bar {
-    @apply w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 overflow-hidden;
+    width: 100%;
+    background-color: rgb(226, 232, 240);
+    border-radius: 9999px;
+    height: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .dark .progress-bar {
+    background-color: rgb(51, 65, 85);
   }
 
   .progress-fill {
