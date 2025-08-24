@@ -1,0 +1,241 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - link "PM33 Strategic Intelligence Platform" [ref=e8] [cursor=pointer]:
+            - /url: /
+            - img "PM33 Strategic Intelligence Platform" [ref=e9] [cursor=pointer]
+          - generic [ref=e11]: AI Product Management
+        - generic [ref=e12]:
+          - link "Features" [ref=e14] [cursor=pointer]:
+            - /url: /features
+          - link "Resources" [ref=e16] [cursor=pointer]:
+            - /url: /blog
+          - link "Pricing" [ref=e18] [cursor=pointer]:
+            - /url: /pricing
+          - link "About" [ref=e20] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e22] [cursor=pointer]:
+            - /url: /contact
+          - paragraph [ref=e24]: Demo
+        - generic [ref=e25]:
+          - button "Switch to dark mode" [ref=e26] [cursor=pointer]:
+            - img [ref=e28] [cursor=pointer]
+          - link "Start Free Trial" [ref=e30] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e32] [cursor=pointer]: Start Free Trial
+    - main [ref=e33]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - img [ref=e39]
+          - generic [ref=e41]: Trusted by 2,500+ Product Managers
+        - generic [ref=e42]:
+          - heading "Don't Replace Your PM Tools— Make Them 10x Smarter" [level=1] [ref=e43]:
+            - text: Don't Replace Your PM Tools—
+            - generic [ref=e44]: Make Them 10x Smarter
+          - paragraph [ref=e45]:
+            - text: Transform Jira, Monday.com, and Asana into AI-powered strategic engines.
+            - generic [ref=e46]: No migration headaches.
+            - text: Immediate productivity gains.
+        - generic [ref=e47]:
+          - link "Start Free 14-Day Trial" [ref=e48] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e49] [cursor=pointer]:
+              - generic [ref=e50] [cursor=pointer]: Start Free 14-Day Trial
+              - img [ref=e52] [cursor=pointer]
+          - link "Try Live Demo" [ref=e55] [cursor=pointer]:
+            - /url: /strategic-intelligence
+            - generic [ref=e56] [cursor=pointer]:
+              - img [ref=e58] [cursor=pointer]
+              - generic [ref=e61] [cursor=pointer]: Try Live Demo
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - img [ref=e64]
+            - paragraph [ref=e66]: No credit card required
+          - generic [ref=e67]:
+            - img [ref=e68]
+            - paragraph [ref=e70]: Setup in 5 minutes
+          - generic [ref=e71]:
+            - img [ref=e72]
+            - paragraph [ref=e74]: Cancel anytime
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e80]: ✨ Live Demo Experience
+          - heading "See PM33 in Action" [level=2] [ref=e81]
+          - paragraph [ref=e82]: Experience the full power of AI-driven product management with our interactive demo workflows.
+        - generic [ref=e83]:
+          - link "Strategic Intelligence Engine ✅ Ready to Try Transform strategic questions into executable workflows with automated priority scoring and AI analysis Multi-framework analysis Confidence-scored recommendations Predictive outcome modeling Try Strategic Intelligence" [ref=e84] [cursor=pointer]:
+            - /url: /strategic-intelligence
+            - generic [ref=e85] [cursor=pointer]:
+              - generic [ref=e86] [cursor=pointer]:
+                - img [ref=e88] [cursor=pointer]
+                - generic [ref=e95] [cursor=pointer]:
+                  - paragraph [ref=e96] [cursor=pointer]: Strategic Intelligence Engine
+                  - generic [ref=e98]: ✅ Ready to Try
+              - paragraph [ref=e99] [cursor=pointer]: Transform strategic questions into executable workflows with automated priority scoring and AI analysis
+              - generic [ref=e100] [cursor=pointer]:
+                - generic [ref=e101] [cursor=pointer]:
+                  - img [ref=e102] [cursor=pointer]
+                  - paragraph [ref=e104] [cursor=pointer]: Multi-framework analysis
+                - generic [ref=e105] [cursor=pointer]:
+                  - img [ref=e106] [cursor=pointer]
+                  - paragraph [ref=e108] [cursor=pointer]: Confidence-scored recommendations
+                - generic [ref=e109] [cursor=pointer]:
+                  - img [ref=e110] [cursor=pointer]
+                  - paragraph [ref=e112] [cursor=pointer]: Predictive outcome modeling
+              - button "Try Strategic Intelligence" [ref=e113] [cursor=pointer]:
+                - generic [ref=e114] [cursor=pointer]:
+                  - generic [ref=e115] [cursor=pointer]: Try Strategic Intelligence
+                  - img [ref=e117] [cursor=pointer]
+          - link "Strategic Command Center ✅ Ready to Try Real-time orchestration of 4 specialized AI teams transforming PM workflows with live metrics 4 AI teams coordination Real-time strategic metrics End-to-end workflow automation Try Command Center" [ref=e120] [cursor=pointer]:
+            - /url: /command-center
+            - generic [ref=e121] [cursor=pointer]:
+              - generic [ref=e122] [cursor=pointer]:
+                - img [ref=e124] [cursor=pointer]
+                - generic [ref=e128] [cursor=pointer]:
+                  - paragraph [ref=e129] [cursor=pointer]: Strategic Command Center
+                  - generic [ref=e131]: ✅ Ready to Try
+              - paragraph [ref=e132] [cursor=pointer]: Real-time orchestration of 4 specialized AI teams transforming PM workflows with live metrics
+              - generic [ref=e133] [cursor=pointer]:
+                - generic [ref=e134] [cursor=pointer]:
+                  - img [ref=e135] [cursor=pointer]
+                  - paragraph [ref=e137] [cursor=pointer]: 4 AI teams coordination
+                - generic [ref=e138] [cursor=pointer]:
+                  - img [ref=e139] [cursor=pointer]
+                  - paragraph [ref=e141] [cursor=pointer]: Real-time strategic metrics
+                - generic [ref=e142] [cursor=pointer]:
+                  - img [ref=e143] [cursor=pointer]
+                  - paragraph [ref=e145] [cursor=pointer]: End-to-end workflow automation
+              - button "Try Command Center" [ref=e146] [cursor=pointer]:
+                - generic [ref=e147] [cursor=pointer]:
+                  - generic [ref=e148] [cursor=pointer]: Try Command Center
+                  - img [ref=e150] [cursor=pointer]
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - generic [ref=e158]: ⚠️ The Reality Check
+          - heading "The Problem Every Product Manager Faces" [level=2] [ref=e159]
+          - paragraph [ref=e160]:
+            - text: You're drowning in admin work.
+            - generic [ref=e161]: 60-80% of your time
+            - text: goes to busywork instead of strategy.
+        - generic [ref=e162]:
+          - generic [ref=e163]:
+            - generic [ref=e165]: 32 hours/month
+            - generic [ref=e166]:
+              - img [ref=e168]
+              - generic [ref=e171]:
+                - heading "Writing PRDs manually" [level=3] [ref=e172]
+                - paragraph [ref=e173]: 4 hours per document
+          - generic [ref=e174]:
+            - generic [ref=e176]: 24 hours/month
+            - generic [ref=e177]:
+              - img [ref=e179]
+              - generic [ref=e182]:
+                - heading "Synthesizing feedback" [level=3] [ref=e183]
+                - paragraph [ref=e184]: Scattered across tools
+          - generic [ref=e185]:
+            - generic [ref=e187]: 16 hours/month
+            - generic [ref=e188]:
+              - img [ref=e190]
+              - generic [ref=e197]:
+                - heading "Creating presentations" [level=3] [ref=e198]
+                - paragraph [ref=e199]: From scratch every time
+      - generic [ref=e202]:
+        - generic [ref=e203]:
+          - generic [ref=e205]: 🏆 Customer Success Stories
+          - heading "Real Results from PM Teams" [level=2] [ref=e206]
+        - generic [ref=e207]:
+          - generic [ref=e209]:
+            - paragraph [ref=e210]: 40%
+            - generic [ref=e211]:
+              - paragraph [ref=e212]: More Features Shipped
+              - paragraph [ref=e213]: Without adding headcount
+            - generic [ref=e214]:
+              - paragraph [ref=e215]: Sarah Chen, Head of Product
+              - paragraph [ref=e216]: TechFlow (Series B)
+          - generic [ref=e218]:
+            - paragraph [ref=e219]: 72h
+            - generic [ref=e220]:
+              - paragraph [ref=e221]: Time Saved Monthly
+              - paragraph [ref=e222]: Per product manager
+            - generic [ref=e223]:
+              - paragraph [ref=e224]: Marcus Rodriguez, VP Product
+              - paragraph [ref=e225]: DataSync (Growth-stage)
+          - generic [ref=e227]:
+            - paragraph [ref=e228]: <5min
+            - generic [ref=e229]:
+              - paragraph [ref=e230]: Average Setup Time
+              - paragraph [ref=e231]: From signup to insights
+            - generic [ref=e232]:
+              - paragraph [ref=e233]: Jennifer Liu, Senior PM
+              - paragraph [ref=e234]: CloudOps (Enterprise)
+      - generic [ref=e237]:
+        - generic [ref=e239]: ✨ Transform Your PM Work Today
+        - generic [ref=e240]:
+          - heading "Ready to 10x Your PM Productivity?" [level=2] [ref=e241]
+          - paragraph [ref=e242]: Join 2,500+ product teams using PM33 to focus on strategy, not busywork.
+        - generic [ref=e243]:
+          - link "Start Your Free 14-Day Trial" [ref=e244] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e245] [cursor=pointer]:
+              - generic [ref=e246] [cursor=pointer]: Start Your Free 14-Day Trial
+              - img [ref=e248] [cursor=pointer]
+          - link "Try Strategic Intelligence" [ref=e251] [cursor=pointer]:
+            - /url: /strategic-intelligence
+            - generic [ref=e252] [cursor=pointer]:
+              - img [ref=e254] [cursor=pointer]
+              - generic [ref=e257] [cursor=pointer]: Try Strategic Intelligence
+    - generic [ref=e259]:
+      - generic [ref=e261]:
+        - generic [ref=e263]:
+          - generic [ref=e264]:
+            - paragraph [ref=e265]: PM33
+            - paragraph [ref=e267]: AI-Powered
+          - paragraph [ref=e268]: Built by the PM community, for the PM community. Enhancing your existing tools with AI intelligence.
+          - link "Start Free Trial" [ref=e269] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e271] [cursor=pointer]: Start Free Trial
+        - generic [ref=e273]:
+          - paragraph [ref=e274]: Product
+          - generic [ref=e275]:
+            - link "Features" [ref=e276] [cursor=pointer]:
+              - /url: /features
+            - link "Pricing" [ref=e277] [cursor=pointer]:
+              - /url: /pricing
+            - link "Strategic Intelligence" [ref=e278] [cursor=pointer]:
+              - /url: /strategic-intelligence
+            - link "Command Center" [ref=e279] [cursor=pointer]:
+              - /url: /command-center
+        - generic [ref=e281]:
+          - paragraph [ref=e282]: Solutions
+          - generic [ref=e283]:
+            - link "Jira Alternative" [ref=e284] [cursor=pointer]:
+              - /url: /jira-alternative
+            - link "Monday Alternative" [ref=e285] [cursor=pointer]:
+              - /url: /monday-alternative
+            - link "Asana Alternative" [ref=e286] [cursor=pointer]:
+              - /url: /asana-competitor
+            - link "AI Roadmap Tool" [ref=e287] [cursor=pointer]:
+              - /url: /ai-powered-roadmap-tool
+        - generic [ref=e289]:
+          - paragraph [ref=e290]: Community
+          - generic [ref=e291]:
+            - link "PM Templates" [ref=e292] [cursor=pointer]:
+              - /url: /templates
+            - link "About" [ref=e293] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e294] [cursor=pointer]:
+              - /url: /contact
+            - link "Security" [ref=e295] [cursor=pointer]:
+              - /url: /security
+            - link "Privacy" [ref=e296] [cursor=pointer]:
+              - /url: /privacy
+      - generic [ref=e298]:
+        - paragraph [ref=e299]: © 2025 PM33. Built by the PM community, for the PM community.
+        - paragraph [ref=e303]: 2,500+ PMs trust PM33
+  - alert [ref=e304]
+```
