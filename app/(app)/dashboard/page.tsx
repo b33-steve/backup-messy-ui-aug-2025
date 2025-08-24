@@ -39,9 +39,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function DashboardPage() {
   const [mounted, setMounted] = useState(false)
   const [chatInput, setChatInput] = useState('')
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024)
+    // Initial check with small delay to ensure proper rendering
+    setTimeout(checkDesktop, 100)
+    window.addEventListener('resize', checkDesktop)
+    return () => window.removeEventListener('resize', checkDesktop)
   }, [])
 
   if (!mounted) return null
@@ -101,7 +107,11 @@ export default function DashboardPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '24px'
+        }}>
           <Card className="pm33-glass-card border-0 bg-transparent" style={{
             background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
             backdropFilter: 'blur(40px) saturate(150%)',
@@ -196,7 +206,7 @@ export default function DashboardPage() {
         className="grid grid-cols-1 lg:grid-cols-3 gap-6"
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 2fr 1fr', // Force three columns at desktop
+          gridTemplateColumns: isDesktop ? '1fr 2fr 1fr' : '1fr', // Responsive three columns
           gap: '24px'
         }}
       >
