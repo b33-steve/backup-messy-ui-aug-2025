@@ -47,7 +47,7 @@ export default function DashboardPage() {
   if (!mounted) return null
 
   return (
-    <div className="min-h-screen p-6 space-y-6">
+    <div className="min-h-screen p-6 space-y-6" style={{ minHeight: '100vh' }}>
       {/* PMO Command Center Header */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
