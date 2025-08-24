@@ -9,10 +9,6 @@
   },
   "rewrites": [
     {
-      "source": "/((?!api/.*).*)",
-      "destination": "/index.html"
-    },
-    {
       "source": "/api/strategic-analysis",
       "destination": "/api/strategic-analysis"
     }

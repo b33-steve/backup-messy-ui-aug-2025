@@ -1,22 +1,19 @@
 /**
- * Component: DashboardV2 - Clean Working Version
- * Design Reference: Shadcn/ui components only - no custom glass morphism
- * UX Pattern: Simple, functional PM dashboard that works reliably
+ * Component: Dashboard - Professional 3-Column Layout
+ * Design Reference: User screenshot - 3-column layout with off-white cards and gray gradient
+ * UX Pattern: Professional enterprise dashboard with centered heading, compact navigation, and structured sections
  * 
- * This is the v2 dashboard focused on:
- * - Clean, working layout
- * - shadcn/ui components only
- * - Fast shipping to get users
- * - No complex animations or effects
+ * Layout Structure:
+ * - Gray gradient background
+ * - Centered "Command Center" heading
+ * - 3-column layout: Left compact nav (280px) | Center greeting+actions+chat (1fr) | Right 3 boxes (320px)
+ * - Off-white cards with no borders, consistent corners
+ * - Top navigation with blue selected state, dark font for others
  */
 
 'use client'
 
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
 import { 
   Target, 
   Rocket, 
@@ -29,282 +26,235 @@ import {
   Zap,
   Send,
   Activity,
-  Database,
-  Sparkles
+  Database
 } from 'lucide-react'
 
-export default function DashboardV2() {
+export default function Dashboard() {
   const [chatInput, setChatInput] = useState('')
 
   return (
-    <div className="min-h-screen p-6">
-      {/* Header */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h1 className="text-3xl font-bold">PMO Command Center</h1>
-            <p className="text-muted-foreground">
-              Your AI teams have prepared strategic intelligence and workflow recommendations.
-            </p>
+    <div className="pm33-gray-gradient-bg">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        
+        {/* Centered Command Center Heading */}
+        <div className="mb-8">
+          <h1 className="pm33-centered-heading">
+            Command Center
+          </h1>
+          <p className="text-center text-slate-600 text-lg mb-2">
+            Good morning! Let's tackle today's strategic priorities.
+          </p>
+          <div className="text-center text-sm text-slate-500">
+            04:10 AM | Current Progress: 15 signups (30%)
           </div>
-          <Badge variant="outline" className="bg-green-100 text-green-800 border-green-300">
-            <Sparkles className="w-4 h-4 mr-1" />
-            4 Teams Active
-          </Badge>
-        </div>
-      </div>
-
-      {/* AI Teams Status */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                <Brain className="w-6 h-6 text-blue-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Strategic Intelligence</p>
-                <p className="text-xl font-bold">Active</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center">
-                <Activity className="w-6 h-6 text-green-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Workflow Execution</p>
-                <p className="text-xl font-bold">Ready</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center">
-                <Database className="w-6 h-6 text-purple-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Data Intelligence</p>
-                <p className="text-xl font-bold">Learning</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center">
-                <Users className="w-6 h-6 text-orange-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Communication</p>
-                <p className="text-xl font-bold">Standby</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Sidebar - Strategic Tools */}
-        <div className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm font-semibold flex items-center gap-2">
-                <Target className="w-4 h-4" />
-                Strategic Tools
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <Button variant="ghost" className="w-full justify-start">
-                <MessageSquare className="w-4 h-4 mr-2" />
-                Strategic Chat
-              </Button>
-              <Button variant="ghost" className="w-full justify-start">
-                <Rocket className="w-4 h-4 mr-2" />
-                Workflow Execution
-              </Button>
-              <Button variant="ghost" className="w-full justify-start">
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Analytics
-              </Button>
-              <Button variant="ghost" className="w-full justify-start">
-                <Target className="w-4 h-4 mr-2" />
-                OKR Planning
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm font-semibold">Company Context</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <div className="flex items-center gap-2 text-sm">
-                <Building className="w-4 h-4" />
-                Company Profile
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Target className="w-4 h-4" />
-                Current Priorities
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Zap className="w-4 h-4" />
-                Competitive Intel
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
-        {/* Center - Strategic Scenarios */}
-        <div className="lg:col-span-1">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Brain className="w-5 h-5" />
-                Strategic Scenarios
-              </CardTitle>
-              <p className="text-sm text-muted-foreground">
-                AI-suggested scenarios based on your current context
-              </p>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 gap-3">
-                <Card className="p-4">
-                  <Badge variant="secondary" className="text-xs mb-2">Competitive</Badge>
-                  <h4 className="font-medium text-sm mb-1">Competitor launched features</h4>
-                  <p className="text-xs text-muted-foreground">They have 10x funding</p>
-                </Card>
-                
-                <Card className="p-4">
-                  <Badge variant="secondary" className="text-xs mb-2">Resource</Badge>
-                  <h4 className="font-medium text-sm mb-1">Hire dev vs marketing</h4>
-                  <p className="text-xs text-muted-foreground">$15k budget decision</p>
-                </Card>
-                
-                <Card className="p-4">
-                  <Badge variant="secondary" className="text-xs mb-2">Growth</Badge>
-                  <h4 className="font-medium text-sm mb-1">Low conversion rate</h4>
-                  <p className="text-xs text-muted-foreground">Great feedback, poor sales</p>
-                </Card>
-                
-                <Card className="p-4">
-                  <Badge variant="secondary" className="text-xs mb-2">Market</Badge>
-                  <h4 className="font-medium text-sm mb-1">Enterprise vs SMB</h4>
-                  <p className="text-xs text-muted-foreground">Strategy focus decision</p>
-                </Card>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Strategic Chat */}
-          <Card className="mt-4">
-            <CardHeader>
-              <CardTitle className="text-sm">Strategic AI Chat</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="p-3 bg-muted rounded-lg">
-                  <p className="text-sm">Ask any strategic question. I'll suggest frameworks and provide analysis.</p>
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={chatInput}
-                    onChange={(e) => setChatInput(e.target.value)}
-                    placeholder="Ask about competitive strategy..."
-                    className="flex-1 px-3 py-2 border rounded-md text-sm"
-                  />
-                  <Button size="sm">
-                    <Send className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Right Sidebar - Metrics */}
-        <div className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm font-semibold flex items-center gap-2">
-                <BarChart3 className="w-4 h-4" />
-                Key Metrics
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex justify-between text-sm">
-                <span>Beta Signups:</span>
-                <span className="font-semibold">15 total</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Budget:</span>
-                <span className="font-semibold">$15,000</span>
+        {/* Main 3-Column Layout */}
+        <div className="dashboard-3-col">
+          
+          {/* Left Sidebar - Compact Navigation */}
+          <div className="space-y-6">
+            
+            {/* Strategic Tools - Compact Navigation */}
+            <div className="pm33-compact-nav">
+              <div className="flex items-center gap-2 mb-4">
+                <Target className="w-5 h-5 text-slate-700" />
+                <h3 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">STRATEGIC TOOLS</h3>
               </div>
               <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span>Progress to Goal</span>
-                  <span className="font-semibold">30%</span>
+                <div className="pm33-compact-nav-item selected">
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Strategic Chat</span>
                 </div>
-                <Progress value={30} className="h-2" />
-                <p className="text-xs text-muted-foreground">30% to goal (50 beta users)</p>
+                <div className="pm33-compact-nav-item">
+                  <Rocket className="w-4 h-4" />
+                  <span>Project Delivery</span>
+                </div>
+                <div className="pm33-compact-nav-item">
+                  <BarChart3 className="w-4 h-4" />
+                  <span>Analytics</span>
+                </div>
+                <div className="pm33-compact-nav-item">
+                  <Target className="w-4 h-4" />
+                  <span>OKR Planner</span>
+                </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm font-semibold flex items-center gap-2">
-                <Users className="w-4 h-4" />
-                Team Resources
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex justify-between text-sm">
-                <span>Team Size:</span>
-                <span className="font-semibold">3 people</span>
+            {/* Company Context - Compact Navigation */}
+            <div className="pm33-compact-nav">
+              <h3 className="font-semibold text-slate-900 text-sm uppercase tracking-wide mb-4">COMPANY CONTEXT</h3>
+              <div className="space-y-2">
+                <div className="pm33-compact-nav-item">
+                  <Building className="w-4 h-4" />
+                  <span>Company Profile</span>
+                </div>
+                <div className="pm33-compact-nav-item">
+                  <Target className="w-4 h-4" />
+                  <span>Current Priorities</span>
+                </div>
+                <div className="pm33-compact-nav-item">
+                  <Zap className="w-4 h-4" />
+                  <span>Competitive Intel</span>
+                </div>
+                <div className="pm33-compact-nav-item">
+                  <Users className="w-4 h-4" />
+                  <span>Team Resources</span>
+                </div>
               </div>
-              <div className="flex justify-between text-sm">
-                <span>Runway:</span>
-                <span className="font-semibold">6 months</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Key Constraint:</span>
-                <Badge variant="outline" className="bg-orange-100 text-orange-800">
-                  Limited marketing
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+            
+          </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm font-semibold">Competitive Intel</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div>
-                <p className="text-sm font-medium">Productboard</p>
-                <p className="text-xs text-muted-foreground">Series C, $100M+ funding</p>
+          {/* Center Column - Greeting + 4 Action Boxes + Chat */}
+          <div className="pm33-center-section">
+            
+            {/* Greeting Section - Properly Sized */}
+            <div className="pm33-greeting-section">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse delay-100"></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse delay-200"></div>
+                </div>
+                <span className="text-sm text-slate-600 font-medium">
+                  <Brain className="w-4 h-4 inline mr-2" />
+                  AI INTELLIGENCE BRIEFING - LIVE
+                </span>
               </div>
-              <div>
-                <p className="text-sm font-medium">Aha!</p>
-                <p className="text-xs text-muted-foreground">Profitable, enterprise focus</p>
+              
+              <h2>Strategic AI Co-Pilot Ready</h2>
+              <p>
+                Ask any strategic question. I'll suggest frameworks like ICE or RICE, then
+                apply them with your company context to generate executable workflows.
+              </p>
+            </div>
+
+            {/* 4 Action Boxes Based on Company Context */}
+            <div className="pm33-action-grid">
+              <div className="pm33-action-box">
+                <div className="text-xs text-blue-600 font-semibold mb-2 uppercase tracking-wide">COMPETITIVE STRATEGY</div>
+                <h4>Competitor launched similar features</h4>
+                <p>They have 10x funding. Strategic response?</p>
               </div>
-              <div className="p-2 bg-blue-50 rounded border border-blue-200">
-                <p className="text-xs font-medium text-blue-800">Our Advantage: AI + Strategy</p>
+              
+              <div className="pm33-action-box">
+                <div className="text-xs text-green-600 font-semibold mb-2 uppercase tracking-wide">RESOURCE ALLOCATION</div>
+                <h4>Hire developer vs marketing spend</h4>
+                <p>$15k budget to reach 50 beta users</p>
               </div>
-            </CardContent>
-          </Card>
+              
+              <div className="pm33-action-box">
+                <div className="text-xs text-orange-600 font-semibold mb-2 uppercase tracking-wide">GROWTH STRATEGY</div>
+                <h4>Low beta-to-paid conversion</h4>
+                <p>Great feedback, poor conversion rates</p>
+              </div>
+              
+              <div className="pm33-action-box">
+                <div className="text-xs text-purple-600 font-semibold mb-2 uppercase tracking-wide">MARKET STRATEGY</div>
+                <h4>Enterprise vs SMB focus</h4>
+                <p>Bigger deals vs momentum building</p>
+              </div>
+            </div>
+
+            {/* Chat Window at Bottom */}
+            <div className="pm33-chat-window">
+              <div className="flex gap-3">
+                <input
+                  type="text"
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  placeholder="Ask me anything strategic... I'll suggest the best framework to use"
+                  className="flex-1 px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                />
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 hover:from-blue-700 hover:to-purple-700 transition-all">
+                  <Send className="w-4 h-4" />
+                  Send
+                </button>
+              </div>
+            </div>
+            
+          </div>
+
+          {/* Right Sidebar - Exactly 3 Boxes */}
+          <div className="pm33-right-sidebar">
+            
+            {/* Box 1: Competitive Landscape */}
+            <div className="pm33-professional-card">
+              <div className="flex items-center gap-2 mb-4">
+                <Zap className="w-5 h-5 text-slate-700" />
+                <h3 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">COMPETITIVE LANDSCAPE</h3>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <div className="font-semibold text-slate-900">Primary: Productboard</div>
+                  <div className="text-sm text-slate-600">Series C, $100M+ funding, roadmap focus</div>
+                </div>
+                <div>
+                  <div className="font-semibold text-slate-900">Secondary: Aha!</div>
+                  <div className="text-sm text-slate-600">Profitable, strategy docs, enterprise</div>
+                </div>
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <div className="text-blue-800 font-semibold text-sm">
+                    Our Advantage: Strategic AI + execution
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Box 2: Team & Resources */}
+            <div className="pm33-professional-card">
+              <div className="flex items-center gap-2 mb-4">
+                <Users className="w-5 h-5 text-slate-700" />
+                <h3 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">TEAM & RESOURCES</h3>
+              </div>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Team Size:</span>
+                  <span className="font-semibold">3 people</span>
+                </div>
+                <div className="text-xs text-slate-500">1 PM, 2 Engineers</div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Runway:</span>
+                  <span className="font-semibold">6 months</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Key Constraint:</span>
+                  <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm font-medium">Limited marketing</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Box 3: Key Metrics */}
+            <div className="pm33-professional-card">
+              <div className="flex items-center gap-2 mb-4">
+                <BarChart3 className="w-5 h-5 text-slate-700" />
+                <h3 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">KEY METRICS</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Beta Signups:</span>
+                  <span className="font-semibold">15 total</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Available Budget:</span>
+                  <span className="font-semibold">$15,000</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-slate-600">Progress to Goal</span>
+                    <span className="font-semibold">30%</span>
+                  </div>
+                  <div className="w-full bg-slate-200 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full" style={{ width: '30%' }}></div>
+                  </div>
+                  <div className="text-xs text-slate-500">30% to goal (50 beta users)</div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
         </div>
       </div>
     </div>
