@@ -2138,6 +2138,45 @@ p, span {
   color: var(--marketing-text-primary) !important;
 }
 
+/* CTA Section specific fixes - Force blue background with white text */
+.marketing-context [style*="var(--marketing-primary)"] {
+  background: #1E40AF !important;
+}
+
+.marketing-context [style*="var(--marketing-primary)"] .mantine-Title-root[data-c="white"],
+.marketing-context [style*="var(--marketing-primary)"] .mantine-Text-root[data-c="white"] {
+  color: white !important;
+}
+
+/* Homepage CTA section - "Ready to 10x Your PM Productivity" section */
+.marketing-context div[style*="var(--marketing-primary)"] {
+  background: #1E40AF !important;
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] * {
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Title-root {
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Text-root {
+  color: white !important;
+}
+
+/* Ensure gradient text works in CTA section - "10x Your PM Productivity" */
+.marketing-context .mantine-Text-root[data-variant="gradient"],
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Text-root[data-variant="gradient"] {
+  background: linear-gradient(45deg, #67e8f9 0%, #10b981 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  font-weight: 800 !important;
+}
+
 .marketing-text-secondary {
   color: var(--marketing-text-secondary) !important;
 }
