@@ -3,8 +3,8 @@
 // RELEVANT FILES: components/marketing/Navigation.tsx, components/marketing/Footer.tsx
 
 import type { Metadata } from "next";
-import Navigation from '../../components/marketing/Navigation';
-import Footer from '../../components/marketing/Footer';
+import Navigation from '../../components/marketing/Navigation-simple';
+import Footer from '../../components/marketing/Footer-simple';
 
 export const metadata: Metadata = {
   title: "PM33 - AI Product Management Tool",
