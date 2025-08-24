@@ -957,15 +957,51 @@ a:hover, a:focus {
   }
 
   .btn-success {
-    @apply bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-3 px-6 rounded-xl hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2;
+    background: linear-gradient(to right, rgb(34, 197, 94), rgb(5, 150, 105));
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-success:hover {
+    transform: scale(1.05);
   }
 
   .btn-warning {
-    @apply bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-xl hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2;
+    background: linear-gradient(to right, rgb(234, 179, 8), rgb(249, 115, 22));
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-warning:hover {
+    transform: scale(1.05);
   }
 
   .btn-danger {
-    @apply bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-xl hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2;
+    background: linear-gradient(to right, rgb(239, 68, 68), rgb(219, 39, 119));
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-danger:hover {
+    transform: scale(1.05);
   }
 
   /* Strategic Intelligence Components */
@@ -974,7 +1010,12 @@ a:hover, a:focus {
   }
 
   .strategic-card::before {
-    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-500 to-blue-600;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.25rem;
+    height: 100%;
+    background: linear-gradient(to bottom, rgb(168, 85, 247), rgb(37, 99, 235));
     content: '';
   }
 
@@ -1002,7 +1043,10 @@ a:hover, a:focus {
   }
 
   .progress-fill {
-    @apply h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-500 ease-out;
+    height: 100%;
+    background: linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+    border-radius: 9999px;
+    transition: all 0.5s ease-out;
   }
 
   /* Navigation Components */
@@ -1026,7 +1070,13 @@ a:hover, a:focus {
   }
 
   .nav-link-active::after {
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.125rem;
+    background: linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+    border-radius: 9999px;
     content: '';
   }
 
@@ -1226,7 +1276,8 @@ a:hover, a:focus {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 min-h-screen;
+    background: linear-gradient(to bottom right, rgb(248, 250, 252), rgba(239, 246, 255, 0.3), rgba(250, 245, 255, 0.2));
+    min-height: 100vh;
     background: var(--pm33-bg-primary);
     color: var(--pm33-text-secondary);
   }

@@ -1,3 +1,5 @@
+'use client'
+
 export default function ContactPage() {
   return (
     <div className="marketing-context" style={{ minHeight: '100vh', padding: '4rem 2rem' }}>
