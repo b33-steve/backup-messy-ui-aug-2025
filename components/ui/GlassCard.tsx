@@ -5,7 +5,7 @@ interface GlassCardProps {
   className?: string
 }
 
-export default function GlassCard({ children, className = '' }: GlassCardProps) {
+export function GlassCard({ children, className = '' }: GlassCardProps) {
   return (
     <div className={`
       rounded-xl p-4 transition-all duration-300
@@ -18,3 +18,6 @@ export default function GlassCard({ children, className = '' }: GlassCardProps) 
     </div>
   )
 }
+
+// Keep default export for backward compatibility
+export default GlassCard

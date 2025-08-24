@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM33 Strategic Intelligence - Interactive Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'bounce-1': 'bounce 1s infinite',
+                        'bounce-2': 'bounce 1s infinite 100ms',
+                        'bounce-3': 'bounce 1s infinite 200ms',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glass morphism styles */
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.3);
+        }
+        
+        .nav-glass {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-gradient:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-gradient:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .framework-btn {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .framework-btn.selected {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .framework-btn.unselected {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        
+        .framework-btn.auto {
+            background: #059669;
+            color: white;
+        }
+        
+        .message-user {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-left: auto;
+            max-width: 80%;
+        }
+        
+        .message-assistant {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-right: auto;
+            max-width: 80%;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            height: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            border-radius: 9999px;
+            transition: width 1s ease-out;
+        }
+        
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .typing-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #2563eb;
+            border-radius: 50%;
+            animation: bounce 1s infinite;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 100ms;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 200ms;
+        }
+        
+        .chat-container {
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .messages-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-area {
+            border-top: 1px solid rgba(229, 231, 235, 0.5);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            padding: 1rem;
+        }
+        
+        .suggestion-category {
+            margin-bottom: 1rem;
+        }
+        
+        .suggestion-question {
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .suggestion-question:hover {
+            background: #f3f4f6;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">P33</span>
+                    </div>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">PM33</h1>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Dashboard</a>
+                    <a href="#" class="text-blue-600 font-semibold relative">
+                        Strategic Intelligence
+                        <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                    </a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Tasks</a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Settings</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-20 px-6">
+        <div class="max-w-7xl mx-auto py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6">
+                <!-- Main Chat Area -->
+                <div class="space-y-6">
+                    <!-- Header -->
+                    <div class="animate-fade-in">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                            <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                Strategic Intelligence
+                            </h1>
+                        </div>
+                        <p class="text-slate-600">
+                            AI-powered strategic analysis using proven PM frameworks
+                        </p>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div class="glass-card chat-container">
+                        <div class="messages-area" id="messagesArea">
+                            <div class="message-assistant animate-slide-up">
+                                <div>
+                                    I'm your Strategic AI Co-Pilot. Ask me anything about competitive strategy, resource allocation, or product decisions. I'll apply proven frameworks to your specific context.
+                                </div>
+                                <div class="text-xs text-gray-500 mt-2">
+                                    Just now
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input Area -->
+                        <div class="input-area">
+                            <div class="space-y-3">
+                                <!-- Framework Selector -->
+                                <div class="flex gap-2 flex-wrap items-center">
+                                    <span class="text-sm text-gray-500">Framework:</span>
+                                    <button class="framework-btn unselected" onclick="selectFramework('ice')">ICE Score</button>
+                                    <button class="framework-btn unselected" onclick="selectFramework('rice')">RICE Framework</button>
+                                    <button class="framework-btn unselected" onclick="selectFramework('jobs')">Jobs-to-be-Done</button>
+                                    <button class="framework-btn unselected" onclick="selectFramework('porter')">Porter's Five Forces</button>
+                                    <button class="framework-btn unselected" onclick="selectFramework('swot')">SWOT Analysis</button>
+                                    <button class="framework-btn auto" onclick="selectFramework(null)">Auto-select</button>
+                                </div>
+
+                                <!-- Input Field -->
+                                <div class="flex gap-3">
+                                    <input
+                                        type="text"
+                                        id="messageInput"
+                                        placeholder="Ask a strategic question..."
+                                        class="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                                        onkeypress="handleKeyPress(event)"
+                                    />
+                                    <button
+                                        id="sendButton"
+                                        onclick="sendMessage()"
+                                        class="btn-gradient"
+                                    >
+                                        Analyze
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suggested Questions -->
+                    <div class="space-y-4 animate-slide-up">
+                        <div class="glass-card p-4 suggestion-category">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-2xl">⚔️</span>
+                                <h3 class="font-semibold text-gray-900">Competitive Strategy</h3>
+                            </div>
+                            <button class="suggestion-question" onclick="selectQuestion('Our competitor just raised $10M and launched a similar feature. What\\'s our strategic response?')">
+                                Our competitor just raised $10M and launched a similar feature. What's our strategic response?
+                            </button>
+                            <button class="suggestion-question" onclick="selectQuestion('How do we differentiate when competitors have 10x our resources?')">
+                                How do we differentiate when competitors have 10x our resources?
+                            </button>
+                            <button class="suggestion-question" onclick="selectQuestion('Should we match competitor pricing or maintain premium positioning?')">
+                                Should we match competitor pricing or maintain premium positioning?
+                            </button>
+                        </div>
+
+                        <div class="glass-card p-4 suggestion-category">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-2xl">💰</span>
+                                <h3 class="font-semibold text-gray-900">Resource Allocation</h3>
+                            </div>
+                            <button class="suggestion-question" onclick="selectQuestion('Should we hire 2 engineers or spend $50k on marketing?')">
+                                Should we hire 2 engineers or spend $50k on marketing?
+                            </button>
+                            <button class="suggestion-question" onclick="selectQuestion('How should we allocate our $15k monthly budget for maximum growth?')">
+                                How should we allocate our $15k monthly budget for maximum growth?
+                            </button>
+                            <button class="suggestion-question" onclick="selectQuestion('What\\'s the ROI of building feature X vs improving existing features?')">
+                                What's the ROI of building feature X vs improving existing features?
+                            </button>
+                        </div>
+
+                        <div class="glass-card p-4 suggestion-category">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-2xl">🚀</span>
+                                <h3 class="font-semibold text-gray-900">Product Strategy</h3>
+                            </div>
+                            <button class="suggestion-question" onclick="selectQuestion('Should we focus on enterprise features or SMB volume?')">
+                                Should we focus on enterprise features or SMB volume?
+                            </button>
+                            <button class="suggestion-question" onclick="selectQuestion('How do we prioritize our roadmap with limited resources?')">
+                                How do we prioritize our roadmap with limited resources?
+                            </button>
+                            <button class="suggestion-question" onclick="selectQuestion('What features will drive the most revenue in Q4?')">
+                                What features will drive the most revenue in Q4?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="space-y-6 animate-fade-in" style="animation-delay: 300ms;">
+                    <!-- Company Context -->
+                    <div class="glass-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                            Company Context
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <div>
+                                <span class="text-gray-500">Industry:</span>
+                                <span class="ml-2 font-medium">B2B SaaS</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Stage:</span>
+                                <span class="ml-2 font-medium">Series A</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Team Size:</span>
+                                <span class="ml-2 font-medium">25 people</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Runway:</span>
+                                <span class="ml-2 font-medium">18 months</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Key Constraint:</span>
+                                <span class="ml-2 font-medium text-orange-600">Engineering resources</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Analyses -->
+                    <div class="glass-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            Recent Analyses
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-medium text-gray-900">Competitor Response Strategy</h4>
+                                    <span class="text-xs text-green-600 font-medium">92%</span>
+                                </div>
+                                <p class="text-xs text-gray-500">Porter's Five Forces</p>
+                                <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-medium text-gray-900">Q4 Resource Allocation</h4>
+                                    <span class="text-xs text-yellow-600 font-medium">87%</span>
+                                </div>
+                                <p class="text-xs text-gray-500">RICE Framework</p>
+                                <p class="text-xs text-gray-400 mt-1">Yesterday</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-medium text-gray-900">Feature Prioritization</h4>
+                                    <span class="text-xs text-green-600 font-medium">95%</span>
+                                </div>
+                                <p class="text-xs text-gray-500">ICE Score</p>
+                                <p class="text-xs text-gray-400 mt-1">3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intelligence Metrics -->
+                    <div class="glass-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Intelligence Metrics
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-600">Analysis Accuracy</span>
+                                    <span class="font-medium">94%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 94%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-600">Time Saved</span>
+                                    <span class="font-medium">12.5 hrs/week</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-600">Decisions Made</span>
+                                    <span class="font-medium">47 this month</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedFramework = null;
+        let isAnalyzing = false;
+
+        function selectFramework(framework) {
+            selectedFramework = framework;
+            
+            // Update button states
+            document.querySelectorAll('.framework-btn').forEach(btn => {
+                btn.className = 'framework-btn unselected';
+            });
+            
+            if (framework === null) {
+                event.target.className = 'framework-btn auto';
+            } else {
+                event.target.className = 'framework-btn selected';
+            }
+        }
+
+        function selectQuestion(question) {
+            document.getElementById('messageInput').value = question;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message || isAnalyzing) return;
+            
+            const messagesArea = document.getElementById('messagesArea');
+            const sendButton = document.getElementById('sendButton');
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message-user animate-slide-up';
+            userMessage.innerHTML = `
+                <div>${message}</div>
+                <div class="text-xs text-white/80 mt-2">
+                    ${new Date().toLocaleTimeString()}
+                </div>
+            `;
+            messagesArea.appendChild(userMessage);
+            
+            // Clear input
+            input.value = '';
+            
+            // Show analyzing indicator
+            isAnalyzing = true;
+            sendButton.disabled = true;
+            sendButton.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Analyzing...
+                </div>
+            `;
+            
+            const analyzingMessage = document.createElement('div');
+            analyzingMessage.className = 'message-assistant animate-slide-up';
+            analyzingMessage.id = 'analyzing-indicator';
+            analyzingMessage.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                    <span class="text-sm text-gray-600">
+                        Analyzing with ${selectedFramework || 'best'} framework...
+                    </span>
+                </div>
+            `;
+            messagesArea.appendChild(analyzingMessage);
+            
+            // Scroll to bottom
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+            
+            // Simulate AI response
+            setTimeout(() => {
+                // Remove analyzing indicator
+                document.getElementById('analyzing-indicator').remove();
+                
+                // Add AI response
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message-assistant animate-slide-up';
+                aiMessage.innerHTML = `
+                    <div style="white-space: pre-wrap;">Based on ${selectedFramework || 'best available'} framework analysis, here's my strategic recommendation:
+
+**Analysis**: This situation requires a multi-pronged approach focusing on your core differentiators while maintaining competitive positioning.
+
+**Key Insights**:
+- Leverage your engineering constraint as a focus mechanism
+- Prioritize high-impact, low-effort initiatives  
+- Build strategic moats before scaling
+
+**Strategic Response**: Focus on your unique value proposition and double down on what makes you different rather than trying to match competitors feature-for-feature.</div>
+                    
+                    <div class="mt-3 pt-3 border-t border-gray-200">
+                        <span class="text-xs text-gray-500">
+                            Framework: ${selectedFramework || 'RICE Framework'}
+                        </span>
+                        <span class="ml-3 text-xs text-green-600 font-semibold">
+                            87% confidence
+                        </span>
+                    </div>
+
+                    <div class="mt-4 space-y-2">
+                        <p class="text-sm font-semibold text-gray-700">
+                            Recommended Actions:
+                        </p>
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">✓</span>
+                            <span class="text-sm">Conduct competitive feature gap analysis</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">✓</span>
+                            <span class="text-sm">Survey top 10 customers on differentiation factors</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">✓</span>
+                            <span class="text-sm">Prioritize roadmap using RICE scoring</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">✓</span>
+                            <span class="text-sm">Define 3-month strategic focus areas</span>
+                        </div>
+                        <button class="mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Create tasks in project management
+                        </button>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-3 gap-3">
+                        <div class="text-center p-2 bg-gray-50 rounded-lg">
+                            <div class="text-lg font-bold text-gray-900">2-3 days</div>
+                            <div class="text-xs text-gray-500">Time to Decision</div>
+                        </div>
+                        <div class="text-center p-2 bg-gray-50 rounded-lg">
+                            <div class="text-lg font-bold text-gray-900">87%</div>
+                            <div class="text-xs text-gray-500">Confidence Level</div>
+                        </div>
+                        <div class="text-center p-2 bg-gray-50 rounded-lg">
+                            <div class="text-lg font-bold text-gray-900">8.5/10</div>
+                            <div class="text-xs text-gray-500">Impact Score</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-xs text-gray-500 mt-2">
+                        ${new Date().toLocaleTimeString()}
+                    </div>
+                `;
+                messagesArea.appendChild(aiMessage);
+                
+                // Reset button
+                isAnalyzing = false;
+                sendButton.disabled = false;
+                sendButton.innerHTML = 'Analyze';
+                
+                // Scroll to bottom
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+            }, 3000);
+        }
+
+        // Add some interactive animations on load
+        setTimeout(() => {
+            document.querySelectorAll('.glass-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 100}ms`;
+                card.classList.add('animate-slide-up');
+            });
+        }, 500);
+    </script>
+</body>
+</html>
