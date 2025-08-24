@@ -42,6 +42,9 @@ class CSSValidator {
       /border-\w+-\d+(?![.\w-])/g,
     ];
     
+    // Check for Tailwind config completeness
+    this.checkTailwindConfig();
+    
     // Valid Tailwind utility classes for reference
     this.validClasses = new Set([
       'flex', 'block', 'inline', 'hidden', 'relative', 'absolute',
@@ -188,6 +191,22 @@ class CSSValidator {
     }
   }
   
+  checkTailwindConfig() {
+    try {
+      const configPath = 'tailwind.config.ts';
+      if (fs.existsSync(configPath)) {
+        const configContent = fs.readFileSync(configPath, 'utf8');
+        
+        // Check for gap utilities (required by Mantine)
+        if (!configContent.includes('gap:') && !configContent.includes('gap-')) {
+          this.warnings.push('⚠️  Missing gap utilities in tailwind.config.ts (required by Mantine CSS)');
+        }
+      }
+    } catch (error) {
+      this.warnings.push(`⚠️  Could not validate Tailwind config: ${error.message}`);
+    }
+  }
+
   getLineNumber(content, index) {
     return content.substring(0, index).split('\n').length;
   }

@@ -5,6 +5,10 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  corePlugins: {
+    // Ensure gap utilities are enabled
+    gap: true,
+  },
   theme: {
     extend: {
       // Enhanced animations for PM33 dashboard

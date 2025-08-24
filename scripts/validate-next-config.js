@@ -40,8 +40,17 @@ class ConfigValidator {
         this.warnings.push('⚠️  Static export mode detected - may cause routing issues');
       }
       
+      if (config.output === 'standalone' && !config.outputFileTracingRoot) {
+        this.errors.push('❌ Standalone output requires outputFileTracingRoot to prevent file copy errors');
+      }
+      
       if (config.typescript?.ignoreBuildErrors) {
         this.warnings.push('⚠️  TypeScript build errors are being ignored');
+      }
+      
+      // Check for proper file tracing configuration
+      if (config.outputFileTracingRoot && !fs.existsSync(config.outputFileTracingRoot)) {
+        this.errors.push(`❌ outputFileTracingRoot path does not exist: ${config.outputFileTracingRoot}`);
       }
       
       console.log('   ✅ next.config.js valid');

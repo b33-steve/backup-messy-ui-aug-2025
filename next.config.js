@@ -3,8 +3,8 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
-  // Remove standalone output for development to fix clientReferenceManifest bug
-  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
+  // Fix file tracing issues with proper output configuration
+  outputFileTracingRoot: '/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend',
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
