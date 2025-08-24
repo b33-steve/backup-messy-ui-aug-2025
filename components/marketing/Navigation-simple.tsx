@@ -14,6 +14,8 @@ export default function NavigationSimple() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/pricing', label: 'Pricing' },
+    { href: '/resources', label: 'Resources' },
+    { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ];

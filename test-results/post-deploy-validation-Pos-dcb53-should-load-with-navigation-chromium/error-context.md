@@ -2,8 +2,138 @@
 
 ```yaml
 - generic [active] [ref=e1]:
-  - generic [ref=e4]:
-    - heading "404" [level=1] [ref=e5]
-    - heading "This page could not be found." [level=2] [ref=e7]
-  - alert [ref=e8]
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "PM33 Strategic Intelligence Platform" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]
+        - generic [ref=e8]:
+          - link "Home" [ref=e9] [cursor=pointer]:
+            - /url: /
+          - link "Pricing" [ref=e10] [cursor=pointer]:
+            - /url: /pricing
+          - link "About" [ref=e11] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e12] [cursor=pointer]:
+            - /url: /contact
+          - link "Start Free Trial" [ref=e13] [cursor=pointer]:
+            - /url: /trial
+    - main [ref=e14]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - heading "Intelligence Operations Pricing" [level=1] [ref=e18]
+          - paragraph [ref=e19]: Usage-based pricing that scales with your PMO transformation. No per-seat limits, no feature restrictions—just pure intelligence.
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: Most Popular
+            - heading "Starter" [level=3] [ref=e23]
+            - paragraph [ref=e24]: Perfect for individual PMs starting their AI transformation
+            - generic [ref=e25]:
+              - generic [ref=e26]: $29
+              - generic [ref=e27]: per month
+            - generic [ref=e28]:
+              - generic [ref=e29]:
+                - generic [ref=e30]: ✓
+                - generic [ref=e31]: 1 PM workspace
+              - generic [ref=e32]:
+                - generic [ref=e33]: ✓
+                - generic [ref=e34]: 50 AI analyses per month
+              - generic [ref=e35]:
+                - generic [ref=e36]: ✓
+                - generic [ref=e37]: Basic frameworks (ICE, RICE)
+              - generic [ref=e38]:
+                - generic [ref=e39]: ✓
+                - generic [ref=e40]: Email support
+            - button "✨ Start Free Trial" [ref=e41] [cursor=pointer]
+          - generic [ref=e42]:
+            - generic [ref=e43]: Best Value
+            - heading "Team" [level=3] [ref=e44]
+            - paragraph [ref=e45]: For product teams ready to scale strategic intelligence
+            - generic [ref=e46]:
+              - generic [ref=e47]: $79
+              - generic [ref=e48]: per month
+            - generic [ref=e49]:
+              - generic [ref=e50]:
+                - generic [ref=e51]: ✓
+                - generic [ref=e52]: 5 PM workspaces
+              - generic [ref=e53]:
+                - generic [ref=e54]: ✓
+                - generic [ref=e55]: 200 AI analyses per month
+              - generic [ref=e56]:
+                - generic [ref=e57]: ✓
+                - generic [ref=e58]: Advanced frameworks
+              - generic [ref=e59]:
+                - generic [ref=e60]: ✓
+                - generic [ref=e61]: Priority support
+            - button "✨ Start Free Trial" [ref=e62] [cursor=pointer]
+          - generic [ref=e63]:
+            - heading "Enterprise" [level=3] [ref=e64]
+            - paragraph [ref=e65]: For enterprises requiring full PMO transformation
+            - generic [ref=e66]:
+              - generic [ref=e67]: $599
+              - generic [ref=e68]: per month
+            - generic [ref=e69]:
+              - generic [ref=e70]:
+                - generic [ref=e71]: ✓
+                - generic [ref=e72]: Unlimited workspaces
+              - generic [ref=e73]:
+                - generic [ref=e74]: ✓
+                - generic [ref=e75]: Unlimited AI analyses
+              - generic [ref=e76]:
+                - generic [ref=e77]: ✓
+                - generic [ref=e78]: Custom frameworks
+              - generic [ref=e79]:
+                - generic [ref=e80]: ✓
+                - generic [ref=e81]: Dedicated support
+            - button "Contact Sales" [ref=e82] [cursor=pointer]
+    - contentinfo [ref=e83]:
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - heading "PM33" [level=3] [ref=e88]
+              - generic [ref=e89]: AI-Powered
+            - paragraph [ref=e90]: Built by the PM community, for the PM community. Enhancing your existing tools with AI intelligence.
+            - link "Start Free Trial" [ref=e91] [cursor=pointer]:
+              - /url: /trial
+          - generic [ref=e92]:
+            - heading "Product" [level=4] [ref=e93]
+            - generic [ref=e94]:
+              - link "Features" [ref=e95] [cursor=pointer]:
+                - /url: /features
+              - link "Pricing" [ref=e96] [cursor=pointer]:
+                - /url: /pricing
+              - link "Strategic Intelligence" [ref=e97] [cursor=pointer]:
+                - /url: /strategic-intelligence
+              - link "Command Center" [ref=e98] [cursor=pointer]:
+                - /url: /command-center
+          - generic [ref=e99]:
+            - heading "Solutions" [level=4] [ref=e100]
+            - generic [ref=e101]:
+              - link "Jira Alternative" [ref=e102] [cursor=pointer]:
+                - /url: /jira-alternative
+              - link "Monday Alternative" [ref=e103] [cursor=pointer]:
+                - /url: /monday-alternative
+              - link "Asana Alternative" [ref=e104] [cursor=pointer]:
+                - /url: /asana-competitor
+              - link "AI Roadmap Tool" [ref=e105] [cursor=pointer]:
+                - /url: /ai-powered-roadmap-tool
+          - generic [ref=e106]:
+            - heading "Community" [level=4] [ref=e107]
+            - generic [ref=e108]:
+              - link "PM Templates" [ref=e109] [cursor=pointer]:
+                - /url: /templates
+              - link "About" [ref=e110] [cursor=pointer]:
+                - /url: /about
+              - link "Contact" [ref=e111] [cursor=pointer]:
+                - /url: /contact
+              - link "Security" [ref=e112] [cursor=pointer]:
+                - /url: /security
+              - link "Privacy" [ref=e113] [cursor=pointer]:
+                - /url: /privacy
+        - generic [ref=e114]:
+          - paragraph [ref=e115]: © 2025 PM33. Built by the PM community, for the PM community.
+          - generic [ref=e118]: 2,500+ PMs trust PM33
+  - alert [ref=e119]
 ```
