@@ -4,7 +4,7 @@
 
 import type { Metadata } from "next";
 import Navigation from '../../components/marketing/Navigation';
-import Footer from '../../components/marketing/Footer';
+import FooterSimple from '../../components/marketing/FooterSimple';
 // Marketing styles now consolidated in global CSS
 
 export const metadata: Metadata = {
@@ -22,8 +22,8 @@ export default function MarketingLayout({
       className="marketing-context"
       style={{
         minHeight: '100vh',
-        backgroundColor: 'var(--pm33-marketingBg)',
-        color: 'var(--pm33-marketingText)',
+        backgroundColor: 'var(--marketing-bg-primary)',
+        color: 'var(--marketing-text-primary)',
         transition: 'all 0.3s ease'
       }}
     >
@@ -31,7 +31,7 @@ export default function MarketingLayout({
       <main className="pt-16">
         {children}
       </main>
-      <Footer />
+      <FooterSimple />
     </div>
   );
 }
