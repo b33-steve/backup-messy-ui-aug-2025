@@ -118,7 +118,7 @@ export default function ResourcesPage() {
               </Stack>
               <Button 
                 component={Link} 
-                href="/strategic-intelligence" 
+                href="/strategic-intelligence-demo" 
                 variant="gradient" 
                 gradient={{ from: 'indigo', to: 'purple' }}
                 leftSection={<IconDownload size={16} />}
@@ -145,7 +145,7 @@ export default function ResourcesPage() {
               </Stack>
               <Button 
                 component={Link} 
-                href="/command-center" 
+                href="/command-center-demo" 
                 variant="gradient" 
                 gradient={{ from: 'orange', to: 'red' }}
                 leftSection={<IconVideo size={16} />}
@@ -286,7 +286,7 @@ export default function ResourcesPage() {
               </Button>
               <Button 
                 component={Link} 
-                href="/strategic-intelligence" 
+                href="/strategic-intelligence-demo" 
                 size="lg" 
                 variant="outline"
                 style={{ borderColor: 'white', color: 'white' }}

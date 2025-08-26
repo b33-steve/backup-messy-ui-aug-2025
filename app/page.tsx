@@ -115,7 +115,7 @@ export default function MarketingHomePage() {
                     </Button>
                     <Button 
                       component={Link}
-                      href="/strategic-intelligence"
+                      href="/strategic-intelligence-demo"
                       onClick={handleDemoClick}
                       size="xl"
                       variant="outline"
@@ -342,7 +342,7 @@ export default function MarketingHomePage() {
                 radius="xl" 
                 p={32}
                 component={Link}
-                href="/strategic-intelligence"
+                href="/strategic-intelligence-demo"
                 style={{ 
                   backgroundColor: 'var(--marketing-bg-primary)',
                   border: '1px solid var(--marketing-primary)',
@@ -386,7 +386,7 @@ export default function MarketingHomePage() {
                 radius="xl" 
                 p={32}
                 component={Link}
-                href="/command-center"
+                href="/command-center-demo"
                 style={{ 
                   backgroundColor: 'var(--marketing-bg-primary)',
                   border: '1px solid var(--marketing-cta)',
@@ -674,7 +674,7 @@ export default function MarketingHomePage() {
                 </Button>
                 <Button 
                   component={Link}
-                  href="/strategic-intelligence"
+                  href="/strategic-intelligence-demo"
                   size="xl"
                   variant="outline"
                   style={{ 
