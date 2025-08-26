@@ -35,18 +35,8 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <DesignSystemProvider context="app">
-      <PM33ThemeProvider defaultTheme="light">
-        <PM33PageWrapper>
-          <div className={`${inter.variable} antialiased`}>
-            <PM33ThemeToggle />
-            <PM33Navigation currentPage="dashboard" />
-            <main>
-              {children}
-            </main>
-          </div>
-        </PM33PageWrapper>
-      </PM33ThemeProvider>
-    </DesignSystemProvider>
+    <div className={`${inter.variable} antialiased`}>
+      {children}
+    </div>
   );
 }

@@ -150,7 +150,11 @@ export default function PM33TopNav({
     <nav style={navStyle}>
       {/* PM33 Logo with BETA Badge */}
       <div style={logoStyle}>
-        <div>PM33</div>
+        <img 
+          src={theme === 'dark' ? '/pm33-logo-dark.png' : '/pm33-logo-light.png'}
+          alt="PM33"
+          style={{ height: '32px', width: 'auto' }}
+        />
         <span style={betaBadgeStyle}>BETA</span>
       </div>
 

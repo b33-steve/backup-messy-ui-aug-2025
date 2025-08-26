@@ -24,6 +24,81 @@ export default function ResourcesPage() {
           </Stack>
         </Stack>
 
+        {/* Content Factory Articles - First Section */}
+        <Stack gap={32} mb={64}>
+          <Title order={2} ta="center">Latest Strategic Guides</Title>
+          
+          <SimpleGrid cols={{ base: 1, lg: 2 }} spacing={32}>
+            {/* AI Product Management Tool Guide */}
+            <Card shadow="xl" radius="xl" p={32} style={{ border: '2px solid var(--marketing-success)' }}>
+              <Stack gap={24}>
+                <Group>
+                  <ThemeIcon size={48} variant="gradient" gradient={{ from: 'teal', to: 'cyan' }}>
+                    <IconBrain size={24} />
+                  </ThemeIcon>
+                  <Badge variant="filled" color="teal" size="sm">NEW</Badge>
+                </Group>
+                <Stack gap={12}>
+                  <Title order={3} size="h3">AI Product Management Tool Guide</Title>
+                  <Text c="dimmed">
+                    Don't Replace Your PM Tools - Make Them 10x Smarter. Transform Jira, Monday.com, and Asana 
+                    into AI-powered strategic engines with no migration headaches.
+                  </Text>
+                  <Text size="sm" c="dimmed" style={{ fontStyle: 'italic' }}>
+                    Learn why PM33's enhancement approach beats traditional AI PM platforms
+                  </Text>
+                </Stack>
+                <Group justify="space-between">
+                  <Text size="sm" c="dimmed">5-minute read</Text>
+                  <Button 
+                    component={Link} 
+                    href="/ai-product-management-tool" 
+                    variant="gradient" 
+                    gradient={{ from: 'teal', to: 'cyan' }}
+                    size="sm"
+                  >
+                    Read Full Guide
+                  </Button>
+                </Group>
+              </Stack>
+            </Card>
+
+            {/* AI Project Management Software Guide */}
+            <Card shadow="xl" radius="xl" p={32} style={{ border: '2px solid var(--marketing-primary)' }}>
+              <Stack gap={24}>
+                <Group>
+                  <ThemeIcon size={48} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
+                    <IconTarget size={24} />
+                  </ThemeIcon>
+                  <Badge variant="filled" color="indigo" size="sm">COMPREHENSIVE</Badge>
+                </Group>
+                <Stack gap={12}>
+                  <Title order={3} size="h3">AI Project Management Software: Complete 2025 Guide</Title>
+                  <Text c="dimmed">
+                    Traditional PM vs AI-Enhanced approaches analyzed. Market research, platform comparisons, 
+                    ROI analysis, and decision frameworks for choosing the right AI PM solution.
+                  </Text>
+                  <Text size="sm" c="dimmed" style={{ fontStyle: 'italic' }}>
+                    92% of Fortune 500 companies are adopting AI - make sure you choose wisely
+                  </Text>
+                </Stack>
+                <Group justify="space-between">
+                  <Text size="sm" c="dimmed">12-minute read</Text>
+                  <Button 
+                    component={Link} 
+                    href="/ai-project-management-software-guide" 
+                    variant="gradient" 
+                    gradient={{ from: 'indigo', to: 'purple' }}
+                    size="sm"
+                  >
+                    Read Full Guide
+                  </Button>
+                </Group>
+              </Stack>
+            </Card>
+          </SimpleGrid>
+        </Stack>
+
         {/* Featured Resources */}
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32} mb={64}>
           <Card shadow="xl" radius="xl" p={32} style={{ border: '2px solid var(--marketing-primary)' }}>
