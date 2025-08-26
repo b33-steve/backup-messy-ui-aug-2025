@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM33 - PMO Transformation Platform | Marketing Website</title>
+    <style id="marketing-styles">
+        /* Marketing-specific styles using PM33 design system */
+        :root {
+            /* Marketing Colors */
+            --marketing-primary: #1E40AF;
+            --marketing-secondary: #059669;
+            --marketing-cta: #EA580C;
+            --marketing-text-primary: #1E293B;
+            --marketing-text-secondary: #64748B;
+            --marketing-text-inverse: #FFFFFF;
+            --marketing-bg-primary: #FFFFFF;
+            --marketing-bg-secondary: #F8FAFC;
+            --marketing-bg-accent: #EFF6FF;
+            
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+            
+            /* Typography */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Dark theme support */
+        [data-theme="dark"] {
+            --marketing-text-primary: #FFFFFF;
+            --marketing-text-secondary: rgba(255, 255, 255, 0.8);
+            --marketing-bg-primary: #0a0e27;
+            --marketing-bg-secondary: #0f1429;
+            --marketing-bg-accent: #1e2749;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--marketing-bg-primary);
+            color: var(--marketing-text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--marketing-bg-primary);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-md) 0;
+            z-index: 50;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 42px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--marketing-text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--marketing-primary);
+        }
+
+        .nav-link.active {
+            color: var(--marketing-primary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--marketing-primary);
+        }
+
+        .theme-toggle {
+            margin: 0 var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--marketing-text-primary);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .cta-button {
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--marketing-primary) 0%, var(--marketing-cta) 100%);
+            color: var(--marketing-text-inverse);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px 0 rgba(30, 64, 175, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(30, 64, 175, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--spacing-xxl) 0;
+            background: linear-gradient(135deg, var(--marketing-bg-secondary) 0%, var(--marketing-bg-primary) 50%, var(--marketing-bg-accent) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xxl);
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-lg);
+            color: var(--marketing-text-primary);
+        }
+
+        .hero-text .subtitle {
+            font-size: 20px;
+            color: var(--marketing-text-secondary);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .btn-primary {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: linear-gradient(135deg, var(--marketing-primary) 0%, #6366F1 100%);
+            color: var(--marketing-text-inverse);
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary {
+            padding: var(--spacing-md) var(--spacing-xl);
+            border: 2px solid var(--marketing-primary);
+            color: var(--marketing-primary);
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 18px;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-visual {
+            background: var(--marketing-bg-primary);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 24px;
+            padding: var(--spacing-xl);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--spacing-xxl) 0;
+            background: var(--marketing-bg-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xxl);
+        }
+
+        .feature-card {
+            background: var(--marketing-bg-secondary);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: var(--spacing-xl);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--marketing-text-primary);
+        }
+
+        .feature-card p {
+            color: var(--marketing-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--marketing-text-primary);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--marketing-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <img src="/PM 33 New Logo Horizontal V1.2.png" alt="PM33 Strategic Intelligence Platform">
+                </a>
+                
+                <div class="nav-links">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/pricing" class="nav-link">Pricing</a>
+                    <a href="/resources" class="nav-link">Resources</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                    
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    
+                    <a href="/trial" class="cta-button">Start Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Don't Replace Your PM Tools—Make Them 10x Smarter</h1>
+                    <p class="subtitle">Transform Jira, Monday.com, and Asana into AI-powered strategic engines. <strong>No migration headaches.</strong> Immediate productivity gains.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="/trial" class="btn-primary">Start Free 14-Day Trial</a>
+                        <a href="/demo" class="btn-secondary">Try Live Demo</a>
+                    </div>
+                    
+                    <div style="display: flex; gap: var(--spacing-lg); font-size: 14px; color: var(--marketing-text-secondary);">
+                        <span>✅ No credit card required</span>
+                        <span>✅ Setup in 5 minutes</span>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div style="text-align: center; padding: var(--spacing-xl);">
+                        <div style="font-size: 48px; margin-bottom: var(--spacing-md);">🧠</div>
+                        <h3 style="color: var(--marketing-text-primary); margin-bottom: var(--spacing-md);">AI Strategy Assistant</h3>
+                        <div style="background: var(--marketing-bg-accent); padding: var(--spacing-md); border-radius: 12px; margin-bottom: var(--spacing-sm);">
+                            <p style="font-size: 14px; color: var(--marketing-primary); font-weight: 600;">Analysis Complete ✨</p>
+                            <p style="font-size: 12px; color: var(--marketing-text-secondary);">Based on 847 support tickets, mobile performance optimization should be your #1 priority</p>
+                        </div>
+                        <div style="background: #E6FFFA; padding: var(--spacing-md); border-radius: 12px; margin-bottom: var(--spacing-sm);">
+                            <p style="font-size: 14px; color: #059669; font-weight: 600;">Impact Prediction</p>
+                            <p style="font-size: 12px; color: var(--marketing-text-secondary);">Projected 34% reduction in churn rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transform Your PM Work Today</h2>
+                <p>Join 2,500+ product teams using PM33 to focus on strategy, not busywork.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Strategic Intelligence</h3>
+                    <p>Multi-framework strategic analysis with automated priority scoring and AI-powered competitive intelligence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Workflow Automation</h3>
+                    <p>Transform strategic questions into executable workflows with cross-functional coordination and progress tracking.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data Intelligence</h3>
+                    <p>Company-specific context learning with historical pattern recognition and predictive analytics for optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = body.getAttribute('data-theme') || 'light';
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        // Initialize theme
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial theme based on system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mantine CSS compatibility layer - Fix missing Tailwind utilities */
+@layer utilities {
+  .gap-1 { gap: 0.25rem; }
+  .gap-2 { gap: 0.5rem; }
+  .gap-3 { gap: 0.75rem; }
+  .gap-4 { gap: 1rem; }
+  .gap-5 { gap: 1.25rem; }
+  .gap-6 { gap: 1.5rem; }
+  .gap-8 { gap: 2rem; }
+  .gap-10 { gap: 2.5rem; }
+  .gap-12 { gap: 3rem; }
+  .gap-16 { gap: 4rem; }
+}
+
+/* ===============================================
+   MARKETING WEBSITE DESIGN SYSTEM
+   =============================================== */
+
+:root {
+  /* Marketing Color System - Following MARKETING_THEME_GUIDE.md */
+  --marketing-primary: #1E40AF;          /* Strategic Blue - headlines, CTAs */
+  --marketing-primary-hover: #1E3A8A;    /* Strategic Blue hover */
+  --marketing-primary-light: #EFF6FF;    /* Strategic Blue light */
+  
+  --marketing-success: #059669;          /* Success & Growth */
+  --marketing-success-light: #ECFDF5;    /* Success light bg */
+  
+  --marketing-cta: #EA580C;             /* Energy & Action - primary CTAs */
+  --marketing-cta-hover: #DC2626;        /* CTA hover */
+  --marketing-cta-light: #FFF7ED;        /* CTA light bg */
+  
+  /* Professional Text Colors */
+  --marketing-text-primary: #1E293B;     /* Headlines, key copy */
+  --marketing-text-secondary: #64748B;   /* Supporting copy */
+  --marketing-text-muted: #94A3B8;       /* Captions, meta info */
+  
+  /* Background System */
+  --marketing-bg-primary: #FFFFFF;       /* Clean white base */
+  --marketing-bg-secondary: #F8FAFC;     /* Section alternating */
+  --marketing-bg-tertiary: #F1F5F9;      /* Light gray */
+  --marketing-bg-accent: #EFF6FF;        /* Feature highlights */
+  --marketing-bg-gradient: linear-gradient(135deg, #FAFBFF 0%, #F8FAFC 100%);
+  
+  /* PM33 Component System Colors - Marketing Context */
+  --pm33-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --pm33-aiGlow: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  --pm33-success: #059669;
+  --pm33-danger: #DC2626;
+  --pm33-textDimmed: #64748B;
+}
+
+/* Marketing Context Professional Styling */
+.marketing-context {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--marketing-text-primary) !important;
+  background-color: var(--marketing-bg-primary) !important;
+  min-height: 100vh;
+  line-height: 1.6;
+  
+  /* Force override any app theme styling */
+  --mantine-color-text: var(--marketing-text-primary) !important;
+  --mantine-color-body: var(--marketing-bg-primary) !important;
+  --mantine-color-dimmed: var(--marketing-text-secondary) !important;
+}
+
+/* Marketing Typography Hierarchy */
+.marketing-context h1,
+.marketing-context h2,
+.marketing-context h3,
+.marketing-context h4,
+.marketing-context h5,
+.marketing-context h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--marketing-text-primary);
+}
+
+.marketing-context h1 { font-size: 2.5rem; }
+.marketing-context h2 { font-size: 2rem; }
+.marketing-context h3 { font-size: 1.5rem; }
+.marketing-context h4 { font-size: 1.25rem; }
+
+.marketing-context p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: var(--marketing-text-secondary);
+}
+
+/* Marketing Button Styling */
+.marketing-context .mantine-Button-root {
+  background: var(--marketing-primary) !important;
+  color: white !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.marketing-context .mantine-Button-root:hover {
+  background: var(--marketing-primary-hover) !important;
+  color: white !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Marketing Card Styling */
+.marketing-context .mantine-Card-root {
+  background: var(--marketing-bg-primary) !important;
+  color: var(--marketing-text-primary) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.marketing-context .mantine-Card-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Force text colors in marketing context */
+.marketing-context .mantine-Text-root {
+  color: var(--marketing-text-secondary) !important;
+}
+
+.marketing-context .mantine-Title-root {
+  color: var(--marketing-text-primary) !important;
+}
+
+/* Marketing Dark Theme Support */
+[data-theme="dark"] .marketing-context,
+.dark .marketing-context {
+  background-color: #0a0e27 !important;
+  color: #ffffff !important;
+  
+  --marketing-bg-primary: #0a0e27 !important;
+  --marketing-bg-secondary: #0f1429 !important;
+  --marketing-text-primary: #ffffff !important;
+  --marketing-text-secondary: rgba(255, 255, 255, 0.8) !important;
+  
+  --mantine-color-text: #ffffff !important;
+  --mantine-color-body: #0a0e27 !important;
+  --mantine-color-dimmed: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-theme="dark"] .marketing-context h1,
+[data-theme="dark"] .marketing-context h2,
+[data-theme="dark"] .marketing-context h3,
+[data-theme="dark"] .marketing-context h4,
+[data-theme="dark"] .marketing-context h5,
+[data-theme="dark"] .marketing-context h6,
+.dark .marketing-context h1,
+.dark .marketing-context h2,
+.dark .marketing-context h3,
+.dark .marketing-context h4,
+.dark .marketing-context h5,
+.dark .marketing-context h6 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .marketing-context p,
+.dark .marketing-context p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Card-root,
+.dark .marketing-context .mantine-Card-root {
+  background: #0f1429 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Text-root,
+.dark .marketing-context .mantine-Text-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Title-root,
+.dark .marketing-context .mantine-Title-root {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .marketing-context nav,
+.dark .marketing-context nav {
+  background-color: rgba(10, 14, 39, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Marketing utility classes */
+.marketing-text-primary {
+  color: var(--marketing-text-primary) !important;
+}
+
+.marketing-text-secondary {
+  color: var(--marketing-text-secondary) !important;
+}
+
+/* CTA Section specific fixes - Force blue background with white text */
+.marketing-context [style*="var(--marketing-primary)"] {
+  background: #1E40AF !important;
+}
+
+.marketing-context [style*="var(--marketing-primary)"] .mantine-Title-root[data-c="white"],
+.marketing-context [style*="var(--marketing-primary)"] .mantine-Text-root[data-c="white"] {
+  color: white !important;
+}
+
+/* Homepage CTA section - "Ready to 10x Your PM Productivity" section */
+.marketing-context div[style*="var(--marketing-primary)"] {
+  background: #1E40AF !important;
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] * {
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Title-root {
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Text-root {
+  color: white !important;
+}
+
+/* Ensure gradient text works in CTA section - "10x Your PM Productivity" */
+.marketing-context .mantine-Text-root[data-variant="gradient"],
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Text-root[data-variant="gradient"] {
+  background: linear-gradient(45deg, #67e8f9 0%, #10b981 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  font-weight: 800 !important;
+}
