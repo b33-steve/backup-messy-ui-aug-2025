@@ -34,30 +34,30 @@ const ThemedStylesContext = createContext<ThemedStylesType | undefined>(undefine
 // PM33 Comprehensive Color System for Marketing + App
 const PM33_COLORS = {
   light: {
-    // Core brand colors
-    primary: '#667eea',
-    secondary: '#764ba2',
-    aiGlow: '#00d2ff',
-    success: '#11998e',
-    warning: '#f2994a',
-    danger: '#eb3349',
+    // Core brand colors - using logo colors
+    primary: '#1e3a8a',
+    secondary: '#0891b2',
+    aiGlow: '#06b6d4',
+    success: '#0891b2',
+    warning: '#f59e0b',
+    danger: '#dc2626',
     
     // Text colors
     textPrimary: '#1e293b',
-    textSecondary: '#64748b',
-    textDimmed: '#9ca3af',
+    textSecondary: '#475569',
+    textDimmed: '#64748b',
     
-    // Background colors
-    background: '#ffffff',
+    // Background colors - off-white, not pure white
+    background: '#fafbfc',
     backgroundSecondary: '#f8fafc',
     surface: '#ffffff',
     surfaceSecondary: '#f1f5f9',
     
     // Marketing specific
-    marketingBg: '#ffffff',
+    marketingBg: '#fafbfc',
     marketingText: '#1e293b',
-    marketingTextSecondary: '#64748b',
-    marketingPrimary: '#667eea',
+    marketingTextSecondary: '#475569',
+    marketingPrimary: '#1e3a8a',
     
     // Borders and separators
     border: '#e2e8f0',
@@ -72,20 +72,20 @@ const PM33_COLORS = {
     glassBorder: 'rgba(255, 255, 255, 0.18)'
   },
   dark: {
-    // Core brand colors
-    primary: '#667eea',
-    secondary: '#764ba2', 
-    aiGlow: '#00d2ff',
-    success: '#38ef7d',
-    warning: '#f2c94c',
-    danger: '#f45c43',
+    // Core brand colors - same logo colors work in dark
+    primary: '#1e3a8a',
+    secondary: '#0891b2', 
+    aiGlow: '#06b6d4',
+    success: '#0891b2',
+    warning: '#f59e0b',
+    danger: '#dc2626',
     
-    // Text colors
+    // Text colors - bright on dark
     textPrimary: '#ffffff',
-    textSecondary: '#cbd5e1',
+    textSecondary: '#e2e8f0',
     textDimmed: '#94a3b8',
     
-    // Background colors
+    // Background colors - proper dark
     background: '#0f172a',
     backgroundSecondary: '#1e293b',
     surface: '#1e293b',
@@ -94,8 +94,8 @@ const PM33_COLORS = {
     // Marketing specific
     marketingBg: '#0f172a',
     marketingText: '#ffffff',
-    marketingTextSecondary: '#cbd5e1',
-    marketingPrimary: '#667eea',
+    marketingTextSecondary: '#e2e8f0',
+    marketingPrimary: '#1e3a8a',
     
     // Borders and separators
     border: '#334155',

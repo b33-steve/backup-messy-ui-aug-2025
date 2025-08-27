@@ -1,6 +1,6 @@
 'use client';
 
-import { MantineProvider, createTheme } from '@mantine/core';
+import { MantineProvider, createTheme, CSSVariablesResolver } from '@mantine/core';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import '@mantine/dates/styles.css';
@@ -9,91 +9,166 @@ import '@mantine/dropzone/styles.css';
 import '@mantine/spotlight/styles.css';
 
 /**
- * PM33 Complete UI System - Mantine Theme Integration
+ * PM33 Complete UI System - Official Mantine Theme Integration
  * 
- * This theme aligns Mantine components with PM33_COMPLETE_UI_SYSTEM.MD
- * specifications including premium gradients, glass morphism, and 
- * strategic intelligence visual language.
+ * This implementation follows Mantine's official best practices using cssVariablesResolver
+ * to properly integrate PM33 design tokens with Mantine's CSS variable system.
  * 
- * REFERENCE: PM33_COMPLETE_UI_SYSTEM.MD
- * COMPATIBILITY: Uses PM33 design tokens from globals.css
+ * APPROACH: Uses cssVariablesResolver (official method) instead of component overrides
+ * REFERENCE: PM33_COMPLETE_UI_SYSTEM.MD + Mantine official documentation
+ * COMPATIBILITY: Full semantic color support (c="dimmed", c="bright", etc.)
  */
 
-const theme = createTheme({
-  /** PM33 Strategic Intelligence Platform Theme - Premium Implementation */
-  primaryColor: 'pm33Brand',
-  
-  colors: {
-    // PM33 Brand Colors (aligned with gradient system)
-    pm33Brand: [
-      '#f0f6ff',      // pm33Brand.0 - Lightest tint
-      '#d9ecff',      // pm33Brand.1 - Very light
-      '#a6d5ff',      // pm33Brand.2 - Light
-      '#73beff',      // pm33Brand.3 - Light medium
-      '#667eea',      // pm33Brand.4 - Base brand start
-      '#764ba2',      // pm33Brand.5 - Brand middle
-      '#6366f1',      // pm33Brand.6 - Brand accent
-      '#4f46e5',      // pm33Brand.7 - Darker
-      '#4338ca',      // pm33Brand.8 - Very dark
-      '#3730a3'       // pm33Brand.9 - Darkest
-    ],
+/**
+ * Official Mantine CSS Variables Resolver
+ * Maps PM33 design tokens to Mantine's CSS variable system for seamless integration
+ */
+const pm33CssVariablesResolver: CSSVariablesResolver = (theme) => ({
+  variables: {
+    // Theme-independent variables (spacing, radius, shadows)
+    '--mantine-spacing-xs': '0.5rem',    // 8px - PM33 space-2
+    '--mantine-spacing-sm': '0.75rem',   // 12px - PM33 space-3
+    '--mantine-spacing-md': '1rem',      // 16px - PM33 space-4
+    '--mantine-spacing-lg': '1.5rem',    // 24px - PM33 space-6
+    '--mantine-spacing-xl': '2rem',      // 32px - PM33 space-8
     
-    // AI Processing Colors (strategic intelligence)
-    aiGlow: [
-      '#f0fcff',      // aiGlow.0 - Lightest
-      '#e0f9ff',      // aiGlow.1 - Very light
-      '#baf2ff',      // aiGlow.2 - Light
-      '#7ee8ff',      // aiGlow.3 - Light medium
-      '#00d2ff',      // aiGlow.4 - Base AI glow start
-      '#3a7bd5',      // aiGlow.5 - AI glow end
-      '#2563eb',      // aiGlow.6 - Accent
-      '#1d4ed8',      // aiGlow.7 - Darker
-      '#1e40af',      // aiGlow.8 - Very dark
-      '#1e3a8a'       // aiGlow.9 - Darkest
-    ],
+    '--mantine-radius-xs': '4px',        // PM33 minimal radius
+    '--mantine-radius-sm': '8px',        // PM33 small radius
+    '--mantine-radius-md': '12px',       // PM33 standard radius
+    '--mantine-radius-lg': '16px',       // PM33 card radius
+    '--mantine-radius-xl': '20px',       // PM33 large radius
     
-    // Success States (strategic outcomes)
-    strategicSuccess: [
-      '#ecfdf5',      // Success lightest
-      '#d1fae5',      // Success very light
-      '#a7f3d0',      // Success light
-      '#6ee7b7',      // Success light medium
-      '#38ef7d',      // Success bright (from PM33 system)
-      '#11998e',      // Success base (from PM33 system)
-      '#059669',      // Success darker
-      '#047857',      // Success very dark
-      '#065f46',      // Success darkest
-      '#064e3b'       // Success deepest
-    ],
-    
-    // Warning States (attention)
-    strategicWarning: [
-      '#fffbeb',      // Warning lightest
-      '#fef3c7',      // Warning very light
-      '#fde68a',      // Warning light
-      '#facc15',      // Warning light medium
-      '#f2c94c',      // Warning bright (from PM33 system)
-      '#f2994a',      // Warning base (from PM33 system)
-      '#d97706',      // Warning darker
-      '#b45309',      // Warning very dark
-      '#92400e',      // Warning darkest
-      '#78350f'       // Warning deepest
-    ],
-    
-    // Error States (critical)
-    strategicError: [
-      '#fef2f2',      // Error lightest
-      '#fecaca',      // Error very light
-      '#fca5a5',      // Error light
-      '#f87171',      // Error light medium
-      '#f45c43',      // Error bright (from PM33 system)
-      '#eb3349',      // Error base (from PM33 system)
-      '#dc2626',      // Error darker
-      '#b91c1c',      // Error very dark
-      '#991b1b',      // Error darkest
-      '#7f1d1d'       // Error deepest
-    ]
+    '--mantine-shadow-xs': '0 1px 3px 0 rgba(31, 38, 135, 0.1)',
+    '--mantine-shadow-sm': '0 4px 6px -1px rgba(31, 38, 135, 0.1)',
+    '--mantine-shadow-md': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+    '--mantine-shadow-lg': '0 20px 60px 0 rgba(31, 38, 135, 0.25)',
+    '--mantine-shadow-xl': '0 25px 50px -12px rgba(31, 38, 135, 0.25)',
   },
+  
+  light: {
+    // Core text and body colors - CRITICAL for default styling
+    '--mantine-color-text': 'var(--pm33-text-primary)',         // All default text
+    '--mantine-color-body': 'var(--pm33-bg-primary)',           // Body background
+    '--mantine-color-error': 'var(--pm33-danger)',              // Error states
+    '--mantine-color-placeholder': 'var(--pm33-text-muted)',    // Input placeholders
+    '--mantine-color-anchor': 'var(--pm33-primary)',            // Links
+    
+    // Default component colors - Paper, Card, etc.
+    '--mantine-color-default': 'var(--pm33-bg-secondary)',      // Default backgrounds
+    '--mantine-color-default-hover': 'var(--pm33-bg-tertiary)', // Hover states
+    '--mantine-color-default-color': 'var(--pm33-text-primary)', // Default component text
+    '--mantine-color-default-border': 'var(--pm33-border)',     // Default borders
+    
+    // Semantic colors for c="dimmed", c="bright" etc.
+    '--mantine-color-dimmed': 'var(--pm33-text-secondary)',     // c="dimmed"
+    '--mantine-color-bright': 'var(--pm33-text-primary)',       // c="bright"
+    '--mantine-color-dark': 'var(--pm33-text-primary)',         // c="dark"
+    
+    // Complete Mantine dark palette override (light theme)
+    '--mantine-color-dark-0': 'var(--pm33-text-primary)',       // Darkest text
+    '--mantine-color-dark-1': 'var(--pm33-text-primary)',
+    '--mantine-color-dark-2': 'var(--pm33-text-secondary)',
+    '--mantine-color-dark-3': 'var(--pm33-text-muted)',
+    '--mantine-color-dark-4': 'var(--pm33-bg-tertiary)',
+    '--mantine-color-dark-5': 'var(--pm33-bg-secondary)',
+    '--mantine-color-dark-6': 'var(--pm33-bg-secondary)',
+    '--mantine-color-dark-7': 'var(--pm33-bg-primary)',         // Lightest bg
+    '--mantine-color-dark-8': 'var(--pm33-bg-primary)',
+    '--mantine-color-dark-9': 'var(--pm33-bg-primary)',
+    
+    // ThemeIcon light variants that were causing light backgrounds
+    '--mantine-color-blue-light': 'var(--pm33-primary-100)',
+    '--mantine-color-blue-light-color': 'var(--pm33-primary)',
+    '--mantine-color-indigo-light': 'var(--pm33-primary-100)',
+    '--mantine-color-indigo-light-color': 'var(--pm33-primary)',
+    '--mantine-color-yellow-light': 'var(--pm33-warning-100)',
+    '--mantine-color-yellow-light-color': 'var(--pm33-warning)',
+    '--mantine-color-teal-light': 'var(--pm33-success-100)',
+    '--mantine-color-teal-light-color': 'var(--pm33-success)',
+    
+    // Color-specific filled variants
+    '--mantine-color-blue-filled': 'var(--pm33-primary)',
+    '--mantine-color-indigo-filled': 'var(--pm33-primary)',
+    '--mantine-color-yellow-filled': 'var(--pm33-warning)',
+    '--mantine-color-teal-filled': 'var(--pm33-success)',
+    
+    // Primary color scale
+    '--mantine-primary-color-0': 'var(--pm33-primary-50)',
+    '--mantine-primary-color-1': 'var(--pm33-primary-100)',
+    '--mantine-primary-color-2': 'var(--pm33-primary-200)',
+    '--mantine-primary-color-3': 'var(--pm33-primary-300)',
+    '--mantine-primary-color-4': 'var(--pm33-primary-400)',
+    '--mantine-primary-color-5': 'var(--pm33-primary)',
+    '--mantine-primary-color-6': 'var(--pm33-primary)',
+    '--mantine-primary-color-7': 'var(--pm33-primary)',
+    '--mantine-primary-color-8': 'var(--pm33-primary-800)',
+    '--mantine-primary-color-9': 'var(--pm33-primary-900)',
+  },
+  
+  dark: {
+    // Core text and body colors - CRITICAL for dark mode styling
+    '--mantine-color-text': 'var(--pm33-text-primary)',         // White text for all components
+    '--mantine-color-body': 'var(--pm33-bg-primary)',           // Dark body background
+    '--mantine-color-error': 'var(--pm33-danger)',              // Error states
+    '--mantine-color-placeholder': 'var(--pm33-text-muted)',    // Input placeholders
+    '--mantine-color-anchor': 'var(--pm33-primary)',            // Links
+    
+    // Default component colors - MUST be dark in dark mode
+    '--mantine-color-default': 'var(--pm33-bg-secondary)',      // Dark component backgrounds
+    '--mantine-color-default-hover': 'var(--pm33-bg-tertiary)', // Hover states
+    '--mantine-color-default-color': 'var(--pm33-text-primary)', // White component text
+    '--mantine-color-default-border': 'var(--pm33-border)',     // Dark borders
+    
+    // Semantic colors for dark mode
+    '--mantine-color-dimmed': 'var(--pm33-text-secondary)',     // c="dimmed" → light gray
+    '--mantine-color-bright': 'var(--pm33-text-primary)',       // c="bright" → white
+    '--mantine-color-dark': 'var(--pm33-text-muted)',           // c="dark" → muted in dark mode
+    
+    // Complete Mantine dark palette override (dark theme) - CRITICAL
+    '--mantine-color-dark-0': 'var(--pm33-text-primary)',       // White (lightest text)
+    '--mantine-color-dark-1': 'var(--pm33-text-secondary)',     // Light gray text
+    '--mantine-color-dark-2': 'var(--pm33-text-muted)',         // Muted text
+    '--mantine-color-dark-3': 'var(--pm33-bg-tertiary)',        // Light background
+    '--mantine-color-dark-4': 'var(--pm33-bg-secondary)',       // Medium background  
+    '--mantine-color-dark-5': 'var(--pm33-bg-secondary)',       // Default bg
+    '--mantine-color-dark-6': 'var(--pm33-bg-secondary)',       // Card backgrounds
+    '--mantine-color-dark-7': 'var(--pm33-bg-primary)',         // Dark body background
+    '--mantine-color-dark-8': 'var(--pm33-bg-primary)',         // Darker
+    '--mantine-color-dark-9': 'var(--pm33-bg-primary)',         // Darkest
+    
+    // ThemeIcon light variants - MUST be dark in dark mode
+    '--mantine-color-blue-light': 'var(--pm33-bg-secondary)',
+    '--mantine-color-blue-light-color': 'var(--pm33-primary)',
+    '--mantine-color-indigo-light': 'var(--pm33-bg-secondary)',
+    '--mantine-color-indigo-light-color': 'var(--pm33-primary)',
+    '--mantine-color-yellow-light': 'var(--pm33-bg-secondary)',
+    '--mantine-color-yellow-light-color': 'var(--pm33-warning)',
+    '--mantine-color-teal-light': 'var(--pm33-bg-secondary)',
+    '--mantine-color-teal-light-color': 'var(--pm33-success)',
+    
+    // Color-specific filled variants
+    '--mantine-color-blue-filled': 'var(--pm33-primary)',
+    '--mantine-color-indigo-filled': 'var(--pm33-primary)',
+    '--mantine-color-yellow-filled': 'var(--pm33-warning)',
+    '--mantine-color-teal-filled': 'var(--pm33-success)',
+    
+    // Primary color scale for dark theme
+    '--mantine-primary-color-0': 'var(--pm33-primary-50)',
+    '--mantine-primary-color-1': 'var(--pm33-primary-100)',
+    '--mantine-primary-color-2': 'var(--pm33-primary-200)',
+    '--mantine-primary-color-3': 'var(--pm33-primary-300)',
+    '--mantine-primary-color-4': 'var(--pm33-primary-400)',
+    '--mantine-primary-color-5': 'var(--pm33-primary)',
+    '--mantine-primary-color-6': 'var(--pm33-primary)',
+    '--mantine-primary-color-7': 'var(--pm33-primary)',
+    '--mantine-primary-color-8': 'var(--pm33-primary-800)',
+    '--mantine-primary-color-9': 'var(--pm33-primary-900)',
+  },
+});
+
+const theme = createTheme({
+  /** PM33 Theme Integration - Official Mantine Approach */
+  primaryColor: 'blue',
   
   // PM33 Typography System (matches globals.css)
   fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
@@ -102,7 +177,7 @@ const theme = createTheme({
     fontWeight: '600',
     sizes: {
       h1: { fontSize: '2.5rem', lineHeight: '1.2' },      // 40px - PM33 system
-      h2: { fontSize: '2rem', lineHeight: '1.2' },        // 32px - PM33 system
+      h2: { fontSize: '2rem', lineHeight: '1.2' },        // 32px - PM33 system  
       h3: { fontSize: '1.5rem', lineHeight: '1.33' },     // 24px - PM33 system
       h4: { fontSize: '1.25rem', lineHeight: '1.4' },     // 20px - PM33 system
       h5: { fontSize: '1.125rem', lineHeight: '1.44' },   // 18px - PM33 system
@@ -110,34 +185,7 @@ const theme = createTheme({
     }
   },
   
-  // PM33 Spacing System (8pt grid from PM33_COMPLETE_UI_SYSTEM.MD)
-  spacing: {
-    xs: '0.5rem',    // 8px - space-2
-    sm: '0.75rem',   // 12px - space-3
-    md: '1rem',      // 16px - space-4
-    lg: '1.5rem',    // 24px - space-6
-    xl: '2rem',      // 32px - space-8
-  },
-  
-  // PM33 Border Radius (glass morphism compatible)
-  radius: {
-    xs: '4px',       // Minimal radius
-    sm: '8px',       // Small radius
-    md: '12px',      // Standard radius (matches PM33 buttons)
-    lg: '16px',      // Card radius (matches PM33 glass cards)
-    xl: '20px',      // Large radius for special elements
-  },
-  
-  // PM33 Premium Shadows (glass morphism compatible)
-  shadows: {
-    xs: '0 1px 3px 0 rgba(31, 38, 135, 0.1)',
-    sm: '0 4px 6px -1px rgba(31, 38, 135, 0.1)',
-    md: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',    // Matches --pm33-glass-shadow
-    lg: '0 20px 60px 0 rgba(31, 38, 135, 0.25)',   // Premium hover shadow
-    xl: '0 25px 50px -12px rgba(31, 38, 135, 0.25)',
-  },
-  
-  // Component-specific overrides for PM33 aesthetic
+  // Minimal component overrides - let cssVariablesResolver handle colors
   components: {
     Card: {
       defaultProps: {
@@ -148,12 +196,8 @@ const theme = createTheme({
       styles: {
         root: {
           transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-          border: '1px solid var(--pm33-border-subtle)',
-          backgroundColor: 'var(--pm33-bg-secondary)',
-          
           '&:hover': {
             transform: 'translateY(-2px)',
-            boxShadow: 'var(--pm33-glass-shadow)',
           }
         }
       }
@@ -168,13 +212,9 @@ const theme = createTheme({
         root: {
           transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
           fontWeight: 500,
-          
           '&:hover': {
             transform: 'translateY(-1px) scale(1.02)',
-          },
-          
-          // Remove gradient variant as it's not supported in Mantine 8
-          // Use custom class styling instead
+          }
         }
       }
     },
@@ -182,19 +222,6 @@ const theme = createTheme({
     Input: {
       defaultProps: {
         radius: 'md',
-      },
-      styles: {
-        input: {
-          backgroundColor: 'var(--pm33-bg-tertiary)',
-          borderColor: 'var(--pm33-border-default)',
-          color: 'var(--pm33-text-primary)',
-          transition: 'all 0.2s ease',
-          
-          '&:focus': {
-            borderColor: 'transparent',
-            boxShadow: '0 0 0 2px var(--pm33-ai-glow), 0 0 0 4px rgba(0, 210, 255, 0.1)',
-          }
-        }
       }
     },
     
@@ -203,27 +230,6 @@ const theme = createTheme({
         radius: 'lg',
         shadow: 'xl',
         centered: true,
-      },
-      styles: {
-        content: {
-          backgroundColor: 'var(--pm33-bg-elevated)',
-          border: '1px solid var(--pm33-border-subtle)',
-        },
-        header: {
-          backgroundColor: 'var(--pm33-bg-elevated)',
-          borderBottom: '1px solid var(--pm33-border-subtle)',
-        }
-      }
-    },
-    
-    Notification: {
-      styles: {
-        root: {
-          backgroundColor: 'var(--pm33-bg-elevated)',
-          border: '1px solid var(--pm33-border-subtle)',
-          borderRadius: '12px',
-          boxShadow: 'var(--pm33-glass-shadow)',
-        }
       }
     }
   }
@@ -235,7 +241,11 @@ interface MantineWrapperProps {
 
 export default function MantineWrapper({ children }: MantineWrapperProps) {
   return (
-    <MantineProvider theme={theme} defaultColorScheme="dark">
+    <MantineProvider 
+      theme={theme} 
+      defaultColorScheme="dark"
+      cssVariablesResolver={pm33CssVariablesResolver}
+    >
       {children}
     </MantineProvider>
   );

@@ -22,8 +22,8 @@ export default function MarketingLayout({
       className="marketing-context"
       style={{
         minHeight: '100vh',
-        backgroundColor: 'var(--marketing-bg-primary)',
-        color: 'var(--marketing-text-primary)',
+        backgroundColor: 'var(--pm33-bg-primary)',
+        color: 'var(--pm33-text-primary)',
         transition: 'all 0.3s ease'
       }}
     >

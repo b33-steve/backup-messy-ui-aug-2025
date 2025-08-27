@@ -41,9 +41,9 @@ export default function Navigation() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: 'var(--pm33-bg-elevated)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(229, 231, 235, 0.5)'
+        borderBottom: '1px solid var(--pm33-border)'
       }}
     >
       <Container size={1200} px={24} py={18}>
@@ -126,20 +126,19 @@ export default function Navigation() {
               radius="lg"
               visibleFrom="sm"
               style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'var(--pm33-primary-gradient)',
                 border: 'none',
                 color: 'white',
                 fontWeight: 600,
-                boxShadow: '0 4px 15px 0 rgba(102, 126, 234, 0.4)',
                 transition: 'all 0.3s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-1px) scale(1.02)';
-                e.currentTarget.style.boxShadow = '0 6px 20px 0 rgba(118, 75, 162, 0.5)';
+                e.currentTarget.style.background = 'var(--pm33-secondary-gradient)';
+                e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 4px 15px 0 rgba(102, 126, 234, 0.4)';
+                e.currentTarget.style.background = 'var(--pm33-primary-gradient)';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
               Start Free Trial
@@ -189,7 +188,7 @@ export default function Navigation() {
                     mt="md"
                     onClick={() => setOpened(false)}
                     style={{
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'var(--pm33-primary-gradient)',
                       border: 'none',
                       color: 'white',
                       fontWeight: 600

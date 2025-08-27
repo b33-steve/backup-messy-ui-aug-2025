@@ -31,20 +31,80 @@
  */
 
 /* ===============================================
-   PM33 PREMIUM COLOR SYSTEM - COPY THIS EXACTLY
+   PM33 LOGO-BASED COLOR SYSTEM - SINGLE SOURCE OF TRUTH
    =============================================== */
 :root {
-  /* Primary Brand Gradients */
-  --pm33-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --pm33-brand-hover: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
-  --pm33-brand-active: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  /* PM33 Logo Color Palette - Extracted from brand logo */
+  --pm33-navy: #1e3a8a;           /* Deep navy from "P" */
+  --pm33-teal: #0891b2;           /* Teal from "M" */  
+  --pm33-purple: #7c3aed;         /* Purple from "33" */
+  --pm33-teal-light: #06b6d4;     /* Light teal accent */
+  --pm33-purple-light: #a855f7;   /* Light purple accent */
 
-  /* Strategic Intelligence Colors */
-  --pm33-ai-glow: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-  --pm33-ai-processing: linear-gradient(135deg, #667eea 0%, #00d2ff 100%);
-  --pm33-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-  --pm33-warning: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
-  --pm33-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  /* PM33 Logo-Based Gradients - Using actual logo color flow */
+  --pm33-logo-gradient: linear-gradient(135deg, var(--pm33-navy) 0%, var(--pm33-teal) 50%, var(--pm33-purple) 100%);
+  --pm33-primary-gradient: linear-gradient(135deg, var(--pm33-navy) 0%, var(--pm33-teal) 100%);
+  --pm33-secondary-gradient: linear-gradient(135deg, var(--pm33-teal) 0%, var(--pm33-purple) 100%);
+  --pm33-accent-gradient: linear-gradient(135deg, var(--pm33-purple) 0%, var(--pm33-purple-light) 100%);
+
+  /* Primary Brand Colors - Clean, Professional */
+  --pm33-primary: var(--pm33-navy);       /* Primary brand color */
+  --pm33-secondary: var(--pm33-teal);     /* Secondary brand color */
+  --pm33-accent: var(--pm33-purple);      /* Accent color */
+
+  /* Interactive States - Subtle variations */
+  --pm33-primary-hover: #1e40af;          /* Slightly lighter navy */
+  --pm33-secondary-hover: #0ea5e9;        /* Slightly lighter teal */
+  --pm33-accent-hover: #8b5cf6;           /* Slightly lighter purple */
+
+  /* Success, Warning, Danger - Using logo palette */
+  --pm33-success: var(--pm33-teal);       /* Teal for success */
+  --pm33-warning: #f59e0b;                /* Amber warning */
+  --pm33-danger: #dc2626;                 /* Red danger */
+
+  /* Extended Color Palettes for Mantine Integration */
+  /* Primary/Blue variations */
+  --pm33-primary-50: #eff6ff;
+  --pm33-primary-100: #dbeafe;
+  --pm33-primary-200: #bfdbfe;
+  --pm33-primary-300: #93c5fd;
+  --pm33-primary-400: #60a5fa;
+  --pm33-primary-800: #1e40af;
+  --pm33-primary-900: #1e3a8a;
+
+  /* Success/Green variations */
+  --pm33-success-50: #ecfdf5;
+  --pm33-success-100: #d1fae5;
+  --pm33-success-200: #a7f3d0;
+  --pm33-success-300: #6ee7b7;
+  --pm33-success-400: #34d399;
+  --pm33-success-800: #065f46;
+  --pm33-success-900: #064e3b;
+
+  /* Warning/Orange variations */
+  --pm33-warning-50: #fffbeb;
+  --pm33-warning-100: #fef3c7;
+  --pm33-warning-200: #fde68a;
+  --pm33-warning-300: #fcd34d;
+  --pm33-warning-400: #fbbf24;
+  --pm33-warning-800: #92400e;
+  --pm33-warning-900: #78350f;
+
+  /* Danger/Red variations */
+  --pm33-danger-50: #fef2f2;
+  --pm33-danger-100: #fee2e2;
+  --pm33-danger-200: #fecaca;
+  --pm33-danger-300: #fca5a5;
+  --pm33-danger-400: #f87171;
+  --pm33-danger-800: #991b1b;
+  --pm33-danger-900: #7f1d1d;
+
+  /* Text/Gray variations for semantic text usage */
+  --pm33-text-muted-10: #f8fafc;
+  --pm33-text-muted-20: #f1f5f9;
+  --pm33-text-muted-30: #e2e8f0;
+  --pm33-text-muted-40: #cbd5e1;
+  --pm33-text-muted-50: #94a3b8;
 
   /* 8pt Grid Spacing System - Compact Layout */
   --pm33-spacing-unit: 8px;
@@ -59,31 +119,25 @@
   --pm33-glass-border: rgba(255, 255, 255, 0.18);
   --pm33-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 
-  /* Dark Mode Surfaces */
-  --pm33-dark-0: #0a0e27;  /* Deep background */
-  --pm33-dark-1: #0f1429;  /* Card background */
-  --pm33-dark-2: #151b3b;  /* Elevated surface */
-  --pm33-dark-3: #1e2749;  /* Hover surface */
+  /* Light Theme - Off-white backgrounds (not pure white) */
+  --pm33-bg-primary: #fafbfc;      /* Off-white primary background */
+  --pm33-bg-secondary: #f8fafc;    /* Slightly darker off-white */
+  --pm33-bg-tertiary: #f1f5f9;     /* Card backgrounds */
+  --pm33-bg-elevated: #ffffff;     /* Elevated elements */
 
-  /* Light Mode Surfaces - Enhanced contrast */
-  --pm33-light-0: #ffffff;  /* Pure white background */
-  --pm33-light-1: #ffffff;  /* Pure white */
-  --pm33-light-2: #fafbfc;  /* Very subtle gray */
-  --pm33-light-3: #f5f6f7;  /* Light gray surface */
+  /* Light Theme Text - Dark on light */
+  --pm33-text-primary: #1e293b;    /* Dark primary text */
+  --pm33-text-secondary: #475569;  /* Medium gray text */
+  --pm33-text-muted: #64748b;      /* Muted text */
 
-  /* Text Colors - WCAG Compliant - Light Theme Default */
-  --pm33-text-primary: #1a202c;    /* 16.75:1 contrast on white */
-  --pm33-text-secondary: #4a5568;  /* 7.54:1 contrast on white */
-  --pm33-text-muted: #718096;      /* 4.5:1 contrast on white */
+  /* Marketing-specific variables */
+  --pm33-marketingBg: var(--pm33-bg-primary);
+  --pm33-marketingText: var(--pm33-text-primary);
+  --pm33-marketingPrimary: var(--pm33-primary);
 
-  /* Background Colors - Light Theme Default */
-  --pm33-bg-primary: #ffffff;      /* Light mode primary bg */
-  --pm33-bg-secondary: #f7fafc;    /* Light mode secondary bg */
-  --pm33-bg-tertiary: #edf2f7;     /* Light mode tertiary bg */
-
-  /* Primary Brand Colors (solid) */
-  --pm33-primary: #667eea;         /* Primary brand color */
-  --pm33-secondary: #764ba2;       /* Secondary brand color */
+  /* Borders and interactive elements */
+  --pm33-border: #e2e8f0;
+  --pm33-border-hover: #cbd5e1;
 }
 
 /* ===============================================
@@ -118,16 +172,73 @@ div.pm33-glass-card:hover,
    THEME-SPECIFIC CONTRAST OVERRIDES - WCAG COMPLIANT
    =============================================== */
 
-/* DARK THEME - High contrast for accessibility */
+/* DARK THEME - Proper dark backgrounds with bright text */
 .dark,
 [data-theme="dark"],
 body.dark {
-  --pm33-text-primary: #ffffff !important;      /* Pure white - 21:1 contrast */
-  --pm33-text-secondary: #e2e8f0 !important;   /* Light gray - 14:1 contrast */
-  --pm33-text-muted: #cbd5e0 !important;       /* Muted gray - 8:1 contrast */
-  --pm33-bg-primary: #0a0e27 !important;       /* Deep blue-black */
-  --pm33-bg-secondary: #0f1429 !important;     /* Slightly lighter */
-  --pm33-bg-tertiary: #1a202c !important;      /* Card backgrounds */
+  /* Dark Theme Backgrounds - Proper dark colors */
+  --pm33-bg-primary: #0f172a !important;       /* Deep dark background */
+  --pm33-bg-secondary: #1e293b !important;     /* Card backgrounds */
+  --pm33-bg-tertiary: #334155 !important;      /* Elevated surfaces */
+  --pm33-bg-elevated: #475569 !important;      /* Highest elevation */
+
+  /* Dark Theme Text - Bright on dark */
+  --pm33-text-primary: #ffffff !important;     /* Pure white text */
+  --pm33-text-secondary: #e2e8f0 !important;   /* Light gray text */
+  --pm33-text-muted: #94a3b8 !important;       /* Muted light text */
+
+  /* Marketing-specific dark theme */
+  --pm33-marketingBg: var(--pm33-bg-primary) !important;
+  --pm33-marketingText: var(--pm33-text-primary) !important;
+  --pm33-marketingPrimary: var(--pm33-primary) !important;
+
+  /* Dark theme borders */
+  --pm33-border: #334155 !important;
+  --pm33-border-hover: #475569 !important;
+
+  /* Dark Theme Extended Color Palettes */
+  /* Primary/Blue variations in dark theme */
+  --pm33-primary-50: #172554 !important;
+  --pm33-primary-100: #1e3a8a !important;
+  --pm33-primary-200: #1e40af !important;
+  --pm33-primary-300: #2563eb !important;
+  --pm33-primary-400: #3b82f6 !important;
+  --pm33-primary-800: #1d4ed8 !important;
+  --pm33-primary-900: #1e3a8a !important;
+
+  /* Success/Green variations in dark theme */
+  --pm33-success-50: #022c22 !important;
+  --pm33-success-100: #064e3b !important;
+  --pm33-success-200: #065f46 !important;
+  --pm33-success-300: #047857 !important;
+  --pm33-success-400: #059669 !important;
+  --pm33-success-800: #10b981 !important;
+  --pm33-success-900: #34d399 !important;
+
+  /* Warning/Orange variations in dark theme */
+  --pm33-warning-50: #451a03 !important;
+  --pm33-warning-100: #78350f !important;
+  --pm33-warning-200: #92400e !important;
+  --pm33-warning-300: #a16207 !important;
+  --pm33-warning-400: #ca8a04 !important;
+  --pm33-warning-800: #eab308 !important;
+  --pm33-warning-900: #facc15 !important;
+
+  /* Danger/Red variations in dark theme */
+  --pm33-danger-50: #450a0a !important;
+  --pm33-danger-100: #7f1d1d !important;
+  --pm33-danger-200: #991b1b !important;
+  --pm33-danger-300: #b91c1c !important;
+  --pm33-danger-400: #dc2626 !important;
+  --pm33-danger-800: #ef4444 !important;
+  --pm33-danger-900: #f87171 !important;
+
+  /* Text/Gray variations for dark theme */
+  --pm33-text-muted-10: #0f172a !important;
+  --pm33-text-muted-20: #1e293b !important;
+  --pm33-text-muted-30: #334155 !important;
+  --pm33-text-muted-40: #475569 !important;
+  --pm33-text-muted-50: #64748b !important;
 }
 
 .dark .pm33-glass-card,
