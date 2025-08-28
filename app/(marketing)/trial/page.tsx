@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Container, Card, Title, Text, Button, Stack, TextInput, Group, Box, Badge, SimpleGrid, List, ThemeIcon, Grid, Select, Slider, Radio, Progress, Divider } from '@mantine/core';
 import { IconCheck, IconUsers, IconBrain, IconRocket, IconMail, IconBuilding, IconUser, IconSparkles, IconTrendingUp, IconTarget, IconCalculator, IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
@@ -47,7 +47,7 @@ interface TrialForm {
   segment: 'startup' | 'scaleup' | 'enterprise';
 }
 
-export default function ConversionOptimizedTrialPage() {
+function ConversionOptimizedTrialPageContent() {
   const searchParams = useSearchParams();
   const tierFromUrl = searchParams.get('tier') || 'enterprise';
   
@@ -646,5 +646,13 @@ export default function ConversionOptimizedTrialPage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function ConversionOptimizedTrialPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ConversionOptimizedTrialPageContent />
+    </Suspense>
   );
 }
