@@ -1,721 +1,527 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { trackCAC, trackProductUsage } from '../lib/posthog';
-import { Container, Grid, Card, Title, Text, Button, Group, Stack, Badge, SimpleGrid, Box, Center, Anchor, ThemeIcon } from '@mantine/core';
-import { IconArrowRight, IconCheck, IconBolt, IconBrain, IconClock, IconTrendingUp, IconSparkles, IconTarget, IconUsers, IconBulb, IconCircleCheck } from '@tabler/icons-react';
+import React, { useEffect, useState } from 'react';
+import { Container, Card, Title, Text, Button, Stack, Badge, SimpleGrid, Box, Group, ThemeIcon } from '@mantine/core';
+import { IconArrowRight, IconBolt, IconBrain, IconUsers, IconSparkles, IconTarget, IconTrendingUp } from '@tabler/icons-react';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Navigation from '../components/marketing/IsolatedMarketingNavigation';
 import Footer from '../components/marketing/IsolatedMarketingFooter';
-import CompaniesCarousel from '../components/marketing/CompaniesCarousel';
+import SegmentMessaging, { detectUserSegment, type UserSegment } from '../components/marketing/SegmentMessaging';
+import TestimonialShowcase from '../components/marketing/TestimonialShowcase';
+import SocialProofMetrics from '../components/marketing/SocialProofMetrics';
+import ABTestingFramework, { ABTestCTA } from '../components/marketing/ABTestingFramework';
+import AnalyticsDashboard, { useAnalyticsContext } from '../components/marketing/AnalyticsDashboard';
+import { analytics } from '../lib/analytics';
 
-export default function MarketingHomePage() {
+/**
+ * Component: ConversionOptimizedHomepage
+ * Purpose: Maximum conversion homepage with segment-specific messaging
+ * Design: Dynamic personalization, A/B testing, comprehensive social proof
+ * 
+ * Features:
+ * - Segment detection and dynamic messaging
+ * - A/B testing for hero CTAs
+ * - Social proof metrics and testimonials
+ * - Progressive conversion optimization
+ * - PostHog analytics integration
+ */
+
+export default function ConversionOptimizedHomepage() {
+  const [userSegment, setUserSegment] = useState<UserSegment>('default');
+  const { trackConversion } = useAnalyticsContext();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    // Track homepage engagement for CAC analysis
-    trackCAC.landingPageView(
-      new URLSearchParams(window.location.search).get('utm_source') || 'direct',
-      new URLSearchParams(window.location.search).get('utm_medium') || undefined,
-      new URLSearchParams(window.location.search).get('utm_campaign') || undefined
-    );
-  }, []);
+    // Detect user segment and personalize experience
+    const detectedSegment = detectUserSegment();
+    setUserSegment(detectedSegment);
 
-  const handleTrialClick = () => {
-    trackCAC.signupStarted('homepage_cta', window.location.href);
-    // Add event tracking for conversion optimization
-    if (window.posthog) {
-      window.posthog.capture('homepage_trial_clicked', {
-        cta_location: 'hero_section',
-        page_scroll_depth: Math.round((window.scrollY / document.body.scrollHeight) * 100),
-        session_duration: Date.now() - performance.timing.navigationStart,
-      });
-    }
+    // Track homepage view with segment context
+    analytics.trackPageView('homepage', {
+      user_segment: detectedSegment,
+      utm_source: searchParams.get('utm_source') || undefined,
+      utm_medium: searchParams.get('utm_medium') || undefined,
+      utm_campaign: searchParams.get('utm_campaign') || undefined,
+    });
+
+    // Track funnel entry
+    analytics.trackFunnelStep('pm33_conversion', 'homepage_view', 1, detectedSegment);
+  }, [searchParams]);
+
+  const handleTrialClick = (location: string) => {
+    trackConversion('trial_click', 0);
+    analytics.trackCTAClick('Start Free Trial', 'primary', '/trial', `homepage_${location}`);
   };
 
-  const handleDemoClick = () => {
-    trackProductUsage.dashboardView('anonymous_user', 'strategic_intelligence_demo');
-    if (window.posthog) {
-      window.posthog.capture('homepage_demo_clicked', {
-        cta_location: 'hero_section',
-        demo_type: 'strategic_intelligence',
-      });
-    }
+  const handleDemoClick = (location: string) => {
+    trackConversion('demo_click', 0);
+    analytics.trackCTAClick('Try Live Demo', 'secondary', '/strategic-intelligence-demo', `homepage_${location}`);
   };
 
   return (
-    <div className="marketing-context">
-      <Navigation />
-      <main className="pt-16">
-      <Box style={{ minHeight: '100vh', backgroundColor: 'var(--marketing-bg-primary)', transition: 'all 0.3s ease' }}>
+    <AnalyticsDashboard>
+      <div className="marketing-context">
+        <Navigation />
+        <main className="pt-16">
+          <Box style={{ minHeight: '100vh', backgroundColor: 'var(--marketing-bg-primary)' }}>
 
-        {/* Hero Section */}
-        <Box 
-          style={{ 
-            position: 'relative',
-            padding: '6rem 0',
-            background: `linear-gradient(135deg, var(--marketing-bg-secondary) 0%, var(--marketing-bg-primary) 50%, var(--marketing-bg-accent) 100%)`,
-            overflow: 'hidden',
-            transition: 'background 0.3s ease'
-          }}
-        >
-          <Container size="xl">
-            <Grid gutter={48} align="center">
-              {/* Left Column - Main Content */}
-              <Grid.Col span={{ base: 12, lg: 6 }}>
-                <Stack gap={24}>
-                  <Badge 
-                    size="lg" 
-                    variant="gradient" 
-                    gradient={{ from: 'indigo.1', to: 'purple.1' }}
-                    c="indigo.7"
-                    leftSection={<IconSparkles size={16} />}
-                  >
-                    Join 2,500+ Product Managers
-                  </Badge>
-                  
-                  <Stack gap={16}>
-                    <Title 
-                      order={1} 
-                      size="h1"
-                      lh={1.1}
+            {/* Hero Section with Dynamic Messaging */}
+            <Box 
+              style={{ 
+                position: 'relative',
+                padding: '6rem 0',
+                background: `linear-gradient(135deg, var(--marketing-bg-secondary) 0%, var(--marketing-bg-primary) 50%, var(--marketing-bg-accent) 100%)`,
+                overflow: 'hidden'
+              }}
+            >
+              <Container size="xl">
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+                  {/* Hero Content */}
+                  <Stack gap={32}>
+                    <SegmentMessaging 
+                      segment={userSegment}
+                      component="hero"
+                    />
+                    
+                    {/* Dynamic CTAs with A/B Testing */}
+                    <Group gap={16}>
+                      <ABTestCTA
+                        test="homepage"
+                        component={Link}
+                        href="/trial"
+                        onClick={() => handleTrialClick('hero')}
+                        rightSection={<IconArrowRight size={20} />}
+                        pageContext="homepage_hero"
+                        style={{ borderRadius: 16 }}
+                      />
+                      
+                      <Button 
+                        component={Link}
+                        href="/strategic-intelligence-demo"
+                        onClick={() => handleDemoClick('hero')}
+                        size="xl"
+                        variant="outline"
+                        leftSection={<IconBolt size={20} />}
+                        style={{ borderRadius: 16 }}
+                      >
+                        Try Live Demo
+                      </Button>
+                    </Group>
+                    
+                    <SegmentMessaging 
+                      segment={userSegment}
+                      component="trust-signals"
+                    />
+                  </Stack>
+
+                  {/* Hero Visual - AI Strategy Assistant */}
+                  <Box pos="relative">
+                    <Card 
+                      shadow="xl" 
+                      radius="xl" 
+                      p={32}
                       style={{ 
-                        fontWeight: 800,
-                        color: 'var(--marketing-text-primary)',
-                        transition: 'color 0.3s ease'
+                        backgroundColor: 'var(--marketing-bg-primary)',
+                        border: '2px solid var(--marketing-primary)',
+                        backdropFilter: 'blur(20px)'
                       }}
                     >
-                      Don't Replace Your PM Tools—
-                      <Text 
-                        span 
-                        variant="gradient" 
-                        gradient={{ from: 'indigo', to: 'cyan' }}
-                        style={{ display: 'block', marginTop: 8 }}
-                      >
-                        Make Them 10x Smarter
-                      </Text>
-                    </Title>
+                      <Group mb={24}>
+                        <ThemeIcon size={40} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
+                          <IconBrain size={20} />
+                        </ThemeIcon>
+                        <Text fw={700} size="lg">AI Strategy Assistant</Text>
+                      </Group>
+                      
+                      <Stack gap={16}>
+                        <Card p={16} radius="lg" bg="indigo.0" style={{ border: '1px solid var(--mantine-color-indigo-2)' }}>
+                          <Text size="sm" fw={600} c="var(--pm33-primary)" mb={4}>Strategic Analysis Complete ✨</Text>
+                          <Text size="sm" c="dimmed">
+                            {userSegment === 'startup-pm' 
+                              ? 'Identified 3 growth opportunities for Series B positioning'
+                              : userSegment === 'enterprise-pmo'
+                              ? 'Portfolio optimization: $15M market opportunity detected'
+                              : 'Mobile performance priority: 34% churn reduction potential'
+                            }
+                          </Text>
+                        </Card>
+                        
+                        <Card p={16} radius="lg" bg="teal.0" style={{ border: '1px solid var(--mantine-color-teal-2)' }}>
+                          <Text size="sm" fw={600} c="teal.6" mb={4}>Impact Prediction</Text>
+                          <Text size="sm" c="dimmed">
+                            {userSegment === 'startup-pm' 
+                              ? '185% MRR growth trajectory'
+                              : userSegment === 'enterprise-pmo'
+                              ? '70% PMO efficiency improvement'
+                              : '78% faster feature delivery'
+                            }
+                          </Text>
+                        </Card>
+                        
+                        <Card p={16} radius="lg" bg="orange.0" style={{ border: '1px solid var(--mantine-color-orange-2)' }}>
+                          <Text size="sm" fw={600} c="orange.6" mb={4}>Action Plan Generated</Text>
+                          <Text size="sm" c="dimmed">
+                            {userSegment === 'startup-pm' 
+                              ? 'Lean startup roadmap with investor metrics'
+                              : userSegment === 'enterprise-pmo'
+                              ? 'Executive dashboard with board-level KPIs'
+                              : 'Complete PRD with technical specifications'
+                            }
+                          </Text>
+                        </Card>
+                      </Stack>
+                    </Card>
                     
-                    <Text size="xl" maw={500} lh={1.6} style={{ color: 'var(--marketing-text-secondary)', transition: 'color 0.3s ease' }}>
-                      Transform Jira, Monday.com, and Asana into AI-powered strategic engines. 
-                      <Text span fw={600} style={{ color: 'var(--marketing-primary)' }}>No migration headaches.</Text> Immediate productivity gains.
+                    {/* Floating Elements */}
+                    <ThemeIcon 
+                      size={56} 
+                      variant="gradient" 
+                      gradient={{ from: 'cyan', to: 'blue' }}
+                      pos="absolute"
+                      top={-16}
+                      right={-16}
+                      style={{ boxShadow: 'var(--mantine-shadow-lg)' }}
+                    >
+                      <IconTarget size={24} />
+                    </ThemeIcon>
+                  </Box>
+                </div>
+              </Container>
+            </Box>
+
+            {/* Pain Points Section - Segment Specific */}
+            <Container size="xl" py={80}>
+              <SegmentMessaging 
+                segment={userSegment}
+                component="pain-points"
+              />
+            </Container>
+
+            {/* Social Proof Metrics */}
+            <Container size="xl" py={80}>
+              <SocialProofMetrics
+                segment={userSegment === 'startup-pm' ? 'startup' : 
+                        userSegment === 'enterprise-pmo' ? 'enterprise' : 'all'}
+                showTrustSignals={true}
+                animated={true}
+                maxColumns={3}
+                pageContext="homepage_social_proof"
+              />
+            </Container>
+
+            {/* Benefits Section - Segment Specific */}
+            <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+              <Container size="xl">
+                <SegmentMessaging 
+                  segment={userSegment}
+                  component="benefits"
+                />
+              </Container>
+            </Box>
+
+            {/* Customer Testimonials - Dynamic by Segment */}
+            <Container size="xl" py={80}>
+              <TestimonialShowcase
+                format="carousel"
+                segment={userSegment === 'startup-pm' ? 'startup-pm' : 
+                        userSegment === 'senior-pm' ? 'senior-pm' :
+                        userSegment === 'vp-product' ? 'vp-product' :
+                        userSegment === 'enterprise-pmo' ? 'enterprise-pmo' : undefined}
+                maxItems={3}
+                showMetrics={true}
+                autoRotate={true}
+                pageContext="homepage_testimonials"
+              />
+            </Container>
+
+            {/* Demo Section */}
+            <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+              <Container size="xl">
+                <Stack align="center" gap={48}>
+                  <Badge 
+                    size="xl" 
+                    variant="gradient" 
+                    gradient={{ from: 'indigo', to: 'cyan' }}
+                    leftSection={<IconSparkles size={18} />}
+                  >
+                    ✨ Experience PM33 in Action
+                  </Badge>
+                  
+                  <Stack align="center" gap={16}>
+                    <Title order={2} size="h2" ta="center">
+                      {userSegment === 'enterprise-pmo' 
+                        ? 'See Enterprise PMO Transformation'
+                        : userSegment === 'startup-pm'
+                        ? 'See How Startups Compete with Enterprise Teams'
+                        : 'See AI-Powered Strategic Intelligence'
+                      }
+                    </Title>
+                    <Text size="lg" c="dimmed" ta="center" maw={600}>
+                      Try our live demo workflows designed specifically for {
+                        userSegment === 'startup-pm' ? 'startup PMs' :
+                        userSegment === 'senior-pm' ? 'senior product managers' :
+                        userSegment === 'vp-product' ? 'VP Products' :
+                        userSegment === 'enterprise-pmo' ? 'enterprise PMOs' :
+                        'product managers'
+                      }.
                     </Text>
                   </Stack>
                   
-                  <Group gap={16}>
-                    <Button 
-                      component={Link}
-                      href="/trial"
-                      onClick={handleTrialClick}
-                      size="xl"
-                      variant="gradient"
-                      gradient={{ from: 'indigo', to: 'purple' }}
-                      rightSection={<IconArrowRight size={20} />}
-                      style={{ borderRadius: 16 }}
-                    >
-                      Start Free 14-Day Trial
-                    </Button>
-                    <Button 
+                  <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32}>
+                    {/* Strategic Intelligence Demo */}
+                    <Card 
+                      shadow="xl" 
+                      radius="xl" 
+                      p={32}
                       component={Link}
                       href="/strategic-intelligence-demo"
-                      onClick={handleDemoClick}
-                      size="xl"
-                      variant="outline"
-                      c="indigo.7"
-                      leftSection={<IconBulb size={20} />}
-                      style={{ borderRadius: 16 }}
+                      onClick={() => handleDemoClick('strategic_demo')}
+                      style={{ 
+                        backgroundColor: 'var(--marketing-bg-primary)',
+                        border: '2px solid var(--marketing-primary)',
+                        cursor: 'pointer',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease'
+                      }}
+                      className="hover:shadow-2xl hover:translate-y-[-4px]"
                     >
-                      Try Live Demo
-                    </Button>
-                  </Group>
-                  
-                  <Group gap={24}>
-                    <Group gap={8}>
-                      <IconCheck size={16} color="var(--mantine-color-teal-6)" />
-                      <Text size="sm" c="dimmed">No credit card required</Text>
-                    </Group>
-                    <Group gap={8}>
-                      <IconCheck size={16} color="var(--mantine-color-teal-6)" />
-                      <Text size="sm" c="dimmed">Setup in 5 minutes</Text>
-                    </Group>
-                  </Group>
-                </Stack>
-              </Grid.Col>
-              
-              {/* Right Column - Visual Element */}
-              <Grid.Col span={{ base: 12, lg: 6 }}>
-                <Box pos="relative">
-                  <Card 
-                    shadow="xl" 
-                    radius="xl" 
-                    p={32}
-                    style={{ 
-                      backgroundColor: 'var(--marketing-bg-primary)',
-                      border: '1px solid var(--marketing-text-muted)',
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    <Group mb={24}>
-                      <ThemeIcon size={32} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
-                        <IconBrain size={18} />
-                      </ThemeIcon>
-                      <Text fw={600} size="lg">AI Strategy Assistant</Text>
-                    </Group>
-                    <Stack gap={16}>
-                      <Card p={16} radius="lg" bg="indigo.0" style={{ border: '1px solid var(--mantine-color-indigo-2)' }}>
-                        <Text size="sm" fw={600} c="indigo.6" mb={4}>Analysis Complete ✨</Text>
-                        <Text size="sm" c="dimmed">Based on 847 support tickets, mobile performance optimization should be your #1 priority</Text>
-                      </Card>
-                      <Card p={16} radius="lg" bg="teal.0" style={{ border: '1px solid var(--mantine-color-teal-2)' }}>
-                        <Text size="sm" fw={600} c="teal.6" mb={4}>Impact Prediction</Text>
-                        <Text size="sm" c="dimmed">Projected 34% reduction in churn rate</Text>
-                      </Card>
-                      <Card p={16} radius="lg" bg="orange.0" style={{ border: '1px solid var(--mantine-color-orange-2)' }}>
-                        <Text size="sm" fw={600} c="orange.6" mb={4}>PRD Generated</Text>
-                        <Text size="sm" c="dimmed">Complete requirements doc ready for review</Text>
-                      </Card>
-                    </Stack>
-                  </Card>
-                  
-                  {/* Floating Elements */}
-                  <ThemeIcon 
-                    size={56} 
-                    variant="gradient" 
-                    gradient={{ from: 'cyan', to: 'blue' }}
-                    pos="absolute"
-                    top={-16}
-                    right={-16}
-                    style={{ boxShadow: 'var(--mantine-shadow-lg)' }}
-                  >
-                    <IconTarget size={24} />
-                  </ThemeIcon>
-                  <ThemeIcon 
-                    size={56} 
-                    variant="gradient" 
-                    gradient={{ from: 'teal', to: 'green' }}
-                    pos="absolute"
-                    bottom={-16}
-                    left={-16}
-                    style={{ boxShadow: 'var(--mantine-shadow-lg)' }}
-                  >
-                    <IconBrain size={24} />
-                  </ThemeIcon>
-                </Box>
-              </Grid.Col>
-            </Grid>
-          </Container>
-        </Box>
+                      <Group mb={20}>
+                        <ThemeIcon size={48} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
+                          <IconBrain size={24} />
+                        </ThemeIcon>
+                        <Stack gap={4} style={{ flex: 1 }}>
+                          <Text fw={700} size="xl">Strategic Intelligence Engine</Text>
+                          <Badge color="green" variant="light" size="sm">✅ Live Demo Ready</Badge>
+                        </Stack>
+                      </Group>
+                      
+                      <Text c="dimmed" mb={16}>
+                        {userSegment === 'startup-pm' 
+                          ? 'Strategic analysis that helps startups compete with enterprise teams'
+                          : userSegment === 'enterprise-pmo'
+                          ? 'Portfolio-wide strategic intelligence for enterprise PMO transformation'
+                          : 'AI-powered strategic analysis with multi-framework insights'
+                        }
+                      </Text>
+                      
+                      <Group justify="space-between">
+                        <Stack gap={4}>
+                          <Text size="sm" fw={500} c="var(--pm33-primary)">
+                            ✨ {userSegment === 'startup-pm' ? 'Growth opportunity analysis' : 
+                                userSegment === 'enterprise-pmo' ? 'Portfolio optimization' : 
+                                'Multi-framework analysis'}
+                          </Text>
+                          <Text size="sm" fw={500} c="var(--pm33-primary)">
+                            🎯 {userSegment === 'startup-pm' ? 'Investor-ready metrics' : 
+                                userSegment === 'enterprise-pmo' ? 'Board-level reporting' : 
+                                'Confidence-scored recommendations'}
+                          </Text>
+                          <Text size="sm" fw={500} c="var(--pm33-primary)">⚡ Real-time strategic insights</Text>
+                        </Stack>
+                        <Button variant="light" size="sm" rightSection={<IconArrowRight size={16} />}>
+                          Try Now
+                        </Button>
+                      </Group>
+                    </Card>
 
-        {/* Companies Carousel */}
-        <CompaniesCarousel />
-
-        {/* Social Proof Section */}
-        <Box 
-          py={64} 
-          style={{
-            backgroundColor: 'var(--marketing-bg-primary)',
-            transition: 'background-color 0.3s ease'
-          }}
-        >
-          <Container size="xl">
-            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32}>
-              <Card 
-                shadow="md" 
-                radius="xl" 
-                p={32}
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-text-muted)',
-                  transition: 'all 0.3s ease',
-                  textAlign: 'center'
-                }}
-              >
-                <Stack align="center" gap={16}>
-                  <Text size="48px" fw={900} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
-                    78%
-                  </Text>
-                  <Text fw={600} size="lg" style={{ color: 'var(--marketing-text-primary)' }}>
-                    Faster Feature Delivery
-                  </Text>
-                  <Text c="dimmed" ta="center" style={{ color: 'var(--marketing-text-secondary)' }}>
-                    "PM33 eliminated our analysis paralysis. We ship features 78% faster with AI-powered strategic insights."
-                  </Text>
-                  <Text size="sm" fw={500} style={{ color: 'var(--marketing-primary)' }}>
-                    — Sarah Chen, VP Product at TechFlow
-                  </Text>
-                </Stack>
-              </Card>
-
-              <Card 
-                shadow="md" 
-                radius="xl" 
-                p={32}
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-text-muted)',
-                  transition: 'all 0.3s ease',
-                  textAlign: 'center'
-                }}
-              >
-                <Stack align="center" gap={16}>
-                  <Text size="48px" fw={900} variant="gradient" gradient={{ from: 'teal', to: 'cyan' }}>
-                    $2.3M
-                  </Text>
-                  <Text fw={600} size="lg" style={{ color: 'var(--marketing-text-primary)' }}>
-                    Revenue Impact
-                  </Text>
-                  <Text c="dimmed" ta="center" style={{ color: 'var(--marketing-text-secondary)' }}>
-                    "PM33's predictive analytics helped us prioritize features that generated $2.3M in additional ARR."
-                  </Text>
-                  <Text size="sm" fw={500} style={{ color: 'var(--marketing-primary)' }}>
-                    — Marcus Rodriguez, CPO at GrowthScale
-                  </Text>
-                </Stack>
-              </Card>
-
-              <Card 
-                shadow="md" 
-                radius="xl" 
-                p={32}
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-text-muted)',
-                  transition: 'all 0.3s ease',
-                  textAlign: 'center'
-                }}
-              >
-                <Stack align="center" gap={16}>
-                  <Text size="48px" fw={900} variant="gradient" gradient={{ from: 'orange', to: 'red' }}>
-                    65%
-                  </Text>
-                  <Text fw={600} size="lg" style={{ color: 'var(--marketing-text-primary)' }}>
-                    Less Admin Work
-                  </Text>
-                  <Text c="dimmed" ta="center" style={{ color: 'var(--marketing-text-secondary)' }}>
-                    "Finally spending time on strategy instead of status updates. PM33 automated 65% of my busywork."
-                  </Text>
-                  <Text size="sm" fw={500} style={{ color: 'var(--marketing-primary)' }}>
-                    — Alex Kumar, Senior PM at DataFlow
-                  </Text>
-                </Stack>
-              </Card>
-            </SimpleGrid>
-          </Container>
-        </Box>
-
-        {/* Demo Navigation Section */}
-        <Box 
-          py={64} 
-          style={{
-            backgroundColor: 'var(--marketing-bg-secondary)',
-            transition: 'background-color 0.3s ease'
-          }}
-        >
-          <Container size="xl">
-            <Stack align="center" gap={32} mb={48}>
-              <Badge 
-                size="xl" 
-                variant="gradient" 
-                gradient={{ from: 'indigo', to: 'cyan' }}
-                leftSection={<IconSparkles size={18} />}
-              >
-                ✨ Live Demo Experience
-              </Badge>
-              
-              <Stack align="center" gap={16}>
-                <Title 
-                  order={2} 
-                  size="h2"
-                  ta="center"
-                  lh={1.2}
-                >
-                  See PM33 in Action
-                </Title>
-                <Text size="lg" c="dimmed" ta="center" maw={600} lh={1.6}>
-                  Experience the full power of AI-driven product management. Try our live demo workflows.
-                </Text>
-              </Stack>
-            </Stack>
-            
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32}>
-              {/* Strategic Intelligence Demo */}
-              <Card 
-                shadow="xl" 
-                radius="xl" 
-                p={32}
-                component={Link}
-                href="/strategic-intelligence-demo"
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-primary)',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  textDecoration: 'none'
-                }}
-                className="hover:shadow-2xl hover:translate-y-[-4px]"
-              >
-                <Group mb={20}>
-                  <ThemeIcon size={48} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
-                    <IconBrain size={24} />
-                  </ThemeIcon>
-                  <Stack gap={4} style={{ flex: 1 }}>
-                    <Text fw={700} size="xl" c="dark">Strategic Intelligence Engine</Text>
-                    <Badge color="green" variant="light" size="sm">✅ Ready to Try</Badge>
-                  </Stack>
-                </Group>
-                <Text c="dimmed" mb={16} lh={1.6}>
-                  Transform strategic questions into executable workflows with automated priority scoring and AI analysis
-                </Text>
-                <Group justify="space-between">
-                  <Stack gap={4}>
-                    <Text size="sm" fw={500} c="indigo.6">✨ Multi-framework analysis</Text>
-                    <Text size="sm" fw={500} c="indigo.6">🎯 Confidence-scored recommendations</Text>
-                    <Text size="sm" fw={500} c="indigo.6">⚡ Predictive outcome modeling</Text>
-                  </Stack>
-                  <Button 
-                    variant="light"
-                    size="sm"
-                    rightSection={<IconArrowRight size={16} />}
-                  >
-                    Try Now
-                  </Button>
-                </Group>
-              </Card>
-
-              {/* Command Center Demo */}
-              <Card 
-                shadow="xl" 
-                radius="xl" 
-                p={32}
-                component={Link}
-                href="/command-center-demo"
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-cta)',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  textDecoration: 'none'
-                }}
-                className="hover:shadow-2xl hover:translate-y-[-4px]"
-              >
-                <Group mb={20}>
-                  <ThemeIcon size={48} variant="gradient" gradient={{ from: 'cyan', to: 'blue' }}>
-                    <IconTarget size={24} />
-                  </ThemeIcon>
-                  <Stack gap={4} style={{ flex: 1 }}>
-                    <Text fw={700} size="xl" c="dark">Strategic Command Center</Text>
-                    <Badge color="green" variant="light" size="sm">✅ Ready to Try</Badge>
-                  </Stack>
-                </Group>
-                <Text c="dimmed" mb={16} lh={1.6}>
-                  Real-time orchestration of 4 specialized AI teams transforming PM workflows with live metrics
-                </Text>
-                <Group justify="space-between">
-                  <Stack gap={4}>
-                    <Text size="sm" fw={500} c="cyan.6">🤖 4 AI teams coordination</Text>
-                    <Text size="sm" fw={500} c="cyan.6">📊 Real-time strategic metrics</Text>
-                    <Text size="sm" fw={500} c="cyan.6">🔄 End-to-end workflow automation</Text>
-                  </Stack>
-                  <Button 
-                    variant="light"
-                    size="sm"
-                    rightSection={<IconArrowRight size={16} />}
-                  >
-                    Try Now
-                  </Button>
-                </Group>
-              </Card>
-            </SimpleGrid>
-            
-            {/* Coming Soon Features */}
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32} mt={32}>
-              <Card 
-                shadow="md" 
-                radius="xl" 
-                p={32}
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-text-muted)',
-                  opacity: 0.7,
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                <Group mb={20}>
-                  <ThemeIcon size={48} variant="light" color="gray">
-                    <IconTrendingUp size={24} />
-                  </ThemeIcon>
-                  <Stack gap={4} style={{ flex: 1 }}>
-                    <Text fw={700} size="xl" c="dark">Resource Optimizer</Text>
-                    <Badge color="orange" variant="light" size="sm">🚧 Coming Soon</Badge>
-                  </Stack>
-                </Group>
-                <Text c="dimmed" mb={16} lh={1.6}>
-                  AI-powered resource allocation and team capacity optimization across your entire product portfolio
-                </Text>
-                <Text size="sm" c="dimmed">Available in Phase 2 release</Text>
-              </Card>
-
-              <Card 
-                shadow="md" 
-                radius="xl" 
-                p={32}
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-text-muted)',
-                  opacity: 0.7,
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                <Group mb={20}>
-                  <ThemeIcon size={48} variant="light" color="gray">
-                    <IconUsers size={24} />
-                  </ThemeIcon>
-                  <Stack gap={4} style={{ flex: 1 }}>
-                    <Text fw={700} size="xl" c="dark">Strategic Dashboard</Text>
-                    <Badge color="orange" variant="light" size="sm">🚧 Coming Soon</Badge>
-                  </Stack>
-                </Group>
-                <Text c="dimmed" mb={16} lh={1.6}>
-                  Executive-level strategic insights with competitive intelligence and predictive market analysis
-                </Text>
-                <Text size="sm" c="dimmed">Available in Phase 2 release</Text>
-              </Card>
-            </SimpleGrid>
-          </Container>
-        </Box>
-
-        {/* Problem Section */}
-        <Box 
-          py={96} 
-          style={{
-            backgroundColor: 'var(--marketing-bg-primary)',
-            transition: 'background-color 0.3s ease'
-          }}
-        >
-          <Container size="xl">
-            <Stack align="center" gap={48} mb={64}>
-              <Badge 
-                size="lg" 
-                variant="filled" 
-                color="red.1"
-                c="red.7"
-              >
-                ⚠️ The Reality Check
-              </Badge>
-              
-              <Stack align="center" gap={24}>
-                <Title 
-                  order={2} 
-                  size="h2"
-                  ta="center"
-                  maw={800}
-                  lh={1.2}
-                >
-                  The Problem Every Product Manager Faces
-                </Title>
-                <Text size="xl" c="dimmed" ta="center" maw={600} lh={1.6}>
-                  You're drowning in admin work. <Text span fw={600} c="red.6">60-80% of your time</Text> goes to busywork instead of strategy.
-                </Text>
-              </Stack>
-            </Stack>
-            
-            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32} mb={64}>
-              {[
-                { 
-                  icon: IconClock, 
-                  title: "Writing PRDs manually", 
-                  description: "4 hours per document",
-                  stat: "32 hours/month"
-                },
-                { 
-                  icon: IconTrendingUp, 
-                  title: "Synthesizing feedback", 
-                  description: "Scattered across tools",
-                  stat: "24 hours/month"
-                },
-                { 
-                  icon: IconBrain, 
-                  title: "Creating presentations", 
-                  description: "From scratch every time",
-                  stat: "16 hours/month"
-                }
-              ].map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <Card 
-                    key={index}
-                    shadow="md"
-                    radius="xl"
-                    p={32}
-                    pos="relative"
-                    style={{ 
-                      backgroundColor: 'var(--marketing-bg-primary)',
-                      border: '1px solid var(--marketing-text-muted)',
-                      borderLeft: '4px solid #ef4444',
-                      transition: 'all 0.3s ease',
-                      cursor: 'pointer'
-                    }}
-                    className="hover:shadow-xl hover:translate-y-[-4px]"
-                  >
-                    <Badge 
-                      pos="absolute"
-                      top={16}
-                      right={16}
-                      size="sm"
-                      color="red"
-                      variant="filled"
+                    {/* Command Center Demo */}
+                    <Card 
+                      shadow="xl" 
+                      radius="xl" 
+                      p={32}
+                      component={Link}
+                      href="/command-center-demo"
+                      onClick={() => handleDemoClick('command_center')}
+                      style={{ 
+                        backgroundColor: 'var(--marketing-bg-primary)',
+                        border: '2px solid var(--marketing-cta)',
+                        cursor: 'pointer',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease'
+                      }}
+                      className="hover:shadow-2xl hover:translate-y-[-4px]"
                     >
-                      {item.stat}
-                    </Badge>
-                    <IconComponent size={40} color="var(--mantine-color-red-6)" style={{ marginBottom: 24 }} />
-                    <Title order={3} size="h4" mb={12}>
-                      {item.title}
-                    </Title>
-                    <Text c="dimmed" lh={1.6}>
-                      {item.description}
-                    </Text>
-                  </Card>
-                );
-              })}
-            </SimpleGrid>
-
-            <Center>
-              <Card 
-                shadow="xl" 
-                radius="xl" 
-                p={48}
-                style={{ 
-                  backgroundColor: 'var(--marketing-bg-primary)',
-                  border: '1px solid var(--marketing-text-muted)',
-                  borderTop: '4px solid var(--marketing-primary)',
-                  maxWidth: 800,
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                <Stack align="center" gap={24}>
-                  <ThemeIcon size={80} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
-                    <IconTrendingUp size={40} />
-                  </ThemeIcon>
-                  <Title order={3} size="h3" ta="center" lh={1.3} c="dark.8">
-                    Meanwhile, your competitors are shipping{' '}
-                    <Text span variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
-                      40% faster
-                    </Text>
-                    {' '}because their PMs focus on strategy, not busywork.
-                  </Title>
-                  <Text size="lg" c="dimmed" ta="center" lh={1.6}>
-                    While you're writing docs, they're analyzing market opportunities and making strategic decisions.
-                  </Text>
+                      <Group mb={20}>
+                        <ThemeIcon size={48} variant="gradient" gradient={{ from: 'cyan', to: 'blue' }}>
+                          <IconTarget size={24} />
+                        </ThemeIcon>
+                        <Stack gap={4} style={{ flex: 1 }}>
+                          <Text fw={700} size="xl">Strategic Command Center</Text>
+                          <Badge color="green" variant="light" size="sm">✅ Live Demo Ready</Badge>
+                        </Stack>
+                      </Group>
+                      
+                      <Text c="dimmed" mb={16}>
+                        {userSegment === 'startup-pm' 
+                          ? 'Complete startup PM workflow automation with lean startup metrics'
+                          : userSegment === 'enterprise-pmo'
+                          ? '4 AI teams coordinating enterprise PMO transformation at scale'
+                          : 'Real-time orchestration of 4 specialized AI teams'
+                        }
+                      </Text>
+                      
+                      <Group justify="space-between">
+                        <Stack gap={4}>
+                          <Text size="sm" fw={500} c="cyan.6">
+                            🤖 {userSegment === 'startup-pm' ? 'Lean startup automation' : 
+                                userSegment === 'enterprise-pmo' ? 'Enterprise AI coordination' : 
+                                '4 AI teams coordination'}
+                          </Text>
+                          <Text size="sm" fw={500} c="cyan.6">
+                            📊 {userSegment === 'startup-pm' ? 'Growth metrics tracking' : 
+                                userSegment === 'enterprise-pmo' ? 'Executive dashboards' : 
+                                'Real-time strategic metrics'}
+                          </Text>
+                          <Text size="sm" fw={500} c="cyan.6">🔄 End-to-end workflow automation</Text>
+                        </Stack>
+                        <Button variant="light" size="sm" rightSection={<IconArrowRight size={16} />}>
+                          Try Now
+                        </Button>
+                      </Group>
+                    </Card>
+                  </SimpleGrid>
                 </Stack>
-              </Card>
-            </Center>
-          </Container>
-        </Box>
+              </Container>
+            </Box>
 
-        {/* CTA Section */}
-        <Box 
-          py={96} 
-          style={{ 
-            position: 'relative',
-            background: 'var(--marketing-primary)',
-            overflow: 'hidden',
-            transition: 'all 0.3s ease'
-          }}
-        >
-          <Container size="xl">
-            <Stack align="center" gap={48}>
-              <Badge 
-                size="lg" 
-                color="white" 
-                variant="light"
-                leftSection={<IconSparkles size={16} />}
-              >
-                Transform Your PM Work Today
-              </Badge>
-              
-              <Stack align="center" gap={24}>
-                <Title 
-                  order={2} 
-                  size="h1"
-                  ta="center"
-                  c="white"
-                  maw={800}
-                  lh={1.1}
-                >
-                  Ready to{' '}
-                  <Text 
-                    span 
-                    variant="gradient" 
-                    gradient={{ from: 'cyan.3', to: 'teal.3' }}
-                  >
-                    10x Your PM Productivity
-                  </Text>
-                  ?
+            {/* Pricing Preview - Segment Specific */}
+            <Container size="xl" py={80}>
+              <Stack align="center" gap={32}>
+                <Title order={2} size="h2" ta="center">
+                  {userSegment === 'startup-pm' ? 'Startup-Friendly Pricing' :
+                   userSegment === 'enterprise-pmo' ? 'Enterprise PMO Solutions' :
+                   'Simple, Transparent Pricing'}
                 </Title>
                 
-                <Text size="xl" c="rgba(255, 255, 255, 0.9)" ta="center" maw={600} lh={1.6}>
-                  Join <Text span fw={700} c="cyan.3">2,500+ product teams</Text> using PM33 to focus on strategy, not busywork.
-                </Text>
+                <SegmentMessaging 
+                  segment={userSegment}
+                  component="pricing"
+                />
+                
+                <Group gap={24}>
+                  <ABTestCTA
+                    test="pricing"
+                    component={Link}
+                    href="/pricing"
+                    onClick={() => handleTrialClick('pricing_preview')}
+                    pageContext="homepage_pricing"
+                    rightSection={<IconArrowRight size={20} />}
+                  />
+                  
+                  <Button
+                    component={Link}
+                    href="/trial"
+                    size="xl"
+                    variant="outline"
+                    onClick={() => handleTrialClick('pricing_trial')}
+                  >
+                    Start Free Trial
+                  </Button>
+                </Group>
               </Stack>
-              
-              <Group gap={24} justify="center">
-                <Button 
-                  component={Link}
-                  href="/trial"
-                  size="xl"
-                  variant="white"
-                  color="dark"
-                  rightSection={<IconArrowRight size={20} />}
-                  style={{ 
-                    borderRadius: 16,
-                    fontWeight: 700,
-                    boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3)'
-                  }}
-                >
-                  Start Your Free 14-Day Trial
-                </Button>
-                <Button 
-                  component={Link}
-                  href="/strategic-intelligence-demo"
-                  size="xl"
-                  variant="outline"
-                  style={{ 
-                    borderColor: 'rgba(255, 255, 255, 0.5)',
-                    color: 'white',
-                    borderRadius: 16,
-                    backdropFilter: 'blur(10px)'
-                  }}
-                  leftSection={<IconBulb size={20} />}
-                >
-                  Try Strategic Intelligence
-                </Button>
-              </Group>
-              
-              <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32}>
-                {[
-                  { icon: IconCheck, text: "No credit card required" },
-                  { icon: IconBolt, text: "5-minute setup" },
-                  { icon: IconUsers, text: "Cancel anytime" }
-                ].map((item, index) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <Group key={index} justify="center" gap={8}>
-                      <IconComponent size={20} color="rgba(167, 243, 208, 1)" />
-                      <Text c="rgba(255, 255, 255, 0.9)" fw={500}>
-                        {item.text}
-                      </Text>
-                    </Group>
-                  );
-                })}
-              </SimpleGrid>
-              
-              <Text size="lg" c="rgba(255, 255, 255, 0.8)" ta="center">
-                Stop doing busywork. <Text span fw={700} c="white">Start doing strategy.</Text>
-              </Text>
-            </Stack>
-          </Container>
-        </Box>
-      </Box>
-      </main>
-      <Footer />
-    </div>
+            </Container>
+
+            {/* Final CTA Section */}
+            <Box 
+              py={96} 
+              style={{ 
+                background: 'var(--pm33-bg-primary)',
+                color: 'var(--pm33-text-primary)',
+                borderTop: '1px solid var(--pm33-border)'
+              }}
+            >
+              <Container size="xl">
+                <Stack align="center" gap={48}>
+                  <SegmentMessaging 
+                    segment={userSegment}
+                    component="cta"
+                  />
+                  
+                  <Stack align="center" gap={24}>
+                    <Title order={2} size="h1" ta="center" style={{ color: 'var(--pm33-text-primary)' }} maw={800}>
+                      Ready to Transform Your {
+                        userSegment === 'startup-pm' ? 'Startup' :
+                        userSegment === 'senior-pm' ? 'Career' :
+                        userSegment === 'vp-product' ? 'Product Organization' :
+                        userSegment === 'enterprise-pmo' ? 'Enterprise PMO' :
+                        'PM Work'
+                      }?
+                    </Title>
+                    
+                    <Text size="xl" style={{ color: 'var(--pm33-text-secondary)' }} ta="center" maw={600}>
+                      {userSegment === 'startup-pm' 
+                        ? 'Join 400+ startup PMs already accelerating growth and competing with enterprise teams.'
+                        : userSegment === 'senior-pm'
+                        ? 'Join 1,200+ senior PMs already advancing to strategic leadership roles.'
+                        : userSegment === 'vp-product'
+                        ? 'Join 150+ product leaders transforming their organizations for measurable impact.'
+                        : userSegment === 'enterprise-pmo'
+                        ? 'Join 25+ enterprise PMOs already transforming strategic capabilities at scale.'
+                        : 'Join 2,500+ product managers focusing on strategy, not busywork.'
+                      }
+                    </Text>
+                  </Stack>
+                  
+                  <Group gap={24} justify="center">
+                    <ABTestCTA
+                      test="homepage"
+                      component={Link}
+                      href="/trial"
+                      onClick={() => handleTrialClick('final_cta')}
+                      pageContext="homepage_final_cta"
+                      rightSection={<IconArrowRight size={20} />}
+                      style={{ 
+                        borderRadius: 16,
+                        fontWeight: 700,
+                        boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3)'
+                      }}
+                    />
+                    
+                    {userSegment === 'enterprise-pmo' ? (
+                      <Button 
+                        component={Link}
+                        href="/enterprise"
+                        size="xl"
+                        variant="outline"
+                        style={{ 
+                          borderColor: 'rgba(255, 255, 255, 0.5)',
+                          color: 'white',
+                          borderRadius: 16
+                        }}
+                      >
+                        Schedule Executive Demo
+                      </Button>
+                    ) : (
+                      <Button 
+                        component={Link}
+                        href="/strategic-intelligence-demo"
+                        onClick={() => handleDemoClick('final_demo')}
+                        size="xl"
+                        variant="outline"
+                        style={{ 
+                          borderColor: 'rgba(255, 255, 255, 0.5)',
+                          color: 'white',
+                          borderRadius: 16
+                        }}
+                        leftSection={<IconBolt size={20} />}
+                      >
+                        Try Strategic Intelligence
+                      </Button>
+                    )}
+                  </Group>
+                  
+                  <SegmentMessaging 
+                    segment={userSegment}
+                    component="trust-signals"
+                  />
+                </Stack>
+              </Container>
+            </Box>
+          </Box>
+        </main>
+        <Footer />
+      </div>
+    </AnalyticsDashboard>
   );
 }

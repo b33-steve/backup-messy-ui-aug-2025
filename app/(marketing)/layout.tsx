@@ -1,10 +1,10 @@
-// Marketing route group layout - with navigation and footer
-// WHY: Marketing pages need consistent navigation and footer across all marketing routes
-// RELEVANT FILES: components/marketing/Navigation.tsx, components/marketing/Footer.tsx
+// Marketing route group layout - with PM33 branded navigation and footer
+// WHY: Marketing pages need consistent PM33 glass morphism navigation across all marketing routes
+// USING: IsolatedMarketingNavigation for beautiful PM33 branding with glass morphism
 
 import type { Metadata } from "next";
-import Navigation from '../../components/marketing/Navigation';
-import FooterSimple from '../../components/marketing/FooterSimple';
+import IsolatedMarketingNavigation from '../../components/marketing/IsolatedMarketingNavigation';
+import IsolatedMarketingFooter from '../../components/marketing/IsolatedMarketingFooter';
 // Marketing styles now consolidated in global CSS
 
 export const metadata: Metadata = {
@@ -27,11 +27,11 @@ export default function MarketingLayout({
         transition: 'all 0.3s ease'
       }}
     >
-      <Navigation />
+      <IsolatedMarketingNavigation />
       <main className="pt-16">
         {children}
       </main>
-      <FooterSimple />
+      <IsolatedMarketingFooter />
     </div>
   );
 }

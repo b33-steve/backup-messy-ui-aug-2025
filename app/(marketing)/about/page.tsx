@@ -133,10 +133,10 @@ export default function AboutPage() {
         </Stack>
 
         {/* CTA Section */}
-        <Card shadow="xl" radius="xl" p={48} style={{ backgroundColor: 'var(--marketing-primary)', textAlign: 'center' }}>
+        <Card shadow="xl" radius="xl" p={48} style={{ backgroundColor: 'var(--pm33-primary)', textAlign: 'center' }}>
           <Stack align="center" gap={24}>
-            <Title order={2} c="white">Ready to Transform Your PM Work?</Title>
-            <Text size="lg" c="rgba(255, 255, 255, 0.9)" maw={600}>
+            <Title order={2} style={{ color: 'white' }}>Ready to Transform Your PM Work?</Title>
+            <Text size="lg" style={{ color: 'rgba(255, 255, 255, 0.9)' }} maw={600}>
               Join thousands of product managers who've reclaimed their time for strategic thinking.
             </Text>
             <Group gap={16}>

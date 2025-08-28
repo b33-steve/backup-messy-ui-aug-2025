@@ -603,9 +603,9 @@ interface MantineWrapperProps {
  */
 function PM33ThemeProvider({ children }: { children: React.ReactNode }) {
   const { setColorScheme } = useMantineColorScheme();
-  const [currentTheme, setCurrentTheme] = useState<PM33Theme>('dark');
+  const [currentTheme, setCurrentTheme] = useState<PM33Theme>('light');
   
-  // Load theme from localStorage on mount
+  // Load theme from localStorage on mount with light mode default
   useEffect(() => {
     const savedTheme = localStorage.getItem('pm33-theme') as PM33Theme;
     if (savedTheme && ['light', 'dark', 'native'].includes(savedTheme)) {
@@ -613,6 +613,11 @@ function PM33ThemeProvider({ children }: { children: React.ReactNode }) {
       // For native theme, we use light mode in Mantine but apply gradient CSS
       const mantineScheme = savedTheme === 'dark' ? 'dark' : 'light';
       setColorScheme(mantineScheme);
+    } else {
+      // Default to light mode (fixes default loading issue)
+      setCurrentTheme('light');
+      setColorScheme('light');
+      // Don't save to localStorage until user explicitly chooses
     }
   }, [setColorScheme]);
   
@@ -690,7 +695,7 @@ export default function MantineWrapper({ children }: MantineWrapperProps) {
   return (
     <MantineProvider 
       theme={theme} 
-      defaultColorScheme="dark"
+      defaultColorScheme="light"
       cssVariablesResolver={pm33CssVariablesResolver}
     >
       <PM33ThemeProvider>
