@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Container, Card, Title, Text, Button, Stack, Badge, SimpleGrid, Box, Group, ThemeIcon, List } from '@mantine/core';
-import { IconArrowRight, IconBolt, IconTarget, IconTrendingUp, IconCheck, IconRocket, IconBrain, IconZap } from '@tabler/icons-react';
+import { IconArrowRight, IconBolt, IconTarget, IconTrendingUp, IconCheck, IconRocket, IconBrain } from '@tabler/icons-react';
 import Link from 'next/link';
 import Navigation from '../../../components/marketing/IsolatedMarketingNavigation';
 import Footer from '../../../components/marketing/IsolatedMarketingFooter';
@@ -314,7 +314,7 @@ export default function SeniorPMScaleUpLandingPage() {
                 <Stack gap={24}>
                   <Group>
                     <ThemeIcon size={48} variant="gradient" gradient={{ from: 'green', to: 'teal' }}>
-                      <IconZap size={28} />
+                      <IconBolt size={28} />
                     </ThemeIcon>
                     <div>
                       <Title order={3} size="h4" c="green.7">Dynamic Priority Sync</Title>

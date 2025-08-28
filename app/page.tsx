@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Container, Card, Title, Text, Button, Stack, Badge, SimpleGrid, Box, Group, ThemeIcon } from '@mantine/core';
 import { IconArrowRight, IconBolt, IconBrain, IconUsers, IconSparkles, IconTarget, IconTrendingUp } from '@tabler/icons-react';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ import { analytics } from '../lib/analytics';
  * - PostHog analytics integration
  */
 
-export default function ConversionOptimizedHomepage() {
+function ConversionOptimizedHomepageContent() {
   const [userSegment, setUserSegment] = useState<UserSegment>('default');
   const { trackConversion } = useAnalyticsContext();
   const searchParams = useSearchParams();
@@ -523,5 +523,13 @@ export default function ConversionOptimizedHomepage() {
         <Footer />
       </div>
     </AnalyticsDashboard>
+  );
+}
+
+export default function ConversionOptimizedHomepage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ConversionOptimizedHomepageContent />
+    </Suspense>
   );
 }
