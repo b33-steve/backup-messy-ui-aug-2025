@@ -1,0 +1,664 @@
+{
+  "config": {
+    "configFile": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/playwright.config.ts",
+    "rootDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "design-review-test.spec.ts",
+      "file": "design-review-test.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "PM33 Marketing Website Design Review",
+          "file": "design-review-test.spec.ts",
+          "line": 29,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Homepage - Theme conversion validation for demo cards section",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 21584,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:47:38\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:44:16",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                          "column": 38,
+                          "line": 47
+                        },
+                        "snippet": "  45 |       // Find demo cards section\n  46 |       const demoCardsSection = page.locator('text=\"Experience PM33 in Action\"').locator('..').locator('..');\n> 47 |       await expect(demoCardsSection).toBeVisible();\n     |                                      ^\n  48 |       \n  49 |       // Check card text visibility\n  50 |       const strategicCard = page.locator('text=\"Strategic Intelligence Engine\"');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                            "column": 38,
+                            "line": 47
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\u001b[22m\n\n\n  45 |       // Find demo cards section\n  46 |       const demoCardsSection = page.locator('text=\"Experience PM33 in Action\"').locator('..').locator('..');\n> 47 |       await expect(demoCardsSection).toBeVisible();\n     |                                      ^\n  48 |       \n  49 |       // Check card text visibility\n  50 |       const strategicCard = page.locator('text=\"Strategic Intelligence Engine\"');\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:47:38\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:44:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Screenshot homepage in light mode",
+                          "duration": 533
+                        },
+                        {
+                          "title": "Test demo cards visibility in light mode",
+                          "duration": 5046,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\u001b[22m\n",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=\"Experience PM33 in Action\"').locator('..').locator('..')\u001b[22m\n\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:47:38\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:44:16",
+                            "location": {
+                              "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                              "column": 38,
+                              "line": 47
+                            },
+                            "snippet": "  45 |       // Find demo cards section\n  46 |       const demoCardsSection = page.locator('text=\"Experience PM33 in Action\"').locator('..').locator('..');\n> 47 |       await expect(demoCardsSection).toBeVisible();\n     |                                      ^\n  48 |       \n  49 |       // Check card text visibility\n  50 |       const strategicCard = page.locator('text=\"Strategic Intelligence Engine\"');"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-08-28T13:07:31.571Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-9a5c3-tion-for-demo-cards-section-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-9a5c3-tion-for-demo-cards-section-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-9a5c3-tion-for-demo-cards-section-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                        "column": 38,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42c1f3e1cbd5087716c7-39f8874167abaf010ad0",
+              "file": "design-review-test.spec.ts",
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "Pricing page - Spacing and color validation",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "timedOut",
+                      "duration": 30361,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                            "column": 24,
+                            "line": 149
+                          },
+                          "message": "Error: locator.screenshot: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n\n  147 |         if (isVisible) {\n  148 |           // Take screenshot of each button\n> 149 |           await button.screenshot({ \n      |                        ^\n  150 |             path: `test-results/pricing-button-${i}.png` \n  151 |           });\n  152 |           \n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:149:24\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:139:5"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Found 0 sections on pricing page\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Screenshot pricing page in light mode",
+                          "duration": 500
+                        },
+                        {
+                          "title": "Validate section spacing",
+                          "duration": 600
+                        }
+                      ],
+                      "startTime": "2025-08-28T13:07:31.627Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-9bcc7-pacing-and-color-validation-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-9bcc7-pacing-and-color-validation-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-9bcc7-pacing-and-color-validation-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42c1f3e1cbd5087716c7-9e1b69dae47e2cde63b4",
+              "file": "design-review-test.spec.ts",
+              "line": 105,
+              "column": 7
+            },
+            {
+              "title": "About page - CTA section white-on-white text issues",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "timedOut",
+                      "duration": 30348,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                            "column": 14,
+                            "line": 17
+                          },
+                          "message": "Error: page.waitForTimeout: Test timeout of 30000ms exceeded.\n\n  15 | async function waitForPageLoad(page: Page) {\n  16 |   await page.waitForLoadState('networkidle');\n> 17 |   await page.waitForTimeout(1000); // Allow theme to settle\n     |              ^\n  18 | }\n  19 |\n  20 | async function toggleTheme(page: Page) {\n    at waitForPageLoad (/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:17:14)\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:252:7\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:250:5"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Found 3 CTA sections on about page\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Screenshot about page in light mode",
+                          "duration": 331
+                        },
+                        {
+                          "title": "Check CTA section visibility",
+                          "duration": 700
+                        }
+                      ],
+                      "startTime": "2025-08-28T13:07:31.605Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-37a16--white-on-white-text-issues-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-37a16--white-on-white-text-issues-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-37a16--white-on-white-text-issues-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42c1f3e1cbd5087716c7-eae3daaa3da5a9abe607",
+              "file": "design-review-test.spec.ts",
+              "line": 192,
+              "column": 7
+            },
+            {
+              "title": "Button color contrast validation across pages",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "timedOut",
+                      "duration": 30276,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                            "column": 28,
+                            "line": 296
+                          },
+                          "message": "Error: locator.isVisible: Target page, context or browser has been closed\n\n  294 |         for (let i = 0; i < Math.min(buttonCount, 20); i++) { // Test first 20 buttons\n  295 |           const button = buttons.nth(i);\n> 296 |           if (await button.isVisible()) {\n      |                            ^\n  297 |             const styles = await button.evaluate((el) => {\n  298 |               const computed = window.getComputedStyle(el);\n  299 |               const rect = el.getBoundingClientRect();\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:296:28\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:282:7"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Found 35 buttons on homepage\n"
+                        },
+                        {
+                          "text": "Could not screenshot button 0 on homepage\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Test homepage button contrast",
+                          "duration": 14488,
+                          "error": {
+                            "message": "Error: locator.isVisible: Target page, context or browser has been closed",
+                            "stack": "Error: locator.isVisible: Target page, context or browser has been closed\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:296:28\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:282:7",
+                            "location": {
+                              "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                              "column": 28,
+                              "line": 296
+                            },
+                            "snippet": "  294 |         for (let i = 0; i < Math.min(buttonCount, 20); i++) { // Test first 20 buttons\n  295 |           const button = buttons.nth(i);\n> 296 |           if (await button.isVisible()) {\n      |                            ^\n  297 |             const styles = await button.evaluate((el) => {\n  298 |               const computed = window.getComputedStyle(el);\n  299 |               const rect = el.getBoundingClientRect();"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-08-28T13:07:31.579Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-a1c28-ast-validation-across-pages-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-a1c28-ast-validation-across-pages-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-a1c28-ast-validation-across-pages-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42c1f3e1cbd5087716c7-0dec16b3e2ec471e74d1",
+              "file": "design-review-test.spec.ts",
+              "line": 274,
+              "column": 7
+            },
+            {
+              "title": "Responsive design validation",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16011,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:354:37\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:339:7",
+                        "location": {
+                          "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                          "column": 37,
+                          "line": 354
+                        },
+                        "snippet": "  352 |         });\n  353 |         \n> 354 |         expect(hasHorizontalScroll).toBe(false);\n      |                                     ^\n  355 |         \n  356 |         // Test key elements visibility\n  357 |         const keyElements = ["
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                            "column": 37,
+                            "line": 354
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  352 |         });\n  353 |         \n> 354 |         expect(hasHorizontalScroll).toBe(false);\n      |                                     ^\n  355 |         \n  356 |         // Test key elements visibility\n  357 |         const keyElements = [\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:354:37\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:339:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Test homepage on desktop - 1440x900",
+                          "duration": 5208
+                        },
+                        {
+                          "title": "Test homepage on tablet - 768x1024",
+                          "duration": 4114,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:354:37\n    at /Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts:339:7",
+                            "location": {
+                              "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                              "column": 37,
+                              "line": 354
+                            },
+                            "snippet": "  352 |         });\n  353 |         \n> 354 |         expect(hasHorizontalScroll).toBe(false);\n      |                                     ^\n  355 |         \n  356 |         // Test key elements visibility\n  357 |         const keyElements = ["
+                          }
+                        }
+                      ],
+                      "startTime": "2025-08-28T13:07:55.661Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-c9239-esponsive-design-validation-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-c9239-esponsive-design-validation-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/test-results/design-review-test-PM33-Ma-c9239-esponsive-design-validation-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/ssaper/Desktop/my-projects/pm33-claude-execution/app/frontend/tests/design-review-test.spec.ts",
+                        "column": 37,
+                        "line": 354
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42c1f3e1cbd5087716c7-40e453a4f3c6a53ab180",
+              "file": "design-review-test.spec.ts",
+              "line": 331,
+              "column": 7
+            },
+            {
+              "title": "Placeholder images identification",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 17257,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Found 3 images on /\n"
+                        },
+                        {
+                          "text": "Placeholder image found on /: { src: \u001b[32m'/api/placeholder/120/120'\u001b[39m, alt: \u001b[1mnull\u001b[22m }\n"
+                        },
+                        {
+                          "text": "Found 5 images on /pricing\n"
+                        },
+                        {
+                          "text": "Placeholder image found on /pricing: { src: \u001b[32m'/api/placeholder/120/120'\u001b[39m, alt: \u001b[1mnull\u001b[22m }\n"
+                        },
+                        {
+                          "text": "Placeholder image found on /pricing: { src: \u001b[32m'/api/placeholder/120/120'\u001b[39m, alt: \u001b[1mnull\u001b[22m }\n"
+                        },
+                        {
+                          "text": "Placeholder image found on /pricing: { src: \u001b[32m'/api/placeholder/120/120'\u001b[39m, alt: \u001b[1mnull\u001b[22m }\n"
+                        },
+                        {
+                          "text": "Found 2 images on /about\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Check for placeholder images on /",
+                          "duration": 3456
+                        },
+                        {
+                          "title": "Check for placeholder images on /pricing",
+                          "duration": 3655
+                        },
+                        {
+                          "title": "Check for placeholder images on /about",
+                          "duration": 2602
+                        }
+                      ],
+                      "startTime": "2025-08-28T13:08:03.866Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "42c1f3e1cbd5087716c7-b36a666a0b1101da0a87",
+              "file": "design-review-test.spec.ts",
+              "line": 373,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-28T13:07:30.818Z",
+    "duration": 50522.539000000004,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

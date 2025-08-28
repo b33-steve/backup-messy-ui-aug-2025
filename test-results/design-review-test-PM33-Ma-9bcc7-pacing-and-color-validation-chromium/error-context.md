@@ -1,0 +1,436 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "PM33 Strategic Intelligence Platform" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - link "Resources" [ref=e11] [cursor=pointer]:
+          - /url: /resources
+        - link "About" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: /contact
+        - button [disabled] [ref=e15]:
+          - img [ref=e17]
+        - link "Start Free Trial" [ref=e19] [cursor=pointer]:
+          - /url: /trial
+  - main [ref=e20]:
+    - generic [ref=e23]:
+      - generic [ref=e26]:
+        - paragraph [ref=e27]: Monthly
+        - generic [ref=e29]:
+          - switch
+        - generic [ref=e33]:
+          - paragraph [ref=e34]: Annual
+          - generic [ref=e36]: Save 25%
+      - generic [ref=e37]:
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - heading "Starter" [level=3] [ref=e41]
+            - generic [ref=e42]:
+              - paragraph [ref=e43]: $29
+              - paragraph [ref=e44]: /month
+            - paragraph [ref=e45]: Perfect for individual PMs getting started
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - generic [ref=e48]:
+                - img [ref=e51]
+                - generic [ref=e53]: Strategic Intelligence Engine
+            - listitem [ref=e54]:
+              - generic [ref=e55]:
+                - img [ref=e58]
+                - generic [ref=e60]: Up to 100 AI analysis requests/month
+            - listitem [ref=e61]:
+              - generic [ref=e62]:
+                - img [ref=e65]
+                - generic [ref=e67]: Basic integrations (Jira, Linear)
+            - listitem [ref=e68]:
+              - generic [ref=e69]:
+                - img [ref=e72]
+                - generic [ref=e74]: Email support
+            - listitem [ref=e75]:
+              - generic [ref=e76]:
+                - img [ref=e79]
+                - generic [ref=e81]: Mobile app access
+          - link "Start Free Trial" [ref=e83] [cursor=pointer]:
+            - /url: /trial?tier=starter
+            - generic [ref=e84] [cursor=pointer]:
+              - generic [ref=e85] [cursor=pointer]: Start Free Trial
+              - img [ref=e87] [cursor=pointer]
+        - generic [ref=e90]:
+          - generic [ref=e92]: 🔥 Most Popular
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - heading "Team" [level=3] [ref=e95]
+              - generic [ref=e96]:
+                - paragraph [ref=e97]: $79
+                - paragraph [ref=e98]: /month
+              - paragraph [ref=e99]: 🎯 Most Popular - 1,043 customers = $82.4K MRR
+            - list [ref=e100]:
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - img [ref=e105]
+                  - generic [ref=e107]: Everything in Starter
+              - listitem [ref=e108]:
+                - generic [ref=e109]:
+                  - img [ref=e112]
+                  - generic [ref=e115]: Advanced AI strategic advisor with all workflows
+              - listitem [ref=e116]:
+                - generic [ref=e117]:
+                  - img [ref=e120]
+                  - generic [ref=e123]: Unlimited integrations (PM tools + analytics)
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - img [ref=e128]
+                  - generic [ref=e130]: Multi-framework analysis + competitive intelligence
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - img [ref=e135]
+                  - generic [ref=e137]: Team collaboration features
+              - listitem [ref=e138]:
+                - generic [ref=e139]:
+                  - img [ref=e142]
+                  - generic [ref=e144]: Priority support
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - img [ref=e149]
+                  - generic [ref=e151]: Strategic roadmap intelligence
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - img [ref=e156]
+                  - generic [ref=e158]: Resource allocation optimizer
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - img [ref=e163]
+                  - generic [ref=e165]: Execution bridge to Jira/Linear
+            - generic [ref=e166]:
+              - generic [ref=e167]:
+                - img [ref=e169]
+                - paragraph [ref=e172]: Value Guarantee
+              - paragraph [ref=e173]: Save $45,000+ annually vs hiring strategic consultants
+            - link "Start Free Trial" [ref=e175] [cursor=pointer]:
+              - /url: /trial?tier=team
+              - generic [ref=e176] [cursor=pointer]:
+                - generic [ref=e177] [cursor=pointer]: Start Free Trial
+                - img [ref=e179] [cursor=pointer]
+        - generic [ref=e183]:
+          - generic [ref=e184]:
+            - heading "Scale" [level=3] [ref=e185]
+            - generic [ref=e186]:
+              - paragraph [ref=e187]: $199
+              - paragraph [ref=e188]: /month
+            - paragraph [ref=e189]: Advanced PM teams and growing companies
+          - list [ref=e190]:
+            - listitem [ref=e191]:
+              - generic [ref=e192]:
+                - img [ref=e195]
+                - generic [ref=e197]: Everything in Team
+            - listitem [ref=e198]:
+              - generic [ref=e199]:
+                - img [ref=e202]
+                - generic [ref=e205]: Custom AI model training on company data
+            - listitem [ref=e206]:
+              - generic [ref=e207]:
+                - img [ref=e210]
+                - generic [ref=e212]: Advanced predictive analytics and what-if scenarios
+            - listitem [ref=e213]:
+              - generic [ref=e214]:
+                - img [ref=e217]
+                - generic [ref=e219]: Dedicated customer success manager
+            - listitem [ref=e220]:
+              - generic [ref=e221]:
+                - img [ref=e224]
+                - generic [ref=e226]: White-glove onboarding + API access
+            - listitem [ref=e227]:
+              - generic [ref=e228]:
+                - img [ref=e231]
+                - generic [ref=e233]: Custom strategic frameworks
+            - listitem [ref=e234]:
+              - generic [ref=e235]:
+                - img [ref=e238]
+                - generic [ref=e240]: Enterprise security & compliance
+          - link "Start Free Trial" [ref=e242] [cursor=pointer]:
+            - /url: /trial?tier=scale
+            - generic [ref=e243] [cursor=pointer]:
+              - generic [ref=e244] [cursor=pointer]: Start Free Trial
+              - img [ref=e246] [cursor=pointer]
+        - generic [ref=e250]:
+          - generic [ref=e251]:
+            - generic [ref=e253]: 🏢 Enterprise
+            - heading "Enterprise" [level=3] [ref=e254]
+            - generic [ref=e255]:
+              - paragraph [ref=e256]: $599
+              - paragraph [ref=e257]: /month
+            - paragraph [ref=e258]: Large enterprises and PMO organizations
+          - list [ref=e259]:
+            - listitem [ref=e260]:
+              - generic [ref=e261]:
+                - img [ref=e264]
+                - generic [ref=e266]: Everything in Scale
+            - listitem [ref=e267]:
+              - generic [ref=e268]:
+                - img [ref=e271]
+                - generic [ref=e274]: Unlimited users and projects
+            - listitem [ref=e275]:
+              - generic [ref=e276]:
+                - img [ref=e279]
+                - generic [ref=e282]: Enterprise security & compliance
+            - listitem [ref=e283]:
+              - generic [ref=e284]:
+                - img [ref=e287]
+                - generic [ref=e289]: Dedicated customer success manager
+            - listitem [ref=e290]:
+              - generic [ref=e291]:
+                - img [ref=e294]
+                - generic [ref=e296]: White-glove onboarding & training
+            - listitem [ref=e297]:
+              - generic [ref=e298]:
+                - img [ref=e301]
+                - generic [ref=e303]: Custom integrations & API access
+            - listitem [ref=e304]:
+              - generic [ref=e305]:
+                - img [ref=e308]
+                - generic [ref=e310]: 24/7 priority support
+          - link "Start Free Trial" [ref=e312] [cursor=pointer]:
+            - /url: /trial?tier=enterprise
+            - generic [ref=e313] [cursor=pointer]:
+              - generic [ref=e314] [cursor=pointer]: Start Free Trial
+              - img [ref=e316] [cursor=pointer]
+      - generic [ref=e319]:
+        - generic [ref=e320]:
+          - img [ref=e322]
+          - paragraph [ref=e324]: 14-Day Free Trial
+          - paragraph [ref=e325]: No credit card required
+        - generic [ref=e326]:
+          - img [ref=e328]
+          - paragraph [ref=e331]: 5-Minute Setup
+          - paragraph [ref=e332]: Start getting value immediately
+        - generic [ref=e333]:
+          - img [ref=e335]
+          - paragraph [ref=e340]: Cancel Anytime
+          - paragraph [ref=e341]: No long-term commitments
+      - generic [ref=e343]:
+        - generic [ref=e344]:
+          - img [ref=e346]
+          - heading "Calculate Your ROI" [level=2] [ref=e349]
+        - paragraph [ref=e350]: See exactly how much PM33 can save your team by replacing expensive consultants and eliminating busywork.
+        - generic [ref=e351]:
+          - generic [ref=e352]:
+            - heading "Your Current Costs" [level=3] [ref=e353]
+            - generic [ref=e354]:
+              - paragraph [ref=e355]: "Annual PM Salary: $120,000"
+              - generic [ref=e358] [cursor=pointer]:
+                - slider [ref=e360] [cursor=pointer]
+                - generic:
+                  - generic:
+                    - generic: $60K
+                  - generic:
+                    - generic: $120K
+                  - generic:
+                    - generic: $180K
+                  - generic:
+                    - generic: $250K
+              - paragraph [ref=e361]: "Monthly salary cost: $10,000"
+            - generic [ref=e362]:
+              - paragraph [ref=e363]: "Time spent on busywork: 60%"
+              - generic [ref=e366] [cursor=pointer]:
+                - slider [ref=e368] [cursor=pointer]
+                - generic:
+                  - generic:
+                    - generic: 20%
+                  - generic:
+                    - generic: 40%
+                  - generic:
+                    - generic: 60%
+                  - generic:
+                    - generic: 80%
+              - paragraph [ref=e369]: "Monthly waste: $6,000"
+            - generic [ref=e370]:
+              - paragraph [ref=e371]: "Consultant hours per month: 20"
+              - generic [ref=e374] [cursor=pointer]:
+                - slider [ref=e376] [cursor=pointer]
+                - generic:
+                  - generic:
+                    - generic: "0"
+                  - generic:
+                    - generic: "20"
+                  - generic:
+                    - generic: "40"
+                  - generic:
+                    - generic: 50+
+              - paragraph [ref=e377]: At $300/hour = $6,000/month
+            - separator
+            - generic [ref=e378]:
+              - paragraph [ref=e379]: Total Monthly Waste
+              - paragraph [ref=e380]: $12,000
+          - generic [ref=e381]:
+            - heading "With PM33 Enterprise" [level=3] [ref=e382]
+            - generic [ref=e383]:
+              - paragraph [ref=e384]: PM33 Enterprise Cost
+              - paragraph [ref=e385]: $99/month
+              - paragraph [ref=e386]: All AI teams included
+            - generic [ref=e387]:
+              - paragraph [ref=e388]: Monthly Savings
+              - paragraph [ref=e389]: $11,921
+              - paragraph [ref=e390]: "ROI: 15090%"
+            - generic [ref=e391]:
+              - paragraph [ref=e392]: Annual Savings
+              - paragraph [ref=e393]: $143,052
+            - generic [ref=e394]:
+              - paragraph [ref=e395]: Productivity Gains
+              - paragraph [ref=e396]:
+                - text: • 78% faster feature delivery
+                - text: • 65% reduction in admin work
+                - text: • $2.3M+ revenue impact potential
+        - link "Start Free Trial" [ref=e398] [cursor=pointer]:
+          - /url: /trial?tier=enterprise&roi-calculated=true
+          - generic [ref=e399] [cursor=pointer]:
+            - generic [ref=e400] [cursor=pointer]: Start Free Trial
+            - img [ref=e402] [cursor=pointer]
+      - generic [ref=e407]:
+        - generic [ref=e409]:
+          - generic [ref=e410]:
+            - img [ref=e412]
+            - generic [ref=e413]:
+              - generic [ref=e414]:
+                - paragraph [ref=e415]: Sarah Chen
+                - generic [ref=e417]: ✓ Verified
+              - paragraph [ref=e418]: VP Product
+              - paragraph [ref=e419]: TechFlow
+          - generic [ref=e420]:
+            - generic [ref=e421]:
+              - img [ref=e424]
+              - img [ref=e428]
+            - img [ref=e433]
+            - img [ref=e438]
+            - img [ref=e443]
+            - img [ref=e448]
+          - paragraph [ref=e450]: "\"PM33 eliminated analysis paralysis completely. Our team now ships features 78% faster with strategic insights that actually matter. The AI teams coordination saved us from hiring three consultants.\""
+          - generic [ref=e452]:
+            - generic [ref=e453]:
+              - paragraph [ref=e454]: 78%
+              - paragraph [ref=e455]: Faster Delivery
+            - img [ref=e456]
+        - generic [ref=e460]:
+          - generic [ref=e461]:
+            - img [ref=e463]
+            - generic [ref=e464]:
+              - generic [ref=e465]:
+                - paragraph [ref=e466]: Marcus Rodriguez
+                - generic [ref=e468]: ✓ Verified
+              - paragraph [ref=e469]: Chief Product Officer
+              - paragraph [ref=e470]: GrowthScale
+          - generic [ref=e471]:
+            - generic [ref=e472]:
+              - img [ref=e475]
+              - img [ref=e479]
+            - img [ref=e484]
+            - img [ref=e489]
+            - img [ref=e494]
+            - img [ref=e499]
+          - paragraph [ref=e501]: "\"The predictive analytics in PM33 helped us prioritize the right features at the right time. Result: $2.3M ARR from strategic decisions we wouldn't have made otherwise. ROI paid for itself in 3 weeks.\""
+          - generic [ref=e503]:
+            - generic [ref=e504]:
+              - paragraph [ref=e505]: $2.3M
+              - paragraph [ref=e506]: Revenue Impact
+            - img [ref=e507]
+        - generic [ref=e511]:
+          - generic [ref=e512]:
+            - img [ref=e514]
+            - generic [ref=e515]:
+              - generic [ref=e516]:
+                - paragraph [ref=e517]: Alex Kumar
+                - generic [ref=e519]: ✓ Verified
+              - paragraph [ref=e520]: Senior Product Manager
+              - paragraph [ref=e521]: DataFlow
+          - generic [ref=e522]:
+            - generic [ref=e523]:
+              - img [ref=e526]
+              - img [ref=e530]
+            - img [ref=e535]
+            - img [ref=e540]
+            - img [ref=e545]
+            - img [ref=e550]
+          - paragraph [ref=e552]: "\"Finally spending time on strategy instead of spreadsheets. PM33 automated 65% of my busywork and turned me into a strategic powerhouse. My stakeholders now see me as the go-to person for strategic product decisions.\""
+          - generic [ref=e554]:
+            - generic [ref=e555]:
+              - paragraph [ref=e556]: 65%
+              - paragraph [ref=e557]: Less Admin Work
+            - img [ref=e558]
+      - generic [ref=e562]:
+        - generic [ref=e564]: "⚡ Limited Time: Join 2,500+ Product Managers"
+        - heading "Ready to Transform Your PM Work?" [level=2] [ref=e565]
+        - paragraph [ref=e566]: Start your free trial today. No credit card required. Cancel anytime. See results in your first week.
+        - generic [ref=e567]:
+          - link "Start Free Trial" [ref=e569] [cursor=pointer]:
+            - /url: /trial?tier=enterprise&final-cta=true
+            - generic [ref=e570] [cursor=pointer]:
+              - generic [ref=e571] [cursor=pointer]: Start Free Trial
+              - img [ref=e573] [cursor=pointer]
+          - link "Try Live Demo" [ref=e576] [cursor=pointer]:
+            - /url: /strategic-intelligence-demo
+            - generic [ref=e577] [cursor=pointer]:
+              - img [ref=e579] [cursor=pointer]
+              - generic [ref=e581] [cursor=pointer]: Try Live Demo
+  - contentinfo [ref=e582]:
+    - generic [ref=e583]:
+      - generic [ref=e584]:
+        - generic [ref=e585]:
+          - img "PM33" [ref=e586]
+          - paragraph [ref=e587]: Transform from Product Manager to Strategic PMO with AI-powered intelligence. Achieve 10x productivity with our 4 agentic AI teams.
+          - generic [ref=e588]:
+            - link "Twitter" [ref=e589] [cursor=pointer]:
+              - /url: https://twitter.com/pm33ai
+            - link "LinkedIn" [ref=e590] [cursor=pointer]:
+              - /url: https://linkedin.com/company/pm33
+        - generic [ref=e591]:
+          - heading "Product" [level=3] [ref=e592]
+          - generic [ref=e593]:
+            - link "Pricing" [ref=e594] [cursor=pointer]:
+              - /url: /pricing
+            - link "API Documentation" [ref=e595] [cursor=pointer]:
+              - /url: /resources/api-docs
+            - link "Resources" [ref=e596] [cursor=pointer]:
+              - /url: /resources
+            - link "Strategic Intelligence" [ref=e597] [cursor=pointer]:
+              - /url: /strategic-intelligence
+        - generic [ref=e598]:
+          - heading "Company" [level=3] [ref=e599]
+          - generic [ref=e600]:
+            - link "About" [ref=e601] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e602] [cursor=pointer]:
+              - /url: /contact
+            - link "Privacy Policy" [ref=e603] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e604] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e605]:
+          - heading "Resources" [level=3] [ref=e606]
+          - generic [ref=e607]:
+            - link "API Documentation" [ref=e608] [cursor=pointer]:
+              - /url: /resources/api-docs
+            - link "Implementation Guides" [ref=e609] [cursor=pointer]:
+              - /url: /resources/cpn-docs
+            - link "AI Product Management Guide" [ref=e610] [cursor=pointer]:
+              - /url: /ai-product-management-tool-landing
+            - link "Strategic PM Blog" [ref=e611] [cursor=pointer]:
+              - /url: /strategic-product-management-blog
+      - generic [ref=e612]:
+        - paragraph [ref=e613]: © 2025 PM33. All rights reserved.
+        - generic [ref=e614]:
+          - link "Privacy" [ref=e615] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e616] [cursor=pointer]:
+            - /url: /terms
+          - link "Security" [ref=e617] [cursor=pointer]:
+            - /url: /security
+```

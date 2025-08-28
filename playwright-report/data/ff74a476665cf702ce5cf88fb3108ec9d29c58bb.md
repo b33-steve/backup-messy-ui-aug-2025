@@ -1,0 +1,160 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "PM33 Strategic Intelligence Platform" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - link "Resources" [ref=e11] [cursor=pointer]:
+          - /url: /resources
+        - link "About" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: /contact
+        - button [disabled] [ref=e15]:
+          - img [ref=e17]
+        - link "Start Free Trial" [ref=e19] [cursor=pointer]:
+          - /url: /trial
+  - main [ref=e20]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e25]: About PM33
+        - generic [ref=e26]:
+          - heading "Transforming Product Management with AI" [level=1] [ref=e27]
+          - paragraph [ref=e28]: PM33 was born from the frustration of spending 80% of PM time on busywork instead of strategy. We're building the AI brain that makes every PM tool 10x smarter.
+      - generic [ref=e30]:
+        - generic [ref=e32]:
+          - generic [ref=e34]: Our Mission
+          - heading "Every PM Should Focus on Strategy, Not Busywork" [level=2] [ref=e35]
+          - paragraph [ref=e36]: Product Managers are the strategic hearts of technology companies, yet most spend their days writing documents, chasing updates, and managing spreadsheets instead of driving product vision.
+          - paragraph [ref=e37]: PM33 transforms your existing PM tools—Jira, Linear, Monday.com, Asana—into AI-powered strategic engines. No migration headaches, just immediate productivity gains.
+        - generic [ref=e40]:
+          - img [ref=e41]
+          - heading "The PM33 Difference" [level=3] [ref=e48]
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - paragraph [ref=e51]: 78%
+              - paragraph [ref=e52]: Faster delivery
+            - generic [ref=e53]:
+              - paragraph [ref=e54]: $2.3M
+              - paragraph [ref=e55]: Revenue impact
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: 65%
+              - paragraph [ref=e58]: Less admin work
+            - generic [ref=e59]:
+              - paragraph [ref=e60]: 2,500+
+              - paragraph [ref=e61]: PMs using PM33
+      - generic [ref=e62]:
+        - heading "Our Values" [level=2] [ref=e63]
+        - generic [ref=e64]:
+          - generic [ref=e66]:
+            - img [ref=e67]
+            - heading "Strategy First" [level=3] [ref=e71]
+            - paragraph [ref=e72]: "Every feature we build asks: does this help PMs make better strategic decisions faster?"
+          - generic [ref=e74]:
+            - img [ref=e75]
+            - heading "No Migration Pain" [level=3] [ref=e80]
+            - paragraph [ref=e81]: We enhance your existing tools instead of forcing costly, disruptive migrations.
+          - generic [ref=e83]:
+            - img [ref=e84]
+            - heading "Measurable Impact" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Every AI recommendation comes with confidence scores and predicted business outcomes.
+      - generic [ref=e89]:
+        - heading "Built by Product Leaders" [level=2] [ref=e90]
+        - paragraph [ref=e91]: Our team combines decades of product management experience with cutting-edge AI research.
+        - generic [ref=e92]:
+          - generic [ref=e94]:
+            - img [ref=e97]
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: Sarah Chen
+              - paragraph [ref=e101]: CEO & Co-Founder
+              - paragraph [ref=e102]: Ex-Google PM, 12 years
+          - generic [ref=e104]:
+            - img [ref=e107]
+            - generic [ref=e109]:
+              - paragraph [ref=e110]: Marcus Kim
+              - paragraph [ref=e111]: CTO & Co-Founder
+              - paragraph [ref=e112]: Ex-OpenAI, ML Research
+          - generic [ref=e114]:
+            - img [ref=e117]
+            - generic [ref=e119]:
+              - paragraph [ref=e120]: Alex Rivera
+              - paragraph [ref=e121]: Head of Product
+              - paragraph [ref=e122]: Ex-Stripe, Growth PM
+          - generic [ref=e124]:
+            - img [ref=e127]
+            - generic [ref=e129]:
+              - paragraph [ref=e130]: Jordan Liu
+              - paragraph [ref=e131]: Head of AI
+              - paragraph [ref=e132]: Ex-Anthropic, AI Safety
+      - generic [ref=e134]:
+        - heading "Ready to Transform Your PM Work?" [level=2] [ref=e135]
+        - paragraph [ref=e136]: Join thousands of product managers who've reclaimed their time for strategic thinking.
+        - generic [ref=e137]:
+          - link "Start Free Trial" [ref=e138] [cursor=pointer]:
+            - /url: /trial
+            - generic [ref=e140] [cursor=pointer]: Start Free Trial
+          - link "See Live Demo" [ref=e141] [cursor=pointer]:
+            - /url: /strategic-intelligence
+            - generic [ref=e143] [cursor=pointer]: See Live Demo
+  - contentinfo [ref=e144]:
+    - generic [ref=e145]:
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - img "PM33" [ref=e148]
+          - paragraph [ref=e149]: Transform from Product Manager to Strategic PMO with AI-powered intelligence. Achieve 10x productivity with our 4 agentic AI teams.
+          - generic [ref=e150]:
+            - link "Twitter" [ref=e151] [cursor=pointer]:
+              - /url: https://twitter.com/pm33ai
+            - link "LinkedIn" [ref=e152] [cursor=pointer]:
+              - /url: https://linkedin.com/company/pm33
+        - generic [ref=e153]:
+          - heading "Product" [level=3] [ref=e154]
+          - generic [ref=e155]:
+            - link "Pricing" [ref=e156] [cursor=pointer]:
+              - /url: /pricing
+            - link "API Documentation" [ref=e157] [cursor=pointer]:
+              - /url: /resources/api-docs
+            - link "Resources" [ref=e158] [cursor=pointer]:
+              - /url: /resources
+            - link "Strategic Intelligence" [ref=e159] [cursor=pointer]:
+              - /url: /strategic-intelligence
+        - generic [ref=e160]:
+          - heading "Company" [level=3] [ref=e161]
+          - generic [ref=e162]:
+            - link "About" [ref=e163] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e164] [cursor=pointer]:
+              - /url: /contact
+            - link "Privacy Policy" [ref=e165] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e166] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e167]:
+          - heading "Resources" [level=3] [ref=e168]
+          - generic [ref=e169]:
+            - link "API Documentation" [ref=e170] [cursor=pointer]:
+              - /url: /resources/api-docs
+            - link "Implementation Guides" [ref=e171] [cursor=pointer]:
+              - /url: /resources/cpn-docs
+            - link "AI Product Management Guide" [ref=e172] [cursor=pointer]:
+              - /url: /ai-product-management-tool-landing
+            - link "Strategic PM Blog" [ref=e173] [cursor=pointer]:
+              - /url: /strategic-product-management-blog
+      - generic [ref=e174]:
+        - paragraph [ref=e175]: © 2025 PM33. All rights reserved.
+        - generic [ref=e176]:
+          - link "Privacy" [ref=e177] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e178] [cursor=pointer]:
+            - /url: /terms
+          - link "Security" [ref=e179] [cursor=pointer]:
+            - /url: /security
+```

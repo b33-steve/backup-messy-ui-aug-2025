@@ -236,7 +236,7 @@ function ConversionOptimizedHomepageContent() {
             </Container>
 
             {/* Demo Section */}
-            <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+            <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-secondary)' }} data-testid="demo-cards-section">
               <Container size="xl">
                 <Stack align="center" gap={48}>
                   <Badge 
@@ -285,6 +285,7 @@ function ConversionOptimizedHomepageContent() {
                         transition: 'all 0.3s ease'
                       }}
                       className="hover:shadow-2xl hover:translate-y-[-4px]"
+                      data-testid="strategic-intelligence-demo-card"
                     >
                       <Group mb={20}>
                         <ThemeIcon size={48} variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
@@ -341,6 +342,7 @@ function ConversionOptimizedHomepageContent() {
                         transition: 'all 0.3s ease'
                       }}
                       className="hover:shadow-2xl hover:translate-y-[-4px]"
+                      data-testid="command-center-demo-card"
                     >
                       <Group mb={20}>
                         <ThemeIcon size={48} variant="gradient" gradient={{ from: 'cyan', to: 'blue' }}>

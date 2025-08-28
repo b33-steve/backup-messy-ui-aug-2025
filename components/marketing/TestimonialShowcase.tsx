@@ -47,7 +47,7 @@ const testimonialData: TestimonialData[] = [
     company: 'TechFlow',
     companySize: 'scaleup',
     industry: 'SaaS',
-    avatar: '/api/placeholder/120/120',
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b04fe65f?w=120&h=120&fit=crop&crop=face',
     testimonial: "PM33 eliminated analysis paralysis completely. Our team now ships features 78% faster with strategic insights that actually matter. The AI teams coordination saved us from hiring three consultants.",
     metrics: {
       label: 'Faster Delivery',
@@ -66,7 +66,7 @@ const testimonialData: TestimonialData[] = [
     company: 'GrowthScale',
     companySize: 'enterprise',
     industry: 'E-commerce',
-    avatar: '/api/placeholder/120/120',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face',
     testimonial: "The predictive analytics in PM33 helped us prioritize the right features at the right time. Result: $2.3M ARR from strategic decisions we wouldn't have made otherwise. ROI paid for itself in 3 weeks.",
     metrics: {
       label: 'Revenue Impact',
@@ -85,7 +85,7 @@ const testimonialData: TestimonialData[] = [
     company: 'DataFlow',
     companySize: 'scaleup',
     industry: 'Data Analytics',
-    avatar: '/api/placeholder/120/120',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face',
     testimonial: "Finally spending time on strategy instead of spreadsheets. PM33 automated 65% of my busywork and turned me into a strategic powerhouse. My stakeholders now see me as the go-to person for strategic product decisions.",
     metrics: {
       label: 'Less Admin Work',
@@ -104,7 +104,7 @@ const testimonialData: TestimonialData[] = [
     company: 'FinTech Solutions',
     companySize: 'enterprise',
     industry: 'Financial Services',
-    avatar: '/api/placeholder/120/120',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=face',
     testimonial: "PM33's multi-AI coordination is like having a strategic consultant, data analyst, and workflow expert on call 24/7. We've accelerated our roadmap by 6 months and increased feature adoption by 340%.",
     metrics: {
       label: 'Feature Adoption',
@@ -123,7 +123,7 @@ const testimonialData: TestimonialData[] = [
     company: 'StartupFlow',
     companySize: 'startup',
     industry: 'Productivity Tools',
-    avatar: '/api/placeholder/120/120',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=face',
     testimonial: "As a solo PM at a startup, PM33 gives me PMO-level capabilities I could never afford to hire. The strategic intelligence helped us pivot our pricing model and increase MRR by 185% in 8 weeks.",
     metrics: {
       label: 'MRR Growth',
@@ -142,7 +142,7 @@ const testimonialData: TestimonialData[] = [
     company: 'CloudTech Industries',
     companySize: 'enterprise',
     industry: 'Cloud Infrastructure',
-    avatar: '/api/placeholder/120/120',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=face',
     testimonial: "PM33 transformed our entire product organization. The workflow automation eliminated 70% of our coordination overhead, and the strategic analysis helped us identify a $15M market opportunity we were missing.",
     metrics: {
       label: 'Market Opportunity',

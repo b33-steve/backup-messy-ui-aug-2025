@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
+    <Box py={80} style={{ backgroundColor: 'var(--mantine-color-white)' }}>
       <Container size="xl">
         <Stack align="center" gap={48} mb={64}>
           <Badge size="lg" variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
@@ -44,9 +44,9 @@ export default function AboutPage() {
             </Stack>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card shadow="md" radius="xl" p={32} style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+            <Card shadow="md" radius="xl" p={32} style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
               <Stack gap={24}>
-                <IconBrain size={48} color="var(--marketing-primary)" />
+                <IconBrain size={48} color="var(--mantine-color-indigo-6)" />
                 <Title order={3}>The PM33 Difference</Title>
                 <SimpleGrid cols={2} spacing={16}>
                   <div>
@@ -133,7 +133,10 @@ export default function AboutPage() {
         </Stack>
 
         {/* CTA Section */}
-        <Card shadow="xl" radius="xl" p={48} style={{ backgroundColor: 'var(--pm33-primary)', textAlign: 'center' }}>
+        <Card shadow="xl" radius="xl" p={48} style={{ 
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
+          textAlign: 'center' 
+        }}>
           <Stack align="center" gap={24}>
             <Title order={2} style={{ color: 'white' }}>Ready to Transform Your PM Work?</Title>
             <Text size="lg" style={{ color: 'rgba(255, 255, 255, 0.9)' }} maw={600}>

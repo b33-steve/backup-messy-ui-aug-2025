@@ -1,0 +1,375 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "PM33 Strategic Intelligence Platform" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "PM33 Strategic Intelligence Platform" [ref=e7] [cursor=pointer]
+        - generic [ref=e8]:
+          - link "Home" [ref=e9] [cursor=pointer]:
+            - /url: /
+          - link "Pricing" [ref=e10] [cursor=pointer]:
+            - /url: /pricing
+          - link "Resources" [ref=e11] [cursor=pointer]:
+            - /url: /resources
+          - link "About" [ref=e12] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e13] [cursor=pointer]:
+            - /url: /contact
+          - button "Switch to dark mode" [ref=e15] [cursor=pointer]:
+            - img [ref=e17] [cursor=pointer]
+          - link "Start Free Trial" [ref=e19] [cursor=pointer]:
+            - /url: /trial
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - generic [ref=e26]:
+              - generic [ref=e28]: 🤖 Agentic AI Teams Platform
+              - generic [ref=e29]:
+                - heading "Transform PMs into PMOs Through Agentic AI Teams" [level=1] [ref=e30]
+                - paragraph [ref=e31]: Get PMO-level strategic capabilities at PM budget. 4 AI teams provide strategic intelligence, workflow execution, data analysis, and communication support.
+              - generic [ref=e32]:
+                - paragraph [ref=e33]: PMO-level strategic capabilities without the enterprise overhead
+                - generic [ref=e34]:
+                  - paragraph [ref=e35]: ✓ 78% faster feature delivery with strategic insights
+                  - paragraph [ref=e36]: ✓ Replace expensive consultants with AI-powered intelligence
+            - generic [ref=e37]:
+              - link "Transform Your PM Work Today" [ref=e38] [cursor=pointer]:
+                - /url: /trial
+                - generic [ref=e39] [cursor=pointer]:
+                  - generic [ref=e40] [cursor=pointer]: Transform Your PM Work Today
+                  - img [ref=e42] [cursor=pointer]
+              - link "Try Live Demo" [ref=e45] [cursor=pointer]:
+                - /url: /strategic-intelligence-demo
+                - generic [ref=e46] [cursor=pointer]:
+                  - img [ref=e48] [cursor=pointer]
+                  - generic [ref=e50] [cursor=pointer]: Try Live Demo
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - img [ref=e54]
+                - paragraph [ref=e56]: 14-day free trial
+              - generic [ref=e57]:
+                - img [ref=e59]
+                - paragraph [ref=e61]: No credit card required
+              - generic [ref=e62]:
+                - img [ref=e64]
+                - paragraph [ref=e66]: 4.9/5 customer rating
+              - generic [ref=e67]:
+                - img [ref=e69]
+                - paragraph [ref=e71]: Cancel anytime
+          - generic [ref=e72]:
+            - generic [ref=e73]:
+              - generic [ref=e74]:
+                - img [ref=e76]
+                - paragraph [ref=e83]: AI Strategy Assistant
+              - generic [ref=e84]:
+                - generic [ref=e85]:
+                  - paragraph [ref=e86]: Strategic Analysis Complete ✨
+                  - paragraph [ref=e87]: "Mobile performance priority: 34% churn reduction potential"
+                - generic [ref=e88]:
+                  - paragraph [ref=e89]: Impact Prediction
+                  - paragraph [ref=e90]: 78% faster feature delivery
+                - generic [ref=e91]:
+                  - paragraph [ref=e92]: Action Plan Generated
+                  - paragraph [ref=e93]: Complete PRD with technical specifications
+            - img [ref=e95]
+        - generic [ref=e101]:
+          - heading "Common PM Challenges" [level=3] [ref=e102]
+          - list [ref=e103]:
+            - listitem [ref=e104]:
+              - generic [ref=e105]:
+                - generic [ref=e107]: ✗
+                - paragraph [ref=e109]: Need strategic capabilities but lack PMO budget and team
+            - listitem [ref=e110]:
+              - generic [ref=e111]:
+                - generic [ref=e113]: ✗
+                - paragraph [ref=e115]: Spending too much time on tactical work, not enough on strategy
+            - listitem [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e119]: ✗
+                - paragraph [ref=e121]: Expensive strategic consultants with limited ongoing value
+            - listitem [ref=e122]:
+              - generic [ref=e123]:
+                - generic [ref=e125]: ✗
+                - paragraph [ref=e127]: Want to demonstrate strategic impact and accelerate career growth
+        - generic [ref=e131]:
+          - generic [ref=e132]:
+            - generic [ref=e134]:
+              - img [ref=e136]
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - paragraph [ref=e144]: 2.5K+
+                  - generic [ref=e146]: ↗ Trending
+                - paragraph [ref=e147]: Active Product Managers
+                - paragraph [ref=e148]: Growing 23% month-over-month
+            - generic [ref=e150]:
+              - img [ref=e152]
+              - generic [ref=e154]:
+                - generic [ref=e155]:
+                  - paragraph [ref=e157]: 78%
+                  - generic [ref=e159]: ↗ Trending
+                - paragraph [ref=e160]: Average Time Savings
+                - paragraph [ref=e161]: More strategic focus time
+            - generic [ref=e163]:
+              - img [ref=e165]
+              - generic [ref=e167]:
+                - paragraph [ref=e170]: 4.9/5
+                - paragraph [ref=e171]: Customer Rating
+                - paragraph [ref=e172]: Based on 1,847 reviews
+            - generic [ref=e174]:
+              - img [ref=e176]
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - paragraph [ref=e183]: 185%
+                  - generic [ref=e185]: ↗ Trending
+                - paragraph [ref=e186]: Faster Feature Delivery
+                - paragraph [ref=e187]: Average improvement
+            - generic [ref=e189]:
+              - img [ref=e191]
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - paragraph [ref=e198]: 450+
+                  - generic [ref=e200]: ↗ Trending
+                - paragraph [ref=e201]: Companies Transformed
+                - paragraph [ref=e202]: From startup to enterprise
+          - generic [ref=e204]:
+            - generic [ref=e205]:
+              - img [ref=e207]
+              - paragraph [ref=e209]: Trusted by Product Teams Worldwide
+            - generic [ref=e210]:
+              - generic [ref=e211]:
+                - img [ref=e213]
+                - generic [ref=e215]:
+                  - paragraph [ref=e216]: SOC 2 Compliant
+                  - paragraph [ref=e217]: Enterprise security
+              - generic [ref=e218]:
+                - img [ref=e220]
+                - generic [ref=e222]:
+                  - paragraph [ref=e223]: 99.9% Uptime
+                  - paragraph [ref=e224]: Reliable service
+              - generic [ref=e225]:
+                - img [ref=e227]
+                - generic [ref=e232]:
+                  - paragraph [ref=e233]: 24/7 Support
+                  - paragraph [ref=e234]: Always here to help
+          - generic [ref=e236]:
+            - generic [ref=e238]: ⚡ Join the Movement
+            - heading "Join 2,500+ Product Managers Who've Transformed Their Strategic Impact" [level=3] [ref=e239]
+            - paragraph [ref=e240]: From individual contributors to strategic leaders - see why top PMs choose PM33 for their career transformation.
+            - generic [ref=e241]:
+              - generic [ref=e242]:
+                - paragraph [ref=e243]: $45K+
+                - paragraph [ref=e244]: Avg Annual Savings
+              - generic [ref=e245]:
+                - paragraph [ref=e246]: 14 Days
+                - paragraph [ref=e247]: Free Trial
+              - generic [ref=e248]:
+                - paragraph [ref=e249]: 5 Min
+                - paragraph [ref=e250]: Setup Time
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - heading "Why Product Managers Choose PM33" [level=2] [ref=e255]
+            - paragraph [ref=e256]: Trusted by 2,500+ Product Managers
+          - generic [ref=e257]:
+            - generic [ref=e259]:
+              - img [ref=e261]
+              - generic [ref=e268]:
+                - paragraph [ref=e269]: 10x faster
+                - paragraph [ref=e270]: Strategic Intelligence
+                - paragraph [ref=e271]: AI-powered strategic analysis and competitive insights
+            - generic [ref=e273]:
+              - img [ref=e275]
+              - generic [ref=e277]:
+                - paragraph [ref=e278]: 78% faster delivery
+                - paragraph [ref=e279]: Execution Speed
+                - paragraph [ref=e280]: Automated workflows and task coordination
+            - generic [ref=e282]:
+              - img [ref=e284]
+              - generic [ref=e287]:
+                - paragraph [ref=e288]: $2.3M impact
+                - paragraph [ref=e289]: Business Impact
+                - paragraph [ref=e290]: Measurable revenue and growth outcomes
+        - generic [ref=e295]:
+          - generic [ref=e296]:
+            - img [ref=e297]
+            - heading "What Our Customers Say" [level=3] [ref=e300]
+          - generic [ref=e301]:
+            - paragraph [ref=e302]: "\"Finally spending time on strategy instead of spreadsheets. PM33 automated 65% of my busywork and turned me into a strategic powerhouse. My stakeholders now see me as the go-to person for strategic product decisions.\""
+            - generic [ref=e303]:
+              - generic [ref=e304]:
+                - img [ref=e307]
+                - generic [ref=e309]:
+                  - generic [ref=e310]:
+                    - paragraph [ref=e311]: Alex Kumar
+                    - generic [ref=e313]: ✓
+                  - paragraph [ref=e314]: Senior Product Manager
+                  - paragraph [ref=e315]: DataFlow
+                - generic [ref=e316]:
+                  - generic [ref=e317]:
+                    - img [ref=e320]
+                    - img [ref=e324]
+                  - img [ref=e329]
+                  - img [ref=e334]
+                  - img [ref=e339]
+                  - img [ref=e344]
+              - generic [ref=e347]:
+                - paragraph [ref=e348]: 65%
+                - paragraph [ref=e349]: Less Admin Work
+                - paragraph [ref=e350]: More strategic focus
+          - generic [ref=e351]:
+            - button [ref=e352] [cursor=pointer]:
+              - img [ref=e354] [cursor=pointer]
+            - button [ref=e360] [cursor=pointer]:
+              - img [ref=e362] [cursor=pointer]
+        - generic [ref=e366]:
+          - generic [ref=e367]:
+            - img [ref=e369]
+            - generic [ref=e371]: ✨ Experience PM33 in Action
+          - generic [ref=e372]:
+            - heading "See AI-Powered Strategic Intelligence" [level=2] [ref=e373]
+            - paragraph [ref=e374]: Try our live demo workflows designed specifically for product managers.
+          - generic [ref=e375]:
+            - link "Strategic Intelligence Engine ✅ Live Demo Ready AI-powered strategic analysis with multi-framework insights ✨ Multi-framework analysis 🎯 Confidence-scored recommendations ⚡ Real-time strategic insights Try Now" [ref=e376] [cursor=pointer]:
+              - /url: /strategic-intelligence-demo
+              - generic [ref=e377] [cursor=pointer]:
+                - img [ref=e379] [cursor=pointer]
+                - generic [ref=e386] [cursor=pointer]:
+                  - paragraph [ref=e387] [cursor=pointer]: Strategic Intelligence Engine
+                  - generic [ref=e389]: ✅ Live Demo Ready
+              - paragraph [ref=e390] [cursor=pointer]: AI-powered strategic analysis with multi-framework insights
+              - generic [ref=e391] [cursor=pointer]:
+                - generic [ref=e392] [cursor=pointer]:
+                  - paragraph [ref=e393] [cursor=pointer]: ✨ Multi-framework analysis
+                  - paragraph [ref=e394] [cursor=pointer]: 🎯 Confidence-scored recommendations
+                  - paragraph [ref=e395] [cursor=pointer]: ⚡ Real-time strategic insights
+                - button "Try Now" [ref=e396] [cursor=pointer]:
+                  - generic [ref=e397] [cursor=pointer]:
+                    - generic [ref=e398] [cursor=pointer]: Try Now
+                    - img [ref=e400] [cursor=pointer]
+            - link "Strategic Command Center ✅ Live Demo Ready Real-time orchestration of 4 specialized AI teams 🤖 4 AI teams coordination 📊 Real-time strategic metrics 🔄 End-to-end workflow automation Try Now" [ref=e403] [cursor=pointer]:
+              - /url: /command-center-demo
+              - generic [ref=e404] [cursor=pointer]:
+                - img [ref=e406] [cursor=pointer]
+                - generic [ref=e410] [cursor=pointer]:
+                  - paragraph [ref=e411] [cursor=pointer]: Strategic Command Center
+                  - generic [ref=e413]: ✅ Live Demo Ready
+              - paragraph [ref=e414] [cursor=pointer]: Real-time orchestration of 4 specialized AI teams
+              - generic [ref=e415] [cursor=pointer]:
+                - generic [ref=e416] [cursor=pointer]:
+                  - paragraph [ref=e417] [cursor=pointer]: 🤖 4 AI teams coordination
+                  - paragraph [ref=e418] [cursor=pointer]: 📊 Real-time strategic metrics
+                  - paragraph [ref=e419] [cursor=pointer]: 🔄 End-to-end workflow automation
+                - button "Try Now" [ref=e420] [cursor=pointer]:
+                  - generic [ref=e421] [cursor=pointer]:
+                    - generic [ref=e422] [cursor=pointer]: Try Now
+                    - img [ref=e424] [cursor=pointer]
+        - generic [ref=e428]:
+          - heading "Simple, Transparent Pricing" [level=2] [ref=e429]
+          - generic [ref=e431]:
+            - generic [ref=e432]:
+              - img [ref=e434]
+              - paragraph [ref=e438]: Recommended for Your Role
+            - paragraph [ref=e439]: Most customers choose Enterprise tier ($99/month) for full AI team coordination and unlimited analysis.
+          - generic [ref=e440]:
+            - link "Join 2,500+ PMs →" [ref=e441] [cursor=pointer]:
+              - /url: /pricing
+              - generic [ref=e442] [cursor=pointer]:
+                - generic [ref=e443] [cursor=pointer]: Join 2,500+ PMs →
+                - img [ref=e445] [cursor=pointer]
+            - link "Start Free Trial" [ref=e448] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e450] [cursor=pointer]: Start Free Trial
+        - generic [ref=e453]:
+          - generic [ref=e454]:
+            - paragraph [ref=e455]: ⚡ Join 2,500+ PMs already transforming their strategic impact
+            - generic [ref=e456]:
+              - paragraph [ref=e457]: Start Free Trial
+              - paragraph [ref=e458]: See How It Works
+          - generic [ref=e459]:
+            - heading "Ready to Transform Your PM Work?" [level=2] [ref=e460]
+            - paragraph [ref=e461]: Join 2,500+ product managers focusing on strategy, not busywork.
+          - generic [ref=e462]:
+            - link "Transform Your PM Work Today" [ref=e463] [cursor=pointer]:
+              - /url: /trial
+              - generic [ref=e464] [cursor=pointer]:
+                - generic [ref=e465] [cursor=pointer]: Transform Your PM Work Today
+                - img [ref=e467] [cursor=pointer]
+            - link "Try Strategic Intelligence" [ref=e470] [cursor=pointer]:
+              - /url: /strategic-intelligence-demo
+              - generic [ref=e471] [cursor=pointer]:
+                - img [ref=e473] [cursor=pointer]
+                - generic [ref=e475] [cursor=pointer]: Try Strategic Intelligence
+          - generic [ref=e476]:
+            - generic [ref=e477]:
+              - img [ref=e479]
+              - paragraph [ref=e481]: 14-day free trial
+            - generic [ref=e482]:
+              - img [ref=e484]
+              - paragraph [ref=e486]: No credit card required
+            - generic [ref=e487]:
+              - img [ref=e489]
+              - paragraph [ref=e491]: 4.9/5 customer rating
+            - generic [ref=e492]:
+              - img [ref=e494]
+              - paragraph [ref=e496]: Cancel anytime
+    - contentinfo [ref=e497]:
+      - generic [ref=e498]:
+        - generic [ref=e499]:
+          - generic [ref=e500]:
+            - img "PM33" [ref=e501]
+            - paragraph [ref=e502]: Transform from Product Manager to Strategic PMO with AI-powered intelligence. Achieve 10x productivity with our 4 agentic AI teams.
+            - generic [ref=e503]:
+              - link "Twitter" [ref=e504] [cursor=pointer]:
+                - /url: https://twitter.com/pm33ai
+              - link "LinkedIn" [ref=e505] [cursor=pointer]:
+                - /url: https://linkedin.com/company/pm33
+          - generic [ref=e506]:
+            - heading "Product" [level=3] [ref=e507]
+            - generic [ref=e508]:
+              - link "Pricing" [ref=e509] [cursor=pointer]:
+                - /url: /pricing
+              - link "API Documentation" [ref=e510] [cursor=pointer]:
+                - /url: /resources/api-docs
+              - link "Resources" [ref=e511] [cursor=pointer]:
+                - /url: /resources
+              - link "Strategic Intelligence" [ref=e512] [cursor=pointer]:
+                - /url: /strategic-intelligence
+          - generic [ref=e513]:
+            - heading "Company" [level=3] [ref=e514]
+            - generic [ref=e515]:
+              - link "About" [ref=e516] [cursor=pointer]:
+                - /url: /about
+              - link "Contact" [ref=e517] [cursor=pointer]:
+                - /url: /contact
+              - link "Privacy Policy" [ref=e518] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Service" [ref=e519] [cursor=pointer]:
+                - /url: /terms
+          - generic [ref=e520]:
+            - heading "Resources" [level=3] [ref=e521]
+            - generic [ref=e522]:
+              - link "API Documentation" [ref=e523] [cursor=pointer]:
+                - /url: /resources/api-docs
+              - link "Implementation Guides" [ref=e524] [cursor=pointer]:
+                - /url: /resources/cpn-docs
+              - link "AI Product Management Guide" [ref=e525] [cursor=pointer]:
+                - /url: /ai-product-management-tool-landing
+              - link "Strategic PM Blog" [ref=e526] [cursor=pointer]:
+                - /url: /strategic-product-management-blog
+        - generic [ref=e527]:
+          - paragraph [ref=e528]: © 2025 PM33. All rights reserved.
+          - generic [ref=e529]:
+            - link "Privacy" [ref=e530] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms" [ref=e531] [cursor=pointer]:
+              - /url: /terms
+            - link "Security" [ref=e532] [cursor=pointer]:
+              - /url: /security
+  - button "Open Next.js Dev Tools" [ref=e538] [cursor=pointer]:
+    - img [ref=e539] [cursor=pointer]
+  - alert [ref=e542]: Transform PMs into PMOs Through Agentic AI Teams
+```

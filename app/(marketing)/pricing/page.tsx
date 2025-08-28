@@ -52,13 +52,11 @@ export default function ConversionOptimizedPricingPage() {
   return (
     <div>
         <Box style={{ backgroundColor: 'var(--pm33-bg-primary)', minHeight: '100vh' }}>
-          
-
           {/* Pricing Toggle */}
-          <Container size="xl" py={48}>
-            <Center mb={48}>
-              <Card shadow="md" radius="xl" p={24}>
-                <Group gap={24}>
+          <Container size="xl" py={64}>
+            <Center mb={64}>
+              <Card shadow="md" radius="xl" p={32}>
+                <Group gap={32}>
                   <Text fw={600}>Monthly</Text>
                   <Switch
                     size="lg"
@@ -75,7 +73,7 @@ export default function ConversionOptimizedPricingPage() {
             </Center>
 
             {/* Pricing Tiers */}
-            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={24}>
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={32}>
               
               {/* Starter Tier */}
               <Card shadow="md" radius="xl" p={32} h="fit-content">
@@ -289,7 +287,7 @@ export default function ConversionOptimizedPricingPage() {
             </SimpleGrid>
 
             {/* Trust Indicators */}
-            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32} mt={64}>
+            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={32} mt={80}>
               <Card shadow="sm" radius="lg" p={24} ta="center">
                 <ThemeIcon size={40} mx="auto" mb={16} variant="light" color="green">
                   <IconShield size={20} />
@@ -316,7 +314,7 @@ export default function ConversionOptimizedPricingPage() {
             </SimpleGrid>
 
             {/* ROI Calculator Section */}
-            <Card shadow="xl" radius="xl" p={48} mt={64} style={{ background: 'linear-gradient(135deg, var(--marketing-bg-secondary) 0%, var(--marketing-bg-primary) 100%)' }}>
+            <Card shadow="xl" radius="xl" p={48} mt={80} style={{ background: 'linear-gradient(135deg, var(--marketing-bg-secondary) 0%, var(--marketing-bg-primary) 100%)' }}>
               <Stack align="center" gap={32}>
                 <Group gap={16}>
                   <ThemeIcon size={48} variant="gradient" gradient={{ from: 'green', to: 'teal' }}>
@@ -444,34 +442,35 @@ export default function ConversionOptimizedPricingPage() {
             </Card>
 
             {/* Social Proof Metrics */}
-            <SocialProofMetrics
-              segment="all"
-              showTrustSignals={true}
-              animated={true}
-              maxColumns={3}
-              className="mt-64"
-              pageContext="pricing_page"
-            />
+            <Box mt={80}>
+              <SocialProofMetrics
+                segment="all"
+                showTrustSignals={true}
+                animated={true}
+                maxColumns={3}
+                pageContext="pricing_page"
+              />
+            </Box>
 
             {/* Customer Testimonials */}
-            <TestimonialShowcase
-              format="grid"
-              maxItems={3}
-              showMetrics={true}
-              autoRotate={false}
-              className="mt-64"
-              pageContext="pricing_page"
-            />
+            <Box mt={80}>
+              <TestimonialShowcase
+                format="grid"
+                maxItems={3}
+                showMetrics={true}
+                autoRotate={false}
+                pageContext="pricing_page"
+              />
+            </Box>
 
             {/* Final CTA */}
             <Card 
               shadow="xl" 
               radius="xl" 
               p={48} 
-              mt={64} 
+              mt={80} 
               style={{ 
-                background: 'var(--marketing-primary)', 
-                color: 'var(--gradient-text)', 
+                background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', 
                 textAlign: 'center' 
               }}
             >
@@ -479,22 +478,22 @@ export default function ConversionOptimizedPricingPage() {
                 <Badge 
                   size="lg" 
                   style={{ 
-                    backgroundColor: 'var(--badge-bg-primary)',
-                    color: 'var(--gradient-text)' 
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    color: 'white' 
                   }} 
                   variant="light"
                 >
                   ⚡ Limited Time: Join 2,500+ Product Managers
                 </Badge>
                 
-                <Title order={2} size="h2" style={{ color: 'var(--gradient-text)' }}>
+                <Title order={2} size="h2" style={{ color: '#ffffff', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
                   Ready to Transform Your PM Work?
                 </Title>
                 
                 <Text 
                   size="lg" 
                   maw={600}
-                  style={{ color: 'var(--gradient-text)', opacity: 0.9 }}
+                  style={{ color: '#e2e8f0', textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
                 >
                   Start your free trial today. No credit card required. Cancel anytime. 
                   See results in your first week.
@@ -517,9 +516,9 @@ export default function ConversionOptimizedPricingPage() {
                     size="xl"
                     variant="outline"
                     style={{ 
-                      borderColor: 'var(--gradient-text)', 
-                      color: 'var(--gradient-text)',
-                      opacity: 0.8
+                      borderColor: '#e2e8f0', 
+                      color: '#e2e8f0',
+                      backgroundColor: 'rgba(226, 232, 240, 0.1)'
                     }}
                     leftSection={<IconBolt size={20} />}
                   >
