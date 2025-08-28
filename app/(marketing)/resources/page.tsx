@@ -4,10 +4,15 @@ import React from 'react';
 import { Container, Card, Title, Text, Button, Stack, Badge, SimpleGrid, Group, Box, ThemeIcon } from '@mantine/core';
 import { IconBook, IconVideo, IconDownload, IconBrain, IconTarget, IconTrendingUp, IconUsers, IconFileText } from '@tabler/icons-react';
 import Link from 'next/link';
+import Navigation from '../../../components/marketing/IsolatedMarketingNavigation';
+import Footer from '../../../components/marketing/IsolatedMarketingFooter';
 
 export default function ResourcesPage() {
   return (
-    <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
+    <div className="marketing-context">
+      <Navigation />
+      <main className="pt-16">
+        <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
       <Container size="xl">
         <Stack align="center" gap={48} mb={64}>
           <Badge size="lg" variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
@@ -297,6 +302,9 @@ export default function ResourcesPage() {
           </Stack>
         </Card>
       </Container>
-    </Box>
+        </Box>
+      </main>
+      <Footer />
+    </div>
   );
 }
