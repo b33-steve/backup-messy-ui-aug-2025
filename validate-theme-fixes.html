@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM33 Theme Validation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .warning { color: #f59e0b; }
+        .variable-test {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PM33 Theme Validation Report</h1>
+    <p><strong>Test Date:</strong> <span id="testDate"></span></p>
+    
+    <div class="test-section">
+        <h2>✅ Fixes Applied</h2>
+        <ul>
+            <li class="success">✓ Added missing CSS variables (--pm33-marketingBg, --pm33-marketingText, etc.)</li>
+            <li class="success">✓ Fixed default theme loading to consistently use light mode</li>
+            <li class="success">✓ Added theme-aware variables to all theme contexts (light, dark, system)</li>
+            <li class="success">✓ Ensured PM33ThemeProvider defaults to light mode</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 Variable Definitions Added</h2>
+        <div class="variable-test">
+            <strong>Light Mode Variables:</strong><br>
+            <code>--pm33-marketingBg: rgba(255, 255, 255, 0.95);</code><br>
+            <code>--pm33-marketingText: var(--color-text-primary);</code><br>
+            <code>--pm33-primary-gradient: var(--gradient-primary);</code>
+        </div>
+        <div class="variable-test">
+            <strong>Dark Mode Variables:</strong><br>
+            <code>--pm33-marketingBg: rgba(15, 23, 42, 0.95);</code><br>
+            <code>--pm33-marketingText: var(--color-text-primary);</code><br>
+            <code>--pm33-primary-gradient: var(--gradient-primary);</code>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 Expected Results</h2>
+        <ul>
+            <li>Website should load in light mode by default</li>
+            <li>Navigation background should be visible and theme-aware</li>
+            <li>CTA sections should have proper contrast</li>
+            <li>Theme toggle should work smoothly</li>
+            <li>All text should be visible in both light and dark modes</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🌐 Live Website Test</h2>
+        <p>Test the live website at: <a href="http://localhost:3006" target="_blank">http://localhost:3006</a></p>
+        <iframe src="http://localhost:3006" title="PM33 Website Test"></iframe>
+    </div>
+
+    <script>
+        document.getElementById('testDate').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>

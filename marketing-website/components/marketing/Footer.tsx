@@ -66,12 +66,7 @@ export default function Footer() {
                 <Text 
                   size="xl" 
                   fw={700}
-                  style={{
-                    background: 'var(--marketing-bg-gradient)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  }}
+                  className="marketing-gradient-text"
                 >
                   PM33
                 </Text>

@@ -83,14 +83,21 @@ export default function NavigationSimple() {
             href="/trial"
             style={{
               textDecoration: 'none',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'var(--pm33-primary-gradient)',
               color: 'white',
               padding: '8px 16px',
               borderRadius: '8px',
               fontSize: '14px',
               fontWeight: 600,
-              boxShadow: '0 4px 15px 0 rgba(102, 126, 234, 0.4)',
               transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'var(--pm33-secondary-gradient)';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'var(--pm33-primary-gradient)';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
             Start Free Trial

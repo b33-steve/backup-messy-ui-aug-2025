@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM33 Design System Test</title>
+    <style>
+        /* Test the design system CSS custom properties */
+        body {
+            font-family: var(--ds-font-primary, 'Inter', sans-serif);
+            background-color: var(--ds-bg-primary, #ffffff);
+            color: var(--ds-text-primary, #1E293B);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .test-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid var(--ds-color-surface-border, #e5e7eb);
+            border-radius: var(--ds-radius-lg, 1rem);
+            background-color: var(--ds-color-surface-base, #ffffff);
+        }
+
+        .test-title {
+            color: var(--ds-color-text-primary, #1E293B);
+            font-size: var(--ds-text-2xl, 1.5rem);
+            font-weight: var(--ds-font-bold, 700);
+            margin-bottom: 1rem;
+        }
+
+        .color-swatch {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: var(--ds-radius-md, 0.75rem);
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid var(--ds-color-surface-border, #e5e7eb);
+        }
+
+        .marketing-test {
+            background: var(--marketing-bg-primary, #ffffff);
+            color: var(--marketing-text-primary, #1E293B);
+            border: 1px solid var(--marketing-text-muted, #94A3B8);
+        }
+
+        .pm33-test {
+            background: var(--pm33-bg, #ffffff);
+            color: var(--pm33-text, #1E293B);
+            border: 1px solid var(--pm33-border, rgba(0, 0, 0, 0.08));
+        }
+
+        .btn-test {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--ds-radius-lg, 1rem);
+            border: none;
+            font-weight: var(--ds-font-semibold, 600);
+            cursor: pointer;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--ds-gradient-brand, linear-gradient(135deg, #1E40AF 0%, #6366F1 100%));
+            color: var(--ds-color-text-inverse, white);
+        }
+
+        .btn-marketing {
+            background: var(--marketing-primary, #1E40AF);
+            color: white;
+        }
+
+        .toggle-theme {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--ds-radius-base, 0.5rem);
+            background: var(--ds-color-brand-primary, #1E40AF);
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+    
+    <h1 class="test-title">PM33 Design System Integration Test</h1>
+    
+    <!-- Color System Test -->
+    <div class="test-section">
+        <h2 class="test-title">Color System Test</h2>
+        <div>
+            <div class="color-swatch" style="background-color: var(--ds-color-brand-primary, #1E40AF);" title="Brand Primary"></div>
+            <div class="color-swatch" style="background-color: var(--ds-color-brand-secondary, #6366F1);" title="Brand Secondary"></div>
+            <div class="color-swatch" style="background-color: var(--ds-color-brand-accent, #3B82F6);" title="Brand Accent"></div>
+            <div class="color-swatch" style="background-color: var(--ds-color-state-success, #059669);" title="Success"></div>
+            <div class="color-swatch" style="background-color: var(--ds-color-state-warning, #D97706);" title="Warning"></div>
+            <div class="color-swatch" style="background-color: var(--ds-color-state-error, #DC2626);" title="Error"></div>
+        </div>
+        <p>Brand colors should appear correctly with proper contrast.</p>
+    </div>
+
+    <!-- Typography Test -->
+    <div class="test-section">
+        <h2 class="test-title">Typography Test</h2>
+        <div style="font-size: var(--ds-text-6xl, 3.75rem); font-weight: var(--ds-font-extrabold, 800);">Heading XL</div>
+        <div style="font-size: var(--ds-text-4xl, 2.25rem); font-weight: var(--ds-font-bold, 700);">Heading Large</div>
+        <div style="font-size: var(--ds-text-2xl, 1.5rem); font-weight: var(--ds-font-semibold, 600);">Heading Medium</div>
+        <div style="font-size: var(--ds-text-lg, 1.125rem); color: var(--ds-color-text-secondary, #64748B);">Body Large</div>
+        <div style="font-size: var(--ds-text-base, 1rem);">Body Regular</div>
+        <div style="font-size: var(--ds-text-sm, 0.875rem); color: var(--ds-color-text-muted, #94A3B8);">Body Small</div>
+    </div>
+
+    <!-- Marketing Variables Test -->
+    <div class="test-section marketing-test">
+        <h2 class="test-title">Marketing Variables Test</h2>
+        <p>This section uses marketing-specific CSS variables:</p>
+        <ul>
+            <li>Background: var(--marketing-bg-primary)</li>
+            <li>Text: var(--marketing-text-primary)</li>
+            <li>Border: var(--marketing-text-muted)</li>
+        </ul>
+        <button class="btn-test btn-marketing">Marketing Button</button>
+    </div>
+
+    <!-- PM33 Variables Test -->
+    <div class="test-section pm33-test">
+        <h2 class="test-title">PM33 Variables Test</h2>
+        <p>This section uses PM33-specific CSS variables:</p>
+        <ul>
+            <li>Background: var(--pm33-bg)</li>
+            <li>Text: var(--pm33-text)</li>
+            <li>Border: var(--pm33-border)</li>
+        </ul>
+        <button class="btn-test btn-primary">PM33 Button</button>
+    </div>
+
+    <!-- Button Test -->
+    <div class="test-section">
+        <h2 class="test-title">Button System Test</h2>
+        <button class="btn-test btn-primary">Primary Button</button>
+        <button class="btn-test" style="background: var(--ds-gradient-cta, linear-gradient(135deg, #EA580C 0%, #DC2626 100%)); color: white;">CTA Button</button>
+        <button class="btn-test" style="background: var(--ds-color-state-success, #059669); color: white;">Success Button</button>
+    </div>
+
+    <!-- Spacing Test -->
+    <div class="test-section">
+        <h2 class="test-title">Spacing System Test</h2>
+        <div style="display: flex; gap: var(--ds-space-4, 1rem); margin-bottom: var(--ds-space-6, 1.5rem);">
+            <div style="padding: var(--ds-space-2, 0.5rem); background: var(--ds-color-bg-secondary, #F8FAFC); border-radius: var(--ds-radius-base, 0.5rem);">Space 2</div>
+            <div style="padding: var(--ds-space-4, 1rem); background: var(--ds-color-bg-secondary, #F8FAFC); border-radius: var(--ds-radius-base, 0.5rem);">Space 4</div>
+            <div style="padding: var(--ds-space-6, 1.5rem); background: var(--ds-color-bg-secondary, #F8FAFC); border-radius: var(--ds-radius-base, 0.5rem);">Space 6</div>
+        </div>
+        <p>All spacing should follow the 8pt grid system.</p>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            
+            if (isDark) {
+                body.setAttribute('data-theme', 'light');
+                body.classList.remove('dark');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                body.classList.add('dark');
+            }
+        }
+
+        // Test if CSS custom properties are loading
+        function testCSSVariables() {
+            const testElement = document.createElement('div');
+            testElement.style.color = 'var(--ds-color-text-primary)';
+            document.body.appendChild(testElement);
+            
+            const computedColor = window.getComputedStyle(testElement).color;
+            testElement.remove();
+            
+            console.log('Design System Test Results:');
+            console.log('--ds-color-text-primary resolves to:', computedColor);
+            console.log('Marketing bg resolves to:', getComputedStyle(document.body).getPropertyValue('--marketing-bg-primary'));
+            console.log('PM33 text resolves to:', getComputedStyle(document.body).getPropertyValue('--pm33-text'));
+        }
+
+        // Run tests on load
+        document.addEventListener('DOMContentLoaded', testCSSVariables);
+    </script>
+</body>
+</html>

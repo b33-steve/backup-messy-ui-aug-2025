@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useTheme } from '../../providers/ThemeProvider';
+import { useTheme } from '../shared/MantineProvider';
 
 export default function IsolatedMarketingFooter() {
   const { currentTheme } = useTheme();

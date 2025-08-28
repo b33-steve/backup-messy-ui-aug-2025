@@ -47,26 +47,25 @@ const PRICING_TIERS = [
 
 export default function PricingPage() {
   return (
-    <div style={{
+    <div className="marketing-context" style={{
       minHeight: '100vh',
       paddingTop: '120px',
       paddingBottom: '80px',
-      backgroundColor: PM33_DESIGN.colors.marketing.bg.primary
+      backgroundColor: 'var(--marketing-bg-primary)'
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
-        <h1 style={{
-          ...PM33_DESIGN.typography.h1,
+        <h1 className="marketing-text-primary" style={{
+          fontSize: '3rem',
+          fontWeight: 700,
           textAlign: 'center',
-          color: PM33_DESIGN.colors.marketing.text.primary,
           marginBottom: '16px'
         }}>
           Simple, Transparent Pricing
         </h1>
         
-        <p style={{
-          ...PM33_DESIGN.typography.body,
+        <p className="marketing-text-secondary" style={{
+          fontSize: '1.125rem',
           textAlign: 'center',
-          color: PM33_DESIGN.colors.marketing.text.secondary,
           marginBottom: '64px'
         }}>
           Start with 40 free operations. No credit card required.
@@ -78,9 +77,9 @@ export default function PricingPage() {
           gap: '32px'
         }}>
           {PRICING_TIERS.map(tier => (
-            <div key={tier.name} style={{
-              backgroundColor: '#FFFFFF',
-              border: tier.highlight ? `2px solid ${PM33_DESIGN.colors.marketing.primary}` : '1px solid #E5E7EB',
+            <div key={tier.name} className={tier.highlight ? "marketing-glass-card" : "marketing-glass-subtle"} style={{
+              backgroundColor: 'var(--marketing-bg-primary)',
+              border: tier.highlight ? '2px solid var(--marketing-primary)' : '1px solid var(--marketing-glass-border)',
               borderRadius: '16px',
               padding: '32px',
               position: 'relative',
@@ -92,8 +91,8 @@ export default function PricingPage() {
                   top: '-12px',
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  backgroundColor: PM33_DESIGN.colors.marketing.primary,
-                  color: '#FFFFFF',
+                  backgroundColor: 'var(--marketing-primary)',
+                  color: 'var(--marketing-text-inverse)',
                   padding: '4px 16px',
                   borderRadius: '12px',
                   fontSize: '12px',
@@ -103,11 +102,11 @@ export default function PricingPage() {
                 </div>
               )}
               
-              <h3 style={{ color: PM33_DESIGN.colors.marketing.text.primary }}>{tier.name}</h3>
-              <div style={{ fontSize: '36px', fontWeight: 700, color: PM33_DESIGN.colors.marketing.primary }}>
+              <h3 className="marketing-text-primary">{tier.name}</h3>
+              <div style={{ fontSize: '36px', fontWeight: 700, color: 'var(--marketing-primary)' }}>
                 {tier.price}
               </div>
-              <p style={{ color: PM33_DESIGN.colors.marketing.text.secondary, marginBottom: '24px' }}>
+              <p className="marketing-text-secondary" style={{ marginBottom: '24px' }}>
                 {tier.description}
               </p>
               
@@ -115,7 +114,7 @@ export default function PricingPage() {
                 {tier.features.map(feature => (
                   <li key={feature} style={{
                     padding: '8px 0',
-                    color: PM33_DESIGN.colors.marketing.text.primary,
+                    color: 'var(--marketing-text-primary)',
                     display: 'flex',
                     alignItems: 'center'
                   }}>
@@ -128,9 +127,9 @@ export default function PricingPage() {
               <button style={{
                 width: '100%',
                 padding: '16px',
-                backgroundColor: tier.highlight ? PM33_DESIGN.colors.marketing.primary : '#FFFFFF',
-                color: tier.highlight ? '#FFFFFF' : PM33_DESIGN.colors.marketing.primary,
-                border: `2px solid ${PM33_DESIGN.colors.marketing.primary}`,
+                backgroundColor: tier.highlight ? 'var(--marketing-primary)' : 'var(--marketing-bg-primary)',
+                color: tier.highlight ? 'var(--marketing-text-inverse)' : 'var(--marketing-primary)',
+                border: '2px solid var(--marketing-primary)',
                 borderRadius: '8px',
                 fontWeight: 600,
                 cursor: 'pointer'

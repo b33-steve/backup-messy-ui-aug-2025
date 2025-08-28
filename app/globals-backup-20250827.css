@@ -1,0 +1,4035 @@
+
+@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mantine CSS compatibility layer - Fix missing Tailwind utilities */
+@layer utilities {
+  .gap-1 { gap: 0.25rem; }
+  .gap-2 { gap: 0.5rem; }
+  .gap-3 { gap: 0.75rem; }
+  .gap-4 { gap: 1rem; }
+  .gap-5 { gap: 1.25rem; }
+  .gap-6 { gap: 1.5rem; }
+  .gap-8 { gap: 2rem; }
+  .gap-10 { gap: 2.5rem; }
+  .gap-12 { gap: 3rem; }
+  .gap-16 { gap: 4rem; }
+}
+
+/*
+ * PM33 Complete UI System - SINGLE SOURCE OF TRUTH
+ * Implementation of PM33_COMPLETE_UI_SYSTEM.MD specifications
+ * 
+ * This file implements the premium strategic intelligence platform aesthetic
+ * with glass morphism, signature gradients, and AI-powered visual language.
+ * 
+ * REFERENCE: PM33_COMPLETE_UI_SYSTEM.MD
+ * ENFORCEMENT: Every UI component must use these design tokens
+ * COMPATIBILITY: Maintains Mantine UI component integration
+ */
+
+/* ===============================================
+   PM33 LOGO-BASED COLOR SYSTEM - SINGLE SOURCE OF TRUTH
+   =============================================== */
+:root {
+  /* PM33 Logo Color Palette - Extracted from brand logo */
+  --pm33-navy: #1e3a8a;           /* Deep navy from "P" */
+  --pm33-teal: #0891b2;           /* Teal from "M" */  
+  --pm33-purple: #7c3aed;         /* Purple from "33" */
+  --pm33-teal-light: #06b6d4;     /* Light teal accent */
+  --pm33-purple-light: #a855f7;   /* Light purple accent */
+
+  /* PM33 THEME-AWARE GRADIENT SYSTEM
+     ================================
+     ⚠️  IMPORTANT: These base definitions are OVERRIDDEN by theme-specific selectors:
+     📱 Light Mode: .light, [data-theme="light"] → Light gradient backgrounds + dark text
+     🌙 Dark Mode: .dark, [data-theme="dark"] → Dark gradient backgrounds + light text
+     
+     NEVER use hardcoded 'white' or 'black' text with gradients. Always use --pm33-gradient-text.
+     This ensures proper contrast in both light and dark modes.
+     
+     Base gradients below are fallbacks - actual theme colors defined in respective selectors. */
+  --pm33-logo-gradient: linear-gradient(135deg, var(--pm33-navy) 0%, var(--pm33-teal) 50%, var(--pm33-purple) 100%);
+  --pm33-primary-gradient: linear-gradient(135deg, var(--pm33-navy) 0%, var(--pm33-teal) 100%);
+  --pm33-secondary-gradient: linear-gradient(135deg, var(--pm33-teal) 0%, var(--pm33-purple) 100%);
+  --pm33-accent-gradient: linear-gradient(135deg, var(--pm33-purple) 0%, var(--pm33-purple-light) 100%);
+  --pm33-gradient-text: #ffffff;  /* Default fallback - overridden by theme selectors */
+
+  /* Primary Brand Colors - Clean, Professional */
+  --pm33-primary: var(--pm33-navy);       /* Primary brand color */
+  --pm33-secondary: var(--pm33-teal);     /* Secondary brand color */
+  --pm33-accent: var(--pm33-purple);      /* Accent color */
+
+  /* Interactive States - Subtle variations */
+  --pm33-primary-hover: #1e40af;          /* Slightly lighter navy */
+  --pm33-secondary-hover: #0ea5e9;        /* Slightly lighter teal */
+  --pm33-accent-hover: #8b5cf6;           /* Slightly lighter purple */
+
+  /* Success, Warning, Danger - Using logo palette */
+  --pm33-success: var(--pm33-teal);       /* Teal for success */
+  --pm33-warning: #f59e0b;                /* Amber warning */
+  --pm33-danger: #dc2626;                 /* Red danger */
+
+  /* Extended Color Palettes for Mantine Integration */
+  /* Primary/Blue variations */
+  --pm33-primary-50: #eff6ff;
+  --pm33-primary-100: #dbeafe;
+  --pm33-primary-200: #bfdbfe;
+  --pm33-primary-300: #93c5fd;
+  --pm33-primary-400: #60a5fa;
+  --pm33-primary-800: #1e40af;
+  --pm33-primary-900: #1e3a8a;
+
+  /* Success/Green variations */
+  --pm33-success-50: #ecfdf5;
+  --pm33-success-100: #d1fae5;
+  --pm33-success-200: #a7f3d0;
+  --pm33-success-300: #6ee7b7;
+  --pm33-success-400: #34d399;
+  --pm33-success-800: #065f46;
+  --pm33-success-900: #064e3b;
+
+  /* Warning/Orange variations */
+  --pm33-warning-50: #fffbeb;
+  --pm33-warning-100: #fef3c7;
+  --pm33-warning-200: #fde68a;
+  --pm33-warning-300: #fcd34d;
+  --pm33-warning-400: #fbbf24;
+  --pm33-warning-800: #92400e;
+  --pm33-warning-900: #78350f;
+
+  /* Danger/Red variations */
+  --pm33-danger-50: #fef2f2;
+  --pm33-danger-100: #fee2e2;
+  --pm33-danger-200: #fecaca;
+  --pm33-danger-300: #fca5a5;
+  --pm33-danger-400: #f87171;
+  --pm33-danger-800: #991b1b;
+  --pm33-danger-900: #7f1d1d;
+
+  /* Text/Gray variations for semantic text usage */
+  --pm33-text-muted-10: #f8fafc;
+  --pm33-text-muted-20: #f1f5f9;
+  --pm33-text-muted-30: #e2e8f0;
+  --pm33-text-muted-40: #cbd5e1;
+  --pm33-text-muted-50: #94a3b8;
+
+  /* 8pt Grid Spacing System - Compact Layout */
+  --pm33-spacing-unit: 8px;
+  --pm33-spacing-xs: calc(var(--pm33-spacing-unit) * 0.5);  /* 4px - extra tight */
+  --pm33-spacing-sm: calc(var(--pm33-spacing-unit) * 1);    /* 8px - compact */
+  --pm33-spacing-md: calc(var(--pm33-spacing-unit) * 2);    /* 16px - reduced from 24px */
+  --pm33-spacing-lg: calc(var(--pm33-spacing-unit) * 3);    /* 24px - reduced from 32px */
+  --pm33-spacing-xl: calc(var(--pm33-spacing-unit) * 4);    /* 32px - reduced from 48px */
+
+  /* Glass Morphism Backgrounds */
+  --pm33-glass: rgba(255, 255, 255, 0.1);
+  --pm33-glass-border: rgba(255, 255, 255, 0.18);
+  --pm33-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+
+  /* Light Theme - Off-white backgrounds (not pure white) */
+  --pm33-bg-primary: #fafbfc;      /* Off-white primary background */
+  --pm33-bg-secondary: #f8fafc;    /* Slightly darker off-white */
+  --pm33-bg-tertiary: #f1f5f9;     /* Card backgrounds */
+  --pm33-bg-elevated: #ffffff;     /* Elevated elements */
+
+  /* Light Theme Text - Dark on light */
+  --pm33-text-primary: #1e293b;    /* Dark primary text */
+  --pm33-text-secondary: #475569;  /* Medium gray text */
+  --pm33-text-muted: #64748b;      /* Muted text */
+
+  /* Marketing-specific variables */
+  --pm33-marketingBg: var(--pm33-bg-primary);
+  --pm33-marketingText: var(--pm33-text-primary);
+  --pm33-marketingPrimary: var(--pm33-primary);
+
+  /* Borders and interactive elements */
+  --pm33-border: #e2e8f0;
+  --pm33-border-hover: #cbd5e1;
+}
+
+/* ===============================================
+   PM33 GLASS MORPHISM SYSTEM - PREMIUM CARDS
+   =============================================== */
+.pm33-glass-card,
+div.pm33-glass-card,
+[class*="pm33-glass-card"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+  backdrop-filter: blur(40px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.pm33-glass-card:hover,
+div.pm33-glass-card:hover,
+[class*="pm33-glass-card"]:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 
+    0 20px 60px 0 rgba(31, 38, 135, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ===============================================
+   THEME-SPECIFIC CONTRAST OVERRIDES - WCAG COMPLIANT
+   =============================================== */
+
+/* DARK THEME - Proper dark backgrounds with bright text */
+.dark,
+[data-theme="dark"],
+body.dark {
+  /* Dark Theme Backgrounds - Proper dark colors */
+  --pm33-bg-primary: #0f172a !important;       /* Deep dark background */
+  --pm33-bg-secondary: #1e293b !important;     /* Card backgrounds */
+  --pm33-bg-tertiary: #334155 !important;      /* Elevated surfaces */
+  --pm33-bg-elevated: #475569 !important;      /* Highest elevation */
+
+  /* Dark Theme Text - Bright on dark */
+  --pm33-text-primary: #ffffff !important;     /* Pure white text */
+  --pm33-text-secondary: #e2e8f0 !important;   /* Light gray text */
+  --pm33-text-muted: #94a3b8 !important;       /* Muted light text */
+
+  /* Marketing-specific dark theme */
+  --pm33-marketingBg: var(--pm33-bg-primary) !important;
+  --pm33-marketingText: var(--pm33-text-primary) !important;
+  --pm33-marketingPrimary: var(--pm33-primary) !important;
+
+  /* THEME-AWARE GRADIENT SYSTEM - DARK MODE
+     Dark mode: Dark gradient backgrounds + light text
+     Follows proper contrast principles for accessibility */
+  --pm33-primary-gradient: linear-gradient(135deg, #1e3a8a 0%, #0891b2 100%) !important;        /* Navy to teal */
+  --pm33-logo-gradient: linear-gradient(135deg, #1e3a8a 0%, #0891b2 50%, #7c3aed 100%) !important;  /* Navy to teal to purple */
+  --pm33-secondary-gradient: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%) !important;      /* Teal to purple */
+  --pm33-accent-gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%) !important;         /* Purple gradient */
+  --pm33-gradient-text: #ffffff !important;        /* Light text for dark gradients */
+
+  /* Dark theme borders */
+  --pm33-border: #334155 !important;
+  --pm33-border-hover: #475569 !important;
+
+  /* Dark Theme Extended Color Palettes */
+  /* Primary/Blue variations in dark theme */
+  --pm33-primary-50: #172554 !important;
+  --pm33-primary-100: #1e3a8a !important;
+  --pm33-primary-200: #1e40af !important;
+  --pm33-primary-300: #2563eb !important;
+  --pm33-primary-400: #3b82f6 !important;
+  --pm33-primary-800: #1d4ed8 !important;
+  --pm33-primary-900: #1e3a8a !important;
+
+  /* Success/Green variations in dark theme */
+  --pm33-success-50: #022c22 !important;
+  --pm33-success-100: #064e3b !important;
+  --pm33-success-200: #065f46 !important;
+  --pm33-success-300: #047857 !important;
+  --pm33-success-400: #059669 !important;
+  --pm33-success-800: #10b981 !important;
+  --pm33-success-900: #34d399 !important;
+
+  /* Warning/Orange variations in dark theme */
+  --pm33-warning-50: #451a03 !important;
+  --pm33-warning-100: #78350f !important;
+  --pm33-warning-200: #92400e !important;
+  --pm33-warning-300: #a16207 !important;
+  --pm33-warning-400: #ca8a04 !important;
+  --pm33-warning-800: #eab308 !important;
+  --pm33-warning-900: #facc15 !important;
+
+  /* Danger/Red variations in dark theme */
+  --pm33-danger-50: #450a0a !important;
+  --pm33-danger-100: #7f1d1d !important;
+  --pm33-danger-200: #991b1b !important;
+  --pm33-danger-300: #b91c1c !important;
+  --pm33-danger-400: #dc2626 !important;
+  --pm33-danger-800: #ef4444 !important;
+  --pm33-danger-900: #f87171 !important;
+
+  /* Text/Gray variations for dark theme */
+  --pm33-text-muted-10: #0f172a !important;
+  --pm33-text-muted-20: #1e293b !important;
+  --pm33-text-muted-30: #334155 !important;
+  --pm33-text-muted-40: #475569 !important;
+  --pm33-text-muted-50: #64748b !important;
+}
+
+.dark .pm33-glass-card,
+[data-theme="dark"] .pm33-glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  color: var(--pm33-text-primary) !important;
+}
+
+.dark .pm33-glass-card:hover,
+[data-theme="dark"] .pm33-glass-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 20px 60px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* GRAY THEME - Warm sophisticated contrast */
+.gray,
+[data-theme="gray"],
+body.gray {
+  --pm33-text-primary: #f9fafb !important;      /* Off-white - 18.5:1 contrast */
+  --pm33-text-secondary: #d1d5db !important;   /* Light gray - 10.8:1 contrast */
+  --pm33-text-muted: #9ca3af !important;       /* Medium gray - 5.1:1 contrast */
+  --pm33-bg-primary: #1f2937 !important;       /* Warm charcoal */
+  --pm33-bg-secondary: #374151 !important;     /* Lighter warm gray */
+  --pm33-bg-tertiary: #4b5563 !important;      /* Card backgrounds */
+}
+
+.gray .pm33-glass-card,
+[data-theme="gray"] .pm33-glass-card {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.3) 0%, rgba(55, 65, 81, 0.2) 100%);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  box-shadow: 
+    0 4px 20px rgba(31, 41, 55, 0.4),
+    inset 0 0 0 1px rgba(156, 163, 175, 0.1);
+  color: var(--pm33-text-primary) !important;
+}
+
+.gray .pm33-glass-card:hover,
+[data-theme="gray"] .pm33-glass-card:hover {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.4) 0%, rgba(55, 65, 81, 0.3) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 
+    0 8px 30px rgba(167, 139, 250, 0.15),
+    inset 0 0 0 1px rgba(156, 163, 175, 0.15);
+}
+
+/* LIGHT THEME - Enhanced contrast */
+.light,
+[data-theme="light"],
+body.light {
+  --pm33-text-primary: #1a202c !important;     /* Very dark gray - 16.75:1 contrast */
+  --pm33-text-secondary: #2d3748 !important;   /* Dark gray - 11.5:1 contrast */
+  --pm33-text-muted: #4a5568 !important;       /* Medium gray - 7.54:1 contrast */
+  --pm33-bg-primary: #ffffff !important;       /* Pure white */
+  --pm33-bg-secondary: #f7fafc !important;     /* Very light gray */
+  --pm33-bg-tertiary: #edf2f7 !important;      /* Light gray backgrounds */
+  
+  /* THEME-AWARE GRADIENT SYSTEM - LIGHT MODE
+     Light mode: Light gradient backgrounds + dark text
+     Follows proper contrast principles for accessibility */
+  --pm33-primary-gradient: linear-gradient(135deg, #dbeafe 0%, #a7f3d0 100%) !important;    /* Light blue to light green */
+  --pm33-logo-gradient: linear-gradient(135deg, #dbeafe 0%, #a7f3d0 50%, #e9d5ff 100%) !important;  /* Light blue to light green to light purple */
+  --pm33-secondary-gradient: linear-gradient(135deg, #a7f3d0 0%, #e9d5ff 100%) !important;  /* Light green to light purple */
+  --pm33-accent-gradient: linear-gradient(135deg, #e9d5ff 0%, #f3e8ff 100%) !important;     /* Light purple gradient */
+  --pm33-gradient-text: #1a202c !important;    /* Dark text for light gradients */
+}
+
+.light .pm33-glass-card,
+[data-theme="light"] .pm33-glass-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.light .pm33-glass-card:hover,
+[data-theme="light"] .pm33-glass-card:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 
+    0 20px 60px 0 rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ===============================================
+   PM33 ANIMATIONS & MICRO-INTERACTIONS
+   =============================================== */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(102, 126, 234, 0.5),
+      0 0 40px rgba(102, 126, 234, 0.3),
+      inset 0 0 20px rgba(102, 126, 234, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(102, 126, 234, 0.8),
+      0 0 60px rgba(102, 126, 234, 0.4),
+      inset 0 0 30px rgba(102, 126, 234, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PM33 Animation Classes */
+.pm33-animate-glow { 
+  animation: glow-pulse 2s ease-in-out infinite; 
+}
+
+.pm33-animate-float { 
+  animation: float 3s ease-in-out infinite; 
+}
+
+.pm33-animate-fade-up { 
+  animation: fade-up 0.5s ease-out forwards; 
+}
+
+.pm33-animate-gradient { 
+  animation: gradient-shift 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+/* Light Mode Variables - Enhanced Contrast */
+[data-theme="light"] {
+  /* Semantic Colors - Enhanced for accessibility */
+  --pm33-text-primary: #000000;    /* Pure black for headings */
+  --pm33-text-secondary: #1f2937;  /* Dark gray for body text */
+  --pm33-text-tertiary: #374151;   /* Medium gray for secondary text */
+  --pm33-border-subtle: rgba(0, 0, 0, 0.1);
+  --pm33-border-default: rgba(0, 0, 0, 0.2);
+
+  /* Legacy/Mantine Compatibility - Enhanced contrast */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);        /* Pure black foreground */
+  --radius: 0.625rem;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0 0 0);   /* Pure black card text */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.95 0 0);       /* Slightly darker secondary bg */
+  --secondary-foreground: oklch(0 0 0); /* Black secondary text */
+  --muted: oklch(0.95 0 0);           /* Slightly darker muted bg */
+  --muted-foreground: oklch(0.3 0 0); /* Darker muted text */
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0 0 0);  /* Black accent text */
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.85 0 0);          /* Darker border */
+  --input: oklch(0.95 0 0);           /* Slightly darker input bg */
+  --ring: oklch(0.5 0 0);             /* Darker ring */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0 0 0); /* Black sidebar text */
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.95 0 0);
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: oklch(0.85 0 0);
+  --sidebar-ring: oklch(0.5 0 0);
+}
+
+/* Dark Mode (Default) - Enhanced Contrast */
+[data-theme="dark"], :root {
+  --pm33-bg-primary: var(--pm33-dark-0);
+  --pm33-bg-secondary: var(--pm33-dark-1);
+  --pm33-bg-tertiary: var(--pm33-dark-2);
+  --pm33-bg-elevated: var(--pm33-dark-3);
+  --pm33-text-primary: #ffffff;  /* Pure white for maximum contrast */
+  --pm33-text-secondary: rgba(255, 255, 255, 0.9);  /* Increased opacity */
+  --pm33-text-tertiary: rgba(255, 255, 255, 0.75);  /* Increased opacity */
+  --pm33-border-subtle: rgba(255, 255, 255, 0.1);   /* Increased visibility */
+  --pm33-border-default: rgba(255, 255, 255, 0.2);  /* Increased visibility */
+}
+
+/* Light Mode Override - Enhanced Contrast */
+[data-theme="light"] {
+  --background: var(--pm33-light-0);
+  --foreground: var(--pm33-text-primary);
+  --pm33-bg-primary: var(--pm33-light-0);
+  --pm33-bg-secondary: var(--pm33-light-1);
+  --pm33-bg-tertiary: var(--pm33-light-2);
+  --pm33-bg-elevated: var(--pm33-light-3);
+  --pm33-text-primary: #000000;    /* Pure black for maximum contrast */
+  --pm33-text-secondary: #1f2937;  /* Darker gray for better contrast */
+  --pm33-text-tertiary: #374151;   /* Darker gray for better contrast */
+  --pm33-border-subtle: rgba(0, 0, 0, 0.1);   /* Increased visibility */
+  --pm33-border-default: rgba(0, 0, 0, 0.2);  /* Increased visibility */
+}
+
+/* ===============================================
+   PM33 TYPOGRAPHY SYSTEM - REQUIRED FOR ALL TEXT
+   =============================================== */
+.pm33-typography {
+  /* Headlines */
+  --font-h1: 2.5rem;    /* 40px */
+  --font-h2: 2rem;      /* 32px */
+  --font-h3: 1.5rem;    /* 24px */
+  --font-h4: 1.25rem;   /* 20px */
+
+  /* Body Text */
+  --font-large: 1.125rem;  /* 18px */
+  --font-base: 1rem;       /* 16px */
+  --font-small: 0.875rem;  /* 14px */
+  --font-tiny: 0.75rem;    /* 12px */
+
+  /* Font Weights */
+  --weight-bold: 700;
+  --weight-semibold: 600;
+  --weight-medium: 500;
+  --weight-regular: 400;
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+}
+
+/* ===============================================
+   PM33 SPACING SYSTEM (8pt Grid) - USE ONLY THESE VALUES
+   =============================================== */
+.pm33-spacing {
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+}
+
+/* ===============================================
+   REQUIRED PM33 ANIMATIONS & MICRO-INTERACTIONS
+   =============================================== */
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glow pulse for AI elements */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5),
+                0 0 40px rgba(102, 126, 234, 0.3),
+                inset 0 0 20px rgba(102, 126, 234, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.8),
+                0 0 60px rgba(102, 126, 234, 0.4),
+                inset 0 0 30px rgba(102, 126, 234, 0.2);
+  }
+}
+
+/* Fade up animation for lists */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Progress bar animation */
+@keyframes progress {
+  0% { 
+    width: 0%;
+    opacity: 0;
+  }
+  50% {
+    width: 70%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+/* Float animation for cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* Apply to elements */
+.pm33-animate-glow { animation: glow-pulse 2s ease-in-out infinite; }
+.pm33-animate-float { animation: float 3s ease-in-out infinite; }
+.pm33-animate-fade-up { animation: fade-up 0.5s ease-out forwards; }
+.pm33-animate-gradient { animation: gradient-shift 15s ease infinite; }
+.pm33-animate-shimmer { 
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ===============================================
+   PM33 GLASS MORPHISM CARDS - SIGNATURE STYLE
+   =============================================== */
+.pm33-glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: var(--space-6);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.pm33-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  pointer-events: none;
+}
+
+.pm33-glass-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.12) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 25px 80px 0 rgba(31, 38, 135, 0.35),
+    0 0 20px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+/* ===============================================
+   GLOBAL STYLES & BODY CONFIGURATION
+   =============================================== */
+body {
+  background: var(--pm33-bg-primary);
+  color: var(--pm33-text-secondary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  min-height: 100vh;
+  line-height: var(--leading-normal);
+  font-size: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced scrollbar with premium styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pm33-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pm33-brand);
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pm33-brand-hover);
+}
+
+/* Premium focus states */
+*:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px var(--pm33-ai-glow),
+    0 0 0 4px rgba(0, 210, 255, 0.1);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Premium text selection */
+::selection {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+  color: var(--pm33-text-primary);
+}
+
+/* ===============================================
+   MANTINE UI COMPONENT INTEGRATION
+   =============================================== */
+
+/* Override Mantine theme to use PM33 colors with enhanced contrast */
+.mantine-Button-root {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.mantine-Button-root:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.mantine-Card-root {
+  background: var(--pm33-bg-secondary) !important;
+  border: 1px solid var(--pm33-border-subtle) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.mantine-Card-root:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pm33-glass-shadow) !important;
+}
+
+.mantine-Input-input {
+  background: var(--pm33-bg-tertiary) !important;
+  border: 1px solid var(--pm33-border-default) !important;
+  color: var(--pm33-text-primary) !important;
+  transition: all 0.2s ease !important;
+}
+
+.mantine-Input-input::placeholder {
+  color: var(--pm33-text-tertiary) !important;
+}
+
+.mantine-Input-input:focus {
+  border-color: transparent !important;
+  box-shadow: 
+    0 0 0 2px var(--pm33-ai-glow),
+    0 0 0 4px rgba(0, 210, 255, 0.1) !important;
+}
+
+/* Enhanced Mantine Text components */
+.mantine-Text-root {
+  color: var(--pm33-text-secondary) !important;
+}
+
+.mantine-Title-root {
+  color: var(--pm33-text-primary) !important;
+}
+
+/* Enhanced link contrast for accessibility */
+a, a:link {
+  color: #0066cc !important;  /* High contrast blue */
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #800080 !important;  /* High contrast purple */
+}
+
+a:hover, a:focus {
+  color: #004499 !important;  /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+/* Dark theme link colors */
+[data-theme="dark"] a,
+[data-theme="dark"] a:link,
+.dark a,
+.dark a:link {
+  color: #66b3ff !important;  /* Light blue for dark theme */
+}
+
+[data-theme="dark"] a:visited,
+.dark a:visited {
+  color: #cc99ff !important;  /* Light purple for dark theme */
+}
+
+[data-theme="dark"] a:hover,
+[data-theme="dark"] a:focus,
+.dark a:hover,
+.dark a:focus {
+  color: #99ccff !important;  /* Lighter blue on hover */
+}
+
+/* Light theme glass morphism adjustments */
+[data-theme="light"] .pm33-glass-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+[data-theme="light"] .pm33-glass-card:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 
+    0 20px 60px 0 rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ===============================================
+   PM33 UTILITY CLASSES
+   =============================================== */
+
+/* Text gradient utilities */
+.pm33-text-gradient {
+  background: var(--pm33-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pm33-text-ai-gradient {
+  background: var(--pm33-ai-glow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism button */
+.pm33-btn-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: var(--pm33-text-primary);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.pm33-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Primary gradient button */
+.pm33-btn-primary {
+  background: var(--pm33-brand);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.4);
+}
+
+.pm33-btn-primary:hover {
+  background: var(--pm33-brand-hover);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px 0 rgba(118, 75, 162, 0.5);
+}
+
+/* AI processing indicator */
+.pm33-ai-processing {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 20px;
+  color: var(--pm33-text-secondary);
+  font-size: var(--font-small);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.pm33-ai-processing::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--pm33-ai-glow);
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Confidence indicator styles */
+.pm33-confidence-high { color: #38ef7d; }
+.pm33-confidence-medium { color: #f2c94c; }
+.pm33-confidence-low { color: #f45c43; }
+
+/* ===============================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   =============================================== */
+@media (max-width: 768px) {
+  .pm33-glass-card {
+    padding: var(--space-4);
+    border-radius: 12px;
+  }
+
+  .pm33-glass-card:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  body {
+    font-size: var(--font-small);
+  }
+}
+
+/* ===============================================
+   ACCESSIBILITY ENHANCEMENTS
+   =============================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --pm33-border-default: rgba(255, 255, 255, 0.3);
+    --pm33-border-subtle: rgba(255, 255, 255, 0.2);
+  }
+
+  [data-theme="light"] {
+    --pm33-border-default: rgba(0, 0, 0, 0.3);
+    --pm33-border-subtle: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===============================================
+   THEME TRANSITION UTILITIES
+   =============================================== */
+.theme-transition * {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+/* Print styles */
+@media print {
+  .pm33-glass-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+
+  .pm33-btn-primary,
+  .pm33-btn-glass {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+}
+
+
+
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+ ---break---
+ */
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/*
+ ---break---
+ */
+
+@layer components {
+  /* Enhanced Glass Card Component - Your Specification */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 300ms ease-in-out;
+  }
+  
+  /* Primary Button Component - Your Specification */
+  .btn-primary {
+    background: linear-gradient(to right, #2563eb, #9333ea);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 200ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  /* Text Gradient Component - Your Specification */
+  .text-gradient {
+    background: linear-gradient(to right, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+  }
+
+  /* Additional PM33 Dashboard Components */
+  .glass-card-dark {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(51, 65, 85, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card-dark:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-4px);
+  }
+
+  .btn-secondary {
+    background: linear-gradient(to right, rgb(226, 232, 240), rgb(203, 213, 225));
+    color: rgb(30, 41, 59);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-success {
+    background: linear-gradient(to right, rgb(34, 197, 94), rgb(5, 150, 105));
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-success:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-warning {
+    background: linear-gradient(to right, rgb(234, 179, 8), rgb(249, 115, 22));
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-warning:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-danger {
+    background: linear-gradient(to right, rgb(239, 68, 68), rgb(219, 39, 119));
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-danger:hover {
+    transform: scale(1.05);
+  }
+
+  /* Strategic Intelligence Components */
+  .strategic-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    border-left: 4px solid rgb(168, 85, 247);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .strategic-card::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.25rem;
+    height: 100%;
+    background: linear-gradient(to bottom, rgb(168, 85, 247), rgb(37, 99, 235));
+    content: '';
+  }
+
+  .ai-processing-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgb(219, 234, 254);
+    border: 1px solid rgb(191, 219, 254);
+    border-radius: 9999px;
+    color: rgb(29, 78, 216);
+    font-size: 0.875rem;
+    font-weight: 500;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Progress Components */
+  .progress-ring {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+  }
+
+  .progress-bar {
+    width: 100%;
+    background-color: rgb(226, 232, 240);
+    border-radius: 9999px;
+    height: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .dark .progress-bar {
+    background-color: rgb(51, 65, 85);
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+    border-radius: 9999px;
+    transition: all 0.5s ease-out;
+  }
+
+  /* Navigation Components */
+  .nav-glass {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+  }
+
+  .nav-link {
+    color: rgb(71, 85, 105);
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+  }
+  
+  .dark .nav-link {
+    color: rgb(203, 213, 225);
+  }
+  
+  .nav-link:hover {
+    color: rgb(37, 99, 235);
+  }
+  
+  .dark .nav-link:hover {
+    color: rgb(96, 165, 250);
+  }
+
+  .nav-link-active {
+    color: rgb(37, 99, 235);
+    font-weight: 600;
+  }
+  
+  .dark .nav-link-active {
+    color: rgb(96, 165, 250);
+  }
+
+  .nav-link-active::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.125rem;
+    background: linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+    border-radius: 9999px;
+    content: '';
+  }
+
+  /* Badge Components */
+  .badge-success {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgb(220, 252, 231);
+    color: rgb(22, 101, 52);
+    border: 1px solid rgb(187, 247, 208);
+  }
+
+  .badge-warning {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgb(254, 240, 138);
+    color: rgb(146, 64, 14);
+    border: 1px solid rgb(251, 191, 36);
+  }
+
+  .badge-error {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgb(254, 226, 226);
+    color: rgb(153, 27, 27);
+    border: 1px solid rgb(252, 165, 165);
+  }
+
+  .badge-info {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgb(219, 234, 254);
+    color: rgb(30, 64, 175);
+    border: 1px solid rgb(147, 197, 253);
+  }
+
+  /* Input Components */
+  .input-glass {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #0f172a;
+    transition: all 200ms ease;
+  }
+
+  /* Card Variants */
+  .metric-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+  
+  .metric-card > * + * {
+    margin-top: 0.5rem;
+  }
+
+  .metric-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    background: linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(71, 85, 105);
+  }
+  
+  .dark .metric-label {
+    color: rgb(148, 163, 184);
+  }
+
+  /* Loading Components */
+  .loading-dots {
+    @apply inline-flex items-center gap-1;
+  }
+
+  .loading-dot {
+    @apply w-2 h-2 bg-blue-500 rounded-full animate-bounce;
+  }
+
+  .loading-dot:nth-child(2) {
+    @apply animate-bounce-2;
+  }
+
+  .loading-dot:nth-child(3) {
+    @apply animate-bounce-3;
+  }
+
+  /* Skill Tree Components */
+  .skill-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+  }
+
+  .skill-level-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: linear-gradient(to right, rgb(99, 102, 241), rgb(147, 51, 234));
+    color: white;
+  }
+
+  .skill-progress-bar {
+    height: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .skill-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, rgb(99, 102, 241), rgb(147, 51, 234));
+    border-radius: inherit;
+    transition: width 0.3s ease;
+  }
+
+  /* Integration Status Components */
+  .integration-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .integration-connected {
+    border-left: 4px solid rgb(34, 197, 94);
+  }
+
+  .integration-disconnected {
+    border-left: 4px solid rgb(239, 68, 68);
+  }
+
+  /* Dashboard Grid */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .dashboard-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Responsive Text */
+  .heading-xl {
+    font-size: 1.875rem;
+    font-weight: 700;
+    background: linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  @media (min-width: 768px) {
+    .heading-xl {
+      font-size: 2.25rem;
+    }
+  }
+
+  .heading-lg {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(15, 23, 42);
+  }
+  
+  @media (min-width: 768px) {
+    .heading-lg {
+      font-size: 1.875rem;
+    }
+  }
+  
+  .dark .heading-lg {
+    color: rgb(241, 245, 249);
+  }
+
+  .heading-md {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(15, 23, 42);
+  }
+  
+  @media (min-width: 768px) {
+    .heading-md {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .dark .heading-md {
+    color: rgb(241, 245, 249);
+  }
+
+  .body-lg {
+    font-size: 1.125rem;
+    color: rgb(71, 85, 105);
+  }
+  
+  .dark .body-lg {
+    color: rgb(148, 163, 184);
+  }
+
+  .body-md {
+    font-size: 1rem;
+    color: rgb(71, 85, 105);
+  }
+  
+  .dark .body-md {
+    color: rgb(148, 163, 184);
+  }
+
+  .body-sm {
+    font-size: 0.875rem;
+    color: rgb(100, 116, 139);
+  }
+  
+  .dark .body-sm {
+    color: rgb(100, 116, 139);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background: linear-gradient(to bottom right, rgb(248, 250, 252), rgba(239, 246, 255, 0.3), rgba(250, 245, 255, 0.2));
+    min-height: 100vh;
+    background: var(--pm33-bg-primary);
+    color: var(--pm33-text-secondary);
+  }
+}
+
+/* Core App Global Overrides - Your Specifications */
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 300ms ease-in-out;
+  }
+  
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(24px) saturate(1.5);
+    border-bottom: 1px solid rgba(156, 163, 175, 0.5);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary {
+    background: linear-gradient(to right, #2563eb, #9333ea);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 200ms ease;
+    border: none;
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 200ms ease;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(to right, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    transition: all 200ms ease;
+  }
+}
+
+/* ===============================================
+   WCAG CONTRAST COMPLIANCE - CRITICAL FOR ACCESSIBILITY
+   =============================================== */
+
+/* Generic div elements - Ensure proper contrast in all themes */
+div {
+  color: var(--pm33-text-primary, inherit) !important;
+}
+
+/* Ensure div elements have visible backgrounds when needed */
+div[style*="background-color"],
+div[class*="bg-"],
+div[class*="background"] {
+  color: var(--pm33-text-primary) !important;
+}
+
+/* Generic button elements - Ensure proper contrast */
+button {
+  color: var(--pm33-text-primary, inherit) !important;
+  background-color: transparent;
+}
+
+/* Button with backgrounds need proper contrast */
+button[style*="background"],
+button[class*="bg-"],
+button[class*="background"] {
+  color: white !important;
+}
+
+/* Specific contrast fixes for common problematic combinations */
+[data-theme="light"] div,
+[data-theme="light"] span,
+[data-theme="light"] p {
+  color: var(--pm33-text-primary) !important;
+}
+
+[data-theme="dark"] div,
+[data-theme="dark"] span,
+[data-theme="dark"] p {
+  color: var(--pm33-text-primary) !important;
+}
+
+/* Enhanced link contrast for accessibility */
+a, a:link {
+  color: #0066cc !important;
+  text-decoration: underline;
+}
+
+[data-theme="dark"] a,
+[data-theme="dark"] a:link {
+  color: #66b3ff !important;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #800080 !important;
+}
+
+[data-theme="dark"] a:visited {
+  color: #cc99ff !important;
+}
+
+a:hover, a:focus {
+  color: #004499 !important;
+  text-decoration: underline;
+}
+
+[data-theme="dark"] a:hover,
+[data-theme="dark"] a:focus {
+  color: #99ccff !important;
+  text-decoration: underline;
+}
+
+/* Fix specific button contrast issues */
+button[class*="mantine"],
+button[class*="Button"] {
+  color: inherit !important;
+}
+
+button[class*="mantine-"][style*="gradient"],
+button[style*="gradient"] {
+  color: white !important;
+}
+
+/* Mantine Button variants - ensure proper contrast */
+.mantine-Button-root[data-variant="filled"] {
+  color: white !important;
+  background-color: var(--mantine-color-blue-6) !important;
+}
+
+.mantine-Button-root[data-variant="light"] {
+  color: var(--pm33-text-primary) !important;
+  background-color: var(--mantine-color-blue-1) !important;
+}
+
+.mantine-Button-root[data-variant="outline"] {
+  color: var(--pm33-text-primary) !important;
+  background-color: transparent !important;
+  border: 1px solid var(--pm33-text-primary) !important;
+}
+
+.mantine-Button-root[data-variant="white"] {
+  color: var(--pm33-text-primary) !important;
+  background-color: white !important;
+}
+
+.mantine-Button-root[data-variant="gradient"] {
+  color: white !important;
+}
+
+/* Dark theme button adjustments */
+[data-theme="dark"] .mantine-Button-root[data-variant="light"] {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .mantine-Button-root[data-variant="outline"] {
+  color: white !important;
+  border-color: white !important;
+}
+
+[data-theme="dark"] .mantine-Button-root[data-variant="white"] {
+  color: black !important;
+  background-color: white !important;
+}
+
+/* Additional button contrast fixes */
+button[style*="indigo"],
+button[style*="purple"],
+button[style*="blue"] {
+  color: white !important;
+}
+
+/* Transparent button fixes */
+button[style*="transparent"],
+button[style*="rgba(0, 0, 0, 0)"] {
+  color: var(--pm33-text-primary) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] button[style*="transparent"],
+[data-theme="dark"] button[style*="rgba(0, 0, 0, 0)"] {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* CRITICAL: Force contrast on ALL button elements - Emergency fix */
+button {
+  min-contrast: 4.5 !important;
+}
+
+/* Force readable contrast on all buttons regardless of styling */
+button:not([style*="gradient"]):not([style*="linear-gradient"]) {
+  color: var(--pm33-text-primary) !important;
+  background-color: rgba(102, 126, 234, 0.1) !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+}
+
+[data-theme="dark"] button:not([style*="gradient"]):not([style*="linear-gradient"]) {
+  color: white !important;
+  background-color: rgba(102, 126, 234, 0.2) !important;
+  border: 1px solid rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Override for gradient buttons */
+button[style*="gradient"],
+button[style*="linear-gradient"] {
+  color: white !important;
+}
+
+/* Specific Mantine button emergency overrides */
+.mantine-Button-root,
+[class*="mantine-Button"] {
+  color: var(--pm33-text-primary) !important;
+  background-color: rgba(102, 126, 234, 0.1) !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+}
+
+[data-theme="dark"] .mantine-Button-root,
+[data-theme="dark"] [class*="mantine-Button"] {
+  color: white !important;
+  background-color: rgba(102, 126, 234, 0.2) !important;
+  border: 1px solid rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Override for Mantine gradient buttons */
+.mantine-Button-root[data-variant="gradient"],
+.mantine-Button-root[style*="gradient"],
+[class*="mantine-Button"][style*="gradient"] {
+  color: white !important;
+}
+
+/* NUCLEAR OPTION: Force contrast on homepage buttons specifically */
+/* This targets the exact button elements causing 1.00:1 contrast issues */
+
+/* Any button with same text/background color gets forced contrast */
+button[style*="color"][style*="background"] {
+  color: white !important;
+  background-color: var(--mantine-color-blue-6) !important;
+}
+
+button[style*="color"]:not([style*="background"]) {
+  color: var(--pm33-text-primary) !important;
+  background-color: rgba(102, 126, 234, 0.15) !important;
+}
+
+/* Force different colors for elements with transparent backgrounds */
+button[style*="rgba(0, 0, 0, 0)"],
+button[style*="transparent"],
+button:not([style*="background-color"]):not([style*="background"]) {
+  color: var(--pm33-text-primary) !important;
+  background-color: rgba(102, 126, 234, 0.15) !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Specific targeting for Mantine Button component issues */
+.mantine-Button-inner {
+  color: inherit !important;
+}
+
+/* Last resort: any element with 1:1 contrast gets emergency styling */
+button[aria-label],
+button[role="button"],
+[role="button"] {
+  color: var(--pm33-text-primary) !important;
+  background-color: rgba(102, 126, 234, 0.1) !important;
+}
+
+[data-theme="dark"] button[aria-label],
+[data-theme="dark"] button[role="button"],
+[data-theme="dark"] [role="button"] {
+  color: white !important;
+  background-color: rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Ensure text elements always have sufficient contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--pm33-text-primary) !important;
+}
+
+p, span {
+  color: var(--pm33-text-primary, inherit) !important;
+}
+
+/* Override any problematic transparent or similar colors */
+[style*="rgba(0, 0, 0, 0)"],
+[style*="transparent"] {
+  color: var(--pm33-text-primary) !important;
+}
+
+/* Specific fixes for Mantine components */
+.mantine-Text-root {
+  color: var(--pm33-text-primary) !important;
+}
+
+.mantine-Button-root {
+  color: inherit !important;
+}
+
+.mantine-Button-root[data-variant="gradient"],
+.mantine-Button-root[style*="gradient"] {
+  color: white !important;
+}
+
+/* Ensure proper contrast on focus states */
+:focus-visible {
+  outline: 2px solid var(--pm33-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast mode overrides */
+@media (prefers-contrast: high) {
+  div, span, p, h1, h2, h3, h4, h5, h6 {
+    color: var(--pm33-text-primary) !important;
+  }
+  
+  [data-theme="light"] div,
+  [data-theme="light"] span,
+  [data-theme="light"] p,
+  [data-theme="light"] h1,
+  [data-theme="light"] h2,
+  [data-theme="light"] h3,
+  [data-theme="light"] h4,
+  [data-theme="light"] h5,
+  [data-theme="light"] h6 {
+    color: #000000 !important;
+  }
+  
+  [data-theme="dark"] div,
+  [data-theme="dark"] span,
+  [data-theme="dark"] p,
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] h4,
+  [data-theme="dark"] h5,
+  [data-theme="dark"] h6 {
+    color: #ffffff !important;
+  }
+}
+
+/* ===============================================
+   APP-SPECIFIC DESIGN SYSTEM (from app/(app)/styles/)
+   =============================================== */
+
+/* APP Context Color Tokens */
+:root {
+  /* App-specific strategic colors */
+  --pm33-app-primary: #3B82F6;
+  --pm33-app-primary-hover: #2563EB;
+  --pm33-app-primary-light: #DBEAFE;
+  --pm33-app-primary-dark: #1E40AF;
+  
+  /* Framework-specific colors */
+  --pm33-ice: #3B82F6;
+  --pm33-rice: #8B5CF6;
+  --pm33-porter: #10B981;
+  --pm33-swot: #F59E0B;
+  --pm33-okr: #EF4444;
+  
+  /* AI Processing Colors */
+  --pm33-ai-processing-glow: #6366F1;
+  --pm33-ai-pulse-color: #8B5CF6;
+  --pm33-processing-indicator: #3B82F6;
+}
+
+/* PM33 App Typography Scale */
+.pm33-h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--pm33-text-primary);
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .pm33-h1 {
+    font-size: 2.25rem;
+  }
+}
+
+.pm33-h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--pm33-text-primary);
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .pm33-h2 {
+    font-size: 1.875rem;
+  }
+}
+
+.pm33-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--pm33-text-primary);
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .pm33-h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.pm33-h4 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--pm33-text-primary);
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .pm33-h4 {
+    font-size: 1.25rem;
+  }
+}
+
+.pm33-body {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--pm33-text-secondary);
+}
+
+.pm33-caption {
+  font-size: 0.875rem;
+  color: var(--pm33-text-tertiary);
+}
+
+/* PM33 Strategic Card Component */
+.pm33-strategic-card {
+  background: var(--pm33-bg-tertiary);
+  border: 1px solid var(--pm33-border-default);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pm33-strategic-card:hover {
+  border-color: var(--pm33-primary);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+.pm33-strategic-card.elevated {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pm33-strategic-card.elevated:hover {
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+/* Framework Selector Styles */
+.pm33-framework-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .pm33-framework-selector {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pm33-framework-selector {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.pm33-framework-option {
+  @apply flex flex-col items-center p-4 rounded-lg border transition-all cursor-pointer;
+  background: var(--pm33-bg-secondary);
+  border-color: var(--pm33-border-default);
+}
+
+.pm33-framework-option:hover {
+  border-color: var(--pm33-primary);
+  background: var(--pm33-bg-tertiary);
+}
+
+.pm33-framework-option.selected {
+  background: var(--pm33-primary-light);
+  border-color: var(--pm33-primary);
+  color: var(--pm33-primary-dark);
+}
+
+/* Analysis Results Styles */
+.pm33-analysis-results {
+  @apply space-y-6;
+}
+
+.pm33-confidence-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid currentColor;
+}
+
+.pm33-confidence-high {
+  background: var(--pm33-success-light);
+  color: var(--pm33-success);
+  border-color: var(--pm33-success);
+}
+
+.pm33-confidence-medium {
+  background: var(--pm33-warning-light);
+  color: var(--pm33-warning);
+  border-color: var(--pm33-warning);
+}
+
+.pm33-confidence-low {
+  background: var(--pm33-error-light);
+  color: var(--pm33-error);
+  border-color: var(--pm33-error);
+}
+
+/* AI Processing Indicator */
+.pm33-ai-processing {
+  @apply flex items-center gap-3 p-4 rounded-lg;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.pm33-ai-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pm33-ai-processing-glow);
+  animation: pm33-pulse 2s infinite;
+}
+
+/* ===============================================
+   MARKETING-SPECIFIC DESIGN SYSTEM (from app/(marketing)/styles/)
+   =============================================== */
+
+/* Marketing Color System - Conversion Optimized */
+:root {
+  /* Marketing Strategic Colors */
+  --marketing-primary: #1E40AF;
+  --marketing-primary-hover: #1E3A8A;
+  --marketing-primary-light: #EFF6FF;
+
+  /* Marketing Success & Growth */
+  --marketing-success: #059669;
+  --marketing-success-light: #ECFDF5;
+
+  /* Marketing Energy & Action */
+  --marketing-cta: #EA580C;
+  --marketing-cta-hover: #DC2626;
+  --marketing-cta-light: #FFF7ED;
+
+  /* Marketing Professional Neutrals */
+  --marketing-text-primary: #1E293B;
+  --marketing-text-secondary: #64748B;
+  --marketing-text-muted: #94A3B8;
+
+  /* Marketing Backgrounds */
+  --marketing-bg-primary: #FAFBFF;
+  --marketing-bg-secondary: #F1F5F9;
+  --marketing-bg-accent: #EFF6FF;
+  --marketing-bg-gradient: linear-gradient(135deg, #FAFBFF 0%, #F8FAFC 100%);
+}
+
+/* Marketing Context Professional Styling */
+.marketing-context {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--marketing-text-primary) !important;
+  background-color: var(--marketing-bg-primary) !important;
+  min-height: 100vh;
+  line-height: 1.6;
+  
+  /* Force override any app theme styling */
+  --mantine-color-text: var(--marketing-text-primary) !important;
+  --mantine-color-body: var(--marketing-bg-primary) !important;
+  --mantine-color-dimmed: var(--marketing-text-secondary) !important;
+}
+
+/* Marketing Typography Hierarchy */
+.marketing-context h1,
+.marketing-context h2,
+.marketing-context h3,
+.marketing-context h4,
+.marketing-context h5,
+.marketing-context h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--marketing-text-primary);
+}
+
+.marketing-context h1 { font-size: 2.5rem; }
+.marketing-context h2 { font-size: 2rem; }
+.marketing-context h3 { font-size: 1.5rem; }
+.marketing-context h4 { font-size: 1.25rem; }
+
+.marketing-context p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: var(--marketing-text-secondary);
+}
+
+/* Marketing Button Styling */
+.marketing-context .mantine-Button-root {
+  background: var(--marketing-primary) !important;
+  color: white !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.marketing-context .mantine-Button-root:hover {
+  background: var(--marketing-primary-hover) !important;
+  color: white !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Marketing Card Styling */
+.marketing-context .mantine-Card-root {
+  background: var(--marketing-bg-primary) !important;
+  color: var(--marketing-text-primary) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.marketing-context .mantine-Card-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Force text colors in marketing context */
+.marketing-context .mantine-Text-root {
+  color: var(--marketing-text-secondary) !important;
+}
+
+.marketing-context .mantine-Title-root {
+  color: var(--marketing-text-primary) !important;
+}
+
+/* Marketing Dark Theme Support */
+[data-theme="dark"] .marketing-context,
+.dark .marketing-context {
+  background-color: #0a0e27 !important;
+  color: #ffffff !important;
+  
+  --marketing-bg-primary: #0a0e27 !important;
+  --marketing-bg-secondary: #0f1429 !important;
+  --marketing-text-primary: #ffffff !important;
+  --marketing-text-secondary: rgba(255, 255, 255, 0.8) !important;
+  
+  --mantine-color-text: #ffffff !important;
+  --mantine-color-body: #0a0e27 !important;
+  --mantine-color-dimmed: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-theme="dark"] .marketing-context h1,
+[data-theme="dark"] .marketing-context h2,
+[data-theme="dark"] .marketing-context h3,
+[data-theme="dark"] .marketing-context h4,
+[data-theme="dark"] .marketing-context h5,
+[data-theme="dark"] .marketing-context h6,
+.dark .marketing-context h1,
+.dark .marketing-context h2,
+.dark .marketing-context h3,
+.dark .marketing-context h4,
+.dark .marketing-context h5,
+.dark .marketing-context h6 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .marketing-context p,
+.dark .marketing-context p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Card-root,
+.dark .marketing-context .mantine-Card-root {
+  background: #0f1429 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Text-root,
+.dark .marketing-context .mantine-Text-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .marketing-context .mantine-Title-root,
+.dark .marketing-context .mantine-Title-root {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .marketing-context nav,
+.dark .marketing-context nav {
+  background-color: rgba(10, 14, 39, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Marketing utility classes */
+.marketing-text-primary {
+  color: var(--marketing-text-primary) !important;
+}
+
+/* CTA Section specific fixes - Force blue background with white text */
+.marketing-context [style*="var(--marketing-primary)"] {
+  background: #1E40AF !important;
+}
+
+.marketing-context [style*="var(--marketing-primary)"] .mantine-Title-root[data-c="white"],
+.marketing-context [style*="var(--marketing-primary)"] .mantine-Text-root[data-c="white"] {
+  color: white !important;
+}
+
+/* Homepage CTA section - "Ready to 10x Your PM Productivity" section */
+.marketing-context div[style*="var(--marketing-primary)"] {
+  background: #1E40AF !important;
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] * {
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Title-root {
+  color: white !important;
+}
+
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Text-root {
+  color: white !important;
+}
+
+/* Ensure gradient text works in CTA section - "10x Your PM Productivity" */
+.marketing-context .mantine-Text-root[data-variant="gradient"],
+.marketing-context div[style*="var(--marketing-primary)"] .mantine-Text-root[data-variant="gradient"] {
+  background: linear-gradient(45deg, #67e8f9 0%, #10b981 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  font-weight: 800 !important;
+}
+
+.marketing-text-secondary {
+  color: var(--marketing-text-secondary) !important;
+}
+
+.marketing-text-muted {
+  color: var(--marketing-text-muted) !important;
+}
+
+.marketing-bg-primary {
+  background-color: var(--marketing-bg-primary) !important;
+}
+
+.marketing-bg-secondary {
+  background-color: var(--marketing-bg-secondary) !important;
+}
+
+.marketing-bg-accent {
+  background-color: var(--marketing-bg-accent) !important;
+}
+
+.marketing-btn-primary {
+  background-color: var(--marketing-primary) !important;
+  color: white !important;
+}
+
+.marketing-btn-cta {
+  background-color: var(--marketing-cta) !important;
+  color: white !important;
+}
+
+.marketing-btn-success {
+  background-color: var(--marketing-success) !important;
+  color: white !important;
+}
+
+/* ===============================================
+   STRATEGIC CHAT LEGACY STYLES (from src/components/StrategicChat.css)
+   =============================================== */
+
+.strategic-chat {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.chat-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--pm33-brand);
+  color: white;
+  border-radius: 12px;
+}
+
+.chat-header h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.chat-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.chat-conversation {
+  min-height: 400px;
+  max-height: 600px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: var(--pm33-bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--pm33-border-default);
+}
+
+.welcome-message {
+  text-align: center;
+  color: var(--pm33-text-tertiary);
+  padding: 40px 20px;
+}
+
+.welcome-message h3 {
+  color: var(--pm33-text-secondary);
+  margin-bottom: 15px;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.user-message {
+  background: var(--pm33-primary);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 18px 18px 4px 18px;
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 70%;
+  float: right;
+  clear: both;
+}
+
+.ai-message {
+  clear: both;
+  max-width: 90%;
+}
+
+.ai-response {
+  background: var(--pm33-bg-tertiary);
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 4px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--pm33-primary);
+  color: var(--pm33-text-primary);
+}
+
+.workflow-card {
+  background: var(--pm33-bg-primary);
+  border: 2px solid var(--pm33-primary);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: var(--pm33-glass-shadow);
+}
+
+.workflow-card h4 {
+  color: var(--pm33-primary);
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.workflow-card p {
+  color: var(--pm33-text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.task {
+  background: var(--pm33-bg-secondary);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--pm33-border-default);
+  color: var(--pm33-text-primary);
+}
+
+.task.priority-critical {
+  border-left-color: var(--pm33-danger);
+  background: var(--pm33-danger-light);
+}
+
+.task.priority-high {
+  border-left-color: var(--pm33-warning);
+  background: var(--pm33-warning-light);
+}
+
+.task.priority-medium {
+  border-left-color: var(--pm33-warning);
+  background: var(--pm33-warning-light);
+}
+
+.task-title {
+  font-weight: 600;
+  color: var(--pm33-text-primary);
+}
+
+.priority-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.priority-badge.critical {
+  background: var(--pm33-danger);
+  color: white;
+}
+
+.priority-badge.high {
+  background: var(--pm33-warning);
+  color: white;
+}
+
+.priority-badge.medium {
+  background: var(--pm33-warning);
+  color: white;
+}
+
+.task-meta {
+  font-size: 14px;
+  color: var(--pm33-text-tertiary);
+}
+
+.error-message {
+  background: var(--pm33-error-light);
+  color: var(--pm33-error);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--pm33-error);
+}
+
+.loading-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--pm33-text-tertiary);
+  padding: 12px 16px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--pm33-border-default);
+  border-top: 2px solid var(--pm33-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.chat-input {
+  background: var(--pm33-bg-primary);
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid var(--pm33-border-default);
+  box-shadow: var(--pm33-glass-shadow);
+}
+
+.chat-input textarea {
+  width: 100%;
+  border: 1px solid var(--pm33-border-default);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 12px;
+  background: var(--pm33-bg-primary);
+  color: var(--pm33-text-primary);
+}
+
+.chat-input textarea:focus {
+  outline: none;
+  border-color: var(--pm33-primary);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.chat-input button {
+  width: 100%;
+  background: var(--pm33-brand);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.chat-input button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.chat-input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Clearfix for floating messages */
+.message::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ===============================================
+   PM33 COMPACT LAYOUT UTILITIES - NEW
+   =============================================== */
+
+/* Compact spacing utilities for dashboard layout */
+.pm33-compact-container {
+  padding: var(--pm33-spacing-sm) !important;  /* 8px instead of 24px */
+}
+
+.pm33-compact-section {
+  margin-bottom: var(--pm33-spacing-md) !important;  /* 16px instead of 24px */
+}
+
+.pm33-compact-card {
+  padding: var(--pm33-spacing-md) !important;  /* 16px instead of 24px */
+}
+
+.pm33-compact-card-content {
+  padding: var(--pm33-spacing-sm) !important;  /* 8px instead of 16px */
+}
+
+/* Tight vertical spacing for AI teams section */
+.pm33-ai-teams-compact {
+  gap: var(--pm33-spacing-sm) !important;  /* 8px gap between team cards */
+}
+
+.pm33-ai-teams-compact .pm33-glass-card {
+  padding: var(--pm33-spacing-sm) var(--pm33-spacing-md) !important;  /* 8px vertical, 16px horizontal */
+}
+
+/* Bottom sidebar compact styling */
+.pm33-sidebar-compact {
+  gap: var(--pm33-spacing-md) !important;  /* 16px between sidebar sections */
+}
+
+.pm33-sidebar-compact .pm33-glass-card {
+  padding: var(--pm33-spacing-md) !important;  /* 16px all around */
+}
+
+.pm33-sidebar-compact .pm33-glass-card h3,
+.pm33-sidebar-compact .pm33-glass-card h4 {
+  margin-bottom: var(--pm33-spacing-xs) !important;  /* 4px bottom margin */
+}
+
+/* Compact navigation spacing */
+.pm33-nav-compact {
+  padding: var(--pm33-spacing-sm) var(--pm33-spacing-lg) !important;  /* 8px vertical, 24px horizontal */
+}
+
+/* Global compact mode class */
+.pm33-layout-compact {
+  --pm33-spacing-unit: 6px;  /* Even tighter spacing when compact mode is active */
+}
+
+.pm33-layout-compact .pm33-glass-card {
+  padding: var(--pm33-spacing-sm) var(--pm33-spacing-md) !important;
+}
+
+.pm33-layout-compact .space-y-6 > * + * {
+  margin-top: var(--pm33-spacing-md) !important;  /* Reduce space-y-6 to 16px */
+}
+
+.pm33-layout-compact .space-y-4 > * + * {
+  margin-top: var(--pm33-spacing-sm) !important;  /* Reduce space-y-4 to 8px */
+}
+
+.pm33-layout-compact .gap-6 {
+  gap: var(--pm33-spacing-md) !important;  /* Reduce gap-6 to 16px */
+}
+
+.pm33-layout-compact .p-6 {
+  padding: var(--pm33-spacing-md) !important;  /* Reduce p-6 to 16px */
+}
+
+/* Enhanced minimum touch targets for accessibility */
+.pm33-touch-target {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ===============================================
+   BOTTOM LEFT SIDEBAR CONTRAST & SPACING FIXES
+   =============================================== */
+
+/* Strategic Tools Card - Enhanced contrast and accessibility */
+.pm33-glass-card:has(h3:contains("Strategic Tools")),
+.pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")) {
+  --pm33-glass-bg-enhanced: rgba(255, 255, 255, 0.12);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Strategic Tools buttons - WCAG AA/AAA compliance */
+.pm33-glass-card button[class*="justify-start"] {
+  min-height: 44px !important;
+  padding: 12px 16px !important;
+  margin: 4px 0 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Primary Strategic Chat button - Enhanced visibility */
+.pm33-glass-card button[class*="bg-blue-500/10"] {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.4) !important;
+  color: #1e40af !important; /* WCAG AAA 7:1 contrast on white */
+}
+
+.pm33-glass-card button[class*="bg-blue-500/10"]:hover {
+  background: rgba(59, 130, 246, 0.25) !important;
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  color: #1e3a8a !important;
+  transform: translateX(4px) !important;
+}
+
+/* Secondary strategic tools buttons - Enhanced contrast */
+.pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]) {
+  color: var(--pm33-text-primary) !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]):hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  color: var(--pm33-text-primary) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Strategic Tools text - Enhanced readability */
+.pm33-glass-card button .font-medium {
+  color: inherit !important;
+  font-weight: 600 !important;
+}
+
+.pm33-glass-card button .text-xs {
+  color: inherit !important;
+  opacity: 0.8 !important;
+}
+
+/* Company Context Card - Enhanced contrast and spacing */
+.pm33-glass-card:has(h3:contains("Company Context")),
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) {
+  --pm33-glass-bg-enhanced: rgba(255, 255, 255, 0.12);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Company Context items - Enhanced accessibility */
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center {
+  min-height: 44px !important;
+  padding: 8px 12px !important;
+  margin: 2px 0 !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid transparent !important;
+}
+
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  transform: translateX(2px) !important;
+}
+
+/* Company Context icons - Enhanced visibility */
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .w-4.h-4 {
+  color: var(--pm33-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Company Context text - WCAG compliance */
+.pm33-glass-card:has([class*="CardTitle"]) .text-sm,
+.pm33-glass-card span.text-sm {
+  color: var(--pm33-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Force all Company Context spans to have proper contrast */
+.pm33-glass-card [class*="CardContent"] span {
+  color: var(--pm33-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Nuclear option - force all spans in glass cards to have proper contrast */
+.pm33-glass-card span {
+  color: var(--pm33-text-primary) !important;
+}
+
+/* Ensure text elements in glass cards meet contrast requirements */
+.pm33-glass-card .text-sm:not([class*="text-blue"]):not([class*="text-green"]):not([class*="text-purple"]):not([class*="text-orange"]) {
+  color: var(--pm33-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Dark theme overrides for sidebar components */
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")),
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) {
+  --pm33-glass-bg-enhanced: rgba(255, 255, 255, 0.08);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .pm33-glass-card button[class*="bg-blue-500/10"] {
+  background: rgba(96, 165, 250, 0.2) !important;
+  border: 1px solid rgba(96, 165, 250, 0.4) !important;
+  color: #93c5fd !important; /* Enhanced contrast for dark theme */
+}
+
+[data-theme="dark"] .pm33-glass-card button[class*="bg-blue-500/10"]:hover {
+  background: rgba(96, 165, 250, 0.3) !important;
+  border-color: rgba(96, 165, 250, 0.6) !important;
+  color: #dbeafe !important;
+}
+
+[data-theme="dark"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]) {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]):hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+}
+
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .w-4.h-4 {
+  color: #60a5fa !important;
+}
+
+[data-theme="dark"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .text-sm {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pm33-glass-card [class*="CardContent"] span {
+  color: #ffffff !important;
+}
+
+/* Dark theme - force all spans in glass cards */
+[data-theme="dark"] .pm33-glass-card span:not([class*="text-blue"]):not([class*="text-green"]):not([class*="text-purple"]):not([class*="text-orange"]) {
+  color: #ffffff !important;
+}
+
+/* Gray theme overrides for sidebar components */
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")),
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) {
+  --pm33-glass-bg-enhanced: rgba(156, 163, 175, 0.15);
+  background: var(--pm33-glass-bg-enhanced) !important;
+  border: 1px solid rgba(156, 163, 175, 0.3) !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[class*="bg-blue-500/10"] {
+  background: rgba(167, 139, 250, 0.2) !important; /* Purple accent for gray theme */
+  border: 1px solid rgba(167, 139, 250, 0.4) !important;
+  color: #7c3aed !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[class*="bg-blue-500/10"]:hover {
+  background: rgba(167, 139, 250, 0.3) !important;
+  border-color: rgba(167, 139, 250, 0.6) !important;
+  color: #6d28d9 !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]) {
+  color: #f9fafb !important;
+  background: rgba(75, 85, 99, 0.3) !important;
+  border: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+[data-theme="gray"] .pm33-glass-card button[variant="ghost"]:not([class*="bg-blue"]):hover {
+  background: rgba(75, 85, 99, 0.4) !important;
+  border-color: rgba(156, 163, 175, 0.4) !important;
+  color: #f9fafb !important;
+}
+
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .flex.items-center:hover {
+  background: rgba(75, 85, 99, 0.3) !important;
+  border-color: rgba(167, 139, 250, 0.4) !important;
+}
+
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .w-4.h-4 {
+  color: #a78bfa !important; /* Purple accent for gray theme */
+}
+
+[data-theme="gray"] .pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .text-sm {
+  color: #f9fafb !important;
+}
+
+[data-theme="gray"] .pm33-glass-card [class*="CardContent"] span {
+  color: #f9fafb !important;
+}
+
+/* Gray theme - force all spans in glass cards */
+[data-theme="gray"] .pm33-glass-card span:not([class*="text-blue"]):not([class*="text-green"]):not([class*="text-purple"]):not([class*="text-orange"]) {
+  color: #f9fafb !important;
+}
+
+/* Compact spacing overrides for sidebar sections */
+.pm33-glass-card:has([class*="CardTitle"]:contains("Strategic Tools")) .space-y-2 > * + * {
+  margin-top: 4px !important; /* Tighter spacing for buttons */
+}
+
+.pm33-glass-card:has([class*="CardTitle"]:contains("Company Context")) .space-y-3 > * + * {
+  margin-top: 4px !important; /* Tighter spacing for context items */
+}
+
+/* Card header spacing optimization */
+.pm33-glass-card [class*="CardHeader"] {
+  padding-bottom: 12px !important; /* Reduced from default */
+}
+
+.pm33-glass-card [class*="CardContent"] {
+  padding-top: 8px !important; /* Reduced from default */
+}
+
+/* Focus states for accessibility */
+.pm33-glass-card button:focus-visible {
+  outline: 2px solid var(--pm33-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
+}
+
+.pm33-glass-card .flex.items-center:focus-visible {
+  outline: 2px solid var(--pm33-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* ===============================================
+   AI TEAMS SECTION COMPACT SPACING OPTIMIZATION
+   =============================================== */
+
+/* Strategic Metrics Overview - Compact layout matching target design */
+.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6:has(.pm33-glass-card .text-blue-600:contains("Active")) {
+  gap: var(--pm33-spacing-md) !important; /* 16px instead of 24px */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; /* Smaller minimum width */
+}
+
+/* AI Team status cards - Compact padding */
+.pm33-glass-card:has(.text-blue-600:contains("Active")) .p-6,
+.pm33-glass-card:has(.text-green-600:contains("Ready")) .p-6,
+.pm33-glass-card:has(.text-purple-600:contains("Learning")) .p-6,
+.pm33-glass-card:has(.text-orange-600:contains("Standby")) .p-6 {
+  padding: var(--pm33-spacing-md) !important; /* 16px instead of 24px */
+}
+
+/* AI Team cards - Tighter internal spacing */
+.pm33-glass-card:has([class*="text-blue-600"]) .flex.items-center.gap-4,
+.pm33-glass-card:has([class*="text-green-600"]) .flex.items-center.gap-4,
+.pm33-glass-card:has([class*="text-purple-600"]) .flex.items-center.gap-4,
+.pm33-glass-card:has([class*="text-orange-600"]) .flex.items-center.gap-4 {
+  gap: var(--pm33-spacing-sm) !important; /* 8px instead of 16px */
+}
+
+/* AI Team icon containers - Slightly smaller for compact design */
+.pm33-glass-card:has([class*="text-blue-600"]) .w-12.h-12,
+.pm33-glass-card:has([class*="text-green-600"]) .w-12.h-12,
+.pm33-glass-card:has([class*="text-purple-600"]) .w-12.h-12,
+.pm33-glass-card:has([class*="text-orange-600"]) .w-12.h-12 {
+  width: 40px !important;  /* Slightly smaller icon containers */
+  height: 40px !important;
+}
+
+/* AI Team status text - Maintain readability with compact spacing */
+.pm33-glass-card:has([class*="text-blue-600"]) .text-sm,
+.pm33-glass-card:has([class*="text-green-600"]) .text-sm,
+.pm33-glass-card:has([class*="text-purple-600"]) .text-sm,
+.pm33-glass-card:has([class*="text-orange-600"]) .text-sm {
+  margin-bottom: 2px !important; /* Tighter text spacing */
+  font-weight: 500 !important;
+  opacity: 0.9 !important;
+}
+
+/* AI Team status values - Bold and prominent */
+.pm33-glass-card .text-2xl.font-bold {
+  line-height: 1.2 !important;
+  margin-top: 0 !important;
+}
+
+/* Responsive behavior for AI teams section */
+@media (max-width: 768px) {
+  .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6:has(.pm33-glass-card .text-blue-600) {
+    grid-template-columns: 1fr 1fr !important; /* 2 columns on mobile */
+    gap: var(--pm33-spacing-sm) !important; /* 8px gap on mobile */
+  }
+  
+  .pm33-glass-card:has([class*="text-blue-600"]) .p-6,
+  .pm33-glass-card:has([class*="text-green-600"]) .p-6,
+  .pm33-glass-card:has([class*="text-purple-600"]) .p-6,
+  .pm33-glass-card:has([class*="text-orange-600"]) .p-6 {
+    padding: var(--pm33-spacing-sm) !important; /* 8px padding on mobile */
+  }
+  
+  .pm33-glass-card:has([class*="text-blue-600"]) .w-12.h-12,
+  .pm33-glass-card:has([class*="text-green-600"]) .w-12.h-12,
+  .pm33-glass-card:has([class*="text-purple-600"]) .w-12.h-12,
+  .pm33-glass-card:has([class*="text-orange-600"]) .w-12.h-12 {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .pm33-glass-card .text-2xl.font-bold {
+    font-size: 1.5rem !important; /* Smaller text on mobile */
+  }
+}
+
+/* General spacing optimization for sections containing AI teams */
+.space-y-6:has(.grid.lg\\:grid-cols-4) > * + * {
+  margin-top: var(--pm33-spacing-lg) !important; /* 24px instead of 48px between sections */
+}
+
+/* Motion div containing AI teams - reduce padding */
+motion-div:has(.grid.lg\\:grid-cols-4) {
+  padding-bottom: var(--pm33-spacing-md) !important;
+}
+
+/* AI status banner - compact spacing */
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) {
+  margin-bottom: var(--pm33-spacing-md) !important; /* 16px instead of 24px */
+}
+
+/* BETA badge positioning optimization */
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) .flex.items-center.gap-2 {
+  gap: var(--pm33-spacing-sm) !important; /* Tighter spacing in AI status banner */
+}
+
+/* Strategic processing metrics - compact display */
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) .flex.items-center.gap-6 {
+  gap: var(--pm33-spacing-md) !important; /* 16px instead of 24px between metrics */
+}
+
+.pm33-glass-card:has(.text-green-600:contains("AI TEAMS ACTIVE")) .text-sm.text-muted-foreground {
+  font-size: 0.8125rem !important; /* Slightly smaller metrics text */
+}
+
+/* ===============================================
+   UNIVERSAL .pm33-glass CLASS - APPLY TO ALL CARDS
+   =============================================== */
+
+/* Universal glass morphism class for consistent styling across ALL cards */
+.pm33-glass {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative !important;
+}
+
+.pm33-glass:hover {
+  transform: scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2) !important;
+}
+
+/* Dark theme glass */
+.dark .pm33-glass {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .pm33-glass:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Gray theme glass */
+.gray .pm33-glass {
+  background: rgba(156, 163, 175, 0.08) !important;
+  border-color: rgba(156, 163, 175, 0.15) !important;
+}
+
+.gray .pm33-glass:hover {
+  background: rgba(156, 163, 175, 0.12) !important;
+  border-color: rgba(156, 163, 175, 0.2) !important;
+}
+
+/* ===============================================
+   HEADER FIXES - Remove theme switcher, add Start Free Trial
+   =============================================== */
+
+/* Hide theme switcher buttons in header */
+nav .flex.items-center.gap-1 button {
+  display: none !important;
+}
+
+/* Start Free Trial button styling */
+.pm33-start-trial-btn {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+}
+
+.pm33-start-trial-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4) !important;
+  background: linear-gradient(135deg, #7c3aed, #db2777) !important;
+}
+
+/* Navigation active state */
+.pm33-nav-active {
+  background: rgba(59, 130, 246, 0.1) !important;
+  border-bottom: 2px solid #3b82f6 !important;
+  color: #1d4ed8 !important;
+  font-weight: 600 !important;
+}
+
+/* Navigation items spacing and hover */
+nav .flex.items-center.gap-4 a {
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+}
+
+nav .flex.items-center.gap-4 a:hover {
+  background: rgba(59, 130, 246, 0.08) !important;
+  color: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ===============================================
+   AI TEAMS STATUS BAR GLASS MORPHISM
+   =============================================== */
+
+/* AI Teams status bar glass effect */
+.pm33-ai-status-bar {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin-bottom: 24px !important;
+}
+
+/* AI Teams active indicator styling */
+.pm33-ai-active-indicator {
+  background: linear-gradient(135deg, #10b981, #34d399) !important;
+  color: white !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+}
+
+/* ===============================================
+   MAIN CONTENT CARDS - Consistent height and glass
+   =============================================== */
+
+/* Main scenario cards consistent styling */
+.pm33-scenario-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  height: 200px !important; /* Make them squares/consistent height */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.pm33-scenario-card:hover {
+  transform: scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15) !important;
+}
+
+/* Scenario card headers with gradient text */
+.pm33-scenario-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 8px !important;
+}
+
+/* Scenario card titles */
+.pm33-scenario-title {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  color: var(--pm33-text-primary) !important;
+  margin-bottom: 8px !important;
+}
+
+/* Scenario card descriptions */
+.pm33-scenario-description {
+  color: var(--pm33-text-secondary) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Main content area grid spacing */
+.pm33-main-content-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .pm33-main-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* ===============================================
+   RIGHT SIDEBAR - Glass containers and progress bar
+   =============================================== */
+
+/* Right sidebar section containers */
+.pm33-right-sidebar-section {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+/* Right sidebar headers */
+.pm33-right-sidebar-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 16px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.pm33-right-sidebar-header svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: var(--pm33-primary) !important;
+}
+
+/* Progress bar styling */
+.pm33-progress-container {
+  margin-top: 12px !important;
+}
+
+.pm33-progress-bar {
+  width: 100% !important;
+  height: 8px !important;
+  background: rgba(148, 163, 184, 0.2) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  margin-bottom: 8px !important;
+}
+
+.pm33-progress-fill {
+  height: 100% !important;
+  background: linear-gradient(135deg, #10b981, #34d399) !important;
+  border-radius: 4px !important;
+  transition: width 0.3s ease !important;
+}
+
+.pm33-progress-text {
+  font-size: 12px !important;
+  color: var(--pm33-text-muted) !important;
+  text-align: center !important;
+}
+
+/* Metrics formatting */
+.pm33-metric-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
+}
+
+.pm33-metric-row:last-child {
+  border-bottom: none !important;
+}
+
+.pm33-metric-label {
+  font-size: 14px !important;
+  color: var(--pm33-text-secondary) !important;
+}
+
+.pm33-metric-value {
+  font-weight: 600 !important;
+  color: var(--pm33-text-primary) !important;
+}
+
+.pm33-metric-highlight {
+  color: var(--pm33-primary) !important;
+  font-weight: 700 !important;
+}
+
+.pm33-metric-warning,
+Badge.pm33-metric-warning,
+span.pm33-metric-warning,
+div.pm33-metric-warning {
+  color: rgb(245, 158, 11) !important; /* Orange/warning color - explicit RGB */
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+/* ===============================================
+   TYPOGRAPHY HIERARCHY AND SPACING
+   =============================================== */
+
+/* Main heading enhancement */
+.pm33-main-heading {
+  font-size: 3rem !important; /* 48px to exceed 40px+ requirement */
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  color: var(--pm33-text-primary) !important;
+  margin-bottom: 12px !important;
+}
+
+/* Main subheading styling */
+.pm33-main-subheading {
+  font-size: 1.125rem !important;
+  color: var(--pm33-text-muted) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 32px !important;
+}
+
+/* Section headers with gradient */
+.pm33-section-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 12px !important;
+}
+
+/* Icon consistency */
+.pm33-icon-standard {
+  width: 20px !important;
+  height: 20px !important;
+  color: var(--pm33-primary) !important;
+  opacity: 0.8 !important;
+}
+
+/* ===============================================
+   CONSISTENT BORDER RADIUS AND SPACING
+   =============================================== */
+
+/* Force consistent border radius on ALL cards */
+.pm33-glass,
+.pm33-glass-card,
+[class*="glass"],
+[class*="Card"],
+.pm33-scenario-card,
+.pm33-right-sidebar-section,
+.pm33-ai-status-bar {
+  border-radius: 12px !important;
+}
+
+/* Consistent internal spacing */
+.pm33-card-content {
+  padding: 20px !important;
+  line-height: 1.6 !important;
+}
+
+/* Section spacing */
+.pm33-section-spacing {
+  margin-bottom: 24px !important;
+}
+
+/* List item spacing */
+.pm33-list-item {
+  margin-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 0 !important;
+}
+
+/* ===============================================
+   RESPONSIVE LAYOUT ENHANCEMENTS
+   =============================================== */
+
+/* Three-column layout optimization */
+.pm33-three-column-layout {
+  display: grid !important;
+  grid-template-columns: 320px 1fr 360px !important;
+  gap: 24px !important;
+  min-height: calc(100vh - 80px) !important;
+}
+
+@media (max-width: 1440px) {
+  .pm33-three-column-layout {
+    grid-template-columns: 300px 1fr 320px !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pm33-three-column-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+/* Left sidebar optimization */
+.pm33-left-sidebar {
+  min-width: 300px !important;
+  max-width: 320px !important;
+}
+
+/* Right sidebar optimization */
+.pm33-right-sidebar {
+  min-width: 320px !important;
+  max-width: 360px !important;
+}
+
+/* Main content area */
+.pm33-main-content {
+  min-width: 0 !important; /* Prevent overflow */
+  flex: 1 !important;
+}
+
+/* ===============================================
+   ACCESSIBILITY AND MOTION ENHANCEMENTS
+   =============================================== */
+
+/* Focus states */
+.pm33-glass:focus-visible,
+.pm33-scenario-card:focus-visible {
+  outline: 2px solid var(--pm33-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pm33-glass,
+  .pm33-glass-card,
+  .pm33-scenario-card,
+  .pm33-start-trial-btn {
+    transition: none !important;
+  }
+  
+  .pm33-glass:hover,
+  .pm33-scenario-card:hover,
+  .pm33-start-trial-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .pm33-glass,
+  .pm33-right-sidebar-section,
+  .pm33-ai-status-bar {
+    border-color: currentColor !important;
+    border-width: 2px !important;
+  }
+  
+  .pm33-scenario-header,
+  .pm33-section-header {
+    background: currentColor !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+  }
+}
+
+/* ===============================================
+   NAVIGATION STYLING FIXES
+   =============================================== */
+
+/* Navigation links proper spacing and WCAG AA contrast */
+nav a, .navigation-link {
+  padding: 12px 16px !important;
+  min-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  color: #ffffff !important; /* Force pure white for WCAG AA compliance */
+}
+
+nav a:hover, .navigation-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-1px) !important;
+  color: #ffffff !important; /* Maintain contrast on hover */
+}
+
+/* ===============================================
+   PROFESSIONAL DASHBOARD SYSTEM - FROM HTML DEMO
+   =============================================== */
+
+/* Enhanced Glass Card System */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.25);
+}
+
+/* Professional Button System */
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  color: #1e293b;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.05);
+}
+
+/* Text Gradient System */
+.text-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* Metrics and Cards */
+.metric-card {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+/* Badge System */
+.badge-success {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-warning {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #fef3c7;
+  color: #a16207;
+  border: 1px solid #fde68a;
+}
+
+.badge-error {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #fecaca;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.badge-blue {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #3b82f6;
+}
+
+.badge-green {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #22c55e;
+}
+
+.badge-orange {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #fed7aa;
+  color: #c2410c;
+  border: 1px solid #fb923c;
+}
+
+.badge-purple {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #f3e8ff;
+  color: #7c2d12;
+  border: 1px solid #7c3aed;
+}
+
+/* AI Processing Indicators */
+.ai-processing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 1.5rem;
+  color: #1e40af;
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Progress System */
+.progress-bar {
+  width: 100%;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  border-radius: 9999px;
+  transition: width 0.5s ease-out;
+}
+
+/* Loading Animations */
+.loading-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.loading-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  animation: bounce 1s infinite;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+/* Strategic Cards */
+.strategic-card {
+  border-left: 4px solid #7c3aed;
+  position: relative;
+}
+
+.strategic-card-blue {
+  border-left: 4px solid #2563eb;
+  position: relative;
+}
+
+.strategic-card-green {
+  border-left: 4px solid #22c55e;
+  position: relative;
+}
+
+.strategic-card-orange {
+  border-left: 4px solid #f59e0b;
+  position: relative;
+}
+
+.strategic-card-purple {
+  border-left: 4px solid #7c3aed;
+  position: relative;
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===============================================
+   PM33 PROFESSIONAL 3-COLUMN LAYOUT SYSTEM
+   =============================================== */
+
+/* Main 3-Column Layout - Fixed for Desktop */
+.dashboard-3-col {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 1.5rem;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Force desktop layout above 1200px */
+@media (min-width: 1200px) {
+  .dashboard-3-col {
+    grid-template-columns: 280px 1fr 320px;
+  }
+}
+
+/* Stack on tablet and mobile only */
+@media (max-width: 768px) {
+  .dashboard-3-col {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Professional Card System - Off-white with gray gradient bg */
+.pm33-professional-card {
+  background: rgba(248, 250, 252, 0.95);  /* Off-white background */
+  border-radius: 12px;
+  border: none;  /* No borders as specified */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.pm33-professional-card:hover {
+  background: rgba(248, 250, 252, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Professional Gray Gradient Background */
+.pm33-gray-gradient-bg {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  min-height: 100vh;
+}
+
+/* Centered Heading Style */
+.pm33-centered-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+/* Compact Left Navigation */
+.pm33-compact-nav {
+  background: rgba(248, 250, 252, 0.95);
+  border-radius: 12px;
+  padding: 1rem;
+  border: none;
+}
+
+.pm33-compact-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-weight: 500;
+  color: #475569;  /* Dark font as specified */
+}
+
+.pm33-compact-nav-item:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e40af;
+}
+
+.pm33-compact-nav-item.selected {
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;  /* Blue font for selected as specified */
+  font-weight: 600;
+}
+
+/* Right Sidebar 3-Box Structure */
+.pm33-right-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pm33-right-sidebar .pm33-professional-card {
+  flex: 1;
+}
+
+/* Center Section Layout */
+.pm33-center-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pm33-greeting-section {
+  background: rgba(248, 250, 252, 0.95);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  border: none;
+}
+
+.pm33-greeting-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.pm33-greeting-section p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* 4 Action Boxes Grid */
+.pm33-action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.pm33-action-box {
+  background: rgba(248, 250, 252, 0.95);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pm33-action-box:hover {
+  background: rgba(248, 250, 252, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.pm33-action-box h4 {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.pm33-action-box p {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Chat Window at Bottom of Center */
+.pm33-chat-window {
+  background: rgba(248, 250, 252, 0.95);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: none;
+  margin-top: auto;
+}
+
+/* Top Navigation Styling */
+.pm33-top-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pm33-top-nav-item {
+  padding: 0.75rem 1rem;
+  color: #475569;  /* Dark font for non-selected */
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.pm33-top-nav-item:hover {
+  color: #1e40af;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.pm33-top-nav-item.selected {
+  color: #2563eb;  /* Blue font for selected */
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Active State for Tools */
+.tool-active {
+  background-color: #dbeafe !important;
+  border: 1px solid #3b82f6 !important;
+  color: #1e40af !important;
+}
+
+/* Professional Typography */
+.dashboard-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+/* Enhanced Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+  100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}

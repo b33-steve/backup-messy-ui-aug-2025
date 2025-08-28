@@ -17,13 +17,13 @@ export default function PM33MarketingHomePage() {
 
   return (
     <div className="marketing-context">
-      {/* Hero Section - Matching live site */}
+      {/* Hero Section - Theme-Aware Dark Background */}
       <Box 
         style={{ 
           position: 'relative',
           padding: '6rem 0',
-          background: `linear-gradient(135deg, ${PM33_DESIGN.colors.marketing.primary} 0%, ${PM33_DESIGN.colors.marketing.bg.accent} 100%)`,
-          color: PM33_DESIGN.colors.marketing.text.inverse,
+          background: 'linear-gradient(135deg, #1E40AF 0%, #1e3a8a 100%)',
+          color: 'var(--marketing-text-inverse)',
           overflow: 'hidden'
         }}
       >
@@ -46,17 +46,16 @@ export default function PM33MarketingHomePage() {
                     order={1} 
                     size="h1"
                     lh={1.1}
+                    className="marketing-text-inverse"
                     style={{ 
                       fontWeight: 800,
-                      color: 'white',
                       fontSize: '3.5rem'
                     }}
                   >
                     Don't Replace Your PM Tools—
                     <Text 
                       span 
-                      variant="gradient" 
-                      gradient={{ from: 'cyan.4', to: 'blue.5' }}
+                      className="marketing-gradient-text"
                       style={{ display: 'block', marginTop: '0.5rem' }}
                     >
                       Make Them 10x Smarter
@@ -65,9 +64,10 @@ export default function PM33MarketingHomePage() {
                   
                   <Text 
                     size="xl" 
-                    c="gray.3" 
+                    className="marketing-text-inverse"
                     lh={1.6}
                     maw={600}
+                    style={{ opacity: 0.9 }}
                   >
                     Transform from Product Manager to Strategic PMO with 4 Agentic AI Teams. 
                     Achieve 10x productivity with AI-powered strategic intelligence, workflow automation, and data-driven insights.
@@ -98,9 +98,9 @@ export default function PM33MarketingHomePage() {
                     size="xl"
                     onClick={handleDemoClick}
                     leftSection={<IconBrain size={20} />}
+                    className="marketing-text-inverse"
                     style={{
                       borderColor: 'rgba(255,255,255,0.3)',
-                      color: 'white',
                       height: '56px',
                       padding: '0 32px'
                     }}
@@ -130,12 +130,10 @@ export default function PM33MarketingHomePage() {
             {/* Right Column - Live Demo */}
             <Grid.Col span={{ base: 12, lg: 6 }}>
               <Box
+                className="marketing-glass-card"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  borderRadius: '20px',
                   padding: '32px',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(20px)',
+                  background: 'rgba(255, 255, 255, 0.1)',
                 }}
               >
                 <Stack gap={20}>
@@ -153,17 +151,17 @@ export default function PM33MarketingHomePage() {
                     >
                       <IconBrain size={18} color="white" />
                     </Box>
-                    <Text fw={700} size="lg" c="white">Live Demo Experience</Text>
+                    <Text fw={700} size="lg" className="marketing-text-inverse">Live Demo Experience</Text>
                   </Group>
                   
-                  <Text size="md" c="gray.4">
+                  <Text size="md" className="marketing-text-inverse" style={{ opacity: 0.8 }}>
                     "Should we prioritize mobile features or web optimization for Q4?"
                   </Text>
                   
                   {demoProcessing && (
                     <Box style={{ padding: '16px 0' }}>
-                      <Text size="sm" c="blue.4" mb={8}>🧠 AI Processing...</Text>
-                      <Text size="xs" c="gray.5">Strategic Intelligence • Workflow Execution • Data Intelligence</Text>
+                      <Text size="sm" className="marketing-text-inverse" mb={8} style={{ opacity: 0.9 }}>🧠 AI Processing...</Text>
+                      <Text size="xs" className="marketing-text-inverse" style={{ opacity: 0.7 }}>Strategic Intelligence • Workflow Execution • Data Intelligence</Text>
                     </Box>
                   )}
 
@@ -176,12 +174,12 @@ export default function PM33MarketingHomePage() {
                         border: '1px solid rgba(102, 126, 234, 0.2)'
                       }}
                     >
-                      <Text size="sm" fw={600} mb={12} c="white">🎯 AI Strategic Recommendation:</Text>
-                      <Text size="sm" c="gray.3" lh={1.5}>
+                      <Text size="sm" fw={600} mb={12} className="marketing-text-inverse">🎯 AI Strategic Recommendation:</Text>
+                      <Text size="sm" className="marketing-text-inverse" lh={1.5} style={{ opacity: 0.9 }}>
                         Based on your user data and market trends, <strong>prioritize mobile features</strong>. 
                         67% of your users access via mobile, and mobile conversion is 23% higher than web.
                       </Text>
-                      <Text size="xs" c="gray.5" mt={8}>
+                      <Text size="xs" className="marketing-text-inverse" mt={8} style={{ opacity: 0.7 }}>
                         ✓ Strategic Intelligence • ✓ Data Analysis • ✓ Workflow Recommendations
                       </Text>
                     </Box>
@@ -210,17 +208,17 @@ export default function PM33MarketingHomePage() {
       </Container>
 
       {/* Problem Section */}
-      <Box style={{ background: '#f8fafc', padding: '80px 0' }}>
+      <Box style={{ background: 'var(--marketing-bg-secondary)', padding: '80px 0' }}>
         <Container size="xl">
           <Stack align="center" gap={48}>
             <Stack align="center" gap={16} maw={800}>
               <Badge size="lg" variant="light" color="orange">
                 The PM Reality
               </Badge>
-              <Title order={2} ta="center" lh={1.2} c="dark">
+              <Title order={2} ta="center" lh={1.2} className="marketing-text-primary">
                 Your PM Tools Are Data Silos. Your Strategy Suffers.
               </Title>
-              <Text size="lg" c="dimmed" ta="center">
+              <Text size="lg" className="marketing-text-secondary" ta="center">
                 You're drowning in tickets, metrics, and stakeholder requests. 
                 Meanwhile, strategic decisions get made on gut feel because connecting the dots is impossible.
               </Text>
@@ -246,18 +244,16 @@ export default function PM33MarketingHomePage() {
             ].map((problem, index) => (
               <Box 
                 key={index}
+                className="marketing-glass-card"
                 style={{
-                  background: 'white',
-                  borderRadius: '12px',
                   padding: '24px',
-                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   textAlign: 'center',
                 }}
               >
                 <Stack align="center" gap={16}>
                   <problem.icon size={24} color="var(--marketing-primary)" />
-                  <Text fw={600} size="lg">{problem.title}</Text>
-                  <Text size="sm" c="dimmed" ta="center">
+                  <Text fw={600} size="lg" className="marketing-text-primary">{problem.title}</Text>
+                  <Text size="sm" className="marketing-text-secondary" ta="center">
                     {problem.description}
                   </Text>
                 </Stack>
@@ -269,7 +265,7 @@ export default function PM33MarketingHomePage() {
       </Box>
 
       {/* Solution Section - 4 AI Teams */}
-      <Box style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
+      <Box style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
         <Container size="xl" py={80}>
           <Stack align="center" gap={48}>
             <Stack align="center" gap={16} maw={800}>
@@ -279,7 +275,7 @@ export default function PM33MarketingHomePage() {
               <Title order={2} ta="center" lh={1.2}>
                 Meet Your 4 AI Teams
               </Title>
-              <Text size="lg" c="dimmed" ta="center">
+              <Text size="lg" className="marketing-text-secondary" ta="center">
                 PM33 gives you a full PMO worth of strategic capabilities. 
                 Each AI team specializes in a core PM function, working together seamlessly.
               </Text>
@@ -318,19 +314,17 @@ export default function PM33MarketingHomePage() {
               ].map((team, index) => (
                 <Box 
                   key={index}
+                  className="marketing-glass-card"
                   style={{
-                    background: 'white',
-                    borderRadius: '16px',
                     padding: '32px',
-                    border: '1px solid rgba(0, 0, 0, 0.08)',
                   }}
                 >
                   <Stack gap={16}>
                     <Group gap={12}>
                       <team.icon size={24} color={`var(--mantine-color-${team.color}-6)`} />
-                      <Text fw={600} size="lg">{team.title}</Text>
+                      <Text fw={600} size="lg" className="marketing-text-primary">{team.title}</Text>
                     </Group>
-                    <Text size="sm" c="dimmed">{team.description}</Text>
+                    <Text size="sm" className="marketing-text-secondary">{team.description}</Text>
                     <Group gap={8}>
                       {team.features.map((feature, featureIndex) => (
                         <Badge key={featureIndex} size="sm" variant="light" color={team.color}>
@@ -347,21 +341,24 @@ export default function PM33MarketingHomePage() {
       </Box>
 
       {/* CTA Section */}
-      <Box style={{ 
-        background: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)', 
-        padding: '80px 0',
-        color: 'white'
-      }}>
+      <Box 
+        className="marketing-cta-section"
+        style={{ 
+          background: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)', 
+          padding: '80px 0',
+          color: 'var(--marketing-text-inverse)'
+        }}
+      >
         <Container size="xl">
           <Stack align="center" gap={32}>
             <Stack align="center" gap={16} maw={700}>
               <Badge size="lg" variant="light" color="blue">
                 Ready to Transform?
               </Badge>
-              <Title order={2} ta="center" c="white" size="2.5rem">
+              <Title order={2} ta="center" className="marketing-text-inverse" size="2.5rem">
                 From Product Manager to Strategic PMO
               </Title>
-              <Text size="xl" ta="center" c="gray.3" lh={1.6}>
+              <Text size="xl" ta="center" className="marketing-text-inverse" lh={1.6} style={{ opacity: 0.9 }}>
                 Join 2,500+ Product Managers using PM33's AI-powered strategic intelligence. 
                 Start at $29/month with 14-day free trial.
               </Text>
@@ -390,9 +387,9 @@ export default function PM33MarketingHomePage() {
                 href="/demo" 
                 variant="outline"
                 size="xl"
+                className="marketing-text-inverse"
                 style={{
                   borderColor: 'rgba(255,255,255,0.3)',
-                  color: 'white',
                   height: '56px',
                   padding: '0 32px'
                 }}
@@ -404,15 +401,15 @@ export default function PM33MarketingHomePage() {
             <Group gap={40} mt={24}>
               <Group gap={8}>
                 <IconCheck size={16} color="#10b981" />
-                <Text size="sm" c="gray.4">No credit card required</Text>
+                <Text size="sm" className="marketing-text-inverse" style={{ opacity: 0.8 }}>No credit card required</Text>
               </Group>
               <Group gap={8}>
                 <IconCheck size={16} color="#10b981" />
-                <Text size="sm" c="gray.4">5-minute setup</Text>
+                <Text size="sm" className="marketing-text-inverse" style={{ opacity: 0.8 }}>5-minute setup</Text>
               </Group>
               <Group gap={8}>
                 <IconCheck size={16} color="#10b981" />
-                <Text size="sm" c="gray.4">Cancel anytime</Text>
+                <Text size="sm" className="marketing-text-inverse" style={{ opacity: 0.8 }}>Cancel anytime</Text>
               </Group>
             </Group>
           </Stack>

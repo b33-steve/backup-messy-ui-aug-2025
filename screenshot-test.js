@@ -1,40 +1,45 @@
 const { chromium } = require('playwright');
 
 (async () => {
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch();
   const page = await browser.newPage();
   
-  console.log('Navigating to localhost:3000...');
-  await page.goto('http://localhost:3000');
-  
-  // Wait for page to load
-  await page.waitForTimeout(3000);
-  
-  // Take screenshot
-  await page.screenshot({ path: 'current-ui-state.png', fullPage: true });
-  
-  console.log('Screenshot saved as current-ui-state.png');
-  console.log('Page title:', await page.title());
-  
-  // Check what we actually have
-  const hasGlassCard = await page.locator('.pm33-glass-card').count();
-  const hasGradientButton = await page.locator('.pm33-gradient-button').count();
-  const hasPM33Card = await page.locator('.PM33Card').count();
-  
-  console.log('Glass cards found:', hasGlassCard);
-  console.log('Gradient buttons found:', hasGradientButton);
-  console.log('PM33Cards found:', hasPM33Card);
-  
-  // Check for our CSS variables
-  const styles = await page.evaluate(() => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    return {
-      pm33Brand: computedStyle.getPropertyValue('--pm33-brand'),
-      pm33Glass: computedStyle.getPropertyValue('--pm33-glass')
-    };
-  });
-  
-  console.log('CSS Variables:', styles);
-  
-  await browser.close();
+  try {
+    await page.goto('http://localhost:3006', { waitUntil: 'networkidle' });
+    await page.screenshot({ path: 'homepage-validation-full.png', fullPage: true });
+    
+    // Find the "Ready to Transform" text and take a focused screenshot
+    const ctaSection = await page.locator('text=Ready to Transform Your PM Work?').first();
+    if (await ctaSection.isVisible()) {
+      await ctaSection.scrollIntoViewIfNeeded();
+      await page.screenshot({ path: 'homepage-cta-section.png' });
+      console.log('✅ "Ready to Transform Your PM Work?" text found and screenshot captured');
+    } else {
+      console.log('❌ "Ready to Transform Your PM Work?" text NOT found');
+    }
+    
+    // Check all pages consistency
+    const pages = ['/pricing', '/about', '/contact', '/resources'];
+    for (const pagePath of pages) {
+      try {
+        await page.goto(`http://localhost:3006${pagePath}`, { waitUntil: 'networkidle' });
+        await page.screenshot({ path: `page-${pagePath.replace('/', '')}-validation.png`, fullPage: true });
+        
+        // Check for header/footer consistency
+        const header = await page.locator('nav').first();
+        const footer = await page.locator('footer, [data-testid="footer"]').first();
+        
+        console.log(`Page ${pagePath}:`);
+        console.log(`  Header present: ${await header.isVisible()}`);
+        console.log(`  Footer present: ${await footer.isVisible()}`);
+      } catch (error) {
+        console.log(`❌ Error loading ${pagePath}:`, error.message);
+      }
+    }
+    
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    await browser.close();
+  }
 })();

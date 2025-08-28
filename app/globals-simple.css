@@ -1,0 +1,76 @@
+/**
+ * Simple PM33 Global Styles - Core App Only
+ * Minimal, clean styles for reliable rendering
+ */
+
+@tailwind base;
+@tailwind components; 
+@tailwind utilities;
+
+/* Essential PM33 Theme Variables */
+:root {
+  /* Light theme (default) */
+  --pm33-bg: #f9fafb;
+  --pm33-card-bg: rgba(255, 255, 255, 0.8);
+  --pm33-text-primary: #111827;
+  --pm33-text-secondary: #6b7280;
+  --pm33-border: #e5e7eb;
+  --pm33-accent: #3b82f6;
+}
+
+/* Dark theme */
+.dark {
+  --pm33-bg: #111827;
+  --pm33-card-bg: rgba(17, 24, 39, 0.8);
+  --pm33-text-primary: #f9fafb;
+  --pm33-text-secondary: #9ca3af;
+  --pm33-border: #374151;
+  --pm33-accent: #60a5fa;
+}
+
+/* Essential Base Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--pm33-bg);
+  color: var(--pm33-text-primary);
+}
+
+/* Essential Glass Morphism */
+.pm33-glass-card {
+  background: var(--pm33-card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--pm33-border);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.pm33-glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Simple Button Styles */
+.btn-primary {
+  background: var(--pm33-accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}

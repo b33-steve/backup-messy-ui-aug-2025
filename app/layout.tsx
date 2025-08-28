@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import { PM33ThemeProvider } from '../providers/ThemeProvider';
+import { ColorSchemeScript } from '@mantine/core';
+import MantineWrapper from '../components/shared/MantineProvider';
 import PostHogProvider from '../components/PostHogProvider';
 import '@mantine/core/styles.css';
 import './globals.css';
@@ -137,14 +137,12 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <PostHogProvider>
-          <MantineProvider>
-            <PM33ThemeProvider defaultTheme="dark">
-              <div className="min-h-screen transition-all duration-300" 
-                   style={{ background: 'var(--pm33-background)' }}>
-                {children}
-              </div>
-            </PM33ThemeProvider>
-          </MantineProvider>
+          <MantineWrapper>
+            <div className="min-h-screen transition-all duration-300" 
+                 style={{ background: 'var(--pm33-bg-primary)' }}>
+              {children}
+            </div>
+          </MantineWrapper>
         </PostHogProvider>
       </body>
     </html>

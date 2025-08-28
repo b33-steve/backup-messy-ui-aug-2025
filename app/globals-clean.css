@@ -1,0 +1,119 @@
+/* CRITICAL: Reset body margins/padding to prevent white borders */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html, * {
+  box-sizing: border-box;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================================
+   PM33 CLEAN THEME SYSTEM - NEVER BREAKS
+   =============================================== */
+
+/* Dark theme - ALWAYS this gradient */
+.dark {
+  --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.7);
+  --card-bg: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.1);
+}
+
+/* Light theme - HIGH CONTRAST */
+.light {
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e3e7ee 100%);
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --card-bg: rgba(255,255,255,0.9);
+  --border: rgba(0,0,0,0.1);
+}
+
+/* Apply theme to body */
+body {
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+/* Base card styles using CSS variables */
+.card, .pm33-glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* Text styles using CSS variables */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+p, span, div {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* ===============================================
+   PM33 ANIMATIONS & MICRO-INTERACTIONS
+   =============================================== */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(102, 126, 234, 0.5),
+      0 0 40px rgba(102, 126, 234, 0.3),
+      inset 0 0 20px rgba(102, 126, 234, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(102, 126, 234, 0.8),
+      0 0 60px rgba(102, 126, 234, 0.4),
+      inset 0 0 30px rgba(102, 126, 234, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PM33 Animation Classes */
+.pm33-animate-glow { 
+  animation: glow-pulse 2s ease-in-out infinite; 
+}
+
+.pm33-animate-float { 
+  animation: float 3s ease-in-out infinite; 
+}
+
+.pm33-fade-up {
+  animation: fade-up 0.6s ease-out;
+}

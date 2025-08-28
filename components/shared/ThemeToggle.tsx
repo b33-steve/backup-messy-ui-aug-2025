@@ -7,8 +7,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { ActionIcon, Tooltip } from '@mantine/core';
-import { IconSun, IconMoon } from '@tabler/icons-react';
-import { useTheme } from '../../providers/ThemeProvider';
+import { IconSun, IconMoon, IconWand } from '@tabler/icons-react';
+import { useTheme } from './MantineProvider';
 
 interface ThemeToggleProps {
   size?: 'sm' | 'md' | 'lg';
@@ -30,8 +30,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
+    // Simple light/dark toggle to fix double-click issue
+    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
   };
 
   // Prevent hydration mismatch by not rendering until mounted
@@ -47,9 +48,17 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
     );
   }
 
-  const isDark = currentTheme === 'dark';
-  const icon = isDark ? <IconSun size={18} /> : <IconMoon size={18} />;
-  const tooltipLabel = `Switch to ${isDark ? 'light' : 'dark'} mode`;
+  // Get appropriate icon and tooltip for current theme
+  const getThemeIcon = () => {
+    return currentTheme === 'light' ? <IconMoon size={18} /> : <IconSun size={18} />;
+  };
+
+  const getTooltipLabel = () => {
+    return currentTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+  };
+
+  const icon = getThemeIcon();
+  const tooltipLabel = getTooltipLabel();
 
   const button = (
     <ActionIcon

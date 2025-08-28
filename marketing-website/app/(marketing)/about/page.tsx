@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
+    <Box className="marketing-context" py={80} style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
       <Container size="xl">
         <Stack align="center" gap={48} mb={64}>
           <Badge size="lg" variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
@@ -18,7 +18,7 @@ export default function AboutPage() {
             <Title order={1} size="h1" ta="center" lh={1.2}>
               Transforming Product Management with AI
             </Title>
-            <Text size="xl" c="dimmed" ta="center" maw={800}>
+            <Text size="xl" className="marketing-text-secondary" ta="center" maw={800}>
               PM33 was born from the frustration of spending 80% of PM time on busywork instead of strategy. 
               We're building the AI brain that makes every PM tool 10x smarter.
             </Text>
@@ -30,24 +30,24 @@ export default function AboutPage() {
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Stack gap={24}>
               <Badge size="md" variant="light" color="blue">Our Mission</Badge>
-              <Title order={2} size="h2">
+              <Title order={2} size="h2" className="marketing-text-primary">
                 Every PM Should Focus on Strategy, Not Busywork
               </Title>
-              <Text size="lg" lh={1.6}>
+              <Text size="lg" className="marketing-text-secondary" lh={1.6}>
                 Product Managers are the strategic hearts of technology companies, yet most spend their days 
                 writing documents, chasing updates, and managing spreadsheets instead of driving product vision.
               </Text>
-              <Text size="lg" lh={1.6}>
+              <Text size="lg" className="marketing-text-secondary" lh={1.6}>
                 PM33 transforms your existing PM tools—Jira, Linear, Monday.com, Asana—into AI-powered 
                 strategic engines. No migration headaches, just immediate productivity gains.
               </Text>
             </Stack>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card shadow="md" radius="xl" p={32} style={{ backgroundColor: 'var(--marketing-bg-secondary)' }}>
+            <Card className="marketing-glass-card" shadow="md" radius="xl" p={32}>
               <Stack gap={24}>
                 <IconBrain size={48} color="var(--marketing-primary)" />
-                <Title order={3}>The PM33 Difference</Title>
+                <Title order={3} className="marketing-text-primary">The PM33 Difference</Title>
                 <SimpleGrid cols={2} spacing={16}>
                   <div>
                     <Text fw={600} c="indigo">78%</Text>

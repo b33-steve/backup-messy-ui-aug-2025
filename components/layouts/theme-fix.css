@@ -1,0 +1,33 @@
+/* PM33 Theme Fix - CSS Variables */
+:root.dark,
+body.dark {
+  --pm33-bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --pm33-text-primary: #ffffff;
+  --pm33-text-secondary: #cbd5e1;
+  --pm33-glass-bg: rgba(255, 255, 255, 0.05);
+  --pm33-glass-border: rgba(255, 255, 255, 0.1);
+  --pm33-glass-card-bg: rgba(255, 255, 255, 0.08);
+  --pm33-glass-card-hover: rgba(255, 255, 255, 0.1);
+  --pm33-sidebar-bg: rgba(0,0,0,0.2);
+  --pm33-main-bg: transparent;
+}
+
+:root.light,
+body.light {
+  --pm33-bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --pm33-text-primary: #1a1a1a;
+  --pm33-text-secondary: #4b5563;
+  --pm33-glass-bg: rgba(255, 255, 255, 0.8);
+  --pm33-glass-border: rgba(0, 0, 0, 0.1);
+  --pm33-glass-card-bg: rgba(255, 255, 255, 0.9);
+  --pm33-glass-card-hover: rgba(255, 255, 255, 0.95);
+  --pm33-sidebar-bg: rgba(255,255,255,0.9);
+  --pm33-main-bg: #f8f9fa;
+}
+
+/* Apply theme background globally */
+body {
+  background: var(--pm33-bg-gradient) !important;
+  color: var(--pm33-text-primary) !important;
+  transition: all 0.3s ease;
+}

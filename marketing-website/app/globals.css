@@ -21,7 +21,16 @@
    =============================================== */
 
 :root {
-  /* Marketing Color System - Following MARKETING_THEME_GUIDE.md */
+  /* =============================================
+     PM33 MARKETING DESIGN SYSTEM - LIGHT THEME
+     ============================================= */
+  
+  /* Brand Colors - Core PM33 Identity */
+  --pm33-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --pm33-brand-blue: #667eea;
+  --pm33-brand-purple: #764ba2;
+  
+  /* Strategic Marketing Colors */
   --marketing-primary: #1E40AF;          /* Strategic Blue - headlines, CTAs */
   --marketing-primary-hover: #1E3A8A;    /* Strategic Blue hover */
   --marketing-primary-light: #EFF6FF;    /* Strategic Blue light */
@@ -33,17 +42,25 @@
   --marketing-cta-hover: #DC2626;        /* CTA hover */
   --marketing-cta-light: #FFF7ED;        /* CTA light bg */
   
-  /* Professional Text Colors */
+  /* Theme-Aware Text Colors - LIGHT MODE */
   --marketing-text-primary: #1E293B;     /* Headlines, key copy */
   --marketing-text-secondary: #64748B;   /* Supporting copy */
   --marketing-text-muted: #94A3B8;       /* Captions, meta info */
+  --marketing-text-inverse: #FFFFFF;     /* For dark backgrounds only */
   
-  /* Background System */
+  /* Theme-Aware Background System - LIGHT MODE */
   --marketing-bg-primary: #FFFFFF;       /* Clean white base */
   --marketing-bg-secondary: #F8FAFC;     /* Section alternating */
   --marketing-bg-tertiary: #F1F5F9;      /* Light gray */
   --marketing-bg-accent: #EFF6FF;        /* Feature highlights */
   --marketing-bg-gradient: linear-gradient(135deg, #FAFBFF 0%, #F8FAFC 100%);
+  
+  /* Glass Morphism System - LIGHT MODE */
+  --marketing-bg-glass: rgba(255, 255, 255, 0.8);
+  --marketing-bg-glass-subtle: rgba(255, 255, 255, 0.4);
+  --marketing-glass-border: rgba(255, 255, 255, 0.2);
+  --marketing-glass-blur: blur(20px);
+  --marketing-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
   
   /* PM33 Component System Colors - Marketing Context */
   --pm33-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -129,20 +146,38 @@
   color: var(--marketing-text-primary) !important;
 }
 
-/* Marketing Dark Theme Support */
+/* =============================================
+   PM33 MARKETING DESIGN SYSTEM - DARK THEME
+   ============================================= */
+
+[data-theme="dark"] {
+  /* Dark Theme Color Overrides */
+  --marketing-text-primary: #ffffff;
+  --marketing-text-secondary: rgba(255, 255, 255, 0.8);
+  --marketing-text-muted: rgba(255, 255, 255, 0.6);
+  --marketing-text-inverse: #1E293B; /* For light backgrounds in dark mode */
+  
+  --marketing-bg-primary: #0a0e27;
+  --marketing-bg-secondary: #0f1429;
+  --marketing-bg-tertiary: #1a1f3a;
+  --marketing-bg-accent: #1e3a8a;
+  --marketing-bg-gradient: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+  
+  /* Dark Mode Glass Morphism */
+  --marketing-bg-glass: rgba(10, 14, 39, 0.8);
+  --marketing-bg-glass-subtle: rgba(10, 14, 39, 0.4);
+  --marketing-glass-border: rgba(255, 255, 255, 0.1);
+  --marketing-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
 [data-theme="dark"] .marketing-context,
 .dark .marketing-context {
-  background-color: #0a0e27 !important;
-  color: #ffffff !important;
+  background-color: var(--marketing-bg-primary) !important;
+  color: var(--marketing-text-primary) !important;
   
-  --marketing-bg-primary: #0a0e27 !important;
-  --marketing-bg-secondary: #0f1429 !important;
-  --marketing-text-primary: #ffffff !important;
-  --marketing-text-secondary: rgba(255, 255, 255, 0.8) !important;
-  
-  --mantine-color-text: #ffffff !important;
-  --mantine-color-body: #0a0e27 !important;
-  --mantine-color-dimmed: rgba(255, 255, 255, 0.7) !important;
+  --mantine-color-text: var(--marketing-text-primary) !important;
+  --mantine-color-body: var(--marketing-bg-primary) !important;
+  --mantine-color-dimmed: var(--marketing-text-secondary) !important;
 }
 
 [data-theme="dark"] .marketing-context h1,
@@ -189,6 +224,33 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+/* =============================================
+   PM33 GLASS MORPHISM SYSTEM
+   ============================================= */
+
+.marketing-glass-card {
+  background: var(--marketing-bg-glass);
+  backdrop-filter: var(--marketing-glass-blur);
+  -webkit-backdrop-filter: var(--marketing-glass-blur);
+  border: 1px solid var(--marketing-glass-border);
+  border-radius: 20px;
+  box-shadow: var(--marketing-glass-shadow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.marketing-glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.16);
+}
+
+.marketing-glass-subtle {
+  background: var(--marketing-bg-glass-subtle);
+  backdrop-filter: var(--marketing-glass-blur);
+  -webkit-backdrop-filter: var(--marketing-glass-blur);
+  border: 1px solid var(--marketing-glass-border);
+  border-radius: 16px;
+}
+
 /* Marketing utility classes */
 .marketing-text-primary {
   color: var(--marketing-text-primary) !important;
@@ -196,6 +258,32 @@
 
 .marketing-text-secondary {
   color: var(--marketing-text-secondary) !important;
+}
+
+.marketing-text-inverse {
+  color: var(--marketing-text-inverse) !important;
+}
+
+.marketing-gradient-text {
+  background: linear-gradient(45deg, #67e8f9 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 700;
+}
+
+/* CTA Section Styling */
+.marketing-cta-section {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%) !important;
+}
+
+.marketing-cta-section * {
+  color: var(--marketing-text-inverse) !important;
+}
+
+.marketing-cta-section .marketing-text-inverse {
+  color: #ffffff !important;
 }
 
 /* CTA Section specific fixes - Force blue background with white text */

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '../shared/ThemeToggle';
-import { useTheme } from '../../providers/ThemeProvider';
+import { useTheme } from '../shared/MantineProvider';
 import { PM33_DESIGN, getMarketingColor } from './design-system';
 
 export default function IsolatedMarketingNavigation() {
