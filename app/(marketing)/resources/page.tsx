@@ -4,15 +4,10 @@ import React from 'react';
 import { Container, Card, Title, Text, Button, Stack, Badge, SimpleGrid, Group, Box, ThemeIcon } from '@mantine/core';
 import { IconBook, IconVideo, IconDownload, IconBrain, IconTarget, IconTrendingUp, IconUsers, IconFileText } from '@tabler/icons-react';
 import Link from 'next/link';
-import Navigation from '../../../components/marketing/IsolatedMarketingNavigation';
-import Footer from '../../../components/marketing/IsolatedMarketingFooter';
 
 export default function ResourcesPage() {
   return (
-    <div className="marketing-context">
-      <Navigation />
-      <main className="pt-16">
-        <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
+    <Box py={80} style={{ backgroundColor: 'var(--marketing-bg-primary)' }}>
       <Container size="xl">
         <Stack align="center" gap={48} mb={64}>
           <Badge size="lg" variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
@@ -273,10 +268,13 @@ export default function ResourcesPage() {
         </Stack>
 
         {/* CTA Section */}
-        <Card shadow="xl" radius="xl" p={48} mt={64} style={{ backgroundColor: 'var(--marketing-primary)', textAlign: 'center' }}>
+        <Card shadow="xl" radius="xl" p={48} mt={64} style={{ 
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
+          textAlign: 'center' 
+        }}>
           <Stack align="center" gap={24}>
-            <Title order={2} c="white">Ready to Put These Strategies to Work?</Title>
-            <Text size="lg" c="rgba(255, 255, 255, 0.9)" maw={600}>
+            <Title order={2} style={{ color: 'white' }}>Ready to Put These Strategies to Work?</Title>
+            <Text size="lg" style={{ color: 'rgba(255, 255, 255, 0.9)' }} maw={600}>
               PM33's AI engine applies these frameworks automatically to your product decisions.
             </Text>
             <Group gap={16}>
@@ -302,9 +300,6 @@ export default function ResourcesPage() {
           </Stack>
         </Card>
       </Container>
-        </Box>
-      </main>
-      <Footer />
-    </div>
+    </Box>
   );
 }
