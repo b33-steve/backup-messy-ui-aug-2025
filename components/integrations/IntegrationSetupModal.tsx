@@ -230,7 +230,7 @@ export const IntegrationSetupModal: React.FC<IntegrationSetupModalProps> = ({
                 </Text>
                 <List size="sm" mt="xs">
                   {selectedIntegration.features.map((feature, index) => (
-                    <List.Item key={index}>{feature}</List>
+                    <List.Item key={index}>{feature}</List.Item>
                   ))}
                 </List>
               </Alert>
