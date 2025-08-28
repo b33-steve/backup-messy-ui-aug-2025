@@ -8,7 +8,6 @@ import Navigation from '../../../components/marketing/IsolatedMarketingNavigatio
 import Footer from '../../../components/marketing/IsolatedMarketingFooter';
 import TestimonialShowcase from '../../../components/marketing/TestimonialShowcase';
 import SocialProofMetrics from '../../../components/marketing/SocialProofMetrics';
-import ABTestingFramework, { ABTestCTA } from '../../../components/marketing/ABTestingFramework';
 import { analytics } from '../../../lib/analytics';
 
 /**
@@ -94,15 +93,17 @@ export default function SeniorPMScaleUpLandingPage() {
               </Stack>
 
               <Group gap={16}>
-                <ABTestCTA
-                  test="senior_pm_scaleup"
+                <Button 
                   component={Link}
                   href="/trial?utm_source=senior_pm_page&tier=team"
                   onClick={() => handleTrialClick('hero')}
                   rightSection={<IconArrowRight size={20} />}
-                  pageContext="senior_pm_scaleup_hero"
                   size="lg"
-                />
+                  variant="gradient"
+                  gradient={{ from: 'indigo', to: 'purple' }}
+                >
+                  Start Free Trial
+                </Button>
                 
                 <Button 
                   component={Link}
