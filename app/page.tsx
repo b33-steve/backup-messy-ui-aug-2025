@@ -278,8 +278,8 @@ function ConversionOptimizedHomepageContent() {
                       href="/strategic-intelligence-demo"
                       onClick={() => handleDemoClick('strategic_demo')}
                       style={{ 
-                        backgroundColor: 'var(--marketing-bg-primary)',
-                        border: '2px solid var(--marketing-primary)',
+                        backgroundColor: 'var(--mantine-color-white)',
+                        border: '2px solid var(--mantine-color-indigo-6)',
                         cursor: 'pointer',
                         textDecoration: 'none',
                         transition: 'all 0.3s ease'
@@ -307,17 +307,17 @@ function ConversionOptimizedHomepageContent() {
                       
                       <Group justify="space-between">
                         <Stack gap={4}>
-                          <Text size="sm" fw={500} c="var(--pm33-primary)">
+                          <Text size="sm" fw={500} c="indigo.6">
                             ✨ {userSegment === 'startup-pm' ? 'Growth opportunity analysis' : 
                                 userSegment === 'enterprise-pmo' ? 'Portfolio optimization' : 
                                 'Multi-framework analysis'}
                           </Text>
-                          <Text size="sm" fw={500} c="var(--pm33-primary)">
+                          <Text size="sm" fw={500} c="indigo.6">
                             🎯 {userSegment === 'startup-pm' ? 'Investor-ready metrics' : 
                                 userSegment === 'enterprise-pmo' ? 'Board-level reporting' : 
                                 'Confidence-scored recommendations'}
                           </Text>
-                          <Text size="sm" fw={500} c="var(--pm33-primary)">⚡ Real-time strategic insights</Text>
+                          <Text size="sm" fw={500} c="indigo.6">⚡ Real-time strategic insights</Text>
                         </Stack>
                         <Button variant="light" size="sm" rightSection={<IconArrowRight size={16} />}>
                           Try Now
@@ -334,8 +334,8 @@ function ConversionOptimizedHomepageContent() {
                       href="/command-center-demo"
                       onClick={() => handleDemoClick('command_center')}
                       style={{ 
-                        backgroundColor: 'var(--marketing-bg-primary)',
-                        border: '2px solid var(--marketing-cta)',
+                        backgroundColor: 'var(--mantine-color-white)',
+                        border: '2px solid var(--mantine-color-cyan-6)',
                         cursor: 'pointer',
                         textDecoration: 'none',
                         transition: 'all 0.3s ease'

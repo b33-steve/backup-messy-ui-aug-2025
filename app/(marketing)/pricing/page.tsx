@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Card, Title, Text, Button, Stack, Box, Badge, Group, SimpleGrid, Switch, Divider, List, ThemeIcon, Center, Progress } from '@mantine/core';
+import { Container, Card, Title, Text, Button, Stack, Box, Badge, Group, SimpleGrid, Switch, Divider, List, ThemeIcon, Center, Progress, Slider, NumberInput } from '@mantine/core';
 import { IconCheck, IconArrowRight, IconCalculator, IconTrendingUp, IconUsers, IconBolt, IconStar, IconShield, IconClock } from '@tabler/icons-react';
 import Link from 'next/link';
 import TestimonialShowcase from '../../../components/marketing/TestimonialShowcase';
@@ -53,53 +53,6 @@ export default function ConversionOptimizedPricingPage() {
     <div>
         <Box style={{ backgroundColor: 'var(--pm33-bg-primary)', minHeight: '100vh' }}>
           
-          {/* Hero Section with Value Proposition */}
-          <Box py={80} style={{ background: 'linear-gradient(135deg, var(--marketing-bg-secondary) 0%, var(--marketing-bg-primary) 100%)' }}>
-            <Container size="xl">
-              <Stack align="center" gap={32} mb={48}>
-                <Badge size="xl" variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>
-                  💰 Save $45,000+ annually vs hiring consultants
-                </Badge>
-                
-                <Stack align="center" gap={16}>
-                  <Title order={1} size="h1" ta="center" maw={800} lh={1.1}>
-                    Transform Your PM Team Into a{' '}
-                    <Text span variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>
-                      Strategic Powerhouse
-                    </Text>
-                  </Title>
-                  <Text size="xl" c="dimmed" ta="center" maw={600} lh={1.6}>
-                    Join 2,500+ Product Managers using PM33 to focus on strategy, not busywork. 
-                    <Text span fw={600} c="indigo.6"> 78% faster feature delivery guaranteed.</Text>
-                  </Text>
-                </Stack>
-
-                {/* ROI Calculator Preview */}
-                <Card shadow="xl" radius="xl" p={32} maw={500} style={{ border: '2px solid var(--marketing-primary)' }}>
-                  <Group mb={16}>
-                    <ThemeIcon size={32} variant="gradient" gradient={{ from: 'green', to: 'teal' }}>
-                      <IconCalculator size={18} />
-                    </ThemeIcon>
-                    <Text fw={700} size="lg">Your Potential Savings</Text>
-                  </Group>
-                  <SimpleGrid cols={2} spacing={16}>
-                    <div>
-                      <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Monthly Savings</Text>
-                      <Text size="xl" fw={900} c="green.6">${totalMonthlySavings.toLocaleString()}</Text>
-                    </div>
-                    <div>
-                      <Text size="xs" c="dimmed" tt="uppercase" fw={600}>ROI</Text>
-                      <Text size="xl" fw={900} c="green.6">{roiPercentage}%</Text>
-                    </div>
-                  </SimpleGrid>
-                  <Progress value={Math.min(100, parseInt(roiPercentage) / 10)} color="green" size="sm" mt={12} />
-                  <Text size="sm" c="dimmed" ta="center" mt={8}>
-                    Based on average PM salary and consulting costs
-                  </Text>
-                </Card>
-              </Stack>
-            </Container>
-          </Box>
 
           {/* Pricing Toggle */}
           <Container size="xl" py={48}>
@@ -381,14 +334,62 @@ export default function ConversionOptimizedPricingPage() {
                     <Title order={3} size="h4">Your Current Costs</Title>
                     
                     <div>
-                      <Text size="sm" fw={600} mb={8}>PM Salary (annual)</Text>
-                      <Text size="xl" fw={700}>${roiInputs.currentPMSalary.toLocaleString()}</Text>
-                      <Text size="xs" c="dimmed">Time lost to busywork: {roiInputs.timeSpentOnBusywork}%</Text>
+                      <Text size="sm" fw={600} mb={8}>Annual PM Salary: ${roiInputs.currentPMSalary.toLocaleString()}</Text>
+                      <Slider
+                        value={roiInputs.currentPMSalary}
+                        onChange={(value) => setRoiInputs({...roiInputs, currentPMSalary: value})}
+                        min={60000}
+                        max={250000}
+                        step={10000}
+                        marks={[
+                          { value: 60000, label: '$60K' },
+                          { value: 120000, label: '$120K' },
+                          { value: 180000, label: '$180K' },
+                          { value: 250000, label: '$250K' }
+                        ]}
+                        color="indigo"
+                        mb={8}
+                      />
+                      <Text size="xs" c="dimmed">Monthly salary cost: ${Math.round(roiInputs.currentPMSalary/12).toLocaleString()}</Text>
                     </div>
 
                     <div>
-                      <Text size="sm" fw={600} mb={8}>Strategic Consultant Hours/Month</Text>
-                      <Text size="xl" fw={700}>{roiInputs.consultantHours} hours</Text>
+                      <Text size="sm" fw={600} mb={8}>Time spent on busywork: {roiInputs.timeSpentOnBusywork}%</Text>
+                      <Slider
+                        value={roiInputs.timeSpentOnBusywork}
+                        onChange={(value) => setRoiInputs({...roiInputs, timeSpentOnBusywork: value})}
+                        min={20}
+                        max={80}
+                        step={5}
+                        marks={[
+                          { value: 20, label: '20%' },
+                          { value: 40, label: '40%' },
+                          { value: 60, label: '60%' },
+                          { value: 80, label: '80%' }
+                        ]}
+                        color="orange"
+                        mb={8}
+                      />
+                      <Text size="xs" c="dimmed">Monthly waste: ${Math.round(monthlyPMCost).toLocaleString()}</Text>
+                    </div>
+
+                    <div>
+                      <Text size="sm" fw={600} mb={8}>Consultant hours per month: {roiInputs.consultantHours}</Text>
+                      <Slider
+                        value={roiInputs.consultantHours}
+                        onChange={(value) => setRoiInputs({...roiInputs, consultantHours: value})}
+                        min={0}
+                        max={50}
+                        step={5}
+                        marks={[
+                          { value: 0, label: '0' },
+                          { value: 20, label: '20' },
+                          { value: 40, label: '40' },
+                          { value: 50, label: '50+' }
+                        ]}
+                        color="green"
+                        mb={8}
+                      />
                       <Text size="xs" c="dimmed">At $300/hour = ${consultantCost.toLocaleString()}/month</Text>
                     </div>
 
