@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <Box py={80} style={{ backgroundColor: 'var(--mantine-color-white)' }}>
+    <Box py={80} style={{ backgroundColor: 'var(--color-bg-primary)', color: 'var(--color-text-primary)' }}>
       <Container size="xl">
         <Stack align="center" gap={48} mb={64}>
           <Badge size="lg" variant="gradient" gradient={{ from: 'indigo', to: 'purple' }}>

@@ -139,6 +139,69 @@ html, body {
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ===== DARK MODE THEME VARIABLES ===== */
+.dark {
+  /* Dark mode colors */
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  
+  --color-border: #334155;
+  --color-border-hover: #475569;
+  
+  /* Brand Gradients - Dark Mode */
+  --gradient-text: #ffffff; /* White text for dark backgrounds */
+  
+  /* Marketing-specific Variables - Dark Mode */
+  --marketing-bg-primary: var(--color-bg-primary);
+  --marketing-bg-secondary: var(--color-bg-secondary);
+  
+  /* PM33 Marketing Variables - Dark Mode */
+  --pm33-marketingBg: rgba(30, 41, 59, 0.95);
+  --pm33-marketingText: var(--color-text-primary);
+  
+  /* Glass Morphism Foundation - Dark Mode */
+  --glass-bg: rgba(30, 41, 59, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode colors for system preference */
+    --color-bg-primary: #0f172a;
+    --color-bg-secondary: #1e293b;
+    --color-bg-tertiary: #334155;
+    
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #e2e8f0;
+    --color-text-muted: #94a3b8;
+    
+    --color-border: #334155;
+    --color-border-hover: #475569;
+    
+    /* Brand Gradients - Dark Mode */
+    --gradient-text: #ffffff; /* White text for dark backgrounds */
+    
+    /* Marketing-specific Variables - Dark Mode */
+    --marketing-bg-primary: var(--color-bg-primary);
+    --marketing-bg-secondary: var(--color-bg-secondary);
+    
+    /* PM33 Marketing Variables - Dark Mode */
+    --pm33-marketingBg: rgba(30, 41, 59, 0.95);
+    --pm33-marketingText: var(--color-text-primary);
+    
+    /* Glass Morphism Foundation - Dark Mode */
+    --glass-bg: rgba(30, 41, 59, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}
+
 /* ===== BASE STYLES ===== */
 body {
   background-color: var(--color-bg-primary);
@@ -147,6 +210,41 @@ body {
   line-height: 1.6;
   transition: background-color var(--duration-normal) var(--ease-smooth),
               color var(--duration-normal) var(--ease-smooth);
+  padding-top: 80px; /* Account for fixed header */
+}
+
+/* Glass Header Styles */
+.glass-header {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideDown 0.3s ease-out;
+}
+
+.glass-header:hover {
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Glass Header Animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }
 
 /* ===== COMPONENT LAYER ===== */
@@ -350,6 +448,16 @@ body {
   .dark .nav-item.active {
     color: var(--pm33-primary) !important;
     background: rgba(8, 145, 178, 0.15) !important;
+  }
+
+  /* Company logo carousel animation */
+  @keyframes scroll-logos {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% / 2));
+    }
   }
   
   .nav-item.active {

@@ -267,38 +267,19 @@ export default function ResourcesPage() {
           </SimpleGrid>
         </Stack>
 
-        {/* CTA Section */}
+        {/* CTA Section - Theme Aware */}
         <Card shadow="xl" radius="xl" p={48} mt={64} style={{ 
-          background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', 
+          background: 'var(--marketing-gradient-primary)', 
           textAlign: 'center' 
         }}>
           <Stack align="center" gap={24}>
-            <Title order={2} style={{ color: '#ffffff', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>Ready to Put These Strategies to Work?</Title>
-            <Text size="lg" style={{ color: '#e2e8f0', textShadow: '0 1px 2px rgba(0,0,0,0.2)' }} maw={600}>
+            <Title order={2} style={{ color: 'var(--marketing-text-on-gradient)' }}>Ready to Put These Strategies to Work?</Title>
+            <Text size="lg" style={{ color: 'var(--marketing-text-on-gradient-secondary)' }} maw={600}>
               PM33's AI engine applies these frameworks automatically to your product decisions.
             </Text>
-            <Group gap={16}>
-              <Button 
-                component={Link} 
-                href="/trial" 
-                size="lg" 
-                variant="white" 
-                color="dark"
-              >
-                Start Free Trial
-              </Button>
-              <Button 
-                component={Link} 
-                href="/strategic-intelligence-demo" 
-                size="lg" 
-                variant="outline"
-                style={{ borderColor: '#e2e8f0', color: '#e2e8f0', backgroundColor: 'rgba(226, 232, 240, 0.1)' }}
-              >
-                See AI in Action
-              </Button>
-            </Group>
           </Stack>
         </Card>
+
       </Container>
     </Box>
   );

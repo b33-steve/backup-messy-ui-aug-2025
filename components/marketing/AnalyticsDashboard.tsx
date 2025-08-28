@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { analytics } from '../../lib/analytics';
 
@@ -14,7 +14,8 @@ interface AnalyticsDashboardProps {
   children: React.ReactNode;
 }
 
-export default function AnalyticsDashboard({ children }: AnalyticsDashboardProps) {
+// Separate component for analytics tracking that uses useSearchParams
+function AnalyticsTracker({ children }: AnalyticsDashboardProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -42,6 +43,15 @@ export default function AnalyticsDashboard({ children }: AnalyticsDashboardProps
   }, [pathname, searchParams]);
 
   return <>{children}</>;
+}
+
+// Main component wrapper with Suspense boundary
+export default function AnalyticsDashboard({ children }: AnalyticsDashboardProps) {
+  return (
+    <Suspense fallback={<>{children}</>}>
+      <AnalyticsTracker>{children}</AnalyticsTracker>
+    </Suspense>
+  );
 }
 
 function getPageNameFromPath(pathname: string): string {

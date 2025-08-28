@@ -125,7 +125,7 @@ const pm33CssVariablesResolver: CSSVariablesResolver = (theme) => ({
     '--mantine-color-indigo-3': 'var(--pm33-primary-300)',
     '--mantine-color-indigo-4': 'var(--pm33-primary-400)',
     '--mantine-color-indigo-5': 'var(--pm33-primary)',
-    '--mantine-color-indigo-6': 'var(--pm33-primary)',          // c="indigo.6" → primary
+    '--mantine-color-indigo-6': 'var(--pm33-primary-400)',    // c="indigo.6" → lighter primary for readability
     '--mantine-color-indigo-7': 'var(--pm33-primary)',
     '--mantine-color-indigo-8': 'var(--pm33-primary-800)',
     '--mantine-color-indigo-9': 'var(--pm33-primary-900)',
@@ -136,8 +136,8 @@ const pm33CssVariablesResolver: CSSVariablesResolver = (theme) => ({
     '--mantine-color-blue-2': 'var(--pm33-primary-200)',
     '--mantine-color-blue-3': 'var(--pm33-primary-300)',
     '--mantine-color-blue-4': 'var(--pm33-primary-400)',
-    '--mantine-color-blue-5': 'var(--pm33-primary)',
-    '--mantine-color-blue-6': 'var(--pm33-primary)',
+    '--mantine-color-blue-5': 'var(--pm33-primary-400)',    // c="blue.5" → lighter for readability
+    '--mantine-color-blue-6': 'var(--pm33-primary-400)',    // c="blue.6" → lighter for readability
     '--mantine-color-blue-7': 'var(--pm33-primary)',
     '--mantine-color-blue-8': 'var(--pm33-primary-800)',
     '--mantine-color-blue-9': 'var(--pm33-primary-900)',
@@ -290,9 +290,9 @@ const pm33CssVariablesResolver: CSSVariablesResolver = (theme) => ({
     '--mantine-color-indigo-1': 'var(--pm33-primary-200)',
     '--mantine-color-indigo-2': 'var(--pm33-primary-300)',
     '--mantine-color-indigo-3': 'var(--pm33-primary-400)',
-    '--mantine-color-indigo-4': 'var(--pm33-primary)',
+    '--mantine-color-indigo-4': 'var(--pm33-primary-400)',    // c="indigo.4" → lighter primary for readability
     '--mantine-color-indigo-5': 'var(--pm33-primary)',
-    '--mantine-color-indigo-6': 'var(--pm33-primary)',          // c="indigo.6" → primary
+    '--mantine-color-indigo-6': 'var(--pm33-primary-400)',    // c="indigo.6" → lighter primary for readability
     '--mantine-color-indigo-7': 'var(--pm33-primary)',
     '--mantine-color-indigo-8': 'var(--pm33-primary-800)',
     '--mantine-color-indigo-9': 'var(--pm33-primary-900)',
@@ -302,9 +302,9 @@ const pm33CssVariablesResolver: CSSVariablesResolver = (theme) => ({
     '--mantine-color-blue-1': 'var(--pm33-primary-200)',
     '--mantine-color-blue-2': 'var(--pm33-primary-300)',
     '--mantine-color-blue-3': 'var(--pm33-primary-400)',
-    '--mantine-color-blue-4': 'var(--pm33-primary)',
-    '--mantine-color-blue-5': 'var(--pm33-primary)',
-    '--mantine-color-blue-6': 'var(--pm33-primary)',
+    '--mantine-color-blue-4': 'var(--pm33-primary-400)',    // c="blue.4" → lighter for readability
+    '--mantine-color-blue-5': 'var(--pm33-primary-400)',    // c="blue.5" → lighter for readability
+    '--mantine-color-blue-6': 'var(--pm33-primary-400)',    // c="blue.6" → lighter for readability
     '--mantine-color-blue-7': 'var(--pm33-primary)',
     '--mantine-color-blue-8': 'var(--pm33-primary-800)',
     '--mantine-color-blue-9': 'var(--pm33-primary-900)',

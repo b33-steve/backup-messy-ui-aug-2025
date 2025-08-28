@@ -24,16 +24,26 @@ export default function IsolatedMarketingNavigation() {
 
   return (
     <nav style={{
-      position: 'sticky',
+      position: 'fixed',
       top: 0,
-      zIndex: 50,
-      backgroundColor: 'var(--pm33-marketingBg)',
-      backdropFilter: 'blur(12px)',
-      borderBottom: '1px solid var(--pm33-border)',
+      left: 0,
+      right: 0,
+      zIndex: 1000,
+      backgroundColor: currentTheme === 'dark' 
+        ? 'rgba(15, 23, 42, 0.65)'  // More transparent dark mode glass
+        : 'rgba(255, 255, 255, 0.65)', // More transparent light mode glass
+      backdropFilter: 'blur(24px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(24px) saturate(180%)', // Safari support
+      borderBottom: currentTheme === 'dark' 
+        ? '1px solid rgba(255, 255, 255, 0.1)'
+        : '1px solid rgba(0, 0, 0, 0.1)',
       padding: '16px 0',
-      transition: 'all 0.3s ease'
+      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+      boxShadow: currentTheme === 'dark'
+        ? '0 4px 20px rgba(0, 0, 0, 0.3)'
+        : '0 4px 20px rgba(0, 0, 0, 0.1)'
     }}
-    className="theme-transition">
+    className="theme-transition glass-header">
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto',
@@ -63,13 +73,29 @@ export default function IsolatedMarketingNavigation() {
               href={link.href}
               style={{
                 textDecoration: 'none',
-                color: isActive(link.href) ? 'var(--pm33-primary)' : 'var(--pm33-marketingText)',
-                fontWeight: isActive(link.href) ? 600 : 500,
+                color: isActive(link.href) 
+                  ? (currentTheme === 'dark' ? '#ffffff' : 'var(--pm33-primary)')
+                  : 'var(--pm33-marketingText)',
+                fontWeight: isActive(link.href) ? 700 : 500,
                 fontSize: '14px',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                borderBottom: isActive(link.href) ? '2px solid var(--pm33-primary)' : undefined,
-                transition: 'all 0.2s ease'
+                padding: '10px 16px',
+                borderRadius: '12px',
+                background: isActive(link.href) 
+                  ? (currentTheme === 'dark' 
+                      ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)'
+                      : 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)')
+                  : 'transparent',
+                border: isActive(link.href) 
+                  ? (currentTheme === 'dark' 
+                      ? '1px solid rgba(255, 255, 255, 0.2)'
+                      : '1px solid var(--pm33-primary)')
+                  : '1px solid transparent',
+                boxShadow: isActive(link.href) 
+                  ? (currentTheme === 'dark' 
+                      ? '0 4px 12px rgba(99, 102, 241, 0.3)'
+                      : '0 2px 8px rgba(99, 102, 241, 0.2)')
+                  : 'none',
+                transition: 'all 0.3s ease'
               }}
             >
               {link.label}

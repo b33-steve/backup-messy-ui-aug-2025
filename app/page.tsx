@@ -12,6 +12,8 @@ import TestimonialShowcase from '../components/marketing/TestimonialShowcase';
 import SocialProofMetrics from '../components/marketing/SocialProofMetrics';
 import ABTestingFramework, { ABTestCTA } from '../components/marketing/ABTestingFramework';
 import CompanyLogoCarousel from '../components/marketing/CompanyLogoCarousel';
+import TrustBadges from '../components/marketing/TrustBadges';
+import ICPCarousel from '../components/marketing/ICPCarousel';
 import AnalyticsDashboard, { useAnalyticsContext } from '../components/marketing/AnalyticsDashboard';
 import { analytics } from '../lib/analytics';
 
@@ -191,6 +193,9 @@ function ConversionOptimizedHomepageContent() {
               </Container>
             </Box>
 
+            {/* Trust Badges Section */}
+            <TrustBadges layout="horizontal" showMetrics={true} />
+
             {/* Pain Points Section - Segment Specific */}
             <Container size="xl" py={80}>
               <SegmentMessaging 
@@ -223,6 +228,9 @@ function ConversionOptimizedHomepageContent() {
                 />
               </Container>
             </Box>
+
+            {/* ICP Carousel - Ideal Customer Profiles */}
+            <ICPCarousel autoRotate={true} showControls={true} />
 
             {/* Customer Testimonials - Dynamic by Segment */}
             <Container size="xl" py={80}>
@@ -282,8 +290,9 @@ function ConversionOptimizedHomepageContent() {
                       href="/strategic-intelligence-demo"
                       onClick={() => handleDemoClick('strategic_demo')}
                       style={{ 
-                        backgroundColor: 'var(--mantine-color-white)',
-                        border: '2px solid var(--mantine-color-indigo-6)',
+                        backgroundColor: 'var(--color-bg-primary)',
+                        color: 'var(--color-text-primary)',
+                        border: '2px solid var(--mantine-color-indigo-4)',
                         cursor: 'pointer',
                         textDecoration: 'none',
                         transition: 'all 0.3s ease'
@@ -312,17 +321,17 @@ function ConversionOptimizedHomepageContent() {
                       
                       <Group justify="space-between">
                         <Stack gap={4}>
-                          <Text size="sm" fw={500} c="indigo.6">
+                          <Text size="sm" fw={500} c="indigo.4">
                             ✨ {userSegment === 'startup-pm' ? 'Growth opportunity analysis' : 
                                 userSegment === 'enterprise-pmo' ? 'Portfolio optimization' : 
                                 'Multi-framework analysis'}
                           </Text>
-                          <Text size="sm" fw={500} c="indigo.6">
+                          <Text size="sm" fw={500} c="indigo.4">
                             🎯 {userSegment === 'startup-pm' ? 'Investor-ready metrics' : 
                                 userSegment === 'enterprise-pmo' ? 'Board-level reporting' : 
                                 'Confidence-scored recommendations'}
                           </Text>
-                          <Text size="sm" fw={500} c="indigo.6">⚡ Real-time strategic insights</Text>
+                          <Text size="sm" fw={500} c="indigo.4">⚡ Real-time strategic insights</Text>
                         </Stack>
                         <Button variant="light" size="sm" rightSection={<IconArrowRight size={16} />}>
                           Try Now
@@ -339,7 +348,8 @@ function ConversionOptimizedHomepageContent() {
                       href="/command-center-demo"
                       onClick={() => handleDemoClick('command_center')}
                       style={{ 
-                        backgroundColor: 'var(--mantine-color-white)',
+                        backgroundColor: 'var(--color-bg-primary)',
+                        color: 'var(--color-text-primary)',
                         border: '2px solid var(--mantine-color-cyan-6)',
                         cursor: 'pointer',
                         textDecoration: 'none',
@@ -369,17 +379,17 @@ function ConversionOptimizedHomepageContent() {
                       
                       <Group justify="space-between">
                         <Stack gap={4}>
-                          <Text size="sm" fw={500} c="cyan.6">
+                          <Text size="sm" fw={500} c="cyan.4">
                             🤖 {userSegment === 'startup-pm' ? 'Lean startup automation' : 
                                 userSegment === 'enterprise-pmo' ? 'Enterprise AI coordination' : 
                                 '4 AI teams coordination'}
                           </Text>
-                          <Text size="sm" fw={500} c="cyan.6">
+                          <Text size="sm" fw={500} c="cyan.4">
                             📊 {userSegment === 'startup-pm' ? 'Growth metrics tracking' : 
                                 userSegment === 'enterprise-pmo' ? 'Executive dashboards' : 
                                 'Real-time strategic metrics'}
                           </Text>
-                          <Text size="sm" fw={500} c="cyan.6">🔄 End-to-end workflow automation</Text>
+                          <Text size="sm" fw={500} c="cyan.4">🔄 End-to-end workflow automation</Text>
                         </Stack>
                         <Button variant="light" size="sm" rightSection={<IconArrowRight size={16} />}>
                           Try Now
@@ -425,6 +435,16 @@ function ConversionOptimizedHomepageContent() {
                     Start Free Trial
                   </Button>
                 </Group>
+              </Stack>
+            </Container>
+
+            {/* Additional Trust Elements */}
+            <Container size="xl" py={60}>
+              <Stack align="center" gap={32}>
+                <Text size="sm" fw={700} c="dimmed" tt="uppercase" ta="center" lts={1}>
+                  Security & Compliance You Can Trust
+                </Text>
+                <TrustBadges layout="grid" showMetrics={false} />
               </Stack>
             </Container>
 

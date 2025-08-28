@@ -94,16 +94,6 @@ export default function CompanyLogoCarousel() {
         </Stack>
       </Container>
       
-      <style jsx>{`
-        @keyframes scroll-logos {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% / 2));
-          }
-        }
-      `}</style>
     </Box>
   );
 }

@@ -295,25 +295,25 @@ export default function AIProjectManagementSoftwareGuidePage() {
           </SimpleGrid>
         </Box>
 
-        {/* Landing Page CTA Section */}
+        {/* Landing Page CTA Section - Theme Aware */}
         <Box mt={80}>
           <Card shadow="xl" radius="xl" p={48} style={{ 
-            background: 'linear-gradient(135deg, var(--marketing-primary) 0%, var(--marketing-cta) 100%)',
+            background: 'var(--marketing-gradient-primary)',
             textAlign: 'center'
           }}>
             <Stack align="center" gap={32}>
-              <Badge size="lg" color="white" variant="light" leftSection={<IconSparkles size={16} />}>
+              <Badge size="lg" variant="gradient" gradient={{ from: 'indigo', to: 'purple' }} leftSection={<IconSparkles size={16} />}>
                 Ready to Choose Your AI PM Strategy?
               </Badge>
               
-              <Title order={2} c="white" size="h1" maw={700} lh={1.1}>
+              <Title order={2} style={{ color: 'var(--marketing-text-on-gradient)' }} size="h1" maw={700} lh={1.1}>
                 Skip the Migration Headaches.
                 <Text span style={{ display: 'block', marginTop: 8 }}>
                   Supercharge Your Current Stack.
                 </Text>
               </Title>
               
-              <Text size="xl" c="rgba(255, 255, 255, 0.9)" maw={600} lh={1.6}>
+              <Text size="xl" style={{ color: 'var(--marketing-text-on-gradient-secondary)' }} maw={600} lh={1.6}>
                 See why PM33's enhancement approach beats replacement for 92% of product teams.
               </Text>
               
@@ -322,8 +322,8 @@ export default function AIProjectManagementSoftwareGuidePage() {
                   component={Link}
                   href="/trial"
                   size="xl"
-                  variant="white"
-                  color="dark"
+                  variant="gradient"
+                  gradient={{ from: 'indigo', to: 'purple' }}
                   rightSection={<IconArrowRight size={20} />}
                   style={{ borderRadius: 16, fontWeight: 700 }}
                 >
@@ -335,8 +335,8 @@ export default function AIProjectManagementSoftwareGuidePage() {
                   size="xl"
                   variant="outline"
                   style={{ 
-                    borderColor: 'rgba(255, 255, 255, 0.5)',
-                    color: 'white',
+                    borderColor: 'var(--marketing-border-on-gradient)',
+                    color: 'var(--marketing-text-on-gradient)',
                     borderRadius: 16 
                   }}
                   leftSection={<IconBrain size={20} />}
@@ -354,8 +354,8 @@ export default function AIProjectManagementSoftwareGuidePage() {
                   const IconComponent = item.icon;
                   return (
                     <Group key={index} gap={8}>
-                      <IconComponent size={20} color="rgba(167, 243, 208, 1)" />
-                      <Text c="rgba(255, 255, 255, 0.9)" fw={500} size="sm">
+                      <IconComponent size={20} style={{ color: 'var(--marketing-accent-on-gradient)' }} />
+                      <Text style={{ color: 'var(--marketing-text-on-gradient-secondary)' }} fw={500} size="sm">
                         {item.text}
                       </Text>
                     </Group>

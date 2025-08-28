@@ -55,13 +55,24 @@ export default function ConversionOptimizedPricingPage() {
           {/* Pricing Toggle */}
           <Container size="xl" py={64}>
             <Center mb={64}>
-              <Card shadow="md" radius="xl" p={32} style={{ border: '2px solid var(--mantine-color-gray-2)' }}>
-                <Group gap={32} justify="center">
+              <Card 
+                shadow="xl" 
+                radius="xl" 
+                p={40} 
+                style={{ 
+                  border: '3px solid var(--mantine-color-indigo-2)',
+                  backgroundColor: 'var(--color-bg-primary)',
+                  color: 'var(--color-text-primary)',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <Group gap={40} justify="center" align="center">
                   <Text 
-                    fw={600} 
+                    fw={700} 
                     style={{ 
-                      color: !isAnnual ? 'var(--mantine-color-indigo-6)' : 'var(--mantine-color-gray-6)',
-                      fontSize: '18px'
+                      color: !isAnnual ? 'var(--mantine-color-indigo-7)' : 'var(--mantine-color-gray-7)',
+                      fontSize: '20px',
+                      transition: 'all 0.3s ease'
                     }}
                   >
                     Monthly
@@ -71,30 +82,69 @@ export default function ConversionOptimizedPricingPage() {
                     checked={isAnnual}
                     onChange={(event) => setIsAnnual(event.currentTarget.checked)}
                     color="indigo"
-                    style={{
-                      '& .mantine-Switch-track': {
-                        border: '2px solid var(--mantine-color-gray-4)'
+                    thumbIcon={
+                      isAnnual ? (
+                        <IconCheck size={12} color="white" stroke={3} />
+                      ) : null
+                    }
+                    styles={{
+                      root: {
+                        cursor: 'pointer'
+                      },
+                      input: {
+                        cursor: 'pointer'
+                      },
+                      track: {
+                        border: '3px solid var(--mantine-color-indigo-3)',
+                        backgroundColor: isAnnual ? 'var(--mantine-color-indigo-6)' : 'var(--mantine-color-gray-4)',
+                        minWidth: '70px',
+                        height: '36px',
+                        cursor: 'pointer'
+                      },
+                      thumb: {
+                        border: '3px solid var(--mantine-color-indigo-7)',
+                        width: '28px',
+                        height: '28px',
+                        backgroundColor: 'white',
+                        boxShadow: '0 4px 12px rgba(30, 58, 138, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1)',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      },
+                      body: {
+                        alignItems: 'center'
                       }
                     }}
                   />
-                  <Stack gap={4} align="center">
+                  <Stack gap={8} align="center">
                     <Text 
-                      fw={600}
+                      fw={700}
                       style={{ 
-                        color: isAnnual ? 'var(--mantine-color-indigo-6)' : 'var(--mantine-color-gray-6)',
-                        fontSize: '18px'
+                        color: isAnnual ? 'var(--mantine-color-indigo-7)' : 'var(--mantine-color-gray-7)',
+                        fontSize: '20px',
+                        transition: 'all 0.3s ease'
                       }}
                     >
                       Annual
                     </Text>
-                    <Badge size="sm" color="green" variant="filled">Save 25%</Badge>
+                    <Badge 
+                      size="lg" 
+                      color="green" 
+                      variant="filled"
+                      style={{
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+                      }}
+                    >
+                      💰 Save 25%
+                    </Badge>
                   </Stack>
                 </Group>
               </Card>
             </Center>
 
             {/* Pricing Tiers */}
-            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={32}>
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={32} mt={32}>
               
               {/* Starter Tier */}
               <Card shadow="md" radius="xl" p={32} h="fit-content">
@@ -147,7 +197,8 @@ export default function ConversionOptimizedPricingPage() {
                   border: '3px solid var(--mantine-color-indigo-5)',
                   transform: 'scale(1.05)',
                   position: 'relative',
-                  background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%)'
+                  background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%)',
+                  overflow: 'visible'
                 }}
               >
                 <Badge 
@@ -156,12 +207,24 @@ export default function ConversionOptimizedPricingPage() {
                   gradient={{ from: 'indigo', to: 'purple' }}
                   style={{ 
                     position: 'absolute', 
-                    top: -16, 
+                    top: -18, 
                     left: '50%', 
                     transform: 'translateX(-50%)',
                     fontSize: '14px',
-                    height: '32px',
-                    padding: '0 16px'
+                    fontWeight: 700,
+                    height: '36px',
+                    padding: '8px 24px',
+                    minWidth: '150px',
+                    width: 'auto',
+                    maxWidth: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 10,
+                    boxShadow: '0 4px 12px rgba(79, 70, 229, 0.3)',
+                    border: '2px solid var(--color-bg-primary)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'visible'
                   }}
                 >
                   🔥 Most Popular
@@ -181,7 +244,7 @@ export default function ConversionOptimizedPricingPage() {
                         $708 billed annually (save $240)
                       </Text>
                     )}
-                    <Text size="sm" c="indigo.6" mt={8} fw={600}>
+                    <Text size="sm" c="indigo.4" mt={8} fw={600}>
                       🎯 Most Popular - 1,043 customers = $82.4K MRR
                     </Text>
                   </div>
@@ -205,7 +268,7 @@ export default function ConversionOptimizedPricingPage() {
                       </ThemeIcon>
                       <Text size="sm" fw={600} c="indigo.7">Value Guarantee</Text>
                     </Group>
-                    <Text size="xs" c="indigo.6">
+                    <Text size="xs" c="indigo.4">
                       Save $45,000+ annually vs hiring strategic consultants
                     </Text>
                   </Card>
@@ -372,9 +435,10 @@ export default function ConversionOptimizedPricingPage() {
                           { value: 250000, label: '$250K' }
                         ]}
                         color="indigo"
-                        mb={8}
+                        mb={24}
+                        style={{ paddingBottom: '8px' }}
                       />
-                      <Text size="xs" c="dimmed">Monthly salary cost: ${Math.round(roiInputs.currentPMSalary/12).toLocaleString()}</Text>
+                      <Text size="xs" c="dimmed" mt={8}>Monthly salary cost: ${Math.round(roiInputs.currentPMSalary/12).toLocaleString()}</Text>
                     </div>
 
                     <div>
@@ -392,9 +456,10 @@ export default function ConversionOptimizedPricingPage() {
                           { value: 80, label: '80%' }
                         ]}
                         color="orange"
-                        mb={8}
+                        mb={24}
+                        style={{ paddingBottom: '8px' }}
                       />
-                      <Text size="xs" c="dimmed">Monthly waste: ${Math.round(monthlyPMCost).toLocaleString()}</Text>
+                      <Text size="xs" c="dimmed" mt={8}>Monthly waste: ${Math.round(monthlyPMCost).toLocaleString()}</Text>
                     </div>
 
                     <div>
@@ -412,9 +477,10 @@ export default function ConversionOptimizedPricingPage() {
                           { value: 50, label: '50+' }
                         ]}
                         color="green"
-                        mb={8}
+                        mb={24}
+                        style={{ paddingBottom: '8px' }}
                       />
-                      <Text size="xs" c="dimmed">At $300/hour = ${consultantCost.toLocaleString()}/month</Text>
+                      <Text size="xs" c="dimmed" mt={8}>At $300/hour = ${consultantCost.toLocaleString()}/month</Text>
                     </div>
 
                     <Divider />

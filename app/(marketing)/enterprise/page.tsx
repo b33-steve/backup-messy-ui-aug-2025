@@ -259,9 +259,9 @@ export default function EnterpriseConversionPage() {
                     </Text>
                   </div>
                   <Stack gap={8}>
-                    <Text size="sm" fw={600} c="indigo.6">✨ Multi-framework analysis (ICE, RICE, Porter's Five Forces)</Text>
-                    <Text size="sm" fw={600} c="indigo.6">🎯 Confidence-scored recommendations</Text>
-                    <Text size="sm" fw={600} c="indigo.6">📊 Predictive outcome modeling</Text>
+                    <Text size="sm" fw={600} c="indigo.4">✨ Multi-framework analysis (ICE, RICE, Porter's Five Forces)</Text>
+                    <Text size="sm" fw={600} c="indigo.4">🎯 Confidence-scored recommendations</Text>
+                    <Text size="sm" fw={600} c="indigo.4">📊 Predictive outcome modeling</Text>
                   </Stack>
                 </Stack>
               </Card>
@@ -339,7 +339,7 @@ export default function EnterpriseConversionPage() {
                     
                     <Group justify="space-between">
                       <div>
-                        <Text size="xl" fw={900} c="indigo.6">78%</Text>
+                        <Text size="xl" fw={900} c="indigo.4">78%</Text>
                         <Text size="xs" c="dimmed">Faster delivery</Text>
                       </div>
                       <div>
@@ -352,7 +352,7 @@ export default function EnterpriseConversionPage() {
                       </div>
                     </Group>
                     
-                    <Text fw={600} size="sm" c="indigo.6">
+                    <Text fw={600} size="sm" c="indigo.4">
                       — Sarah Chen, VP Product at TechFlow
                     </Text>
                   </Stack>
@@ -383,7 +383,7 @@ export default function EnterpriseConversionPage() {
                         <Text size="xs" c="dimmed">Added ARR</Text>
                       </div>
                       <div>
-                        <Text size="xl" fw={900} c="blue.6">65%</Text>
+                        <Text size="xl" fw={900} c="blue.4">65%</Text>
                         <Text size="xs" c="dimmed">Less admin</Text>
                       </div>
                       <div>
@@ -648,7 +648,7 @@ export default function EnterpriseConversionPage() {
                         <Card bg="indigo.0" p={20} radius="lg">
                           <Stack gap={8}>
                             <Text fw={600} c="indigo.7">White-glove Implementation Included</Text>
-                            <Text size="sm" c="indigo.6">
+                            <Text size="sm" c="indigo.4">
                               • Dedicated customer success manager<br />
                               • Custom PM team training workshops<br />
                               • Strategic consulting sessions<br />

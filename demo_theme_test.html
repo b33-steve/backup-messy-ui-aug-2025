@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Cards Theme Test - PM33</title>
+    <style>
+        /* Light mode colors (default) */
+        :root {
+            --color-bg-primary: #ffffff;
+            --color-text-primary: #0f172a;
+            --border-color: #6366f1;
+        }
+
+        /* Dark mode colors */
+        .dark {
+            --color-bg-primary: #0f172a;
+            --color-text-primary: #f8fafc;
+            --border-color: #06b6d4;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .dark body {
+            background: #1e293b;
+        }
+
+        .demo-card {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .test-info {
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        h1, h2 {
+            color: var(--color-text-primary);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
+    
+    <h1>PM33 Demo Cards Theme Test</h1>
+    
+    <div class="test-info">
+        <h2>🧪 Theme Test Instructions</h2>
+        <p><strong>Current Theme:</strong> <span id="current-theme">Light</span></p>
+        <p>Click the "Toggle Theme" button to switch between light and dark modes.</p>
+        <p>Both demo cards below should change their background and text colors automatically.</p>
+    </div>
+
+    <div class="demo-card">
+        <h2>🧠 Strategic Intelligence Demo</h2>
+        <p>This card should have:</p>
+        <ul>
+            <li><strong>Light Mode:</strong> White background with dark text</li>
+            <li><strong>Dark Mode:</strong> Dark background with light text</li>
+        </ul>
+        <p>The border should also change color with the theme.</p>
+    </div>
+
+    <div class="demo-card">
+        <h2>🎯 Command Center Demo</h2>
+        <p>This card should have:</p>
+        <ul>
+            <li><strong>Light Mode:</strong> White background with dark text</li>
+            <li><strong>Dark Mode:</strong> Dark background with light text</li>
+        </ul>
+        <p>Both cards should transition smoothly between themes.</p>
+    </div>
+
+    <div class="test-info">
+        <h2>✅ Expected Behavior</h2>
+        <p>When you toggle the theme:</p>
+        <ul>
+            <li>✅ Card backgrounds change from white → dark or dark → white</li>
+            <li>✅ Text color changes from dark → light or light → dark</li>
+            <li>✅ Border colors update to match the theme</li>
+            <li>✅ All transitions are smooth (0.3s)</li>
+        </ul>
+        <p><strong>Current Status:</strong> <span id="status">Testing...</span></p>
+    </div>
+
+    <script>
+        let isDark = false;
+
+        function toggleTheme() {
+            const body = document.body;
+            const html = document.documentElement;
+            const themeSpan = document.getElementById('current-theme');
+            const statusSpan = document.getElementById('status');
+
+            if (isDark) {
+                // Switch to light mode
+                html.classList.remove('dark');
+                body.classList.remove('dark');
+                themeSpan.textContent = 'Light';
+                isDark = false;
+                statusSpan.textContent = '☀️ Switched to Light Mode';
+            } else {
+                // Switch to dark mode
+                html.classList.add('dark');
+                body.classList.add('dark');
+                themeSpan.textContent = 'Dark';
+                isDark = true;
+                statusSpan.textContent = '🌙 Switched to Dark Mode';
+            }
+
+            // Update button text
+            const button = document.querySelector('.theme-toggle');
+            button.textContent = isDark ? '☀️ Toggle Theme' : '🌙 Toggle Theme';
+        }
+
+        // Initialize
+        document.getElementById('status').textContent = '✅ Theme switching ready!';
+    </script>
+</body>
+</html>

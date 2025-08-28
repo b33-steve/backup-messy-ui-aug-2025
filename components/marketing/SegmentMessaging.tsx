@@ -65,9 +65,9 @@ interface SegmentData {
 const segmentData: Record<UserSegment, SegmentData> = {
   'startup-pm': {
     segment: 'startup-pm',
-    heroTitle: 'From Solo PM to Strategic Powerhouse',
-    heroSubtitle: 'Get PMO-level strategic capabilities without the enterprise budget. Built for scrappy startups that need to compete with teams 10x their size.',
-    heroBadge: '🚀 Perfect for Series A-B Startups',
+    heroTitle: 'From Solo PM to Strategic Powerhouse | $29/month',
+    heroSubtitle: 'Cut PM busywork 78% with AI. Get PMO-level strategic capabilities without the enterprise budget. Built for scrappy startups competing with 10x teams.',
+    heroBadge: '🚀 400+ Startup PMs Save 32 Hours/Month',
     
     primaryValue: 'Compete with enterprise teams on a startup budget',
     secondaryValue: 'Strategic insights that unlock hidden growth opportunities',
@@ -125,9 +125,9 @@ const segmentData: Record<UserSegment, SegmentData> = {
 
   'senior-pm': {
     segment: 'senior-pm',
-    heroTitle: 'Accelerate Your Path to VP Product',
-    heroSubtitle: 'Transform from tactical executor to strategic leader. Build the strategic thinking skills that get you promoted and recognized as a thought leader.',
-    heroBadge: '⭐ Career Acceleration Platform',
+    heroTitle: 'Accelerate Your Path to VP Product | Cut Busywork 78%',
+    heroSubtitle: 'Transform from tactical executor to strategic leader. Join 1,200+ senior PMs building strategic thinking skills for promotion starting at $29/month.',
+    heroBadge: '⭐ 1,200+ Senior PMs Advanced to Leadership',
     
     primaryValue: 'Become the strategic PM your company relies on for critical decisions',
     secondaryValue: 'Build thought leadership and industry recognition',
@@ -306,9 +306,9 @@ const segmentData: Record<UserSegment, SegmentData> = {
 
   'default': {
     segment: 'default',
-    heroTitle: 'Transform PMs into PMOs Through Agentic AI Teams',
-    heroSubtitle: 'Get PMO-level strategic capabilities at PM budget. 4 AI teams provide strategic intelligence, workflow execution, data analysis, and communication support.',
-    heroBadge: '🤖 Agentic AI Teams Platform',
+    heroTitle: 'Cut PM Busywork 78% with AI | Starting at $29/month',
+    heroSubtitle: 'Transform Jira into AI strategic engine. No migration. Join 2,847 PMs saving 32 hours monthly with PMO-level capabilities at PM budget.',
+    heroBadge: '🚀 2,847 PMs Already Saving 32 Hours/Month',
     
     primaryValue: 'PMO-level strategic capabilities without the enterprise overhead',
     secondaryValue: '78% faster feature delivery with strategic insights',
@@ -405,7 +405,7 @@ export default function SegmentMessaging({
           </Stack>
           
           <Stack align="center" gap={8} mt={16}>
-            <Text fw={600} c="indigo.6">{data.primaryValue}</Text>
+            <Text fw={600} c="indigo.4">{data.primaryValue}</Text>
             <Group gap={24} ta="center">
               <Text size="sm" c="dimmed">✓ {data.secondaryValue}</Text>
               <Text size="sm" c="dimmed">✓ {data.tertiaryValue}</Text>
@@ -485,7 +485,7 @@ export default function SegmentMessaging({
               "{data.testimonialQuote}"
             </Text>
             
-            <Text fw={700} c="indigo.6">— {data.testimonialAuthor}</Text>
+            <Text fw={700} c="indigo.4">— {data.testimonialAuthor}</Text>
           </Stack>
         </Card>
       );
