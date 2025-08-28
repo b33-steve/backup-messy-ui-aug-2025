@@ -47,7 +47,7 @@ const testimonialData: TestimonialData[] = [
     company: 'TechFlow',
     companySize: 'scaleup',
     industry: 'SaaS',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b04fe65f?w=120&h=120&fit=crop&crop=face',
+    avatar: 'https://images.unsplash.com/photo-1521146764736-56c929d59c83?w=120&h=120&fit=crop&crop=face',
     testimonial: "PM33 eliminated analysis paralysis completely. Our team now ships features 78% faster with strategic insights that actually matter. The AI teams coordination saved us from hiring three consultants.",
     metrics: {
       label: 'Faster Delivery',
@@ -85,7 +85,7 @@ const testimonialData: TestimonialData[] = [
     company: 'DataFlow',
     companySize: 'scaleup',
     industry: 'Data Analytics',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face',
+    avatar: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=120&h=120&fit=crop&crop=face',
     testimonial: "Finally spending time on strategy instead of spreadsheets. PM33 automated 65% of my busywork and turned me into a strategic powerhouse. My stakeholders now see me as the go-to person for strategic product decisions.",
     metrics: {
       label: 'Less Admin Work',

@@ -336,6 +336,21 @@ body {
     color: var(--color-text-primary);
     background: light-dark(rgba(8, 145, 178, 0.1), rgba(8, 145, 178, 0.2));
   }
+
+  /* Dark mode tooltip fixes */
+  [data-theme="dark"] .mantine-Tooltip-tooltip,
+  .dark .mantine-Tooltip-tooltip {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Active navigation item in dark mode */
+  [data-theme="dark"] .nav-item.active,
+  .dark .nav-item.active {
+    color: var(--pm33-primary) !important;
+    background: rgba(8, 145, 178, 0.15) !important;
+  }
   
   .nav-item.active {
     color: var(--pm33-teal);

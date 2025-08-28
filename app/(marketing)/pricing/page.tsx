@@ -55,17 +55,38 @@ export default function ConversionOptimizedPricingPage() {
           {/* Pricing Toggle */}
           <Container size="xl" py={64}>
             <Center mb={64}>
-              <Card shadow="md" radius="xl" p={32}>
-                <Group gap={32}>
-                  <Text fw={600}>Monthly</Text>
+              <Card shadow="md" radius="xl" p={32} style={{ border: '2px solid var(--mantine-color-gray-2)' }}>
+                <Group gap={32} justify="center">
+                  <Text 
+                    fw={600} 
+                    style={{ 
+                      color: !isAnnual ? 'var(--mantine-color-indigo-6)' : 'var(--mantine-color-gray-6)',
+                      fontSize: '18px'
+                    }}
+                  >
+                    Monthly
+                  </Text>
                   <Switch
-                    size="lg"
+                    size="xl"
                     checked={isAnnual}
                     onChange={(event) => setIsAnnual(event.currentTarget.checked)}
-                    color="green"
+                    color="indigo"
+                    style={{
+                      '& .mantine-Switch-track': {
+                        border: '2px solid var(--mantine-color-gray-4)'
+                      }
+                    }}
                   />
-                  <Stack gap={4}>
-                    <Text fw={600}>Annual</Text>
+                  <Stack gap={4} align="center">
+                    <Text 
+                      fw={600}
+                      style={{ 
+                        color: isAnnual ? 'var(--mantine-color-indigo-6)' : 'var(--mantine-color-gray-6)',
+                        fontSize: '18px'
+                      }}
+                    >
+                      Annual
+                    </Text>
                     <Badge size="sm" color="green" variant="filled">Save 25%</Badge>
                   </Stack>
                 </Group>
@@ -81,10 +102,10 @@ export default function ConversionOptimizedPricingPage() {
                   <div>
                     <Title order={3} size="h3" mb={8}>Starter</Title>
                     <Group align="baseline" gap={8}>
-                      <Text size="32px" fw={900} c="dark">
+                      <Text size="32px" fw={900} style={{ color: 'var(--mantine-color-gray-9)' }}>
                         ${isAnnual ? '22' : '29'}
                       </Text>
-                      <Text size="sm" c="dimmed">/month</Text>
+                      <Text size="sm" style={{ color: 'var(--mantine-color-gray-7)' }}>/month</Text>
                     </Group>
                     {isAnnual && (
                       <Text size="xs" c="green.6" fw={600}>
@@ -116,23 +137,32 @@ export default function ConversionOptimizedPricingPage() {
                 </Stack>
               </Card>
 
-              {/* Enterprise Tier - FEATURED */}
+              {/* Team Tier - FEATURED */}
               <Card 
                 shadow="xl" 
                 radius="xl" 
                 p={32} 
                 h="fit-content"
                 style={{ 
-                  border: '3px solid var(--marketing-primary)',
+                  border: '3px solid var(--mantine-color-indigo-5)',
                   transform: 'scale(1.05)',
-                  position: 'relative'
+                  position: 'relative',
+                  background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%)'
                 }}
               >
                 <Badge 
                   size="lg" 
                   variant="gradient" 
-                  gradient={{ from: 'orange', to: 'red' }}
-                  style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)' }}
+                  gradient={{ from: 'indigo', to: 'purple' }}
+                  style={{ 
+                    position: 'absolute', 
+                    top: -16, 
+                    left: '50%', 
+                    transform: 'translateX(-50%)',
+                    fontSize: '14px',
+                    height: '32px',
+                    padding: '0 16px'
+                  }}
                 >
                   🔥 Most Popular
                 </Badge>
@@ -198,10 +228,10 @@ export default function ConversionOptimizedPricingPage() {
                   <div>
                     <Title order={3} size="h3" mb={8}>Scale</Title>
                     <Group align="baseline" gap={8}>
-                      <Text size="32px" fw={900} c="dark">
+                      <Text size="32px" fw={900} style={{ color: 'var(--mantine-color-gray-9)' }}>
                         ${isAnnual ? '149' : '199'}
                       </Text>
-                      <Text size="sm" c="dimmed">/month</Text>
+                      <Text size="sm" style={{ color: 'var(--mantine-color-gray-7)' }}>/month</Text>
                     </Group>
                     {isAnnual && (
                       <Text size="xs" c="green.6" fw={600}>
@@ -238,30 +268,25 @@ export default function ConversionOptimizedPricingPage() {
               </Card>
 
               {/* Enterprise Tier */}
-              <Card shadow="lg" radius="xl" p={32} h="fit-content" style={{ border: '2px solid #dc2626' }}>
+              <Card shadow="lg" radius="xl" p={32} h="fit-content">
                 <Stack gap={24}>
                   <div>
-                    <Badge size="md" color="red" variant="filled" mb={8}>
+                    <Badge size="md" color="indigo" variant="light" mb={8}>
                       🏢 Enterprise
                     </Badge>
-                    <Title order={3} size="h3" mb={8} c="red.7">Enterprise</Title>
+                    <Title order={3} size="h3" mb={8} style={{ color: 'var(--mantine-color-gray-8)' }}>Enterprise</Title>
                     <Group align="baseline" gap={8}>
-                      <Text size="32px" fw={900} c="red.7">
-                        ${isAnnual ? '449' : '599'}
+                      <Text size="32px" fw={900} style={{ color: 'var(--mantine-color-indigo-6)' }}>
+                        Custom
                       </Text>
-                      <Text size="sm" c="dimmed">/month</Text>
+                      <Text size="sm" style={{ color: 'var(--mantine-color-gray-6)' }}>pricing</Text>
                     </Group>
-                    {isAnnual && (
-                      <Text size="xs" c="green.6" fw={600}>
-                        $5,388 billed annually (save $1,800)
-                      </Text>
-                    )}
-                    <Text size="sm" c="dimmed" mt={8}>
-                      Large enterprises and PMO organizations
+                    <Text size="sm" style={{ color: 'var(--mantine-color-gray-6)' }} mt={8}>
+                      Tailored for large enterprises and PMO organizations
                     </Text>
                   </div>
 
-                  <List spacing={8} size="sm" icon={<ThemeIcon size={20} radius="xl" color="red"><IconCheck size={12} /></ThemeIcon>}>
+                  <List spacing={8} size="sm" icon={<ThemeIcon size={20} radius="xl" color="indigo"><IconCheck size={12} /></ThemeIcon>}>
                     <List.Item>Everything in Scale</List.Item>
                     <List.Item><Text span fw={600}>Unlimited users and projects</Text></List.Item>
                     <List.Item><Text span fw={600}>Enterprise security & compliance</Text></List.Item>
@@ -271,17 +296,18 @@ export default function ConversionOptimizedPricingPage() {
                     <List.Item>24/7 priority support</List.Item>
                   </List>
 
-                  <ABTestCTA
-                    test="pricing"
+                  <Button
                     component={Link}
-                    href="/trial?tier=enterprise"
-                    onClick={() => handleTrialClick('enterprise')}
+                    href="/contact?inquiry=enterprise"
+                    onClick={() => handleTrialClick('enterprise-contact')}
                     fullWidth
+                    size="lg"
                     rightSection={<IconArrowRight size={16} />}
-                    color="red"
+                    color="indigo"
                     variant="filled"
-                    pageContext="pricing_page_enterprise"
-                  />
+                  >
+                    Contact Sales
+                  </Button>
                 </Stack>
               </Card>
             </SimpleGrid>
@@ -394,18 +420,18 @@ export default function ConversionOptimizedPricingPage() {
                     <Divider />
 
                     <div>
-                      <Text size="sm" fw={600} mb={8} c="red.6">Total Monthly Waste</Text>
-                      <Text size="xl" fw={900} c="red.6">${totalMonthlySavings.toLocaleString()}</Text>
+                      <Text size="sm" fw={600} mb={8} c="orange.6">Total Monthly Opportunity</Text>
+                      <Text size="xl" fw={900} c="orange.6">${totalMonthlySavings.toLocaleString()}</Text>
                     </div>
                   </Stack>
 
                   <Stack gap={24}>
-                    <Title order={3} size="h4">With PM33 Enterprise</Title>
+                    <Title order={3} size="h4">With PM33 Team Plan</Title>
                     
                     <div>
-                      <Text size="sm" fw={600} mb={8}>PM33 Enterprise Cost</Text>
-                      <Text size="xl" fw={700}>$99/month</Text>
-                      <Text size="xs" c="dimmed">All AI teams included</Text>
+                      <Text size="sm" fw={600} mb={8}>PM33 Team Cost</Text>
+                      <Text size="xl" fw={700}>$79/month</Text>
+                      <Text size="xs" c="dimmed">Strategic AI teams included</Text>
                     </div>
 
                     <div>

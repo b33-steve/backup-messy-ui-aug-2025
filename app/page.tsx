@@ -11,6 +11,7 @@ import SegmentMessaging, { detectUserSegment, type UserSegment } from '../compon
 import TestimonialShowcase from '../components/marketing/TestimonialShowcase';
 import SocialProofMetrics from '../components/marketing/SocialProofMetrics';
 import ABTestingFramework, { ABTestCTA } from '../components/marketing/ABTestingFramework';
+import CompanyLogoCarousel from '../components/marketing/CompanyLogoCarousel';
 import AnalyticsDashboard, { useAnalyticsContext } from '../components/marketing/AnalyticsDashboard';
 import { analytics } from '../lib/analytics';
 
@@ -197,6 +198,9 @@ function ConversionOptimizedHomepageContent() {
                 component="pain-points"
               />
             </Container>
+
+            {/* Company Logo Carousel */}
+            <CompanyLogoCarousel />
 
             {/* Social Proof Metrics */}
             <Container size="xl" py={80}>

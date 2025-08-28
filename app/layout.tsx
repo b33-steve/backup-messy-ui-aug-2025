@@ -10,16 +10,16 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'PM33 - PMO Transformation Platform | AI-Powered Product Management',
-    template: '%s | PM33 - AI-Powered Product Management'
+    default: 'PM33 - Cut PM Busywork 78% with AI | $29/month',
+    template: '%s | PM33 - Cut PM Busywork 78% with AI'
   },
-  description: 'Transform from Product Manager to Strategic PMO with 4 Agentic AI Teams. Achieve 10x productivity with AI-powered strategic intelligence, workflow automation, and data-driven insights.',
+  description: 'Transform Jira into AI strategic engine. No migration. Join 2,847 PMs saving 32 hours monthly. Start free.',
   keywords: [
-    'product management',
-    'PMO',
-    'AI product management',
-    'strategic intelligence',
-    'workflow automation',
+    'AI product management tools',
+    'product strategy automation', 
+    'Jira AI integration',
+    'PM busywork automation',
+    'strategic intelligence AI',
     'product management software',
     'AI-powered PM tools',
     'product strategy',
@@ -48,22 +48,22 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://pm33.ai',
     siteName: 'PM33',
-    title: 'PM33 - PMO Transformation Platform | AI-Powered Product Management',
-    description: 'Transform from Product Manager to Strategic PMO with 4 Agentic AI Teams. Achieve 10x productivity with AI-powered strategic intelligence.',
+    title: 'Cut PM Busywork 78% - PM33',
+    description: '2,847 PMs save 32 hours/month',
     images: [
       {
-        url: 'https://pm33.ai/og-image.png',
+        url: '/og-image-results.png',
         width: 1200,
         height: 630,
-        alt: 'PM33 - AI-Powered Product Management Platform',
+        alt: 'PM33 - Cut PM Busywork 78% with AI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PM33 - PMO Transformation Platform',
-    description: 'Transform from Product Manager to Strategic PMO with 4 Agentic AI Teams',
-    images: ['https://pm33.ai/twitter-image.png'],
+    title: 'Cut PM Busywork 78% - PM33',
+    description: '2,847 PMs save 32 hours/month',
+    images: ['/og-image-results.png'],
     creator: '@pm33ai',
   },
   alternates: {
@@ -73,6 +73,11 @@ export const metadata: Metadata = {
     google: 'google-verification-code', // Add actual Google verification code
   },
   category: 'technology',
+  other: {
+    'application-name': 'PM33',
+    'apple-mobile-web-app-capable': 'yes',
+    'mobile-web-app-capable': 'yes',
+  },
 };
 
 export default function RootLayout({
@@ -112,7 +117,12 @@ export default function RootLayout({
                 "price": "29",
                 "priceCurrency": "USD",
                 "priceValidUntil": "2025-12-31",
-                "description": "Starter plan with 40 AI operations per month"
+                "description": "Starter plan - Cut PM busywork by 78%"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "2847"
               },
               "featureList": [
                 "Strategic Intelligence AI Team",

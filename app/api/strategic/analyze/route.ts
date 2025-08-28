@@ -7,8 +7,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// Configuration for the Python backend
-const PYTHON_BACKEND_URL = process.env.PYTHON_BACKEND_URL || 'http://127.0.0.1:8000';
+// Configuration for the Python backend (FastAPI on 8002)
+const PYTHON_BACKEND_URL = process.env.PYTHON_BACKEND_URL || 'http://127.0.0.1:8002';
 const API_TIMEOUT = 30000; // 30 seconds for AI processing
 
 interface StrategicAnalysisRequest {
@@ -18,33 +18,18 @@ interface StrategicAnalysisRequest {
 }
 
 interface StrategicAnalysisResponse {
-  response: string;
-  workflow: {
-    id: string;
-    name: string;
-    strategic_objective: string;
-    framework_used: string;
-    context_factors: string[];
-    tasks: Array<{
-      id: string;
-      title: string;
-      description: string;
-      assignee: string;
-      priority: 'critical' | 'high' | 'medium' | 'low';
-      due_date: string;
-      estimated_hours: number;
-      strategic_rationale: string;
-    }>;
-    success_metrics: string[];
-    risk_factors: string[];
+  query: string;
+  framework: string;
+  analysis: {
+    strategic_recommendation: string;
+    framework_applied: string;
+    confidence_score: number;
+    ai_engine_used: string;
+    strategic_insights: string[];
   };
-  meta: {
-    engine: string;
-    model?: string;
-    response_time: number;
-    timestamp: string;
-    context_chars?: number;
-  };
+  confidence_score: number;
+  processing_time_ms: number;
+  timestamp: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -65,20 +50,25 @@ export async function POST(request: NextRequest) {
     console.log(`📥 Strategic Question: "${body.message}"`);
     console.log(`🔬 Analysis Type: ${body.analysisType || 'strategic'}`);
     
-    // Prepare the request to Python backend
+    // Prepare the request for FastAPI backend (using your tested format)
     const pythonRequest = {
-      message: body.message.trim(),
-      analysisType: body.analysisType || 'strategic',
-      ...(body.context && { context: body.context })
+      query: body.message.trim(),
+      context: {
+        company: "PM33",
+        stage: "beta",
+        team_size: "3",
+        budget: "$15000",
+        ...(body.context && typeof body.context === 'object' ? body.context : {})
+      }
     };
 
-    console.log(`🔄 Forwarding to Python backend: ${PYTHON_BACKEND_URL}/api/mock-strategic-response`);
+    console.log(`🔄 Forwarding to FastAPI backend: ${PYTHON_BACKEND_URL}/api/ai-teams/strategic-intelligence`);
     
     // Call the Python backend with timeout
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
     
-    const pythonResponse = await fetch(`${PYTHON_BACKEND_URL}/api/mock-strategic-response`, {
+    const pythonResponse = await fetch(`${PYTHON_BACKEND_URL}/api/ai-teams/strategic-intelligence`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -107,16 +97,39 @@ export async function POST(request: NextRequest) {
     const analysisResult: StrategicAnalysisResponse = await pythonResponse.json();
     
     console.log(`✅ Strategic analysis completed`);
-    console.log(`🤖 AI Engine: ${analysisResult.meta.engine}`);
-    console.log(`⏱️ Response Time: ${analysisResult.meta.response_time}s`);
-    console.log(`📊 Workflow Tasks: ${analysisResult.workflow.tasks.length}`);
+    console.log(`🤖 AI Engine: ${analysisResult.analysis.ai_engine_used}`);
+    console.log(`⏱️ Response Time: ${analysisResult.processing_time_ms}ms`);
+    console.log(`📊 Framework: ${analysisResult.analysis.framework_applied}`);
 
-    // Enhance the response for frontend consumption
+    // Transform response to match frontend expectations
     const enhancedResponse = {
-      ...analysisResult,
+      response: analysisResult.analysis.strategic_recommendation,
+      workflow: {
+        id: `workflow_${Date.now()}`,
+        name: `Strategic Analysis: ${analysisResult.framework}`,
+        strategic_objective: analysisResult.query,
+        framework_used: analysisResult.analysis.framework_applied,
+        context_factors: analysisResult.analysis.strategic_insights,
+        tasks: [
+          {
+            id: 't001',
+            title: 'Implement strategic recommendation',
+            description: analysisResult.analysis.strategic_recommendation.substring(0, 100) + '...',
+            assignee: 'Product Manager',
+            priority: 'high' as const,
+            due_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            estimated_hours: 8,
+            strategic_rationale: `Based on ${analysisResult.analysis.framework_applied} framework analysis`
+          }
+        ],
+        success_metrics: ['Strategic recommendation implemented', 'Framework goals achieved'],
+        risk_factors: ['Implementation complexity', 'Resource constraints']
+      },
       meta: {
-        ...analysisResult.meta,
-        frontend_timestamp: new Date().toISOString(),
+        engine: analysisResult.analysis.ai_engine_used,
+        response_time: analysisResult.processing_time_ms / 1000,
+        timestamp: analysisResult.timestamp,
+        confidence_score: analysisResult.confidence_score,
         api_route: '/api/strategic/analyze'
       }
     };
